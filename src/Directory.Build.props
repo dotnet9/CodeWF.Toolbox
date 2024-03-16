@@ -1,0 +1,10 @@
+<Project>
+	<PropertyGroup>
+		<TargetFramework>net9.0</TargetFramework>
+		<AnalysisLevel>latest</AnalysisLevel>
+		<LangVersion>latest</LangVersion>
+		<Nullable>enable</Nullable>
+		<Deterministic>true</Deterministic>
+		<AvaloniaVersion>11.0.6</AvaloniaVersion>
+	</PropertyGroup>
+</Project>
