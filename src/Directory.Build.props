@@ -3,6 +3,7 @@
 		<TargetFramework>net9.0</TargetFramework>
 		<AnalysisLevel>latest</AnalysisLevel>
 		<LangVersion>latest</LangVersion>
+		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
 		<Deterministic>true</Deterministic>
 		<AvaloniaVersion>11.0.6</AvaloniaVersion>
