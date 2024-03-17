@@ -1,15 +1,17 @@
 using System.Collections;
 using System.Diagnostics.CodeAnalysis;
 using Tools.CodeWF.Helpers;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Tools.CodeWF.Daemon;
 
 public class Config
 {
 	public static readonly IDictionary EnvironmentVariables = Environment.GetEnvironmentVariables();
+
 	public static string DataDir { get; } = GetStringValue(
 		"datadir",
-		EnvironmentHelpers.GetDataDir(Path.Combine("WalletWasabi", "Client")),
+		EnvironmentHelpers.GetDataDir(Path.Combine("Tools.CodeWF", "Client")),
 		Environment.GetCommandLineArgs()).EffectiveValue;
 
 	private static StringValue GetStringValue(string key, string value, string[] cliArgs)
@@ -44,6 +46,7 @@ public class Config
 		overrideValue = null;
 		return false;
 	}
+
 	private static bool GetCliArgsValue(string key, string[] cliArgs, [NotNullWhen(true)] out string? cliArgsValue)
 	{
 		if (ArgumentHelpers.TryGetValue(key, cliArgs, out cliArgsValue))
@@ -54,6 +57,7 @@ public class Config
 		cliArgsValue = null;
 		return false;
 	}
+
 	private static bool GetEnvironmentVariable(string key, [NotNullWhen(true)] out string? envValue)
 	{
 		string envKey = $"CODEWF-{key.ToUpperInvariant()}";

@@ -1,5 +1,3 @@
-﻿using System.IO;
-
 namespace Tools.CodeWF.Helpers;
 
 public static class IoHelpers
@@ -21,6 +19,16 @@ public static class IoHelpers
 		if (!string.IsNullOrWhiteSpace(dir) && !Directory.Exists(dir))
 		{
 			Directory.CreateDirectory(dir);
+		}
+	}
+
+	public static void EnsureFileExists(string filePath)
+	{
+		if (!File.Exists(filePath))
+		{
+			EnsureContainingDirectoryExists(filePath);
+
+			File.Create(filePath)?.Dispose();
 		}
 	}
 }

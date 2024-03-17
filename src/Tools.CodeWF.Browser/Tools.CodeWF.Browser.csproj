@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <RuntimeIdentifier>browser-wasm</RuntimeIdentifier>
     <WasmMainJSPath>AppBundle\main.js</WasmMainJSPath>
@@ -10,7 +10,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Avalonia.Browser" Version="$(AvaloniaVersion)" />
+    <PackageReference Include="Avalonia.Browser" />
   </ItemGroup>
 
   <ItemGroup>
