@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+
+    <IsPackable>false</IsPackable>
+    <IsTestProject>true</IsTestProject>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="coverlet.collector" Version="6.0.2">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.10.0-preview-24080-01" />
+    <PackageReference Include="MSTest.TestAdapter" Version="3.3.0-preview.24164.4" />
+    <PackageReference Include="MSTest.TestFramework" Version="3.3.0-preview.24164.4" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CodeWF.AppInfo\CodeWF.AppInfo.csproj" />
+    <ProjectReference Include="..\CodeWF.Tools.Core\CodeWF.Tools.Core.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,13 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="CodeWF.Tools.Module.Test.Views.MessageTestView">
+    <UniformGrid Columns="3" HorizontalAlignment="Left" VerticalAlignment="Top">
+        <Button Content="测试Prism-Event" Classes="Gradient" VerticalAlignment="Stretch"
+                Command="{Binding ExecutePrismEventAsync}" />
+        <Button Content="全局异常" Classes="Gradient" VerticalAlignment="Stretch"
+                Command="{Binding ExecuteThrowExceptionAsync}" />
+    </UniformGrid>
+</UserControl>

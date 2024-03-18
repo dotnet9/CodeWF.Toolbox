@@ -1,0 +1,27 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:CodeWF.Tools.Desktop.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:prism="http://prismlibrary.com/"
+        prism:ViewModelLocator.AutoWireViewModel="True"
+        xmlns:views="clr-namespace:CodeWF.Tools.Desktop.Views"
+        TransparencyLevelHint="AcrylicBlur"
+        ExtendClientAreaToDecorationsHint="True"
+        mc:Ignorable="d" d:DesignWidth="900" d:DesignHeight="600"
+        WindowStartupLocation="CenterScreen"
+        Width="900" Height="600"
+        x:Class="CodeWF.Tools.Desktop.Views.MainWindow"
+        x:DataType="vm:MainWindowViewModel"
+        Icon="/Assets/favicon.ico"
+        Title="{Binding Title}">
+    <Design.DataContext>
+        <vm:MainWindowViewModel />
+    </Design.DataContext>
+    <views:MainView />
+    <Window.Styles>
+        <Style Selector="Window">
+            <Setter Property="FontFamily" Value="{StaticResource Douyin}" />
+        </Style>
+    </Window.Styles>
+</Window>

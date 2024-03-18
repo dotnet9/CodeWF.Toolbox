@@ -1,0 +1,14 @@
+<prism:PrismApplication xmlns="https://github.com/avaloniaui"
+                        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                        xmlns:u-semi="https://irihi.tech/ursa/themes/semi"
+                        xmlns:prism="http://prismlibrary.com/"
+                        x:Class="CodeWF.Tools.Desktop.App">
+    <prism:PrismApplication.Styles>
+        <StyleInclude Source="avares://Semi.Avalonia/Themes/Index.axaml" />
+        <StyleInclude Source="avares://Semi.Avalonia.DataGrid/Index.axaml" />
+        <u-semi:SemiTheme Locale="zh-CN" />
+    </prism:PrismApplication.Styles>
+    <prism:PrismApplication.Resources>
+        <FontFamily x:Key="Douyin">avares://CodeWF.Tools.Desktop/Assets/Fonts/DouyinSansBold.ttf#Douyin</FontFamily>
+    </prism:PrismApplication.Resources>
+</prism:PrismApplication>

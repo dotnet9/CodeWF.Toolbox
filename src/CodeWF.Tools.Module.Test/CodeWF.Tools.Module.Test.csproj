@@ -1,0 +1,25 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+		<OutputPath>.\..\Build\ToolsDesktop\Modules</OutputPath>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+		<OutputPath>.\..\Build\ToolsDesktop\Modules</OutputPath>
+	</PropertyGroup>
+	<ItemGroup>
+		<PackageReference Include="Avalonia" Version="11.1.0-beta1" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\CodeWF.Tools.Common\CodeWF.Tools.Common.csproj" />
+	  <ProjectReference Include="..\CodeWF.Tools.Core\CodeWF.Tools.Core.csproj" />
+	  <ProjectReference Include="..\CodeWF.Tools.IServices\CodeWF.Tools.IServices.csproj" />
+	  <ProjectReference Include="..\CodeWF.Tools.Prism\CodeWF.Tools.Prism.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Compile Update="Views\MessageTestView.axaml.cs">
+	    <DependentUpon>MessageTestView.axaml</DependentUpon>
+	  </Compile>
+	</ItemGroup>
+
+</Project>

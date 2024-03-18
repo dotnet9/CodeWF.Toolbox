@@ -1,0 +1,153 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:u="https://irihi.tech/ursa"
+             xmlns:prism="http://prismlibrary.com/"
+             xmlns:common="clr-namespace:CodeWF.Tools.Common;assembly=CodeWF.Tools.Common"
+             xmlns:vm="clr-namespace:CodeWF.Tools.Desktop.ViewModels"
+             xmlns:converters="clr-namespace:CodeWF.Tools.Desktop.Converters"
+             xmlns:services="clr-namespace:CodeWF.Tools.IServices;assembly=CodeWF.Tools.IServices"
+             prism:ViewModelLocator.AutoWireViewModel="True"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:DataType="vm:MainViewModel"
+             x:Class="CodeWF.Tools.Desktop.Views.MainView">
+    <UserControl.Resources>
+        <converters:IconConverter x:Key="IconConverter" />
+    </UserControl.Resources>
+    <Border BorderThickness="1" BorderBrush="LightGray">
+        <Grid RowDefinitions="Auto, *, Auto" ColumnDefinitions="Auto, *">
+
+            <ExperimentalAcrylicBorder Grid.Row="0" Grid.Column="0" Grid.RowSpan="3" Grid.ColumnSpan="2"
+                                       IsHitTestVisible="False">
+                <ExperimentalAcrylicBorder.Material>
+                    <ExperimentalAcrylicMaterial />
+                </ExperimentalAcrylicBorder.Material>
+            </ExperimentalAcrylicBorder>
+
+            <Grid Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Left"
+                  ColumnDefinitions="Auto, Auto">
+                <Image Width="20" Height="20" Margin="3,2 0 0" RenderOptions.BitmapInterpolationMode="HighQuality"
+                       Source="../Assets/logo.png" />
+                <TextBlock Grid.Column="1" VerticalAlignment="Center" Text="{Binding Title}"
+                           Classes="H5" Theme="{DynamicResource TitleTextBlock}" Margin="2 2 10 0" />
+            </Grid>
+
+            <AutoCompleteBox Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Width="300" HorizontalAlignment="Left"
+                             Margin="185 5 0 0"
+                             ItemsSource="{Binding SearchMenuItems}"
+                             SelectedItem="{Binding SearchSelectedItem}"
+                             ValueMemberBinding="{Binding Header}"
+                             Watermark="搜你所想" CornerRadius="5"
+                             FilterMode="ContainsOrdinalCaseSensitive">
+                <AutoCompleteBox.ItemTemplate>
+                    <DataTemplate DataType="services:ToolMenuItem">
+                        <Grid RowDefinitions="Auto, Auto">
+                            <TextBlock Grid.Row="0" Text="{Binding Header}" FontSize="15"
+                                       FontWeight="Bold" />
+                            <TextBlock Grid.Row="1" Text="{Binding Description}" FontSize="12"
+                                       FontWeight="Light"
+                                       MaxWidth="400" TextWrapping="WrapWithOverflow" />
+                        </Grid>
+                    </DataTemplate>
+                </AutoCompleteBox.ItemTemplate>
+            </AutoCompleteBox>
+
+            <ToggleSwitch Grid.Row="0" Grid.Column="1" CornerRadius="4"
+                          HorizontalAlignment="Right"
+                          Padding="2" Margin="0 0 120 0"
+                          IsCheckedChanged="ToggleButton_OnIsCheckedChanged"
+                          Theme="{DynamicResource ButtonToggleSwitch}">
+                <ToggleSwitch.OnContent>
+                    <PathIcon
+                        Width="16"
+                        Height="16"
+                        Data="M12 23C18.0751 23 23 18.0751 23 12C23 5.92487 18.0751 1 12 1C5.92487 1 1 5.92487 1 12C1 18.0751 5.92487 23 12 23ZM17 15C17.476 15 17.9408 14.9525 18.3901 14.862C17.296 17.3011 14.8464 19 12 19C8.13401 19 5 15.866 5 12C5 8.60996 7.40983 5.78277 10.6099 5.13803C10.218 6.01173 10 6.98041 10 8C10 11.866 13.134 15 17 15Z"
+                        Foreground="{DynamicResource ButtonDefaultTertiaryForeground}" />
+                </ToggleSwitch.OnContent>
+                <ToggleSwitch.OffContent>
+                    <PathIcon
+                        Width="16"
+                        Height="16"
+                        Data="M3.55 19.09L4.96 20.5L6.76 18.71L5.34 17.29M12 6C8.69 6 6 8.69 6 12S8.69 18 12 18 18 15.31 18 12C18 8.68 15.31 6 12 6M20 13H23V11H20M17.24 18.71L19.04 20.5L20.45 19.09L18.66 17.29M20.45 5L19.04 3.6L17.24 5.39L18.66 6.81M13 1H11V4H13M6.76 5.39L4.96 3.6L3.55 5L5.34 6.81L6.76 5.39M1 13H4V11H1M13 20H11V23H13"
+                        Foreground="{DynamicResource ButtonDefaultTertiaryForeground}" />
+                </ToggleSwitch.OffContent>
+            </ToggleSwitch>
+
+
+            <Border Grid.Row="1" Grid.Column="0"
+                    Padding="0"
+                    Theme="{DynamicResource CardBorder}">
+                <Grid>
+                    <u:NavMenu
+                        HeaderBinding="{Binding Header}"
+                        IconBinding="{Binding Icon}"
+                        IsHorizontalCollapsed="{Binding #Collapse.IsChecked, Mode=OneWay}"
+                        ItemsSource="{Binding MenuItems}"
+                        SelectedItem="{Binding SelectedMenuItem}"
+                        SubMenuBinding="{Binding Children}"
+                        HorizontalAlignment="Stretch">
+                        <u:NavMenu.Styles>
+                            <Style x:DataType="services:ToolMenuItem" Selector="u|NavMenuItem">
+                                <Setter Property="IsSeparator" Value="{Binding IsSeparator}" />
+                            </Style>
+                        </u:NavMenu.Styles>
+                        <u:NavMenu.IconTemplate>
+                            <DataTemplate DataType="{x:Type x:String}">
+                                <u:TwoTonePathIcon
+                                    Width="16"
+                                    Height="16"
+                                    ActiveForeground="{DynamicResource SemiBlue5}"
+                                    ActiveStrokeBrush="{DynamicResource SemiBlue5}"
+                                    Data="{Binding Converter={StaticResource IconConverter}}"
+                                    Foreground="{DynamicResource SemiGrey5}"
+                                    IsActive="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=u:NavMenuItem}, Path=IsHighlighted, Mode=TwoWay}"
+                                    StrokeBrush="{DynamicResource SemiGrey5}" />
+                            </DataTemplate>
+                        </u:NavMenu.IconTemplate>
+                    </u:NavMenu>
+                </Grid>
+            </Border>
+
+            <Panel Grid.Row="1" Grid.Column="1">
+
+                <Border Classes="Hover" Theme="{StaticResource CardBorder}" Padding="10">
+                    <Grid RowDefinitions="Auto, *">
+                        <u:Banner Grid.Row="0"
+                                  Classes.Bordered="False"
+                                  HorizontalContentAlignment="Left" VerticalContentAlignment="Top"
+                                  Header="{Binding SelectedMenuItem.Header,Mode=OneWay}"
+                                  Type="{Binding SelectedMenuStatus,Mode =OneWay}">
+                            <TextBlock Text="{Binding SelectedMenuItem.Description,Mode=OneWay}"
+                                       TextWrapping="Wrap" />
+                        </u:Banner>
+                        <ContentControl Grid.Row="1" Margin="0 10 0 0"
+                                        prism:RegionManager.RegionName="{x:Static common:RegionNames.ContentRegion}" />
+                    </Grid>
+                </Border>
+            </Panel>
+
+            <ToggleSwitch Name="Collapse" Classes="Primary" Background="Teal" Foreground="White"
+                          Theme="{DynamicResource ButtonToggleSwitch}"
+                          Grid.Row="1" Grid.Column="0" HorizontalAlignment="Right"
+                          VerticalAlignment="Bottom" CornerRadius="20" Height="40" Width="40"
+                          Padding="4" Margin="0 5 -15 50">
+                <ToggleSwitch.OnContent>
+                    <PathIcon
+                        Width="16"
+                        Height="16"
+                        Data="M867.1 141.17H156.08c-17.67 0-32 14.33-32 32s14.33 32 32 32H867.1c17.67 0 32-14.33 32-32s-14.33-32-32-32zM867.92 367.52H403.2c-17.67 0-32 14.33-32 32s14.33 32 32 32h464.73c17.67 0 32-14.33 32-32s-14.33-32-32.01-32zM867.92 573.87H403.2c-17.67 0-32 14.33-32 32s14.33 32 32 32h464.73c17.67 0 32-14.33 32-32s-14.33-32-32.01-32zM867.92 800.22H156.9c-17.67 0-32 14.33-32 32s14.33 32 32 32h711.02c17.67 0 32-14.33 32-32 0-17.68-14.32-32-32-32zM137.47 637.87V367.52l174.54 148.15z" />
+                </ToggleSwitch.OnContent>
+                <ToggleSwitch.OffContent>
+                    <PathIcon
+                        Width="16"
+                        Height="16"
+                        Data="M867.1 141.17H156.08c-17.67 0-32 14.33-32 32s14.33 32 32 32H867.1c17.67 0 32-14.33 32-32s-14.33-32-32-32zM867.92 367.52H403.2c-17.67 0-32 14.33-32 32s14.33 32 32 32h464.73c17.67 0 32-14.33 32-32s-14.33-32-32.01-32zM867.92 573.87H403.2c-17.67 0-32 14.33-32 32s14.33 32 32 32h464.73c17.67 0 32-14.33 32-32s-14.33-32-32.01-32zM867.92 800.22H156.9c-17.67 0-32 14.33-32 32s14.33 32 32 32h711.02c17.67 0 32-14.33 32-32 0-17.68-14.32-32-32-32zM312.01 367.52v270.35L137.47 489.71z" />
+                </ToggleSwitch.OffContent>
+            </ToggleSwitch>
+
+            <ContentControl Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2"
+                            prism:RegionManager.RegionName="{x:Static common:RegionNames.FooterRegion}" />
+        </Grid>
+    </Border>
+</UserControl>

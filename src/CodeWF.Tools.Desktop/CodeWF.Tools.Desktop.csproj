@@ -1,0 +1,55 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<OutputType>WinExe</OutputType>
+		<BuiltInComInteropSupport>true</BuiltInComInteropSupport>
+		<ApplicationManifest>app.manifest</ApplicationManifest>
+		<AvaloniaUseCompiledBindingsByDefault>true</AvaloniaUseCompiledBindingsByDefault>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+		<DefineConstants>DEBUG;TRACE</DefineConstants>
+		<OutputPath>.\..\Build\ToolsDesktop</OutputPath>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+		<OutputPath>.\..\Build\ToolsDesktop</OutputPath>
+	</PropertyGroup>
+	<ItemGroup>
+		<AvaloniaResource Include="Assets\**" />
+	</ItemGroup>
+
+
+	<ItemGroup>
+		<PackageReference Include="Avalonia" Version="11.1.0-beta1" />
+		<PackageReference Include="Avalonia.Desktop" Version="11.1.0-beta1" />
+		<PackageReference Include="Avalonia.Controls.DataGrid" Version="11.1.0-beta1" />
+		<PackageReference Include="Avalonia.Fonts.Inter" Version="11.1.0-beta1" />
+		<!--Condition below is needed to remove Avalonia.Diagnostics package from build output in Release configuration.-->
+		<PackageReference Condition="'$(Configuration)' == 'Debug'" Include="Avalonia.Diagnostics" Version="11.1.0-beta1" />
+		<PackageReference Include="Avalonia.ReactiveUI" Version="11.1.0-beta1" />
+		<PackageReference Include="Irihi.Ursa" Version="0.3.0-beta20240316" />
+		<PackageReference Include="Irihi.Ursa.Themes.Semi" Version="0.3.0-beta20240316" />
+		<PackageReference Include="Prism.Avalonia" Version="8.1.97.11072" />
+		<PackageReference Include="Prism.DryIoc.Avalonia" Version="8.1.97.11072" />
+		<PackageReference Include="Semi.Avalonia" Version="11.1.0-beta1" />
+		<PackageReference Include="Semi.Avalonia.DataGrid" Version="11.1.0-beta1" />
+	</ItemGroup>
+
+
+	<ItemGroup>
+		<ProjectReference Include="..\CodeWF.AppInfo\CodeWF.AppInfo.csproj" />
+		<ProjectReference Include="..\CodeWF.Tools.Common\CodeWF.Tools.Common.csproj" />
+		<ProjectReference Include="..\CodeWF.Tools.Core\CodeWF.Tools.Core.csproj" />
+		<ProjectReference Include="..\CodeWF.Tools.IServices\CodeWF.Tools.IServices.csproj" />
+		<ProjectReference Include="..\CodeWF.Tools.Prism\CodeWF.Tools.Prism.csproj" />
+		<ProjectReference Include="..\CodeWF.Utils\CodeWF.Utils.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Compile Update="Views\DashboardView.axaml.cs">
+			<DependentUpon>DashboardView.axaml</DependentUpon>
+		</Compile>
+		<Compile Update="Views\FooterView.axaml.cs">
+			<DependentUpon>%(Filename)</DependentUpon>
+		</Compile>
+	</ItemGroup>
+</Project>
