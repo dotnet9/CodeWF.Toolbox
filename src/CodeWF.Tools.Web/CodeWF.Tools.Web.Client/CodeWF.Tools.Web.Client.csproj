@@ -6,7 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Masa.Blazor" Version="1.4.0-beta.2" />
+    <PackageReference Include="Masa.Blazor" Version="1.4.0-beta.5" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="9.0.0-preview.2.24128.4" />
     <PackageReference Include="BlazorPageScript" Version="1.0.0" />
   </ItemGroup>

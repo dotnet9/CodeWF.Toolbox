@@ -26,12 +26,12 @@
 		<!--Condition below is needed to remove Avalonia.Diagnostics package from build output in Release configuration.-->
 		<PackageReference Condition="'$(Configuration)' == 'Debug'" Include="Avalonia.Diagnostics" Version="11.1.0-beta1" />
 		<PackageReference Include="Avalonia.ReactiveUI" Version="11.1.0-beta1" />
-		<PackageReference Include="Irihi.Ursa" Version="0.3.0-beta20240316" />
-		<PackageReference Include="Irihi.Ursa.Themes.Semi" Version="0.3.0-beta20240316" />
+		<PackageReference Include="Irihi.Ursa" Version="0.3.0-beta20240329" />
+		<PackageReference Include="Irihi.Ursa.Themes.Semi" Version="0.3.0-beta20240329" />
 		<PackageReference Include="Prism.Avalonia" Version="8.1.97.11072" />
 		<PackageReference Include="Prism.DryIoc.Avalonia" Version="8.1.97.11072" />
-		<PackageReference Include="Semi.Avalonia" Version="11.1.0-beta1" />
-		<PackageReference Include="Semi.Avalonia.DataGrid" Version="11.1.0-beta1" />
+		<PackageReference Include="Semi.Avalonia" Version="11.1.0-beta1.1" />
+		<PackageReference Include="Semi.Avalonia.DataGrid" Version="11.1.0-beta1.1" />
 	</ItemGroup>
 
 
