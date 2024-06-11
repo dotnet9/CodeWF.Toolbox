@@ -1,9 +1,9 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-		<OutputPath>.\..\Build\ToolsDesktop\Modules</OutputPath>
+		<OutputPath>.\..\Build\ToolsDesktop\Modules\CodeWF.Tools.Module.Test</OutputPath>
 	</PropertyGroup>
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-		<OutputPath>.\..\Build\ToolsDesktop\Modules</OutputPath>
+		<OutputPath>.\..\Build\ToolsDesktop\Modules\CodeWF.Tools.Module.Test</OutputPath>
 	</PropertyGroup>
 	<ItemGroup>
 		<PackageReference Include="Avalonia" Version="11.1.0-beta1" />
@@ -14,6 +14,7 @@
 	  <ProjectReference Include="..\CodeWF.Tools.Core\CodeWF.Tools.Core.csproj" />
 	  <ProjectReference Include="..\CodeWF.Tools.IServices\CodeWF.Tools.IServices.csproj" />
 	  <ProjectReference Include="..\CodeWF.Tools.Prism\CodeWF.Tools.Prism.csproj" />
+	  <ProjectReference Include="..\Test\Test.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>

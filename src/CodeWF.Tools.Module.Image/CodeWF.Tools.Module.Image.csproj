@@ -1,9 +1,9 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-		<OutputPath>.\..\Build\ToolsDesktop\Modules</OutputPath>
+		<OutputPath>.\..\Build\ToolsDesktop\Modules\CodeWF.Tools.Module.Image</OutputPath>
 	</PropertyGroup>
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-		<OutputPath>.\..\Build\ToolsDesktop\Modules</OutputPath>
+		<OutputPath>.\..\Build\ToolsDesktop\Modules\CodeWF.Tools.Module.Image</OutputPath>
 	</PropertyGroup>
 
 	<ItemGroup>

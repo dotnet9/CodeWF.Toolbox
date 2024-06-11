@@ -1,4 +1,6 @@
-﻿namespace CodeWF.Tools.Module.Test.ViewModels;
+﻿using Test;
+
+namespace CodeWF.Tools.Module.Test.ViewModels;
 
 public class MessageTestViewModel : ViewModelBase
 {
@@ -34,5 +36,11 @@ public class MessageTestViewModel : ViewModelBase
     public Task ExecuteThrowExceptionAsync()
     {
         throw new Exception("这是测试抛出的异常");
+    }
+
+    public Task ExecuteDependentLibAsync()
+    {
+        _notificationService?.Show("模块调用依赖", $"从依赖库得到的时间：{TestClass.CurrentTime()}");
+        return Task.CompletedTask;
     }
 }

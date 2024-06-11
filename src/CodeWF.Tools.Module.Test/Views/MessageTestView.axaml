@@ -9,5 +9,7 @@
                 Command="{Binding ExecutePrismEventAsync}" />
         <Button Content="全局异常" Classes="Gradient" VerticalAlignment="Stretch"
                 Command="{Binding ExecuteThrowExceptionAsync}" />
+        <Button Content="测试依赖" Classes="Gradient" VerticalAlignment="Stretch"
+                Command="{Binding ExecuteDependentLibAsync}" />
     </UniformGrid>
 </UserControl>

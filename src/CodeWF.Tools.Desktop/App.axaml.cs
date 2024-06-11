@@ -1,4 +1,6 @@
-﻿using Avalonia.Logging;
+﻿using Avalonia.Controls.Platform;
+using Avalonia.Logging;
+using System.Reflection;
 
 namespace CodeWF.Tools.Desktop;
 
@@ -24,13 +26,24 @@ public class App : PrismApplication
 
     protected override IModuleCatalog CreateModuleCatalog()
     {
-        const string modulePath = "./Modules";
-        if (!Directory.Exists(modulePath))
+        var modules = new List<IModuleCatalogItem>();
+        foreach (var dir in Directory.GetDirectories("./Modules"))
         {
-            throw new Exception($"请生成模块到目录{modulePath}");
+            var dirCategoryLog = new DirectoryModuleCatalog
+            {
+                ModulePath = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)!, dir)
+            };
+            dirCategoryLog.Initialize();
+            modules.AddRange(dirCategoryLog.Items);
         }
 
-        return new DirectoryModuleCatalog { ModulePath = modulePath };
+        var categoryLog = new ModuleCatalog();
+        foreach (var module in modules)
+        {
+            categoryLog.Items.Add(module);
+        }
+
+        return categoryLog;
     }
 
     protected override void ConfigureRegionAdapterMappings(RegionAdapterMappings regionAdapterMappings)
