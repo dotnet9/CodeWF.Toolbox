@@ -5,7 +5,7 @@ namespace CodeWF.Tools.Modules.Web.ViewModels;
 public class SlugifyViewModel : ViewModelBase
 {
     private readonly IClipboardService? _clipboardService;
-    private readonly IEventAggregator _eventAggregator;
+    private readonly IMessenger _messenger;
     private readonly INotificationService? _notificationService;
     private readonly ITranslationService? _translationService;
 
@@ -17,16 +17,14 @@ public class SlugifyViewModel : ViewModelBase
     private string? _to;
 
     public SlugifyViewModel(INotificationService notificationService, IClipboardService clipboardService,
-        ITranslationService translationService,
-        IEventAggregator eventAggregator)
+        ITranslationService translationService, IMessenger messenger)
     {
         _notificationService = notificationService;
         _clipboardService = clipboardService;
         _translationService = translationService;
-        _eventAggregator = eventAggregator;
+        _messenger = messenger;
         KindChanged = ReactiveCommand.Create<TranslationKind>(OnKindChanged);
-
-        RegisterPrismEvent();
+        _messenger.Subscribe(this);
     }
 
     /// <summary>
@@ -74,14 +72,13 @@ public class SlugifyViewModel : ViewModelBase
 
     public ReactiveCommand<TranslationKind, Unit> KindChanged { get; }
 
-    private void RegisterPrismEvent()
+    [EventHandler]
+    public void ReceiveEventBusMessage(TestMessage message)
     {
-        _eventAggregator.GetEvent<TestEvent>().Subscribe(args =>
-        {
-            _notificationService?.Show("Prism Event",
-                $"模块【SlugifyString】Prism事件处理程序：Args = {args.Args}, Now = {DateTime.Now}");
-        });
+        _notificationService?.Show("CodeWF EventBus",
+            $"模块【Slugify】收到{nameof(TestMessage)}，Name: {message.Name}, Time: {message.CurrentTime}");
     }
+
 
     public async Task HandleTranslationAsync()
     {

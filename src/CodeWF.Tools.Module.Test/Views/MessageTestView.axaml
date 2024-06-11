@@ -5,8 +5,8 @@
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="CodeWF.Tools.Module.Test.Views.MessageTestView">
     <UniformGrid Columns="3" HorizontalAlignment="Left" VerticalAlignment="Top">
-        <Button Content="测试Prism-Event" Classes="Gradient" VerticalAlignment="Stretch"
-                Command="{Binding ExecutePrismEventAsync}" />
+        <Button Content="测试EventBus" Classes="Gradient" VerticalAlignment="Stretch"
+                Command="{Binding ExecuteEventBusAsync}" />
         <Button Content="全局异常" Classes="Gradient" VerticalAlignment="Stretch"
                 Command="{Binding ExecuteThrowExceptionAsync}" />
         <Button Content="测试依赖" Classes="Gradient" VerticalAlignment="Stretch"

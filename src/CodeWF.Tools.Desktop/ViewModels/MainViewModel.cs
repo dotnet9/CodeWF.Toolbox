@@ -2,7 +2,7 @@
 
 public class MainViewModel : ViewModelBase
 {
-    private readonly IEventAggregator _eventAggregator;
+    private readonly IMessenger _messenger;
     private readonly INotificationService _notificationService;
     private readonly IRegionManager _regionManager;
     private ToolMenuItem? _searchSelectedItem;
@@ -12,16 +12,17 @@ public class MainViewModel : ViewModelBase
     private NotificationType _selectedMenuStatus;
 
     public MainViewModel(IToolManagerService toolManagerService, INotificationService notificationService,
-        IEventAggregator eventAggregator, IRegionManager regionManager)
+        IMessenger messenger, IRegionManager regionManager)
     {
         Title = AppInfo.AppInfo.ToolName;
         _notificationService = notificationService;
-        _eventAggregator = eventAggregator;
+        _messenger = messenger;
         _regionManager = regionManager;
-        RegisterPrismEvent();
         SearchMenuItems = new ObservableCollection<ToolMenuItem>();
         MenuItems = toolManagerService.MenuItems;
         toolManagerService.ToolMenuChanged += MenuChangedHandler;
+
+        _messenger.Subscribe(this);
     }
 
     public ObservableCollection<ToolMenuItem> SearchMenuItems { get; set; }
@@ -54,17 +55,17 @@ public class MainViewModel : ViewModelBase
 
     public ObservableCollection<ToolMenuItem> MenuItems { get; }
 
-    private void RegisterPrismEvent()
+    [EventHandler]
+    public void ReceiveTestMessage(TestMessage message)
     {
-        _eventAggregator.GetEvent<TestEvent>().Subscribe(args =>
-        {
-            _notificationService?.Show("Prism Event",
-                $"主工程Prism事件处理程序：Args = {args.Args}, Now = {DateTime.Now}");
-        });
-        _eventAggregator.GetEvent<ChangeToolEvent>().Subscribe(args =>
-        {
-            ChangeSearchMenu(args.ToolHeader!);
-        });
+        _notificationService?.Show("CodeWF EventBus",
+            $"主工程收到{nameof(TestMessage)}，Name: {message.Name}, Time: {message.CurrentTime}");
+    }
+
+    [EventHandler]
+    public void ReceiveChangeToolMessage(ChangeToolMessage message)
+    {
+        ChangeSearchMenu(message.ToolHeader!);
     }
 
     private void MenuChangedHandler(object sender, EventArgs e)

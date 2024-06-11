@@ -2,13 +2,13 @@
 
 public class DashboardViewModel : ViewModelBase
 {
-    private readonly IEventAggregator _eventAggregator;
+    private readonly IMessenger _messenger;
     private readonly IToolManagerService _toolManagerService;
 
-    public DashboardViewModel(IToolManagerService toolManagerService, IEventAggregator eventAggregator)
+    public DashboardViewModel(IToolManagerService toolManagerService, IMessenger messenger)
     {
         _toolManagerService = toolManagerService;
-        _eventAggregator = eventAggregator;
+        _messenger = messenger;
         toolManagerService.ToolMenuChanged += MenuChangedHandler;
     }
 
@@ -28,7 +28,6 @@ public class DashboardViewModel : ViewModelBase
 
     public void ExecuteChangeToolHandle(ToolMenuItem menuItem)
     {
-        _eventAggregator.GetEvent<ChangeToolEvent>()
-            .Publish(new ChangeToolEventParameter { ToolHeader = menuItem.Header });
+        _messenger.Publish(this, new ChangeToolMessage(this, menuItem.Header));
     }
 }

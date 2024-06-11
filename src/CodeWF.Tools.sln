@@ -26,7 +26,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CodeWF.Tools.Web", "CodeWF.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CodeWF.Tools.Web.Client", "CodeWF.Tools.Web\CodeWF.Tools.Web.Client\CodeWF.Tools.Web.Client.csproj", "{07E5F94D-B64D-4DCA-B491-91E7D9B31458}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CodeWF.Tools.Prism", "CodeWF.Tools.Prism\CodeWF.Tools.Prism.csproj", "{2ED852D9-9A6D-4906-99A6-7814D886BA46}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CodeWF.Tools.EventBus", "CodeWF.Tools.EventBus\CodeWF.Tools.EventBus.csproj", "{2ED852D9-9A6D-4906-99A6-7814D886BA46}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CodeWF.Tools.IServices", "CodeWF.Tools.IServices\CodeWF.Tools.IServices.csproj", "{A923FD75-9B3B-4088-ADC2-55CF77600D80}"
 EndProject

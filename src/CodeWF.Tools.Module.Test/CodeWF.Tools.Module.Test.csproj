@@ -13,7 +13,7 @@
 	  <ProjectReference Include="..\CodeWF.Tools.Common\CodeWF.Tools.Common.csproj" />
 	  <ProjectReference Include="..\CodeWF.Tools.Core\CodeWF.Tools.Core.csproj" />
 	  <ProjectReference Include="..\CodeWF.Tools.IServices\CodeWF.Tools.IServices.csproj" />
-	  <ProjectReference Include="..\CodeWF.Tools.Prism\CodeWF.Tools.Prism.csproj" />
+	  <ProjectReference Include="..\CodeWF.Tools.EventBus\CodeWF.Tools.EventBus.csproj" />
 	  <ProjectReference Include="..\Test\Test.csproj" />
 	</ItemGroup>
 

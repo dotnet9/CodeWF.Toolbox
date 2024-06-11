@@ -1,0 +1,5 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+	<ItemGroup>
+		<PackageReference Include="CodeWF.EventBus" Version="1.0.7" />
+	</ItemGroup>
+</Project>

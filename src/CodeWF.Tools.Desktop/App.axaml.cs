@@ -1,5 +1,6 @@
 ﻿using Avalonia.Controls.Platform;
 using Avalonia.Logging;
+using CodeWF.EventBus;
 using System.Reflection;
 
 namespace CodeWF.Tools.Desktop;
@@ -63,6 +64,10 @@ public class App : PrismApplication
     protected override void RegisterTypes(IContainerRegistry containerRegistry)
     {
         IContainer? container = containerRegistry.GetContainer();
+
+        // Register EventBus
+        containerRegistry.RegisterSingleton<IMessenger, Messenger>();
+
         // Views - Generic
         containerRegistry.Register<MainWindow>();
 

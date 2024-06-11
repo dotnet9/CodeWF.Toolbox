@@ -4,33 +4,30 @@ namespace CodeWF.Tools.Module.Test.ViewModels;
 
 public class MessageTestViewModel : ViewModelBase
 {
-    private readonly IEventAggregator _eventAggregator;
+    private readonly IMessenger _messenger;
     private readonly INotificationService _notificationService;
 
-    public MessageTestViewModel(INotificationService notificationService,
-        IEventAggregator eventAggregator)
+    public MessageTestViewModel(INotificationService notificationService, IMessenger messenger)
     {
         _notificationService = notificationService;
-        _eventAggregator = eventAggregator;
+        _messenger = messenger;
 
-        RegisterPrismEvent();
-    }
-
-    private void RegisterPrismEvent()
-    {
-        _eventAggregator.GetEvent<TestEvent>().Subscribe(args =>
-        {
-            _notificationService?.Show("Prism Event",
-                $"模块【Test】Prism事件处理程序：Args = {args.Args}, Now = {DateTime.Now}");
-        });
+        _messenger.Subscribe(this);
     }
 
 
-    public Task ExecutePrismEventAsync()
+    public Task ExecuteEventBusAsync()
     {
-        TestEvent? prismEvent = _eventAggregator.GetEvent<TestEvent>();
-        prismEvent.Publish(new TestEventParameter { Args = "ExecutePrismEventAsync" });
+        _messenger.Publish(this, new TestMessage(this, nameof(MessageTestViewModel), TestClass.CurrentTime()));
         return Task.CompletedTask;
+    }
+
+
+    [EventHandler]
+    public void ReceiveEventBusMessage(TestMessage message)
+    {
+        _notificationService?.Show("CodeWF EventBus",
+            $"模块【Test】收到{nameof(TestMessage)}，Name: {message.Name}, Time: {message.CurrentTime}");
     }
 
     public Task ExecuteThrowExceptionAsync()
