@@ -67,8 +67,10 @@ public class App : PrismApplication
         IContainer? container = containerRegistry.GetContainer();
 
         // Register EventBus
-        EventBusExtensions.AddEventBus((t1,t2)=> containerRegistry.RegisterSingleton(t1,t2),
-            t=> containerRegistry.RegisterSingleton(t), typeof(App).Assembly);
+        EventBusExtensions.AddEventBus(
+            (t1, t2) => containerRegistry.RegisterSingleton(t1, t2),
+            t => containerRegistry.RegisterSingleton(t),
+            typeof(App).Assembly);
 
         // Views - Generic
         containerRegistry.Register<MainWindow>();
