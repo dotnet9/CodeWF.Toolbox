@@ -6,7 +6,7 @@
 		<OutputPath>.\..\Build\ToolsDesktop\Modules\CodeWF.Tools.Module.Test</OutputPath>
 	</PropertyGroup>
 	<ItemGroup>
-		<PackageReference Include="Avalonia" Version="11.1.0-beta1" />
+		<PackageReference Include="Avalonia" Version="11.1.0-beta2" />
 	</ItemGroup>
 
 	<ItemGroup>
