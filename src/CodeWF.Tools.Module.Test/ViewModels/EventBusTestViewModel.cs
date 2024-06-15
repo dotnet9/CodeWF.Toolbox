@@ -33,7 +33,7 @@ public class EventBusTestViewModel : ViewModelBase
 
 
     [EventHandler]
-    public void ReceiveCommandMessage(TestCommand message)
+    private void ReceiveCommandMessage(TestCommand message)
     {
         _notificationService?.Show("CodeWF.EventBus",
             $"模块【Test】收到{nameof(TestCommand)}，Name: {message.Name}, Time: {message.CurrentTime}");

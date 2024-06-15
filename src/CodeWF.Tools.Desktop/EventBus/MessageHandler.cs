@@ -14,7 +14,7 @@ public class MessageHandler
     }
 
     [EventHandler]
-    public void ReceiveMessage(TestCommand message)
+    private void ReceiveMessage(TestCommand message)
     {
         _notificationService?.Show("CodeWF EventBus",
             $"【MessageHandler】收到{nameof(TestCommand)}，Name: {message.Name}, Time: {message.CurrentTime}");
@@ -22,7 +22,7 @@ public class MessageHandler
 
 
     [EventHandler]
-    public async Task ReceiveQuery(TestQuery query)
+    private async Task ReceiveQuery(TestQuery query)
     {
         await Task.Delay(TimeSpan.FromSeconds(1));
         query.Result = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss fff");

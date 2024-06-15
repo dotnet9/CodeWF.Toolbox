@@ -7,13 +7,13 @@ public class MessageHandler2
 {
     private readonly INotificationService _notificationService;
 
-    public MessageHandler2(INotificationService notificationService)
+    private MessageHandler2(INotificationService notificationService)
     {
         _notificationService = notificationService;
     }
 
     [EventHandler]
-    public void ReceiveMessage(TestCommand message)
+    private void ReceiveMessage(TestCommand message)
     {
         _notificationService?.Show("CodeWF EventBus",
             $"【MessageHandler2】收到{nameof(TestCommand)}，Name: {message.Name}, Time: {message.CurrentTime}");
