@@ -1,4 +1,7 @@
-﻿namespace CodeWF.Tools.Desktop.EventBus;
+﻿using CodeWF.Tools.EventBus.Commands;
+using CodeWF.Tools.EventBus.Queries;
+
+namespace CodeWF.Tools.Desktop.EventBus;
 
 [Event]
 public class MessageHandler
@@ -11,9 +14,17 @@ public class MessageHandler
     }
 
     [EventHandler]
-    public void ReceiveMessage(TestMessage message)
+    public void ReceiveMessage(TestCommand message)
     {
         _notificationService?.Show("CodeWF EventBus",
-            $"【MessageHandler】收到{nameof(TestMessage)}，Name: {message.Name}, Time: {message.CurrentTime}");
+            $"【MessageHandler】收到{nameof(TestCommand)}，Name: {message.Name}, Time: {message.CurrentTime}");
+    }
+
+
+    [EventHandler]
+    public async Task ReceiveQuery(TestQuery query)
+    {
+        await Task.Delay(TimeSpan.FromSeconds(1));
+        query.Result = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss fff");
     }
 }

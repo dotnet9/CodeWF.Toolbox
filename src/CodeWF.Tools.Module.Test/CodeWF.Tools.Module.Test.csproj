@@ -6,7 +6,7 @@
 		<OutputPath>.\..\Build\ToolsDesktop\Modules\CodeWF.Tools.Module.Test</OutputPath>
 	</PropertyGroup>
 	<ItemGroup>
-		<PackageReference Include="Avalonia" Version="11.1.0-beta2" />
+		<PackageReference Include="Avalonia" Version="11.1.0-rc1" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -18,8 +18,8 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Compile Update="Views\MessageTestView.axaml.cs">
-	    <DependentUpon>MessageTestView.axaml</DependentUpon>
+	  <Compile Update="Views\EventBusTestView.axaml.cs">
+	    <DependentUpon>EventBusTestView.axaml</DependentUpon>
 	  </Compile>
 	</ItemGroup>
 

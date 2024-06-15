@@ -1,11 +1,12 @@
-﻿using Unit = System.Reactive.Unit;
+﻿using CodeWF.Tools.EventBus.Commands;
+using Unit = System.Reactive.Unit;
 
 namespace CodeWF.Tools.Modules.Web.ViewModels;
 
 public class SlugifyViewModel : ViewModelBase
 {
     private readonly IClipboardService? _clipboardService;
-    private readonly IMessenger _messenger;
+    private readonly IEventBus _eventBus;
     private readonly INotificationService? _notificationService;
     private readonly ITranslationService? _translationService;
 
@@ -17,14 +18,14 @@ public class SlugifyViewModel : ViewModelBase
     private string? _to;
 
     public SlugifyViewModel(INotificationService notificationService, IClipboardService clipboardService,
-        ITranslationService translationService, IMessenger messenger)
+        ITranslationService translationService, IEventBus eventBus)
     {
         _notificationService = notificationService;
         _clipboardService = clipboardService;
         _translationService = translationService;
-        _messenger = messenger;
+        _eventBus = eventBus;
         KindChanged = ReactiveCommand.Create<TranslationKind>(OnKindChanged);
-        _messenger.Subscribe(this);
+        _eventBus.Subscribe(this);
     }
 
     /// <summary>
@@ -73,10 +74,10 @@ public class SlugifyViewModel : ViewModelBase
     public ReactiveCommand<TranslationKind, Unit> KindChanged { get; }
 
     [EventHandler]
-    public void ReceiveEventBusMessage(TestMessage message)
+    public void ReceiveEventBusMessage(TestCommand message)
     {
         _notificationService?.Show("CodeWF EventBus",
-            $"模块【Slugify】收到{nameof(TestMessage)}，Name: {message.Name}, Time: {message.CurrentTime}");
+            $"模块【Slugify】收到{nameof(TestCommand)}，Name: {message.Name}, Time: {message.CurrentTime}");
     }
 
 

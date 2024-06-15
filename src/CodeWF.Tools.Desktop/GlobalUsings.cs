@@ -16,7 +16,6 @@ global using CodeWF.Tools.Desktop.Core.RegionAdapters;
 global using CodeWF.Tools.Desktop.Services;
 global using CodeWF.Tools.Desktop.ViewModels;
 global using CodeWF.Tools.Desktop.Views;
-global using CodeWF.Tools.EventBus;
 global using CodeWF.Tools.IServices;
 global using CodeWF.Utils;
 global using DryIoc;

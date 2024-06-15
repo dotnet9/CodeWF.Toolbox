@@ -1,14 +1,16 @@
-﻿namespace CodeWF.Tools.Desktop.ViewModels;
+﻿using CodeWF.Tools.EventBus.Commands;
+
+namespace CodeWF.Tools.Desktop.ViewModels;
 
 public class DashboardViewModel : ViewModelBase
 {
-    private readonly IMessenger _messenger;
+    private readonly IEventBus _eventBus;
     private readonly IToolManagerService _toolManagerService;
 
-    public DashboardViewModel(IToolManagerService toolManagerService, IMessenger messenger)
+    public DashboardViewModel(IToolManagerService toolManagerService, IEventBus eventBus)
     {
         _toolManagerService = toolManagerService;
-        _messenger = messenger;
+        _eventBus = eventBus;
         toolManagerService.ToolMenuChanged += MenuChangedHandler;
     }
 
@@ -28,6 +30,6 @@ public class DashboardViewModel : ViewModelBase
 
     public void ExecuteChangeToolHandle(ToolMenuItem menuItem)
     {
-        _messenger.Publish(this, new ChangeToolMessage(this, menuItem.Header));
+        _eventBus.Publish(this, new ChangeToolCommand(menuItem.Header));
     }
 }

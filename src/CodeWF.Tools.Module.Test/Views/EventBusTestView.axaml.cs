@@ -1,8 +1,8 @@
 namespace CodeWF.Tools.Module.Test.Views;
 
-public partial class MessageTestView : UserControl
+public partial class EventBusTestView : UserControl
 {
-    public MessageTestView()
+    public EventBusTestView()
     {
         InitializeComponent();
     }

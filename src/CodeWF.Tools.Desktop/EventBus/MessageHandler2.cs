@@ -1,4 +1,6 @@
-﻿namespace CodeWF.Tools.Desktop.EventBus;
+﻿using CodeWF.Tools.EventBus.Commands;
+
+namespace CodeWF.Tools.Desktop.EventBus;
 
 //[Event]
 public class MessageHandler2
@@ -11,9 +13,9 @@ public class MessageHandler2
     }
 
     [EventHandler]
-    public void ReceiveMessage(TestMessage message)
+    public void ReceiveMessage(TestCommand message)
     {
         _notificationService?.Show("CodeWF EventBus",
-            $"【MessageHandler2】收到{nameof(TestMessage)}，Name: {message.Name}, Time: {message.CurrentTime}");
+            $"【MessageHandler2】收到{nameof(TestCommand)}，Name: {message.Name}, Time: {message.CurrentTime}");
     }
 }

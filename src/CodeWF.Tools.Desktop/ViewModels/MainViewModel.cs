@@ -1,8 +1,10 @@
-﻿namespace CodeWF.Tools.Desktop.ViewModels;
+﻿using CodeWF.Tools.EventBus.Commands;
+
+namespace CodeWF.Tools.Desktop.ViewModels;
 
 public class MainViewModel : ViewModelBase
 {
-    private readonly IMessenger _messenger;
+    private readonly IEventBus _eventBus;
     private readonly INotificationService _notificationService;
     private readonly IRegionManager _regionManager;
     private ToolMenuItem? _searchSelectedItem;
@@ -12,17 +14,17 @@ public class MainViewModel : ViewModelBase
     private NotificationType _selectedMenuStatus;
 
     public MainViewModel(IToolManagerService toolManagerService, INotificationService notificationService,
-        IMessenger messenger, IRegionManager regionManager)
+        IEventBus eventBus, IRegionManager regionManager)
     {
         Title = AppInfo.AppInfo.ToolName;
         _notificationService = notificationService;
-        _messenger = messenger;
+        _eventBus = eventBus;
         _regionManager = regionManager;
         SearchMenuItems = new ObservableCollection<ToolMenuItem>();
         MenuItems = toolManagerService.MenuItems;
         toolManagerService.ToolMenuChanged += MenuChangedHandler;
 
-        _messenger.Subscribe(this);
+        _eventBus.Subscribe(this);
     }
 
     public ObservableCollection<ToolMenuItem> SearchMenuItems { get; set; }
@@ -56,14 +58,14 @@ public class MainViewModel : ViewModelBase
     public ObservableCollection<ToolMenuItem> MenuItems { get; }
 
     [EventHandler]
-    public void ReceiveTestMessage(TestMessage message)
+    public void ReceiveTestMessage(TestCommand message)
     {
         _notificationService?.Show("CodeWF EventBus",
-            $"主工程收到{nameof(TestMessage)}，Name: {message.Name}, Time: {message.CurrentTime}");
+            $"主工程收到{nameof(TestCommand)}，Name: {message.Name}, Time: {message.CurrentTime}");
     }
 
     [EventHandler]
-    public void ReceiveChangeToolMessage(ChangeToolMessage message)
+    public void ReceiveChangeToolMessage(ChangeToolCommand message)
     {
         ChangeSearchMenu(message.ToolHeader!);
     }
