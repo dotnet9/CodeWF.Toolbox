@@ -1,8 +1,4 @@
-﻿using Avalonia.Controls.Platform;
-using Avalonia.Logging;
-using CodeWF.EventBus;
-using Prism.Ioc;
-using System.Reflection;
+﻿using System.Reflection;
 
 namespace CodeWF.Tools.Desktop;
 
@@ -67,10 +63,7 @@ public class App : PrismApplication
         IContainer? container = containerRegistry.GetContainer();
 
         // Register EventBus
-        EventBusExtensions.AddEventBus(
-            (t1, t2) => containerRegistry.RegisterSingleton(t1, t2),
-            t => containerRegistry.RegisterSingleton(t),
-            typeof(App).Assembly);
+        containerRegistry.AddEventBus(Assembly.GetExecutingAssembly());
 
         // Views - Generic
         containerRegistry.Register<MainWindow>();
@@ -96,7 +89,7 @@ public class App : PrismApplication
         _notificationService = container.Resolve<INotificationService>();
 
         // Use EventBus
-        EventBusExtensions.UseEventBus(t => container.Resolve(t), typeof(App).Assembly);
+        container.UseEventBus(Assembly.GetExecutingAssembly());
     }
 
     /// <summary>
