@@ -1,4 +1,5 @@
-﻿using System.Reflection;
+﻿using CodeWF.DryIoc.EventBus;
+using System.Reflection;
 
 namespace CodeWF.Tools.Desktop;
 
@@ -63,7 +64,7 @@ public class App : PrismApplication
         IContainer? container = containerRegistry.GetContainer();
 
         // Register EventBus
-        containerRegistry.AddEventBus(Assembly.GetExecutingAssembly());
+        containerRegistry.AddEventBus();
 
         // Views - Generic
         containerRegistry.Register<MainWindow>();
@@ -89,7 +90,7 @@ public class App : PrismApplication
         _notificationService = container.Resolve<INotificationService>();
 
         // Use EventBus
-        container.UseEventBus(Assembly.GetExecutingAssembly());
+        container.UseEventBus();
     }
 
     /// <summary>
