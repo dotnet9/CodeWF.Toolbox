@@ -30,6 +30,6 @@ public class DashboardViewModel : ViewModelBase
 
     public void ExecuteChangeToolHandle(ToolMenuItem menuItem)
     {
-        _eventBus.Publish(this, new ChangeToolCommand(menuItem.Header));
+        _eventBus.Publish(new ChangeToolCommand(menuItem.Header));
     }
 }

@@ -20,13 +20,13 @@ public class EventBusTestViewModel : ViewModelBase
 
     public async Task ExecuteCommandAsync()
     {
-        await _eventBus.PublishAsync(this, new TestCommand(nameof(EventBusTestViewModel), TestClass.CurrentTime()));
+        await _eventBus.PublishAsync(new TestCommand(nameof(EventBusTestViewModel), TestClass.CurrentTime()));
     }
 
     public async Task ExecuteQueryAsync()
     {
         var query = new TestQuery();
-        await _eventBus.PublishAsync(this, query);
+        await _eventBus.PublishAsync(query);
         _notificationService?.Show("CodeWF.EventBus",
             $"模块【Test】收到Query结果：{query.Result}");
     }
