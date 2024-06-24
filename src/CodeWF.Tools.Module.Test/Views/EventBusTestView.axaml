@@ -2,16 +2,20 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:views="clr-namespace:CodeWF.Tools.Module.Test.Views"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="CodeWF.Tools.Module.Test.Views.EventBusTestView">
-    <UniformGrid Columns="3" HorizontalAlignment="Left" VerticalAlignment="Top">
-        <Button Content="测试Command" Classes="Gradient" VerticalAlignment="Stretch"
-                Command="{Binding ExecuteCommandAsync}" />
-        <Button Content="测试Query" Classes="Gradient" VerticalAlignment="Stretch"
-                Command="{Binding ExecuteQueryAsync}" />
-        <Button Content="全局异常" Classes="Gradient" VerticalAlignment="Stretch"
-                Command="{Binding ExecuteThrowExceptionAsync}" />
-        <Button Content="测试依赖" Classes="Gradient" VerticalAlignment="Stretch"
-                Command="{Binding ExecuteDependentLibAsync}" />
-    </UniformGrid>
+    <Grid RowDefinitions="Auto, *">
+        <UniformGrid Columns="3" HorizontalAlignment="Left" VerticalAlignment="Top">
+            <Button Content="测试Command" Classes="Gradient" VerticalAlignment="Stretch"
+                    Command="{Binding ExecuteCommandAsync}" />
+            <Button Content="测试Query" Classes="Gradient" VerticalAlignment="Stretch"
+                    Command="{Binding ExecuteQueryAsync}" />
+            <Button Content="全局异常" Classes="Gradient" VerticalAlignment="Stretch"
+                    Command="{Binding ExecuteThrowExceptionAsync}" />
+            <Button Content="测试依赖" Classes="Gradient" VerticalAlignment="Stretch"
+                    Command="{Binding ExecuteDependentLibAsync}" />
+        </UniformGrid>
+        <views:AvaPlotView Grid.Row="1" />
+    </Grid>
 </UserControl>
