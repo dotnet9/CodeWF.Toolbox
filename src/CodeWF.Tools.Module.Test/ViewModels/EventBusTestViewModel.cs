@@ -25,10 +25,16 @@ public class EventBusTestViewModel : ViewModelBase
 
     public async Task ExecuteQueryAsync()
     {
-        var query = new TestQuery();
-        await _eventBus.PublishAsync(query);
-        _notificationService?.Show("CodeWF.EventBus",
-            $"模块【Test】收到Query结果：{query.Result}");
+        try
+        {
+            var result = await _eventBus.QueryAsync(new TestQuery());
+            _notificationService?.Show("CodeWF.EventBus",
+                $"模块【Test】收到Query结果：{result}");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+        }
     }
 
 

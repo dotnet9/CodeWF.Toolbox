@@ -24,7 +24,8 @@ public class MessageHandler
     [EventHandler]
     private async Task ReceiveQuery(TestQuery query)
     {
-        await Task.Delay(TimeSpan.FromSeconds(1));
+        // TODO EventBus BUG
+        //await Task.Delay(TimeSpan.FromSeconds(1));    
         query.Result = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss fff");
     }
 }
