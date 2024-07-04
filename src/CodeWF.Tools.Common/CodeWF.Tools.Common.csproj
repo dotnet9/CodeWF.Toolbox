@@ -1,8 +1,8 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<ItemGroup>
-		<PackageReference Include="Avalonia" Version="11.1.0-rc1" />
-		<PackageReference Include="Avalonia.ReactiveUI" Version="11.1.0-rc1" />
+		<PackageReference Include="Avalonia" Version="11.1.0-rc2" />
+		<PackageReference Include="Avalonia.ReactiveUI" Version="11.1.0-rc2" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Console" Version="9.0.0-preview.5.24306.7" />
 		<PackageReference Include="Prism.Avalonia" Version="9.0.401.11000-pre" />
 		<PackageReference Include="PropertyChanged.Fody" Version="4.1.0" />

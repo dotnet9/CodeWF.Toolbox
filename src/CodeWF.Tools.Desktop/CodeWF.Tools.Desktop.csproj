@@ -4,6 +4,7 @@
 		<BuiltInComInteropSupport>true</BuiltInComInteropSupport>
 		<ApplicationManifest>app.manifest</ApplicationManifest>
 		<AvaloniaUseCompiledBindingsByDefault>true</AvaloniaUseCompiledBindingsByDefault>
+		<ApplicationIcon>Assets\favicon.ico</ApplicationIcon>
 	</PropertyGroup>
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
 		<DefineConstants>DEBUG;TRACE</DefineConstants>
@@ -16,21 +17,24 @@
 	<ItemGroup>
 		<AvaloniaResource Include="Assets\**" />
 	</ItemGroup>
+	<ItemGroup>
+	  <Content Include="Assets\favicon.ico" />
+	</ItemGroup>
 
 
 	<ItemGroup>
-		<PackageReference Include="Avalonia" Version="11.1.0-rc1" />
-		<PackageReference Include="Avalonia.Desktop" Version="11.1.0-rc1" />
-		<PackageReference Include="Avalonia.Controls.DataGrid" Version="11.1.0-rc1" />
-		<PackageReference Include="Avalonia.Fonts.Inter" Version="11.1.0-rc1" />
+		<PackageReference Include="Avalonia" Version="11.1.0-rc2" />
+		<PackageReference Include="Avalonia.Desktop" Version="11.1.0-rc2" />
+		<PackageReference Include="Avalonia.Controls.DataGrid" Version="11.1.0-rc2" />
+		<PackageReference Include="Avalonia.Fonts.Inter" Version="11.1.0-rc2" />
 		<!--Condition below is needed to remove Avalonia.Diagnostics package from build output in Release configuration.-->
-		<PackageReference Condition="'$(Configuration)' == 'Debug'" Include="Avalonia.Diagnostics" Version="11.1.0-rc1" />
-		<PackageReference Include="Avalonia.ReactiveUI" Version="11.1.0-rc1" />
-		<PackageReference Include="Irihi.Ursa" Version="0.3.0-beta20240615" />
-		<PackageReference Include="Irihi.Ursa.Themes.Semi" Version="0.3.0-beta20240615" />
+		<PackageReference Condition="'$(Configuration)' == 'Debug'" Include="Avalonia.Diagnostics" Version="11.1.0-rc2" />
+		<PackageReference Include="Avalonia.ReactiveUI" Version="11.1.0-rc2" />
+		<PackageReference Include="Irihi.Ursa" Version="0.3.0-beta20240628" />
+		<PackageReference Include="Irihi.Ursa.Themes.Semi" Version="0.3.0-beta20240628" />
 		<PackageReference Include="Prism.Avalonia" Version="9.0.401.11000-pre" />
 		<PackageReference Include="Prism.DryIoc.Avalonia" Version="9.0.401.11000-pre" />
-		<PackageReference Include="Semi.Avalonia" Version="11.1.0-rc1" />
+		<PackageReference Include="Semi.Avalonia" Version="11.1.0-rc2" />
 		<PackageReference Include="Semi.Avalonia.DataGrid" Version="11.1.0-rc1" />
 	</ItemGroup>
 
