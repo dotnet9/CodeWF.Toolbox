@@ -1,6 +1,5 @@
 ﻿using CodeWF.Tools.EventBus.Commands;
 using CodeWF.Tools.EventBus.Queries;
-using Test;
 
 namespace CodeWF.Tools.Module.Test.ViewModels;
 
@@ -20,7 +19,7 @@ public class EventBusTestViewModel : ViewModelBase
 
     public async Task ExecuteCommandAsync()
     {
-        await _eventBus.PublishAsync(new TestCommand(nameof(EventBusTestViewModel), TestClass.CurrentTime()));
+        await _eventBus.PublishAsync(new TestCommand(nameof(EventBusTestViewModel), DateTimeOffset.Now.ToString()));
     }
 
     public async Task ExecuteQueryAsync()
@@ -52,7 +51,7 @@ public class EventBusTestViewModel : ViewModelBase
 
     public Task ExecuteDependentLibAsync()
     {
-        _notificationService?.Show("模块调用依赖", $"从依赖库得到的时间：{TestClass.CurrentTime()}");
+        _notificationService?.Show("模块调用依赖", $"从依赖库得到的时间：{DateTimeOffset.Now.ToString()}");
         return Task.CompletedTask;
     }
 }
