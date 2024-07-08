@@ -1,3 +1,5 @@
+using CodeWF.LogViewer.Avalonia.Log4Net;
+
 namespace CodeWF.Tools.Desktop.Views;
 
 public partial class MainView : UserControl
@@ -35,6 +37,7 @@ public partial class MainView : UserControl
         {
             ThemeVariant theme = app.ActualThemeVariant;
             app.RequestedThemeVariant = theme == ThemeVariant.Dark ? ThemeVariant.Light : ThemeVariant.Dark;
+            LogFactory.Instance.Log.Info($"ÇÐ»»Ö÷ÌâÎª{theme}");
         }
     }
 }

@@ -1,4 +1,6 @@
-﻿namespace CodeWF.Tools.Core.Test;
+﻿using CodeWF.Tools.Extensions;
+
+namespace CodeWF.Tools.Core.Test;
 
 [TestClass]
 public class ImageHelperUnitTest

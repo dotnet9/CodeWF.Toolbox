@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:u="https://irihi.tech/ursa"
              xmlns:prism="http://prismlibrary.com/"
+             xmlns:log="https://codewf.com"
              xmlns:common="clr-namespace:CodeWF.Tools.Common;assembly=CodeWF.Tools.Common"
              xmlns:vm="clr-namespace:CodeWF.Tools.Desktop.ViewModels"
              xmlns:converters="clr-namespace:CodeWF.Tools.Desktop.Converters"
@@ -16,7 +17,7 @@
         <converters:IconConverter x:Key="IconConverter" />
     </UserControl.Resources>
     <Border BorderThickness="1" BorderBrush="LightGray">
-        <Grid RowDefinitions="Auto, *, Auto" ColumnDefinitions="Auto, *">
+        <Grid RowDefinitions="Auto, *, 3, 200, Auto" ColumnDefinitions="Auto, *">
 
             <ExperimentalAcrylicBorder Grid.Row="0" Grid.Column="0" Grid.RowSpan="3" Grid.ColumnSpan="2"
                                        IsHitTestVisible="False">
@@ -75,7 +76,7 @@
             </ToggleSwitch>
 
 
-            <Border Grid.Row="1" Grid.Column="0"
+            <Border Grid.Row="1" Grid.RowSpan="3" Grid.Column="0"
                     Padding="0"
                     Theme="{DynamicResource CardBorder}">
                 <Grid>
@@ -146,7 +147,13 @@
                 </ToggleSwitch.OffContent>
             </ToggleSwitch>
 
-            <ContentControl Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2"
+            <GridSplitter Grid.Row="2" Grid.Column="1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" />
+
+            <HeaderedContentControl Header="日志" Grid.Row="3" Grid.Column="1">
+                <log:LogView />
+            </HeaderedContentControl>
+
+            <ContentControl Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2"
                             prism:RegionManager.RegionName="{x:Static common:RegionNames.FooterRegion}" />
         </Grid>
     </Border>

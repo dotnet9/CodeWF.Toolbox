@@ -30,6 +30,7 @@
 		<!--Condition below is needed to remove Avalonia.Diagnostics package from build output in Release configuration.-->
 		<PackageReference Condition="'$(Configuration)' == 'Debug'" Include="Avalonia.Diagnostics" Version="11.1.0-rc2" />
 		<PackageReference Include="Avalonia.ReactiveUI" Version="11.1.0-rc2" />
+		<PackageReference Include="CodeWF.LogViewer.Avalonia.Log4Net" Version="1.0.1" />
 		<PackageReference Include="Irihi.Ursa" Version="0.3.0-beta20240628" />
 		<PackageReference Include="Irihi.Ursa.Themes.Semi" Version="0.3.0-beta20240628" />
 		<PackageReference Include="Prism.Avalonia" Version="9.0.401.11000-pre" />
@@ -55,5 +56,11 @@
 		<Compile Update="Views\FooterView.axaml.cs">
 			<DependentUpon>%(Filename)</DependentUpon>
 		</Compile>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Update="log4net.config">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
 	</ItemGroup>
 </Project>

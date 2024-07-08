@@ -1,7 +1,7 @@
 ﻿using Avalonia.Platform.Storage;
+using CodeWF.Tools.Extensions;
 using CodeWF.Tools.Module.Image.Models;
-using NewLife;
-using NewLife.Xml;
+using CodeWF.Utils;
 using System.Reactive.Linq;
 
 namespace CodeWF.Tools.Module.Image.ViewModels;
@@ -39,7 +39,7 @@ public class IconConverterViewModel : ViewModelBase
 
         this.WhenAnyValue(x => x.SourceImagePath)
             .Subscribe(sourceImagePath =>
-                CanExport = sourceImagePath.IsNullOrWhiteSpace() == false && File.Exists(sourceImagePath));
+                CanExport = sourceImagePath.IsNullOrEmpty() == false && File.Exists(sourceImagePath));
     }
 
     public async Task ExecuteOpenSourceImageHandle()
