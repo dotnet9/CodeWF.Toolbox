@@ -2,6 +2,7 @@
 
 public class AppInfo
 {
+    public const string AppName = "CodeWF.Tools";
     public const string BaseName = "码界工坊";
     public const string BlogName = $"{BaseName}博客";
     public const string ToolName = $"{BaseName}工具箱";

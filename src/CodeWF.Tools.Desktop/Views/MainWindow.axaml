@@ -10,7 +10,7 @@
         ExtendClientAreaToDecorationsHint="True"
         mc:Ignorable="d" d:DesignWidth="900" d:DesignHeight="600"
         WindowStartupLocation="CenterScreen"
-        Width="900" Height="600"
+        Width="1200" Height="800"
         x:Class="CodeWF.Tools.Desktop.Views.MainWindow"
         x:DataType="vm:MainWindowViewModel"
         Icon="/Assets/favicon.ico"

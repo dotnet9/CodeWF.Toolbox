@@ -1,4 +1,6 @@
-﻿namespace CodeWF.Tools.Desktop.ViewModels;
+﻿using CodeWF.Tools.Extensions;
+
+namespace CodeWF.Tools.Desktop.ViewModels;
 
 public class FooterViewModel
 {
@@ -8,11 +10,11 @@ public class FooterViewModel
 
     public void OpenCodeWFWebSite()
     {
-        ProcessHelper.OpenBrowserForVisitSite("https://codewf.com");
+        "https://codewf.com".OpenBrowserForVisitSite();
     }
 
     public void OpenCodeWFRepository()
     {
-        ProcessHelper.OpenBrowserForVisitSite("https://github.com/dotnet9/CodeWF");
+        "https://github.com/dotnet9/CodeWF".OpenBrowserForVisitSite();
     }
 }

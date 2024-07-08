@@ -1,4 +1,5 @@
-﻿using System.Reactive.Linq;
+﻿using CodeWF.Tools.Helpers;
+using System.Reactive.Linq;
 
 namespace CodeWF.Tools.Modules.Web.ViewModels;
 
@@ -70,7 +71,7 @@ public class IPQueryViewModel : ViewModelBase
     /// <returns></returns>
     public async Task ExecuteQueryLocalAsync()
     {
-        IPAddress = await IPHelper.GetLocalIPAsync();
+        IPAddress = await IpHelper.GetLocalIpAsync();
         await ExecuteQueryAsync();
     }
 }

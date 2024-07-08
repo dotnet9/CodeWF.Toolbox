@@ -37,13 +37,13 @@
 
                 <Button Content="转换>" Foreground="Green" Margin="3 0"
                         Command="{Binding ExecuteTimestampToTimeCommand}" VerticalAlignment="Center" />
-                <TextBox Text="{Binding TimeTo}" VerticalAlignment="Center" />
+                <TextBox Text="{Binding TimeTo.LocalDateTime}" VerticalAlignment="Center" />
                 <TextBlock Text="北京时间" VerticalAlignment="Center" Margin="3 0 0 0" />
             </StackPanel>
 
 
             <TextBlock Text="时间" Grid.Row="2" Grid.Column="0" VerticalAlignment="Center" />
-            <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding TimeFrom}"
+            <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding TimeFrom.LocalDateTime}"
                      VerticalAlignment="Center" />
             <StackPanel Orientation="Horizontal" Grid.Row="2" Grid.Column="2" VerticalAlignment="Center">
                 <TextBlock Text="北京时间" VerticalAlignment="Center" />
@@ -64,5 +64,8 @@
                    Classes="H7" Theme="{DynamicResource TitleTextBlock}" Margin="0 10 10 0" />
         <TextBlock FontSize="12" Margin="0 10" TextWrapping="Wrap"
                    Text="1986年至1991年，中华人民共和国在全国范围实行了六年夏令时，每年从4月中旬的第一个星期日2时整(北京时间)到9月中旬第一个星期日的凌晨2时整(北京夏令时)。除1986年因是实行夏令时的第一年，从5月4日开始到9月14日结束外，其它年份均按规定的时段施行。夏令时实施期间，将时间向后调快一小时。1992年4月5日后不再实行。" />
+        <TextBlock FontSize="12" Margin="0  10" TextWrapping="Wrap"
+                   Text="{Binding CurrentTimeInfo}">
+        </TextBlock>
     </StackPanel>
 </UserControl>

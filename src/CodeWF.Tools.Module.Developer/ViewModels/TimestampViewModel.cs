@@ -1,4 +1,6 @@
 ﻿using Avalonia.Media;
+using CodeWF.Tools.Extensions;
+using CodeWF.Tools.Module.Developer.Models;
 using CodeWF.Utils;
 using ReactiveUI;
 
@@ -20,8 +22,18 @@ public class TimestampViewModel : ViewModelBase
             .Subscribe(newValue => CalcButtonForeground = newValue ? Brushes.Red : Brushes.Green);
 
         TimestampToTimeFormat = TimeToTimestampFormat = SecondDatetimeFormat;
-        TimestampFrom = TimestampHelper.GetCurrentTimestamp();
         TimeFrom = DateTimeOffset.UtcNow;
+        TimestampFrom = TimeToTimestampKindIndex == (int)TimestampType.Milliseconds
+            ? TimeFrom.GetUnixTimeMilliseconds()
+            : TimeFrom.GetUnixTimeSeconds();
+        CurrentTimeInfo =
+            $"北京时间：{TimeFrom.LocalDateTime} {TimeFrom.LocalDateTime.GetWeekNameOfDay()}{Environment.NewLine}" +
+            $"{TimeFrom.LocalDateTime.Year}年共有：{TimeFrom.LocalDateTime.GetDaysOfYear()}天 {Environment.NewLine}" +
+            $"{TimeFrom.LocalDateTime.Year}年{TimeFrom.LocalDateTime.Month + 1}月共有：{TimeFrom.LocalDateTime.GetDaysOfMonth()}天 {Environment.NewLine}" +
+            $"{TimeFrom.LocalDateTime.Year}年共有：{TimeFrom.LocalDateTime.GetWeekAmount()}周{Environment.NewLine}" +
+            $"今天是：第{TimeFrom.LocalDateTime.WeekOfYear()}周{Environment.NewLine}" +
+            $"本月最后一天是：{TimeFrom.LocalDateTime.GetMonthLastDate()}号 {Environment.NewLine}" +
+            $"";
         ExecuteTimestampToTimeCommand();
         ExecuteTimeToTimestampCommand();
     }
@@ -44,13 +56,17 @@ public class TimestampViewModel : ViewModelBase
     public void ExecuteTimestampToTimeCommand()
     {
         TimestampType kind = (TimestampType)Enum.Parse(typeof(TimestampType), TimestampToTimeKindIndex.ToString());
-        TimeTo = TimestampHelper.GetTime(TimestampFrom, kind);
+        TimeTo = kind == TimestampType.Milliseconds
+            ? TimestampFrom.FromUnixTimeMillisecondsToDateTimeOffset()
+            : TimestampFrom.FromUnixTimeSecondsToDateTimeOffset();
     }
 
     public void ExecuteTimeToTimestampCommand()
     {
         TimestampType kind = (TimestampType)Enum.Parse(typeof(TimestampType), TimeToTimestampKindIndex.ToString());
-        TimestampTo = TimestampHelper.GetTimestamp(TimeFrom, kind);
+        TimestampTo = kind == TimestampType.Milliseconds
+            ? TimeFrom.GetUnixTimeMilliseconds()
+            : TimeFrom.GetUnixTimeSeconds();
     }
 
     private async Task RunCalcTimestamp()
@@ -63,7 +79,9 @@ public class TimestampViewModel : ViewModelBase
             while (_cancellationCalcTimestampTokenSource.IsCancellationRequested == false)
             {
                 CurrentUtcTime = DateTimeOffset.UtcNow;
-                CurrentTimestamp = TimestampHelper.GetTimestamp(CurrentUtcTime, CurrentTimestampType);
+                CurrentTimestamp = CurrentTimestampType == TimestampType.Milliseconds
+                    ? CurrentUtcTime.GetUnixTimeMilliseconds()
+                    : CurrentUtcTime.GetUnixTimeSeconds();
                 await Task.Delay(TimeSpan.FromSeconds(1));
             }
         }, _cancellationCalcTimestampTokenSource.Token);
@@ -127,6 +145,14 @@ public class TimestampViewModel : ViewModelBase
     {
         get => _currentTimestamp;
         set => this.RaiseAndSetIfChanged(ref _currentTimestamp, value);
+    }
+
+    private string _currentTimeInfo;
+
+    public string CurrentTimeInfo
+    {
+        get => _currentTimeInfo;
+        set => this.RaiseAndSetIfChanged(ref _currentTimeInfo, value);
     }
 
     #endregion

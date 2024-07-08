@@ -1,4 +1,5 @@
-﻿using System.Drawing;
+﻿using CodeWF.Tools.FileExtensions;
+using System.Drawing;
 
 namespace CodeWF.Tools.Core.Helpers;
 
@@ -29,7 +30,7 @@ public static class ImageHelper
             string sizeInfo = enumValue.GetDescription()!;
             int width = sizeInfo.Split('x')[0].ToInt();
 
-            var tmp = FileHelper.GetTempFileName() + ".png";
+            var tmp = FileHelper.GetTempFileName(AppInfo.AppInfo.AppName) + ".png";
             await ResizeImageSaveAsAsync(sourceImagePath, tmp, MagickFormat.Png32, width, width);
             files[enumValue] = tmp;
         }

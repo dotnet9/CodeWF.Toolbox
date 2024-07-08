@@ -1,6 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<ItemGroup>
+		<PackageReference Include="CodeWF.Tools" Version="1.0.0" />
 		<PackageReference Include="GTranslate" Version="2.2.0" />
 		<PackageReference Include="NewLife.XCode" Version="11.13.2024.701" />
 		<PackageReference Include="Slugify.Core" Version="5.0.0-prerelease.4" />
