@@ -1,5 +1,4 @@
 ﻿using CodeWF.DryIoc.EventBus;
-using CodeWF.Tools.Helpers;
 using System.Reflection;
 
 namespace CodeWF.Tools.Desktop;
