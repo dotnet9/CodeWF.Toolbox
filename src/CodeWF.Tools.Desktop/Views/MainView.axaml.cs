@@ -66,6 +66,6 @@ public partial class MainView : UserControl
         ThemeVariant theme = app.ActualThemeVariant;
         app.RequestedThemeVariant = theme == ThemeVariant.Dark ? ThemeVariant.Light : ThemeVariant.Dark;
         AppConfigHelper.GetEntryAssembly().Set(ThemeKey, app.RequestedThemeVariant.ToString());
-        LogFactory.Instance.Log.Info($"切换主题为{theme}");
+        LogFactory.Instance.Log.Info($"切换主题为{app.RequestedThemeVariant}");
     }
 }
