@@ -1,5 +1,5 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <ItemGroup>
-    <PackageReference Include="CodeWF.DryIoc.EventBus" Version="3.4.4" />
+    <PackageReference Include="CodeWF.IOC.EventBus" Version="3.4.4" />
   </ItemGroup>
 </Project>

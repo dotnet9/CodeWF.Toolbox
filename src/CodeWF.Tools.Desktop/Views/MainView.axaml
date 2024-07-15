@@ -155,6 +155,7 @@
 
             <ContentControl Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2"
                             prism:RegionManager.RegionName="{x:Static common:RegionNames.FooterRegion}" />
+            <u:OverlayDialogHost Grid.Row="0" Grid.Column="0" Grid.RowSpan="5" Grid.ColumnSpan="2"/>
         </Grid>
     </Border>
 </UserControl>

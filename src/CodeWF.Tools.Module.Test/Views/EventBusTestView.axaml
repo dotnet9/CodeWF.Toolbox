@@ -5,7 +5,7 @@
              xmlns:views="clr-namespace:CodeWF.Tools.Module.Test.Views"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="CodeWF.Tools.Module.Test.Views.EventBusTestView">
-    <Grid RowDefinitions="Auto, *">
+    <Grid RowDefinitions="Auto, Auto, *">
         <UniformGrid Columns="3" HorizontalAlignment="Left" VerticalAlignment="Top">
             <Button Content="测试Command" Classes="Gradient" VerticalAlignment="Stretch"
                     Command="{Binding ExecuteCommandAsync}" />
@@ -15,6 +15,12 @@
                     Command="{Binding ExecuteThrowExceptionAsync}" />
             <Button Content="测试依赖" Classes="Gradient" VerticalAlignment="Stretch"
                     Command="{Binding ExecuteDependentLibAsync}" />
+        </UniformGrid>
+        <UniformGrid Grid.Row="1" Columns="4" HorizontalAlignment="Left" VerticalAlignment="Top">
+            <Button Content="普通对话框" Classes="Gradient" VerticalAlignment="Stretch"
+                    Command="{Binding ExecuteShowDialog}" />
+            <Button Content="抽屉对话框" Classes="Gradient" VerticalAlignment="Stretch"
+                    Command="{Binding ExecuteDrawer}" />
         </UniformGrid>
         <views:AvaPlotView Grid.Row="1" />
     </Grid>

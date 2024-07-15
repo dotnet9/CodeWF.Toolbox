@@ -1,4 +1,6 @@
-﻿namespace CodeWF.Tools.Modules.Web;
+﻿using Prism.Regions;
+
+namespace CodeWF.Tools.Modules.Web;
 
 public class WebModule : IModule
 {

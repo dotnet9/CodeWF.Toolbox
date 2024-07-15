@@ -1,17 +1,23 @@
 ﻿using CodeWF.Tools.EventBus.Commands;
 using CodeWF.Tools.EventBus.Queries;
+using Ursa.PrismExtension;
 
 namespace CodeWF.Tools.Module.Test.ViewModels;
 
 public class EventBusTestViewModel : ViewModelBase
 {
     private readonly IEventBus _eventBus;
+    private readonly IUrsaDialogService _dialogService;
+    private readonly IUrsaDrawerService _drawerService;
     private readonly INotificationService _notificationService;
 
-    public EventBusTestViewModel(INotificationService notificationService, IEventBus eventBus)
+    public EventBusTestViewModel(INotificationService notificationService, IEventBus eventBus,
+        IUrsaDialogService dialogService, IUrsaDrawerService drawerService)
     {
         _notificationService = notificationService;
         _eventBus = eventBus;
+        _dialogService = dialogService;
+        _drawerService = drawerService;
 
         _eventBus.Subscribe(this);
     }
@@ -53,5 +59,15 @@ public class EventBusTestViewModel : ViewModelBase
     {
         _notificationService?.Show("模块调用依赖", $"从依赖库得到的时间：{DateTimeOffset.Now.ToString()}");
         return Task.CompletedTask;
+    }
+
+    public void ExecuteShowDialog()
+    {
+        _dialogService.ShowModal("MainSettings", null);
+    }
+
+    public void ExecuteDrawer()
+    {
+        _drawerService.ShowModal("TestModuleSettings", null);
     }
 }

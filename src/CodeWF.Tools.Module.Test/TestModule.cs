@@ -1,4 +1,8 @@
-﻿namespace CodeWF.Tools.Module.Test;
+﻿using CodeWF.Tools.Module.Test.Dialogs;
+using Prism.Regions;
+using Ursa.PrismExtension;
+
+namespace CodeWF.Tools.Module.Test;
 
 public class TestModule : IModule
 {
@@ -18,5 +22,6 @@ public class TestModule : IModule
     public void RegisterTypes(IContainerRegistry containerRegistry)
     {
         containerRegistry.RegisterSingleton(typeof(EventBusTestViewModel));
+        containerRegistry.RegisterUrsaDialogView<SettingsDialog>("TestModuleSettings");
     }
 }

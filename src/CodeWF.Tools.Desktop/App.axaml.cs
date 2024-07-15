@@ -1,5 +1,7 @@
-﻿using CodeWF.DryIoc.EventBus;
+﻿using CodeWF.Tools.Desktop.Dialogs;
+using Prism.Regions;
 using System.Reflection;
+using Ursa.PrismExtension;
 
 namespace CodeWF.Tools.Desktop;
 
@@ -64,12 +66,16 @@ public class App : PrismApplication
         IContainer? container = containerRegistry.GetContainer();
 
         // Register EventBus
-        containerRegistry.AddEventBus();
+        //containerRegistry.AddEventBus();
+        IOC.EventBus.EventBusExtensions.AddEventBus((t1,t2)=>containerRegistry.RegisterSingleton(t1, t2), 
+            t=> containerRegistry.RegisterScoped(t));
 
         // Views - Generic
         containerRegistry.Register<MainWindow>();
+        containerRegistry.RegisterUrsaDialogService();
+        containerRegistry.RegisterUrsaDialogView<SettingsDialog>("MainSettings");
 
-        IRegionManager? regionManager = Container.Resolve<IRegionManager>();
+        IRegionManager? regionManager = container.Resolve<IRegionManager>();
         regionManager.RegisterViewWithRegion<DashboardView>(RegionNames.ContentRegion);
         regionManager.RegisterViewWithRegion<FooterView>(RegionNames.FooterRegion);
 
@@ -90,7 +96,8 @@ public class App : PrismApplication
         _notificationService = container.Resolve<INotificationService>();
 
         // Use EventBus
-        container.UseEventBus();
+        //container.UseEventBus();
+        IOC.EventBus.EventBusExtensions.UseEventBus(t=> container.Resolve(t));
     }
 
     /// <summary>

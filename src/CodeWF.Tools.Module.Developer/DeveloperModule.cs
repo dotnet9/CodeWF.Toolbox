@@ -1,4 +1,6 @@
-﻿namespace CodeWF.Tools.Module.Developer;
+﻿using Prism.Regions;
+
+namespace CodeWF.Tools.Module.Developer;
 
 public class DeveloperModule : IModule
 {

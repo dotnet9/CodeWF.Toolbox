@@ -1,4 +1,6 @@
-﻿namespace CodeWF.Tools.Module.Image;
+﻿using Prism.Regions;
+
+namespace CodeWF.Tools.Module.Image;
 
 public class ImageModule : IModule
 {

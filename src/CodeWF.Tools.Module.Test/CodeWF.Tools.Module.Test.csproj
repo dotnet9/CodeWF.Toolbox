@@ -7,6 +7,7 @@
 	</PropertyGroup>
 	<ItemGroup>
 		<PackageReference Include="Avalonia" Version="11.1.0-rc2" />
+		<PackageReference Include="Irihi.Ursa.PrismExtension" Version="0.3.0-beta20240226" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -17,6 +18,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Compile Update="Dialogs\SettingsDialog.axaml.cs">
+	    <DependentUpon>SettingsDialog.axaml</DependentUpon>
+	  </Compile>
 	  <Compile Update="Views\EventBusTestView.axaml.cs">
 	    <DependentUpon>EventBusTestView.axaml</DependentUpon>
 	  </Compile>

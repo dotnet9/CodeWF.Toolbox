@@ -1,5 +1,5 @@
 ﻿using CodeWF.Tools.EventBus.Commands;
-using CodeWF.Tools.EventBus.Queries;
+using Prism.Regions;
 
 namespace CodeWF.Tools.Desktop.ViewModels;
 
