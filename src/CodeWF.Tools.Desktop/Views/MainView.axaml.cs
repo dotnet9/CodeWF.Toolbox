@@ -1,11 +1,11 @@
-using CodeWF.LogViewer.Avalonia.Log4Net;
-using CodeWF.Tools.Helpers;
+using CodeWF.Tools.Core.IServices;
+using CodeWF.Tools.EventBus.Commands;
 
 namespace CodeWF.Tools.Desktop.Views;
 
 public partial class MainView : UserControl
 {
-    private const string ThemeKey = "Theme";
+    private bool _isChangeTheme;
 
     public MainView()
     {
@@ -20,7 +20,11 @@ public partial class MainView : UserControl
     protected override void OnAttachedToVisualTree(VisualTreeAttachmentEventArgs e)
     {
         base.OnAttachedToVisualTree(e);
-        LoadTheme();
+
+        var theme = ContainerLocator.Current.Resolve<ISystemService>().LoadTheme();
+        UpdateThemeSwitch(theme);
+        ContainerLocator.Current.Resolve<IEventBus>().Subscribe<UpdateThemeCommand>(ChangeTheme);
+
         TopLevel? level = TopLevel.GetTopLevel(this);
         if (level == null)
         {
@@ -33,39 +37,22 @@ public partial class MainView : UserControl
         fileChooserService.SetHostWindow(level);
     }
 
+    private void ChangeTheme(UpdateThemeCommand command)
+    {
+        UpdateThemeSwitch(command.CurrentTheme);
+    }
+
+    private void UpdateThemeSwitch(ThemeVariant theme)
+    {
+        _isChangeTheme = true;
+        this.FindControl<ToggleSwitch>("ToggleSwitchTheme")!.IsChecked = theme == ThemeVariant.Dark;
+        _isChangeTheme = false;
+    }
+
     private void ToggleButton_OnIsCheckedChanged(object sender, RoutedEventArgs e)
     {
-        ChangeTheme();
-    }
+        if (_isChangeTheme) return;
 
-    private void LoadTheme()
-    {
-        var defaultTheme = AppConfigHelper.GetEntryAssembly().Get<string>(ThemeKey);
-
-        Application? app = Application.Current;
-        if (app is null)
-        {
-            return;
-        }
-
-        app.RequestedThemeVariant =
-            string.Compare(defaultTheme, nameof(ThemeVariant.Dark), StringComparison.OrdinalIgnoreCase) == 0
-                ? ThemeVariant.Dark
-                : ThemeVariant.Light;
-        LogFactory.Instance.Log.Info($"当前主题为{app.RequestedThemeVariant}");
-    }
-
-    private void ChangeTheme()
-    {
-        Application? app = Application.Current;
-        if (app is null)
-        {
-            return;
-        }
-
-        ThemeVariant theme = app.ActualThemeVariant;
-        app.RequestedThemeVariant = theme == ThemeVariant.Dark ? ThemeVariant.Light : ThemeVariant.Dark;
-        AppConfigHelper.GetEntryAssembly().Set(ThemeKey, app.RequestedThemeVariant.ToString());
-        LogFactory.Instance.Log.Info($"切换主题为{app.RequestedThemeVariant}");
+        ContainerLocator.Current.Resolve<ISystemService>().ChangeTheme();
     }
 }

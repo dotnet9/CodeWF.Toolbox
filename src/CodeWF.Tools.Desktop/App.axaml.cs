@@ -1,4 +1,5 @@
-﻿using CodeWF.Tools.Desktop.Dialogs;
+﻿using CodeWF.Tools.Core.IServices;
+using CodeWF.Tools.Desktop.Dialogs;
 using Prism.Regions;
 using System.Reflection;
 using Ursa.PrismExtension;
@@ -86,6 +87,7 @@ public class App : PrismApplication
         containerRegistry.RegisterSingleton<IClipboardService, ClipboardService>();
         containerRegistry.RegisterSingleton<IToolManagerService, ToolManagerService>();
         containerRegistry.RegisterSingleton<IFileChooserService, FileChooserService>();
+        containerRegistry.RegisterSingleton<ISystemService, SystemService>();
 
         IToolManagerService? toolManagerService = container.Resolve<IToolManagerService>();
         toolManagerService.AddTool("首页",

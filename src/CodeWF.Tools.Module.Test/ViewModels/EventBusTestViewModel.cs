@@ -1,5 +1,7 @@
 ﻿using CodeWF.Tools.EventBus.Commands;
 using CodeWF.Tools.EventBus.Queries;
+using Ursa.Controls;
+using Ursa.Controls.Options;
 using Ursa.PrismExtension;
 
 namespace CodeWF.Tools.Module.Test.ViewModels;
@@ -63,11 +65,19 @@ public class EventBusTestViewModel : ViewModelBase
 
     public void ExecuteShowDialog()
     {
-        _dialogService.ShowModal("MainSettings", null);
+        _dialogService.ShowModal("MainSettings", null, options: new DialogOptions()
+        {
+            Title = "主工程配置",
+            Button = DialogButton.OK
+        });
     }
 
     public void ExecuteDrawer()
     {
-        _drawerService.ShowModal("TestModuleSettings", null);
+        _drawerService.ShowModal("TestModuleSettings", null, options: new DrawerOptions()
+        {
+            Title = "子工程配置",
+            Buttons = DialogButton.OK
+        });
     }
 }

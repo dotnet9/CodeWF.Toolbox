@@ -55,7 +55,7 @@
             </AutoCompleteBox>
 
             <ToggleSwitch Grid.Row="0" Grid.Column="1" CornerRadius="4"
-                          HorizontalAlignment="Right"
+                          HorizontalAlignment="Right" x:Name="ToggleSwitchTheme"
                           Padding="2" Margin="0 0 120 0"
                           IsCheckedChanged="ToggleButton_OnIsCheckedChanged"
                           Theme="{DynamicResource ButtonToggleSwitch}">

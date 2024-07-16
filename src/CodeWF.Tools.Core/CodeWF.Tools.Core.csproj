@@ -1,6 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<ItemGroup>
+		<PackageReference Include="Avalonia" Version="11.1.0-rc2" />
 		<PackageReference Include="CodeWF.Tools" Version="1.1.0" />
 		<PackageReference Include="GTranslate" Version="2.2.0" />
 		<PackageReference Include="Slugify.Core" Version="5.0.0-prerelease.4" />
