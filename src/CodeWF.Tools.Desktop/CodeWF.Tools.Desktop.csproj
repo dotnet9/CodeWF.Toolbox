@@ -23,21 +23,21 @@
 
 
 	<ItemGroup>
-		<PackageReference Include="Avalonia" Version="11.1.0-rc2" />
-		<PackageReference Include="Avalonia.Desktop" Version="11.1.0-rc2" />
-		<PackageReference Include="Avalonia.Controls.DataGrid" Version="11.1.0-rc2" />
-		<PackageReference Include="Avalonia.Fonts.Inter" Version="11.1.0-rc2" />
+		<PackageReference Include="Avalonia" Version="11.1.0" />
+		<PackageReference Include="Avalonia.Desktop" Version="11.1.0" />
+		<PackageReference Include="Avalonia.Controls.DataGrid" Version="11.1.0" />
+		<PackageReference Include="Avalonia.Fonts.Inter" Version="11.1.0" />
 		<!--Condition below is needed to remove Avalonia.Diagnostics package from build output in Release configuration.-->
-		<PackageReference Condition="'$(Configuration)' == 'Debug'" Include="Avalonia.Diagnostics" Version="11.1.0-rc2" />
-		<PackageReference Include="Avalonia.ReactiveUI" Version="11.1.0-rc2" />
-		<PackageReference Include="CodeWF.LogViewer.Avalonia.Log4Net" Version="1.0.1" />
-		<PackageReference Include="Irihi.Ursa" Version="0.3.0-beta20240708" />
-		<PackageReference Include="Irihi.Ursa.PrismExtension" Version="0.3.0-beta20240226" />
-		<PackageReference Include="Irihi.Ursa.Themes.Semi" Version="0.3.0-beta20240708" />
+		<PackageReference Condition="'$(Configuration)' == 'Debug'" Include="Avalonia.Diagnostics" Version="11.1.0" />
+		<PackageReference Include="Avalonia.ReactiveUI" Version="11.1.0" />
+		<PackageReference Include="CodeWF.LogViewer.Avalonia.Log4Net" Version="1.0.2" />
+		<PackageReference Include="Irihi.Ursa" Version="1.0.0-rc1" />
+		<PackageReference Include="Irihi.Ursa.PrismExtension" Version="1.0.0-rc1" />
+		<PackageReference Include="Irihi.Ursa.Themes.Semi" Version="1.0.0-rc1" />
 		<PackageReference Include="Prism.Avalonia" Version="8.1.97.11073" />
 		<PackageReference Include="Prism.DryIoc.Avalonia" Version="8.1.97.11073" />
-		<PackageReference Include="Semi.Avalonia" Version="11.1.0-rc2" />
-		<PackageReference Include="Semi.Avalonia.DataGrid" Version="11.1.0-rc1" />
+		<PackageReference Include="Semi.Avalonia" Version="11.1.0-rc2.1" />
+		<PackageReference Include="Semi.Avalonia.DataGrid" Version="11.1.0-rc2.1" />
 	</ItemGroup>
 
 

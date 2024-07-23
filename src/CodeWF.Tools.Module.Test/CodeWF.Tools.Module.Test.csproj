@@ -6,8 +6,8 @@
 		<OutputPath>.\..\Build\ToolsDesktop\Modules\CodeWF.Tools.Module.Test</OutputPath>
 	</PropertyGroup>
 	<ItemGroup>
-		<PackageReference Include="Avalonia" Version="11.1.0-rc2" />
-		<PackageReference Include="Irihi.Ursa.PrismExtension" Version="0.3.0-beta20240226" />
+		<PackageReference Include="Avalonia" Version="11.1.0" />
+		<PackageReference Include="Irihi.Ursa.PrismExtension" Version="1.0.0-rc1" />
 	</ItemGroup>
 
 	<ItemGroup>
