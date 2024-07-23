@@ -8,4 +8,10 @@
         <StyleInclude Source="avares://Semi.Avalonia.DataGrid/Index.axaml" />
         <u-semi:SemiTheme Locale="zh-CN" />
     </prism:PrismApplication.Styles>
+    <prism:PrismApplication.Resources>
+        <FontWeight x:Key="ButtonDefaultFontWeight">500</FontWeight>
+        <FontWeight x:Key="TextBlockTitleFontWeight">500</FontWeight>
+        <FontWeight x:Key="ToggleButtonDefaultFontWeight">500</FontWeight>
+        <FontWeight x:Key="ExpanderHeaderFontWeight">500</FontWeight>
+    </prism:PrismApplication.Resources>
 </prism:PrismApplication>
