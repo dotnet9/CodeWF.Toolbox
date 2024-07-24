@@ -10,15 +10,17 @@ public class EventBusTestViewModel : ViewModelBase
 {
     private readonly IEventBus _eventBus;
     private readonly IUrsaDialogService _dialogService;
+    private readonly IUrsaOverlayDialogService _overlayDialogService;
     private readonly IUrsaDrawerService _drawerService;
     private readonly INotificationService _notificationService;
 
     public EventBusTestViewModel(INotificationService notificationService, IEventBus eventBus,
-        IUrsaDialogService dialogService, IUrsaDrawerService drawerService)
+        IUrsaDialogService dialogService, IUrsaOverlayDialogService overlayDialogService, IUrsaDrawerService drawerService)
     {
         _notificationService = notificationService;
         _eventBus = eventBus;
         _dialogService = dialogService;
+        _overlayDialogService = overlayDialogService;
         _drawerService = drawerService;
 
         _eventBus.Subscribe(this);
@@ -63,7 +65,15 @@ public class EventBusTestViewModel : ViewModelBase
         return Task.CompletedTask;
     }
 
-    public void ExecuteShowDialog()
+    public void ExecuteShowOverlayDialog()
+    {
+        _overlayDialogService.ShowModal("MainSettings", null, options: new OverlayDialogOptions()
+        {
+            Title = "主工程配置",
+            Buttons = DialogButton.OK
+        });
+    }
+    public void ExecuteShowAloneDialog()
     {
         _dialogService.ShowModal("MainSettings", null, options: new DialogOptions()
         {

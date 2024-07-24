@@ -17,8 +17,10 @@
                     Command="{Binding ExecuteDependentLibAsync}" />
         </UniformGrid>
         <UniformGrid Grid.Row="1" Columns="4" HorizontalAlignment="Left" VerticalAlignment="Top">
-            <Button Content="普通对话框" Classes="Gradient" VerticalAlignment="Stretch"
-                    Command="{Binding ExecuteShowDialog}" />
+            <Button Content="窗体内对话框" Classes="Gradient" VerticalAlignment="Stretch"
+                    Command="{Binding ExecuteShowOverlayDialog}" />
+            <Button Content="独立对话框" Classes="Gradient" VerticalAlignment="Stretch"
+                    Command="{Binding ExecuteShowAloneDialog}" />
             <Button Content="抽屉对话框" Classes="Gradient" VerticalAlignment="Stretch"
                     Command="{Binding ExecuteDrawer}" />
         </UniformGrid>
