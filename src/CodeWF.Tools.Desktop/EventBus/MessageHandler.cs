@@ -1,5 +1,4 @@
-﻿using CodeWF.Tools.EventBus.Commands;
-using CodeWF.Tools.EventBus.Queries;
+﻿using CodeWF.Tools.Desktop.Queries;
 
 namespace CodeWF.Tools.Desktop.EventBus;
 

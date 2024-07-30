@@ -1,6 +1,3 @@
-using CodeWF.Tools.Core.IServices;
-using CodeWF.Tools.EventBus.Commands;
-
 namespace CodeWF.Tools.Desktop.Views;
 
 public partial class MainView : UserControl

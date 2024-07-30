@@ -1,5 +1,4 @@
-﻿using CodeWF.Tools.EventBus.Commands;
-using Prism.Regions;
+﻿using SharpCompress;
 
 namespace CodeWF.Tools.Desktop.ViewModels;
 
@@ -17,7 +16,7 @@ public class MainViewModel : ViewModelBase
     public MainViewModel(IToolManagerService toolManagerService, INotificationService notificationService,
         IEventBus eventBus, IRegionManager regionManager)
     {
-        Title = AppInfo.AppInfo.ToolName;
+        Title = AppInfo.ToolName;
         _notificationService = notificationService;
         _eventBus = eventBus;
         _regionManager = regionManager;

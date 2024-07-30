@@ -1,18 +1,24 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
+		<Authors>沙漠尽头的狼</Authors>
+		<Company>codewf.com</Company>
+		<Product>码界工坊</Product>
+		<Copyright>(C) 2019-2024 codewf.com</Copyright>
+		<AssemblyVersion>0.1.0.0</AssemblyVersion>
+		<FileVersion>0.1.0.0</FileVersion>
+		<Version>0.1.0.0</Version>
+		<TargetFramework>net9.0</TargetFramework>
+		<LangVersion>latest</LangVersion>
+		<Nullable>enable</Nullable>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<AppendTargetFrameworkToOutputPath>Flase</AppendTargetFrameworkToOutputPath>
 		<OutputType>WinExe</OutputType>
 		<BuiltInComInteropSupport>true</BuiltInComInteropSupport>
 		<ApplicationManifest>app.manifest</ApplicationManifest>
 		<AvaloniaUseCompiledBindingsByDefault>true</AvaloniaUseCompiledBindingsByDefault>
 		<ApplicationIcon>Assets\favicon.ico</ApplicationIcon>
-	</PropertyGroup>
-	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-		<DefineConstants>DEBUG;TRACE</DefineConstants>
-		<OutputPath>.\..\Build\ToolsDesktop</OutputPath>
-	</PropertyGroup>
-
-	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-		<OutputPath>.\..\Build\ToolsDesktop</OutputPath>
+		<PublishAot>true</PublishAot>
+		<IsAotCompatible>true</IsAotCompatible>
 	</PropertyGroup>
 	<ItemGroup>
 		<AvaloniaResource Include="Assets\**" />
@@ -20,8 +26,6 @@
 	<ItemGroup>
 	  <Content Include="Assets\favicon.ico" />
 	</ItemGroup>
-
-
 	<ItemGroup>
 		<PackageReference Include="Avalonia" Version="11.1.1" />
 		<PackageReference Include="Avalonia.Desktop" Version="11.1.1" />
@@ -30,7 +34,9 @@
 		<!--Condition below is needed to remove Avalonia.Diagnostics package from build output in Release configuration.-->
 		<PackageReference Condition="'$(Configuration)' == 'Debug'" Include="Avalonia.Diagnostics" Version="11.1.1" />
 		<PackageReference Include="Avalonia.ReactiveUI" Version="11.1.1" />
+		<PackageReference Include="CodeWF.IOC.EventBus" Version="3.4.4" />
 		<PackageReference Include="CodeWF.LogViewer.Avalonia.Log4Net" Version="1.0.2" />
+		<PackageReference Include="CodeWF.Tools" Version="1.2.0" />
 		<PackageReference Include="Irihi.Ursa" Version="1.0.0-rc2" />
 		<PackageReference Include="Irihi.Ursa.PrismExtension" Version="1.0.0-rc1" />
 		<PackageReference Include="Irihi.Ursa.Themes.Semi" Version="1.0.0-rc2" />
@@ -38,27 +44,12 @@
 		<PackageReference Include="Prism.DryIoc.Avalonia" Version="8.1.97.11073" />
 		<PackageReference Include="Semi.Avalonia" Version="11.1.0" />
 		<PackageReference Include="Semi.Avalonia.DataGrid" Version="11.1.0" />
+		<PackageReference Include="GTranslate" Version="2.2.3" />
+		<PackageReference Include="Slugify.Core" Version="5.0.0-prerelease.4" />
+		<PackageReference Include="Magick.NET-Q16-AnyCPU" Version="13.10.0" />
+		<PackageReference Include="System.Drawing.Common" Version="9.0.0-preview.6.24327.6" />
+		<PackageReference Include="VC-LTL" Version="5.1.1-Beta3" />
 	</ItemGroup>
-
-
-	<ItemGroup>
-		<ProjectReference Include="..\CodeWF.AppInfo\CodeWF.AppInfo.csproj" />
-		<ProjectReference Include="..\CodeWF.Tools.Common\CodeWF.Tools.Common.csproj" />
-		<ProjectReference Include="..\CodeWF.Tools.Core\CodeWF.Tools.Core.csproj" />
-		<ProjectReference Include="..\CodeWF.Tools.IServices\CodeWF.Tools.IServices.csproj" />
-		<ProjectReference Include="..\CodeWF.Tools.EventBus\CodeWF.Tools.EventBus.csproj" />
-		<ProjectReference Include="..\CodeWF.Utils\CodeWF.Utils.csproj" />
-	</ItemGroup>
-
-	<ItemGroup>
-		<Compile Update="Views\DashboardView.axaml.cs">
-			<DependentUpon>DashboardView.axaml</DependentUpon>
-		</Compile>
-		<Compile Update="Views\FooterView.axaml.cs">
-			<DependentUpon>%(Filename)</DependentUpon>
-		</Compile>
-	</ItemGroup>
-
 	<ItemGroup>
 	  <None Update="log4net.config">
 	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

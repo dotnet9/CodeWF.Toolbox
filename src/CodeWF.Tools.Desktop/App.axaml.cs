@@ -1,8 +1,10 @@
-﻿using CodeWF.Tools.Core.IServices;
-using CodeWF.Tools.Desktop.Dialogs;
-using Prism.Regions;
-using System.Reflection;
-using Ursa.PrismExtension;
+﻿using CodeWF.Tools.Desktop.Dialogs;
+using CodeWF.Tools.Desktop.IServices;
+using CodeWF.Tools.Desktop.Models;
+using CodeWF.Tools.Desktop.Tools.DateConverter;
+using CodeWF.Tools.Desktop.Tools.ImageConverter;
+using CodeWF.Tools.Desktop.Tools.Web;
+using TestModule = CodeWF.Tools.Desktop.Tools.Test.TestModule;
 
 namespace CodeWF.Tools.Desktop;
 
@@ -26,28 +28,14 @@ public class App : PrismApplication
         base.Initialize(); // <-- Required
     }
 
-    protected override IModuleCatalog CreateModuleCatalog()
+    protected override void ConfigureModuleCatalog(IModuleCatalog moduleCatalog)
     {
-        var modules = new List<IModuleCatalogItem>();
-        foreach (var dir in Directory.GetDirectories("./Modules"))
-        {
-            var dirCategoryLog = new DirectoryModuleCatalog
-            {
-                ModulePath = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)!, dir)
-            };
-            dirCategoryLog.Initialize();
-            modules.AddRange(dirCategoryLog.Items);
-        }
-
-        var categoryLog = new ModuleCatalog();
-        foreach (var module in modules)
-        {
-            categoryLog.Items.Add(module);
-        }
-
-        return categoryLog;
+        moduleCatalog.AddModule<DeveloperModule>()
+            .AddModule<ImageModule>()
+            .AddModule<TestModule>()
+            .AddModule<WebModule>();
     }
-
+    
     protected override void ConfigureRegionAdapterMappings(RegionAdapterMappings regionAdapterMappings)
     {
         base.ConfigureRegionAdapterMappings(regionAdapterMappings);
@@ -64,7 +52,7 @@ public class App : PrismApplication
 
     protected override void RegisterTypes(IContainerRegistry containerRegistry)
     {
-        IContainer? container = containerRegistry.GetContainer();
+        var container = containerRegistry.GetContainer();
 
         // Register EventBus
         //containerRegistry.AddEventBus();

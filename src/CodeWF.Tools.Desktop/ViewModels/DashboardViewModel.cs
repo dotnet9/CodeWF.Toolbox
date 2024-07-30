@@ -1,4 +1,4 @@
-﻿using CodeWF.Tools.EventBus.Commands;
+﻿using SharpCompress;
 
 namespace CodeWF.Tools.Desktop.ViewModels;
 

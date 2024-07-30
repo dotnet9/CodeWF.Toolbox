@@ -1,6 +1,4 @@
-﻿using CodeWF.Tools.EventBus.Commands;
-
-namespace CodeWF.Tools.Desktop.EventBus;
+﻿namespace CodeWF.Tools.Desktop.EventBus;
 
 //[Event]
 public class MessageHandler2

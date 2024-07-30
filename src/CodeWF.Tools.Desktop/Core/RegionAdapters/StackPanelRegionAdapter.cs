@@ -1,6 +1,4 @@
-﻿using Prism.Regions;
-
-namespace CodeWF.Tools.Desktop.Core.RegionAdapters;
+﻿namespace CodeWF.Tools.Desktop.Core.RegionAdapters;
 
 public class StackPanelRegionAdapter : RegionAdapterBase<StackPanel>
 {
