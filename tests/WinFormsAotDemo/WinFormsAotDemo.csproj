@@ -1,0 +1,21 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<OutputType>WinExe</OutputType>
+		<TargetFramework>net9.0-windows</TargetFramework>
+		<Nullable>enable</Nullable>
+		<UseWindowsForms>true</UseWindowsForms>
+		<ImplicitUsings>enable</ImplicitUsings>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+		<InvariantGlobalization>true</InvariantGlobalization>
+		<WindowsSupportedOSPlatformVersion>5.1</WindowsSupportedOSPlatformVersion>
+		<RuntimeIdentifier>win-x86</RuntimeIdentifier>
+		<TargetPlatformMinVersion>5.1</TargetPlatformMinVersion>
+		<PublishAot>true</PublishAot>
+		<SuppressWinFormsTrimError>true</SuppressWinFormsTrimError>
+	</PropertyGroup>
+	<ItemGroup>
+		<PackageReference Include="VC-LTL" Version="5.1.1-Beta3" />
+		<PackageReference Include="WinFormsComInterop" Version="0.5.0" />
+	</ItemGroup>
+</Project>
