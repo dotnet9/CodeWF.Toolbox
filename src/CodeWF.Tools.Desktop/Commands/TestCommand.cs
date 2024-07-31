@@ -1,7 +1,0 @@
-﻿namespace CodeWF.Tools.Desktop.Commands;
-
-public class TestCommand(string? name, string? currentTime) : Command
-{
-    public string? Name { get; set; } = name;
-    public string? CurrentTime { get; set; } = currentTime;
-}
