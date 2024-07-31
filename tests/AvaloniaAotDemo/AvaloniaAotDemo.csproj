@@ -1,0 +1,29 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<OutputType>WinExe</OutputType>
+		<TargetFramework>net9.0-windows</TargetFramework>
+		<Nullable>enable</Nullable>
+		<BuiltInComInteropSupport>true</BuiltInComInteropSupport>
+		<ApplicationManifest>app.manifest</ApplicationManifest>
+		<AvaloniaUseCompiledBindingsByDefault>true</AvaloniaUseCompiledBindingsByDefault>
+		<PublishAot>true</PublishAot>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+		<InvariantGlobalization>true</InvariantGlobalization>
+		<WindowsSupportedOSPlatformVersion>5.1</WindowsSupportedOSPlatformVersion>
+		<RuntimeIdentifier>win-x64</RuntimeIdentifier>
+		<TargetPlatformMinVersion>5.1</TargetPlatformMinVersion>
+	</PropertyGroup>
+	<ItemGroup>
+		<PackageReference Include="VC-LTL" Version="5.1.1-Beta3" />
+	</ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="Avalonia" Version="11.1.1" />
+		<PackageReference Include="Avalonia.Desktop" Version="11.1.1" />
+		<PackageReference Include="Avalonia.Themes.Fluent" Version="11.1.1" />
+		<PackageReference Include="Avalonia.Fonts.Inter" Version="11.1.1" />
+		<!--Condition below is needed to remove Avalonia.Diagnostics package from build output in Release configuration.-->
+		<PackageReference Condition="'$(Configuration)' == 'Debug'" Include="Avalonia.Diagnostics" Version="11.1.1" />
+		<PackageReference Include="Avalonia.ReactiveUI" Version="11.1.1" />
+	</ItemGroup>
+</Project>

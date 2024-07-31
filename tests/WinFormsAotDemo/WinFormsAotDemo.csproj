@@ -9,10 +9,10 @@
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
 		<InvariantGlobalization>true</InvariantGlobalization>
 		<WindowsSupportedOSPlatformVersion>5.1</WindowsSupportedOSPlatformVersion>
-		<RuntimeIdentifier>win-x86</RuntimeIdentifier>
+		<RuntimeIdentifier>win-x64</RuntimeIdentifier>
 		<TargetPlatformMinVersion>5.1</TargetPlatformMinVersion>
 		<PublishAot>true</PublishAot>
-		<SuppressWinFormsTrimError>true</SuppressWinFormsTrimError>
+		<_SuppressWinFormsTrimError>true</_SuppressWinFormsTrimError>
 	</PropertyGroup>
 	<ItemGroup>
 		<PackageReference Include="VC-LTL" Version="5.1.1-Beta3" />

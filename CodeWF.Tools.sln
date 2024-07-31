@@ -22,6 +22,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleAotDemo", "tests\Con
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinFormsAotDemo", "tests\WinFormsAotDemo\WinFormsAotDemo.csproj", "{D643B9FB-AE36-4727-8AFC-7248530E92CF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AvaloniaAotDemo", "tests\AvaloniaAotDemo\AvaloniaAotDemo.csproj", "{8B5C9399-0D84-428E-925E-D21C18EE0D68}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -40,6 +42,10 @@ Global
 		{D643B9FB-AE36-4727-8AFC-7248530E92CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D643B9FB-AE36-4727-8AFC-7248530E92CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D643B9FB-AE36-4727-8AFC-7248530E92CF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8B5C9399-0D84-428E-925E-D21C18EE0D68}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8B5C9399-0D84-428E-925E-D21C18EE0D68}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8B5C9399-0D84-428E-925E-D21C18EE0D68}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8B5C9399-0D84-428E-925E-D21C18EE0D68}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -48,6 +54,7 @@ Global
 		{C42BC0DE-AC63-4C94-A45A-BFA788C800DC} = {844ACF80-B54A-4FDA-B6D6-00C3CC921508}
 		{D9B43B89-23A9-4BC9-A7C9-4CD6A1617624} = {C7F43DE4-2C2F-4DE6-94CA-DBEEBC363BAF}
 		{D643B9FB-AE36-4727-8AFC-7248530E92CF} = {C7F43DE4-2C2F-4DE6-94CA-DBEEBC363BAF}
+		{8B5C9399-0D84-428E-925E-D21C18EE0D68} = {C7F43DE4-2C2F-4DE6-94CA-DBEEBC363BAF}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {47147C4F-8BF8-4E62-82C5-A5B969940F69}
