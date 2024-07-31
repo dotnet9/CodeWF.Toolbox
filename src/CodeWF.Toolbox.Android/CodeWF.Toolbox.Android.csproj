@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <TargetFrameworks>net8.0-android;net9.0-android</TargetFrameworks>
+    <TargetFramework>net9.0-android</TargetFramework>
     <SupportedOSPlatformVersion>21</SupportedOSPlatformVersion>
     <Nullable>enable</Nullable>
     <ApplicationId>com.CompanyName.CodeWF.Toolbox</ApplicationId>

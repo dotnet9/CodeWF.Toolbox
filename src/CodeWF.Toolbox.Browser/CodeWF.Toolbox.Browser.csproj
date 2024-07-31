@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.WebAssembly">
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <TargetFrameworks>net8.0-browser;net9.0-browser</TargetFrameworks>
+    <TargetFramework>net9.0-browser</TargetFramework>
   </PropertyGroup>
 
 

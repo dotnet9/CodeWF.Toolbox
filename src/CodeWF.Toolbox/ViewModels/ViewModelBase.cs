@@ -1,6 +1,6 @@
-﻿using ReactiveUI;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
 
 namespace CodeWF.Toolbox.ViewModels;
-public class ViewModelBase : ReactiveObject
+public class ViewModelBase : ObservableObject
 {
 }

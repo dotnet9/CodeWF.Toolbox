@@ -1,10 +1,11 @@
 using Avalonia;
 using Avalonia.Controls.ApplicationLifetimes;
+using Avalonia.Data.Core.Plugins;
 using Avalonia.Markup.Xaml;
-using CodeWF.Toolbox.ViewModels;
 using CodeWF.Toolbox.Views;
 
 namespace CodeWF.Toolbox;
+
 public partial class App : Application
 {
     public override void Initialize()
@@ -14,19 +15,17 @@ public partial class App : Application
 
     public override void OnFrameworkInitializationCompleted()
     {
-        if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
+        switch (ApplicationLifetime)
         {
-            desktop.MainWindow = new MainWindow
-            {
-                DataContext = new MainViewModel()
-            };
-        }
-        else if (ApplicationLifetime is ISingleViewApplicationLifetime singleViewPlatform)
-        {
-            singleViewPlatform.MainView = new MainView
-            {
-                DataContext = new MainViewModel()
-            };
+            case IClassicDesktopStyleApplicationLifetime desktop:
+                // Line below is needed to remove Avalonia data validation.
+                // Without this line you will get duplicate validations from both Avalonia and CT
+                BindingPlugins.DataValidators.RemoveAt(0);
+                desktop.MainWindow = new MainWindow();
+                break;
+            case ISingleViewApplicationLifetime singleViewPlatform:
+                singleViewPlatform.MainView = new MainView();
+                break;
         }
 
         base.OnFrameworkInitializationCompleted();
