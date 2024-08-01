@@ -1,0 +1,3 @@
+<linker>
+    <assembly fullname="CodeWF.Toolbox.Desktop" preserve="All"/>
+</linker>

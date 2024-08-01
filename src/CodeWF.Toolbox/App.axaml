@@ -1,9 +1,16 @@
-<Application xmlns="https://github.com/avaloniaui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:semi="https://irihi.tech/semi"
-             x:Class="CodeWF.Toolbox.App"
-             RequestedThemeVariant="Default">
-    <Application.Styles>
-        <semi:SemiTheme Locale="zh-cn" />
-    </Application.Styles>
-</Application>
+<prism:PrismApplication xmlns="https://github.com/avaloniaui"
+                        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                        xmlns:u-semi="https://irihi.tech/ursa/themes/semi"
+                        xmlns:prism="http://prismlibrary.com/"
+                        x:Class="CodeWF.Toolbox.App">
+	<prism:PrismApplication.Styles>
+		<StyleInclude Source="avares://Semi.Avalonia/Themes/Index.axaml" />
+        <u-semi:SemiTheme Locale="zh-CN" />
+    </prism:PrismApplication.Styles>
+    <prism:PrismApplication.Resources>
+        <FontWeight x:Key="ButtonDefaultFontWeight">500</FontWeight>
+        <FontWeight x:Key="TextBlockTitleFontWeight">500</FontWeight>
+        <FontWeight x:Key="ToggleButtonDefaultFontWeight">500</FontWeight>
+        <FontWeight x:Key="ExpanderHeaderFontWeight">500</FontWeight>
+    </prism:PrismApplication.Resources>
+</prism:PrismApplication>

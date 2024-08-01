@@ -18,6 +18,9 @@
 	<PropertyGroup>
 		<ApplicationManifest>app.manifest</ApplicationManifest>
 	</PropertyGroup>
+	<ItemGroup>
+		<TrimmerRootDescriptor Include="Roots.xml" />
+	</ItemGroup>
 
 	<ItemGroup>
 		<PackageReference Include="Avalonia.Desktop" Version="11.1.1" />
