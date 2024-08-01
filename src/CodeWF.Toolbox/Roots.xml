@@ -1,6 +1,3 @@
 ﻿<linker>
   <!-- Can be removed if CompiledBinding and no reflection are used -->
-  <assembly fullname="Prism.Avalonia" preserve="All"/>
-  <assembly fullname="Prism.DryIoc.Avalonia" preserve="All"/>
-  <assembly fullname="CodeWF.Toolbox" preserve="All" />
 </linker>
