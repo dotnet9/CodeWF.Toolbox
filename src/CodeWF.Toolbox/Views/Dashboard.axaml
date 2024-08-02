@@ -1,0 +1,107 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="CodeWF.Toolbox.Views.Dashboard">
+    <UserControl.Styles>
+        <Style Selector="Border.ToolItem">
+            <Setter Property="Margin" Value="7" />
+            <Setter Property="Padding" Value="20" />
+            <Setter Property="CornerRadius" Value="10" />
+        </Style>
+        <Style Selector="Image.ToolItem">
+            <Setter Property="HorizontalAlignment" Value="Left" />
+            <Setter Property="Margin" Value="0 0 0 20" />
+        </Style>
+    </UserControl.Styles>
+    <Grid ColumnDefinitions="250 *">
+        <Grid Grid.Column="0" RowDefinitions="5, 250, 30, 20, 130, *">
+            <Viewbox Grid.Row="1" Width="140" VerticalAlignment="Center" HorizontalAlignment="Center">
+                <Image Source="\Assets\logo.png" />
+            </Viewbox>
+            <TextBlock Grid.Row="2" Text="码界工坊工具箱" HorizontalAlignment="Center" Classes="H4"
+                       Theme="{StaticResource TitleTextBlock}" />
+            <TextBlock Grid.Row="3" Text="想要的都有，没有请告知" HorizontalAlignment="Center" Classes="Tertiary"
+                       Theme="{StaticResource TitleTextBlock}" />
+            <Button Grid.Row="4" Content="没有工具..." Classes="Primary" HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Height="40" Width="180" Theme="{DynamicResource SolidButton}" CornerRadius="5"
+                    Click="OpenRepository" />
+        </Grid>
+        <Border Grid.Column="1" Padding="20">
+            <Grid RowDefinitions="* * *" ColumnDefinitions="* * * * *">
+                <Border Classes="Hover ToolItem" Theme="{StaticResource CardBorder}" Grid.Row="0" Grid.Column="0"
+                        Grid.ColumnSpan="2">
+                    <Grid RowDefinitions="8* 2*">
+                        <Image Classes="ToolItem" Source="/Assets/datetime-converter.png" />
+                        <TextBlock Text="日期时间转换器" Grid.Row="1" Classes="H5"
+                                   Theme="{StaticResource TitleTextBlock}" />
+                    </Grid>
+                </Border>
+                <Border Classes="Hover ToolItem" Theme="{StaticResource CardBorder}" Grid.Row="0" Grid.Column="2"
+                        Grid.ColumnSpan="2">
+					<Grid RowDefinitions="8* 2*">
+                        <Image Classes="ToolItem" Source="/Assets/slug-converter.png" />
+                        <TextBlock Text="打乱字符串" Grid.Row="1" Classes="H5"
+                                   Theme="{StaticResource TitleTextBlock}" />
+                    </Grid>
+                </Border>
+                <Border Classes="Hover ToolItem" Theme="{StaticResource CardBorder}" Grid.Row="0" Grid.Column="4">
+					<Grid RowDefinitions="8* 2*">
+                        <Image Classes="ToolItem" Source="/Assets/datetime-converter.png" />
+                        <TextBlock Text="罗马数字转换器" Grid.Row="1" Classes="H5"
+                                   Theme="{StaticResource TitleTextBlock}" />
+                    </Grid>
+                </Border>
+
+                <Border Classes="Hover ToolItem" Theme="{StaticResource CardBorder}" Grid.Row="1" Grid.Column="0"
+                        Grid.ColumnSpan="2">
+					<Grid RowDefinitions="8* 2*">
+                        <Image Classes="ToolItem" Source="/Assets/datetime-converter.png" />
+                        <TextBlock Text="Base64 字符串编码/解码" Grid.Row="1" Classes="H5"
+                                   Theme="{StaticResource TitleTextBlock}" />
+                    </Grid>
+                </Border>
+                <Border Classes="Hover ToolItem" Theme="{StaticResource CardBorder}" Grid.Row="1" Grid.Column="2"
+                        Grid.ColumnSpan="2">
+					<Grid RowDefinitions="8* 2*">
+                        <Image Classes="ToolItem" Source="/Assets/datetime-converter.png" />
+                        <TextBlock Text="Base64 文件转换器" Grid.Row="1" Classes="H5"
+                                   Theme="{StaticResource TitleTextBlock}" />
+                    </Grid>
+                </Border>
+                <Border Classes="Hover ToolItem" Theme="{StaticResource CardBorder}" Grid.Row="1" Grid.Column="4">
+					<Grid RowDefinitions="8* 2*">
+                        <Image Classes="ToolItem" Source="/Assets/datetime-converter.png" />
+                        <TextBlock Text="Color 选择器" Grid.Row="1" Classes="H5"
+                                   Theme="{StaticResource TitleTextBlock}" />
+                    </Grid>
+                </Border>
+
+                <Border Classes="Hover ToolItem" Theme="{StaticResource CardBorder}" Grid.Row="2" Grid.Column="0">
+					<Grid RowDefinitions="8* 2*">
+                        <Image Classes="ToolItem" Source="/Assets/datetime-converter.png" />
+                        <TextBlock Text="大小写转换" Grid.Row="1" Classes="H5"
+                                   Theme="{StaticResource TitleTextBlock}" />
+                    </Grid>
+                </Border>
+                <Border Classes="Hover ToolItem" Theme="{StaticResource CardBorder}" Grid.Row="2" Grid.Column="1">
+					<Grid RowDefinitions="8* 2*">
+                        <Image Classes="ToolItem" Source="/Assets/datetime-converter.png" />
+                        <TextBlock Text="文本到 ASCII 二进制" Grid.Row="1" Classes="H5"
+                                   Theme="{StaticResource TitleTextBlock}" />
+                    </Grid>
+                </Border>
+                <Border Classes="Hover ToolItem" Theme="{StaticResource CardBorder}" Grid.Row="2" Grid.Column="2"
+                        Grid.ColumnSpan="3">
+					<Grid RowDefinitions="8* 2*">
+                        <Image Classes="ToolItem" Source="/Assets/datetime-converter.png" />
+                        <TextBlock Text="文本转 Unicode" Grid.Row="1" Classes="H5"
+                                   Theme="{StaticResource TitleTextBlock}" />
+                    </Grid>
+                </Border>
+            </Grid>
+        </Border>
+    </Grid>
+</UserControl>

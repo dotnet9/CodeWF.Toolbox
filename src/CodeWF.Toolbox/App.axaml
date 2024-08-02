@@ -8,9 +8,17 @@
         <u-semi:SemiTheme Locale="zh-CN" />
     </prism:PrismApplication.Styles>
     <prism:PrismApplication.Resources>
-        <FontWeight x:Key="ButtonDefaultFontWeight">500</FontWeight>
-        <FontWeight x:Key="TextBlockTitleFontWeight">500</FontWeight>
-        <FontWeight x:Key="ToggleButtonDefaultFontWeight">500</FontWeight>
-        <FontWeight x:Key="ExpanderHeaderFontWeight">500</FontWeight>
+        <ResourceDictionary>
+            <FontWeight x:Key="ButtonDefaultFontWeight">500</FontWeight>
+            <FontWeight x:Key="TextBlockTitleFontWeight">500</FontWeight>
+            <FontWeight x:Key="ToggleButtonDefaultFontWeight">500</FontWeight>
+            <FontWeight x:Key="ExpanderHeaderFontWeight">500</FontWeight>
+            <ResourceDictionary.ThemeDictionaries>
+                <ResourceDictionary x:Key="Dark">
+                    <SolidColorBrush x:Key="WindowDefaultBackground" Color="#404263"/>
+                    <SolidColorBrush x:Key="WindowDefaultForeground" Color="#3c525f"/>
+                </ResourceDictionary>
+            </ResourceDictionary.ThemeDictionaries>
+        </ResourceDictionary>
     </prism:PrismApplication.Resources>
 </prism:PrismApplication>
