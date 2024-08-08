@@ -12,6 +12,6 @@
 		<PublishAot>true</PublishAot>
 	</PropertyGroup>
 	<ItemGroup>
-		<PackageReference Include="VC-LTL" Version="5.1.1-Beta3" />
+		<PackageReference Include="VC-LTL" Version="5.1.1-Beta4" />
 	</ItemGroup>
 </Project>
