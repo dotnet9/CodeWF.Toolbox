@@ -12,6 +12,7 @@ using Prism.Modularity;
 using Prism.Regions;
 using System;
 using System.Linq;
+using Ursa.PrismExtension;
 
 namespace CodeWF.Toolbox;
 
@@ -52,6 +53,7 @@ public partial class App : PrismApplication
 
     protected override void RegisterTypes(IContainerRegistry containerRegistry)
     {
+        containerRegistry.RegisterUrsaDialogService();
         containerRegistry.Register<MainWindow>();
 
         containerRegistry.RegisterSingleton<IToolMenuService, ToolMenuService>();

@@ -1,11 +1,16 @@
 ﻿using Avalonia.Controls.Notifications;
+using Avalonia.Controls.Platform;
 using CodeWF.Core;
 using CodeWF.Core.Models;
+using DryIoc;
+using Prism.Ioc;
 using Prism.Regions;
 using ReactiveUI;
 using System;
 using System.Collections.ObjectModel;
 using System.Linq;
+using Ursa.Controls;
+using Ursa.PrismExtension;
 
 namespace CodeWF.Toolbox.ViewModels;
 
@@ -13,6 +18,8 @@ internal class MainMenuViewModel : ViewModelBase
 {
     private readonly IRegionManager _regionManager;
     private readonly IToolMenuService _toolMenuService;
+    private readonly IContainerExtension _container;
+    private readonly IUrsaOverlayDialogService _overlayDialogService;
     public ObservableCollection<ToolMenuItem>? MenuItems { get; }
 
     private ToolMenuItem? _selectedMenuItem;
@@ -35,10 +42,13 @@ internal class MainMenuViewModel : ViewModelBase
         set => this.RaiseAndSetIfChanged(ref _selectedMenuStatus, value);
     }
 
-    internal MainMenuViewModel(IRegionManager regionManager, IToolMenuService toolMenuService)
+    internal MainMenuViewModel(IRegionManager regionManager, IToolMenuService toolMenuService,
+        IContainerExtension container, IUrsaOverlayDialogService overlayDialogService)
     {
         _regionManager = regionManager;
         _toolMenuService = toolMenuService;
+        _container = container;
+        _overlayDialogService = overlayDialogService;
 
         MenuItems = _toolMenuService.MenuItems;
         _toolMenuService.ToolMenuChanged += MenuChangedHandler;
@@ -82,5 +92,11 @@ internal class MainMenuViewModel : ViewModelBase
             ToolStatus.Complete => NotificationType.Success,
             _ => NotificationType.Information
         };
+    }
+
+    public async void RaiseOpenSettingHandlerAsync()
+    {
+        await OverlayDialog.ShowModal(_container.Resolve<SettingView>(), null, HostIds.Main,
+            new OverlayDialogOptions() { Title = "设置", Buttons = DialogButton.OK });
     }
 }

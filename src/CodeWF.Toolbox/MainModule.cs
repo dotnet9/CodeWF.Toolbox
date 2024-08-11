@@ -4,6 +4,7 @@ using CodeWF.Toolbox.Views;
 using Prism.Ioc;
 using Prism.Modularity;
 using Prism.Regions;
+using Ursa.PrismExtension;
 
 namespace CodeWF.Toolbox;
 
@@ -23,5 +24,6 @@ public class MainModule : IModule
 
     public void RegisterTypes(IContainerRegistry containerRegistry)
     {
+        containerRegistry.RegisterUrsaDialogView<SettingView>(DialogNames.Setting);
     }
 }
