@@ -1,0 +1,67 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:prism="http://prismlibrary.com/"
+             xmlns:u="https://irihi.tech/ursa"
+             xmlns:vm="clr-namespace:CodeWF.Toolbox.ViewModels"
+             xmlns:core="clr-namespace:CodeWF.Core.Models;assembly=CodeWF.Core"
+             xmlns:converters="clr-namespace:CodeWF.Toolbox.Converters"
+             prism:ViewModelLocator.AutoWireViewModel="True"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="CodeWF.Toolbox.Views.MainMenuView"
+             x:DataType="vm:MainMenuViewModel">
+    <UserControl.Resources>
+        <converters:IconConverter x:Key="IconConverter" />
+    </UserControl.Resources>
+	<Border Padding="0" Theme="{DynamicResource CardBorder}">
+        <Grid>
+			<u:NavMenu
+                ExpandWidth="200"
+                HeaderBinding="{Binding Name}"
+                IconBinding="{Binding Icon}"
+                IsHorizontalCollapsed="{Binding #Collapse.IsChecked, Mode=OneWay}"
+                ItemsSource="{Binding MenuItems}"
+                SelectedItem="{Binding SelectedMenuItem}"
+                SubMenuBinding="{Binding Children}"
+                HorizontalAlignment="Stretch">
+                <u:NavMenu.Styles>
+                    <Style x:DataType="core:ToolMenuItem" Selector="u|NavMenuItem">
+                        <Setter Property="IsSeparator" Value="{Binding IsSeparator}" />
+                    </Style>
+                </u:NavMenu.Styles>
+                <u:NavMenu.IconTemplate>
+                    <DataTemplate DataType="{x:Type x:String}">
+                        <u:TwoTonePathIcon
+                            Width="16"
+                            Height="16"
+                            ActiveForeground="{DynamicResource SemiBlue5}"
+                            ActiveStrokeBrush="{DynamicResource SemiBlue5}"
+                            Data="{Binding Converter={StaticResource IconConverter}}"
+                            Foreground="{DynamicResource SemiGrey5}"
+                            IsActive="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=u:NavMenuItem}, Path=IsHighlighted, Mode=TwoWay}"
+                            StrokeBrush="{DynamicResource SemiGrey5}" />
+                    </DataTemplate>
+                </u:NavMenu.IconTemplate>
+            </u:NavMenu>
+            <ToggleSwitch Name="Collapse" Classes="Primary" Background="Teal" Foreground="White"
+                          Theme="{DynamicResource ButtonToggleSwitch}"
+                          HorizontalAlignment="Right"
+                          VerticalAlignment="Bottom" CornerRadius="20" Height="40" Width="40"
+                          Padding="4" Margin="0 5 -15 50">
+                <ToggleSwitch.OnContent>
+                    <PathIcon
+                        Width="16"
+                        Height="16"
+                        Data="M867.1 141.17H156.08c-17.67 0-32 14.33-32 32s14.33 32 32 32H867.1c17.67 0 32-14.33 32-32s-14.33-32-32-32zM867.92 367.52H403.2c-17.67 0-32 14.33-32 32s14.33 32 32 32h464.73c17.67 0 32-14.33 32-32s-14.33-32-32.01-32zM867.92 573.87H403.2c-17.67 0-32 14.33-32 32s14.33 32 32 32h464.73c17.67 0 32-14.33 32-32s-14.33-32-32.01-32zM867.92 800.22H156.9c-17.67 0-32 14.33-32 32s14.33 32 32 32h711.02c17.67 0 32-14.33 32-32 0-17.68-14.32-32-32-32zM137.47 637.87V367.52l174.54 148.15z" />
+                </ToggleSwitch.OnContent>
+                <ToggleSwitch.OffContent>
+                    <PathIcon
+                        Width="16"
+                        Height="16"
+                        Data="M867.1 141.17H156.08c-17.67 0-32 14.33-32 32s14.33 32 32 32H867.1c17.67 0 32-14.33 32-32s-14.33-32-32-32zM867.92 367.52H403.2c-17.67 0-32 14.33-32 32s14.33 32 32 32h464.73c17.67 0 32-14.33 32-32s-14.33-32-32.01-32zM867.92 573.87H403.2c-17.67 0-32 14.33-32 32s14.33 32 32 32h464.73c17.67 0 32-14.33 32-32s-14.33-32-32.01-32zM867.92 800.22H156.9c-17.67 0-32 14.33-32 32s14.33 32 32 32h711.02c17.67 0 32-14.33 32-32 0-17.68-14.32-32-32-32zM312.01 367.52v270.35L137.47 489.71z" />
+                </ToggleSwitch.OffContent>
+            </ToggleSwitch>
+        </Grid>
+    </Border>
+</UserControl>

@@ -1,6 +1,4 @@
 ﻿using Avalonia;
-using Avalonia.Dialogs;
-using Avalonia.Media;
 using Avalonia.ReactiveUI;
 using System;
 

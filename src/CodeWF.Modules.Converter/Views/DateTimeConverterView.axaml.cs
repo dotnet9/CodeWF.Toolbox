@@ -1,11 +1,11 @@
 using Avalonia.Controls;
 using Avalonia.Markup.Xaml;
 
-namespace CodeWF.Toolbox.Views.Shell;
+namespace CodeWF.Modules.Converter.Views;
 
-public partial class TitleBar : UserControl
+public partial class DateTimeConverterView : UserControl
 {
-    public TitleBar()
+    public DateTimeConverterView()
     {
         InitializeComponent();
     }

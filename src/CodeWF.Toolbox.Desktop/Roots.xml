@@ -5,5 +5,7 @@
     <assembly fullname="DryIoc" preserve="All" />
     <assembly fullname="Prism.Avalonia" preserve="All"/>
     <assembly fullname="Prism.DryIoc.Avalonia" preserve="All"/>
+    <assembly fullname="CodeWF.Core" preserve="All"/>
+	<assembly fullname="CodeWF.Modules.Converter" preserve="All"/>
     <assembly fullname="CodeWF.Toolbox" preserve="All" />
 </linker>

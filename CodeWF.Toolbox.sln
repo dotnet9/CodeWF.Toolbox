@@ -13,15 +13,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WinFormsAotDemo", "tests\Wi
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AvaloniaAotDemo", "tests\AvaloniaAotDemo\AvaloniaAotDemo.csproj", "{8B5C9399-0D84-428E-925E-D21C18EE0D68}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeWF.Toolbox", "src\CodeWF.Toolbox\CodeWF.Toolbox.csproj", "{8C881472-F45A-4BAC-97DB-6E474CCBFE7E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CodeWF.Toolbox", "src\CodeWF.Toolbox\CodeWF.Toolbox.csproj", "{8C881472-F45A-4BAC-97DB-6E474CCBFE7E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeWF.Toolbox.Android", "src\CodeWF.Toolbox.Android\CodeWF.Toolbox.Android.csproj", "{7A683460-1A20-456C-950C-19359704FB7C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CodeWF.Toolbox.Android", "src\CodeWF.Toolbox.Android\CodeWF.Toolbox.Android.csproj", "{7A683460-1A20-456C-950C-19359704FB7C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeWF.Toolbox.Desktop", "src\CodeWF.Toolbox.Desktop\CodeWF.Toolbox.Desktop.csproj", "{196B3801-F761-4ED0-8112-4C71F727BF58}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CodeWF.Toolbox.Desktop", "src\CodeWF.Toolbox.Desktop\CodeWF.Toolbox.Desktop.csproj", "{196B3801-F761-4ED0-8112-4C71F727BF58}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeWF.Toolbox.iOS", "src\CodeWF.Toolbox.iOS\CodeWF.Toolbox.iOS.csproj", "{D568447D-0504-4E4B-A891-2442DEE7713F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CodeWF.Toolbox.iOS", "src\CodeWF.Toolbox.iOS\CodeWF.Toolbox.iOS.csproj", "{D568447D-0504-4E4B-A891-2442DEE7713F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeWF.Toolbox.Browser", "src\CodeWF.Toolbox.Browser\CodeWF.Toolbox.Browser.csproj", "{60CA83A9-88E0-49AA-8703-01D55AD2D2C4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CodeWF.Toolbox.Browser", "src\CodeWF.Toolbox.Browser\CodeWF.Toolbox.Browser.csproj", "{60CA83A9-88E0-49AA-8703-01D55AD2D2C4}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{6163DCF7-1166-476F-AF4F-6A5B723F6085}"
 	ProjectSection(SolutionItems) = preProject
@@ -31,6 +31,14 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		README-zh_CN.md = README-zh_CN.md
 		README.md = README.md
 	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Moduels", "Moduels", "{44252400-86A6-4AA9-985B-9B42F4B2C8DD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeWF.Modules.Converter", "src\CodeWF.Modules.Converter\CodeWF.Modules.Converter.csproj", "{C823B6B3-6BD9-4D6A-BEC9-FD038D66FDB0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{755C8FD1-1EAA-4B0B-ADD9-1E0BE922CFEF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeWF.Core", "CodeWF.Core\CodeWF.Core.csproj", "{021863FB-338C-4331-BC04-25FD6AB04755}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -74,6 +82,14 @@ Global
 		{60CA83A9-88E0-49AA-8703-01D55AD2D2C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{60CA83A9-88E0-49AA-8703-01D55AD2D2C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{60CA83A9-88E0-49AA-8703-01D55AD2D2C4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C823B6B3-6BD9-4D6A-BEC9-FD038D66FDB0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C823B6B3-6BD9-4D6A-BEC9-FD038D66FDB0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C823B6B3-6BD9-4D6A-BEC9-FD038D66FDB0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C823B6B3-6BD9-4D6A-BEC9-FD038D66FDB0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{021863FB-338C-4331-BC04-25FD6AB04755}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{021863FB-338C-4331-BC04-25FD6AB04755}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{021863FB-338C-4331-BC04-25FD6AB04755}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{021863FB-338C-4331-BC04-25FD6AB04755}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -87,6 +103,8 @@ Global
 		{196B3801-F761-4ED0-8112-4C71F727BF58} = {844ACF80-B54A-4FDA-B6D6-00C3CC921508}
 		{D568447D-0504-4E4B-A891-2442DEE7713F} = {844ACF80-B54A-4FDA-B6D6-00C3CC921508}
 		{60CA83A9-88E0-49AA-8703-01D55AD2D2C4} = {844ACF80-B54A-4FDA-B6D6-00C3CC921508}
+		{C823B6B3-6BD9-4D6A-BEC9-FD038D66FDB0} = {44252400-86A6-4AA9-985B-9B42F4B2C8DD}
+		{021863FB-338C-4331-BC04-25FD6AB04755} = {755C8FD1-1EAA-4B0B-ADD9-1E0BE922CFEF}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {47147C4F-8BF8-4E62-82C5-A5B969940F69}

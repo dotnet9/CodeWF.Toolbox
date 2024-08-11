@@ -1,0 +1,27 @@
+﻿using CodeWF.Core;
+using CodeWF.Core.Models;
+using CodeWF.Toolbox.Views;
+using Prism.Ioc;
+using Prism.Modularity;
+using Prism.Regions;
+
+namespace CodeWF.Toolbox;
+
+public class MainModule : IModule
+{
+    public MainModule(IToolMenuService toolMenuService)
+    {
+        toolMenuService.AddItem("首页", parentName: null, null, nameof(Dashboard), Icons.Dashboard,
+            ToolStatus.Developing);
+    }
+
+    public void OnInitialized(IContainerProvider containerProvider)
+    {
+        IRegionManager? regionManager = containerProvider.Resolve<IRegionManager>();
+        regionManager.RegisterViewWithRegion<Dashboard>(RegionNames.ContentRegion);
+    }
+
+    public void RegisterTypes(IContainerRegistry containerRegistry)
+    {
+    }
+}

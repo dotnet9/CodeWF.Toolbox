@@ -1,8 +1,8 @@
 using Avalonia;
 using Avalonia.Controls;
-using Avalonia.Controls.ApplicationLifetimes;
-using Avalonia.Data.Core.Plugins;
 using Avalonia.Markup.Xaml;
+using CodeWF.Core;
+using CodeWF.Modules.Converter;
 using CodeWF.Toolbox.Core.RegionAdapters;
 using CodeWF.Toolbox.Views;
 using DryIoc;
@@ -38,6 +38,8 @@ public partial class App : PrismApplication
 
     protected override void ConfigureModuleCatalog(IModuleCatalog moduleCatalog)
     {
+        moduleCatalog.AddModule<MainModule>();
+        moduleCatalog.AddModule<ConverterModule>();
         base.ConfigureModuleCatalog(moduleCatalog);
     }
 
@@ -51,6 +53,8 @@ public partial class App : PrismApplication
     protected override void RegisterTypes(IContainerRegistry containerRegistry)
     {
         containerRegistry.Register<MainWindow>();
+
+        containerRegistry.RegisterSingleton<IToolMenuService, ToolMenuService>();
     }
 
     /// <summary>
