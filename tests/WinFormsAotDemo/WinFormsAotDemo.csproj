@@ -15,7 +15,7 @@
 		<_SuppressWinFormsTrimError>true</_SuppressWinFormsTrimError>
 	</PropertyGroup>
 	<ItemGroup>
-		<PackageReference Include="VC-LTL" Version="5.1.1-Beta4" />
+		<PackageReference Include="VC-LTL" Version="5.1.1" />
 		<PackageReference Include="WinFormsComInterop" Version="0.5.0" />
 	</ItemGroup>
 </Project>

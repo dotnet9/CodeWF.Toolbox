@@ -1,14 +1,16 @@
 using Avalonia.Controls;
 using Avalonia.Markup.Xaml;
+using CodeWF.Toolbox.Services;
 
 namespace CodeWF.Toolbox.Views;
 
 public partial class MainWindow : Window
 {
-    public MainWindow()
+    public MainWindow(IApplicationService applicationService)
     {
         InitializeComponent();
         AdjustWindowSize();
+        applicationService.Load();
     }
 
     private void InitializeComponent()

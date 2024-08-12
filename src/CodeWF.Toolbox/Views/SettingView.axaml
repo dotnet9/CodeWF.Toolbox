@@ -3,27 +3,54 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-             x:Class="CodeWF.Toolbox.SettingView">
-  <StackPanel VerticalAlignment="Top">
-      <TextBlock Text="界面风格设置" HorizontalAlignment="Center" Classes="Tertiary H5"
-                 Theme="{StaticResource TitleTextBlock}" Margin="0 10 0 30" />
-      <TabControl TabStripPlacement="Top">
-          <TabItem Header="通用设置">
-            <Grid ColumnDefinitions="Auto *" RowDefinitions="30 30 30 *">
-                <TextBlock Text="主题"/>
-                <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="1">
-					<RadioButton Content="跟随系统" />
-					<RadioButton Content="黑夜模式" />
-                    <RadioButton Content="白天模式" />
-                </StackPanel>
+             Width="500" Height="400"
+             x:Class="CodeWF.Toolbox.Views.SettingView">
+    <UserControl.Styles>
+        <Style Selector="TextBlock">
+            <Setter Property="VerticalAlignment" Value="Center" />
+            <Setter Property="Margin" Value="0 0 50 0" />
+        </Style>
+        <Style Selector="ToggleSwitch">
+            <Setter Property="VerticalAlignment" Value="Center" />
+        </Style>
+    </UserControl.Styles>
+    <StackPanel VerticalAlignment="Top">
+        <TextBlock Text="界面风格设置" HorizontalAlignment="Left" Classes="Tertiary H5"
+                   Theme="{StaticResource TitleTextBlock}" Margin="0 0 0 20" />
+        <TabControl TabStripPlacement="Top">
+            <TabItem Header="通用设置">
+                <Grid ColumnDefinitions="Auto *" RowDefinitions="50 50 50 *" Margin="0 30 0 0">
+                    <TextBlock Text="主题" />
+                    <Border Grid.Row="0" Grid.Column="1" HorizontalAlignment="Left"
+                            Theme="{StaticResource RadioButtonGroupBorder}"
+                            VerticalAlignment="Center">
+                        <StackPanel Orientation="Horizontal">
+                            <RadioButton Classes="Small" Theme="{DynamicResource ButtonRadioButton}"
+                                         x:Name="RBtnThemeDefault" IsChecked="True"
+                                         Tag="{x:Static ThemeVariant.Default}"
+                                         Click="ChangeTheme_OnClick">
+                                跟随系统
+                            </RadioButton>
+                            <RadioButton Classes="Small" Theme="{DynamicResource ButtonRadioButton}"
+                                         x:Name="RBtnThemeLight" Tag="{x:Static ThemeVariant.Light}"
+                                         Click="ChangeTheme_OnClick">
+                                白天模式
+                            </RadioButton>
+                            <RadioButton Classes="Small" Theme="{DynamicResource ButtonRadioButton}"
+                                         x:Name="RBtnThemeDark" Tag="{x:Static ThemeVariant.Dark}"
+                                         Click="ChangeTheme_OnClick">
+                                黑夜模式
+                            </RadioButton>
+                        </StackPanel>
+                    </Border>
 
-                <TextBlock Text="开机时自动打开工具箱" Grid.Row="1" Grid.Column="0"/>
-                <CheckBox Grid.Row="1" Grid.Column="1" Content="开启|关闭"/>
+                    <TextBlock Text="开机时自动打开工具箱" Grid.Row="1" Grid.Column="0" />
+                    <ToggleSwitch Grid.Row="1" Grid.Column="1" OffContent="关闭" OnContent="开启" />
 
-                <TextBlock Text="关闭窗体时隐藏托盘图标" Grid.Row="2" Grid.Column="0"/>
-                <CheckBox Grid.Row="2" Grid.Column="1" Content="开启|关闭"/>
-            </Grid>
-          </TabItem>
-      </TabControl>
-  </StackPanel>
+                    <TextBlock Text="关闭窗体时隐藏托盘图标" Grid.Row="2" Grid.Column="0" />
+                    <ToggleSwitch Grid.Row="2" Grid.Column="1" OffContent="关闭" OnContent="开启" />
+                </Grid>
+            </TabItem>
+        </TabControl>
+    </StackPanel>
 </UserControl>

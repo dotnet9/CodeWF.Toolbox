@@ -1,12 +1,11 @@
 ﻿using Avalonia.Controls.Notifications;
-using Avalonia.Controls.Platform;
 using CodeWF.Core;
 using CodeWF.Core.Models;
+using CodeWF.Toolbox.Views;
 using DryIoc;
 using Prism.Ioc;
 using Prism.Regions;
 using ReactiveUI;
-using System;
 using System.Collections.ObjectModel;
 using System.Linq;
 using Ursa.Controls;

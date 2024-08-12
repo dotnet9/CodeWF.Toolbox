@@ -4,6 +4,7 @@ using Avalonia.Markup.Xaml;
 using CodeWF.Core;
 using CodeWF.Modules.Converter;
 using CodeWF.Toolbox.Core.RegionAdapters;
+using CodeWF.Toolbox.Services;
 using CodeWF.Toolbox.Views;
 using DryIoc;
 using Prism.DryIoc;
@@ -54,9 +55,11 @@ public partial class App : PrismApplication
     protected override void RegisterTypes(IContainerRegistry containerRegistry)
     {
         containerRegistry.RegisterUrsaDialogService();
-        containerRegistry.Register<MainWindow>();
 
+        containerRegistry.RegisterSingleton<IApplicationService, ApplicationService>();
         containerRegistry.RegisterSingleton<IToolMenuService, ToolMenuService>();
+
+        containerRegistry.Register<MainWindow>();
     }
 
     /// <summary>
