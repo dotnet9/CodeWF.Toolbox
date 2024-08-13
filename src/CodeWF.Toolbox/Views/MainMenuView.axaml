@@ -8,19 +8,20 @@
              xmlns:core="clr-namespace:CodeWF.Core.Models;assembly=CodeWF.Core"
              xmlns:converters="clr-namespace:CodeWF.Toolbox.Converters"
              xmlns:localizer="clr-namespace:CodeWF.Toolbox.Localizer"
-             xmlns:i18nKeys="clr-namespace:CodeWF.Toolbox.Assets.i18n"
+             xmlns:i18nKeys="clr-namespace:CodeWF.Core;assembly=CodeWF.Core"
              prism:ViewModelLocator.AutoWireViewModel="True"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="CodeWF.Toolbox.Views.MainMenuView"
              x:DataType="vm:MainMenuViewModel">
     <UserControl.Resources>
         <converters:IconConverter x:Key="IconConverter" />
+        <converters:LocalizeConverter x:Key="LocalizeConverter" />
     </UserControl.Resources>
 	<Border Padding="0" Theme="{DynamicResource CardBorder}">
         <Grid>
 			<u:NavMenu
                 ExpandWidth="200"
-                HeaderBinding="{Binding Name}"
+                HeaderBinding="{Binding Name, Converter={StaticResource LocalizeConverter}}"
                 IconBinding="{Binding Icon}"
                 IsHorizontalCollapsed="{Binding #Collapse.IsChecked, Mode=OneWay}"
                 ItemsSource="{Binding MenuItems}"

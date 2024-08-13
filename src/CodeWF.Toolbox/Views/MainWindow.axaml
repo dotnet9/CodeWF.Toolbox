@@ -5,7 +5,7 @@
         x:Class="CodeWF.Toolbox.Views.MainWindow"
         xmlns:views="clr-namespace:CodeWF.Toolbox.Views"
         xmlns:localizer="clr-namespace:CodeWF.Toolbox.Localizer"
-        xmlns:i18nKeys="clr-namespace:CodeWF.Toolbox.Assets.i18n"
+        xmlns:i18nKeys="clr-namespace:CodeWF.Core;assembly=CodeWF.Core"
         mc:Ignorable="d" WindowStartupLocation="CenterScreen"
         Width="1000" Height="600"
         d:DesignWidth="1000" d:DesignHeight="600"

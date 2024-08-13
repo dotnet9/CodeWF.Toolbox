@@ -8,6 +8,7 @@ using System.Text.Json;
 using System.Text.Json.Serialization.Metadata;
 
 namespace CodeWF.Toolbox.Localizer;
+
 public class Localizer : INotifyPropertyChanged
 {
     private const string IndexerName = "Item";
@@ -21,7 +22,7 @@ public class Localizer : INotifyPropertyChanged
     {
         Language = language;
 
-        Uri uri = new Uri($"avares://CodeWF.Toolbox/Assets/i18n/{language}.json");
+        Uri uri = new($"avares://CodeWF.Toolbox/Assets/i18n/{language}.json");
         if (!AssetLoader.Exists(uri))
         {
             return false;
@@ -29,14 +30,26 @@ public class Localizer : INotifyPropertyChanged
 
         using (var sr = new StreamReader(AssetLoader.Open(uri), Encoding.UTF8))
         {
-            _languageKeyAndValues = JsonSerializer.Deserialize<Dictionary<string, string>>(sr.ReadToEnd(), _jsonSerializerOptions);
+            _languageKeyAndValues =
+                JsonSerializer.Deserialize<Dictionary<string, string>>(sr.ReadToEnd(), _jsonSerializerOptions);
         }
+
         Invalidate();
 
         return true;
     }
 
-    public string? Language { get; private set; }
+    private string? _language;
+
+    public string? Language
+    {
+        get => _language;
+        private set
+        {
+            _language = value;
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(Language));
+        }
+    }
 
     public string this[string key]
     {

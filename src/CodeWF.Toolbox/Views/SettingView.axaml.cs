@@ -2,9 +2,8 @@ using Avalonia.Controls;
 using Avalonia.Interactivity;
 using Avalonia.Markup.Xaml;
 using Avalonia.Styling;
-using CodeWF.Toolbox.Assets.i18n;
+using CodeWF.Core;
 using CodeWF.Toolbox.Services;
-using System.Globalization;
 
 namespace CodeWF.Toolbox.Views;
 

@@ -12,7 +12,7 @@ public class MainModule : IModule
 {
     public MainModule(IToolMenuService toolMenuService)
     {
-        toolMenuService.AddItem("首页", parentName: null, null, nameof(Dashboard), Icons.Dashboard,
+        toolMenuService.AddItem(CultureNames.Home, parentName: null, null, nameof(Dashboard), Icons.Dashboard,
             ToolStatus.Developing);
     }
 

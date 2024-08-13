@@ -1,8 +1,7 @@
 ﻿using Avalonia;
 using Avalonia.Styling;
-using CodeWF.Toolbox.Assets.i18n;
+using CodeWF.Core;
 using CodeWF.Toolbox.Models;
-using System.Globalization;
 using System.IO;
 using System.Text.Json;
 using System.Text.Json.Serialization.Metadata;

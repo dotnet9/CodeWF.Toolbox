@@ -1,5 +1,8 @@
 {
   "AppName": "码界工坊工具箱",
+
+  "Home": "首页",
+
   "SearchToolTip": "搜你所想",
   "Setting": "设置",
   "DesiredAvailabilityNotification": "想要的都有，没有请告知。",
@@ -15,5 +18,9 @@
   "AutoOpenToolboxAtStartup": "开机时自动打开工具箱",
   "HideTrayIconOnClose": "关闭窗体时隐藏托盘图标",
   "TurnOn": "开启",
-  "TurnOff": "关闭"
+  "TurnOff": "关闭",
+
+  "Converter": "转换器",
+  "DateTimeConverter": "日期时间转换器",
+  "DateTimeFormatConversion": "将日期和时间转换为各种不同的格式"
 }

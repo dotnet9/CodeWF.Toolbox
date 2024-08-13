@@ -1,7 +1,6 @@
 ﻿using Avalonia.Controls.Notifications;
 using CodeWF.Core;
 using CodeWF.Core.Models;
-using CodeWF.Toolbox.Assets.i18n;
 using CodeWF.Toolbox.Views;
 using DryIoc;
 using Prism.Ioc;

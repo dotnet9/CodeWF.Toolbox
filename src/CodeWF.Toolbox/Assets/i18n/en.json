@@ -1,5 +1,8 @@
 {
   "AppName": "CodeWF Toolbox",
+
+  "Home": "Home",
+
   "SearchToolTip": "Search what you want",
   "Setting": "Settings",
   "DesiredAvailabilityNotification": "If you want something, we have it. If not, please let us know.",
@@ -15,5 +18,9 @@
   "AutoOpenToolboxAtStartup": "Automatically open the toolbox when starting up",
   "HideTrayIconOnClose": "Hide tray icon when closing the window",
   "TurnOn": "Turn On",
-  "TurnOff": "Turn Off"
+  "TurnOff": "Turn Off",
+
+  "Converter": "Converter",
+  "DateTimeConverter": "Date-time converter",
+  "DateTimeFormatConversion": "Convert date and time into the various different formats"
 }

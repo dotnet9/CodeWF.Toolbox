@@ -12,10 +12,10 @@ public class ConverterModule : IModule
 {
     public ConverterModule(IToolMenuService toolMenuService)
     {
-        var groupName = "转换器";
+        var groupName = CultureNames.Converter;
         toolMenuService.AddSeparator();
         toolMenuService.AddGroup(groupName, Icons.Timestamp);
-        toolMenuService.AddItem("日期时间转换器", groupName, "将日期和时间转换为各种不同的格式", nameof(DateTimeConverterView),
+        toolMenuService.AddItem(CultureNames.DateTimeConverter, groupName, CultureNames.DateTimeFormatConversion, nameof(DateTimeConverterView),
             Icons.Timestamp,
             ToolStatus.Developing);
     }

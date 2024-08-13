@@ -3,7 +3,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:i18n="clr-namespace:CodeWF.Toolbox.Localizer"
-             xmlns:i18nKeys="clr-namespace:CodeWF.Toolbox.Assets.i18n"
+             xmlns:i18nKeys="clr-namespace:CodeWF.Core;assembly=CodeWF.Core"
              mc:Ignorable="d"
              x:Class="CodeWF.Toolbox.Views.Shell.TitleBar">
     <Panel>
