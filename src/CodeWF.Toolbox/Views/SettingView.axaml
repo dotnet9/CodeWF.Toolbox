@@ -2,8 +2,9 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-             Width="500" Height="400"
+             xmlns:i18nKeys="clr-namespace:CodeWF.Toolbox.Assets.i18n"
+             mc:Ignorable="d" d:DesignWidth="500" d:DesignHeight="300"
+             Width="500" Height="300"
              x:Class="CodeWF.Toolbox.Views.SettingView">
     <UserControl.Styles>
         <Style Selector="TextBlock">
@@ -19,7 +20,7 @@
                    Theme="{StaticResource TitleTextBlock}" Margin="0 0 0 20" />
         <TabControl TabStripPlacement="Top">
             <TabItem Header="通用设置">
-                <Grid ColumnDefinitions="Auto *" RowDefinitions="50 50 50 *" Margin="0 30 0 0">
+                <Grid ColumnDefinitions="Auto *" RowDefinitions="50 50 50 50 *" Margin="0 30 0 0">
                     <TextBlock Text="主题" />
                     <Border Grid.Row="0" Grid.Column="1" HorizontalAlignment="Left"
                             Theme="{StaticResource RadioButtonGroupBorder}"
@@ -44,11 +45,34 @@
                         </StackPanel>
                     </Border>
 
-                    <TextBlock Text="开机时自动打开工具箱" Grid.Row="1" Grid.Column="0" />
-                    <ToggleSwitch Grid.Row="1" Grid.Column="1" OffContent="关闭" OnContent="开启" />
+                    <TextBlock Text="主题" Grid.Row="1" />
+                    <Border Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left"
+                            Theme="{StaticResource RadioButtonGroupBorder}"
+                            VerticalAlignment="Center">
+                        <StackPanel Orientation="Horizontal">
+                            <RadioButton Classes="Small" Theme="{DynamicResource ButtonRadioButton}"
+                                         x:Name="RBtn_en" Tag="{x:Static i18nKeys:CultureNames.English}"
+                                         Click="ChangeLanguage_OnClick">
+                                English
+                            </RadioButton>
+                            <RadioButton Classes="Small" Theme="{DynamicResource ButtonRadioButton}"
+                                         x:Name="RBtn_zh_CN" Tag="{x:Static i18nKeys:CultureNames.ChineseSimple}"
+                                         Click="ChangeLanguage_OnClick">
+                                中文简体
+                            </RadioButton>
+                            <RadioButton Classes="Small" Theme="{DynamicResource ButtonRadioButton}"
+                                         x:Name="RBtn_zh_Hant" Tag="{x:Static i18nKeys:CultureNames.ChineseTraditional}"
+                                         Click="ChangeLanguage_OnClick">
+								中文繁體
+                            </RadioButton>
+                        </StackPanel>
+                    </Border>
 
-                    <TextBlock Text="关闭窗体时隐藏托盘图标" Grid.Row="2" Grid.Column="0" />
+                    <TextBlock Text="开机时自动打开工具箱" Grid.Row="2" Grid.Column="0" />
                     <ToggleSwitch Grid.Row="2" Grid.Column="1" OffContent="关闭" OnContent="开启" />
+
+                    <TextBlock Text="关闭窗体时隐藏托盘图标" Grid.Row="3" Grid.Column="0" />
+                    <ToggleSwitch Grid.Row="3" Grid.Column="1" OffContent="关闭" OnContent="开启" />
                 </Grid>
             </TabItem>
         </TabControl>

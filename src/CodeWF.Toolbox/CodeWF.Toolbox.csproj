@@ -11,6 +11,18 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <EmbeddedResource Remove="Assets\Resources.resx" />
+	  <EmbeddedResource Remove="Assets\Resources.zh-CN.resx" />
+	  <EmbeddedResource Remove="Assets\Resources.zh-Hant.resx" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Remove="Assets\i18n\en.json" />
+	  <None Remove="Assets\i18n\zh-CN.json" />
+	  <None Remove="Assets\i18n\zh-Hant.json" />
+	</ItemGroup>
+
+	<ItemGroup>
 		<PackageReference Include="Avalonia" Version="11.1.2" />
 		<!--Condition below is needed to remove Avalonia.Diagnostics package from build output in Release configuration.-->
 		<PackageReference Condition="'$(Configuration)' == 'Debug'" Include="Avalonia.Diagnostics" Version="11.1.2" />
@@ -25,5 +37,9 @@
 
 	<ItemGroup>
 	  <ProjectReference Include="..\CodeWF.Modules.Converter\CodeWF.Modules.Converter.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Service Include="{508349b6-6b84-4df5-91f0-309beebad82d}" />
 	</ItemGroup>
 </Project>

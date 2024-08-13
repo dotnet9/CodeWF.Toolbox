@@ -2,7 +2,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:u="https://irihi.tech/ursa"
+             xmlns:i18n="clr-namespace:CodeWF.Toolbox.Localizer"
+             xmlns:i18nKeys="clr-namespace:CodeWF.Toolbox.Assets.i18n"
              mc:Ignorable="d"
              x:Class="CodeWF.Toolbox.Views.Shell.TitleBar">
     <Panel>
@@ -15,9 +16,7 @@
                     <Viewbox Height="24" Width="24" IsHitTestVisible="False">
                         <Image Source="\Assets\logo.ico" />
                     </Viewbox>
-                    <TextBlock Text="CodeWF" />
-                    <TextBlock Text="." />
-                    <TextBlock Text="Toolbox" />
+                    <TextBlock Text="{i18n:Localize {x:Static i18nKeys:CultureNames.AppName}}" />
                 </StackPanel>
 
                 <TextBox x:Name="Search" Grid.Row="0" Grid.Column="1" Width="300" Height="35" Watermark="搜你所想" />

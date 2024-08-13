@@ -1,6 +1,8 @@
 ﻿using Avalonia;
 using Avalonia.Styling;
+using CodeWF.Toolbox.Assets.i18n;
 using CodeWF.Toolbox.Models;
+using System.Globalization;
 using System.IO;
 using System.Text.Json;
 using System.Text.Json.Serialization.Metadata;
@@ -28,13 +30,16 @@ internal class ApplicationService : IApplicationService
             {
                 _applicationConfig =
                     JsonSerializer.Deserialize<ApplicationConfig>(File.ReadAllText(ConfigName), _jsonSerializerOptions);
-                var theme = GetTheme();
-                ChangeTheme(theme);
             }
             else
             {
                 _applicationConfig = new ApplicationConfig() { Theme = ThemeVariant.Default.ToString() };
             }
+
+            var theme = GetTheme();
+            ChangeTheme(theme);
+            var culture = GetCulture();
+            ChangeCulture(culture);
         }
         catch
         {
@@ -70,15 +75,42 @@ internal class ApplicationService : IApplicationService
                 _applicationConfig.Theme = theme.ToString();
             }
 
-            if (File.Exists(ConfigName))
-            {
-                File.Delete(ConfigName);
-            }
-
-            File.AppendAllText(ConfigName,
-                JsonSerializer.Serialize(_applicationConfig, _jsonSerializerOptions));
+            Save();
 
             ChangeTheme(theme);
+        }
+        catch
+        {
+            // ignored
+        }
+    }
+
+    public string GetCulture()
+    {
+        if (string.IsNullOrWhiteSpace(_applicationConfig?.Language))
+        {
+            return CultureNames.ChineseSimple;
+        }
+
+        return _applicationConfig.Language;
+    }
+
+    public void SetCulture(string culture)
+    {
+        try
+        {
+            if (_applicationConfig == null)
+            {
+                _applicationConfig = new ApplicationConfig() { Language = culture };
+            }
+            else
+            {
+                _applicationConfig.Language = culture;
+            }
+
+            Save();
+
+            ChangeCulture(culture);
         }
         catch
         {
@@ -95,5 +127,21 @@ internal class ApplicationService : IApplicationService
         }
 
         app.RequestedThemeVariant = theme;
+    }
+
+    private static void ChangeCulture(string language)
+    {
+        Localizer.Localizer.Instance.LoadLanguage(language);
+    }
+
+    private void Save()
+    {
+        if (File.Exists(ConfigName))
+        {
+            File.Delete(ConfigName);
+        }
+
+        File.AppendAllText(ConfigName,
+            JsonSerializer.Serialize(_applicationConfig, _jsonSerializerOptions));
     }
 }

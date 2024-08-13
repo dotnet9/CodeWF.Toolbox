@@ -21,6 +21,9 @@
             <ResourceDictionary.ThemeDictionaries>
                 <ResourceDictionary x:Key="Dark">
                     <SolidColorBrush x:Key="WindowDefaultBackground" Color="#404263"/>
+                    <SolidColorBrush x:Key="WindowDefaultForeground" Color="#FFFFFF"/>
+                </ResourceDictionary>
+                <ResourceDictionary x:Key="Light">
                     <SolidColorBrush x:Key="WindowDefaultForeground" Color="#3c525f"/>
                 </ResourceDictionary>
             </ResourceDictionary.ThemeDictionaries>
