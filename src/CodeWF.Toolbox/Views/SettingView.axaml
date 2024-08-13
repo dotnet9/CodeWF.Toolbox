@@ -2,10 +2,10 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:localizer="clr-namespace:CodeWF.Toolbox.Localizer"
+             xmlns:i18n="clr-namespace:CodeWF.Toolbox.Localization"
              xmlns:i18nKeys="clr-namespace:CodeWF.Core;assembly=CodeWF.Core"
-             mc:Ignorable="d" d:DesignWidth="500" d:DesignHeight="300"
-             Width="500" Height="300"
+             mc:Ignorable="d" d:DesignWidth="500" d:DesignHeight="350"
+             Width="500" Height="350"
              x:Class="CodeWF.Toolbox.Views.SettingView">
     <UserControl.Styles>
         <Style Selector="TextBlock">
@@ -18,12 +18,12 @@
         </Style>
     </UserControl.Styles>
     <StackPanel VerticalAlignment="Top">
-        <TextBlock Text="{localizer:Localize {x:Static i18nKeys:CultureNames.InterfaceStyleSettings}}" HorizontalAlignment="Left" Classes="Tertiary H5"
+        <TextBlock Text="{i18n:Localize {x:Static i18nKeys:CultureNames.InterfaceStyleSettings}}" HorizontalAlignment="Left" Classes="Tertiary H5"
                    Theme="{StaticResource TitleTextBlock}" Margin="0 0 0 20" />
         <TabControl TabStripPlacement="Top">
-            <TabItem Header="{localizer:Localize {x:Static i18nKeys:CultureNames.GeneralSettings}}">
+            <TabItem Header="{i18n:Localize {x:Static i18nKeys:CultureNames.GeneralSettings}}">
                 <Grid ColumnDefinitions="220 *" RowDefinitions="50 50 50 50 *" Margin="0 30 0 0">
-                    <TextBlock Text="{localizer:Localize {x:Static i18nKeys:CultureNames.Theme}}" />
+                    <TextBlock Text="{i18n:Localize {x:Static i18nKeys:CultureNames.Theme}}" />
                     <Border Grid.Row="0" Grid.Column="1" HorizontalAlignment="Left"
                             Theme="{StaticResource RadioButtonGroupBorder}"
                             VerticalAlignment="Center">
@@ -32,19 +32,19 @@
                                          x:Name="RBtnThemeDefault" IsChecked="True"
                                          Tag="{x:Static ThemeVariant.Default}"
                                          Click="ChangeTheme_OnClick"
-                                         Content="{localizer:Localize {x:Static i18nKeys:CultureNames.FollowingSystem}}"/>
+                                         Content="{i18n:Localize {x:Static i18nKeys:CultureNames.FollowingSystem}}"/>
                             <RadioButton Classes="Small" Theme="{DynamicResource ButtonRadioButton}"
                                          x:Name="RBtnThemeLight" Tag="{x:Static ThemeVariant.Light}"
                                          Click="ChangeTheme_OnClick"
-                                         Content="{localizer:Localize {x:Static i18nKeys:CultureNames.LightMode}}"/>
+                                         Content="{i18n:Localize {x:Static i18nKeys:CultureNames.LightMode}}"/>
                             <RadioButton Classes="Small" Theme="{DynamicResource ButtonRadioButton}"
                                          x:Name="RBtnThemeDark" Tag="{x:Static ThemeVariant.Dark}"
                                          Click="ChangeTheme_OnClick"
-                                         Content="{localizer:Localize {x:Static i18nKeys:CultureNames.DarkMode}}"/>
+                                         Content="{i18n:Localize {x:Static i18nKeys:CultureNames.DarkMode}}"/>
                         </StackPanel>
                     </Border>
 
-                    <TextBlock Text="{localizer:Localize {x:Static i18nKeys:CultureNames.Language}}" Grid.Row="1" />
+                    <TextBlock Text="{i18n:Localize {x:Static i18nKeys:CultureNames.Language}}" Grid.Row="1" />
                     <Border Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left"
                             Theme="{StaticResource RadioButtonGroupBorder}"
                             VerticalAlignment="Center">
@@ -67,15 +67,15 @@
                         </StackPanel>
                     </Border>
 
-                    <TextBlock Text="{localizer:Localize {x:Static i18nKeys:CultureNames.AutoOpenToolboxAtStartup}}" Grid.Row="2" Grid.Column="0" />
+                    <TextBlock Text="{i18n:Localize {x:Static i18nKeys:CultureNames.AutoOpenToolboxAtStartup}}" Grid.Row="2" Grid.Column="0" />
                     <ToggleSwitch Grid.Row="2" Grid.Column="1"
-                                  OffContent="{localizer:Localize {x:Static i18nKeys:CultureNames.TurnOff}}"
-                                  OnContent="{localizer:Localize {x:Static i18nKeys:CultureNames.TurnOn}}" />
+                                  OffContent="{i18n:Localize {x:Static i18nKeys:CultureNames.TurnOff}}"
+                                  OnContent="{i18n:Localize {x:Static i18nKeys:CultureNames.TurnOn}}" />
 
-                    <TextBlock Text="{localizer:Localize {x:Static i18nKeys:CultureNames.HideTrayIconOnClose}}" Grid.Row="3" Grid.Column="0" />
+                    <TextBlock Text="{i18n:Localize {x:Static i18nKeys:CultureNames.HideTrayIconOnClose}}" Grid.Row="3" Grid.Column="0" />
                     <ToggleSwitch Grid.Row="3" Grid.Column="1" 
-                                  OffContent="{localizer:Localize {x:Static i18nKeys:CultureNames.TurnOff}}" 
-                                  OnContent="{localizer:Localize {x:Static i18nKeys:CultureNames.TurnOn}}" />
+                                  OffContent="{i18n:Localize {x:Static i18nKeys:CultureNames.TurnOff}}" 
+                                  OnContent="{i18n:Localize {x:Static i18nKeys:CultureNames.TurnOn}}" />
                 </Grid>
             </TabItem>
         </TabControl>

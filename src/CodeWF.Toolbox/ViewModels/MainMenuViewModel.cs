@@ -95,7 +95,7 @@ internal class MainMenuViewModel : ViewModelBase
 
     public async void RaiseOpenSettingHandlerAsync()
     {
-        var option = new OverlayDialogOptions() { Title = Localizer.Localizer.Instance[CultureNames.Setting], Buttons = DialogButton.OK };
+        var option = new OverlayDialogOptions() { Title = Localization.Localizer.Instance[CultureNames.Setting], Buttons = DialogButton.OK };
 
         // 这种方式第一次可以，再一次运行异常
         //await _overlayDialogService.ShowModal(DialogNames.Setting, null, HostIds.Main, option);

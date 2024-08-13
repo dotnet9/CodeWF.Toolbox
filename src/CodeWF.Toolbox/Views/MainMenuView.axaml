@@ -7,7 +7,7 @@
              xmlns:vm="clr-namespace:CodeWF.Toolbox.ViewModels"
              xmlns:core="clr-namespace:CodeWF.Core.Models;assembly=CodeWF.Core"
              xmlns:converters="clr-namespace:CodeWF.Toolbox.Converters"
-             xmlns:localizer="clr-namespace:CodeWF.Toolbox.Localizer"
+             xmlns:i18n="clr-namespace:CodeWF.Toolbox.Localization"
              xmlns:i18nKeys="clr-namespace:CodeWF.Core;assembly=CodeWF.Core"
              prism:ViewModelLocator.AutoWireViewModel="True"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
@@ -15,13 +15,12 @@
              x:DataType="vm:MainMenuViewModel">
     <UserControl.Resources>
         <converters:IconConverter x:Key="IconConverter" />
-        <converters:LocalizeConverter x:Key="LocalizeConverter" />
     </UserControl.Resources>
 	<Border Padding="0" Theme="{DynamicResource CardBorder}">
         <Grid>
 			<u:NavMenu
                 ExpandWidth="200"
-                HeaderBinding="{Binding Name, Converter={StaticResource LocalizeConverter}}"
+                HeaderBinding="{i18n:Localize {Binding Name}}"
                 IconBinding="{Binding Icon}"
                 IsHorizontalCollapsed="{Binding #Collapse.IsChecked, Mode=OneWay}"
                 ItemsSource="{Binding MenuItems}"
@@ -67,7 +66,7 @@
             </ToggleSwitch>
             <StackPanel VerticalAlignment="Bottom">
 				<u:Divider />
-                <Button Content="{localizer:Localize {x:Static i18nKeys:CultureNames.Setting}}" Command="{Binding RaiseOpenSettingHandlerAsync}" HorizontalAlignment="Stretch"/>
+                <Button Content="{i18n:Localize {x:Static i18nKeys:CultureNames.Setting}}" Command="{Binding RaiseOpenSettingHandlerAsync}" HorizontalAlignment="Stretch"/>
             </StackPanel>
         </Grid>
     </Border>

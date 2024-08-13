@@ -1,7 +1,9 @@
 ﻿using Avalonia;
 using Avalonia.Styling;
 using CodeWF.Core;
+using CodeWF.Toolbox.Localization;
 using CodeWF.Toolbox.Models;
+using System.Globalization;
 using System.IO;
 using System.Text.Json;
 using System.Text.Json.Serialization.Metadata;
@@ -130,7 +132,8 @@ internal class ApplicationService : IApplicationService
 
     private static void ChangeCulture(string language)
     {
-        Localizer.Localizer.Instance.LoadLanguage(language);
+        Localizer.Instance.LoadLanguage(language);
+        LocalizationManager.Instance.Culture = new CultureInfo(language);
     }
 
     private void Save()

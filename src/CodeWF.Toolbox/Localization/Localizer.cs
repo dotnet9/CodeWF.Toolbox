@@ -7,7 +7,7 @@ using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization.Metadata;
 
-namespace CodeWF.Toolbox.Localizer;
+namespace CodeWF.Toolbox.Localization;
 
 public class Localizer : INotifyPropertyChanged
 {
