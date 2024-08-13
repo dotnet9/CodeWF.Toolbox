@@ -7,6 +7,8 @@
              xmlns:vm="clr-namespace:CodeWF.Toolbox.ViewModels"
              xmlns:core="clr-namespace:CodeWF.Core.Models;assembly=CodeWF.Core"
              xmlns:converters="clr-namespace:CodeWF.Toolbox.Converters"
+             xmlns:localizer="clr-namespace:CodeWF.Toolbox.Localizer"
+             xmlns:i18nKeys="clr-namespace:CodeWF.Toolbox.Assets.i18n"
              prism:ViewModelLocator.AutoWireViewModel="True"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="CodeWF.Toolbox.Views.MainMenuView"
@@ -64,7 +66,7 @@
             </ToggleSwitch>
             <StackPanel VerticalAlignment="Bottom">
 				<u:Divider />
-                <Button Content="设置" Command="{Binding RaiseOpenSettingHandlerAsync}" HorizontalAlignment="Stretch"/>
+                <Button Content="{localizer:Localize {x:Static i18nKeys:CultureNames.Setting}}" Command="{Binding RaiseOpenSettingHandlerAsync}" HorizontalAlignment="Stretch"/>
             </StackPanel>
         </Grid>
     </Border>

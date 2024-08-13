@@ -1,3 +1,19 @@
 {
-  "AppName": "码界工坊工具箱"
+  "AppName": "码界工坊工具箱",
+  "SearchToolTip": "搜你所想",
+  "Setting": "设置",
+  "DesiredAvailabilityNotification": "想要的都有，没有请告知。",
+  "AccessToolbox": "访问在线工具箱",
+  "MissingTool": "没有我要的工具...",
+  "InterfaceStyleSettings": "界面风格设置",
+  "GeneralSettings": "通用设置",
+  "Theme": "主题",
+  "FollowingSystem": "跟随系统",
+  "LightMode": "白天模式",
+  "DarkMode": "黑夜模式",
+  "Language": "语言",
+  "AutoOpenToolboxAtStartup": "开机时自动打开工具箱",
+  "HideTrayIconOnClose": "关闭窗体时隐藏托盘图标",
+  "TurnOn": "开启",
+  "TurnOff": "关闭"
 }

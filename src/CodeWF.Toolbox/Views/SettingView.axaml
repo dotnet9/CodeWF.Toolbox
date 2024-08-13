@@ -3,25 +3,27 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:i18nKeys="clr-namespace:CodeWF.Toolbox.Assets.i18n"
+             xmlns:localizer="clr-namespace:CodeWF.Toolbox.Localizer"
              mc:Ignorable="d" d:DesignWidth="500" d:DesignHeight="300"
              Width="500" Height="300"
              x:Class="CodeWF.Toolbox.Views.SettingView">
     <UserControl.Styles>
         <Style Selector="TextBlock">
             <Setter Property="VerticalAlignment" Value="Center" />
-            <Setter Property="Margin" Value="0 0 50 0" />
+            <Setter Property="Margin" Value="0 0 10 0" />
+            <Setter Property="TextWrapping" Value="Wrap" />
         </Style>
         <Style Selector="ToggleSwitch">
             <Setter Property="VerticalAlignment" Value="Center" />
         </Style>
     </UserControl.Styles>
     <StackPanel VerticalAlignment="Top">
-        <TextBlock Text="界面风格设置" HorizontalAlignment="Left" Classes="Tertiary H5"
+        <TextBlock Text="{localizer:Localize {x:Static i18nKeys:CultureNames.InterfaceStyleSettings}}" HorizontalAlignment="Left" Classes="Tertiary H5"
                    Theme="{StaticResource TitleTextBlock}" Margin="0 0 0 20" />
         <TabControl TabStripPlacement="Top">
-            <TabItem Header="通用设置">
-                <Grid ColumnDefinitions="Auto *" RowDefinitions="50 50 50 50 *" Margin="0 30 0 0">
-                    <TextBlock Text="主题" />
+            <TabItem Header="{localizer:Localize {x:Static i18nKeys:CultureNames.GeneralSettings}}">
+                <Grid ColumnDefinitions="220 *" RowDefinitions="50 50 50 50 *" Margin="0 30 0 0">
+                    <TextBlock Text="{localizer:Localize {x:Static i18nKeys:CultureNames.Theme}}" />
                     <Border Grid.Row="0" Grid.Column="1" HorizontalAlignment="Left"
                             Theme="{StaticResource RadioButtonGroupBorder}"
                             VerticalAlignment="Center">
@@ -29,23 +31,20 @@
                             <RadioButton Classes="Small" Theme="{DynamicResource ButtonRadioButton}"
                                          x:Name="RBtnThemeDefault" IsChecked="True"
                                          Tag="{x:Static ThemeVariant.Default}"
-                                         Click="ChangeTheme_OnClick">
-                                跟随系统
-                            </RadioButton>
+                                         Click="ChangeTheme_OnClick"
+                                         Content="{localizer:Localize {x:Static i18nKeys:CultureNames.FollowingSystem}}"/>
                             <RadioButton Classes="Small" Theme="{DynamicResource ButtonRadioButton}"
                                          x:Name="RBtnThemeLight" Tag="{x:Static ThemeVariant.Light}"
-                                         Click="ChangeTheme_OnClick">
-                                白天模式
-                            </RadioButton>
+                                         Click="ChangeTheme_OnClick"
+                                         Content="{localizer:Localize {x:Static i18nKeys:CultureNames.LightMode}}"/>
                             <RadioButton Classes="Small" Theme="{DynamicResource ButtonRadioButton}"
                                          x:Name="RBtnThemeDark" Tag="{x:Static ThemeVariant.Dark}"
-                                         Click="ChangeTheme_OnClick">
-                                黑夜模式
-                            </RadioButton>
+                                         Click="ChangeTheme_OnClick"
+                                         Content="{localizer:Localize {x:Static i18nKeys:CultureNames.DarkMode}}"/>
                         </StackPanel>
                     </Border>
 
-                    <TextBlock Text="主题" Grid.Row="1" />
+                    <TextBlock Text="{localizer:Localize {x:Static i18nKeys:CultureNames.Language}}" Grid.Row="1" />
                     <Border Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left"
                             Theme="{StaticResource RadioButtonGroupBorder}"
                             VerticalAlignment="Center">
@@ -68,11 +67,15 @@
                         </StackPanel>
                     </Border>
 
-                    <TextBlock Text="开机时自动打开工具箱" Grid.Row="2" Grid.Column="0" />
-                    <ToggleSwitch Grid.Row="2" Grid.Column="1" OffContent="关闭" OnContent="开启" />
+                    <TextBlock Text="{localizer:Localize {x:Static i18nKeys:CultureNames.AutoOpenToolboxAtStartup}}" Grid.Row="2" Grid.Column="0" />
+                    <ToggleSwitch Grid.Row="2" Grid.Column="1"
+                                  OffContent="{localizer:Localize {x:Static i18nKeys:CultureNames.TurnOff}}"
+                                  OnContent="{localizer:Localize {x:Static i18nKeys:CultureNames.TurnOn}}" />
 
-                    <TextBlock Text="关闭窗体时隐藏托盘图标" Grid.Row="3" Grid.Column="0" />
-                    <ToggleSwitch Grid.Row="3" Grid.Column="1" OffContent="关闭" OnContent="开启" />
+                    <TextBlock Text="{localizer:Localize {x:Static i18nKeys:CultureNames.HideTrayIconOnClose}}" Grid.Row="3" Grid.Column="0" />
+                    <ToggleSwitch Grid.Row="3" Grid.Column="1" 
+                                  OffContent="{localizer:Localize {x:Static i18nKeys:CultureNames.TurnOff}}" 
+                                  OnContent="{localizer:Localize {x:Static i18nKeys:CultureNames.TurnOn}}" />
                 </Grid>
             </TabItem>
         </TabControl>

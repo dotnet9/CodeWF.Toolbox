@@ -2,6 +2,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:localizer="clr-namespace:CodeWF.Toolbox.Localizer"
+             xmlns:i18nKeys="clr-namespace:CodeWF.Toolbox.Assets.i18n"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="CodeWF.Toolbox.Views.Dashboard">
     <UserControl.Styles>
@@ -16,20 +18,20 @@
         </Style>
     </UserControl.Styles>
     <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-        <TextBlock Text="码界工坊 工具箱" HorizontalAlignment="Center" Classes="H1"
+        <TextBlock Text="{localizer:Localize {x:Static i18nKeys:CultureNames.AppName}}" HorizontalAlignment="Center" Classes="H1"
                    Theme="{StaticResource TitleTextBlock}" />
-        <TextBlock Text="想要的都有，没有请告知" HorizontalAlignment="Center" Classes="Tertiary H5"
+        <TextBlock Text="{localizer:Localize {x:Static i18nKeys:CultureNames.DesiredAvailabilityNotification}}" HorizontalAlignment="Center" Classes="Tertiary H5"
                    Theme="{StaticResource TitleTextBlock}" Margin="0 10 0 30" />
-        <StackPanel Orientation="Horizontal">
-            <Button Content="访问在线工具箱" HorizontalAlignment="Center"
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+            <Button Content="{localizer:Localize {x:Static i18nKeys:CultureNames.AccessToolbox}}" HorizontalAlignment="Center"
                     VerticalAlignment="Center"
                     Classes="Success" Theme="{DynamicResource BorderlessButton}"
-                    Height="40" Width="180" CornerRadius="5"
+                    Height="40" CornerRadius="5"
                     Click="OpenOnLineToolbox" />
-            <Button Content="没有我要的工具..." HorizontalAlignment="Center"
+            <Button Content="{localizer:Localize {x:Static i18nKeys:CultureNames.MissingTool}}" HorizontalAlignment="Center"
                     VerticalAlignment="Center"
                     Classes="Warning" Theme="{DynamicResource BorderlessButton}"
-                    Height="40" Width="180" CornerRadius="5"
+                    Height="40" CornerRadius="5"
                     Click="OpenRepository" />
         </StackPanel>
     </StackPanel>

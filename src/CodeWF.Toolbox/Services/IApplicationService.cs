@@ -1,5 +1,4 @@
 ﻿using Avalonia.Styling;
-using System.Globalization;
 
 namespace CodeWF.Toolbox.Services;
 

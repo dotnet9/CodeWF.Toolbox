@@ -19,7 +19,7 @@
                     <TextBlock Text="{i18n:Localize {x:Static i18nKeys:CultureNames.AppName}}" />
                 </StackPanel>
 
-                <TextBox x:Name="Search" Grid.Row="0" Grid.Column="1" Width="300" Height="35" Watermark="搜你所想" />
+                <TextBox x:Name="Search" Grid.Row="0" Grid.Column="1" Width="300" Height="35" Watermark="{i18n:Localize {x:Static i18nKeys:CultureNames.SearchToolTip}}" />
             </Grid>
         </Border>
     </Panel>

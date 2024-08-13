@@ -49,7 +49,7 @@ public class Localizer : INotifyPropertyChanged
         }
     }
 
-    public static Localizer Instance { get; set; } = new Localizer();
+    public static Localizer Instance { get; set; } = new();
     public event PropertyChangedEventHandler? PropertyChanged;
 
     public void Invalidate()

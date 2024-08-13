@@ -31,7 +31,6 @@ public partial class MainWindow : Window
 
         switch (width)
         {
-            // 根据屏幕大小设置指定的窗口大小
             case <= 1920 when height <= 1080:
                 Width = 800;
                 Height = 580;
