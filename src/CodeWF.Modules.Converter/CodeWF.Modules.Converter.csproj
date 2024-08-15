@@ -7,6 +7,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Include="I18n\Language.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Language.tt</DependentUpon>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AvaloniaExtensions.Axaml" Version="0.0.1.1" />
     <PackageReference Include="Prism.DryIoc.Avalonia" Version="8.1.97.11073" />
   </ItemGroup>
 
@@ -15,9 +24,32 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="I18n\Resources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Update="Views\DateTimeConverterView.axaml.cs">
       <DependentUpon>DateTimeConverterView.axaml</DependentUpon>
     </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="I18n\Resources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="I18n\Language.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Language.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Service Include="{508349b6-6b84-4df5-91f0-309beebad82d}" />
   </ItemGroup>
 
 </Project>

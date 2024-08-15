@@ -1,6 +1,8 @@
 ﻿using Avalonia.Controls.Notifications;
+using AvaloniaExtensions.Axaml.Markup;
 using CodeWF.Core;
 using CodeWF.Core.Models;
+using CodeWF.Toolbox.I18n;
 using CodeWF.Toolbox.Views;
 using DryIoc;
 using Prism.Ioc;
@@ -95,12 +97,13 @@ internal class MainMenuViewModel : ViewModelBase
 
     public async void RaiseOpenSettingHandlerAsync()
     {
-        var option = new OverlayDialogOptions() { Title = Localization.Localizer.Instance[CultureNames.Setting], Buttons = DialogButton.OK };
+        var option =
+            new OverlayDialogOptions() { Title = I18nManager.GetString(Language.Setting), Buttons = DialogButton.OK };
 
         // 这种方式第一次可以，再一次运行异常
         //await _overlayDialogService.ShowModal(DialogNames.Setting, null, HostIds.Main, option);
 
         // 这种方式是可以的，手工获取视图实例
-        await OverlayDialog.ShowModal(_container.Resolve<SettingView>(), null, HostIds.Main, option );
+        await OverlayDialog.ShowModal(_container.Resolve<SettingView>(), null, HostIds.Main, option);
     }
 }

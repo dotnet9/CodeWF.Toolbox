@@ -2,12 +2,11 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:u="https://irihi.tech/ursa"
              xmlns:regions="http://prismlibrary.com/"
              xmlns:core="clr-namespace:CodeWF.Core;assembly=CodeWF.Core"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="CodeWF.Toolbox.Views.MainContentView">
-	<Panel Grid.Row="1" Grid.Column="1">
+	<Panel>
 
         <Border Classes="Hover" Theme="{StaticResource CardBorder}" Padding="10">
             <Grid RowDefinitions="Auto, *">

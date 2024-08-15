@@ -3,6 +3,7 @@ using Avalonia.Interactivity;
 using Avalonia.Markup.Xaml;
 using Avalonia.Styling;
 using CodeWF.Core;
+using CodeWF.Core.IServiceInterfaces;
 using CodeWF.Toolbox.Services;
 
 namespace CodeWF.Toolbox.Views;

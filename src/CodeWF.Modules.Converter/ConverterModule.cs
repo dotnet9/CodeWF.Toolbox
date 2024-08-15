@@ -1,5 +1,6 @@
 ﻿using CodeWF.Core;
 using CodeWF.Core.Models;
+using CodeWF.Modules.Converter.I18n;
 using CodeWF.Modules.Converter.ViewModels;
 using CodeWF.Modules.Converter.Views;
 using Prism.Ioc;
@@ -12,10 +13,10 @@ public class ConverterModule : IModule
 {
     public ConverterModule(IToolMenuService toolMenuService)
     {
-        var groupName = CultureNames.Converter;
+        var groupName = Language.Converter;
         toolMenuService.AddSeparator();
         toolMenuService.AddGroup(groupName, Icons.Timestamp);
-        toolMenuService.AddItem(CultureNames.DateTimeConverter, groupName, CultureNames.DateTimeFormatConversion, nameof(DateTimeConverterView),
+        toolMenuService.AddItem(Language.DateTimeConverter, groupName, Language.DateTimeFormatConversion, nameof(DateTimeConverterView),
             Icons.Timestamp,
             ToolStatus.Developing);
     }

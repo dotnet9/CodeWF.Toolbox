@@ -2,8 +2,9 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:i18n="clr-namespace:CodeWF.Toolbox.Localization"
-             xmlns:i18nKeys="clr-namespace:CodeWF.Core;assembly=CodeWF.Core"
+             xmlns:i18n="https://codewf.com"
+             xmlns:language="clr-namespace:CodeWF.Toolbox.I18n"
+             xmlns:core="clr-namespace:CodeWF.Core;assembly=CodeWF.Core"
              mc:Ignorable="d" d:DesignWidth="500" d:DesignHeight="350"
              Width="500" Height="350"
              x:Class="CodeWF.Toolbox.Views.SettingView">
@@ -18,64 +19,69 @@
         </Style>
     </UserControl.Styles>
     <StackPanel VerticalAlignment="Top">
-        <TextBlock Text="{i18n:Localize {x:Static i18nKeys:CultureNames.InterfaceStyleSettings}}" HorizontalAlignment="Left" Classes="Tertiary H5"
+        <TextBlock Text="{i18n:I18n {x:Static language:Language.InterfaceStyleSettings}}" HorizontalAlignment="Left" Classes="Tertiary H5"
                    Theme="{StaticResource TitleTextBlock}" Margin="0 0 0 20" />
         <TabControl TabStripPlacement="Top">
-            <TabItem Header="{i18n:Localize {x:Static i18nKeys:CultureNames.GeneralSettings}}">
-                <Grid ColumnDefinitions="220 *" RowDefinitions="50 50 50 50 *" Margin="0 30 0 0">
-                    <TextBlock Text="{i18n:Localize {x:Static i18nKeys:CultureNames.Theme}}" />
+            <TabItem Header="{i18n:I18n {x:Static language:Language.GeneralSettings}}">
+                <Grid ColumnDefinitions="220 *" RowDefinitions="70 70 50 50 *" Margin="0 30 0 0">
+                    <TextBlock Text="{i18n:I18n {x:Static language:Language.Theme}}" />
                     <Border Grid.Row="0" Grid.Column="1" HorizontalAlignment="Left"
                             Theme="{StaticResource RadioButtonGroupBorder}"
                             VerticalAlignment="Center">
-                        <StackPanel Orientation="Horizontal">
-                            <RadioButton Classes="Small" Theme="{DynamicResource ButtonRadioButton}"
+						<WrapPanel Orientation="Horizontal">
+							<RadioButton Classes="Small" Theme="{DynamicResource ButtonRadioButton}"
                                          x:Name="RBtnThemeDefault" IsChecked="True"
                                          Tag="{x:Static ThemeVariant.Default}"
                                          Click="ChangeTheme_OnClick"
-                                         Content="{i18n:Localize {x:Static i18nKeys:CultureNames.FollowingSystem}}"/>
-                            <RadioButton Classes="Small" Theme="{DynamicResource ButtonRadioButton}"
+                                         Content="{i18n:I18n {x:Static language:Language.FollowingSystem}}"/>
+							<RadioButton Classes="Small" Theme="{DynamicResource ButtonRadioButton}"
                                          x:Name="RBtnThemeLight" Tag="{x:Static ThemeVariant.Light}"
                                          Click="ChangeTheme_OnClick"
-                                         Content="{i18n:Localize {x:Static i18nKeys:CultureNames.LightMode}}"/>
-                            <RadioButton Classes="Small" Theme="{DynamicResource ButtonRadioButton}"
+                                         Content="{i18n:I18n {x:Static language:Language.LightMode}}"/>
+							<RadioButton Classes="Small" Theme="{DynamicResource ButtonRadioButton}"
                                          x:Name="RBtnThemeDark" Tag="{x:Static ThemeVariant.Dark}"
                                          Click="ChangeTheme_OnClick"
-                                         Content="{i18n:Localize {x:Static i18nKeys:CultureNames.DarkMode}}"/>
-                        </StackPanel>
+                                         Content="{i18n:I18n {x:Static language:Language.DarkMode}}"/>
+						</WrapPanel>
                     </Border>
 
-                    <TextBlock Text="{i18n:Localize {x:Static i18nKeys:CultureNames.Language}}" Grid.Row="1" />
+                    <TextBlock Text="{i18n:I18n {x:Static language:Language.LanguageKey}}" Grid.Row="1" />
                     <Border Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left"
                             Theme="{StaticResource RadioButtonGroupBorder}"
                             VerticalAlignment="Center">
-                        <StackPanel Orientation="Horizontal">
+                        <WrapPanel Orientation="Horizontal">
                             <RadioButton Classes="Small" Theme="{DynamicResource ButtonRadioButton}"
-                                         x:Name="RBtn_en" Tag="{x:Static i18nKeys:CultureNames.English}"
+                                         x:Name="RBtn_en" Tag="{x:Static core:CultureNames.English}"
                                          Click="ChangeLanguage_OnClick">
                                 English
                             </RadioButton>
                             <RadioButton Classes="Small" Theme="{DynamicResource ButtonRadioButton}"
-                                         x:Name="RBtn_zh_CN" Tag="{x:Static i18nKeys:CultureNames.ChineseSimple}"
+                                         x:Name="RBtn_zh_CN" Tag="{x:Static core:CultureNames.ChineseSimple}"
                                          Click="ChangeLanguage_OnClick">
                                 中文简体
                             </RadioButton>
                             <RadioButton Classes="Small" Theme="{DynamicResource ButtonRadioButton}"
-                                         x:Name="RBtn_zh_Hant" Tag="{x:Static i18nKeys:CultureNames.ChineseTraditional}"
+                                         x:Name="RBtn_zh_Hant" Tag="{x:Static core:CultureNames.ChineseTraditional}"
                                          Click="ChangeLanguage_OnClick">
 								中文繁體
                             </RadioButton>
-                        </StackPanel>
+                            <RadioButton Classes="Small" Theme="{DynamicResource ButtonRadioButton}"
+                                         x:Name="RBtn_ja_JP" Tag="{x:Static core:CultureNames.Japanese}"
+                                         Click="ChangeLanguage_OnClick">
+								日本語
+                            </RadioButton>
+                        </WrapPanel>
                     </Border>
 
-                    <TextBlock Text="{i18n:Localize {x:Static i18nKeys:CultureNames.AutoOpenToolboxAtStartup}}" Grid.Row="2" Grid.Column="0" />
+                    <TextBlock Text="{i18n:I18n {x:Static language:Language.AutoOpenToolboxAtStartup}}" Grid.Row="2" Grid.Column="0" />
                     <ToggleSwitch Grid.Row="2" Grid.Column="1"
-                                  OffContent="{i18n:Localize {x:Static i18nKeys:CultureNames.TurnOff}}"
-                                  OnContent="{i18n:Localize {x:Static i18nKeys:CultureNames.TurnOn}}" />
+                                  OffContent="{i18n:I18n {x:Static language:Language.TurnOff}}"
+                                  OnContent="{i18n:I18n {x:Static language:Language.TurnOn}}" />
 
-                    <TextBlock Text="{i18n:Localize {x:Static i18nKeys:CultureNames.HideTrayIconOnClose}}" Grid.Row="3" Grid.Column="0" />
+                    <TextBlock Text="{i18n:I18n {x:Static language:Language.HideTrayIconOnClose}}" Grid.Row="3" Grid.Column="0" />
                     <ToggleSwitch Grid.Row="3" Grid.Column="1" 
-                                  OffContent="{i18n:Localize {x:Static i18nKeys:CultureNames.TurnOff}}" 
-                                  OnContent="{i18n:Localize {x:Static i18nKeys:CultureNames.TurnOn}}" />
+                                  OffContent="{i18n:I18n {x:Static language:Language.TurnOff}}" 
+                                  OnContent="{i18n:I18n {x:Static language:Language.TurnOn}}" />
                 </Grid>
             </TabItem>
         </TabControl>

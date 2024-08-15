@@ -1,5 +1,6 @@
 <linker>
     <assembly fullname="CodeWF.Toolbox.Desktop" preserve="All"/>
+    <assembly fullname="AvaloniaExtensions.Axaml" preserve="All" />
     <assembly fullname="Ursa.PrismExtension" preserve="All" />
     <assembly fullname="Prism" preserve="All" />
     <assembly fullname="DryIoc" preserve="All" />

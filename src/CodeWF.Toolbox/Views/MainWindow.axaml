@@ -4,14 +4,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         x:Class="CodeWF.Toolbox.Views.MainWindow"
         xmlns:views="clr-namespace:CodeWF.Toolbox.Views"
-        xmlns:i18n="clr-namespace:CodeWF.Toolbox.Localization"
-        xmlns:i18nKeys="clr-namespace:CodeWF.Core;assembly=CodeWF.Core"
+        xmlns:i18n="https://codewf.com"
+        xmlns:language="clr-namespace:CodeWF.Toolbox.I18n"
         mc:Ignorable="d" WindowStartupLocation="CenterScreen"
         Width="1000" Height="600"
         d:DesignWidth="1000" d:DesignHeight="600"
         TransparencyLevelHint="AcrylicBlur"
         ExtendClientAreaToDecorationsHint="True"
         Icon="/Assets/logo.ico" CornerRadius="30"
-        Title="{i18n:Localize {x:Static i18nKeys:CultureNames.AppName}}">
+        Title="{i18n:I18n {x:Static language:Language.AppName}}">
     <views:MainView />
 </Window>

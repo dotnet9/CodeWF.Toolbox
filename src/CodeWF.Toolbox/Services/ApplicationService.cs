@@ -1,7 +1,8 @@
 ﻿using Avalonia;
 using Avalonia.Styling;
+using AvaloniaExtensions.Axaml.Markup;
 using CodeWF.Core;
-using CodeWF.Toolbox.Localization;
+using CodeWF.Core.IServiceInterfaces;
 using CodeWF.Toolbox.Models;
 using System.Globalization;
 using System.IO;
@@ -130,10 +131,9 @@ internal class ApplicationService : IApplicationService
         app.RequestedThemeVariant = theme;
     }
 
-    private static void ChangeCulture(string language)
+    private void ChangeCulture(string language)
     {
-        Localizer.Instance.LoadLanguage(language);
-        LocalizationManager.Instance.Culture = new CultureInfo(language);
+        I18nManager.Instance.Culture = new CultureInfo(language);
     }
 
     private void Save()

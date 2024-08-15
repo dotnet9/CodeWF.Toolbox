@@ -17,15 +17,18 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <None Remove="Assets\i18n\en.json" />
-	  <None Remove="Assets\i18n\zh-CN.json" />
-	  <None Remove="Assets\i18n\zh-Hant.json" />
+	  <None Include="I18n\Language.cs">
+	    <DesignTime>True</DesignTime>
+	    <AutoGen>True</AutoGen>
+	    <DependentUpon>Language.tt</DependentUpon>
+	  </None>
 	</ItemGroup>
 
 	<ItemGroup>
 		<PackageReference Include="Avalonia" Version="11.1.3" />
 		<!--Condition below is needed to remove Avalonia.Diagnostics package from build output in Release configuration.-->
 		<PackageReference Condition="'$(Configuration)' == 'Debug'" Include="Avalonia.Diagnostics" Version="11.1.3" />
+		<PackageReference Include="AvaloniaExtensions.Axaml" Version="0.0.1.1" />
 		<PackageReference Include="Semi.Avalonia" Version="11.1.0.1" />
 		<PackageReference Include="Irihi.Ursa" Version="1.0.0" />
 		<PackageReference Include="Irihi.Ursa.PrismExtension" Version="1.0.0" />
@@ -41,5 +44,32 @@
 
 	<ItemGroup>
 	  <Service Include="{508349b6-6b84-4df5-91f0-309beebad82d}" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Compile Update="I18n\Language.cs">
+	    <DesignTime>True</DesignTime>
+	    <AutoGen>True</AutoGen>
+	    <DependentUpon>Language.tt</DependentUpon>
+	  </Compile>
+	  <Compile Update="I18n\Resources.Designer.cs">
+	    <DesignTime>True</DesignTime>
+	    <AutoGen>True</AutoGen>
+	    <DependentUpon>Resources.resx</DependentUpon>
+	  </Compile>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <EmbeddedResource Update="I18n\Resources.resx">
+	    <Generator>PublicResXFileCodeGenerator</Generator>
+	    <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+	  </EmbeddedResource>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Update="I18n\Language.tt">
+	    <Generator>TextTemplatingFileGenerator</Generator>
+	    <LastGenOutput>Language.cs</LastGenOutput>
+	  </None>
 	</ItemGroup>
 </Project>
