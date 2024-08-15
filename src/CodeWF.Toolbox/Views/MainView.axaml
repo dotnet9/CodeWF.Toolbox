@@ -18,18 +18,10 @@
         <vm:MainViewModel />
     </Design.DataContext>
     <Grid>
-        <Grid RowDefinitions="Auto, *, 3, 200, Auto" ColumnDefinitions="Auto, *">
+        <Grid RowDefinitions="Auto, *, Auto" ColumnDefinitions="Auto, *">
             <shell:TitleBar Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" />
-            <views:MainMenuView Grid.Row="1" Grid.RowSpan="3" Grid.Column="0" />
+            <views:MainMenuView Grid.Row="1" Grid.Column="0" />
             <views:MainContentView Grid.Row="1" Grid.Column="1" />
-            <GridSplitter Grid.Row="2" Grid.Column="1" Height="1" VerticalAlignment="Center"
-                          HorizontalAlignment="Stretch" Padding="250 1" />
-
-            <Border Grid.Row="3" Grid.Column="1" Classes="Hover" Theme="{StaticResource CardBorder}" Margin="4"
-                    Padding="0">
-                <HeaderedContentControl Header="日志">
-                </HeaderedContentControl>
-            </Border>
         </Grid>
 		<u:OverlayDialogHost HostId="{x:Static core:HostIds.Main}" />
     </Grid>
