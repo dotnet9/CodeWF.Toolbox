@@ -2,6 +2,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:u="https://irihi.tech/ursa"
              xmlns:i18n="https://codewf.com"
              xmlns:language="clr-namespace:CodeWF.Toolbox.I18n"
              xmlns:core="clr-namespace:CodeWF.Core;assembly=CodeWF.Core"
@@ -34,10 +35,12 @@
                                          Tag="{x:Static ThemeVariant.Default}"
                                          Click="ChangeTheme_OnClick"
                                          Content="{i18n:I18n {x:Static language:Language.FollowingSystem}}"/>
+                            <u:Divider Orientation="Vertical" />
 							<RadioButton Classes="Small" Theme="{DynamicResource ButtonRadioButton}"
                                          x:Name="RBtnThemeLight" Tag="{x:Static ThemeVariant.Light}"
                                          Click="ChangeTheme_OnClick"
                                          Content="{i18n:I18n {x:Static language:Language.LightMode}}"/>
+                            <u:Divider Orientation="Vertical" />
 							<RadioButton Classes="Small" Theme="{DynamicResource ButtonRadioButton}"
                                          x:Name="RBtnThemeDark" Tag="{x:Static ThemeVariant.Dark}"
                                          Click="ChangeTheme_OnClick"
@@ -55,16 +58,19 @@
                                          Click="ChangeLanguage_OnClick">
                                 English
                             </RadioButton>
+                            <u:Divider Orientation="Vertical" />
                             <RadioButton Classes="Small" Theme="{DynamicResource ButtonRadioButton}"
                                          x:Name="RBtn_zh_CN" Tag="{x:Static core:CultureNames.ChineseSimple}"
                                          Click="ChangeLanguage_OnClick">
                                 中文简体
                             </RadioButton>
+                            <u:Divider Orientation="Vertical" />
                             <RadioButton Classes="Small" Theme="{DynamicResource ButtonRadioButton}"
                                          x:Name="RBtn_zh_Hant" Tag="{x:Static core:CultureNames.ChineseTraditional}"
                                          Click="ChangeLanguage_OnClick">
 								中文繁體
                             </RadioButton>
+                            <u:Divider Orientation="Vertical" />
                             <RadioButton Classes="Small" Theme="{DynamicResource ButtonRadioButton}"
                                          x:Name="RBtn_ja_JP" Tag="{x:Static core:CultureNames.Japanese}"
                                          Click="ChangeLanguage_OnClick">
