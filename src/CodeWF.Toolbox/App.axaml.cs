@@ -1,9 +1,9 @@
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Markup.Xaml;
-using AvaloniaExtensions.Axaml.Markup;
 using CodeWF.Core;
 using CodeWF.Core.IServiceInterfaces;
+using CodeWF.Modules.AI;
 using CodeWF.Modules.Converter;
 using CodeWF.Toolbox.Core.RegionAdapters;
 using CodeWF.Toolbox.Services;
@@ -44,6 +44,7 @@ public partial class App : PrismApplication
     {
         moduleCatalog.AddModule<MainModule>();
         moduleCatalog.AddModule<ConverterModule>();
+        moduleCatalog.AddModule<AIModule>();
         base.ConfigureModuleCatalog(moduleCatalog);
     }
 

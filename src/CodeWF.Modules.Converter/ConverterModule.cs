@@ -15,7 +15,7 @@ public class ConverterModule : IModule
     {
         var groupName = Language.Converter;
         toolMenuService.AddSeparator();
-        toolMenuService.AddGroup(groupName, Icons.Timestamp);
+        toolMenuService.AddGroup(groupName, Icons.Converter);
         toolMenuService.AddItem(Language.DateTimeConverter, groupName, Language.DateTimeFormatConversion, nameof(DateTimeConverterView),
             Icons.Timestamp,
             ToolStatus.Developing);

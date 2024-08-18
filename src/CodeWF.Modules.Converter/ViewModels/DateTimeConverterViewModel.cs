@@ -1,5 +1,7 @@
-﻿namespace CodeWF.Modules.Converter.ViewModels;
+﻿using ReactiveUI;
 
-internal class DateTimeConverterViewModel
+namespace CodeWF.Modules.Converter.ViewModels;
+
+internal class DateTimeConverterViewModel : ReactiveObject
 {
 }
