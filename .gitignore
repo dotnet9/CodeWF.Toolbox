@@ -398,3 +398,5 @@ FodyWeavers.xsd
 *.sln.iml
 **/packages.lock.json
 src/Build/
+src/CodeWF.WebAPI/appsettings.Development.json
+src/CodeWF.WebAPI/appsettings.Production.json

@@ -1,7 +1,6 @@
 ﻿using CodeWF.Core;
 using CodeWF.Core.Models;
 using CodeWF.Modules.AI.I18n;
-using CodeWF.Modules.AI.Options;
 using CodeWF.Modules.AI.ViewModels;
 using CodeWF.Modules.AI.Views;
 using Prism.Ioc;
@@ -31,10 +30,6 @@ public class AIModule : IModule
 
     public void OnInitialized(IContainerProvider containerProvider)
     {
-        OpenAIOption.Key = "sk-nqmevgglwwyyjqnkankhuiknrpdofnhvoovijdcmsssbzkin";
-        OpenAIOption.Endpoint = "https://api.siliconflow.cn/";
-        OpenAIOption.ChatModel = "Qwen/Qwen2-72B-Instruct";
-
         IRegionManager? regionManager = containerProvider.Resolve<IRegionManager>();
         regionManager.RegisterViewWithRegion<AskBotView>(RegionNames.ContentRegion);
         regionManager.RegisterViewWithRegion<PolyTranslateView>(RegionNames.ContentRegion);
