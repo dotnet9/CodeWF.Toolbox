@@ -64,21 +64,4 @@ public partial class App : PrismApplication
 
         containerRegistry.Register<MainWindow>();
     }
-
-    /// <summary>
-    ///     1、DryIoc.Microsoft.DependencyInjection低版本可不要这个方法（5.1.0及以下）
-    ///     2、高版本必须，否则会抛出异常：System.MissingMethodException:“Method not found: 'DryIoc.Rules
-    ///     DryIoc.Rules.WithoutFastExpressionCompiler()'.”
-    ///     参考issues：https://github.com/dadhi/DryIoc/issues/529
-    /// </summary>
-    /// <returns></returns>
-    protected override Rules CreateContainerRules()
-    {
-        return Rules.Default.WithConcreteTypeDynamicRegistrations(reuse: Reuse.Transient)
-            .With(Made.Of(FactoryMethod.ConstructorWithResolvableArguments))
-            .WithFuncAndLazyWithoutRegistration()
-            .WithTrackingDisposableTransients()
-            //.WithoutFastExpressionCompiler()
-            .WithFactorySelector(Rules.SelectLastRegisteredFactory());
-    }
 }
