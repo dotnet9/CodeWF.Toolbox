@@ -22,7 +22,7 @@ namespace CodeWF.Modules.AI.I18n {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Resources {
+    public class Resources {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -36,7 +36,7 @@ namespace CodeWF.Modules.AI.I18n {
         ///   返回此类使用的缓存的 ResourceManager 实例。
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager {
+        public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("CodeWF.Modules.AI.I18n.Resources", typeof(Resources).Assembly);
@@ -51,7 +51,7 @@ namespace CodeWF.Modules.AI.I18n {
         ///   使用此强类型资源类的所有资源查找执行重写。
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture {
+        public static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -63,7 +63,7 @@ namespace CodeWF.Modules.AI.I18n {
         /// <summary>
         ///   查找类似 AI 的本地化字符串。
         /// </summary>
-        internal static string AI {
+        public static string AI {
             get {
                 return ResourceManager.GetString("AI", resourceCulture);
             }
@@ -72,7 +72,7 @@ namespace CodeWF.Modules.AI.I18n {
         /// <summary>
         ///   查找类似 AI Q&amp;A Assistant 的本地化字符串。
         /// </summary>
-        internal static string AskBot {
+        public static string AskBot {
             get {
                 return ResourceManager.GetString("AskBot", resourceCulture);
             }
@@ -81,7 +81,7 @@ namespace CodeWF.Modules.AI.I18n {
         /// <summary>
         ///   查找类似 Ask a question with one click and get an answer instantly. AI Q&amp;A Assistant is here to help. 的本地化字符串。
         /// </summary>
-        internal static string AskBotDescription {
+        public static string AskBotDescription {
             get {
                 return ResourceManager.GetString("AskBotDescription", resourceCulture);
             }
@@ -90,7 +90,7 @@ namespace CodeWF.Modules.AI.I18n {
         /// <summary>
         ///   查找类似 AI One-Click Multi-Language Translation ToolAI One-Click Multi-Language Translation Tool 的本地化字符串。
         /// </summary>
-        internal static string PolyTranslate {
+        public static string PolyTranslate {
             get {
                 return ResourceManager.GetString("PolyTranslate", resourceCulture);
             }
@@ -99,7 +99,7 @@ namespace CodeWF.Modules.AI.I18n {
         /// <summary>
         ///   查找类似 Easily achieve one-click translation, supporting mutual translation between multiple languages, making communication boundless! 的本地化字符串。
         /// </summary>
-        internal static string PolyTranslateDescription {
+        public static string PolyTranslateDescription {
             get {
                 return ResourceManager.GetString("PolyTranslateDescription", resourceCulture);
             }
@@ -108,7 +108,7 @@ namespace CodeWF.Modules.AI.I18n {
         /// <summary>
         ///   查找类似 AI One-Click URL Slug Converter 的本地化字符串。
         /// </summary>
-        internal static string Title2Slug {
+        public static string Title2Slug {
             get {
                 return ResourceManager.GetString("Title2Slug", resourceCulture);
             }
@@ -117,7 +117,7 @@ namespace CodeWF.Modules.AI.I18n {
         /// <summary>
         ///   查找类似 Effortlessly convert article titles in Chinese, English, and other languages into English URL Slugs with one click. 的本地化字符串。
         /// </summary>
-        internal static string Title2SlugDescription {
+        public static string Title2SlugDescription {
             get {
                 return ResourceManager.GetString("Title2SlugDescription", resourceCulture);
             }

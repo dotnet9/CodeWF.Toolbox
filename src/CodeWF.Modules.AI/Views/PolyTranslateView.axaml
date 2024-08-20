@@ -8,19 +8,13 @@
              x:DataType="vm:PolyTranslateViewModel"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="CodeWF.Modules.AI.Views.PolyTranslateView">
-	<Design.DataContext>
-		<vm:PolyTranslateViewModel />
-    </Design.DataContext>
-    <UserControl.Styles>
-        <Style Selector="TextBox">
-            <Setter Property="Margin" Value="10" />
-            <Setter Property="MinHeight" Value="500" />
-            <Setter Property="TextWrapping" Value="Wrap" />
-        </Style>
-    </UserControl.Styles>
-    <Grid ColumnDefinitions="* *" RowDefinitions="35 *" VerticalAlignment="Top">
-        <Button Content="Translate" Command="{Binding RaiseTranslateCommandHandler}"></Button>
-        <TextBox Text="{Binding AskContent}" Grid.Row="1" Grid.Column="0" />
-        <TextBox Text="{Binding ResponseContent}" Grid.Row="1" Grid.Column="1" />
+    <Grid ColumnDefinitions="* 100" RowDefinitions="400 10 40" VerticalAlignment="Top">
+        <TextBox Text="{Binding ResponseContent}" 
+                 Grid.ColumnSpan="2" VerticalAlignment="Stretch" VerticalContentAlignment="Top" TextWrapping="Wrap" />
+
+        <TextBox Text="{Binding AskContent}" Grid.Row="2" Grid.Column="0"
+                 VerticalAlignment="Stretch"  VerticalContentAlignment="Top" TextWrapping="Wrap" />
+        <Button Grid.Row="2" Grid.Column="1" Content="AI" Command="{Binding RaiseTranslateCommandHandler}"
+                HorizontalAlignment="Stretch" Margin="10 0 0 0" />
     </Grid>
 </UserControl>

@@ -1,9 +1,13 @@
-﻿using ReactiveUI;
+﻿using CodeWF.Modules.AI.Helpers;
+using CodeWF.Modules.AI.Models;
+using CodeWF.WebAPI.ViewModels;
+using ReactiveUI;
 
 namespace CodeWF.Modules.AI.ViewModels;
 
-public class Title2SlugViewModel : ReactiveObject
+public class Title2SlugViewModel(ApiClient apiClient) : ReactiveObject
 {
+    private readonly ChatGptOptions _chatGptOptions = new();
     private string? _askContent;
 
     public string? AskContent
@@ -22,20 +26,30 @@ public class Title2SlugViewModel : ReactiveObject
 
     public async void RaiseConvertCommandHandler()
     {
-        //if (!string.IsNullOrWhiteSpace(ResponseContent))
-        //{
-        //    ResponseContent = "";
-        //}
+        if (string.IsNullOrWhiteSpace(AskContent))
+        {
+            return;
+        }
 
-        //string skPrompt = """
-        //                  {{$input}}
+        if (!string.IsNullOrWhiteSpace(ResponseContent))
+        {
+            ResponseContent = "";
+        }
 
-        //                  将上面的输入转成英文的URL Slug，无需任何其他内容
-        //                  """;
-
-        //await foreach (var update in _kernel.InvokePromptStreamingAsync(skPrompt, new() { ["input"] = AskContent }))
-        //{
-        //    ResponseContent += update.ToString();
-        //}
+        try
+        {
+            await apiClient.CreateChatGptClient(_chatGptOptions.Title2SlugHttpUrl, new Title2SlugRequest(AskContent),
+                result =>
+                {
+                    ResponseContent += result;
+                }, status =>
+                {
+                    AskContent = string.Empty;
+                });
+        }
+        catch (Exception ex)
+        {
+            ResponseContent = ex.Message;
+        }
     }
 }

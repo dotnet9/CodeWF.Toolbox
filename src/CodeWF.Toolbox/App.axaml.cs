@@ -43,8 +43,8 @@ public partial class App : PrismApplication
     protected override void ConfigureModuleCatalog(IModuleCatalog moduleCatalog)
     {
         moduleCatalog.AddModule<MainModule>();
-        moduleCatalog.AddModule<ConverterModule>();
         moduleCatalog.AddModule<AIModule>();
+        moduleCatalog.AddModule<ConverterModule>();
         base.ConfigureModuleCatalog(moduleCatalog);
     }
 

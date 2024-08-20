@@ -30,9 +30,6 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Update="Views\DateTimeConverterView.axaml.cs">
-      <DependentUpon>DateTimeConverterView.axaml</DependentUpon>
-    </Compile>
   </ItemGroup>
 
   <ItemGroup>

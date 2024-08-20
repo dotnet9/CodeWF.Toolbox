@@ -70,7 +70,6 @@
                                          Click="ChangeLanguage_OnClick">
 								中文繁體
                             </RadioButton>
-                            <u:Divider Orientation="Vertical" />
                             <RadioButton Classes="Small" Theme="{DynamicResource ButtonRadioButton}"
                                          x:Name="RBtn_ja_JP" Tag="{x:Static core:CultureNames.Japanese}"
                                          Click="ChangeLanguage_OnClick">

@@ -5,7 +5,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.Configure<OpenAIOption>(builder.Configuration.GetSection("OpenAI"));
-builder.Services.AddSingleton<OpenAIHttpClientHandler>();
+builder.Services.AddScoped<OpenAIHttpClientHandler>();
 
 builder.Services.AddControllers();
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi

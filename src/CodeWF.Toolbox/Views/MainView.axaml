@@ -6,7 +6,6 @@
              xmlns:u="https://irihi.tech/ursa"
              xmlns:core="clr-namespace:CodeWF.Core;assembly=CodeWF.Core"
              prism:ViewModelLocator.AutoWireViewModel="True"
-             xmlns:shell="clr-namespace:CodeWF.Toolbox.Views.Shell"
              xmlns:views="clr-namespace:CodeWF.Toolbox.Views"
              xmlns:vm="clr-namespace:CodeWF.Toolbox.ViewModels"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
@@ -18,10 +17,9 @@
         <vm:MainViewModel />
     </Design.DataContext>
     <Grid>
-        <Grid RowDefinitions="Auto, *, Auto" ColumnDefinitions="Auto, *">
-            <shell:TitleBar Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" />
-            <views:MainMenuView Grid.Row="1" Grid.Column="0" />
-            <views:MainContentView Grid.Row="1" Grid.Column="1" />
+        <Grid RowDefinitions="*, Auto" ColumnDefinitions="Auto, *">
+            <views:MainMenuView Grid.Row="0" Grid.Column="0" />
+            <views:MainContentView Grid.Row="0" Grid.Column="1" />
         </Grid>
 		<u:OverlayDialogHost HostId="{x:Static core:HostIds.Main}" />
     </Grid>

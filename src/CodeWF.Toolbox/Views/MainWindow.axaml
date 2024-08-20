@@ -1,17 +1,32 @@
-<Window xmlns="https://github.com/avaloniaui"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        x:Class="CodeWF.Toolbox.Views.MainWindow"
-        xmlns:views="clr-namespace:CodeWF.Toolbox.Views"
-        xmlns:i18n="https://codewf.com"
-        xmlns:language="clr-namespace:CodeWF.Toolbox.I18n"
-        mc:Ignorable="d" WindowStartupLocation="CenterScreen"
-        Width="1000" Height="600"
-        d:DesignWidth="1000" d:DesignHeight="600"
-        TransparencyLevelHint="AcrylicBlur"
-        ExtendClientAreaToDecorationsHint="True"
-        Icon="/Assets/logo.ico" CornerRadius="30"
-        Title="{i18n:I18n {x:Static language:Language.AppName}}">
-    <views:MainView />
-</Window>
+<u:UrsaWindow xmlns="https://github.com/avaloniaui"
+              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+              xmlns:u="https://irihi.tech/ursa"
+              x:Class="CodeWF.Toolbox.Views.MainWindow"
+              xmlns:views="clr-namespace:CodeWF.Toolbox.Views"
+              xmlns:i18n="https://codewf.com"
+              xmlns:language="clr-namespace:CodeWF.Toolbox.I18n"
+              mc:Ignorable="d" WindowStartupLocation="CenterScreen"
+              Width="1000" Height="600"
+              d:DesignWidth="1000" d:DesignHeight="600"
+              Icon="/Assets/logo.ico" CornerRadius="30"
+              IsFullScreenButtonVisible="{OnPlatform True,macOS=False}"
+              Title="{i18n:I18n {x:Static language:Language.AppName}}">
+    <u:UrsaWindow.LeftContent>
+		<Grid ColumnDefinitions="Auto, *, Auto, Auto">
+
+            <StackPanel x:Name="LogoAndTitle" Grid.Row="0" Grid.Column="0" IsHitTestVisible="False"
+                        VerticalAlignment="Center" Classes="h7" Margin="5 5"
+                        TextElement.FontWeight="Light" Orientation="Horizontal" ClipToBounds="False">
+                <Viewbox Height="24" Width="24" IsHitTestVisible="False">
+                    <Image Source="\Assets\logo.ico" />
+                </Viewbox>
+                <TextBlock Text="{i18n:I18n {x:Static language:Language.AppName}}" />
+            </StackPanel>
+
+            <TextBox x:Name="Search" Grid.Row="0" Grid.Column="1" Width="300" Height="35" Margin="20 2 0 0" Watermark="{i18n:I18n {x:Static language:Language.SearchToolTip}}" />
+        </Grid>
+	</u:UrsaWindow.LeftContent>
+    <views:MainView Margin="0 40 0 0" />
+</u:UrsaWindow>

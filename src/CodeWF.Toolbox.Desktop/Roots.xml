@@ -8,6 +8,8 @@
 	<assembly fullname="Prism.DryIoc.Avalonia" preserve="All" />
 	<assembly fullname="CodeWF.Core" preserve="All" />
 	<assembly fullname="CodeWF.Modules.Converter" preserve="All" />
+	<assembly fullname="System.Net.Http" preserve="All" />
+	<assembly fullname="CodeWF.ViewModels" preserve="All" />
 	<assembly fullname="CodeWF.Modules.AI" preserve="All" />
 	<assembly fullname="CodeWF.Toolbox" preserve="All" />
 </linker>

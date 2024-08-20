@@ -17,6 +17,7 @@ public class AIController
     public AIController(IOptions<OpenAIOption> openAIOption, OpenAIHttpClientHandler httpClientHandler,
         ILogger<AIController> logger)
     {
+        httpClientHandler.ServerCertificateCustomValidationCallback += (_, _, _, _) => true;
         var builder = Kernel.CreateBuilder()
             .AddOpenAIChatCompletion(
                 modelId: openAIOption.Value.ChatModel!,

@@ -1,9 +1,13 @@
-﻿using ReactiveUI;
+﻿using CodeWF.Modules.AI.Helpers;
+using CodeWF.Modules.AI.Models;
+using CodeWF.WebAPI.ViewModels;
+using ReactiveUI;
 
 namespace CodeWF.Modules.AI.ViewModels;
 
-public class PolyTranslateViewModel : ReactiveObject
+public class PolyTranslateViewModel(ApiClient apiClient) : ReactiveObject
 {
+    private readonly ChatGptOptions _chatGptOptions = new();
     private string? _askContent;
 
     public string? AskContent
@@ -22,19 +26,36 @@ public class PolyTranslateViewModel : ReactiveObject
 
     public async void RaiseTranslateCommandHandler()
     {
-        //if (!string.IsNullOrWhiteSpace(ResponseContent))
-        //{
-        //    ResponseContent = "";
-        //}
-        //string skPrompt = """
-        //                  {{$input}}
+        if (string.IsNullOrWhiteSpace(AskContent))
+        {
+            return;
+        }
 
-        //                  将上面的输入翻译成{{$language}}，无需任何其他内容
-        //                  """;
+        if (!string.IsNullOrWhiteSpace(ResponseContent))
+        {
+            ResponseContent = "";
+        }
 
-        //await foreach (var update in _kernel.InvokePromptStreamingAsync(skPrompt, new() { ["input"] = AskContent, ["language"] = "中文简体、中文繁体、英文、日语" }))
-        //{
-        //    ResponseContent += update.ToString();
-        //}
+        try
+        {
+            await apiClient.CreateChatGptClient(_chatGptOptions.PolyTranslateHttpUrl,
+                new PolyTranslateRequest(AskContent, [
+                    "中文简体",
+                    "中文繁体",
+                    "英文",
+                    "日语",
+                    "法语"
+                ]), result =>
+                {
+                    ResponseContent += result;
+                }, status =>
+                {
+                    AskContent = string.Empty;
+                });
+        }
+        catch (Exception ex)
+        {
+            ResponseContent = ex.Message;
+        }
     }
 }

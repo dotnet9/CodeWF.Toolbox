@@ -1,11 +1,11 @@
 using Avalonia.Controls;
 using Avalonia.Markup.Xaml;
 using CodeWF.Core.IServiceInterfaces;
-using CodeWF.Toolbox.Services;
+using Ursa.Controls;
 
 namespace CodeWF.Toolbox.Views;
 
-public partial class MainWindow : Window
+public partial class MainWindow : UrsaWindow
 {
     public MainWindow(IApplicationService applicationService)
     {

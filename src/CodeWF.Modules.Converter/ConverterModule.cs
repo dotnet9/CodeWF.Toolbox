@@ -25,7 +25,6 @@ public class ConverterModule : IModule
     {
         IRegionManager? regionManager = containerProvider.Resolve<IRegionManager>();
         regionManager.RegisterViewWithRegion<DateTimeConverterView>(RegionNames.ContentRegion);
-        //LogFactory.Instance.Log.Info("转换器模块初始化完成");
     }
 
     public void RegisterTypes(IContainerRegistry containerRegistry)

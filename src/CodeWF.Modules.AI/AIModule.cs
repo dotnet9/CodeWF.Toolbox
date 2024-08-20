@@ -1,5 +1,6 @@
 ﻿using CodeWF.Core;
 using CodeWF.Core.Models;
+using CodeWF.Modules.AI.Helpers;
 using CodeWF.Modules.AI.I18n;
 using CodeWF.Modules.AI.ViewModels;
 using CodeWF.Modules.AI.Views;
@@ -38,6 +39,7 @@ public class AIModule : IModule
 
     public void RegisterTypes(IContainerRegistry containerRegistry)
     {
+        containerRegistry.RegisterScoped<ApiClient>();
         containerRegistry.RegisterSingleton(typeof(AskBotViewModel));
         containerRegistry.RegisterSingleton(typeof(PolyTranslateViewModel));
         containerRegistry.RegisterSingleton(typeof(Title2SlugViewModel));

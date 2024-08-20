@@ -400,3 +400,4 @@ FodyWeavers.xsd
 src/Build/
 src/CodeWF.WebAPI/appsettings.Development.json
 src/CodeWF.WebAPI/appsettings.Production.json
+src/CodeWF.WebAPI/.config/dotnet-tools.json
