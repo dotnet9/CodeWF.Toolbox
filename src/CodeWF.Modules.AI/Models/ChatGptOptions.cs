@@ -1,8 +1,22 @@
-﻿namespace CodeWF.Modules.AI.Models;
+﻿using System.Diagnostics;
+
+namespace CodeWF.Modules.AI.Models;
 
 internal class ChatGptOptions
 {
-    public string AskBotHttpUrl { get; set; } = "http://localhost:5242/ai/askbot";
-    public string PolyTranslateHttpUrl { get; set; } = "http://localhost:5242/ai/polytranslate";
-    public string Title2SlugHttpUrl { get; set; } = "http://localhost:5242/ai/title2slug";
+    private static string _baseUrl;
+    static ChatGptOptions()
+    {
+        if (Debugger.IsAttached)
+        {
+            _baseUrl = "http://localhost:5242/";
+        }
+        else
+        {
+            _baseUrl = "https://api.dotnet9.com/";
+        }
+    }
+    public string AskBotHttpUrl { get; set; } = $"{_baseUrl}ai/askbot";
+    public string PolyTranslateHttpUrl { get; set; } = $"{_baseUrl}ai/polytranslate";
+    public string Title2SlugHttpUrl { get; set; } = $"{_baseUrl}ai/title2slug";
 }
