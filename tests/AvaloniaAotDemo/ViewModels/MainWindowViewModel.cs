@@ -1,8 +1,33 @@
-﻿namespace AvaloniaAotDemo.ViewModels;
+﻿using AvaloniaAotDemo.Commands;
+using CodeWF.EventBus;
+using ReactiveUI;
+using System;
+
+namespace AvaloniaAotDemo.ViewModels;
 
 public class MainWindowViewModel : ViewModelBase
 {
-#pragma warning disable CA1822 // Mark members as static
-    public string Greeting => "我擦勒，你是真的帅！";
-#pragma warning restore CA1822 // Mark members as static
+    public MainWindowViewModel()
+    {
+        EventBus.Default.Subscribe<ChangeTimeCommand>(ReceiveEvent);
+    }
+
+    private string _greeting = "我擦勒，你是真的帅！";
+
+    public string Greeting
+    {
+        get => _greeting;
+        set => this.RaiseAndSetIfChanged(ref _greeting, value);
+    }
+
+
+    public void RaiseSendCommandHandler()
+    {
+        EventBus.Default.Publish(new ChangeTimeCommand() { Time = DateTime.Now });
+    }
+
+    private void ReceiveEvent(ChangeTimeCommand command)
+    {
+        Greeting = command.Time.ToString("yyyy-MM-dd HH:mm:ss fff");
+    }
 }
