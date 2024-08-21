@@ -3,20 +3,19 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:prism="http://prismlibrary.com/"
-             xmlns:vm="clr-namespace:CodeWF.Modules.AI.ViewModels"
              prism:ViewModelLocator.AutoWireViewModel="True"
-             x:DataType="vm:AskBotViewModel"
+             xmlns:vm="clr-namespace:CodeWF.Modules.AI.ViewModels"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-             x:Class="CodeWF.Modules.AI.Views.AskBotView">
-    <Grid ColumnDefinitions="* 100" RowDefinitions="400 10 40" VerticalAlignment="Top">
-        <TextBox Text="{Binding ResponseContent}" 
+             x:Class="CodeWF.Modules.AI.Views.AskBotView"
+             x:DataType="vm:AskBotViewModel">
+    <Grid ColumnDefinitions="* 100" RowDefinitions="300 10 40" VerticalAlignment="Top">
+        <TextBox Text="{Binding ResponseContent}" Padding="5"
                  Grid.ColumnSpan="2" VerticalAlignment="Stretch" VerticalContentAlignment="Top" TextWrapping="Wrap" />
 
-        <TextBox Text="{Binding AskContent}" Grid.Row="2" Grid.Column="0" 
-                 VerticalAlignment="Stretch" VerticalContentAlignment="Top">
-            <TextBox.TextWrapping></TextBox.TextWrapping>
-        </TextBox>
-        <Button Grid.Row="2" Grid.Column="1" Content="AI" Command="{Binding RaiseAskAICommandHandler}"
-                HorizontalAlignment="Stretch" Margin="10 0 0 0" />
+        <TextBox Text="{Binding AskContent}" Grid.Row="2" Grid.Column="0"
+                 VerticalAlignment="Stretch" VerticalContentAlignment="Top" TextWrapping="Wrap" />
+
+        <Button Grid.Row="2" Grid.Column="1" Content="AI" Command="{Binding RaiseAskAICommand}"
+                HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="10 0 0 0" />
     </Grid>
 </UserControl>

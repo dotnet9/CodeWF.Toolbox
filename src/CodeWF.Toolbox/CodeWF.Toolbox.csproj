@@ -25,9 +25,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Avalonia" Version="11.1.3" />
+		<PackageReference Include="Avalonia" Version="11.2.0-beta1" />
 		<!--Condition below is needed to remove Avalonia.Diagnostics package from build output in Release configuration.-->
-		<PackageReference Condition="'$(Configuration)' == 'Debug'" Include="Avalonia.Diagnostics" Version="11.1.3" />
+		<PackageReference Condition="'$(Configuration)' == 'Debug'" Include="Avalonia.Diagnostics" Version="11.2.0-beta1" />
 		<PackageReference Include="AvaloniaExtensions.Axaml" Version="0.0.2.5" />
 		<PackageReference Include="CodeWF.EventBus" Version="3.4.4.2" />
 		<PackageReference Include="Semi.Avalonia" Version="11.1.0.2" />
@@ -36,7 +36,7 @@
 		<PackageReference Include="Irihi.Ursa.Themes.Semi" Version="1.1.0" />
 		<PackageReference Include="Prism.Avalonia" Version="8.1.97.11073" />
 		<PackageReference Include="Prism.DryIoc.Avalonia" Version="8.1.97.11073" />
-		<PackageReference Include="Avalonia.ReactiveUI" Version="11.1.3" />
+		<PackageReference Include="Avalonia.ReactiveUI" Version="11.2.0-beta1" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -58,6 +58,9 @@
 	    <DesignTime>True</DesignTime>
 	    <AutoGen>True</AutoGen>
 	    <DependentUpon>Resources.resx</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\DashboardView.axaml.cs">
+	    <DependentUpon>DashboardView.axaml</DependentUpon>
 	  </Compile>
 	</ItemGroup>
 

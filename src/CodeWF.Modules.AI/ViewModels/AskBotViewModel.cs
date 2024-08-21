@@ -1,13 +1,28 @@
-﻿using CodeWF.Modules.AI.Helpers;
+﻿using AvaloniaExtensions.Axaml.Markup;
+using CodeWF.Core;
+using CodeWF.Modules.AI.Helpers;
 using CodeWF.Modules.AI.Models;
 using CodeWF.WebAPI.ViewModels;
 using ReactiveUI;
+using System.Reactive;
+using System.Reactive.Linq;
 
 namespace CodeWF.Modules.AI.ViewModels;
 
-public class AskBotViewModel(ApiClient apiClient) : ReactiveObject
+public class AskBotViewModel : ReactiveObject
 {
+    private readonly ApiClient _apiClient;
     private readonly ChatGptOptions _chatGptOptions = new();
+
+    public AskBotViewModel(ApiClient apiClient)
+    {
+        _apiClient = apiClient;
+        this.WhenAnyValue(x => x.AskContent)
+            .Throttle(TimeSpan.FromSeconds(1))
+            .ObserveOn(RxApp.MainThreadScheduler)
+            .Subscribe(_ => RaiseAskAICommandHandlerAsync());
+        RaiseAskAICommand = ReactiveCommand.CreateFromTask(RaiseAskAICommandHandlerAsync);
+    }
 
     private string? _askContent;
 
@@ -25,7 +40,9 @@ public class AskBotViewModel(ApiClient apiClient) : ReactiveObject
         set => this.RaiseAndSetIfChanged(ref _responseContent, value);
     }
 
-    public async Task RaiseAskAICommandHandler()
+    public ReactiveCommand<Unit, Unit> RaiseAskAICommand { get; }
+
+    private async Task RaiseAskAICommandHandlerAsync()
     {
         if (string.IsNullOrWhiteSpace(AskContent))
         {
@@ -39,12 +56,12 @@ public class AskBotViewModel(ApiClient apiClient) : ReactiveObject
 
         try
         {
-            await apiClient.CreateChatGptClient(_chatGptOptions.AskBotHttpUrl, new AskBotRequest(AskContent), result =>
+            await _apiClient.CreateChatGptClient(_chatGptOptions.AskBotHttpUrl, new AskBotRequest(AskContent), result =>
             {
                 ResponseContent += result;
             }, status =>
             {
-                AskContent = string.Empty;
+                //AskContent = string.Empty;
             });
         }
         catch (Exception ex)

@@ -2,7 +2,6 @@
 using AvaloniaExtensions.Axaml.Markup;
 using CodeWF.Core;
 using CodeWF.Core.Models;
-using CodeWF.EventBus;
 using CodeWF.Toolbox.Commands;
 using CodeWF.Toolbox.I18n;
 using CodeWF.Toolbox.Views;

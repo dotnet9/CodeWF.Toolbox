@@ -88,6 +88,15 @@ namespace CodeWF.Modules.AI.I18n {
         }
         
         /// <summary>
+        ///   查找类似 Language 的本地化字符串。
+        /// </summary>
+        public static string LanguageKey {
+            get {
+                return ResourceManager.GetString("LanguageKey", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 AI One-Click Multi-Language Translation ToolAI One-Click Multi-Language Translation Tool 的本地化字符串。
         /// </summary>
         public static string PolyTranslate {
@@ -102,6 +111,24 @@ namespace CodeWF.Modules.AI.I18n {
         public static string PolyTranslateDescription {
             get {
                 return ResourceManager.GetString("PolyTranslateDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Selectable 的本地化字符串。
+        /// </summary>
+        public static string Selectable {
+            get {
+                return ResourceManager.GetString("Selectable", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Selected 的本地化字符串。
+        /// </summary>
+        public static string Selected {
+            get {
+                return ResourceManager.GetString("Selected", resourceCulture);
             }
         }
         

@@ -18,4 +18,7 @@ public static class Language
 	public static readonly string PolyTranslateDescription = "PolyTranslateDescription";
 	public static readonly string Title2Slug = "Title2Slug";
 	public static readonly string Title2SlugDescription = "Title2SlugDescription";
+	public static readonly string LanguageKey = "LanguageKey";
+	public static readonly string Selectable = "Selectable";
+	public static readonly string Selected = "Selected";
 }

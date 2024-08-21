@@ -139,4 +139,13 @@
   <data name="Title2SlugDescription" xml:space="preserve">
     <value>中国語、英語などの記事タイトルをワンクリックで英語のURLスラッグに変換できます。</value>
   </data>
+  <data name="LanguageKey" xml:space="preserve">
+    <value>言語</value>
+  </data>
+  <data name="Selectable" xml:space="preserve">
+    <value>選択可能</value>
+  </data>
+  <data name="Selected" xml:space="preserve">
+    <value>すでに選択されました</value>
+  </data>
 </root>

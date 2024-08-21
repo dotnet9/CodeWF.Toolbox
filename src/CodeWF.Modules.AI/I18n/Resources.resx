@@ -118,4 +118,13 @@
   <data name="Title2SlugDescription" xml:space="preserve">
     <value>Effortlessly convert article titles in Chinese, English, and other languages into English URL Slugs with one click.</value>
   </data>
+  <data name="LanguageKey" xml:space="preserve">
+    <value>Language</value>
+  </data>
+  <data name="Selectable" xml:space="preserve">
+    <value>Selectable</value>
+  </data>
+  <data name="Selected" xml:space="preserve">
+    <value>Selected</value>
+  </data>
 </root>

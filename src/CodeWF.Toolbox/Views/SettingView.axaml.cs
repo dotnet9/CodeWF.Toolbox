@@ -67,7 +67,7 @@ public partial class SettingView : UserControl
     
     private void ChangeLanguage_OnClick(object? sender, RoutedEventArgs e)
     {
-        var lauguage = (sender as RadioButton)?.Tag?.ToString() ?? CultureNames.English;
-        _applicationService.SetCulture(lauguage);
+        var language = (sender as RadioButton)?.Tag?.ToString() ?? CultureNames.English;
+        _applicationService.SetCulture(language);
     }
 }

@@ -138,4 +138,13 @@
   <data name="Title2SlugDescription" xml:space="preserve">
     <value>轻松将中文、英文等文章标题一键转换成英文URL Slug。</value>
   </data>
+  <data name="LanguageKey" xml:space="preserve">
+    <value>语言</value>
+  </data>
+  <data name="Selectable" xml:space="preserve">
+    <value>可选择的</value>
+  </data>
+  <data name="Selected" xml:space="preserve">
+    <value>已选择</value>
+  </data>
 </root>

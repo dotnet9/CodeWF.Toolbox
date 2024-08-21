@@ -2,5 +2,6 @@
 
 public static class DialogNames
 {
-    public const string Setting = "Setting";
+    public const string Setting = nameof(Setting);
+    public const string ChoiceLanguages = nameof(ChoiceLanguages);
 }

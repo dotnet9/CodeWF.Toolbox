@@ -8,13 +8,15 @@
              x:DataType="vm:Title2SlugViewModel"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="CodeWF.Modules.AI.Views.Title2SlugView">
-    <Grid ColumnDefinitions="* 100" RowDefinitions="400 10 40" VerticalAlignment="Top">
-        <TextBox Text="{Binding ResponseContent}"
+    <Grid ColumnDefinitions="* 100" RowDefinitions="300 10 40" VerticalAlignment="Top">
+        <TextBox Text="{Binding ResponseContent}" Padding="5"
                  Grid.ColumnSpan="2" VerticalAlignment="Stretch" VerticalContentAlignment="Top" TextWrapping="Wrap" />
 
         <TextBox Text="{Binding AskContent}" Grid.Row="2" Grid.Column="0"
                  VerticalAlignment="Stretch" VerticalContentAlignment="Top" TextWrapping="Wrap" />
-        <Button Grid.Row="2" Grid.Column="1" Content="AI" Command="{Binding RaiseConvertCommandHandler}"
-                HorizontalAlignment="Stretch" Margin="10 0 0 0" />
+
+        <Button Grid.Row="2" Grid.Column="1" Content="AI" 
+                Command="{Binding RaiseConvertCommand}"
+                HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="10 0 0 0" />
     </Grid>
 </UserControl>

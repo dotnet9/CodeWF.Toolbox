@@ -2,9 +2,9 @@ using Avalonia.Controls;
 
 namespace CodeWF.Modules.AI.Views;
 
-public partial class AskBotView : UserControl
+public partial class ChoiceLanguagesView : UserControl
 {
-    public AskBotView()
+    public ChoiceLanguagesView()
     {
         InitializeComponent();
     }

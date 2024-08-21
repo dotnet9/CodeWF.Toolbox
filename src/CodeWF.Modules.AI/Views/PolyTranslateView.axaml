@@ -4,17 +4,26 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:prism="http://prismlibrary.com/"
              xmlns:vm="clr-namespace:CodeWF.Modules.AI.ViewModels"
+             xmlns:markup="https://codewf.com"
+             xmlns:language="clr-namespace:CodeWF.Modules.AI.I18n"
              prism:ViewModelLocator.AutoWireViewModel="True"
              x:DataType="vm:PolyTranslateViewModel"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="CodeWF.Modules.AI.Views.PolyTranslateView">
-    <Grid ColumnDefinitions="* 100" RowDefinitions="400 10 40" VerticalAlignment="Top">
-        <TextBox Text="{Binding ResponseContent}" 
+    <Grid ColumnDefinitions="* 100" RowDefinitions="300 10 40 40" VerticalAlignment="Top">
+        <TextBox Text="{Binding ResponseContent}" Padding="5"
                  Grid.ColumnSpan="2" VerticalAlignment="Stretch" VerticalContentAlignment="Top" TextWrapping="Wrap" />
 
         <TextBox Text="{Binding AskContent}" Grid.Row="2" Grid.Column="0"
-                 VerticalAlignment="Stretch"  VerticalContentAlignment="Top" TextWrapping="Wrap" />
-        <Button Grid.Row="2" Grid.Column="1" Content="AI" Command="{Binding RaiseTranslateCommandHandler}"
-                HorizontalAlignment="Stretch" Margin="10 0 0 0" />
+                 VerticalAlignment="Stretch" VerticalContentAlignment="Top" TextWrapping="Wrap" />
+
+        <Button Grid.Row="2" Grid.Column="1" Content="AI" Command="{Binding RaiseTranslateCommand}"
+                HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="10 0 0 0" />
+
+        <TextBlock Text="{Binding Languages}" TextWrapping="Wrap" Grid.Row="3" Grid.Column="0" />
+        <Button Grid.Row="3" Grid.Column="1"
+                Content="{markup:I18n {x:Static language:Language.LanguageKey}}"
+                Command="{Binding RaiseChoiceLanguagesCommand}"
+                HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="10 0 0 0" />
     </Grid>
 </UserControl>
