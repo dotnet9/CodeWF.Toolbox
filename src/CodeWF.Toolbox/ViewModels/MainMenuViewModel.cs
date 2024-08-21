@@ -2,11 +2,11 @@
 using AvaloniaExtensions.Axaml.Markup;
 using CodeWF.Core;
 using CodeWF.Core.Models;
-using CodeWF.Toolbox.Events;
+using CodeWF.EventBus;
+using CodeWF.Toolbox.Commands;
 using CodeWF.Toolbox.I18n;
 using CodeWF.Toolbox.Views;
 using DryIoc;
-using Prism.Events;
 using Prism.Ioc;
 using Prism.Regions;
 using ReactiveUI;
@@ -23,7 +23,6 @@ internal class MainMenuViewModel : ViewModelBase
     private readonly IToolMenuService _toolMenuService;
     private readonly IContainerExtension _container;
     private readonly IUrsaOverlayDialogService _overlayDialogService;
-    private readonly IEventAggregator _eventAggregator;
     public ObservableCollection<ToolMenuItem>? MenuItems { get; }
 
     private ToolMenuItem? _selectedMenuItem;
@@ -47,13 +46,12 @@ internal class MainMenuViewModel : ViewModelBase
     }
 
     internal MainMenuViewModel(IRegionManager regionManager, IToolMenuService toolMenuService,
-        IContainerExtension container, IUrsaOverlayDialogService overlayDialogService, IEventAggregator eventAggregator)
+        IContainerExtension container, IUrsaOverlayDialogService overlayDialogService)
     {
         _regionManager = regionManager;
         _toolMenuService = toolMenuService;
         _container = container;
         _overlayDialogService = overlayDialogService;
-        _eventAggregator = eventAggregator;
 
         MenuItems = _toolMenuService.MenuItems;
         _toolMenuService.ToolMenuChanged += MenuChangedHandler;
@@ -97,7 +95,7 @@ internal class MainMenuViewModel : ViewModelBase
             ToolStatus.Complete => NotificationType.Success,
             _ => NotificationType.Information
         };
-        _eventAggregator.GetEvent<ChangeToolMenuEvent>().Publish(_selectedMenuItem!);
+        EventBus.EventBus.Default.Publish(new ChangeToolMenuCommand(_selectedMenuItem!));
     }
 
     public async void RaiseOpenSettingHandlerAsync()

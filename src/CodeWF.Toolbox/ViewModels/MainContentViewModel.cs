@@ -1,7 +1,7 @@
 ﻿using Avalonia.Controls.Notifications;
 using CodeWF.Core.Models;
-using CodeWF.Toolbox.Events;
-using Prism.Events;
+using CodeWF.EventBus;
+using CodeWF.Toolbox.Commands;
 using ReactiveUI;
 
 namespace CodeWF.Toolbox.ViewModels;
@@ -32,15 +32,18 @@ internal class MainContentViewModel : ViewModelBase
         set => this.RaiseAndSetIfChanged(ref _selectedMenuItem, value);
     }
 
-    public MainContentViewModel(IEventAggregator eventAggregator)
+    public MainContentViewModel()
     {
-        eventAggregator.GetEvent<ChangeToolMenuEvent>().Subscribe(ChangeToolMenuHandler);
+        EventBus.EventBus.Default.Subscribe(this);
     }
 
-    private void ChangeToolMenuHandler(ToolMenuItem toolMenuItem)
+    [EventHandler]
+    private void ChangeToolMenuHandler(ChangeToolMenuCommand command)
     {
-        SelectedMenuItem = toolMenuItem;
-        Bordered = toolMenuItem.Status == ToolStatus.Developing;
-        SelectedType = toolMenuItem.Status == ToolStatus.Complete ? NotificationType.Success : NotificationType.Warning;
+        SelectedMenuItem = command.ToolMenuItem;
+        Bordered = SelectedMenuItem.Status == ToolStatus.Developing;
+        SelectedType = SelectedMenuItem.Status == ToolStatus.Complete
+            ? NotificationType.Success
+            : NotificationType.Warning;
     }
 }
