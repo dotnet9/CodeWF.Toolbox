@@ -11,7 +11,7 @@
 		<PackageReference Include="Prism.Avalonia" Version="8.1.97.11073" />
 		<PackageReference Include="Prism.DryIoc.Avalonia" Version="8.1.97.11073" />
 		<PackageReference Include="Avalonia.ReactiveUI" Version="11.2.0-beta1" />
-		<PackageReference Include="Irihi.Ursa" Version="1.2.0" />
+		<PackageReference Include="Irihi.Ursa" Version="1.2.1-beta2" />
 		<PackageReference Include="Irihi.Ursa.PrismExtension" Version="1.0.0" />
 	</ItemGroup>
 
