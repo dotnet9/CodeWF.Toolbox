@@ -40,6 +40,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeWF.WebAPI", "src\CodeWF
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeWF.ViewModels", "src\CodeWF.ViewModels\CodeWF.ViewModels.csproj", "{ECA3DBAA-B49B-4464-9E87-CF583EDB4209}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeWF.Modules.Development", "src\CodeWF.Modules.Development\CodeWF.Modules.Development.csproj", "{F004FAAF-0FE6-4E60-8B93-80966F460A9F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -86,6 +88,10 @@ Global
 		{ECA3DBAA-B49B-4464-9E87-CF583EDB4209}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ECA3DBAA-B49B-4464-9E87-CF583EDB4209}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ECA3DBAA-B49B-4464-9E87-CF583EDB4209}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F004FAAF-0FE6-4E60-8B93-80966F460A9F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F004FAAF-0FE6-4E60-8B93-80966F460A9F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F004FAAF-0FE6-4E60-8B93-80966F460A9F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F004FAAF-0FE6-4E60-8B93-80966F460A9F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -101,6 +107,7 @@ Global
 		{B3CE3879-8C99-401B-BEEC-9F1C4BAAC128} = {44252400-86A6-4AA9-985B-9B42F4B2C8DD}
 		{1EB6445D-8501-455C-81FE-25AC5A3BE761} = {844ACF80-B54A-4FDA-B6D6-00C3CC921508}
 		{ECA3DBAA-B49B-4464-9E87-CF583EDB4209} = {755C8FD1-1EAA-4B0B-ADD9-1E0BE922CFEF}
+		{F004FAAF-0FE6-4E60-8B93-80966F460A9F} = {44252400-86A6-4AA9-985B-9B42F4B2C8DD}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {47147C4F-8BF8-4E62-82C5-A5B969940F69}

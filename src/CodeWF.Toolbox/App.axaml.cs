@@ -5,6 +5,7 @@ using CodeWF.Core;
 using CodeWF.Core.IServiceInterfaces;
 using CodeWF.Modules.AI;
 using CodeWF.Modules.Converter;
+using CodeWF.Modules.Development;
 using CodeWF.Toolbox.Core.RegionAdapters;
 using CodeWF.Toolbox.Services;
 using CodeWF.Toolbox.Views;
@@ -45,6 +46,7 @@ public partial class App : PrismApplication
         moduleCatalog.AddModule<MainModule>();
         moduleCatalog.AddModule<AIModule>();
         moduleCatalog.AddModule<ConverterModule>();
+        moduleCatalog.AddModule<DevelopmentModule>();
         base.ConfigureModuleCatalog(moduleCatalog);
     }
 
