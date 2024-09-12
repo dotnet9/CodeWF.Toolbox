@@ -33,9 +33,9 @@ public partial class App : PrismApplication
 
     protected override void ConfigureRegionAdapterMappings(RegionAdapterMappings regionAdapterMappings)
     {
-        regionAdapterMappings.RegisterMapping(typeof(StackPanel), Container.Resolve<StackPanelRegionAdapter>());
-        regionAdapterMappings.RegisterMapping(typeof(Grid), Container.Resolve<GridRegionAdapter>());
-        regionAdapterMappings.RegisterMapping(typeof(TabControl), Container.Resolve<TabControlAdapter>());
+        regionAdapterMappings.RegisterMapping<StackPanel, StackPanelRegionAdapter>();
+        regionAdapterMappings.RegisterMapping<Grid, GridRegionAdapter>();
+        regionAdapterMappings.RegisterMapping<TabControl, TabControlAdapter>();
         regionAdapterMappings.RegisterMapping<ItemsControl, ItemsControlRegionAdapter>();
         regionAdapterMappings.RegisterMapping<ContentControl, ContentControlRegionAdapter>();
     }
