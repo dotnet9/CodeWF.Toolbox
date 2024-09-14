@@ -14,6 +14,9 @@
     <Design.DataContext>
         <vm:YamlPrettifyViewModel />
     </Design.DataContext>
+	<UserControl.Styles>
+        <StyleInclude Source="../Styles/Index.axaml" />
+    </UserControl.Styles>
     <Grid RowDefinitions="60 Auto * Auto" ColumnDefinitions="* 5 *">
 
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Grid.ColumnSpan="3" VerticalAlignment="Top">
@@ -30,13 +33,7 @@
         <TextBlock Text="{Binding ErrorMessage}" Foreground="Red" Grid.Row="3" Grid.Column="0" TextWrapping="Wrap" />
 
         <TextBlock Text="{i18n:I18n {x:Static language:Language.PrettifiedVersionYAML}}" Grid.Row="1" Grid.Column="2" />
-        <Grid Grid.Row="2" Grid.Column="2">
-            <Grid.Styles>
-                <FluentTheme />
-                <StyleInclude Source="avares://AvaloniaEdit/Themes/Fluent/AvaloniaEdit.xaml" />
-            </Grid.Styles>
-            <AvaloniaEdit:TextEditor ShowLineNumbers="True" x:Name="Editor"
-                                     FontFamily="Cascadia Code,Consolas,Menlo,Monospace"/>
-        </Grid>
+        <AvaloniaEdit:TextEditor ShowLineNumbers="True" x:Name="Editor" Grid.Row="2" Grid.Column="2"
+                                     FontFamily="{StaticResource ContentControlThemeFontFamily}"/>
     </Grid>
 </UserControl>
