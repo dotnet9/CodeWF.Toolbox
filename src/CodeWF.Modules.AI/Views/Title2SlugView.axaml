@@ -9,10 +9,10 @@
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="CodeWF.Modules.AI.Views.Title2SlugView">
     <Grid ColumnDefinitions="* 100" RowDefinitions="300 10 40" VerticalAlignment="Top">
-        <TextBox Text="{Binding ResponseContent}" Padding="5"
+        <TextBox Text="{Binding ResponseContent}" Padding="5" Classes="TextArea"
                  Grid.ColumnSpan="2" VerticalAlignment="Stretch" VerticalContentAlignment="Top" TextWrapping="Wrap" />
 
-        <TextBox Text="{Binding AskContent}" Grid.Row="2" Grid.Column="0"
+        <TextBox Text="{Binding AskContent}" Grid.Row="2" Grid.Column="0" Classes="TextArea"
                  VerticalAlignment="Stretch" VerticalContentAlignment="Top" TextWrapping="Wrap" />
 
         <Button Grid.Row="2" Grid.Column="1" Content="AI" 

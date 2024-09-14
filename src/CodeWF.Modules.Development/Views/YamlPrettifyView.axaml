@@ -2,9 +2,41 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:prism="http://prismlibrary.com/"
              xmlns:i18n="https://codewf.com"
+             xmlns:AvaloniaEdit="clr-namespace:AvaloniaEdit;assembly=AvaloniaEdit"
              xmlns:language="clr-namespace:CodeWF.Modules.Development.I18n"
+             xmlns:vm="clr-namespace:CodeWF.Modules.Development.ViewModels"
+             prism:ViewModelLocator.AutoWireViewModel="True"
+             x:DataType="vm:YamlPrettifyViewModel"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="CodeWF.Modules.Development.Views.YamlPrettifyView">
-  <TextBlock Text="{i18n:I18n {x:Static language:Language.YamlPrettifyDescription}}"/>
+    <Design.DataContext>
+        <vm:YamlPrettifyViewModel />
+    </Design.DataContext>
+    <Grid RowDefinitions="60 Auto * Auto" ColumnDefinitions="* 5 *">
+
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Grid.ColumnSpan="3" VerticalAlignment="Top">
+            <CheckBox Content="{i18n:I18n {x:Static language:Language.SortKey}}"
+                      IsChecked="{Binding IsSortKey}" Margin="0 0 20 0" />
+            <TextBlock Text="{i18n:I18n {x:Static language:Language.IndentSize}}" VerticalAlignment="Center" />
+            <ComboBox ItemsSource="{Binding IndentSizes}" Width="100" />
+        </StackPanel>
+
+        <TextBlock Grid.Row="1" Grid.Column="0" Text="{i18n:I18n {x:Static language:Language.RawYaml}}" />
+        <TextBox Grid.Row="2" Grid.Column="0" Text="{Binding RawYaml}" VerticalAlignment="Stretch"
+                 VerticalContentAlignment="Top" TextWrapping="Wrap" Classes="TextArea" />
+
+        <TextBlock Text="{Binding ErrorMessage}" Foreground="Red" Grid.Row="3" Grid.Column="0" TextWrapping="Wrap" />
+
+        <TextBlock Text="{i18n:I18n {x:Static language:Language.PrettifiedVersionYAML}}" Grid.Row="1" Grid.Column="2" />
+        <Grid Grid.Row="2" Grid.Column="2">
+            <Grid.Styles>
+                <FluentTheme />
+                <StyleInclude Source="avares://AvaloniaEdit/Themes/Fluent/AvaloniaEdit.xaml" />
+            </Grid.Styles>
+            <AvaloniaEdit:TextEditor ShowLineNumbers="True" x:Name="Editor"
+                                     FontFamily="Cascadia Code,Consolas,Menlo,Monospace"/>
+        </Grid>
+    </Grid>
 </UserControl>
