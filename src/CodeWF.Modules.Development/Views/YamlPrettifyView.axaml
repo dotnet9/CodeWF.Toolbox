@@ -1,39 +1,63 @@
-<UserControl xmlns="https://github.com/avaloniaui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:prism="http://prismlibrary.com/"
-             xmlns:i18n="https://codewf.com"
-             xmlns:AvaloniaEdit="clr-namespace:AvaloniaEdit;assembly=AvaloniaEdit"
-             xmlns:language="clr-namespace:CodeWF.Modules.Development.I18n"
-             xmlns:vm="clr-namespace:CodeWF.Modules.Development.ViewModels"
-             prism:ViewModelLocator.AutoWireViewModel="True"
-             x:DataType="vm:YamlPrettifyViewModel"
-             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-             x:Class="CodeWF.Modules.Development.Views.YamlPrettifyView">
+<UserControl
+    x:Class="CodeWF.Modules.Development.Views.YamlPrettifyView"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:AvaloniaEdit="clr-namespace:AvaloniaEdit;assembly=AvaloniaEdit"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:i18n="https://codewf.com"
+    xmlns:language="clr-namespace:CodeWF.Modules.Development.I18n"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:prism="http://prismlibrary.com/"
+    xmlns:vm="clr-namespace:CodeWF.Modules.Development.ViewModels"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    prism:ViewModelLocator.AutoWireViewModel="True"
+    x:DataType="vm:YamlPrettifyViewModel"
+    mc:Ignorable="d">
     <Design.DataContext>
         <vm:YamlPrettifyViewModel />
     </Design.DataContext>
-	<UserControl.Styles>
+    <UserControl.Styles>
         <StyleInclude Source="../Styles/Index.axaml" />
     </UserControl.Styles>
-    <Grid RowDefinitions="60 Auto * Auto" ColumnDefinitions="* 5 *">
+    <Grid ColumnDefinitions="* 5 *" RowDefinitions="Auto * Auto">
 
-        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Grid.ColumnSpan="3" VerticalAlignment="Top">
-            <CheckBox Content="{i18n:I18n {x:Static language:Language.SortKey}}"
-                      IsChecked="{Binding IsSortKey}" Margin="0 0 20 0" />
-            <TextBlock Text="{i18n:I18n {x:Static language:Language.IndentSize}}" VerticalAlignment="Center" />
-            <ComboBox ItemsSource="{Binding IndentSizes}" Width="100" />
-        </StackPanel>
+        <TextBlock
+            Grid.Row="0"
+            Grid.Column="0"
+            Text="{i18n:I18n {x:Static language:Language.RawYaml}}" />
+        <TextBox
+            Grid.Row="1"
+            Grid.Column="0"
+            VerticalAlignment="Stretch"
+            VerticalContentAlignment="Top"
+            Classes="TextArea"
+            Text="{Binding RawYaml}"
+            TextWrapping="Wrap" />
 
-        <TextBlock Grid.Row="1" Grid.Column="0" Text="{i18n:I18n {x:Static language:Language.RawYaml}}" />
-        <TextBox Grid.Row="2" Grid.Column="0" Text="{Binding RawYaml}" VerticalAlignment="Stretch"
-                 VerticalContentAlignment="Top" TextWrapping="Wrap" Classes="TextArea" />
+        <TextBlock
+            Grid.Row="2"
+            Grid.Column="0"
+            Foreground="Red"
+            Text="{Binding ErrorMessage}"
+            TextWrapping="Wrap" />
 
-        <TextBlock Text="{Binding ErrorMessage}" Foreground="Red" Grid.Row="3" Grid.Column="0" TextWrapping="Wrap" />
+        <TextBlock
+            Grid.Row="0"
+            Grid.Column="2"
+            Text="{i18n:I18n {x:Static language:Language.PrettifiedVersionYAML}}" />
+        <AvaloniaEdit:TextEditor
+            x:Name="Editor"
+            Grid.Row="1"
+            Grid.Column="2"
+            FontFamily="{StaticResource ContentControlThemeFontFamily}"
+            ShowLineNumbers="True"
+            SyntaxHighlighting="Yaml" />
 
-        <TextBlock Text="{i18n:I18n {x:Static language:Language.PrettifiedVersionYAML}}" Grid.Row="1" Grid.Column="2" />
-        <AvaloniaEdit:TextEditor ShowLineNumbers="True" x:Name="Editor" Grid.Row="2" Grid.Column="2"
-                                     FontFamily="{StaticResource ContentControlThemeFontFamily}"/>
+        <Button Grid.Row="2" Grid.Column="2" Content="Copy" HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Classes="Success" Theme="{DynamicResource BorderlessButton}"
+                Height="40" CornerRadius="5"
+                Command="{Binding RaiseCopyCommand}"/>
     </Grid>
 </UserControl>

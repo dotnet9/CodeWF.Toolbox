@@ -1,5 +1,7 @@
-﻿using AvaloniaEdit;
+﻿using Avalonia.Controls;
+using AvaloniaEdit;
 using ReactiveUI;
+using System.Reactive;
 using System.Reactive.Linq;
 using YamlDotNet.Serialization;
 using YamlDotNet.Serialization.NamingConventions;
@@ -14,28 +16,12 @@ public class YamlPrettifyViewModel : ReactiveObject
 
     public YamlPrettifyViewModel()
     {
+        RaiseCopyCommand = ReactiveCommand.CreateFromTask(RaiseCopyHandlerAsync);
+
         this.WhenAnyValue(x => x.RawYaml)
             .Throttle(TimeSpan.FromMilliseconds(400))
             .ObserveOn(RxApp.MainThreadScheduler)
             .Subscribe(RawYamlChanged);
-    }
-
-    private bool _isSortKey = false;
-
-    public bool IsSortKey
-    {
-        get => _isSortKey;
-        set => this.RaiseAndSetIfChanged(ref _isSortKey, value);
-    }
-
-    public List<int> IndentSizes { get; } = Enumerable.Range(1, 10).ToList();
-
-    private int _indentSize = 2;
-
-    public int IndentSize
-    {
-        get => _indentSize;
-        set => this.RaiseAndSetIfChanged(ref _indentSize, value);
     }
 
     private string? _rawYaml;
@@ -46,14 +32,6 @@ public class YamlPrettifyViewModel : ReactiveObject
         set => this.RaiseAndSetIfChanged(ref _rawYaml, value);
     }
 
-    private string? _prettifiedYaml;
-
-    public string? PrettifiedYaml
-    {
-        get => _prettifiedYaml;
-        set => this.RaiseAndSetIfChanged(ref _prettifiedYaml, value);
-    }
-
     private string? _errorMessage;
 
     public string? ErrorMessage
@@ -61,10 +39,12 @@ public class YamlPrettifyViewModel : ReactiveObject
         get => _errorMessage;
         set => this.RaiseAndSetIfChanged(ref _errorMessage, value);
     }
+    public ReactiveCommand<Unit, Unit> RaiseCopyCommand { get; }
 
     private void RawYamlChanged(string? newRawYaml)
     {
-        if (string.IsNullOrWhiteSpace(newRawYaml))
+        ErrorMessage = string.Empty;
+        if (string.IsNullOrWhiteSpace(RawYaml))
         {
             YamlTextEditor.Text = default;
             return;
@@ -76,6 +56,7 @@ public class YamlPrettifyViewModel : ReactiveObject
 
         _serializer ??= new SerializerBuilder()
             .WithNamingConvention(CamelCaseNamingConvention.Instance)
+            .WithIndentedSequences()
             .Build();
 
         try
@@ -87,5 +68,10 @@ public class YamlPrettifyViewModel : ReactiveObject
         {
             ErrorMessage = ex.Message;
         }
+    }
+
+    private async Task RaiseCopyHandlerAsync()
+    {
+        TopLevel.GetTopLevel(YamlTextEditor)?.Clipboard?.SetTextAsync(YamlTextEditor.Text);
     }
 }
