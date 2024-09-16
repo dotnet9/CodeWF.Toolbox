@@ -17,9 +17,9 @@
   <ItemGroup>
     <PackageReference Include="AvaloniaEdit.TextMate" Version="11.1.0" />
     <PackageReference Include="AvaloniaExtensions.Axaml" Version="0.0.2.5" />
-    <PackageReference Include="CodeWF.Tools" Version="1.2.3" />
+    <PackageReference Include="CodeWF.Tools" Version="1.2.4" />
     <PackageReference Include="Prism.DryIoc.Avalonia" Version="8.1.97.11073" />
-    <PackageReference Include="Avalonia.ReactiveUI" Version="11.2.0-beta1" />
+    <PackageReference Include="Avalonia.ReactiveUI" Version="11.2.0-beta2" />
     <PackageReference Include="TextMateSharp.Grammars" Version="1.0.63" />
   </ItemGroup>
 

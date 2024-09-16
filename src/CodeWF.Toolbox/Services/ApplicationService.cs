@@ -3,41 +3,22 @@ using Avalonia.Styling;
 using AvaloniaExtensions.Axaml.Markup;
 using CodeWF.Core;
 using CodeWF.Core.IServiceInterfaces;
-using CodeWF.Toolbox.Models;
+using CodeWF.Tools.Helpers;
+using System;
 using System.Globalization;
-using System.IO;
-using System.Text.Json;
-using System.Text.Json.Serialization.Metadata;
+using Ursa.Controls;
 
 namespace CodeWF.Toolbox.Services;
 
 internal class ApplicationService : IApplicationService
 {
-    private const string ConfigName = "config.json";
-    private ApplicationConfig? _applicationConfig;
-
-    private readonly JsonSerializerOptions _jsonSerializerOptions =
-        new() { TypeInfoResolver = new DefaultJsonTypeInfoResolver() };
+    private const string ThemeKey = "Theme";
+    private const string LanguageKey = "Language";
 
     public void Load()
     {
         try
         {
-            if (_applicationConfig != null)
-            {
-                return;
-            }
-
-            if (File.Exists(ConfigName))
-            {
-                _applicationConfig =
-                    JsonSerializer.Deserialize<ApplicationConfig>(File.ReadAllText(ConfigName), _jsonSerializerOptions);
-            }
-            else
-            {
-                _applicationConfig = new ApplicationConfig() { Theme = ThemeVariant.Default.ToString() };
-            }
-
             var theme = GetTheme();
             ChangeTheme(theme);
             var culture = GetCulture();
@@ -51,34 +32,32 @@ internal class ApplicationService : IApplicationService
 
     public ThemeVariant GetTheme()
     {
-        if (string.IsNullOrWhiteSpace(_applicationConfig?.Theme))
+        try
         {
-            return ThemeVariant.Default;
-        }
+            if (!AppConfigHelper.TryGet<string>(ThemeKey, out var theme))
+            {
+                return ThemeVariant.Default;
+            }
 
-        return _applicationConfig.Theme switch
+            return theme switch
+            {
+                nameof(ThemeVariant.Dark) => ThemeVariant.Dark,
+                nameof(ThemeVariant.Light) => ThemeVariant.Light,
+                _ => ThemeVariant.Default
+            };
+        }
+        catch (Exception ex)
         {
-            nameof(ThemeVariant.Dark) => ThemeVariant.Dark,
-            nameof(ThemeVariant.Light) => ThemeVariant.Light,
-            _ => ThemeVariant.Default
-        };
+            MessageBox.ShowAsync(ex.ToString());
+            return ThemeVariant.Dark;
+        }
     }
 
     public void SetTheme(ThemeVariant theme)
     {
         try
         {
-            if (_applicationConfig == null)
-            {
-                _applicationConfig = new ApplicationConfig() { Theme = theme.ToString() };
-            }
-            else
-            {
-                _applicationConfig.Theme = theme.ToString();
-            }
-
-            Save();
-
+            AppConfigHelper.Set(ThemeKey, theme);
             ChangeTheme(theme);
         }
         catch
@@ -89,29 +68,27 @@ internal class ApplicationService : IApplicationService
 
     public string GetCulture()
     {
-        if (string.IsNullOrWhiteSpace(_applicationConfig?.Language))
+        try
         {
+            if (!AppConfigHelper.TryGet<string>(LanguageKey, out var language))
+            {
+                return CultureNames.ChineseSimple;
+            }
+
+            return language!;
+        }
+        catch (Exception ex)
+        {
+            MessageBox.ShowAsync(ex.ToString());
             return CultureNames.ChineseSimple;
         }
-
-        return _applicationConfig.Language;
     }
 
     public void SetCulture(string culture)
     {
         try
         {
-            if (_applicationConfig == null)
-            {
-                _applicationConfig = new ApplicationConfig() { Language = culture };
-            }
-            else
-            {
-                _applicationConfig.Language = culture;
-            }
-
-            Save();
-
+            AppConfigHelper.Set(LanguageKey, culture);
             ChangeCulture(culture);
         }
         catch
@@ -134,16 +111,5 @@ internal class ApplicationService : IApplicationService
     private void ChangeCulture(string language)
     {
         I18nManager.Instance.Culture = new CultureInfo(language);
-    }
-
-    private void Save()
-    {
-        if (File.Exists(ConfigName))
-        {
-            File.Delete(ConfigName);
-        }
-
-        File.AppendAllText(ConfigName,
-            JsonSerializer.Serialize(_applicationConfig, _jsonSerializerOptions));
     }
 }
