@@ -15,20 +15,25 @@ public class DevelopmentModule : IModule
     {
         var groupName = Language.Development;
         toolMenuService.AddSeparator();
-        toolMenuService.AddGroup(groupName, Icons.Converter);
+        toolMenuService.AddGroup(groupName, Icons.Development);
         toolMenuService.AddItem(Language.YamlPrettify, groupName, Language.YamlPrettifyDescription, nameof(YamlPrettifyView),
-            Icons.Timestamp,
-            ToolStatus.Developing);
+            Icons.Yaml,
+            ToolStatus.Complete);
+        toolMenuService.AddItem(Language.JsonPrettify, groupName, Language.JsonPrettifyDescription, nameof(JsonPrettifyView),
+            Icons.Json,
+            ToolStatus.Complete);
     }
 
     public void OnInitialized(IContainerProvider containerProvider)
     {
         IRegionManager? regionManager = containerProvider.Resolve<IRegionManager>();
         regionManager.RegisterViewWithRegion<YamlPrettifyView>(RegionNames.ContentRegion);
+        regionManager.RegisterViewWithRegion<JsonPrettifyView>(RegionNames.ContentRegion);
     }
 
     public void RegisterTypes(IContainerRegistry containerRegistry)
     {
         containerRegistry.RegisterSingleton(typeof(YamlPrettifyViewModel));
+        containerRegistry.RegisterSingleton(typeof(JsonPrettifyViewModel));
     }
 }

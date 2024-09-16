@@ -1,0 +1,93 @@
+<UserControl
+    x:Class="CodeWF.Modules.Development.Views.JsonPrettifyView"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:AvaloniaEdit="clr-namespace:AvaloniaEdit;assembly=AvaloniaEdit"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:i18n="https://codewf.com"
+    xmlns:language="clr-namespace:CodeWF.Modules.Development.I18n"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:prism="http://prismlibrary.com/"
+    xmlns:vm="clr-namespace:CodeWF.Modules.Development.ViewModels"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    prism:ViewModelLocator.AutoWireViewModel="True"
+    x:DataType="vm:JsonPrettifyViewModel"
+    mc:Ignorable="d">
+    <Design.DataContext>
+        <vm:JsonPrettifyViewModel />
+    </Design.DataContext>
+    <UserControl.Styles>
+        <StyleInclude Source="../Styles/Index.axaml" />
+    </UserControl.Styles>
+    <Grid ColumnDefinitions="* 5 *" RowDefinitions="60 Auto * Auto">
+        <StackPanel
+            Grid.ColumnSpan="3"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Top"
+            Orientation="Horizontal">
+            <CheckBox
+                Margin="0,0,20,0"
+                Content="{i18n:I18n {x:Static language:Language.SortKey}}"
+                IsChecked="{Binding IsSortKey}" />
+            <TextBlock VerticalAlignment="Center" Text="{i18n:I18n {x:Static language:Language.IndentSize}}" />
+            <ComboBox
+                Width="100"
+                ItemsSource="{Binding IndentSizes}"
+                SelectedItem="{Binding IndentSize}" />
+        </StackPanel>
+
+        <TextBlock
+            Grid.Row="1"
+            Grid.Column="0"
+            Text="{i18n:I18n {x:Static language:Language.RawJson}}" />
+        <TextBox
+            Grid.Row="2"
+            Grid.Column="0"
+            VerticalAlignment="Stretch"
+            VerticalContentAlignment="Top"
+            Classes="TextArea"
+            Text="{Binding RawJson}"
+            TextWrapping="Wrap" />
+
+        <TextBlock
+            Grid.Row="3"
+            Grid.Column="0"
+            Foreground="Red"
+            Text="{Binding ErrorMessage}"
+            TextWrapping="Wrap" />
+
+        <TextBlock
+            Grid.Row="1"
+            Grid.Column="2"
+            Text="{i18n:I18n {x:Static language:Language.PrettifiedVersionJSON}}" />
+
+        <AvaloniaEdit:TextEditor
+            x:Name="FormatEditor"
+            Grid.Row="2"
+            Grid.Column="2"
+            FontFamily="{StaticResource ContentControlThemeFontFamily}"
+            ShowLineNumbers="True" />
+
+        <TextBox
+            x:Name="NoFormatEditor"
+            Grid.Row="2"
+            Grid.Column="2"
+            VerticalAlignment="Stretch"
+            VerticalContentAlignment="Top"
+            IsVisible="False"
+            TextWrapping="Wrap" />
+
+        <Button
+            Grid.Row="3"
+            Grid.Column="2"
+            Height="40"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            Classes="Success"
+            Command="{Binding RaiseCopyCommand}"
+            Content="Copy"
+            CornerRadius="5"
+            Theme="{DynamicResource BorderlessButton}" />
+    </Grid>
+</UserControl>

@@ -18,4 +18,8 @@ public static class Language
 	public static readonly string PrettifiedVersionYAML = "PrettifiedVersionYAML";
 	public static readonly string SortKey = "SortKey";
 	public static readonly string IndentSize = "IndentSize";
+	public static readonly string JsonPrettify = "JsonPrettify";
+	public static readonly string JsonPrettifyDescription = "JsonPrettifyDescription";
+	public static readonly string RawJson = "RawJson";
+	public static readonly string PrettifiedVersionJSON = "PrettifiedVersionJSON";
 }

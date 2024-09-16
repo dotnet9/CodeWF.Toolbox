@@ -118,4 +118,16 @@
   <data name="IndentSize" xml:space="preserve">
     <value>Indent size :</value>
   </data>
+  <data name="JsonPrettify" xml:space="preserve">
+    <value>JSON prettify and format</value>
+  </data>
+  <data name="JsonPrettifyDescription" xml:space="preserve">
+    <value>Prettify your JSON string into a friendly, human-readable format.</value>
+  </data>
+  <data name="RawJson" xml:space="preserve">
+    <value>Your raw JSON</value>
+  </data>
+  <data name="PrettifiedVersionJSON" xml:space="preserve">
+    <value>Prettified version of your JSON</value>
+  </data>
 </root>

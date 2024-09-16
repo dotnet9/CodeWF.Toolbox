@@ -79,11 +79,47 @@ namespace CodeWF.Modules.Development.I18n {
         }
         
         /// <summary>
+        ///   查找类似 JSON prettify and format 的本地化字符串。
+        /// </summary>
+        public static string JsonPrettify {
+            get {
+                return ResourceManager.GetString("JsonPrettify", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Prettify your JSON string into a friendly, human-readable format. 的本地化字符串。
+        /// </summary>
+        public static string JsonPrettifyDescription {
+            get {
+                return ResourceManager.GetString("JsonPrettifyDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Prettified version of your JSON 的本地化字符串。
+        /// </summary>
+        public static string PrettifiedVersionJSON {
+            get {
+                return ResourceManager.GetString("PrettifiedVersionJSON", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 Prettified version of your YAML 的本地化字符串。
         /// </summary>
         public static string PrettifiedVersionYAML {
             get {
                 return ResourceManager.GetString("PrettifiedVersionYAML", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Your raw JSON 的本地化字符串。
+        /// </summary>
+        public static string RawJson {
+            get {
+                return ResourceManager.GetString("RawJson", resourceCulture);
             }
         }
         

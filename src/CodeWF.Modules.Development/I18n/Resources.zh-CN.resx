@@ -126,4 +126,10 @@
   <data name="YamlPrettifyDescription" xml:space="preserve">
     <value>将YAML字符串修饰为友好的可读格式。</value>
   </data>
+  <data name="JsonPrettify" xml:space="preserve">
+    <value>JSON美化和格式化</value>
+  </data>
+  <data name="JsonPrettifyDescription" xml:space="preserve">
+    <value>将JSON字符串修饰为友好的可读格式。</value>
+  </data>
 </root>
