@@ -1,18 +1,15 @@
 ﻿using Avalonia.Controls;
 using AvaloniaEdit;
+using CodeWF.Tools.Extensions;
 using ReactiveUI;
 using System.Reactive;
 using System.Reactive.Linq;
-using YamlDotNet.Serialization;
-using YamlDotNet.Serialization.NamingConventions;
 
 namespace CodeWF.Modules.Development.ViewModels;
 
 public class YamlPrettifyViewModel : ReactiveObject
 {
-    private IDeserializer? _deserializer;
-    private ISerializer? _serializer;
-    public TextEditor YamlTextEditor { get; set; }
+    public TextEditor? YamlTextEditor { get; set; }
 
     public YamlPrettifyViewModel()
     {
@@ -39,34 +36,20 @@ public class YamlPrettifyViewModel : ReactiveObject
         get => _errorMessage;
         set => this.RaiseAndSetIfChanged(ref _errorMessage, value);
     }
+
     public ReactiveCommand<Unit, Unit> RaiseCopyCommand { get; }
 
     private void RawYamlChanged(string? newRawYaml)
     {
-        ErrorMessage = string.Empty;
-        if (string.IsNullOrWhiteSpace(RawYaml))
+        if (RawYaml.YamlPrettify(out var newYaml, out var errorMessage))
         {
-            YamlTextEditor.Text = default;
-            return;
+            YamlTextEditor!.Text = newYaml;
+            ErrorMessage = default;
         }
-
-        _deserializer ??= new DeserializerBuilder()
-            .WithNamingConvention(UnderscoredNamingConvention.Instance)
-            .Build();
-
-        _serializer ??= new SerializerBuilder()
-            .WithNamingConvention(CamelCaseNamingConvention.Instance)
-            .WithIndentedSequences()
-            .Build();
-
-        try
+        else
         {
-            var obj = _deserializer.Deserialize(RawYaml);
-            YamlTextEditor.Text = _serializer.Serialize(obj);
-        }
-        catch (Exception ex)
-        {
-            ErrorMessage = ex.Message;
+            YamlTextEditor!.Text = string.Empty;
+            ErrorMessage = errorMessage;
         }
     }
 

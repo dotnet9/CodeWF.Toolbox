@@ -1,11 +1,9 @@
 ﻿using Avalonia.Controls;
 using AvaloniaEdit;
+using CodeWF.Tools.Extensions;
 using ReactiveUI;
-using System.Diagnostics.Contracts;
 using System.Reactive;
 using System.Reactive.Linq;
-using System.Text.Encodings.Web;
-using System.Text.Json;
 
 namespace CodeWF.Modules.Development.ViewModels;
 
@@ -71,25 +69,15 @@ public class JsonPrettifyViewModel : ReactiveObject
 
     private void RawJsonChanged()
     {
-        ErrorMessage = string.Empty;
         if (FormatEditor == null || NoFormatEditor == null)
         {
             return;
         }
 
-        if (string.IsNullOrWhiteSpace(RawJson))
+        FormatEditor.IsVisible = IndentSize > 0;
+        NoFormatEditor.IsVisible = IndentSize <= 0;
+        if (RawJson.JsonPrettify(IndentSize, IsSortKey, out var newJson, out var errorMessage))
         {
-            FormatEditor.Text = NoFormatEditor.Text = default;
-            return;
-        }
-
-
-        try
-        {
-            var newJson = FormatJson(RawJson, IndentSize, IsSortKey);
-
-            FormatEditor.IsVisible = IndentSize > 0;
-            NoFormatEditor.IsVisible = IndentSize <= 0;
             if (IndentSize > 0)
             {
                 FormatEditor.Text = newJson;
@@ -98,88 +86,13 @@ public class JsonPrettifyViewModel : ReactiveObject
             {
                 NoFormatEditor.Text = newJson;
             }
+
+            ErrorMessage = default;
         }
-        catch (Exception ex)
+        else
         {
-            ErrorMessage = ex.Message;
-        }
-    }
-
-    public static string FormatJson(string jsonString, int indent, bool sortKeys)
-    {
-        var writerOptions = new JsonWriterOptions
-        {
-            Indented = indent > 0, IndentSize = indent, Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping
-        };
-        using var jsonDoc = JsonDocument.Parse(jsonString);
-        JsonElement sortedElement =
-            sortKeys ? SortJsonElement(jsonDoc.RootElement, writerOptions) : jsonDoc.RootElement;
-        using var stream = new MemoryStream();
-
-
-        using (var writer = new Utf8JsonWriter(stream, writerOptions))
-        {
-            sortedElement.WriteTo(writer);
-        }
-
-        string formattedJsonString = System.Text.Encoding.UTF8.GetString(stream.ToArray());
-        return formattedJsonString;
-    }
-
-    private static JsonElement SortJsonElement(JsonElement element, JsonWriterOptions writerOptions)
-    {
-        switch (element.ValueKind)
-        {
-            case JsonValueKind.Object:
-                var sortedObject = new SortedDictionary<string, JsonElement>();
-                foreach (var property in element.EnumerateObject())
-                {
-                    sortedObject[property.Name] = SortJsonElement(property.Value, writerOptions);
-                }
-
-                using (var stream = new MemoryStream())
-                {
-                    using (var writer = new Utf8JsonWriter(stream, writerOptions))
-                    {
-                        writer.WriteStartObject();
-                        foreach (var kvp in sortedObject)
-                        {
-                            writer.WritePropertyName(kvp.Key);
-                            kvp.Value.WriteTo(writer);
-                        }
-
-                        writer.WriteEndObject();
-                    }
-
-                    return JsonDocument.Parse(stream.ToArray()).RootElement;
-                }
-
-            case JsonValueKind.Array:
-                using (var stream = new MemoryStream())
-                {
-                    using (var writer = new Utf8JsonWriter(stream, writerOptions))
-                    {
-                        writer.WriteStartArray();
-                        foreach (var item in element.EnumerateArray())
-                        {
-                            var sortedItem = SortJsonElement(item, writerOptions);
-                            sortedItem.WriteTo(writer);
-                        }
-
-                        writer.WriteEndArray();
-                    }
-
-                    return JsonDocument.Parse(stream.ToArray()).RootElement;
-                }
-
-            case JsonValueKind.Undefined:
-            case JsonValueKind.String:
-            case JsonValueKind.Number:
-            case JsonValueKind.True:
-            case JsonValueKind.False:
-            case JsonValueKind.Null:
-            default:
-                return element;
+            FormatEditor!.Text = NoFormatEditor.Text = string.Empty;
+            ErrorMessage = errorMessage;
         }
     }
 
