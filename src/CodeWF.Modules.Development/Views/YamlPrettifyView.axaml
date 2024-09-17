@@ -17,9 +17,6 @@
     <Design.DataContext>
         <vm:YamlPrettifyViewModel />
     </Design.DataContext>
-    <UserControl.Styles>
-        <StyleInclude Source="../Styles/Index.axaml" />
-    </UserControl.Styles>
     <Grid ColumnDefinitions="* 5 *" RowDefinitions="Auto * Auto">
 
         <TextBlock
@@ -54,9 +51,9 @@
             ShowLineNumbers="True"
             SyntaxHighlighting="Yaml" />
 
-        <Button Grid.Row="2" Grid.Column="2" Content="Copy" HorizontalAlignment="Center"
+        <Button Grid.Row="2" Grid.Column="2" Content="Copy" HorizontalAlignment="Right"
                 VerticalAlignment="Center"
-                Classes="Success" Theme="{DynamicResource BorderlessButton}"
+                Classes="Success"
                 Height="40" CornerRadius="5"
                 Command="{Binding RaiseCopyCommand}"/>
     </Grid>

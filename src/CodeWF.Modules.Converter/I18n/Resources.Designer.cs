@@ -86,5 +86,41 @@ namespace CodeWF.Modules.Converter.I18n {
                 return ResourceManager.GetString("DateTimeFormatConversion", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   查找类似 JSON to YAML converter 的本地化字符串。
+        /// </summary>
+        public static string JsonToYaml {
+            get {
+                return ResourceManager.GetString("JsonToYaml", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Simply convert JSON to YAML with this online live converter. 的本地化字符串。
+        /// </summary>
+        public static string JsonToYamlDescription {
+            get {
+                return ResourceManager.GetString("JsonToYamlDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 YAML to JSON converter 的本地化字符串。
+        /// </summary>
+        public static string YamlToJson {
+            get {
+                return ResourceManager.GetString("YamlToJson", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Simply convert YAML to JSON with this online live converter. 的本地化字符串。
+        /// </summary>
+        public static string YamlToJsonDescription {
+            get {
+                return ResourceManager.GetString("YamlToJsonDescription", resourceCulture);
+            }
+        }
     }
 }

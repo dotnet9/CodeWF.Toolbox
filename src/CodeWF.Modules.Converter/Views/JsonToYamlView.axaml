@@ -1,0 +1,77 @@
+<UserControl
+    x:Class="CodeWF.Modules.Converter.Views.JsonToYamlView"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:AvaloniaEdit="clr-namespace:AvaloniaEdit;assembly=AvaloniaEdit"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:i18n="https://codewf.com"
+    xmlns:language="clr-namespace:CodeWF.Modules.Converter.I18n"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:prism="http://prismlibrary.com/"
+    xmlns:vm="clr-namespace:CodeWF.Modules.Converter.ViewModels"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    prism:ViewModelLocator.AutoWireViewModel="True"
+    x:DataType="vm:JsonToYamlViewModel"
+    mc:Ignorable="d">
+    <Design.DataContext>
+        <vm:JsonToYamlViewModel />
+    </Design.DataContext>
+    <Grid ColumnDefinitions="* 5 *" RowDefinitions="Auto * Auto Auto">
+        <TextBlock
+            Grid.Row="0"
+            Grid.Column="0"
+            Text="Your JSON" />
+
+        <AvaloniaEdit:TextEditor
+            x:Name="JsonEditor"
+            Grid.Row="1"
+            Grid.Column="0"
+            FontFamily="{StaticResource ContentControlThemeFontFamily}"
+            ShowLineNumbers="True"
+            SyntaxHighlighting="JSON" />
+
+        <Button
+            Grid.Row="2"
+            Grid.Column="0"
+            Height="40"
+            HorizontalAlignment="Right"
+            VerticalAlignment="Center"
+            Classes="Success"
+            Command="{Binding RaiseClearCommand}"
+            Content="Clear"
+            CornerRadius="5" />
+
+        <TextBlock
+            Grid.Row="3"
+            Grid.Column="0"
+            Foreground="Red"
+            Text="{Binding ErrorMessage}"
+            TextWrapping="Wrap" />
+
+        <TextBlock
+            Grid.Row="0"
+            Grid.Column="2"
+            Text="YAML from your JSON" />
+
+        <AvaloniaEdit:TextEditor
+            x:Name="YamlEditor"
+            Grid.Row="1"
+            Grid.Column="2"
+            FontFamily="{StaticResource ContentControlThemeFontFamily}"
+            ShowLineNumbers="True"
+            SyntaxHighlighting="YAML" />
+
+        <Button
+            Grid.Row="2"
+            Grid.Column="2"
+            Height="40"
+            HorizontalAlignment="Right"
+            VerticalAlignment="Center"
+            Classes="Success"
+            Command="{Binding RaiseCopyCommand}"
+            Content="Copy"
+            CornerRadius="5"
+            Theme="{DynamicResource BorderlessButton}" />
+    </Grid>
+</UserControl>

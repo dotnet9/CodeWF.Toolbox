@@ -17,9 +17,6 @@
     <Design.DataContext>
         <vm:JsonPrettifyViewModel />
     </Design.DataContext>
-    <UserControl.Styles>
-        <StyleInclude Source="../Styles/Index.axaml" />
-    </UserControl.Styles>
     <Grid ColumnDefinitions="* 5 *" RowDefinitions="60 Auto * Auto">
         <StackPanel
             Grid.ColumnSpan="3"
@@ -82,12 +79,11 @@
             Grid.Row="3"
             Grid.Column="2"
             Height="40"
-            HorizontalAlignment="Center"
+            HorizontalAlignment="Right"
             VerticalAlignment="Center"
             Classes="Success"
             Command="{Binding RaiseCopyCommand}"
             Content="Copy"
-            CornerRadius="5"
-            Theme="{DynamicResource BorderlessButton}" />
+            CornerRadius="5"/>
     </Grid>
 </UserControl>

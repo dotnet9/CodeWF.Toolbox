@@ -14,4 +14,8 @@ public static class Language
 	public static readonly string Converter = "Converter";
 	public static readonly string DateTimeConverter = "DateTimeConverter";
 	public static readonly string DateTimeFormatConversion = "DateTimeFormatConversion";
+	public static readonly string JsonToYaml = "JsonToYaml";
+	public static readonly string JsonToYamlDescription = "JsonToYamlDescription";
+	public static readonly string YamlToJson = "YamlToJson";
+	public static readonly string YamlToJsonDescription = "YamlToJsonDescription";
 }

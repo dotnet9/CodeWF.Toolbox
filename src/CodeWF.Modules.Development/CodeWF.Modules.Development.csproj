@@ -1,31 +1,31 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>net9.0</TargetFramework>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFramework>net9.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <None Include="I18n\Language.cs">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Language.tt</DependentUpon>
-    </None>
-  </ItemGroup>
+	<ItemGroup>
+		<None Include="I18n\Language.cs">
+			<DesignTime>True</DesignTime>
+			<AutoGen>True</AutoGen>
+			<DependentUpon>Language.tt</DependentUpon>
+		</None>
+	</ItemGroup>
 
-  <ItemGroup>
-    <PackageReference Include="AvaloniaEdit.TextMate" Version="11.1.0" />
-    <PackageReference Include="AvaloniaExtensions.Axaml" Version="0.0.2.5" />
-    <PackageReference Include="CodeWF.Tools" Version="1.2.4" />
-    <PackageReference Include="Prism.DryIoc.Avalonia" Version="8.1.97.11073" />
-    <PackageReference Include="Avalonia.ReactiveUI" Version="11.2.0-beta2" />
-    <PackageReference Include="TextMateSharp.Grammars" Version="1.0.63" />
-  </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="Prism.DryIoc.Avalonia" Version="8.1.97.11073" />
+		<PackageReference Include="Avalonia.ReactiveUI" Version="11.2.0-beta2" />
+		<PackageReference Include="AvaloniaEdit.TextMate" Version="11.1.0" />
+		<PackageReference Include="TextMateSharp.Grammars" Version="1.0.63" />
+		<PackageReference Include="AvaloniaExtensions.Axaml" Version="0.0.2.5" />
+		<PackageReference Include="CodeWF.Tools" Version="1.2.5.2" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\CodeWF.Core\CodeWF.Core.csproj" />
-  </ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\CodeWF.Core\CodeWF.Core.csproj" />
+	</ItemGroup>
 
 	<ItemGroup>
 		<Compile Update="I18n\Resources.Designer.cs">

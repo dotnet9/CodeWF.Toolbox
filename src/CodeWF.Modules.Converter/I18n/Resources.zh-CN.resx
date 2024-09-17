@@ -126,4 +126,16 @@
   <data name="DateTimeFormatConversion" xml:space="preserve">
     <value>将日期和时间转换为各种不同的格式</value>
   </data>
+  <data name="JsonToYaml" xml:space="preserve">
+    <value>JSON到YAML转换器</value>
+  </data>
+  <data name="JsonToYamlDescription" xml:space="preserve">
+    <value>在线转换将JSON转换为YAML。</value>
+  </data>
+  <data name="YamlToJson" xml:space="preserve">
+    <value>YAML到JSON转换器</value>
+  </data>
+  <data name="YamlToJsonDescription" xml:space="preserve">
+    <value>使用此在线转换器将YAML转换为JSON。</value>
+  </data>
 </root>
