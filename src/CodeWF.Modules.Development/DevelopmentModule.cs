@@ -22,6 +22,9 @@ public class DevelopmentModule : IModule
         toolMenuService.AddItem(Language.JsonPrettify, groupName, Language.JsonPrettifyDescription, nameof(JsonPrettifyView),
             Icons.Json,
             ToolStatus.Complete);
+        toolMenuService.AddItem("Test", groupName, "Test", nameof(TestView),
+            Icons.Json,
+            ToolStatus.Complete);
     }
 
     public void OnInitialized(IContainerProvider containerProvider)
@@ -29,11 +32,10 @@ public class DevelopmentModule : IModule
         IRegionManager? regionManager = containerProvider.Resolve<IRegionManager>();
         regionManager.RegisterViewWithRegion<YamlPrettifyView>(RegionNames.ContentRegion);
         regionManager.RegisterViewWithRegion<JsonPrettifyView>(RegionNames.ContentRegion);
+        regionManager.RegisterViewWithRegion<TestView>(RegionNames.ContentRegion);
     }
 
     public void RegisterTypes(IContainerRegistry containerRegistry)
     {
-        containerRegistry.RegisterSingleton(typeof(YamlPrettifyViewModel));
-        containerRegistry.RegisterSingleton(typeof(JsonPrettifyViewModel));
     }
 }

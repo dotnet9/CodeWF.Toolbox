@@ -2,7 +2,7 @@
 using Avalonia.Styling;
 using AvaloniaExtensions.Axaml.Markup;
 using CodeWF.Core;
-using CodeWF.Core.IServiceInterfaces;
+using CodeWF.Core.IServices;
 using CodeWF.Tools.Helpers;
 using System;
 using System.Globalization;

@@ -38,8 +38,5 @@ public class ConverterModule : IModule
 
     public void RegisterTypes(IContainerRegistry containerRegistry)
     {
-        containerRegistry.RegisterSingleton(typeof(DateTimeConverterViewModel));
-        containerRegistry.RegisterSingleton(typeof(YamlToJsonViewModel));
-        containerRegistry.RegisterSingleton(typeof(JsonToYamlViewModel));
     }
 }

@@ -2,7 +2,8 @@ using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Markup.Xaml;
 using CodeWF.Core;
-using CodeWF.Core.IServiceInterfaces;
+using CodeWF.Core.IServices;
+using CodeWF.Core.Services;
 using CodeWF.Modules.AI;
 using CodeWF.Modules.Converter;
 using CodeWF.Modules.Development;
@@ -63,6 +64,8 @@ public partial class App : PrismApplication
 
         containerRegistry.RegisterSingleton<IApplicationService, ApplicationService>();
         containerRegistry.RegisterSingleton<IToolMenuService, ToolMenuService>();
+        containerRegistry.RegisterSingleton<IFileChooserService, FileChooserService>();
+        containerRegistry.RegisterSingleton<INotificationService, NotificationService>();
 
         containerRegistry.Register<MainWindow>();
     }

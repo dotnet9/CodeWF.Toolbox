@@ -1,14 +1,19 @@
 using Avalonia.Controls;
 using Avalonia.Markup.Xaml;
-using CodeWF.Core.IServiceInterfaces;
+using CodeWF.Core.IServices;
 using Ursa.Controls;
 
 namespace CodeWF.Toolbox.Views;
 
 public partial class MainWindow : UrsaWindow
 {
-    public MainWindow(IApplicationService applicationService)
+    private readonly IFileChooserService _fileChooserService;
+    private readonly INotificationService _notificationService;
+
+    public MainWindow(IApplicationService applicationService, IFileChooserService fileChooserService, INotificationService notificationService)
     {
+        _fileChooserService = fileChooserService;
+        _notificationService = notificationService;
         InitializeComponent();
         AdjustWindowSize();
         applicationService.Load();
@@ -17,6 +22,8 @@ public partial class MainWindow : UrsaWindow
     private void InitializeComponent()
     {
         AvaloniaXamlLoader.Load(this);
+        _fileChooserService.SetHostWindow(this);
+        _notificationService.SetHostWindow(this);
     }
 
     private void AdjustWindowSize()

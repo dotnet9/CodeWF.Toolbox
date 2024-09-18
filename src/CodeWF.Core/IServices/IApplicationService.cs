@@ -1,6 +1,6 @@
 ﻿using Avalonia.Styling;
 
-namespace CodeWF.Core.IServiceInterfaces;
+namespace CodeWF.Core.IServices;
 public interface IApplicationService
 {
     void Load();
