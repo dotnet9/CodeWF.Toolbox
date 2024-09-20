@@ -7,6 +7,9 @@
 	<assembly fullname="Prism.Avalonia" preserve="All" />
 	<assembly fullname="Prism.DryIoc.Avalonia" preserve="All" />
 	<assembly fullname="CodeWF.Core" preserve="All" />
+	<assembly fullname="Dapper" preserve="All" />
+	<assembly fullname="Dapper.AOT" preserve="All" />
+	<assembly fullname="CodeWF.Core" preserve="All" />
 	<assembly fullname="System.Net.Http" preserve="All" />
 	<assembly fullname="System.Configuration.ConfigurationManager" preserve="All" />
 	<assembly fullname="CodeWF.ViewModels" preserve="All" />

@@ -1,10 +1,11 @@
 ﻿using CodeWF.NetWeaver;
 using CodeWF.NetWeaver.Base;
 using ConsoleAotDemo.Dtos;
+using System.Reflection;
 
 var student = new Person { Name = "帅哥", Property = 100 };
-
-Console.WriteLine($"帅哥信息如下：\r\n{student}");
+var properties = student.GetType().GetProperties(BindingFlags.Public|BindingFlags.Instance);
+Console.WriteLine($"帅哥信息如下({properties.Length}条)：\r\n{student}");
 
 var buffer = student.Serialize(1);
 Console.WriteLine($"名下：{buffer?.Length}套房");

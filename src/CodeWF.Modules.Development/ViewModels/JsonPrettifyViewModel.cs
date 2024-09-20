@@ -1,5 +1,7 @@
 ﻿using Avalonia.Controls;
 using AvaloniaEdit;
+using CodeWF.Modules.Development.Helpers;
+using CodeWF.Modules.Development.Models;
 using CodeWF.Tools.Extensions;
 using ReactiveUI;
 using System.Reactive;
@@ -12,9 +14,15 @@ public class JsonPrettifyViewModel : ReactiveObject
     public TextEditor? FormatEditor { get; set; }
     public TextBox? NoFormatEditor { get; set; }
 
+    private JsonPrettifyEntity _config; 
+
     public JsonPrettifyViewModel()
     {
         RaiseCopyCommand = ReactiveCommand.CreateFromTask(RaiseCopyHandlerAsync);
+
+        _config = ConfigHelper.GetJsonPrettifyConfig();
+        _isSortKey = _config.IsSortKey;
+        _indentSize = _config.IndentSize;
 
         this.WhenAnyValue(x => x.RawJson)
             .Throttle(TimeSpan.FromMilliseconds(400))
@@ -35,7 +43,12 @@ public class JsonPrettifyViewModel : ReactiveObject
     public bool IsSortKey
     {
         get => _isSortKey;
-        set => this.RaiseAndSetIfChanged(ref _isSortKey, value);
+        set
+        {
+            this.RaiseAndSetIfChanged(ref _isSortKey, value);
+            _config.IsSortKey = value;
+            ConfigHelper.UpdateJsonPrettifyConfig(_config);
+        }
     }
 
     public List<int> IndentSizes { get; } = Enumerable.Range(0, 10).ToList();
@@ -45,7 +58,12 @@ public class JsonPrettifyViewModel : ReactiveObject
     public int IndentSize
     {
         get => _indentSize;
-        set => this.RaiseAndSetIfChanged(ref _indentSize, value);
+        set
+        {
+            this.RaiseAndSetIfChanged(ref _indentSize, value);
+            _config.IndentSize = value;
+            ConfigHelper.UpdateJsonPrettifyConfig(_config);
+        }
     }
 
 

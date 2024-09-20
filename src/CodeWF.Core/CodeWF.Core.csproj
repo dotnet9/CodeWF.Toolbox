@@ -8,6 +8,9 @@
 
   <ItemGroup>
     <PackageReference Include="Avalonia" Version="11.2.0-beta2" />
+    <PackageReference Include="Dapper" Version="2.1.35" />
+    <PackageReference Include="Dapper.AOT" Version="1.0.31" />
+    <PackageReference Include="Microsoft.Data.Sqlite" Version="9.0.0-rc.1.24451.1" />
   </ItemGroup>
 
 </Project>
