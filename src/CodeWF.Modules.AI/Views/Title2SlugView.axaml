@@ -8,7 +8,7 @@
              x:DataType="vm:Title2SlugViewModel"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="CodeWF.Modules.AI.Views.Title2SlugView">
-    <Grid ColumnDefinitions="* 100" RowDefinitions="300 10 40" VerticalAlignment="Top">
+    <Grid ColumnDefinitions="* 100" RowDefinitions="300 40 40" VerticalAlignment="Top">
         <TextBox Text="{Binding ResponseContent}" Padding="5" Classes="TextArea"
                  Grid.ColumnSpan="2" VerticalAlignment="Stretch" VerticalContentAlignment="Top" TextWrapping="Wrap" />
 

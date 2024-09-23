@@ -12,6 +12,7 @@ using System.Collections.ObjectModel;
 using System.Reactive;
 using System.Reactive.Linq;
 using Ursa.Controls;
+using Ursa.PrismExtension;
 
 namespace CodeWF.Modules.AI.ViewModels;
 
@@ -19,15 +20,21 @@ public class PolyTranslateViewModel : ReactiveObject
 {
     private readonly IContainerExtension _container;
     private readonly ApiClient _apiClient;
+    private readonly IUrsaOverlayDialogService _overlayDialogService;
     private List<string> _choiceLanguages;
     private readonly ChatGptOptions _chatGptOptions = new();
 
-    public PolyTranslateViewModel(IContainerExtension container, ApiClient apiClient)
+    public PolyTranslateViewModel(IContainerExtension container, ApiClient apiClient,
+        IUrsaOverlayDialogService overlayDialogService)
     {
         _container = container;
         _apiClient = apiClient;
+        _overlayDialogService = overlayDialogService;
 
-        _choiceLanguages = ["Chinese Simplified", "Chinese Traditional", "English (United States)", "Japanese (Japan)"];
+        _choiceLanguages = ConfigHelper.GetTranslateLanguages() ??
+        [
+            "Chinese Simplified", "Chinese Traditional", "English (United States)", "Japanese (Japan)"
+        ];
         Languages = string.Join(",", _choiceLanguages);
 
         this.WhenAnyValue(x => x.AskContent)
@@ -102,15 +109,12 @@ public class PolyTranslateViewModel : ReactiveObject
                 Title = I18nManager.GetString(Language.LanguageKey), Buttons = DialogButton.OK
             };
 
-        // 这种方式第一次可以，再一次运行异常
-        //await _overlayDialogService.ShowModal(DialogNames.Setting, null, HostIds.Main, option);
         var vm = _container.Resolve<ChoiceLanguagesViewModel>();
         vm.SelectedLanguages = new RangeObservableCollection<string> { _choiceLanguages };
         vm.AllLanguages = new RangeObservableCollection<string> { LanguageList.Languages.Except(_choiceLanguages) };
-
-        // 这种方式是可以的，手工获取视图实例
-        await OverlayDialog.ShowModal(_container.Resolve<ChoiceLanguagesView>(), vm, HostIds.Main, option);
+        await _overlayDialogService.ShowModal(DialogNames.ChoiceLanguages, vm, HostIds.Main, option);
         _choiceLanguages = vm.SelectedLanguages.ToList();
         Languages = string.Join(",", vm.SelectedLanguages);
+        ConfigHelper.UpdateTranslateLanguages(_choiceLanguages);
     }
 }

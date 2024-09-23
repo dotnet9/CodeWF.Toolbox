@@ -1,4 +1,4 @@
-﻿namespace CodeWF.Modules.Development.Models;
+﻿namespace CodeWF.Modules.Development.Entities;
 
 public class JsonPrettifyEntity
 {

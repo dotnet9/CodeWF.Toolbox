@@ -1,7 +1,7 @@
 ﻿using Avalonia.Controls;
 using AvaloniaEdit;
 using CodeWF.Modules.Development.Helpers;
-using CodeWF.Modules.Development.Models;
+using CodeWF.Modules.Development.Entities;
 using CodeWF.Tools.Extensions;
 using ReactiveUI;
 using System.Reactive;

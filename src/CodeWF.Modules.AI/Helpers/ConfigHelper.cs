@@ -1,9 +1,9 @@
 ﻿using CodeWF.Core.ConfigDB;
-using CodeWF.Modules.Development.Entities;
+using CodeWF.Modules.AI.Entities;
 using Dapper;
 using Microsoft.Data.Sqlite;
 
-namespace CodeWF.Modules.Development.Helpers;
+namespace CodeWF.Modules.AI.Helpers;
 
 public static class ConfigHelper
 {
@@ -16,9 +16,8 @@ public static class ConfigHelper
             connection.Open();
 
             const string sql = $@"
-                CREATE TABLE IF NOT EXISTS {nameof(JsonPrettifyEntity)}(
-                    {nameof(JsonPrettifyEntity.IsSortKey)} Bool,
-                    {nameof(JsonPrettifyEntity.IndentSize)} INTEGER
+                CREATE TABLE IF NOT EXISTS {nameof(TranslateLanguageEntity)}(
+                    {nameof(TranslateLanguageEntity.Languages)} VARCHAR(3072)
             )";
 
             using var command = new SqliteCommand(sql, connection);
@@ -31,7 +30,7 @@ public static class ConfigHelper
     }
 
     [DapperAot]
-    public static JsonPrettifyEntity GetJsonPrettifyConfig()
+    public static List<string>? GetTranslateLanguages()
     {
         try
         {
@@ -41,20 +40,19 @@ public static class ConfigHelper
             connection.Open();
 
             const string sql =
-                $@"SELECT {nameof(JsonPrettifyEntity.IsSortKey)},{nameof(JsonPrettifyEntity.IndentSize)} FROM {nameof(JsonPrettifyEntity)}";
-            var config = connection.QueryFirstOrDefault<JsonPrettifyEntity>(sql);
-            config ??= new JsonPrettifyEntity() { IsSortKey = false, IndentSize = 2 };
+                $@"SELECT {nameof(TranslateLanguageEntity.Languages)} FROM {nameof(TranslateLanguageEntity)}";
+            var config = connection.QueryFirstOrDefault<TranslateLanguageEntity>(sql);
 
-            return config;
+            return config?.Languages?.Split(',').ToList();
         }
         catch (Exception ex)
         {
-            return new JsonPrettifyEntity() { IsSortKey = false, IndentSize = 2 };
+            return default;
         }
     }
-    
+
     [DapperAot]
-    public static bool UpdateJsonPrettifyConfig(JsonPrettifyEntity config)
+    public static bool UpdateTranslateLanguages(List<string>? languages)
     {
         try
         {
@@ -62,11 +60,17 @@ public static class ConfigHelper
 
             using var connection = new SqliteConnection(DBConst.DBConnectionString);
             connection.Open();
-            connection.Execute($"DELETE FROM {nameof(JsonPrettifyEntity)}");
+            connection.Execute($"DELETE FROM {nameof(TranslateLanguageEntity)}");
+            if (languages?.Any() != true)
+            {
+                return false;
+            }
+
+            var languageStr = string.Join(",", languages)!;
             var result = connection.Execute(
-                @$"INSERT INTO {nameof(JsonPrettifyEntity)}({nameof(JsonPrettifyEntity.IsSortKey)},{nameof(JsonPrettifyEntity.IndentSize)})
-                        VALUES(@{nameof(JsonPrettifyEntity.IsSortKey)},@{nameof(JsonPrettifyEntity.IndentSize)})",
-                config);
+                @$"INSERT INTO {nameof(TranslateLanguageEntity)}({nameof(TranslateLanguageEntity.Languages)})
+                        VALUES(@{nameof(TranslateLanguageEntity.Languages)})",
+                new { Languages = languageStr });
             return result > 0;
         }
         catch (Exception ex)
