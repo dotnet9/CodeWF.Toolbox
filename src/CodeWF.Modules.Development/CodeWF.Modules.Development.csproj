@@ -6,14 +6,6 @@
 		<Nullable>enable</Nullable>
 		<InterceptorsPreviewNamespaces>$(InterceptorsPreviewNamespaces);Dapper.AOT</InterceptorsPreviewNamespaces>
 	</PropertyGroup>
-
-	<ItemGroup>
-	  <AvaloniaXaml Remove="新文件夹\**" />
-	  <Compile Remove="新文件夹\**" />
-	  <EmbeddedResource Remove="新文件夹\**" />
-	  <None Remove="新文件夹\**" />
-	</ItemGroup>
-
 	<ItemGroup>
 		<None Include="I18n\Language.cs">
 			<DesignTime>True</DesignTime>
@@ -37,6 +29,11 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<Compile Update="I18n\Language.cs">
+		  <DesignTime>True</DesignTime>
+		  <AutoGen>True</AutoGen>
+		  <DependentUpon>Language.tt</DependentUpon>
+		</Compile>
 		<Compile Update="I18n\Resources.Designer.cs">
 			<DesignTime>True</DesignTime>
 			<AutoGen>True</AutoGen>
@@ -59,7 +56,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<Service Include="{508349b6-6b84-4df5-91f0-309beebad82d}" />
+	  <Service Include="{508349b6-6b84-4df5-91f0-309beebad82d}" />
 	</ItemGroup>
 
 </Project>
