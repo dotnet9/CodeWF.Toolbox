@@ -20,7 +20,7 @@
         </ResourceDictionary>
     </UserControl.Resources>
 	<Border Padding="0" Theme="{DynamicResource CardBorder}">
-        <Grid>
+        <Grid RowDefinitions="* Auto">
 			<u:NavMenu
                 ExpandWidth="200"
                 HeaderBinding="{i18n:I18n {Binding Name}}"
@@ -67,7 +67,7 @@
                         Data="{StaticResource NavigationMenuExpandIconGlyph}" />
                 </ToggleSwitch.OffContent>
             </ToggleSwitch>
-            <StackPanel VerticalAlignment="Bottom">
+            <StackPanel Grid.Row="1">
 				<u:Divider />
                 <Button Content="{i18n:I18n {x:Static language:Language.Setting}}" Command="{Binding RaiseOpenSettingHandlerAsync}" HorizontalAlignment="Stretch"/>
             </StackPanel>

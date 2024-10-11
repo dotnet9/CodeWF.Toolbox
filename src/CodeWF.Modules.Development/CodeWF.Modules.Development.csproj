@@ -8,6 +8,13 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+	  <AvaloniaXaml Remove="新文件夹\**" />
+	  <Compile Remove="新文件夹\**" />
+	  <EmbeddedResource Remove="新文件夹\**" />
+	  <None Remove="新文件夹\**" />
+	</ItemGroup>
+
+	<ItemGroup>
 		<None Include="I18n\Language.cs">
 			<DesignTime>True</DesignTime>
 			<AutoGen>True</AutoGen>
@@ -19,6 +26,7 @@
 		<PackageReference Include="Prism.DryIoc.Avalonia" Version="8.1.97.11073" />
 		<PackageReference Include="Avalonia.ReactiveUI" Version="11.2.0-rc1" />
 		<PackageReference Include="AvaloniaEdit.TextMate" Version="11.1.0" />
+		<PackageReference Include="Quartz" Version="3.13.0" />
 		<PackageReference Include="TextMateSharp.Grammars" Version="1.0.63" />
 		<PackageReference Include="AvaloniaExtensions.Axaml" Version="0.0.2.7" />
 		<PackageReference Include="CodeWF.Tools" Version="1.2.5.2" />

@@ -8,7 +8,7 @@
 	</PropertyGroup>
 	<ItemGroup>
 		<PackageReference Include="AvaloniaExtensions.Axaml" Version="0.0.2.7" />
-		<PackageReference Include="CodeWF.AvaloniaControls" Version="0.0.3.4" />
+		<PackageReference Include="CodeWF.AvaloniaControls" Version="0.0.3.5" />
 		<PackageReference Include="Prism.Avalonia" Version="8.1.97.11073" />
 		<PackageReference Include="Prism.DryIoc.Avalonia" Version="8.1.97.11073" />
 		<PackageReference Include="Avalonia.ReactiveUI" Version="11.2.0-rc1" />

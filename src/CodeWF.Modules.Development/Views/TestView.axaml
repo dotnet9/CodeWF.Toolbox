@@ -11,6 +11,7 @@
 
     <WrapPanel>
       <Button Content="Open File" Command="{Binding RaiseOpenFileCommand}"/>
-      <Button Content="Notification" Command="{Binding RaiseNotificationCommand}"/>
+      <Button Content="Notification" Command="{Binding RaiseNotificationCommand}" Margin="10 0"/>
+		<TextBlock Text="{Binding CurrentTime}" VerticalAlignment="Center" />
   </WrapPanel>
 </UserControl>
