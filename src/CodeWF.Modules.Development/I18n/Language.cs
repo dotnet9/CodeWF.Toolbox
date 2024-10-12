@@ -22,4 +22,14 @@ public static class Language
 	public static readonly string JsonPrettifyDescription = "JsonPrettifyDescription";
 	public static readonly string RawJson = "RawJson";
 	public static readonly string PrettifiedVersionJSON = "PrettifiedVersionJSON";
+	public static readonly string CompressFiles = "CompressFiles";
+	public static readonly string DecompressionFiles = "DecompressionFiles";
+	public static readonly string SelectCompressFiles = "SelectCompressFiles";
+	public static readonly string SaveCompressedFile = "SaveCompressedFile";
+	public static readonly string CompressFileExceptionTitle = "CompressFileExceptionTitle";
+	public static readonly string CompressFileExceptionContent = "CompressFileExceptionContent";
+	public static readonly string SelectDecompressionFile = "SelectDecompressionFile";
+	public static readonly string SelectDirectory = "SelectDirectory";
+	public static readonly string DecompressionFileExceptionTitle = "DecompressionFileExceptionTitle";
+	public static readonly string DecompressionFileExceptionContent = "DecompressionFileExceptionContent";
 }

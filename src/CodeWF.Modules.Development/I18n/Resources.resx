@@ -130,4 +130,34 @@
   <data name="PrettifiedVersionJSON" xml:space="preserve">
     <value>Prettified version of your JSON</value>
   </data>
+  <data name="CompressFiles" xml:space="preserve">
+    <value>Compress files</value>
+  </data>
+  <data name="DecompressionFiles" xml:space="preserve">
+    <value>Decompression files</value>
+  </data>
+  <data name="SelectCompressFiles" xml:space="preserve">
+    <value>Select the list of files to be compressed</value>
+  </data>
+  <data name="SaveCompressedFile" xml:space="preserve">
+    <value>Save compressed file</value>
+  </data>
+  <data name="CompressFileExceptionTitle" xml:space="preserve">
+    <value>Compress file exception</value>
+  </data>
+  <data name="CompressFileExceptionContent" xml:space="preserve">
+    <value>Compress file exception: {0}</value>
+  </data>
+  <data name="SelectDecompressionFile" xml:space="preserve">
+    <value>Select the zip file to be decompression</value>
+  </data>
+  <data name="SelectDirectory" xml:space="preserve">
+    <value>Select the directory to save after decompression</value>
+  </data>
+  <data name="DecompressionFileExceptionTitle" xml:space="preserve">
+    <value>Decompression file exception</value>
+  </data>
+  <data name="DecompressionFileExceptionContent" xml:space="preserve">
+    <value>Decompression file exception: {0}</value>
+  </data>
 </root>

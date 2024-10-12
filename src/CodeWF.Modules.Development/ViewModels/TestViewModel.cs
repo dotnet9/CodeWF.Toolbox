@@ -1,7 +1,9 @@
 ﻿using Avalonia.Platform.Storage;
-using Avalonia.Threading;
+using AvaloniaExtensions.Axaml.Markup;
 using CodeWF.Core.IServices;
+using CodeWF.Modules.Development.I18n;
 using CodeWF.Modules.Development.Jobs;
+using CodeWF.Tools.FileExtensions;
 using Quartz;
 using Quartz.Impl;
 using ReactiveUI;
@@ -14,14 +16,15 @@ public class TestViewModel : ReactiveObject
     private readonly IFileChooserService _fileChooserService;
     private readonly INotificationService _notificationService;
 
+    private readonly FilePickerFileType _zipFilePickerFileType =
+        new("Zip file") { Patterns = ["*.zip"] };
+
     public TestViewModel(IFileChooserService fileChooserService, INotificationService notificationService)
     {
         _fileChooserService = fileChooserService;
         _notificationService = notificationService;
-        RaiseOpenFileCommand = ReactiveCommand.CreateFromTask(RaiseOpenFileHandler);
-        RaiseSelectFolderCommand = ReactiveCommand.CreateFromTask(RaiseSelectFolderHandler);
-        RaiseSaveFileCommand = ReactiveCommand.CreateFromTask(RaiseSaveFileHandler);
-        RaiseNotificationCommand = ReactiveCommand.CreateFromTask(RaiseNotificationHandler);
+        RaiseCompressCommand = ReactiveCommand.CreateFromTask(RaiseCompressHandler);
+        RaiseDecompressionCommand = ReactiveCommand.CreateFromTask(RaiseDecompressionHandler);
         Instance = this;
         StartTaskAsync();
     }
@@ -35,28 +38,69 @@ public class TestViewModel : ReactiveObject
         set => this.RaiseAndSetIfChanged(ref _currentTime, value);
     }
 
-    public ReactiveCommand<Unit, Unit> RaiseOpenFileCommand { get; }
-    public ReactiveCommand<Unit, Unit> RaiseSelectFolderCommand { get; }
-    public ReactiveCommand<Unit, Unit> RaiseSaveFileCommand { get; }
-    public ReactiveCommand<Unit, Unit> RaiseNotificationCommand { get; }
+    public ReactiveCommand<Unit, Unit> RaiseCompressCommand { get; }
+    public ReactiveCommand<Unit, Unit> RaiseDecompressionCommand { get; }
 
-    private async Task RaiseOpenFileHandler()
+    private async Task RaiseCompressHandler()
     {
-        await _fileChooserService.OpenFileAsync("打开文件", false,
-            new List<FilePickerFileType> { FilePickerFileTypes.TextPlain });
+        try
+        {
+            var files = await _fileChooserService.OpenFileAsync(I18nManager.GetString(Language.SelectCompressFiles)!,
+                true,
+                [FilePickerFileTypes.All]);
+            if (!(files?.Count > 0))
+            {
+                return;
+            }
+
+            var saveFile = await _fileChooserService.SaveFileAsync(I18nManager.GetString(Language.SaveCompressedFile)!,
+                [_zipFilePickerFileType]);
+            if (string.IsNullOrWhiteSpace(saveFile))
+            {
+                return;
+            }
+
+            ISevenZipCompressor zipHelper = new SevenZipCompressor();
+            zipHelper.Zip(files, saveFile);
+            FileHelper.OpenFolderAndSelectFile(saveFile);
+        }
+        catch (Exception ex)
+        {
+            _notificationService.Show(I18nManager.GetString(Language.CompressFileExceptionTitle)!,
+                string.Format(I18nManager.GetString(Language.CompressFileExceptionContent)!, ex));
+        }
     }
 
-    private async Task RaiseSelectFolderHandler()
+    private async Task RaiseDecompressionHandler()
     {
-    }
+        try
+        {
+            var files = await _fileChooserService.OpenFileAsync(I18nManager.GetString(Language.SelectDecompressionFile)!, false,
+                [_zipFilePickerFileType]);
+            if (!(files?.Count > 0))
+            {
+                return;
+            }
 
-    private async Task RaiseSaveFileHandler()
-    {
-    }
+            var zipFile = files[0];
 
-    private async Task RaiseNotificationHandler()
-    {
-        _notificationService.Show("New Message", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss fff"));
+            var dirs = await _fileChooserService.OpenFolderAsync(I18nManager.GetString(Language.SelectDirectory)!);
+            if (!(dirs?.Count > 0))
+            {
+                return;
+            }
+
+            var saveDir = dirs[0];
+            ISevenZipCompressor zipHelper = new SevenZipCompressor();
+            zipHelper.Decompress(zipFile, saveDir);
+
+            FileHelper.OpenFolder(saveDir);
+        }
+        catch (Exception ex)
+        {
+            _notificationService.Show(I18nManager.GetString(Language.DecompressionFileExceptionTitle)!,
+                string.Format(I18nManager.GetString(Language.DecompressionFileExceptionContent)!, ex));
+        }
     }
 
     private async Task StartTaskAsync()

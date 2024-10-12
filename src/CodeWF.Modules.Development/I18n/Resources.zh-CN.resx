@@ -132,4 +132,34 @@
   <data name="JsonPrettifyDescription" xml:space="preserve">
     <value>将JSON字符串修饰为友好的可读格式。</value>
   </data>
+  <data name="CompressFiles" xml:space="preserve">
+    <value>压缩文件</value>
+  </data>
+  <data name="DecompressionFiles" xml:space="preserve">
+    <value>解压文件</value>
+  </data>
+  <data name="SelectCompressFiles" xml:space="preserve">
+    <value>选择要压缩的文件列表</value>
+  </data>
+  <data name="SaveCompressedFile" xml:space="preserve">
+    <value>保存压缩文件</value>
+  </data>
+  <data name="CompressFileExceptionTitle" xml:space="preserve">
+    <value>压缩文件异常</value>
+  </data>
+  <data name="CompressFileExceptionContent" xml:space="preserve">
+    <value>压缩文件异常: {0}</value>
+  </data>
+  <data name="SelectDecompressionFile" xml:space="preserve">
+    <value>选择要解压缩的zip文件</value>
+  </data>
+  <data name="SelectDirectory" xml:space="preserve">
+    <value>解压后选择要保存的目录</value>
+  </data>
+  <data name="DecompressionFileExceptionTitle" xml:space="preserve">
+    <value>解压文件异常</value>
+  </data>
+  <data name="DecompressionFileExceptionContent" xml:space="preserve">
+    <value>解压文件异常: {0}</value>
+  </data>
 </root>

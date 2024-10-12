@@ -61,6 +61,60 @@ namespace CodeWF.Modules.Development.I18n {
         }
         
         /// <summary>
+        ///   查找类似 Compress file exception: {0} 的本地化字符串。
+        /// </summary>
+        public static string CompressFileExceptionContent {
+            get {
+                return ResourceManager.GetString("CompressFileExceptionContent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Compress file exception 的本地化字符串。
+        /// </summary>
+        public static string CompressFileExceptionTitle {
+            get {
+                return ResourceManager.GetString("CompressFileExceptionTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Compress files 的本地化字符串。
+        /// </summary>
+        public static string CompressFiles {
+            get {
+                return ResourceManager.GetString("CompressFiles", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Decompression file exception: {0} 的本地化字符串。
+        /// </summary>
+        public static string DecompressionFileExceptionContent {
+            get {
+                return ResourceManager.GetString("DecompressionFileExceptionContent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Decompression file exception 的本地化字符串。
+        /// </summary>
+        public static string DecompressionFileExceptionTitle {
+            get {
+                return ResourceManager.GetString("DecompressionFileExceptionTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Decompression files 的本地化字符串。
+        /// </summary>
+        public static string DecompressionFiles {
+            get {
+                return ResourceManager.GetString("DecompressionFiles", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 Development 的本地化字符串。
         /// </summary>
         public static string Development {
@@ -129,6 +183,42 @@ namespace CodeWF.Modules.Development.I18n {
         public static string RawYaml {
             get {
                 return ResourceManager.GetString("RawYaml", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Save compressed file 的本地化字符串。
+        /// </summary>
+        public static string SaveCompressedFile {
+            get {
+                return ResourceManager.GetString("SaveCompressedFile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Select the list of files to be compressed 的本地化字符串。
+        /// </summary>
+        public static string SelectCompressFiles {
+            get {
+                return ResourceManager.GetString("SelectCompressFiles", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Select the zip file to be decompression 的本地化字符串。
+        /// </summary>
+        public static string SelectDecompressionFile {
+            get {
+                return ResourceManager.GetString("SelectDecompressionFile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Select the directory to save after decompression 的本地化字符串。
+        /// </summary>
+        public static string SelectDirectory {
+            get {
+                return ResourceManager.GetString("SelectDirectory", resourceCulture);
             }
         }
         

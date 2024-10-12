@@ -126,4 +126,34 @@
   <data name="YamlPrettifyDescription" xml:space="preserve">
     <value>YAML文字列をフレンドリーな可読フォーマットに変更します。</value>
   </data>
+  <data name="CompressFiles" xml:space="preserve">
+    <value>圧縮ファイル</value>
+  </data>
+  <data name="DecompressionFiles" xml:space="preserve">
+    <value>ファイルを展開</value>
+  </data>
+  <data name="SelectCompressFiles" xml:space="preserve">
+    <value>圧縮するファイルリストを選択</value>
+  </data>
+  <data name="SaveCompressedFile" xml:space="preserve">
+    <value>Save compressed file</value>
+  </data>
+  <data name="CompressFileExceptionTitle" xml:space="preserve">
+    <value>圧縮ファイルの例外</value>
+  </data>
+  <data name="CompressFileExceptionContent" xml:space="preserve">
+    <value>圧縮ファイルの例外: {0}</value>
+  </data>
+  <data name="SelectDecompressionFile" xml:space="preserve">
+    <value>解凍するzipファイルを選択</value>
+  </data>
+  <data name="SelectDirectory" xml:space="preserve">
+    <value>解凍後に保存するディレクトリを選択</value>
+  </data>
+  <data name="DecompressionFileExceptionTitle" xml:space="preserve">
+    <value>解凍ファイル例外</value>
+  </data>
+  <data name="DecompressionFileExceptionContent" xml:space="preserve">
+    <value>解凍ファイル例外: {0}</value>
+  </data>
 </root>

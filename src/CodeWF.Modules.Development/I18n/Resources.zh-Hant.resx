@@ -126,4 +126,34 @@
   <data name="YamlPrettifyDescription" xml:space="preserve">
     <value>將你的YAML字串美化成一種友好的、人類可讀的格式。</value>
   </data>
+  <data name="CompressFiles" xml:space="preserve">
+    <value>壓縮檔</value>
+  </data>
+  <data name="DecompressionFiles" xml:space="preserve">
+    <value>解壓縮檔案</value>
+  </data>
+  <data name="SelectCompressFiles" xml:space="preserve">
+    <value>選擇要壓縮的檔案清單</value>
+  </data>
+  <data name="SaveCompressedFile" xml:space="preserve">
+    <value>保存壓縮檔</value>
+  </data>
+  <data name="CompressFileExceptionTitle" xml:space="preserve">
+    <value>壓縮檔异常</value>
+  </data>
+  <data name="CompressFileExceptionContent" xml:space="preserve">
+    <value>壓縮檔异常: {0}</value>
+  </data>
+  <data name="SelectDecompressionFile" xml:space="preserve">
+    <value>選擇要解壓縮的zip檔案</value>
+  </data>
+  <data name="SelectDirectory" xml:space="preserve">
+    <value>解壓後選擇要保存的目錄</value>
+  </data>
+  <data name="DecompressionFileExceptionTitle" xml:space="preserve">
+    <value>解壓縮檔案异常</value>
+  </data>
+  <data name="DecompressionFileExceptionContent" xml:space="preserve">
+    <value>解壓縮檔案异常: {0}</value>
+  </data>
 </root>
