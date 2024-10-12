@@ -38,6 +38,14 @@ public class TestViewModel : ReactiveObject
         set => this.RaiseAndSetIfChanged(ref _currentTime, value);
     }
 
+    private string _dailyTimeTask;
+
+    public string DailyTimeTask
+    {
+        get => _dailyTimeTask;
+        set => this.RaiseAndSetIfChanged(ref _dailyTimeTask, value);
+    }
+
     public ReactiveCommand<Unit, Unit> RaiseCompressCommand { get; }
     public ReactiveCommand<Unit, Unit> RaiseDecompressionCommand { get; }
 
@@ -75,7 +83,8 @@ public class TestViewModel : ReactiveObject
     {
         try
         {
-            var files = await _fileChooserService.OpenFileAsync(I18nManager.GetString(Language.SelectDecompressionFile)!, false,
+            var files = await _fileChooserService.OpenFileAsync(
+                I18nManager.GetString(Language.SelectDecompressionFile)!, false,
                 [_zipFilePickerFileType]);
             if (!(files?.Count > 0))
             {
@@ -111,18 +120,31 @@ public class TestViewModel : ReactiveObject
             var scheduler = await factory.GetScheduler();
             await scheduler.Start();
 
-            var job = JobBuilder.Create<UpdateTimeJob>()
-                .WithIdentity("UpdateTime", "Update")
+            var simpleJob = JobBuilder.Create<UpdateTimeJob>()
+                .WithIdentity(nameof(UpdateTimeJob), nameof(UpdateTimeJob))
                 .Build();
 
-            var trigger = TriggerBuilder.Create()
-                .WithIdentity("UpdateTime", "Update")
+            var simpleTrigger = TriggerBuilder.Create()
+                .WithIdentity(nameof(UpdateTimeJob), nameof(UpdateTimeJob))
                 .StartNow()
                 .WithSimpleSchedule(x => x
                     .WithIntervalInSeconds(1)
                     .RepeatForever())
                 .Build();
-            await scheduler.ScheduleJob(job, trigger);
+
+            var dailyTaskJob = JobBuilder.Create<DailyTimeJob>()
+                .WithIdentity(nameof(DailyTimeJob), nameof(DailyTimeJob))
+                .Build();
+
+            var dailyTaskTrigger = TriggerBuilder.Create()
+                .WithIdentity(nameof(DailyTimeJob), nameof(DailyTimeJob))
+                .WithDailyTimeIntervalSchedule(s =>
+                    s.OnEveryDay().StartingDailyAt(new TimeOfDay(DateTime.Now.Hour, DateTime.Now.Minute + 1,
+                        DateTime.Now.Second)))
+                .Build();
+
+            await scheduler.ScheduleJob(simpleJob, simpleTrigger);
+            await scheduler.ScheduleJob(dailyTaskJob, dailyTaskTrigger);
         });
     }
 }

@@ -10,10 +10,13 @@
              x:DataType="vm:TestViewModel"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="CodeWF.Modules.Development.Views.TestView">
-
+	<Design.DataContext>
+        <vm:TestViewModel />
+    </Design.DataContext>
     <WrapPanel>
       <Button Content="{i18n:I18n {x:Static language:Language.CompressFiles}}" Command="{Binding RaiseCompressCommand}" />
       <Button Content="{i18n:I18n {x:Static language:Language.DecompressionFiles}}" Command="{Binding RaiseDecompressionCommand}" Margin="10 0" />
       <TextBlock Text="{Binding CurrentTime}" VerticalAlignment="Center" />
+      <TextBlock Text="{Binding DailyTimeTask}" VerticalAlignment="Center" />
   </WrapPanel>
 </UserControl>
