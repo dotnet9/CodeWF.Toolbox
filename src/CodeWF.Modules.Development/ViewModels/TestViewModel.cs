@@ -139,8 +139,10 @@ public class TestViewModel : ReactiveObject
             var dailyTaskTrigger = TriggerBuilder.Create()
                 .WithIdentity(nameof(DailyTimeJob), nameof(DailyTimeJob))
                 .WithDailyTimeIntervalSchedule(s =>
-                    s.OnEveryDay().StartingDailyAt(new TimeOfDay(DateTime.Now.Hour, DateTime.Now.Minute + 1,
-                        DateTime.Now.Second)))
+                        s.WithIntervalInHours(24)
+                        .OnEveryDay()
+                        .StartingDailyAt(new TimeOfDay(DateTime.Now.Hour, DateTime.Now.Minute + 1,
+                        0)))
                 .Build();
 
             await scheduler.ScheduleJob(simpleJob, simpleTrigger);
