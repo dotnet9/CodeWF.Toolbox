@@ -1,7 +1,10 @@
 ﻿using CodeWF.NetWeaver;
 using CodeWF.NetWeaver.Base;
+using ConsoleAotDemo;
 using ConsoleAotDemo.Dtos;
 using System.Reflection;
+
+DBHeper.Test();
 
 var student = new Person { Name = "帅哥", Property = 100 };
 var properties = student.GetType().GetProperties(BindingFlags.Public|BindingFlags.Instance);
@@ -21,3 +24,4 @@ else
 }
 
 Console.ReadLine();
+
