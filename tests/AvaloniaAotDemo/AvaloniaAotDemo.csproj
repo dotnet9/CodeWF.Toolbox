@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
 		<OutputType>WinExe</OutputType>
-		<TargetFramework>net9.0</TargetFramework>
+		<TargetFramework>net9.0-windows</TargetFramework>
 		<Nullable>enable</Nullable>
 		<BuiltInComInteropSupport>true</BuiltInComInteropSupport>
 		<ApplicationManifest>app.manifest</ApplicationManifest>
@@ -22,5 +22,6 @@
 		<PackageReference Include="Avalonia.ReactiveUI" Version="11.2.0-rc1" />
 		<PackageReference Include="CodeWF.EventBus" Version="3.4.4.2" />
 		<PackageReference Include="Semi.Avalonia" Version="11.2.0-beta1" />
+		<PackageReference Include="YY-Thunks" Version="1.1.4-Beta3" />
 	</ItemGroup>
 </Project>
