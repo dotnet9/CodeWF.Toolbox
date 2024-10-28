@@ -1,3 +1,3 @@
-﻿namespace CodeWF.WebAPI.ViewModels;
+﻿namespace CodeWF.ViewModels;
 
 public record Title2SlugRequest(string Content);

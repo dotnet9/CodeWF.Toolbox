@@ -1,6 +1,5 @@
 ﻿using CodeWF.Modules.AI.Helpers;
 using CodeWF.Modules.AI.Models;
-using CodeWF.WebAPI.ViewModels;
 using ReactiveUI;
 using System.Reactive;
 using System.Reactive.Linq;

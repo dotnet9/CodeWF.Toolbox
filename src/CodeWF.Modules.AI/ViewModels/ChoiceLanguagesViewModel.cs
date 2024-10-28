@@ -1,5 +1,4 @@
 ﻿using CodeWF.AvaloniaControls.Extensions;
-using System.Collections.ObjectModel;
 
 namespace CodeWF.Modules.AI.ViewModels;
 
