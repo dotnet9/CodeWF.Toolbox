@@ -14,10 +14,6 @@ public class Title2SlugViewModel : ReactiveObject
     public Title2SlugViewModel(ApiClient apiClient)
     {
         _apiClient = apiClient;
-        this.WhenAnyValue(x => x.AskContent)
-            .Throttle(TimeSpan.FromSeconds(1))
-            .ObserveOn(RxApp.MainThreadScheduler)
-            .Subscribe(_ => RaiseConvertCommandHandlerAsync());
         RaiseConvertCommand = ReactiveCommand.CreateFromTask(RaiseConvertCommandHandlerAsync);
     }
 
@@ -59,7 +55,7 @@ public class Title2SlugViewModel : ReactiveObject
                     ResponseContent += result;
                 }, status =>
                 {
-                    //AskContent = string.Empty;
+                    AskContent = string.Empty;
                 });
         }
         catch (Exception ex)

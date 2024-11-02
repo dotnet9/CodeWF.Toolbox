@@ -33,11 +33,6 @@ public class PolyTranslateViewModel : ReactiveObject
             "Chinese Simplified", "Chinese Traditional", "English (United States)", "Japanese (Japan)"
         ];
         Languages = string.Join(",", _choiceLanguages);
-
-        this.WhenAnyValue(x => x.AskContent)
-            .Throttle(TimeSpan.FromSeconds(1))
-            .ObserveOn(RxApp.MainThreadScheduler)
-            .Subscribe(_ => RaiseTranslateCommandHandlerAsync());
         RaiseTranslateCommand = ReactiveCommand.CreateFromTask(RaiseTranslateCommandHandlerAsync);
         RaiseChoiceLanguagesCommand = ReactiveCommand.CreateFromTask(RaiseChoiceLanguagesCommandHandlerAsync);
     }
@@ -86,10 +81,10 @@ public class PolyTranslateViewModel : ReactiveObject
             await _apiClient.CreateChatGptClient(_chatGptOptions.PolyTranslateHttpUrl,
                 new PolyTranslateRequest(AskContent, _choiceLanguages), result =>
                 {
-                    ResponseContent += result;
+                    ResponseContent += result + "\r\n";
                 }, status =>
                 {
-                    //AskContent = string.Empty;
+                    AskContent = string.Empty;
                 });
         }
         catch (Exception ex)

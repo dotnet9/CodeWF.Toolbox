@@ -2,7 +2,6 @@
 using CodeWF.Modules.AI.Models;
 using ReactiveUI;
 using System.Reactive;
-using System.Reactive.Linq;
 
 namespace CodeWF.Modules.AI.ViewModels;
 
@@ -14,10 +13,6 @@ public class AskBotViewModel : ReactiveObject
     public AskBotViewModel(ApiClient apiClient)
     {
         _apiClient = apiClient;
-        this.WhenAnyValue(x => x.AskContent)
-            .Throttle(TimeSpan.FromSeconds(1))
-            .ObserveOn(RxApp.MainThreadScheduler)
-            .Subscribe(_ => RaiseAskAICommandHandlerAsync());
         RaiseAskAICommand = ReactiveCommand.CreateFromTask(RaiseAskAICommandHandlerAsync);
     }
 
@@ -58,7 +53,7 @@ public class AskBotViewModel : ReactiveObject
                 ResponseContent += result;
             }, status =>
             {
-                //AskContent = string.Empty;
+                AskContent = string.Empty;
             });
         }
         catch (Exception ex)
