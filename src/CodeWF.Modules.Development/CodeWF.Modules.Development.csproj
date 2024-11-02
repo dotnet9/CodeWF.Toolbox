@@ -18,7 +18,7 @@
 		<PackageReference Include="Prism.DryIoc.Avalonia" Version="8.1.97.11073" />
 		<PackageReference Include="Avalonia.ReactiveUI" Version="11.2.0" />
 		<PackageReference Include="AvaloniaEdit.TextMate" Version="11.1.0" />
-		<PackageReference Include="Quartz" Version="3.13.0" />
+		<PackageReference Include="Quartz" Version="3.13.1" />
 		<PackageReference Include="TextMateSharp.Grammars" Version="1.0.64" />
 		<PackageReference Include="AvaloniaExtensions.Axaml" Version="0.0.2.7" />
 		<PackageReference Include="CodeWF.Tools" Version="1.2.5.4" />

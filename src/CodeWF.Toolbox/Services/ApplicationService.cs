@@ -3,9 +3,13 @@ using Avalonia.Styling;
 using AvaloniaExtensions.Axaml.Markup;
 using CodeWF.Core;
 using CodeWF.Core.IServices;
+using CodeWF.Toolbox.Models;
 using CodeWF.Tools.Helpers;
+using Semi.Avalonia;
 using System;
+using System.Collections.Generic;
 using System.Globalization;
+using System.Linq;
 using Ursa.Controls;
 
 namespace CodeWF.Toolbox.Services;
@@ -14,6 +18,27 @@ internal class ApplicationService : IApplicationService
 {
     private const string ThemeKey = "Theme";
     private const string LanguageKey = "Language";
+
+    private const string DefaultTheme = "Dark";
+    private const string DefaultLanguage = "zh-CN";
+
+    public List<ThemeItem> Themes { get; } = new()
+    {
+        new ThemeItem("Light", ThemeVariant.Light),
+        new ThemeItem("Dark", ThemeVariant.Dark),
+        new ThemeItem("Aquatic", SemiTheme.Aquatic),
+        new ThemeItem("Desert", SemiTheme.Desert),
+        new ThemeItem("Dust", SemiTheme.Dust),
+        new ThemeItem("NightSky", SemiTheme.NightSky),
+    };
+
+    public List<LanguageItem> Languages { get; } = new()
+    {
+        new LanguageItem("en", "English"),
+        new LanguageItem("zh-CN", "中文简体"),
+        new LanguageItem("zh-Hant", "中文繁體"),
+        new LanguageItem("ja-JP", "日本語"),
+    };
 
     public void Load()
     {
@@ -30,30 +55,25 @@ internal class ApplicationService : IApplicationService
         }
     }
 
-    public ThemeVariant GetTheme()
+    public string GetTheme()
     {
         try
         {
-            if (!AppConfigHelper.TryGet<string>(ThemeKey, out var theme))
+            if (AppConfigHelper.TryGet<string>(ThemeKey, out var theme) && !string.IsNullOrWhiteSpace(theme))
             {
-                return ThemeVariant.Default;
+                return theme;
             }
 
-            return theme switch
-            {
-                nameof(ThemeVariant.Dark) => ThemeVariant.Dark,
-                nameof(ThemeVariant.Light) => ThemeVariant.Light,
-                _ => ThemeVariant.Default
-            };
+            return DefaultTheme;
         }
         catch (Exception ex)
         {
             MessageBox.ShowAsync(ex.ToString());
-            return ThemeVariant.Dark;
+            return DefaultTheme;
         }
     }
 
-    public void SetTheme(ThemeVariant theme)
+    public void SetTheme(string theme)
     {
         try
         {
@@ -70,17 +90,17 @@ internal class ApplicationService : IApplicationService
     {
         try
         {
-            if (!AppConfigHelper.TryGet<string>(LanguageKey, out var language))
+            if (AppConfigHelper.TryGet<string>(LanguageKey, out var language) && !string.IsNullOrWhiteSpace(language))
             {
-                return CultureNames.ChineseSimple;
+                return language;
             }
 
-            return language!;
+            return DefaultLanguage;
         }
         catch (Exception ex)
         {
             MessageBox.ShowAsync(ex.ToString());
-            return CultureNames.ChineseSimple;
+            return DefaultLanguage;
         }
     }
 
@@ -97,7 +117,7 @@ internal class ApplicationService : IApplicationService
         }
     }
 
-    private static void ChangeTheme(ThemeVariant theme)
+    private void ChangeTheme(string theme)
     {
         var app = Application.Current;
         if (app is null)
@@ -105,7 +125,9 @@ internal class ApplicationService : IApplicationService
             return;
         }
 
-        app.RequestedThemeVariant = theme;
+        var themeObj = Themes.FirstOrDefault(item =>
+            string.Equals(theme, item.Name, StringComparison.InvariantCultureIgnoreCase));
+        app.RequestedThemeVariant = themeObj?.Theme;
     }
 
     private void ChangeCulture(string language)

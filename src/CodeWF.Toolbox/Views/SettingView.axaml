@@ -1,14 +1,25 @@
-<UserControl xmlns="https://github.com/avaloniaui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:u="https://irihi.tech/ursa"
-             xmlns:i18n="https://codewf.com"
-             xmlns:language="clr-namespace:CodeWF.Toolbox.I18n"
-             xmlns:core="clr-namespace:CodeWF.Core;assembly=CodeWF.Core"
-             mc:Ignorable="d" d:DesignWidth="500" d:DesignHeight="350"
-             Width="500" Height="350"
-             x:Class="CodeWF.Toolbox.Views.SettingView">
+<UserControl
+    x:Class="CodeWF.Toolbox.Views.SettingView"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:core="clr-namespace:CodeWF.Core;assembly=CodeWF.Core"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:i18n="https://codewf.com"
+    xmlns:language="clr-namespace:CodeWF.Toolbox.I18n"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:u="https://irihi.tech/ursa"
+    xmlns:vm="clr-namespace:CodeWF.Toolbox.ViewModels"
+    Width="500"
+    Height="350"
+    d:DesignHeight="350"
+    d:DesignWidth="500"
+    mc:Ignorable="d"
+    x:DataType="vm:SettingViewModel">
+    <Design.DataContext>
+        <!-- This only sets the DataContext for the previewer in an IDE,
+         to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
+        <vm:SettingViewModel />
+    </Design.DataContext>
     <UserControl.Styles>
         <Style Selector="TextBlock">
             <Setter Property="VerticalAlignment" Value="Center" />
@@ -20,73 +31,59 @@
         </Style>
     </UserControl.Styles>
     <StackPanel VerticalAlignment="Top">
-        <TextBlock Text="{i18n:I18n {x:Static language:Language.InterfaceStyleSettings}}" HorizontalAlignment="Left" Classes="Tertiary H5"
-                   Theme="{StaticResource TitleTextBlock}" Margin="0 0 0 20" />
+        <TextBlock
+            Margin="0,0,0,20"
+            HorizontalAlignment="Left"
+            Classes="Tertiary H5"
+            Text="{i18n:I18n {x:Static language:Language.InterfaceStyleSettings}}"
+            Theme="{StaticResource TitleTextBlock}" />
         <TabControl TabStripPlacement="Top">
             <TabItem Header="{i18n:I18n {x:Static language:Language.GeneralSettings}}">
-                <Grid ColumnDefinitions="220 *" RowDefinitions="70 70 50 50 *" Margin="0 30 0 0">
+                <Grid
+                    Margin="0,30,0,0"
+                    ColumnDefinitions="220 *"
+                    RowDefinitions="70 70 50 50 *">
                     <TextBlock Text="{i18n:I18n {x:Static language:Language.Theme}}" />
-                    <Border Grid.Row="0" Grid.Column="1" HorizontalAlignment="Left"
-                            Theme="{StaticResource RadioButtonGroupBorder}"
-                            VerticalAlignment="Center">
-						<WrapPanel Orientation="Horizontal">
-							<RadioButton Classes="Small" Theme="{DynamicResource ButtonRadioButton}"
-                                         x:Name="RBtnThemeDefault" IsChecked="True"
-                                         Tag="{x:Static ThemeVariant.Default}"
-                                         Click="ChangeTheme_OnClick"
-                                         Content="{i18n:I18n {x:Static language:Language.FollowingSystem}}"/>
-                            <u:Divider Orientation="Vertical" />
-							<RadioButton Classes="Small" Theme="{DynamicResource ButtonRadioButton}"
-                                         x:Name="RBtnThemeLight" Tag="{x:Static ThemeVariant.Light}"
-                                         Click="ChangeTheme_OnClick"
-                                         Content="{i18n:I18n {x:Static language:Language.LightMode}}"/>
-                            <u:Divider Orientation="Vertical" />
-							<RadioButton Classes="Small" Theme="{DynamicResource ButtonRadioButton}"
-                                         x:Name="RBtnThemeDark" Tag="{x:Static ThemeVariant.Dark}"
-                                         Click="ChangeTheme_OnClick"
-                                         Content="{i18n:I18n {x:Static language:Language.DarkMode}}"/>
-						</WrapPanel>
-                    </Border>
+                    <ComboBox
+                        Grid.Row="0"
+                        Grid.Column="1"
+                        HorizontalAlignment="Stretch"
+                        VerticalAlignment="Center"
+                        PlaceholderText="Select a theme"
+                        DisplayMemberBinding="{Binding Name}"
+                        ItemsSource="{Binding Themes}"
+                        SelectedItem="{Binding SelectedTheme}" />
 
-                    <TextBlock Text="{i18n:I18n {x:Static language:Language.LanguageKey}}" Grid.Row="1" />
-                    <Border Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left"
-                            Theme="{StaticResource RadioButtonGroupBorder}"
-                            VerticalAlignment="Center">
-                        <WrapPanel Orientation="Horizontal">
-                            <RadioButton Classes="Small" Theme="{DynamicResource ButtonRadioButton}"
-                                         x:Name="RBtn_en" Tag="{x:Static core:CultureNames.English}"
-                                         Click="ChangeLanguage_OnClick">
-                                English
-                            </RadioButton>
-                            <u:Divider Orientation="Vertical" />
-                            <RadioButton Classes="Small" Theme="{DynamicResource ButtonRadioButton}"
-                                         x:Name="RBtn_zh_CN" Tag="{x:Static core:CultureNames.ChineseSimple}"
-                                         Click="ChangeLanguage_OnClick">
-                                中文简体
-                            </RadioButton>
-                            <u:Divider Orientation="Vertical" />
-                            <RadioButton Classes="Small" Theme="{DynamicResource ButtonRadioButton}"
-                                         x:Name="RBtn_zh_Hant" Tag="{x:Static core:CultureNames.ChineseTraditional}"
-                                         Click="ChangeLanguage_OnClick">
-								中文繁體
-                            </RadioButton>
-                            <RadioButton Classes="Small" Theme="{DynamicResource ButtonRadioButton}"
-                                         x:Name="RBtn_ja_JP" Tag="{x:Static core:CultureNames.Japanese}"
-                                         Click="ChangeLanguage_OnClick">
-								日本語
-                            </RadioButton>
-                        </WrapPanel>
-                    </Border>
+                    <TextBlock Grid.Row="1" Grid.Column="0" Text="{i18n:I18n {x:Static language:Language.LanguageKey}}" />
+                    <ComboBox
+                        Grid.Row="1"
+                        Grid.Column="1"
+                        HorizontalAlignment="Stretch"
+                        VerticalAlignment="Center"
+                        PlaceholderText="Select a language"
+                        DisplayMemberBinding="{Binding Name}"
+                        ItemsSource="{Binding Languages}"
+                        SelectedItem="{Binding SelectedLanguage}" />
 
-                    <TextBlock Text="{i18n:I18n {x:Static language:Language.AutoOpenToolboxAtStartup}}" Grid.Row="2" Grid.Column="0" />
-                    <ToggleSwitch Grid.Row="2" Grid.Column="1"
-                                  OffContent="{i18n:I18n {x:Static language:Language.TurnOff}}"
-                                  OnContent="{i18n:I18n {x:Static language:Language.TurnOn}}" />
+                    <TextBlock
+                        Grid.Row="2"
+                        Grid.Column="0"
+                        Text="{i18n:I18n {x:Static language:Language.AutoOpenToolboxAtStartup}}" />
+                    <ToggleSwitch
+                        Grid.Row="2"
+                        Grid.Column="1"
+                        OffContent="{i18n:I18n {x:Static language:Language.TurnOff}}"
+                        OnContent="{i18n:I18n {x:Static language:Language.TurnOn}}" />
 
-                    <TextBlock Text="{i18n:I18n {x:Static language:Language.HideTrayIconOnClose}}" Grid.Row="3" Grid.Column="0" />
-                    <ToggleSwitch Grid.Row="3" Grid.Column="1" 
-                                  OffContent="{i18n:I18n {x:Static language:Language.TurnOff}}" 
-                                  OnContent="{i18n:I18n {x:Static language:Language.TurnOn}}" />
+                    <TextBlock
+                        Grid.Row="3"
+                        Grid.Column="0"
+                        Text="{i18n:I18n {x:Static language:Language.HideTrayIconOnClose}}" />
+                    <ToggleSwitch
+                        Grid.Row="3"
+                        Grid.Column="1"
+                        OffContent="{i18n:I18n {x:Static language:Language.TurnOff}}"
+                        OnContent="{i18n:I18n {x:Static language:Language.TurnOn}}" />
                 </Grid>
             </TabItem>
         </TabControl>
