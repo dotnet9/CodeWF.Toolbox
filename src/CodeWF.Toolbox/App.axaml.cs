@@ -1,5 +1,4 @@
 using Avalonia;
-using Avalonia.Controls;
 using Avalonia.Markup.Xaml;
 using CodeWF.Core;
 using CodeWF.Core.IServices;
@@ -7,14 +6,12 @@ using CodeWF.Core.Services;
 using CodeWF.Modules.AI;
 using CodeWF.Modules.Converter;
 using CodeWF.Modules.Development;
-using CodeWF.Toolbox.Core.RegionAdapters;
 using CodeWF.Toolbox.Services;
 using CodeWF.Toolbox.Views;
 using DryIoc;
 using Prism.DryIoc;
 using Prism.Ioc;
 using Prism.Modularity;
-using Prism.Regions;
 using System;
 using System.Linq;
 using Ursa.PrismExtension;
@@ -31,15 +28,6 @@ public partial class App : PrismApplication
     {
         AvaloniaXamlLoader.Load(this);
         base.Initialize(); // <-- Required
-    }
-
-    protected override void ConfigureRegionAdapterMappings(RegionAdapterMappings regionAdapterMappings)
-    {
-        regionAdapterMappings.RegisterMapping<StackPanel, StackPanelRegionAdapter>();
-        regionAdapterMappings.RegisterMapping<Grid, GridRegionAdapter>();
-        regionAdapterMappings.RegisterMapping<TabControl, TabControlAdapter>();
-        regionAdapterMappings.RegisterMapping<ItemsControl, ItemsControlRegionAdapter>();
-        regionAdapterMappings.RegisterMapping<ContentControl, ContentControlRegionAdapter>();
     }
 
     protected override void ConfigureModuleCatalog(IModuleCatalog moduleCatalog)
