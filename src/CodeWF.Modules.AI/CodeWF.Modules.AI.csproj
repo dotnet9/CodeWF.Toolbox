@@ -7,8 +7,8 @@
 		<InterceptorsPreviewNamespaces>$(InterceptorsPreviewNamespaces);Dapper.AOT</InterceptorsPreviewNamespaces>
 	</PropertyGroup>
 	<ItemGroup>
-		<PackageReference Include="AvaloniaExtensions.Axaml" Version="0.0.2.7" />
-		<PackageReference Include="CodeWF.AvaloniaControls" Version="0.0.3.6" />
+		<PackageReference Include="AvaloniaExtensions.Axaml" Version="0.0.2.8" />
+		<PackageReference Include="CodeWF.AvaloniaControls" Version="0.0.3.7" />
 		<PackageReference Include="Prism.Avalonia" Version="9.0.401.11110-pre" />
 		<PackageReference Include="Prism.DryIoc.Avalonia" Version="9.0.401.11110-pre" />
 		<PackageReference Include="Avalonia.ReactiveUI" Version="11.2.0" />
