@@ -30,7 +30,7 @@
 		<PackageReference Condition="'$(Configuration)' == 'Debug'" Include="Avalonia.Diagnostics" Version="11.2.0" />
 		<PackageReference Include="AvaloniaExtensions.Axaml" Version="0.0.2.7" />
 		<PackageReference Include="CodeWF.EventBus" Version="3.4.4.2" />
-		<PackageReference Include="CodeWF.Tools" Version="1.2.5.4" />
+		<PackageReference Include="CodeWF.Tools" Version="1.2.5.5" />
 		<PackageReference Include="Semi.Avalonia" Version="11.2.0" />
 		<PackageReference Include="Irihi.Ursa" Version="1.5.0.1" />
 		<PackageReference Include="Irihi.Ursa.PrismExtension" Version="9.0.1" />
