@@ -84,7 +84,7 @@ public class PolyTranslateViewModel : ReactiveObject
                     ResponseContent += result + "\r\n";
                 }, status =>
                 {
-                    AskContent = string.Empty;
+                    //AskContent = string.Empty;
                 });
         }
         catch (Exception ex)

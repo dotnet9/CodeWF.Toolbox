@@ -55,7 +55,7 @@ public class Title2SlugViewModel : ReactiveObject
                     ResponseContent += result;
                 }, status =>
                 {
-                    AskContent = string.Empty;
+                    //AskContent = string.Empty;
                 });
         }
         catch (Exception ex)

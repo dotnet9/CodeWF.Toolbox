@@ -53,7 +53,7 @@ public class AskBotViewModel : ReactiveObject
                 ResponseContent += result;
             }, status =>
             {
-                AskContent = string.Empty;
+                //AskContent = string.Empty;
             });
         }
         catch (Exception ex)

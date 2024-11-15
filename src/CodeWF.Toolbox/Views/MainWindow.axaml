@@ -8,8 +8,8 @@
               xmlns:i18n="https://codewf.com"
               xmlns:language="clr-namespace:CodeWF.Toolbox.I18n"
               mc:Ignorable="d" WindowStartupLocation="CenterScreen"
-              Width="1000" Height="600"
-              d:DesignWidth="1000" d:DesignHeight="600"
+              Width="1200" Height="800"
+              d:DesignWidth="1200" d:DesignHeight="800"
               Icon="/Assets/logo.ico" CornerRadius="30"
               IsFullScreenButtonVisible="{OnPlatform True,macOS=False}"
               Title="{i18n:I18n {x:Static language:Language.AppName}}">

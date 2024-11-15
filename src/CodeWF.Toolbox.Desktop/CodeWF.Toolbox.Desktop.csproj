@@ -20,9 +20,9 @@
 		<Content Include="logo.ico" />
 	</ItemGroup>
 	<ItemGroup>
-		<PackageReference Include="Avalonia.Desktop" Version="11.2.0" />
+		<PackageReference Include="Avalonia.Desktop" Version="11.2.1" />
 		<!--Condition below is needed to remove Avalonia.Diagnostics package from build output in Release configuration.-->
-		<PackageReference Condition="'$(Configuration)' == 'Debug'" Include="Avalonia.Diagnostics" Version="11.2.0" />
+		<PackageReference Condition="'$(Configuration)' == 'Debug'" Include="Avalonia.Diagnostics" Version="11.2.1" />
 		<PackageReference Include="YY-Thunks" Version="1.1.4" />
 	</ItemGroup>
 	<ItemGroup>
