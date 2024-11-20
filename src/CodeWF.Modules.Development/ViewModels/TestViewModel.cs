@@ -1,12 +1,15 @@
 ﻿using Avalonia.Platform.Storage;
 using AvaloniaExtensions.Axaml.Markup;
 using CodeWF.Core.IServices;
+using CodeWF.Modules.Development.Entities;
 using CodeWF.Modules.Development.I18n;
 using CodeWF.Modules.Development.Jobs;
+using CodeWF.Tools.Extensions;
 using CodeWF.Tools.FileExtensions;
 using Quartz;
 using Quartz.Impl;
 using ReactiveUI;
+using System.Collections;
 using System.Reactive;
 
 namespace CodeWF.Modules.Development.ViewModels;
@@ -25,6 +28,7 @@ public class TestViewModel : ReactiveObject
         _notificationService = notificationService;
         RaiseCompressCommand = ReactiveCommand.CreateFromTask(RaiseCompressHandler);
         RaiseDecompressionCommand = ReactiveCommand.CreateFromTask(RaiseDecompressionHandler);
+        RaiseHashtableSerializeCommand = ReactiveCommand.CreateFromTask(RaiseHashtableSerializeHandler);
         Instance = this;
         StartTaskAsync();
     }
@@ -48,6 +52,7 @@ public class TestViewModel : ReactiveObject
 
     public ReactiveCommand<Unit, Unit> RaiseCompressCommand { get; }
     public ReactiveCommand<Unit, Unit> RaiseDecompressionCommand { get; }
+    public ReactiveCommand<Unit, Unit> RaiseHashtableSerializeCommand { get; }
 
     private async Task RaiseCompressHandler()
     {
@@ -112,6 +117,52 @@ public class TestViewModel : ReactiveObject
         }
     }
 
+    private async Task RaiseHashtableSerializeHandler()
+    {
+        var k3Value = new JsonPrettifyEntity { IndentSize = 2, IsSortKey = false };
+        Hashtable hashtable = new();
+        hashtable.Add("k1", "v1");
+        hashtable.Add("k2", 2);
+        hashtable.Add("k3", k3Value);
+
+        if (!hashtable.ToJson(out var json, out var errorString))
+        {
+            _notificationService.Show("Hashtable serialize", errorString);
+            return;
+        }
+
+        _notificationService.Show("Hashtable serialize", "To Json Success");
+
+        if (!json.FromJson<Hashtable>(out var deserializeObj, out errorString) || deserializeObj == null)
+        {
+            _notificationService.Show("Hashtable deserialize", errorString);
+            return;
+        }
+
+        _notificationService.Show("Hashtable deserialize", "From Json Success");
+        if (deserializeObj.Contains("k1") && deserializeObj["k1"].ToString() == hashtable["k1"].ToString()
+            && (deserializeObj.Contains("k2") && int.Parse(deserializeObj["k2"].ToString()) ==
+                int.Parse(hashtable["k2"].ToString()))
+            && deserializeObj.Contains("k3"))
+        {
+            var k3Obj = deserializeObj["k3"];
+            k3Obj.ToJson(out var k3ValueJson, out errorString);
+            k3ValueJson.FromJson<JsonPrettifyEntity>(out var newK3Value, out errorString);
+            if (newK3Value?.IndentSize == k3Value.IndentSize)
+            {
+                _notificationService.Show("Hashtable deserialize", "Deserialize success");
+            }
+            else
+            {
+                _notificationService.Show("Hashtable deserialize", "Deserialize fail");
+            }
+        }
+        else
+        {
+            _notificationService.Show("Hashtable deserialize", "Deserialize fail");
+        }
+    }
+
     private async Task StartTaskAsync()
     {
         await Task.Run(async () =>
@@ -139,10 +190,10 @@ public class TestViewModel : ReactiveObject
             var dailyTaskTrigger = TriggerBuilder.Create()
                 .WithIdentity(nameof(DailyTimeJob), nameof(DailyTimeJob))
                 .WithDailyTimeIntervalSchedule(s =>
-                        s.WithIntervalInHours(24)
+                    s.WithIntervalInHours(24)
                         .OnEveryDay()
                         .StartingDailyAt(new TimeOfDay(DateTime.Now.Hour, DateTime.Now.Minute + 1,
-                        0)))
+                            0)))
                 .Build();
 
             await scheduler.ScheduleJob(simpleJob, simpleTrigger);
