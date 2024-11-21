@@ -151,4 +151,13 @@
   <data name="TurnOff" xml:space="preserve">
     <value>Turn Off</value>
   </data>
+  <data name="Exit" xml:space="preserve">
+    <value>Exit</value>
+  </data>
+  <data name="SureExit" xml:space="preserve">
+    <value>Are you sure you want to exit?</value>
+  </data>
+  <data name="FindInTrayIcon" xml:space="preserve">
+    <value>You can find me on the tray icon!</value>
+  </data>
 </root>

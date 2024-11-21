@@ -29,4 +29,7 @@ public static class Language
 	public static readonly string HideTrayIconOnClose = "HideTrayIconOnClose";
 	public static readonly string TurnOn = "TurnOn";
 	public static readonly string TurnOff = "TurnOff";
+	public static readonly string Exit = "Exit";
+	public static readonly string SureExit = "SureExit";
+	public static readonly string FindInTrayIcon = "FindInTrayIcon";
 }

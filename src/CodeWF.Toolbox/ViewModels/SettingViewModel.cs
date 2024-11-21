@@ -1,4 +1,5 @@
 ﻿using CodeWF.Core.IServices;
+using CodeWF.Toolbox.Commands;
 using CodeWF.Toolbox.Models;
 using CodeWF.Toolbox.Services;
 using ReactiveUI;
@@ -16,6 +17,7 @@ public class SettingViewModel : ViewModelBase
         _applicationService = applicationService;
         InitTheme();
         InitLanguage();
+        HideTrayIconOnClose = applicationService.HideTrayIconOnClose;
     }
 
     private void InitTheme()
@@ -34,6 +36,14 @@ public class SettingViewModel : ViewModelBase
 
         var language = _applicationService.GetCulture();
         _selectedLanguage = languages.FirstOrDefault(item => string.Equals(language, item.Culture));
+    }
+
+    private bool _hideTrayIconOnClose;
+
+    public bool HideTrayIconOnClose
+    {
+        get => _hideTrayIconOnClose;
+        set => this.RaiseAndSetIfChanged(ref _hideTrayIconOnClose, value);
     }
 
     public ObservableCollection<ThemeItem> Themes { get; private set; }
@@ -62,6 +72,12 @@ public class SettingViewModel : ViewModelBase
             this.RaiseAndSetIfChanged(ref _selectedLanguage, value);
             SetLanguage();
         }
+    }
+
+    public void ChangeHideTrayIconOnCloseHandler()
+    {
+        _applicationService.HideTrayIconOnClose = HideTrayIconOnClose;
+        EventBus.EventBus.Default.Publish(new ChangeApplicationStatusCommand());
     }
 
     private void SetTheme()

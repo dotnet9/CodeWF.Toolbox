@@ -12,7 +12,7 @@ internal class DashboardViewModel : ViewModelBase
 
     public void OpenOnLineToolbox(UserControl owner)
     {
-        OpenUrlAsync(owner, "https://codewf.com/tool");
+        OpenUrlAsync(owner, "https://dotnet9.com");
     }
 
     private async void OpenUrlAsync(UserControl owner, string uri)

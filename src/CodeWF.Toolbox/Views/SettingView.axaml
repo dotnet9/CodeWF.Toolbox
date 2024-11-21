@@ -83,7 +83,9 @@
                         Grid.Row="3"
                         Grid.Column="1"
                         OffContent="{i18n:I18n {x:Static language:Language.TurnOff}}"
-                        OnContent="{i18n:I18n {x:Static language:Language.TurnOn}}" />
+                        OnContent="{i18n:I18n {x:Static language:Language.TurnOn}}"
+                        IsChecked="{Binding HideTrayIconOnClose}"
+                        Command="{Binding ChangeHideTrayIconOnCloseHandler}"/>
                 </Grid>
             </TabItem>
         </TabControl>

@@ -171,4 +171,13 @@
   <data name="TurnOff" xml:space="preserve">
     <value>閉じる</value>
   </data>
+  <data name="Exit" xml:space="preserve">
+    <value>アウトレット</value>
+  </data>
+  <data name="SureExit" xml:space="preserve">
+    <value>本当に終了しますか？</value>
+  </data>
+  <data name="FindInTrayIcon" xml:space="preserve">
+    <value>トレイアイコンで私を見つけることができます！</value>
+  </data>
 </root>

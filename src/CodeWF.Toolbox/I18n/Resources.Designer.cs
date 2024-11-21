@@ -106,6 +106,24 @@ namespace CodeWF.Toolbox.I18n {
         }
         
         /// <summary>
+        ///   查找类似 Exit 的本地化字符串。
+        /// </summary>
+        public static string Exit {
+            get {
+                return ResourceManager.GetString("Exit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 You can find me on the tray icon! 的本地化字符串。
+        /// </summary>
+        public static string FindInTrayIcon {
+            get {
+                return ResourceManager.GetString("FindInTrayIcon", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 Following System 的本地化字符串。
         /// </summary>
         public static string FollowingSystem {
@@ -192,6 +210,15 @@ namespace CodeWF.Toolbox.I18n {
         public static string Setting {
             get {
                 return ResourceManager.GetString("Setting", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Are you sure you want to exit? 的本地化字符串。
+        /// </summary>
+        public static string SureExit {
+            get {
+                return ResourceManager.GetString("SureExit", resourceCulture);
             }
         }
         

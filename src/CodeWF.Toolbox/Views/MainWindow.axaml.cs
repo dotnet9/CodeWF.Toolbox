@@ -1,22 +1,31 @@
 using Avalonia.Controls;
 using Avalonia.Markup.Xaml;
+using AvaloniaExtensions.Axaml.Markup;
 using CodeWF.Core.IServices;
+using CodeWF.Toolbox.Commands;
+using CodeWF.Toolbox.I18n;
+using System;
+using System.Linq;
+using System.Threading.Tasks;
 using Ursa.Controls;
 
 namespace CodeWF.Toolbox.Views;
 
 public partial class MainWindow : UrsaWindow
 {
+    private readonly IApplicationService _applicationService;
     private readonly IFileChooserService _fileChooserService;
     private readonly INotificationService _notificationService;
 
-    public MainWindow(IApplicationService applicationService, IFileChooserService fileChooserService, INotificationService notificationService)
+    public MainWindow(IApplicationService applicationService, IFileChooserService fileChooserService,
+        INotificationService notificationService)
     {
+        _applicationService = applicationService;
         _fileChooserService = fileChooserService;
         _notificationService = notificationService;
         InitializeComponent();
+        Init();
         AdjustWindowSize();
-        applicationService.Load();
     }
 
     private void InitializeComponent()
@@ -24,6 +33,46 @@ public partial class MainWindow : UrsaWindow
         AvaloniaXamlLoader.Load(this);
         _fileChooserService.SetHostWindow(this);
         _notificationService.SetHostWindow(this);
+    }
+
+    private void Init()
+    {
+        _applicationService.Load();
+        EventBus.EventBus.Default.Subscribe<ChangeApplicationStatusCommand>(ChangeApplicationStatus);
+        ChangeApplicationStatus(new ChangeApplicationStatusCommand());
+    }
+
+    private void ChangeApplicationStatus(ChangeApplicationStatusCommand command)
+    {
+        var icon = TrayIcon.GetIcons(App.Instance)?.FirstOrDefault();
+        if (icon == null)
+        {
+            return;
+        }
+
+        icon.IsVisible = _applicationService.HideTrayIconOnClose;
+    }
+
+    protected override async void OnClosing(WindowClosingEventArgs e)
+    {
+        e.Cancel = true;
+
+        if (!_applicationService.HideTrayIconOnClose)
+        {
+            var result = await MessageBox.ShowOverlayAsync(I18nManager.GetString(Language.SureExit),
+                I18nManager.GetString(Language.Exit),
+                button: MessageBoxButton.YesNo);
+            if (result == MessageBoxResult.Yes)
+            {
+                Environment.Exit(0);
+            }
+
+            return;
+        }
+
+        await MessageBox.ShowOverlayAsync(I18nManager.GetString(Language.FindInTrayIcon),
+            I18nManager.GetString(Language.Exit), button: MessageBoxButton.OK);
+        Hide();
     }
 
     private void AdjustWindowSize()

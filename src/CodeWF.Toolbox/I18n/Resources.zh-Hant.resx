@@ -171,4 +171,13 @@
   <data name="TurnOff" xml:space="preserve">
     <value>關閉</value>
   </data>
+  <data name="Exit" xml:space="preserve">
+    <value>出口</value>
+  </data>
+  <data name="SureExit" xml:space="preserve">
+    <value>您確定要退出嗎？</value>
+  </data>
+  <data name="FindInTrayIcon" xml:space="preserve">
+    <value>你可以在託盤圖標上找到我！</value>
+  </data>
 </root>

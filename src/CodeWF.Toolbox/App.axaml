@@ -9,4 +9,18 @@
         <u-semi:SemiTheme Locale="zh-CN" />
         <StyleInclude Source="../Styles/Index.axaml" />
     </prism:PrismApplication.Styles>
+    <TrayIcon.Icons>
+        <TrayIcons>
+            <TrayIcon Icon="/Assets/logo.ico" Clicked="OpenMainWindow_OnClicked" ToolTipText="CodeWF">
+                <TrayIcon.Menu>
+                    <NativeMenu>
+						<NativeMenuItem Header="Show Main Window" Click="OpenMainWindow_OnClicked" />
+						<NativeMenuItem Header="Github" Click="OpenGithub_OnClicked" />
+                        <NativeMenuItemSeparator />
+                        <NativeMenuItem Header="Exit" Click="ExitApplication_OnClicked" />
+                    </NativeMenu>
+                </TrayIcon.Menu>
+            </TrayIcon>
+        </TrayIcons>
+    </TrayIcon.Icons>
 </prism:PrismApplication>

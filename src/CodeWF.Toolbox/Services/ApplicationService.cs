@@ -18,9 +18,23 @@ internal class ApplicationService : IApplicationService
 {
     private const string ThemeKey = "Theme";
     private const string LanguageKey = "Language";
+    private const string HideTrayIconOnCloseKey = "HideTrayIconOnClose";
 
     private const string DefaultTheme = "Dark";
     private const string DefaultLanguage = "zh-CN";
+
+    public bool HideTrayIconOnClose
+    {
+        get
+        {
+            return !AppConfigHelper.TryGet<bool>(HideTrayIconOnCloseKey, out var hideTrayIconOnClose) ||
+                   hideTrayIconOnClose;
+        }
+        set
+        {
+            AppConfigHelper.Set(HideTrayIconOnCloseKey, value);
+        }
+    }
 
     public List<ThemeItem> Themes { get; } = new()
     {
