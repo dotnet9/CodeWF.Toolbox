@@ -32,4 +32,5 @@ public static class Language
 	public static readonly string Exit = "Exit";
 	public static readonly string SureExit = "SureExit";
 	public static readonly string FindInTrayIcon = "FindInTrayIcon";
+	public static readonly string ShowMainWindow = "ShowMainWindow";
 }

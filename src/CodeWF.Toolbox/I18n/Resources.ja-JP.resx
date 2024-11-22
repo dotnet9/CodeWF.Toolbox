@@ -180,4 +180,7 @@
   <data name="FindInTrayIcon" xml:space="preserve">
     <value>トレイアイコンで私を見つけることができます！</value>
   </data>
+  <data name="ShowMainWindow" xml:space="preserve">
+    <value>メインウィンドウを表示</value>
+  </data>
 </root>

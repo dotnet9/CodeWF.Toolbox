@@ -214,6 +214,15 @@ namespace CodeWF.Toolbox.I18n {
         }
         
         /// <summary>
+        ///   查找类似 Show Main Window 的本地化字符串。
+        /// </summary>
+        public static string ShowMainWindow {
+            get {
+                return ResourceManager.GetString("ShowMainWindow", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 Are you sure you want to exit? 的本地化字符串。
         /// </summary>
         public static string SureExit {

@@ -180,4 +180,7 @@
   <data name="FindInTrayIcon" xml:space="preserve">
     <value>你可以在托盘图标上找到我！</value>
   </data>
+  <data name="ShowMainWindow" xml:space="preserve">
+    <value>显示主窗口</value>
+  </data>
 </root>

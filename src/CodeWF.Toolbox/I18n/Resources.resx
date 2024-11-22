@@ -160,4 +160,7 @@
   <data name="FindInTrayIcon" xml:space="preserve">
     <value>You can find me on the tray icon!</value>
   </data>
+  <data name="ShowMainWindow" xml:space="preserve">
+    <value>Show Main Window</value>
+  </data>
 </root>
