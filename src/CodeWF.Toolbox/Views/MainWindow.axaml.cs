@@ -1,4 +1,5 @@
 using Avalonia.Controls;
+using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Markup.Xaml;
 using AvaloniaExtensions.Axaml.Markup;
 using CodeWF.Core.IServices;
@@ -6,7 +7,6 @@ using CodeWF.Toolbox.Commands;
 using CodeWF.Toolbox.I18n;
 using System;
 using System.Linq;
-using System.Threading.Tasks;
 using Ursa.Controls;
 
 namespace CodeWF.Toolbox.Views;
@@ -64,7 +64,14 @@ public partial class MainWindow : UrsaWindow
                 button: MessageBoxButton.YesNo);
             if (result == MessageBoxResult.Yes)
             {
-                Environment.Exit(0);
+                if (App.Instance.ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
+                {
+                    desktop.Shutdown(0);
+                }
+                else
+                {
+                    Environment.Exit(0);
+                }
             }
 
             return;

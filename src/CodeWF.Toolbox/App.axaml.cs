@@ -65,11 +65,13 @@ public partial class App : PrismApplication
 
     private void OpenMainWindow_OnClicked(object? sender, EventArgs e)
     {
-        if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
+        if (ApplicationLifetime is not IClassicDesktopStyleApplicationLifetime desktop)
         {
-            desktop.MainWindow?.Show();
-            desktop.MainWindow.Activate();
+            return;
         }
+
+        desktop.MainWindow?.Show();
+        desktop.MainWindow?.Activate();
     }
 
     private void OpenGithub_OnClicked(object? sender, EventArgs e)
