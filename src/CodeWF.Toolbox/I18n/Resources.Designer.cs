@@ -106,6 +106,15 @@ namespace CodeWF.Toolbox.I18n {
         }
         
         /// <summary>
+        ///   查找类似 Display prompt when closing the form 的本地化字符串。
+        /// </summary>
+        public static string DisplayPromptWhenClosing {
+            get {
+                return ResourceManager.GetString("DisplayPromptWhenClosing", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 Exit 的本地化字符串。
         /// </summary>
         public static string Exit {
@@ -192,6 +201,15 @@ namespace CodeWF.Toolbox.I18n {
         public static string MissingTool {
             get {
                 return ResourceManager.GetString("MissingTool", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 No more prompts 的本地化字符串。
+        /// </summary>
+        public static string NoMorePrompts {
+            get {
+                return ResourceManager.GetString("NoMorePrompts", resourceCulture);
             }
         }
         

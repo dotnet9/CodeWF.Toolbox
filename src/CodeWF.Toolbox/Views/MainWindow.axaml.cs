@@ -1,3 +1,4 @@
+using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Markup.Xaml;
@@ -5,8 +6,11 @@ using AvaloniaExtensions.Axaml.Markup;
 using CodeWF.Core.IServices;
 using CodeWF.Toolbox.Commands;
 using CodeWF.Toolbox.I18n;
+using CodeWF.Toolbox.ViewModels;
+using Splat.ModeDetection;
 using System;
 using System.Linq;
+using System.Threading.Tasks;
 using Ursa.Controls;
 
 namespace CodeWF.Toolbox.Views;
@@ -57,29 +61,65 @@ public partial class MainWindow : UrsaWindow
     {
         e.Cancel = true;
 
-        if (!_applicationService.HideTrayIconOnClose)
+        var dialogResult = DialogResult.OK;
+        // Do not close directly, hide in tray
+        if (_applicationService.HideTrayIconOnClose)
         {
-            var result = await MessageBox.ShowOverlayAsync(I18nManager.GetString(Language.SureExit),
-                I18nManager.GetString(Language.Exit),
-                button: MessageBoxButton.YesNo);
-            if (result == MessageBoxResult.Yes)
+            if (_applicationService.NeedExitDialogOnClose)
             {
-                if (App.Instance.ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
-                {
-                    desktop.Shutdown(0);
-                }
-                else
-                {
-                    Environment.Exit(0);
-                }
+                dialogResult = await ShowOptionDialogAsync(I18nManager.GetString(Language.FindInTrayIcon),
+                    DialogMode.Info,
+                    DialogButton.OKCancel);
             }
 
+            if (dialogResult != DialogResult.OK)
+            {
+                return;
+            }
+
+            Hide();
             return;
         }
 
-        await MessageBox.ShowOverlayAsync(I18nManager.GetString(Language.FindInTrayIcon),
-            I18nManager.GetString(Language.Exit), button: MessageBoxButton.OK);
-        Hide();
+        // Close directly
+        if (_applicationService.NeedExitDialogOnClose)
+        {
+            dialogResult = await ShowOptionDialogAsync(I18nManager.GetString(Language.SureExit), DialogMode.Warning,
+                DialogButton.OKCancel);
+        }
+
+        if (dialogResult != DialogResult.OK)
+        {
+            return;
+        }
+
+        Environment.Exit(0);
+    }
+
+    private async Task<DialogResult> ShowOptionDialogAsync(string message, DialogMode mode, DialogButton button)
+    {
+        var options = new DialogOptions()
+        {
+            Title = I18nManager.GetString(Language.Exit),
+            Mode = mode,
+            Button = button,
+            ShowInTaskBar = false,
+            IsCloseButtonVisible = true,
+            StartupLocation = WindowStartupLocation.CenterOwner,
+            CanDragMove = false,
+            CanResize = false,
+            StyleClass = default,
+        };
+        var vm = new ExitOptionViewModel()
+        {
+            Message = message,
+            Option = !_applicationService.NeedExitDialogOnClose,
+            OptionContent = I18nManager.GetString(Language.NoMorePrompts)
+        };
+        var result = await Dialog.ShowModal<ExitOptionView, ExitOptionViewModel>(vm, options: options);
+        _applicationService.NeedExitDialogOnClose = !vm.Option;
+
+        return result;
     }
 
     private void AdjustWindowSize()

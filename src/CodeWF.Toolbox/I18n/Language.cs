@@ -33,4 +33,6 @@ public static class Language
 	public static readonly string SureExit = "SureExit";
 	public static readonly string FindInTrayIcon = "FindInTrayIcon";
 	public static readonly string ShowMainWindow = "ShowMainWindow";
+	public static readonly string DisplayPromptWhenClosing = "DisplayPromptWhenClosing";
+	public static readonly string NoMorePrompts = "NoMorePrompts";
 }

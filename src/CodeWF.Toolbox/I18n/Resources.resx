@@ -163,4 +163,10 @@
   <data name="ShowMainWindow" xml:space="preserve">
     <value>Show Main Window</value>
   </data>
+  <data name="DisplayPromptWhenClosing" xml:space="preserve">
+    <value>Display prompt when closing the form</value>
+  </data>
+  <data name="NoMorePrompts" xml:space="preserve">
+    <value>No more prompts</value>
+  </data>
 </root>

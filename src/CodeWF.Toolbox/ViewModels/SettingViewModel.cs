@@ -18,6 +18,7 @@ public class SettingViewModel : ViewModelBase
         InitTheme();
         InitLanguage();
         HideTrayIconOnClose = applicationService.HideTrayIconOnClose;
+        NeedExitDialogOnClose = applicationService.NeedExitDialogOnClose;
     }
 
     private void InitTheme()
@@ -44,6 +45,14 @@ public class SettingViewModel : ViewModelBase
     {
         get => _hideTrayIconOnClose;
         set => this.RaiseAndSetIfChanged(ref _hideTrayIconOnClose, value);
+    }
+
+    private bool _needExitDialogOnClose;
+
+    public bool NeedExitDialogOnClose
+    {
+        get => _needExitDialogOnClose;
+        set => this.RaiseAndSetIfChanged(ref _needExitDialogOnClose, value);
     }
 
     public ObservableCollection<ThemeItem> Themes { get; private set; }
@@ -78,6 +87,11 @@ public class SettingViewModel : ViewModelBase
     {
         _applicationService.HideTrayIconOnClose = HideTrayIconOnClose;
         EventBus.EventBus.Default.Publish(new ChangeApplicationStatusCommand());
+    }
+
+    public void ChangeDisplayPromptWhenClosingHandler()
+    {
+        _applicationService.NeedExitDialogOnClose = NeedExitDialogOnClose;
     }
 
     private void SetTheme()

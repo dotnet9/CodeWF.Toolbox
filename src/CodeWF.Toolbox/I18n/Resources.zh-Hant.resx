@@ -183,4 +183,10 @@
   <data name="ShowMainWindow" xml:space="preserve">
     <value>顯示主視窗</value>
   </data>
+  <data name="DisplayPromptWhenClosing" xml:space="preserve">
+    <value>關閉表單時顯示提示</value>
+  </data>
+  <data name="NoMorePrompts" xml:space="preserve">
+    <value>不再提示</value>
+  </data>
 </root>

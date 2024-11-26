@@ -183,4 +183,10 @@
   <data name="ShowMainWindow" xml:space="preserve">
     <value>メインウィンドウを表示</value>
   </data>
+  <data name="DisplayPromptWhenClosing" xml:space="preserve">
+    <value>フォームを閉じるときにプロンプトを表示する</value>
+  </data>
+  <data name="NoMorePrompts" xml:space="preserve">
+    <value>再プロンプト</value>
+  </data>
 </root>

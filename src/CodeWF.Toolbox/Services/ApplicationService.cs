@@ -1,7 +1,6 @@
 ﻿using Avalonia;
 using Avalonia.Styling;
 using AvaloniaExtensions.Axaml.Markup;
-using CodeWF.Core;
 using CodeWF.Core.IServices;
 using CodeWF.Toolbox.Models;
 using CodeWF.Tools.Helpers;
@@ -19,6 +18,7 @@ internal class ApplicationService : IApplicationService
     private const string ThemeKey = "Theme";
     private const string LanguageKey = "Language";
     private const string HideTrayIconOnCloseKey = "HideTrayIconOnClose";
+    private const string NeedExitDialogOnCloseKey = "NeedExitDialogOnClose";
 
     private const string DefaultTheme = "Dark";
     private const string DefaultLanguage = "zh-CN";
@@ -33,6 +33,18 @@ internal class ApplicationService : IApplicationService
         set
         {
             AppConfigHelper.Set(HideTrayIconOnCloseKey, value);
+        }
+    }
+    public bool NeedExitDialogOnClose
+    {
+        get
+        {
+            return !AppConfigHelper.TryGet<bool>(NeedExitDialogOnCloseKey, out var needExitDialogOnClose) ||
+                   needExitDialogOnClose;
+        }
+        set
+        {
+            AppConfigHelper.Set(NeedExitDialogOnCloseKey, value);
         }
     }
 
