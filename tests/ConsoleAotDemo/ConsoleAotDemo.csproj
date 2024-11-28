@@ -16,6 +16,6 @@
 		<PackageReference Include="Dapper" Version="2.1.35" />
 		<PackageReference Include="Dapper.AOT" Version="1.0.31" />
 		<PackageReference Include="Microsoft.Data.Sqlite" Version="9.0.0" />
-		<PackageReference Include="VC-LTL" Version="5.1.1" />
+		<PackageReference Include="VC-LTL" Version="5.2.1-Beta1" />
 	</ItemGroup>
 </Project>
