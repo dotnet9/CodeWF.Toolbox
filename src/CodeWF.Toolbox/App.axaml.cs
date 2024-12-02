@@ -4,6 +4,7 @@ using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Markup.Xaml;
 using CodeWF.Core;
 using CodeWF.Core.IServices;
+using CodeWF.Core.RegionAdapters;
 using CodeWF.Core.Services;
 using CodeWF.Modules.AI;
 using CodeWF.Modules.Converter;
@@ -14,6 +15,7 @@ using DryIoc;
 using Prism.DryIoc;
 using Prism.Ioc;
 using Prism.Modularity;
+using Prism.Navigation.Regions;
 using System;
 using System.Linq;
 using Ursa.PrismExtension;
@@ -41,6 +43,12 @@ public partial class App : PrismApplication
         moduleCatalog.AddModule<ConverterModule>();
         moduleCatalog.AddModule<DevelopmentModule>();
         base.ConfigureModuleCatalog(moduleCatalog);
+    }
+
+    protected override void ConfigureRegionAdapterMappings(RegionAdapterMappings regionAdapterMappings)
+    {
+        base.ConfigureRegionAdapterMappings(regionAdapterMappings);
+        regionAdapterMappings.RegisterMapping(typeof(TabControl), Container.Resolve<TabControlRegionAdapter>());
     }
 
     protected override AvaloniaObject CreateShell()

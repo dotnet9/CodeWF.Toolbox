@@ -3,14 +3,17 @@
 public static class RegionNames
 {
     /// <summary>Main Window's Footer Status Bar.</summary>
-    public const string FooterRegion = "FooterRegion";
+    public const string FooterRegion = nameof(FooterRegion);
 
     /// <summary>Left Side Bar.</summary>
-    public const string LeftRegion = "LeftRegion";
+    public const string LeftRegion = nameof(LeftRegion);
 
     /// <summary>Main Window's content region</summary>
-    public const string ContentRegion = "ContentRegion";
+    public const string ContentRegion = nameof(ContentRegion);
 
     /// <summary>Right Side Bar.</summary>
-    public const string RightRegion = "RightRegion";
+    public const string RightRegion = nameof(RightRegion);
+
+    /// <summary>Right Side Bar.</summary>
+    public const string SettingRegion = nameof(SettingRegion);
 }

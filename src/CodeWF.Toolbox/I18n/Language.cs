@@ -35,4 +35,6 @@ public static class Language
 	public static readonly string ShowMainWindow = "ShowMainWindow";
 	public static readonly string DisplayPromptWhenClosing = "DisplayPromptWhenClosing";
 	public static readonly string NoMorePrompts = "NoMorePrompts";
+	public static readonly string About = "About";
+	public static readonly string AboutMessage = "AboutMessage";
 }

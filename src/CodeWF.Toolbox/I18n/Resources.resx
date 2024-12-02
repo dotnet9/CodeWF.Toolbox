@@ -169,4 +169,10 @@
   <data name="NoMorePrompts" xml:space="preserve">
     <value>No more prompts</value>
   </data>
+  <data name="About" xml:space="preserve">
+    <value>About</value>
+  </data>
+  <data name="AboutMessage" xml:space="preserve">
+    <value>This project is only for learning purposes</value>
+  </data>
 </root>

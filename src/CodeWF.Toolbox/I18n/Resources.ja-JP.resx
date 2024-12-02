@@ -189,4 +189,10 @@
   <data name="NoMorePrompts" xml:space="preserve">
     <value>再プロンプト</value>
   </data>
+  <data name="About" xml:space="preserve">
+    <value>について</value>
+  </data>
+  <data name="AboutMessage" xml:space="preserve">
+    <value>このプロジェクトは学習用にのみ使用されます</value>
+  </data>
 </root>

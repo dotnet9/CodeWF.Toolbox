@@ -1,10 +1,22 @@
 ﻿using Avalonia.Controls;
+using AvaloniaExtensions.Axaml.Markup;
+using CodeWF.Core.RegionAdapters;
+using CodeWF.Toolbox.I18n;
 using System;
 
 namespace CodeWF.Toolbox.ViewModels;
 
-internal class DashboardViewModel : ViewModelBase
+public class DashboardViewModel : ViewModelBase, ITabItemBase
 {
+    public string? Title { get; set; }
+    public string Message { get; set; }
+
+    public DashboardViewModel()
+    {
+        Title = I18nManager.GetString(Language.About);
+        Message = I18nManager.GetString(Language.AboutMessage);
+    }
+
     public void OpenRepository(UserControl owner)
     {
         OpenUrlAsync(owner, "https://github.com/dotnet9/CodeWF.Toolbox");

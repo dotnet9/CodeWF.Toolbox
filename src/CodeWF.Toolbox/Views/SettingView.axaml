@@ -4,8 +4,10 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:core="clr-namespace:CodeWF.Core;assembly=CodeWF.Core"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:prism="http://prismlibrary.com/"
     xmlns:i18n="https://codewf.com"
     xmlns:language="clr-namespace:CodeWF.Toolbox.I18n"
+    xmlns:view="clr-namespace:CodeWF.Toolbox.Views"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:u="https://irihi.tech/ursa"
     xmlns:vm="clr-namespace:CodeWF.Toolbox.ViewModels"
@@ -35,71 +37,8 @@
             Margin="0,0,0,20"
             HorizontalAlignment="Left"
             Classes="Tertiary H5"
-            Text="{i18n:I18n {x:Static language:Language.InterfaceStyleSettings}}"
+            Text="{Binding #MyTab.Tag}"
             Theme="{StaticResource TitleTextBlock}" />
-        <TabControl TabStripPlacement="Top">
-            <TabItem Header="{i18n:I18n {x:Static language:Language.GeneralSettings}}">
-                <Grid
-                    Margin="0,30,0,0"
-                    ColumnDefinitions="220 *"
-                    RowDefinitions="50 50 40 40 40 *">
-                    <TextBlock Text="{i18n:I18n {x:Static language:Language.Theme}}" />
-                    <ComboBox
-                        Grid.Row="0"
-                        Grid.Column="1"
-                        HorizontalAlignment="Stretch"
-                        VerticalAlignment="Center"
-                        PlaceholderText="Select a theme"
-                        DisplayMemberBinding="{Binding Name}"
-                        ItemsSource="{Binding Themes}"
-                        SelectedItem="{Binding SelectedTheme}" />
-
-                    <TextBlock Grid.Row="1" Grid.Column="0" Text="{i18n:I18n {x:Static language:Language.LanguageKey}}" />
-                    <ComboBox
-                        Grid.Row="1"
-                        Grid.Column="1"
-                        HorizontalAlignment="Stretch"
-                        VerticalAlignment="Center"
-                        PlaceholderText="Select a language"
-                        DisplayMemberBinding="{Binding Name}"
-                        ItemsSource="{Binding Languages}"
-                        SelectedItem="{Binding SelectedLanguage}" />
-
-                    <TextBlock
-                        Grid.Row="2"
-                        Grid.Column="0"
-                        Text="{i18n:I18n {x:Static language:Language.AutoOpenToolboxAtStartup}}" />
-                    <ToggleSwitch
-                        Grid.Row="2"
-                        Grid.Column="1"
-                        OffContent="{i18n:I18n {x:Static language:Language.TurnOff}}"
-                        OnContent="{i18n:I18n {x:Static language:Language.TurnOn}}" />
-
-                    <TextBlock
-                        Grid.Row="3"
-                        Grid.Column="0"
-                        Text="{i18n:I18n {x:Static language:Language.HideTrayIconOnClose}}" />
-                    <ToggleSwitch
-                        Grid.Row="3"
-                        Grid.Column="1"
-                        OffContent="{i18n:I18n {x:Static language:Language.TurnOff}}"
-                        OnContent="{i18n:I18n {x:Static language:Language.TurnOn}}"
-                        IsChecked="{Binding HideTrayIconOnClose}"
-                        Command="{Binding ChangeHideTrayIconOnCloseHandler}"/>
-
-                    <TextBlock
-                        Grid.Row="4"
-                        Grid.Column="0"
-                        Text="{i18n:I18n {x:Static language:Language.DisplayPromptWhenClosing}}" />
-                    <ToggleSwitch
-                        Grid.Row="4"
-                        Grid.Column="1"
-                        OffContent="{i18n:I18n {x:Static language:Language.TurnOff}}"
-                        OnContent="{i18n:I18n {x:Static language:Language.TurnOn}}"
-                        IsChecked="{Binding NeedExitDialogOnClose}"
-                        Command="{Binding ChangeDisplayPromptWhenClosingHandler}"/>
-                </Grid>
-            </TabItem>
-        </TabControl>
+        <TabControl TabStripPlacement="Left" prism:RegionManager.RegionName="{x:Static core:RegionNames.SettingRegion}" Name="MyTab" />
     </StackPanel>
 </UserControl>

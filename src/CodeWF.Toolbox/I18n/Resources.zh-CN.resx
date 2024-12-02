@@ -189,4 +189,10 @@
   <data name="NoMorePrompts" xml:space="preserve">
     <value>不再提示</value>
   </data>
+  <data name="About" xml:space="preserve">
+    <value>关于</value>
+  </data>
+  <data name="AboutMessage" xml:space="preserve">
+    <value>本项目只用于学习使用</value>
+  </data>
 </root>

@@ -61,6 +61,24 @@ namespace CodeWF.Toolbox.I18n {
         }
         
         /// <summary>
+        ///   查找类似 About 的本地化字符串。
+        /// </summary>
+        public static string About {
+            get {
+                return ResourceManager.GetString("About", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 This project is only for learning purposes 的本地化字符串。
+        /// </summary>
+        public static string AboutMessage {
+            get {
+                return ResourceManager.GetString("AboutMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 Access Online Toolbox 的本地化字符串。
         /// </summary>
         public static string AccessToolbox {
