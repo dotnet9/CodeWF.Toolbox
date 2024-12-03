@@ -21,7 +21,7 @@
 		<PackageReference Include="Quartz" Version="3.13.1" />
 		<PackageReference Include="TextMateSharp.Grammars" Version="1.0.64" />
 		<PackageReference Include="AvaloniaExtensions.Axaml" Version="0.0.2.8" />
-		<PackageReference Include="CodeWF.Tools" Version="1.2.5.7" />
+		<PackageReference Include="CodeWF.Tools" Version="1.2.5.8" />
 	</ItemGroup>
 
 	<ItemGroup>

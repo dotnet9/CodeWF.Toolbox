@@ -4,6 +4,7 @@ using CodeWF.Core.RegionAdapters;
 using CodeWF.Toolbox.I18n;
 using CodeWF.Tools.Extensions;
 using System;
+using System.Reflection;
 
 namespace CodeWF.Toolbox.ViewModels;
 
@@ -12,7 +13,9 @@ public class AboutViewModel : ViewModelBase, ITabItemBase
     public string? Title { get; set; } = I18nManager.GetString(Language.About);
     public string? AppName { get; set; }
     public string? Message { get; set; } = I18nManager.GetString(Language.AboutMessage);
-    public string? CompileTime { get; set; } = ThisAssembly.CompileTime?.ToString("yyyy-MM-dd HH:mm:ss");
+
+    public string? CompileTime { get; set; } =
+        Assembly.GetExecutingAssembly().CompileTime()?.ToString("yyyy-MM-dd HH:mm:ss");
 
     public void OpenRepository(UserControl owner)
     {
