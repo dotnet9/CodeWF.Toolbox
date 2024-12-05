@@ -1,9 +1,9 @@
-using Avalonia.Controls;
 using Avalonia.Markup.Xaml;
+using Ursa.Controls;
 
 namespace CodeWF.Toolbox.Views;
 
-public partial class SettingView : UserControl
+public partial class SettingView : UrsaWindow
 {
     public SettingView()
     {

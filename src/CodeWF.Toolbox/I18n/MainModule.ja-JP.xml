@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 
-<Localization language="Japanese" description="日本語版" cultureName="ja-JP">
+<Localization language="Japanese" description="日語" cultureName="ja-JP">
 	<MainModule>
 		<Title>コードワールドワークショップのツールボックス</Title>
 		<ShowMainWindow>メインウィンドウを表示する</ShowMainWindow>
@@ -14,6 +14,8 @@
 	</MainWindow>
 	<DashboardView>
 		<Title>ホームページ</Title>
+		<WeChat>著者のマイクロ信号</WeChat>
+		<WeChatPublic>ウィーチャットの公式アカウントに注目</WeChatPublic>
 		<DesiredAvailabilityNotification>欲しいものはすべてあります。ない場合はお知らせください。</DesiredAvailabilityNotification>
 		<AccessToolbox>オンラインツールボックスにアクセスする</AccessToolbox>
 		<MissingTool>欲しいツールがありません...</MissingTool>

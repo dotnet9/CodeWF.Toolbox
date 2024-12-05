@@ -2,19 +2,22 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:prism="http://prismlibrary.com/"
+             prism:ViewModelLocator.AutoWireViewModel="True"
              xmlns:i18n="https://codewf.com"
              xmlns:language="clr-namespace:Localization"
-             xmlns:view="clr-namespace:CodeWF.Toolbox.Views"
-             xmlns:u="https://irihi.tech/ursa"
              xmlns:vm="clr-namespace:CodeWF.Toolbox.ViewModels"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="CodeWF.Toolbox.Views.CommonSettingView"
              x:DataType="vm:CommonSettingViewModel">
+    <Design.DataContext>
+		<vm:CommonSettingViewModel />
+    </Design.DataContext>
     <Grid
-        Margin="0,30,0,0"
-        ColumnDefinitions="220 *"
-        RowDefinitions="50 50 40 40 40 *">
-        <TextBlock Text="{i18n:I18n {x:Static language:CommonSettingView.Theme}}" />
+        Margin="20"
+        ColumnDefinitions="150 *"
+        RowDefinitions="50 50 50 50 50 *">
+        <TextBlock VerticalAlignment="Center" Text="{i18n:I18n {x:Static language:CommonSettingView.Theme}}" />
         <ComboBox
             Grid.Row="0"
             Grid.Column="1"
@@ -25,7 +28,8 @@
             ItemsSource="{Binding Themes}"
             SelectedItem="{Binding SelectedTheme}" />
 
-        <TextBlock Grid.Row="1" Grid.Column="0" Text="{i18n:I18n {x:Static language:CommonSettingView.LanguageKey}}" />
+        <TextBlock Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" TextWrapping="Wrap"
+                   Text="{i18n:I18n {x:Static language:CommonSettingView.LanguageKey}}" />
         <ComboBox
             Grid.Row="1"
             Grid.Column="1"
@@ -37,8 +41,8 @@
             SelectedItem="{Binding SelectedLanguage}" />
 
         <TextBlock
-            Grid.Row="2"
-            Grid.Column="0"
+            Grid.Row="2" TextWrapping="Wrap"
+            Grid.Column="0" VerticalAlignment="Center"
             Text="{i18n:I18n {x:Static language:CommonSettingView.AutoOpenToolboxAtStartup}}" />
         <ToggleSwitch
             Grid.Row="2"
@@ -47,8 +51,8 @@
             OnContent="{i18n:I18n {x:Static language:CommonSettingView.TurnOn}}" />
 
         <TextBlock
-            Grid.Row="3"
-            Grid.Column="0"
+            Grid.Row="3" TextWrapping="Wrap"
+            Grid.Column="0" VerticalAlignment="Center"
             Text="{i18n:I18n {x:Static language:CommonSettingView.HideTrayIconOnClose}}" />
         <ToggleSwitch
             Grid.Row="3"
@@ -59,8 +63,8 @@
             Command="{Binding ChangeHideTrayIconOnCloseHandler}" />
 
         <TextBlock
-            Grid.Row="4"
-            Grid.Column="0"
+            Grid.Row="4" TextWrapping="Wrap"
+            Grid.Column="0" VerticalAlignment="Center"
             Text="{i18n:I18n {x:Static language:CommonSettingView.DisplayPromptWhenClosing}}" />
         <ToggleSwitch
             Grid.Row="4"

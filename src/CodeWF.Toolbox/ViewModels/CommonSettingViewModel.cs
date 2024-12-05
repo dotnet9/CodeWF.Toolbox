@@ -26,8 +26,8 @@ public class CommonSettingViewModel : ViewModelBase, ITabItemBase
         HideTrayIconOnClose = applicationService.HideTrayIconOnClose;
         NeedExitDialogOnClose = applicationService.NeedExitDialogOnClose;
 
-        Title = I18nManager.GetString(Localization.CommonSettingView.Title);
-        Message = I18nManager.GetString(Localization.CommonSettingView.Description);
+        Title = Localization.CommonSettingView.Title;
+        Message = Localization.CommonSettingView.Description;
     }
 
     private void InitTheme()

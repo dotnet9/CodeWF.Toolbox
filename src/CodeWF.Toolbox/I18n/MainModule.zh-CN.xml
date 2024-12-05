@@ -14,6 +14,8 @@
 	</MainWindow>
 	<DashboardView>
 		<Title>首页</Title>
+		<WeChat>联系微信号</WeChat>
+		<WeChatPublic>关注微信公众号</WeChatPublic>
 		<DesiredAvailabilityNotification>想要的都有，没有请告知。</DesiredAvailabilityNotification>
 		<AccessToolbox>访问在线工具箱</AccessToolbox>
 		<MissingTool>没有我要的工具...</MissingTool>

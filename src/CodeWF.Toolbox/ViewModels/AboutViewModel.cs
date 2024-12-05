@@ -1,18 +1,16 @@
 ﻿using Avalonia.Controls;
-using AvaloniaXmlTranslator;
 using CodeWF.Core.RegionAdapters;
 using CodeWF.Tools.Extensions;
 using System;
 using System.Reflection;
-using TextMateSharp.Grammars;
 
 namespace CodeWF.Toolbox.ViewModels;
 
 public class AboutViewModel : ViewModelBase, ITabItemBase
 {
-    public string? Title { get; set; } = I18nManager.GetString(Localization.AboutView.Title);
+    public string? Title { get; set; } = Localization.AboutView.Title;
     public string? AppName { get; set; }
-    public string? Message { get; set; } = I18nManager.GetString(Localization.AboutView.Description);
+    public string? Message { get; set; } = Localization.AboutView.Description;
 
     public string? CompileTime { get; set; } =
         Assembly.GetExecutingAssembly().CompileTime()?.ToString("yyyy-MM-dd HH:mm:ss");

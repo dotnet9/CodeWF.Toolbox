@@ -1,31 +1,51 @@
-<UserControl
+<u:UrsaWindow
     x:Class="CodeWF.Toolbox.Views.SettingView"
     xmlns="https://github.com/avaloniaui"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:core="clr-namespace:CodeWF.Core;assembly=CodeWF.Core"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:prism="http://prismlibrary.com/"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:prism="http://prismlibrary.com/"
+    xmlns:i18n="https://codewf.com"
+    xmlns:language="clr-namespace:Localization"
     xmlns:vm="clr-namespace:CodeWF.Toolbox.ViewModels"
-    Width="500"
-    Height="350"
-    d:DesignHeight="350"
+    xmlns:u="https://irihi.tech/ursa"
+    prism:ViewModelLocator.AutoWireViewModel="True"
+    Width="600" WindowStartupLocation="CenterOwner"
+    Height="500"
+    d:DesignHeight="600"
     d:DesignWidth="500"
-    mc:Ignorable="d"
-    x:DataType="vm:SettingViewModel">
+    mc:Ignorable="d" Padding="10"
+    x:DataType="vm:SettingViewModel"
+    Title="{i18n:I18n {x:Static language:SettingView.Title}}">
     <Design.DataContext>
         <!-- This only sets the DataContext for the previewer in an IDE,
          to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
         <vm:SettingViewModel />
     </Design.DataContext>
-    <StackPanel VerticalAlignment="Top">
+    <u:UrsaWindow.LeftContent>
+        <Grid ColumnDefinitions="Auto, *, Auto, Auto">
+
+            <StackPanel x:Name="LogoAndTitle" Grid.Row="0" Grid.Column="0" IsHitTestVisible="False"
+                        VerticalAlignment="Center" Classes="h7" Margin="5 5"
+                        TextElement.FontWeight="Light" Orientation="Horizontal" ClipToBounds="False">
+                <Viewbox Height="24" Width="24" IsHitTestVisible="False">
+                    <Image Source="\Assets\logo.ico" />
+                </Viewbox>
+                <TextBlock Text="{i18n:I18n {x:Static language:SettingView.Title}}" />
+            </StackPanel>
+        </Grid>
+    </u:UrsaWindow.LeftContent>
+    <StackPanel VerticalAlignment="Top" Margin="1 40 10 10">
         <TextBlock
             Margin="5,5,5,20"
             HorizontalAlignment="Left"
-            TextWrapping="Wrap"
+            TextWrapping="Wrap" MinHeight="30"
             Classes="Tertiary H6"
-            Text="{Binding #MyTab.Tag}"
+            Text="{i18n:I18n {Binding #MyTab.Tag}}"
             Theme="{StaticResource TitleTextBlock}" />
-        <TabControl TabStripPlacement="Left" prism:RegionManager.RegionName="{x:Static core:RegionNames.SettingRegion}" Name="MyTab" />
+        <TabControl TabStripPlacement="Top"
+                    prism:RegionManager.RegionName="{x:Static core:RegionNames.SettingRegion}"
+                    Name="MyTab" />
     </StackPanel>
-</UserControl>
+</u:UrsaWindow>

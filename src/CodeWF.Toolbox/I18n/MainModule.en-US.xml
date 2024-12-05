@@ -14,6 +14,8 @@
 	</MainWindow>
 	<DashboardView>
 		<Title>Homepage</Title>
+		<WeChat>Author's WeChat ID</WeChat>
+		<WeChatPublic>Follow WeChat official account</WeChatPublic>
 		<DesiredAvailabilityNotification>Everything you want is available. If not, please let us know.</DesiredAvailabilityNotification>
 		<AccessToolbox>Access the online toolbox</AccessToolbox>
 		<MissingTool>There's no tool I want...</MissingTool>

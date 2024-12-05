@@ -29,6 +29,8 @@ namespace Localization
     public static class DashboardView
     {
         public static readonly string Title = "Localization.DashboardView.Title";
+        public static readonly string WeChat = "Localization.DashboardView.WeChat";
+        public static readonly string WeChatPublic = "Localization.DashboardView.WeChatPublic";
         public static readonly string DesiredAvailabilityNotification = "Localization.DashboardView.DesiredAvailabilityNotification";
         public static readonly string AccessToolbox = "Localization.DashboardView.AccessToolbox";
         public static readonly string MissingTool = "Localization.DashboardView.MissingTool";

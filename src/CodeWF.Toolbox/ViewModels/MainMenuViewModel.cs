@@ -1,15 +1,15 @@
-﻿using Avalonia.Controls.Notifications;
-using AvaloniaXmlTranslator;
+﻿using Avalonia.Controls;
+using Avalonia.Controls.Notifications;
 using CodeWF.Core;
 using CodeWF.Core.Models;
 using CodeWF.Toolbox.Commands;
+using CodeWF.Toolbox.Views;
 using DryIoc;
 using Prism.Ioc;
 using Prism.Navigation.Regions;
 using ReactiveUI;
 using System.Collections.ObjectModel;
 using System.Linq;
-using Ursa.Controls;
 using Ursa.PrismExtension;
 
 namespace CodeWF.Toolbox.ViewModels;
@@ -97,9 +97,12 @@ internal class MainMenuViewModel : ViewModelBase
 
     public async void RaiseOpenSettingHandlerAsync()
     {
-        var option =
-            new OverlayDialogOptions { Title = I18nManager.GetString(Localization.SettingView.Title), Buttons = DialogButton.OK };
-        var vm = ContainerLocator.Current.Resolve<SettingViewModel>();
-        await _overlayDialogService.ShowModal(DialogNames.Setting, vm, HostIds.Main, option);
+        ContainerLocator.Container.Resolve<SettingView>().ShowDialog(App.Instance.MainWindow as Window);
+        //var option =
+        //    new OverlayDialogOptions { Title = I18nManager.GetString(Localization.SettingView.Title), Buttons = DialogButton.OK };
+        //var vm = ContainerLocator.Current.Resolve<SettingViewModel>();
+        //await _overlayDialogService.ShowModal(DialogNames.Setting, vm, HostIds.Main, option);
+
+
     }
 }
