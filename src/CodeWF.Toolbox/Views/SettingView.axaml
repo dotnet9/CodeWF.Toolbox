@@ -20,9 +20,10 @@
     </Design.DataContext>
     <StackPanel VerticalAlignment="Top">
         <TextBlock
-            Margin="0,0,0,20"
+            Margin="5,5,5,20"
             HorizontalAlignment="Left"
-            Classes="Tertiary H5"
+            TextWrapping="Wrap"
+            Classes="Tertiary H6"
             Text="{Binding #MyTab.Tag}"
             Theme="{StaticResource TitleTextBlock}" />
         <TabControl TabStripPlacement="Left" prism:RegionManager.RegionName="{x:Static core:RegionNames.SettingRegion}" Name="MyTab" />

@@ -23,7 +23,7 @@
 	</SettingView>
 	<CommonSettingView>
 		<Title>通用设置</Title>
-		<Description>界面风格设置</Description>
+		<Description>界面风格设置，国际化模块涉及到第三方企业在生产库中使用，暂时不开源</Description>
 		<Theme>主题</Theme>
 		<FollowingSystem>跟随系统</FollowingSystem>
 		<LightMode>白天模式</LightMode>

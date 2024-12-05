@@ -23,7 +23,7 @@
 	</SettingView>
 	<CommonSettingView>
 		<Title>一般設定</Title>
-		<Description>インターフェーススタイルの設定</Description>
+		<Description>インタフェーススタイルの設定、国際化モジュールは第三者企業が生産ライブラリで使用することに関連し、しばらくオープンソースしない</Description>
 		<Theme>テーマ</Theme>
 		<FollowingSystem>システムに従う</FollowingSystem>
 		<LightMode>ライトモード</LightMode>
