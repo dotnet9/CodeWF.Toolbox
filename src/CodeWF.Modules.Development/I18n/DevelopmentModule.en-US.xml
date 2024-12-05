@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<Localization language="English" description="English" cultureName="en-US">
+	<DevelopmentModule>
+		<Title>Development</Title>
+	</DevelopmentModule>
+	<YamlPrettifyView>
+		<Title>YAML Beautification and Formatting</Title>
+		<Description>Modify the YAML string into a user-friendly and readable format.</Description>
+		<RawYaml>Original Yaml format</RawYaml>
+		<PrettifiedVersionYAML>Beautified Yaml format</PrettifiedVersionYAML>
+	</YamlPrettifyView>
+	<JsonPrettifyView>
+		<Title>JSON Beautification and Formatting</Title>
+		<Description>Modify the JSON string into a user-friendly and readable format.</Description>
+		<RawJson>Original Json format:</RawJson>
+		<PrettifiedVersionJSON>Formatted Json format:</PrettifiedVersionJSON>
+		<SortKey>Sort Keys:</SortKey>
+		<IndentSize>Indentation of fields:</IndentSize>
+	</JsonPrettifyView>
+	<TestView>
+		<CompressFiles>Compress files</CompressFiles>
+		<DecompressionFiles>Decompress files</DecompressionFiles>
+		<SelectCompressFiles>Select the list of files to be compressed</SelectCompressFiles>
+		<SaveCompressedFile>Save the compressed file</SaveCompressedFile>
+		<CompressFileExceptionTitle>Compression file exception</CompressFileExceptionTitle>
+		<CompressFileExceptionContent>Compression file exception: {0}</CompressFileExceptionContent>
+		<SelectDecompressionFile>Select the directory to save after decompression</SelectDecompressionFile>
+		<SelectDirectory>Select the directory to save after decompression</SelectDirectory>
+		<DecompressionFileExceptionTitle>Decompression file exception</DecompressionFileExceptionTitle>
+		<DecompressionFileExceptionContent>Decompression file exception: {0}</DecompressionFileExceptionContent>
+	</TestView>
+</Localization>

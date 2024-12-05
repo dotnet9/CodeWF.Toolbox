@@ -4,14 +4,14 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:codewf="https://codewf.com"
              xmlns:vm="clr-namespace:CodeWF.Modules.AI.ViewModels"
-             xmlns:language="clr-namespace:CodeWF.Modules.AI.I18n"
+             xmlns:language="clr-namespace:Localization"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="600"
              Width="800" Height="600" Padding="10"
              x:Class="CodeWF.Modules.AI.Views.ChoiceLanguagesView"
              x:DataType="vm:ChoiceLanguagesViewModel">
     <codewf:Transfer
-        LeftHeader="{codewf:I18n {x:Static language:Language.Selected}}"
-        RightHeader="{codewf:I18n {x:Static language:Language.Selectable}}"
+        LeftHeader="{codewf:I18n {x:Static language:ChoiceLanguagesView.Selected}}"
+        RightHeader="{codewf:I18n {x:Static language:ChoiceLanguagesView.Selectable}}"
         LeftItemsSource="{Binding SelectedLanguages}"
         RightItemsSource="{Binding AllLanguages}" />
 </UserControl>

@@ -1,8 +1,7 @@
 ﻿using Avalonia.Platform.Storage;
-using AvaloniaExtensions.Axaml.Markup;
+using AvaloniaXmlTranslator;
 using CodeWF.Core.IServices;
 using CodeWF.Modules.Development.Entities;
-using CodeWF.Modules.Development.I18n;
 using CodeWF.Modules.Development.Jobs;
 using CodeWF.Tools.Extensions;
 using CodeWF.Tools.FileExtensions;
@@ -58,7 +57,7 @@ public class TestViewModel : ReactiveObject
     {
         try
         {
-            var files = await _fileChooserService.OpenFileAsync(I18nManager.GetString(Language.SelectCompressFiles)!,
+            var files = await _fileChooserService.OpenFileAsync(I18nManager.GetString(Localization.TestView.SelectCompressFiles)!,
                 true,
                 [FilePickerFileTypes.All]);
             if (!(files?.Count > 0))
@@ -66,7 +65,7 @@ public class TestViewModel : ReactiveObject
                 return;
             }
 
-            var saveFile = await _fileChooserService.SaveFileAsync(I18nManager.GetString(Language.SaveCompressedFile)!,
+            var saveFile = await _fileChooserService.SaveFileAsync(I18nManager.GetString(Localization.TestView.SaveCompressedFile)!,
                 [_zipFilePickerFileType]);
             if (string.IsNullOrWhiteSpace(saveFile))
             {
@@ -79,8 +78,8 @@ public class TestViewModel : ReactiveObject
         }
         catch (Exception ex)
         {
-            _notificationService.Show(I18nManager.GetString(Language.CompressFileExceptionTitle)!,
-                string.Format(I18nManager.GetString(Language.CompressFileExceptionContent)!, ex));
+            _notificationService.Show(I18nManager.GetString(Localization.TestView.CompressFileExceptionTitle)!,
+                string.Format(I18nManager.GetString(Localization.TestView.CompressFileExceptionContent)!, ex));
         }
     }
 
@@ -89,7 +88,7 @@ public class TestViewModel : ReactiveObject
         try
         {
             var files = await _fileChooserService.OpenFileAsync(
-                I18nManager.GetString(Language.SelectDecompressionFile)!, false,
+                I18nManager.GetString(Localization.TestView.SelectDecompressionFile)!, false,
                 [_zipFilePickerFileType]);
             if (!(files?.Count > 0))
             {
@@ -98,7 +97,7 @@ public class TestViewModel : ReactiveObject
 
             var zipFile = files[0];
 
-            var dirs = await _fileChooserService.OpenFolderAsync(I18nManager.GetString(Language.SelectDirectory)!);
+            var dirs = await _fileChooserService.OpenFolderAsync(I18nManager.GetString(Localization.TestView.SelectDirectory)!);
             if (!(dirs?.Count > 0))
             {
                 return;
@@ -112,8 +111,8 @@ public class TestViewModel : ReactiveObject
         }
         catch (Exception ex)
         {
-            _notificationService.Show(I18nManager.GetString(Language.DecompressionFileExceptionTitle)!,
-                string.Format(I18nManager.GetString(Language.DecompressionFileExceptionContent)!, ex));
+            _notificationService.Show(I18nManager.GetString(Localization.TestView.DecompressionFileExceptionTitle)!,
+                string.Format(I18nManager.GetString(Localization.TestView.DecompressionFileExceptionContent)!, ex));
         }
     }
 

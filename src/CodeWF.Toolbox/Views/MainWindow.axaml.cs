@@ -1,13 +1,9 @@
-using Avalonia;
 using Avalonia.Controls;
-using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Markup.Xaml;
-using AvaloniaExtensions.Axaml.Markup;
+using AvaloniaXmlTranslator;
 using CodeWF.Core.IServices;
 using CodeWF.Toolbox.Commands;
-using CodeWF.Toolbox.I18n;
 using CodeWF.Toolbox.ViewModels;
-using Splat.ModeDetection;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
@@ -67,7 +63,7 @@ public partial class MainWindow : UrsaWindow
         {
             if (_applicationService.NeedExitDialogOnClose)
             {
-                dialogResult = await ShowOptionDialogAsync(I18nManager.GetString(Language.FindInTrayIcon),
+                dialogResult = await ShowOptionDialogAsync(I18nManager.GetString(Localization.MainWindow.FindInTrayIcon),
                     DialogMode.Info,
                     DialogButton.OKCancel);
             }
@@ -84,7 +80,7 @@ public partial class MainWindow : UrsaWindow
         // Close directly
         if (_applicationService.NeedExitDialogOnClose)
         {
-            dialogResult = await ShowOptionDialogAsync(I18nManager.GetString(Language.SureExit), DialogMode.Warning,
+            dialogResult = await ShowOptionDialogAsync(I18nManager.GetString(Localization.MainWindow.SureExit), DialogMode.Warning,
                 DialogButton.OKCancel);
         }
 
@@ -100,7 +96,7 @@ public partial class MainWindow : UrsaWindow
     {
         var options = new DialogOptions()
         {
-            Title = I18nManager.GetString(Language.Exit),
+            Title = I18nManager.GetString(Localization.MainModule.Exit),
             Mode = mode,
             Button = button,
             ShowInTaskBar = false,
@@ -114,7 +110,7 @@ public partial class MainWindow : UrsaWindow
         {
             Message = message,
             Option = !_applicationService.NeedExitDialogOnClose,
-            OptionContent = I18nManager.GetString(Language.NoMorePrompts)
+            OptionContent = I18nManager.GetString(Localization.MainWindow.NoMorePrompts)
         };
         var result = await Dialog.ShowModal<ExitOptionView, ExitOptionViewModel>(vm, options: options);
         _applicationService.NeedExitDialogOnClose = !vm.Option;

@@ -1,6 +1,6 @@
 ﻿using Avalonia;
 using Avalonia.Styling;
-using AvaloniaExtensions.Axaml.Markup;
+using AvaloniaXmlTranslator;
 using CodeWF.Core.IServices;
 using CodeWF.Toolbox.Models;
 using CodeWF.Tools.Helpers;
@@ -56,14 +56,6 @@ internal class ApplicationService : IApplicationService
         new ThemeItem("Desert", SemiTheme.Desert),
         new ThemeItem("Dust", SemiTheme.Dust),
         new ThemeItem("NightSky", SemiTheme.NightSky),
-    };
-
-    public List<LanguageItem> Languages { get; } = new()
-    {
-        new LanguageItem("en", "English"),
-        new LanguageItem("zh-CN", "中文简体"),
-        new LanguageItem("zh-Hant", "中文繁體"),
-        new LanguageItem("ja-JP", "日本語"),
     };
 
     public void Load()

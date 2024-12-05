@@ -5,7 +5,7 @@
     xmlns:AvaloniaEdit="clr-namespace:AvaloniaEdit;assembly=AvaloniaEdit"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:i18n="https://codewf.com"
-    xmlns:language="clr-namespace:CodeWF.Modules.Development.I18n"
+    xmlns:language="clr-namespace:Localization"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:prism="http://prismlibrary.com/"
     xmlns:vm="clr-namespace:CodeWF.Modules.Development.ViewModels"
@@ -22,7 +22,7 @@
         <TextBlock
             Grid.Row="0"
             Grid.Column="0"
-            Text="{i18n:I18n {x:Static language:Language.RawYaml}}" />
+            Text="{i18n:I18n {x:Static language:YamlPrettifyView.RawYaml}}" />
         <TextBox
             Grid.Row="1"
             Grid.Column="0"
@@ -42,7 +42,7 @@
         <TextBlock
             Grid.Row="0"
             Grid.Column="2"
-            Text="{i18n:I18n {x:Static language:Language.PrettifiedVersionYAML}}" />
+            Text="{i18n:I18n {x:Static language:YamlPrettifyView.PrettifiedVersionYAML}}" />
         <AvaloniaEdit:TextEditor
             x:Name="Editor"
             Grid.Row="1"

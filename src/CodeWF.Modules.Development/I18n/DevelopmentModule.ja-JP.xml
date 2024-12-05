@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<Localization language="Japanese" description="日本語版" cultureName="ja-JP">
+	<DevelopmentModule>
+		<Title>開発</Title>
+	</DevelopmentModule>
+	<YamlPrettifyView>
+		<Title>YAMLの美化とフォーマット</Title>
+		<Description>YAML文字列を読みやすいフレンドリーな形式に整形します。</Description>
+		<RawYaml>元のYaml形式</RawYaml>
+		<PrettifiedVersionYAML>美化されたYaml形式</PrettifiedVersionYAML>
+	</YamlPrettifyView>
+	<JsonPrettifyView>
+		<Title>JSONの美化とフォーマット</Title>
+		<Description>JSON文字列を読みやすいフレンドリーな形式に整形します。</Description>
+		<RawJson>元のJson形式：</RawJson>
+		<PrettifiedVersionJSON>フォーマットされたJson形式：</PrettifiedVersionJSON>
+		<SortKey>キーの並び替え：</SortKey>
+		<IndentSize>フィールドのインデント：</IndentSize>
+	</JsonPrettifyView>
+	<TestView>
+		<CompressFiles>ファイルを圧縮する</CompressFiles>
+		<DecompressionFiles>ファイルを解凍する</DecompressionFiles>
+		<SelectCompressFiles>圧縮するファイルのリストを選択する</SelectCompressFiles>
+		<SaveCompressedFile>圧縮ファイルを保存する</SaveCompressedFile>
+		<CompressFileExceptionTitle>圧縮ファイルのエラー</CompressFileExceptionTitle>
+		<CompressFileExceptionContent>圧縮ファイルのエラー: {0}</CompressFileExceptionContent>
+		<SelectDecompressionFile>解凍後に保存するディレクトリを選択する</SelectDecompressionFile>
+		<SelectDirectory>解凍後に保存するディレクトリを選択する</SelectDirectory>
+		<DecompressionFileExceptionTitle>解凍ファイルのエラー</DecompressionFileExceptionTitle>
+		<DecompressionFileExceptionContent>解凍ファイルのエラー: {0}</DecompressionFileExceptionContent>
+	</TestView>
+</Localization>

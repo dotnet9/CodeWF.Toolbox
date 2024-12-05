@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<Localization language="Chinese (Simplified)" description="中文简体" cultureName="zh-CN">
+	<ConverterModule>
+		<Title>转换器</Title>
+	</ConverterModule>
+	<DateTimeConverterView>
+		<Title>日期时间转换器</Title>
+		<Description>将日期和时间转换为各种不同的格式</Description>
+	</DateTimeConverterView>
+	<JsonToYamlView>
+		<Title>JSON到YAML转换器</Title>
+		<Description>在线转换将JSON转换为YAML。</Description>
+		<RawJson>原始Json格式：</RawJson>
+		<AfterYaml>转换后的Yaml格式：</AfterYaml>
+		<Copy>复制</Copy>
+		<Clear>清空</Clear>
+	</JsonToYamlView>
+	<YamlToJsonView>
+		<Title>YAML到JSON转换器</Title>
+		<Description>使用此在线转换器将YAML转换为JSON。</Description>
+		<RawYaml>原始YAML格式：</RawYaml>
+		<AfterJson>转换后的Json格式：</AfterJson>
+		<Copy>复制</Copy>
+		<Clear>清空</Clear>
+	</YamlToJsonView>
+</Localization>

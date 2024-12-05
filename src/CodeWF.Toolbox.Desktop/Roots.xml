@@ -18,4 +18,5 @@
 	<assembly fullname="Quartz" preserve="All" />
 	<assembly fullname="System.Net.Http" preserve="All" />
 	<assembly fullname="System.Configuration.ConfigurationManager" preserve="All" />
+	<assembly fullname="AvaloniaXmlTranslator" preserve="All" />
 </linker>

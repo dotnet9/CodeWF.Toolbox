@@ -3,7 +3,7 @@
     xmlns="https://github.com/avaloniaui"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:language="clr-namespace:CodeWF.Modules.AI.I18n"
+    xmlns:language="clr-namespace:Localization"
     xmlns:markup="https://codewf.com"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:prism="http://prismlibrary.com/"
@@ -57,6 +57,6 @@
             HorizontalAlignment="Stretch"
             VerticalAlignment="Center"
             Command="{Binding RaiseChoiceLanguagesCommand}"
-            Content="{markup:I18n {x:Static language:Language.LanguageKey}}" />
+            Content="{markup:I18n {x:Static language:ChoiceLanguagesView.LanguageKey}}" />
     </Grid>
 </UserControl>

@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<Localization language="Chinese (Traditional)" description="中文繁體" cultureName="zh-Hant">
+	<AIModule>
+		<Title>人工智能</Title>
+	</AIModule>
+	<AskBotView>
+		<Title>智能問答助手</Title>
+		<Description>一鍵提問，即刻獲取答案，智能問答助手為您解惑。</Description>
+	</AskBotView>
+	<PolyTranslateView>
+		<Title>人工智能一鍵多語種翻譯神器</Title>
+		<Description>輕鬆實現一鍵翻譯，支持多種語言互譯，讓溝通無界限！</Description>
+	</PolyTranslateView>
+	<Title2SlugView>
+		<Title>人工智能一鍵轉URL Slug</Title>
+		<Description>輕鬆將中文、英文等文章標題一鍵轉換成英文URL Slug。</Description>
+	</Title2SlugView>
+	<ChoiceLanguagesView>
+		<LanguageKey>語言</LanguageKey>
+		<Selectable>可選擇的</Selectable>
+		<Selected>已選擇</Selected>
+	</ChoiceLanguagesView>
+</Localization>

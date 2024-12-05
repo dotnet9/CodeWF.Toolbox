@@ -1,7 +1,6 @@
 ﻿using CodeWF.Core;
 using CodeWF.Core.Models;
 using CodeWF.Modules.AI.Helpers;
-using CodeWF.Modules.AI.I18n;
 using CodeWF.Modules.AI.Views;
 using Ursa.PrismExtension;
 
@@ -11,17 +10,17 @@ public class AIModule : IModule
 {
     public AIModule(IToolMenuService toolMenuService)
     {
-        var groupName = Language.AI;
+        var groupName = Localization.AIModule.Title;
         toolMenuService.AddSeparator();
         toolMenuService.AddGroup(groupName, Icons.AI);
-        toolMenuService.AddItem(Language.AskBot, groupName, Language.AskBotDescription, nameof(AskBotView),
+        toolMenuService.AddItem(Localization.AskBotView.Title, groupName, Localization.AskBotView.Description, nameof(AskBotView),
             Icons.AskBot,
             ToolStatus.Developing);
-        toolMenuService.AddItem(Language.PolyTranslate, groupName, Language.PolyTranslateDescription,
+        toolMenuService.AddItem(Localization.PolyTranslateView.Title, groupName, Localization.PolyTranslateView.Description,
             nameof(PolyTranslateView),
             Icons.PolyTranslate,
             ToolStatus.Developing);
-        toolMenuService.AddItem(Language.Title2Slug, groupName, Language.Title2SlugDescription, nameof(Title2SlugView),
+        toolMenuService.AddItem(Localization.Title2SlugView.Title, groupName, Localization.Title2SlugView.Description, nameof(Title2SlugView),
             Icons.Title2Slug,
             ToolStatus.Developing);
     }

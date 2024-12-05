@@ -3,8 +3,11 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:i18n="https://codewf.com"
-             xmlns:language="clr-namespace:CodeWF.Modules.Converter.I18n"
+             xmlns:language="clr-namespace:Localization"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="CodeWF.Modules.Converter.Views.DateTimeConverterView">
-  <TextBlock Text="{i18n:I18n {x:Static language:Language.DateTimeFormatConversion}}"/>
+    <StackPanel>
+        <TextBlock Text="{i18n:I18n {x:Static language:DateTimeConverterView.Title}}" />
+        <TextBlock Text="{i18n:I18n {x:Static language:DateTimeConverterView.Description}}" />
+    </StackPanel>
 </UserControl>

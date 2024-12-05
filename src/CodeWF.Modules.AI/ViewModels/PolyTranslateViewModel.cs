@@ -1,10 +1,8 @@
-﻿using AvaloniaExtensions.Axaml.Markup;
+﻿using AvaloniaXmlTranslator;
 using CodeWF.AvaloniaControls.Extensions;
 using CodeWF.Core;
 using CodeWF.Modules.AI.Helpers;
-using CodeWF.Modules.AI.I18n;
 using CodeWF.Modules.AI.Models;
-using Prism.Ioc;
 using ReactiveUI;
 using System.Reactive;
 using System.Reactive.Linq;
@@ -98,7 +96,7 @@ public class PolyTranslateViewModel : ReactiveObject
         var option =
             new OverlayDialogOptions()
             {
-                Title = I18nManager.GetString(Language.LanguageKey), Buttons = DialogButton.OK
+                Title = I18nManager.GetString(Localization.ChoiceLanguagesView.LanguageKey), Buttons = DialogButton.OK
             };
 
         var vm = _container.Resolve<ChoiceLanguagesViewModel>();

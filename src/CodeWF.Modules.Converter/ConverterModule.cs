@@ -1,6 +1,5 @@
 ﻿using CodeWF.Core;
 using CodeWF.Core.Models;
-using CodeWF.Modules.Converter.I18n;
 using CodeWF.Modules.Converter.Views;
 
 namespace CodeWF.Modules.Converter;
@@ -9,17 +8,17 @@ public class ConverterModule : IModule
 {
     public ConverterModule(IToolMenuService toolMenuService)
     {
-        var groupName = Language.Converter;
+        var groupName = Localization.ConverterModule.Title;
         toolMenuService.AddSeparator();
         toolMenuService.AddGroup(groupName, Icons.Converter);
-        toolMenuService.AddItem(Language.DateTimeConverter, groupName, Language.DateTimeFormatConversion,
+        toolMenuService.AddItem(Localization.DateTimeConverterView.Title, groupName, Localization.DateTimeConverterView.Description,
             nameof(DateTimeConverterView),
             Icons.Timestamp,
             ToolStatus.Developing);
-        toolMenuService.AddItem(Language.YamlToJson, groupName, Language.YamlToJsonDescription, nameof(YamlToJsonView),
+        toolMenuService.AddItem(Localization.YamlToJsonView.Title, groupName, Localization.YamlToJsonView.Description, nameof(YamlToJsonView),
             Icons.Yaml,
             ToolStatus.Complete);
-        toolMenuService.AddItem(Language.JsonToYaml, groupName, Language.JsonToYamlDescription, nameof(JsonToYamlView),
+        toolMenuService.AddItem(Localization.JsonToYamlView.Title, groupName, Localization.JsonToYamlView.Description, nameof(JsonToYamlView),
             Icons.Json,
             ToolStatus.Complete);
     }

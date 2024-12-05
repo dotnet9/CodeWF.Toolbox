@@ -5,7 +5,7 @@
     xmlns:prism="http://prismlibrary.com/"
     xmlns:u-semi="https://irihi.tech/ursa/themes/semi"
     xmlns:i18n="https://codewf.com"
-    xmlns:language="clr-namespace:CodeWF.Toolbox.I18n">
+    xmlns:language="clr-namespace:Localization">
     <prism:PrismApplication.Styles>
         <StyleInclude Source="avares://Semi.Avalonia/Themes/Index.axaml" />
         <u-semi:SemiTheme Locale="zh-CN" />
@@ -13,13 +13,13 @@
     </prism:PrismApplication.Styles>
     <TrayIcon.Icons>
         <TrayIcons>
-            <TrayIcon Icon="/Assets/logo.ico" Clicked="OpenMainWindow_OnClicked" ToolTipText="{i18n:I18n {x:Static language:Language.AppName}}">
+            <TrayIcon Icon="/Assets/logo.ico" Clicked="OpenMainWindow_OnClicked" ToolTipText="{i18n:I18n {x:Static language:MainModule.Title}}">
                 <TrayIcon.Menu>
                     <NativeMenu>
-						<NativeMenuItem Header="{i18n:I18n {x:Static language:Language.ShowMainWindow}}" Click="OpenMainWindow_OnClicked" />
+						<NativeMenuItem Header="{i18n:I18n {x:Static language:MainModule.ShowMainWindow}}" Click="OpenMainWindow_OnClicked" />
 						<NativeMenuItem Header="Github" Click="OpenGithub_OnClicked" />
                         <NativeMenuItemSeparator />
-                        <NativeMenuItem Header="{i18n:I18n {x:Static language:Language.Exit}}" Click="ExitApplication_OnClicked" />
+                        <NativeMenuItem Header="{i18n:I18n {x:Static language:MainModule.Exit}}" Click="ExitApplication_OnClicked" />
                     </NativeMenu>
                 </TrayIcon.Menu>
             </TrayIcon>

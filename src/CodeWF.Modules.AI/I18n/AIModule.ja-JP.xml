@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<Localization language="Japanese" description="日本語版" cultureName="ja-JP">
+	<AIModule>
+		<Title>AI（人工知能）</Title>
+	</AIModule>
+	<AskBotView>
+		<Title>知能質問応答アシスタント</Title>
+		<Description>ワンクリックで質問を投げると、すぐに回答を得ることができます。知能質問応答アシスタントがあなたの疑問を解決します。</Description>
+	</AskBotView>
+	<PolyTranslateView>
+		<Title>AIワンクリック多言語翻訳ツール</Title>
+		<Description>簡単にワンクリック翻訳が可能で、多言語間の相互翻訳をサポートし、コミュニケーションに境界を設けません！</Description>
+	</PolyTranslateView>
+	<Title2SlugView>
+		<Title>AIワンクリックでURLスラグに変換</Title>
+		<Description>簡単に中国語、英語などの記事タイトルをワンクリックで英語のURLスラグに変換できます。</Description>
+	</Title2SlugView>
+	<ChoiceLanguagesView>
+		<LanguageKey>言語</LanguageKey>
+		<Selectable>選択可能な</Selectable>
+		<Selected>選択された</Selected>
+	</ChoiceLanguagesView>
+</Localization>

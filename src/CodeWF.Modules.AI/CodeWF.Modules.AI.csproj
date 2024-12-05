@@ -7,7 +7,7 @@
 		<InterceptorsPreviewNamespaces>$(InterceptorsPreviewNamespaces);Dapper.AOT</InterceptorsPreviewNamespaces>
 	</PropertyGroup>
 	<ItemGroup>
-		<PackageReference Include="AvaloniaExtensions.Axaml" Version="0.0.2.8" />
+		<PackageReference Include="AvaloniaXmlTranslator" Version="0.0.0.1" />
 		<PackageReference Include="CodeWF.AvaloniaControls" Version="0.0.3.8" />
 		<PackageReference Include="Prism.Avalonia" Version="9.0.401.11110-pre" />
 		<PackageReference Include="Prism.DryIoc.Avalonia" Version="9.0.401.11110-pre" />
@@ -30,9 +30,21 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <None Update="I18n\AIModule.zh-Hant.xml">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="I18n\AIModule.en-US.xml">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="I18n\AIModule.ja-JP.xml">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
 	  <None Update="I18n\Language.tt">
 	    <Generator>TextTemplatingFileGenerator</Generator>
 	    <LastGenOutput>Language.cs</LastGenOutput>
+	  </None>
+	  <None Update="I18n\AIModule.zh-CN.xml">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 	  </None>
 	</ItemGroup>
 
@@ -46,17 +58,5 @@
 	    <AutoGen>True</AutoGen>
 	    <DependentUpon>Language.tt</DependentUpon>
 	  </Compile>
-	  <Compile Update="I18n\Resources.Designer.cs">
-	    <DesignTime>True</DesignTime>
-	    <AutoGen>True</AutoGen>
-	    <DependentUpon>Resources.resx</DependentUpon>
-	  </Compile>
-	</ItemGroup>
-
-	<ItemGroup>
-	  <EmbeddedResource Update="I18n\Resources.resx">
-	    <Generator>PublicResXFileCodeGenerator</Generator>
-	    <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-	  </EmbeddedResource>
 	</ItemGroup>
 </Project>

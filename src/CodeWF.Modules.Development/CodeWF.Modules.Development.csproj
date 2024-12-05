@@ -15,12 +15,12 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<PackageReference Include="AvaloniaXmlTranslator" Version="0.0.0.1" />
 		<PackageReference Include="Prism.DryIoc.Avalonia" Version="9.0.401.11110-pre" />
 		<PackageReference Include="Avalonia.ReactiveUI" Version="11.2.2" />
 		<PackageReference Include="AvaloniaEdit.TextMate" Version="11.1.0" />
 		<PackageReference Include="Quartz" Version="3.13.1" />
 		<PackageReference Include="TextMateSharp.Grammars" Version="1.0.64" />
-		<PackageReference Include="AvaloniaExtensions.Axaml" Version="0.0.2.8" />
 		<PackageReference Include="CodeWF.Tools" Version="1.2.5.9" />
 	</ItemGroup>
 
@@ -34,24 +34,24 @@
 		  <AutoGen>True</AutoGen>
 		  <DependentUpon>Language.tt</DependentUpon>
 		</Compile>
-		<Compile Update="I18n\Resources.Designer.cs">
-			<DesignTime>True</DesignTime>
-			<AutoGen>True</AutoGen>
-			<DependentUpon>Resources.resx</DependentUpon>
-		</Compile>
 	</ItemGroup>
 
 	<ItemGroup>
-		<EmbeddedResource Update="I18n\Resources.resx">
-			<Generator>PublicResXFileCodeGenerator</Generator>
-			<LastGenOutput>Resources.Designer.cs</LastGenOutput>
-		</EmbeddedResource>
-	</ItemGroup>
-
-	<ItemGroup>
+		<None Update="I18n\DevelopmentModule.zh-Hant.xml">
+		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+		<None Update="I18n\DevelopmentModule.en-US.xml">
+		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+		<None Update="I18n\DevelopmentModule.ja-JP.xml">
+		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
 		<None Update="I18n\Language.tt">
 			<Generator>TextTemplatingFileGenerator</Generator>
 			<LastGenOutput>Language.cs</LastGenOutput>
+		</None>
+		<None Update="I18n\DevelopmentModule.zh-CN.xml">
+		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</None>
 	</ItemGroup>
 

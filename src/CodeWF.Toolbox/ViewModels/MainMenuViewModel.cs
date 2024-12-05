@@ -1,9 +1,8 @@
 ﻿using Avalonia.Controls.Notifications;
-using AvaloniaExtensions.Axaml.Markup;
+using AvaloniaXmlTranslator;
 using CodeWF.Core;
 using CodeWF.Core.Models;
 using CodeWF.Toolbox.Commands;
-using CodeWF.Toolbox.I18n;
 using DryIoc;
 using Prism.Ioc;
 using Prism.Navigation.Regions;
@@ -99,7 +98,7 @@ internal class MainMenuViewModel : ViewModelBase
     public async void RaiseOpenSettingHandlerAsync()
     {
         var option =
-            new OverlayDialogOptions { Title = I18nManager.GetString(Language.Setting), Buttons = DialogButton.OK };
+            new OverlayDialogOptions { Title = I18nManager.GetString(Localization.SettingView.Title), Buttons = DialogButton.OK };
         var vm = ContainerLocator.Current.Resolve<SettingViewModel>();
         await _overlayDialogService.ShowModal(DialogNames.Setting, vm, HostIds.Main, option);
     }

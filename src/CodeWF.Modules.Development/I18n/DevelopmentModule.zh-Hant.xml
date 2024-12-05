@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<Localization language="Chinese (Traditional)" description="中文繁體" cultureName="zh-Hant">
+	<DevelopmentModule>
+		<Title>開發</Title>
+	</DevelopmentModule>
+	<YamlPrettifyView>
+		<Title>YAML美化和格式化</Title>
+		<Description>將YAML字串修飾為友好的可讀格式。</Description>
+		<RawYaml>原始Yaml格式</RawYaml>
+		<PrettifiedVersionYAML>美化後的Yaml格式</PrettifiedVersionYAML>
+	</YamlPrettifyView>
+	<JsonPrettifyView>
+		<Title>JSON美化和格式化</Title>
+		<Description>將JSON字串修飾為友好的可讀格式。</Description>
+		<RawJson>原始Json格式：</RawJson>
+		<PrettifiedVersionJSON>格式化後的Json格式：</PrettifiedVersionJSON>
+		<SortKey>對Key排序：</SortKey>
+		<IndentSize>欄位縮進：</IndentSize>
+	</JsonPrettifyView>
+	<TestView>
+		<CompressFiles>壓縮文件</CompressFiles>
+		<DecompressionFiles>解壓文件</DecompressionFiles>
+		<SelectCompressFiles>選擇要壓縮的文件列表</SelectCompressFiles>
+		<SaveCompressedFile>保存壓縮文件</SaveCompressedFile>
+		<CompressFileExceptionTitle>壓縮文件異常</CompressFileExceptionTitle>
+		<CompressFileExceptionContent>壓縮文件異常: {0}</CompressFileExceptionContent>
+		<SelectDecompressionFile>解壓後選擇要保存的目錄</SelectDecompressionFile>
+		<SelectDirectory>解壓後選擇要保存的目錄</SelectDirectory>
+		<DecompressionFileExceptionTitle>解壓文件異常</DecompressionFileExceptionTitle>
+		<DecompressionFileExceptionContent>解壓文件異常: {0}</DecompressionFileExceptionContent>
+	</TestView>
+</Localization>

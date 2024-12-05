@@ -1,7 +1,4 @@
 ﻿using Avalonia.Controls;
-using AvaloniaExtensions.Axaml.Markup;
-using CodeWF.Core.RegionAdapters;
-using CodeWF.Toolbox.I18n;
 using System;
 
 namespace CodeWF.Toolbox.ViewModels;

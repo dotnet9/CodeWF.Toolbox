@@ -1,8 +1,8 @@
-﻿using AvaloniaExtensions.Axaml.Markup;
+﻿using AvaloniaXmlTranslator;
+using AvaloniaXmlTranslator.Models;
 using CodeWF.Core.IServices;
 using CodeWF.Core.RegionAdapters;
 using CodeWF.Toolbox.Commands;
-using CodeWF.Toolbox.I18n;
 using CodeWF.Toolbox.Models;
 using CodeWF.Toolbox.Services;
 using ReactiveUI;
@@ -26,8 +26,8 @@ public class CommonSettingViewModel : ViewModelBase, ITabItemBase
         HideTrayIconOnClose = applicationService.HideTrayIconOnClose;
         NeedExitDialogOnClose = applicationService.NeedExitDialogOnClose;
 
-        Title = I18nManager.GetString(Language.Setting);
-        Message = I18nManager.GetString(Language.InterfaceStyleSettings);
+        Title = I18nManager.GetString(Localization.CommonSettingView.Title);
+        Message = I18nManager.GetString(Localization.CommonSettingView.Description);
     }
 
     private void InitTheme()
@@ -41,11 +41,11 @@ public class CommonSettingViewModel : ViewModelBase, ITabItemBase
 
     private void InitLanguage()
     {
-        var languages = ((ApplicationService)_applicationService).Languages;
-        Languages = new ObservableCollection<LanguageItem>(languages);
+        var languages = I18nManager.Instance.Resources.Select(kvp => kvp.Value).ToList();
+        Languages = new ObservableCollection<LocalizationLanguage>(languages);
 
         var language = _applicationService.GetCulture();
-        _selectedLanguage = languages.FirstOrDefault(item => string.Equals(language, item.Culture));
+        _selectedLanguage = Languages.FirstOrDefault(l => l.CultureName == language);
     }
 
     private bool _hideTrayIconOnClose;
@@ -78,11 +78,11 @@ public class CommonSettingViewModel : ViewModelBase, ITabItemBase
         }
     }
 
-    public ObservableCollection<LanguageItem> Languages { get; private set; }
+    public ObservableCollection<LocalizationLanguage> Languages { get; private set; }
 
-    private LanguageItem? _selectedLanguage;
+    private LocalizationLanguage? _selectedLanguage;
 
-    public LanguageItem? SelectedLanguage
+    public LocalizationLanguage? SelectedLanguage
     {
         get => _selectedLanguage;
         set
@@ -110,6 +110,6 @@ public class CommonSettingViewModel : ViewModelBase, ITabItemBase
 
     private void SetLanguage()
     {
-        _applicationService.SetCulture(SelectedLanguage?.Culture);
+        _applicationService.SetCulture(SelectedLanguage?.CultureName);
     }
 }

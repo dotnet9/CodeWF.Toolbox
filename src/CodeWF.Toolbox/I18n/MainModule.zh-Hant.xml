@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<Localization language="Chinese (Traditional)" description="中文繁體" cultureName="zh-Hant">
+	<MainModule>
+		<Title>碼界工坊工具箱</Title>
+		<ShowMainWindow>顯示主視窗</ShowMainWindow>
+		<Exit>退出</Exit>
+	</MainModule>
+	<MainWindow>
+		<SearchToolTip>搜尋你所想</SearchToolTip>
+		<NoMorePrompts>不再提示</NoMorePrompts>
+		<SureExit>您確定要退出嗎？</SureExit>
+		<FindInTrayIcon>你可以在托盤圖標上找到我！</FindInTrayIcon>
+	</MainWindow>
+	<DashboardView>
+		<Title>首頁</Title>
+		<DesiredAvailabilityNotification>想要的都有，沒有請告知。</DesiredAvailabilityNotification>
+		<AccessToolbox>訪問線上工具箱</AccessToolbox>
+		<MissingTool>沒有我要的工具...</MissingTool>
+	</DashboardView>
+	<SettingView>
+		<Title>設置</Title>
+	</SettingView>
+	<CommonSettingView>
+		<Title>通用設置</Title>
+		<Description>界面風格設置</Description>
+		<Theme>主題</Theme>
+		<FollowingSystem>跟隨系統</FollowingSystem>
+		<LightMode>白天模式</LightMode>
+		<DarkMode>黑夜模式</DarkMode>
+		<LanguageKey>語言</LanguageKey>
+		<AutoOpenToolboxAtStartup>開機時自動打開工具箱</AutoOpenToolboxAtStartup>
+		<HideTrayIconOnClose>關閉窗體時隱藏托盤圖標</HideTrayIconOnClose>
+		<DisplayPromptWhenClosing>關閉窗體時顯示提示</DisplayPromptWhenClosing>
+		<TurnOn>開啟</TurnOn>
+		<TurnOff>關閉</TurnOff>
+	</CommonSettingView>
+	<AboutView>
+		<Title>關於</Title>
+		<Description>本項目只用於學習使用</Description>
+	</AboutView>
+</Localization>

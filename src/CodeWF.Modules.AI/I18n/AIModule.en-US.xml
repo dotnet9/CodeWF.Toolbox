@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<Localization language="English" description="English" cultureName="en-US">
+	<AIModule>
+		<Title>AI</Title>
+	</AIModule>
+	<AskBotView>
+		<Title>Intelligent Question and Answer Assistant</Title>
+		<Description>Ask questions with one click and get answers immediately. The intelligent question and answer assistant will help you solve your doubts.</Description>
+	</AskBotView>
+	<PolyTranslateView>
+		<Title>AI One-Click Multi-language Translation Tool</Title>
+		<Description>Easily achieve one-click translation, support mutual translation among multiple languages, and make communication without boundaries!</Description>
+	</PolyTranslateView>
+	<Title2SlugView>
+		<Title>AI One-Click Conversion to URL Slug</Title>
+		<Description>Effortlessly convert article titles in Chinese, English and other languages into English URL Slugs with just one click.</Description>
+	</Title2SlugView>
+	<ChoiceLanguagesView>
+		<LanguageKey>Language</LanguageKey>
+		<Selectable>Selectable</Selectable>
+		<Selected>Selected</Selected>
+	</ChoiceLanguagesView>
+</Localization>

@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<Localization language="Chinese (Simplified)" description="中文简体" cultureName="zh-CN">
+	<AIModule>
+		<Title>AI</Title>
+	</AIModule>
+	<AskBotView>
+		<Title>智能问答助手</Title>
+		<Description>一键提问，即刻获取答案，智能问答助手为您解惑。</Description>
+	</AskBotView>
+	<PolyTranslateView>
+		<Title>AI一键多语种翻译神器</Title>
+		<Description>轻松实现一键翻译，支持多种语言互译，让沟通无界限！</Description>
+	</PolyTranslateView>
+	<Title2SlugView>
+		<Title>AI一键转URL Slug</Title>
+		<Description>轻松将中文、英文等文章标题一键转换成英文URL Slug。</Description>
+	</Title2SlugView>
+	<ChoiceLanguagesView>
+		<LanguageKey>语言</LanguageKey>
+		<Selectable>可选择的</Selectable>
+		<Selected>已选择</Selected>
+	</ChoiceLanguagesView>
+</Localization>

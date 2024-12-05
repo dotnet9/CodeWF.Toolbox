@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<Localization language="English" description="English" cultureName="en-US">
+	<MainModule>
+		<Title>Toolbox of Code World Workshop</Title>
+		<ShowMainWindow>Show main window</ShowMainWindow>
+		<Exit>Exit</Exit>
+	</MainModule>
+	<MainWindow>
+		<SearchToolTip>Search what you want</SearchToolTip>
+		<NoMorePrompts>No more prompts</NoMorePrompts>
+		<SureExit>Are you sure you want to exit?</SureExit>
+		<FindInTrayIcon>You can find me on the tray icon!</FindInTrayIcon>
+	</MainWindow>
+	<DashboardView>
+		<Title>Homepage</Title>
+		<DesiredAvailabilityNotification>Everything you want is available. If not, please let us know.</DesiredAvailabilityNotification>
+		<AccessToolbox>Access the online toolbox</AccessToolbox>
+		<MissingTool>There's no tool I want...</MissingTool>
+	</DashboardView>
+	<SettingView>
+		<Title>Settings</Title>
+	</SettingView>
+	<CommonSettingView>
+		<Title>General Settings</Title>
+		<Description>Interface style settings</Description>
+		<Theme>Theme</Theme>
+		<FollowingSystem>Follow the system</FollowingSystem>
+		<LightMode>Light mode</LightMode>
+		<DarkMode>Dark mode</DarkMode>
+		<LanguageKey>Language</LanguageKey>
+		<AutoOpenToolboxAtStartup>Automatically open the toolbox at startup</AutoOpenToolboxAtStartup>
+		<HideTrayIconOnClose>Hide the tray icon when closing the window</HideTrayIconOnClose>
+		<DisplayPromptWhenClosing>Display a prompt when closing the window</DisplayPromptWhenClosing>
+		<TurnOn>Turn on</TurnOn>
+		<TurnOff>Turn off</TurnOff>
+	</CommonSettingView>
+	<AboutView>
+		<Title>About</Title>
+		<Description>This project is only used for learning purposes.</Description>
+	</AboutView>
+</Localization>

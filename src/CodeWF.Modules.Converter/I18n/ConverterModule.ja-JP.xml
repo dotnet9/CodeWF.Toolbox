@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<Localization language="Japanese" description="日本語版" cultureName="ja-JP">
+	<ConverterModule>
+		<Title>コンバーター</Title>
+	</ConverterModule>
+	<DateTimeConverterView>
+		<Title>日付と時刻のコンバーター</Title>
+		<Description>日付と時刻をさまざまな形式に変換します。</Description>
+	</DateTimeConverterView>
+	<JsonToYamlView>
+		<Title>JSONからYAMLへのコンバーター</Title>
+		<Description>オンラインコンバーターを使ってJSONをYAMLに変換します。</Description>
+		<RawJson>元のJson形式：</RawJson>
+		<AfterYaml>変換後のYaml形式：</AfterYaml>
+		<Copy>コピー</Copy>
+		<Clear>クリア</Clear>
+	</JsonToYamlView>
+	<YamlToJsonView>
+		<Title>YAMLからJSONへのコンバーター</Title>
+		<Description>このオンラインコンバーターを使ってYAMLをJSONに変換します。</Description>
+		<RawYaml>元のYAML形式：</RawYaml>
+		<AfterJson>変換後のJson形式：</AfterJson>
+		<Copy>コピー</Copy>
+		<Clear>クリア</Clear>
+	</YamlToJsonView>
+</Localization>

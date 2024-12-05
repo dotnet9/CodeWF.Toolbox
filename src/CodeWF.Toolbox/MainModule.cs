@@ -1,6 +1,5 @@
 ﻿using CodeWF.Core;
 using CodeWF.Core.Models;
-using CodeWF.Toolbox.I18n;
 using CodeWF.Toolbox.Views;
 using Prism.Ioc;
 using Prism.Modularity;
@@ -13,7 +12,7 @@ public class MainModule : IModule
 {
     public MainModule(IToolMenuService toolMenuService)
     {
-        toolMenuService.AddItem(Language.Home, parentName: null, null, nameof(DashboardView), Icons.Dashboard,
+        toolMenuService.AddItem(Localization.DashboardView.Title, parentName: null, null, nameof(DashboardView), Icons.Dashboard,
             ToolStatus.Developing);
     }
 

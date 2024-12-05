@@ -8,7 +8,7 @@
              xmlns:core="clr-namespace:CodeWF.Core.Models;assembly=CodeWF.Core"
              xmlns:converters="clr-namespace:CodeWF.Toolbox.Converters"
              xmlns:i18n="https://codewf.com"
-             xmlns:language="clr-namespace:CodeWF.Toolbox.I18n"
+             xmlns:language="clr-namespace:Localization"
              prism:ViewModelLocator.AutoWireViewModel="True"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="CodeWF.Toolbox.Views.MainMenuView"
@@ -69,7 +69,7 @@
             </ToggleSwitch>
             <StackPanel Grid.Row="1">
 				<u:Divider />
-                <Button Content="{i18n:I18n {x:Static language:Language.Setting}}" Command="{Binding RaiseOpenSettingHandlerAsync}" HorizontalAlignment="Stretch"/>
+                <Button Content="{i18n:I18n {x:Static language:SettingView.Title}}" Command="{Binding RaiseOpenSettingHandlerAsync}" HorizontalAlignment="Stretch"/>
             </StackPanel>
         </Grid>
     </Border>

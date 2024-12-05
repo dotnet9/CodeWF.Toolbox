@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<Localization language="Japanese" description="日本語版" cultureName="ja-JP">
+	<MainModule>
+		<Title>コードワールドワークショップのツールボックス</Title>
+		<ShowMainWindow>メインウィンドウを表示する</ShowMainWindow>
+		<Exit>終了する</Exit>
+	</MainModule>
+	<MainWindow>
+		<SearchToolTip>あなたが考えることを検索する</SearchToolTip>
+		<NoMorePrompts>もうメッセージを表示しない</NoMorePrompts>
+		<SureExit>本当に終了しますか？</SureExit>
+		<FindInTrayIcon>トレイアイコンで私を見つけることができます！</FindInTrayIcon>
+	</MainWindow>
+	<DashboardView>
+		<Title>ホームページ</Title>
+		<DesiredAvailabilityNotification>欲しいものはすべてあります。ない場合はお知らせください。</DesiredAvailabilityNotification>
+		<AccessToolbox>オンラインツールボックスにアクセスする</AccessToolbox>
+		<MissingTool>欲しいツールがありません...</MissingTool>
+	</DashboardView>
+	<SettingView>
+		<Title>設定</Title>
+	</SettingView>
+	<CommonSettingView>
+		<Title>一般設定</Title>
+		<Description>インターフェーススタイルの設定</Description>
+		<Theme>テーマ</Theme>
+		<FollowingSystem>システムに従う</FollowingSystem>
+		<LightMode>ライトモード</LightMode>
+		<DarkMode>ダークモード</DarkMode>
+		<LanguageKey>言語</LanguageKey>
+		<AutoOpenToolboxAtStartup>起動時に自動的にツールボックスを開く</AutoOpenToolboxAtStartup>
+		<HideTrayIconOnClose>ウィンドウを閉じるときにトレイアイコンを非表示にする</HideTrayIconOnClose>
+		<DisplayPromptWhenClosing>ウィンドウを閉じるときにメッセージを表示する</DisplayPromptWhenClosing>
+		<TurnOn>オンにする</TurnOn>
+		<TurnOff>オフにする</TurnOff>
+	</CommonSettingView>
+	<AboutView>
+		<Title>関於</Title>
+		<Description>このプロジェクトは学習用にのみ使用されます。</Description>
+	</AboutView>
+</Localization>

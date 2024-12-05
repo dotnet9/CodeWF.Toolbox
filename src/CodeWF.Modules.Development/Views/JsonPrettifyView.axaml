@@ -5,7 +5,7 @@
     xmlns:AvaloniaEdit="clr-namespace:AvaloniaEdit;assembly=AvaloniaEdit"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:i18n="https://codewf.com"
-    xmlns:language="clr-namespace:CodeWF.Modules.Development.I18n"
+    xmlns:language="clr-namespace:Localization"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:prism="http://prismlibrary.com/"
     xmlns:vm="clr-namespace:CodeWF.Modules.Development.ViewModels"
@@ -25,9 +25,9 @@
             Orientation="Horizontal">
             <CheckBox
                 Margin="0,0,20,0"
-                Content="{i18n:I18n {x:Static language:Language.SortKey}}"
+                Content="{i18n:I18n {x:Static language:JsonPrettifyView.SortKey}}"
                 IsChecked="{Binding IsSortKey}" />
-            <TextBlock VerticalAlignment="Center" Text="{i18n:I18n {x:Static language:Language.IndentSize}}" />
+            <TextBlock VerticalAlignment="Center" Text="{i18n:I18n {x:Static language:JsonPrettifyView.IndentSize}}" />
             <ComboBox
                 Width="100"
                 ItemsSource="{Binding IndentSizes}"
@@ -37,7 +37,7 @@
         <TextBlock
             Grid.Row="1"
             Grid.Column="0"
-            Text="{i18n:I18n {x:Static language:Language.RawJson}}" />
+            Text="{i18n:I18n {x:Static language:JsonPrettifyView.RawJson}}" />
         <TextBox
             Grid.Row="2"
             Grid.Column="0"
@@ -57,7 +57,7 @@
         <TextBlock
             Grid.Row="1"
             Grid.Column="2"
-            Text="{i18n:I18n {x:Static language:Language.PrettifiedVersionJSON}}" />
+            Text="{i18n:I18n {x:Static language:JsonPrettifyView.PrettifiedVersionJSON}}" />
 
         <AvaloniaEdit:TextEditor
             x:Name="FormatEditor"

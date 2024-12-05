@@ -5,7 +5,7 @@
     xmlns:AvaloniaEdit="clr-namespace:AvaloniaEdit;assembly=AvaloniaEdit"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:i18n="https://codewf.com"
-    xmlns:language="clr-namespace:CodeWF.Modules.Converter.I18n"
+    xmlns:language="clr-namespace:Localization"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:prism="http://prismlibrary.com/"
     xmlns:vm="clr-namespace:CodeWF.Modules.Converter.ViewModels"
@@ -21,7 +21,7 @@
         <TextBlock
             Grid.Row="0"
             Grid.Column="0"
-            Text="Your JSON" />
+            Text="{i18n:I18n {x:Static language:JsonToYamlView.RawJson}}" />
 
         <AvaloniaEdit:TextEditor
             x:Name="JsonEditor"
@@ -39,7 +39,7 @@
             VerticalAlignment="Center"
             Classes="Success"
             Command="{Binding RaiseClearCommand}"
-            Content="Clear"
+            Content="{i18n:I18n {x:Static language:JsonToYamlView.Clear}}"
             CornerRadius="5" />
 
         <TextBlock
@@ -52,7 +52,7 @@
         <TextBlock
             Grid.Row="0"
             Grid.Column="2"
-            Text="YAML from your JSON" />
+            Text="{i18n:I18n {x:Static language:JsonToYamlView.AfterYaml}}" />
 
         <AvaloniaEdit:TextEditor
             x:Name="YamlEditor"
@@ -70,7 +70,7 @@
             VerticalAlignment="Center"
             Classes="Success"
             Command="{Binding RaiseCopyCommand}"
-            Content="Copy"
+            Content="{i18n:I18n {x:Static language:JsonToYamlView.Copy}}"
             CornerRadius="5"
             Theme="{DynamicResource BorderlessButton}" />
     </Grid>
