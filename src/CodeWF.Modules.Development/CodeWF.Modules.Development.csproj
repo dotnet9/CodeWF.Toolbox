@@ -6,6 +6,18 @@
 		<Nullable>enable</Nullable>
 		<InterceptorsPreviewNamespaces>$(InterceptorsPreviewNamespaces);Dapper.AOT</InterceptorsPreviewNamespaces>
 	</PropertyGroup>
+
+	<ItemGroup>
+	  <None Remove="Assets\fail.png" />
+	  <None Remove="Assets\normal.png" />
+	  <None Remove="Assets\warning.png" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <AvaloniaResource Include="Assets\fail.png" />
+	  <AvaloniaResource Include="Assets\normal.png" />
+	  <AvaloniaResource Include="Assets\warning.png" />
+	</ItemGroup>
 	<ItemGroup>
 		<None Include="I18n\Language.cs">
 			<DesignTime>True</DesignTime>
@@ -21,6 +33,7 @@
 		<PackageReference Include="AvaloniaEdit.TextMate" Version="11.1.0" />
 		<PackageReference Include="Quartz" Version="3.13.1" />
 		<PackageReference Include="TextMateSharp.Grammars" Version="1.0.64" />
+		<PackageReference Include="Irihi.Ursa" Version="1.6.1" />
 		<PackageReference Include="CodeWF.Tools" Version="1.2.5.9" />
 	</ItemGroup>
 

@@ -29,5 +29,8 @@
 		<SelectDirectory>解凍後に保存するディレクトリを選択する</SelectDirectory>
 		<DecompressionFileExceptionTitle>解凍ファイルのエラー</DecompressionFileExceptionTitle>
 		<DecompressionFileExceptionContent>解凍ファイルのエラー: {0}</DecompressionFileExceptionContent>
+		<Normal>通常</Normal>
+		<Warning>に警告</Warning>
+		<Fail>例外</Fail>
 	</TestView>
 </Localization>

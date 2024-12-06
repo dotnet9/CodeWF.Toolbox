@@ -3,9 +3,12 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:prism="http://prismlibrary.com/"
+             xmlns:u="https://irihi.tech/ursa"
              xmlns:i18n="https://codewf.com"
              xmlns:language="clr-namespace:Localization"
+             xmlns:view="clr-namespace:CodeWF.Modules.Development.Views"
              xmlns:vm="clr-namespace:CodeWF.Modules.Development.ViewModels"
+             xmlns:model="clr-namespace:CodeWF.Modules.Development.Models"
              prism:ViewModelLocator.AutoWireViewModel="True"
              x:DataType="vm:TestViewModel"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
@@ -13,7 +16,7 @@
     <Design.DataContext>
         <vm:TestViewModel />
     </Design.DataContext>
-    <WrapPanel>
+    <StackPanel>
         <Button Content="{i18n:I18n {x:Static language:TestView.CompressFiles}}"
                 Command="{Binding RaiseCompressCommand}" />
         <Button Content="{i18n:I18n {x:Static language:TestView.DecompressionFiles}}"
@@ -22,5 +25,29 @@
                 Command="{Binding RaiseHashtableSerializeCommand}" Margin="10 0" />
         <TextBlock Text="{Binding CurrentTime}" VerticalAlignment="Center" />
         <TextBlock Text="{Binding DailyTimeTask}" VerticalAlignment="Center" />
-    </WrapPanel>
+
+        <ComboBox ItemsSource="{Binding PromptItems}"
+                  SelectedItem="{Binding SelectedPrompt}"
+                  SelectionBoxItem="{Binding SelectedPrompt}"
+                  Margin="0 30 0 0">
+            <ComboBox.SelectionBoxItemTemplate>
+                <DataTemplate x:DataType="model:DropDownItem">
+                    <Grid RowDefinitions="Auto Auto">
+                        <Image Source="{Binding Image}" Width="48" HorizontalAlignment="Center" Margin="0 5" />
+                        <TextBlock Text="{i18n:I18n {Binding TextKey}}" Grid.Row="1" HorizontalAlignment="Center"
+                                   Margin="0 5" />
+                    </Grid>
+                </DataTemplate>
+            </ComboBox.SelectionBoxItemTemplate>
+            <ComboBox.ItemTemplate>
+                <DataTemplate x:DataType="model:DropDownItem">
+                    <Grid ColumnDefinitions="Auto Auto">
+                        <Image Source="{Binding Image}" Width="24" HorizontalAlignment="Center" Margin="0 5" />
+                        <TextBlock Text="{i18n:I18n {Binding TextKey}}" Grid.Column="1" HorizontalAlignment="Center"
+                                   Margin="0 5" />
+                    </Grid>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+    </StackPanel>
 </UserControl>

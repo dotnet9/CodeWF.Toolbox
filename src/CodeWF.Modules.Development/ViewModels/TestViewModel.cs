@@ -1,14 +1,18 @@
-﻿using Avalonia.Platform.Storage;
+﻿using Avalonia.Media.Imaging;
+using Avalonia.Platform;
+using Avalonia.Platform.Storage;
 using AvaloniaXmlTranslator;
 using CodeWF.Core.IServices;
 using CodeWF.Modules.Development.Entities;
 using CodeWF.Modules.Development.Jobs;
+using CodeWF.Modules.Development.Models;
 using CodeWF.Tools.Extensions;
 using CodeWF.Tools.FileExtensions;
 using Quartz;
 using Quartz.Impl;
 using ReactiveUI;
 using System.Collections;
+using System.Collections.ObjectModel;
 using System.Reactive;
 
 namespace CodeWF.Modules.Development.ViewModels;
@@ -25,11 +29,15 @@ public class TestViewModel : ReactiveObject
     {
         _fileChooserService = fileChooserService;
         _notificationService = notificationService;
+
         RaiseCompressCommand = ReactiveCommand.CreateFromTask(RaiseCompressHandler);
         RaiseDecompressionCommand = ReactiveCommand.CreateFromTask(RaiseDecompressionHandler);
         RaiseHashtableSerializeCommand = ReactiveCommand.CreateFromTask(RaiseHashtableSerializeHandler);
+
         Instance = this;
         StartTaskAsync();
+
+        InitData();
     }
 
     public static TestViewModel Instance { get; private set; }
@@ -49,15 +57,52 @@ public class TestViewModel : ReactiveObject
         set => this.RaiseAndSetIfChanged(ref _dailyTimeTask, value);
     }
 
+    public ObservableCollection<DropDownItem> PromptItems { get; set; }
+
+    private DropDownItem _selectedPrompt;
+
+    public DropDownItem SelectedPrompt
+    {
+        get => _selectedPrompt;
+        set => this.RaiseAndSetIfChanged(ref _selectedPrompt, value);
+    }
+
     public ReactiveCommand<Unit, Unit> RaiseCompressCommand { get; }
     public ReactiveCommand<Unit, Unit> RaiseDecompressionCommand { get; }
     public ReactiveCommand<Unit, Unit> RaiseHashtableSerializeCommand { get; }
+
+    private void InitData()
+    {
+        PromptItems =
+        [
+            new()
+            {
+                Image = new Bitmap(
+                    AssetLoader.Open(new Uri("avares://CodeWF.Modules.Development/Assets/normal.png"))),
+                TextKey = Localization.TestView.Normal
+            },
+            new()
+            {
+                Image = new Bitmap(
+                    AssetLoader.Open(new Uri("avares://CodeWF.Modules.Development/Assets/warning.png"))),
+                TextKey = Localization.TestView.Warning
+            },
+            new()
+            {
+                Image =
+                    new Bitmap(AssetLoader.Open(new Uri("avares://CodeWF.Modules.Development/Assets/fail.png"))),
+                TextKey = Localization.TestView.Fail
+            },
+        ];
+        SelectedPrompt = PromptItems!.First();
+    }
 
     private async Task RaiseCompressHandler()
     {
         try
         {
-            var files = await _fileChooserService.OpenFileAsync(I18nManager.GetString(Localization.TestView.SelectCompressFiles)!,
+            var files = await _fileChooserService.OpenFileAsync(
+                I18nManager.GetString(Localization.TestView.SelectCompressFiles)!,
                 true,
                 [FilePickerFileTypes.All]);
             if (!(files?.Count > 0))
@@ -65,7 +110,8 @@ public class TestViewModel : ReactiveObject
                 return;
             }
 
-            var saveFile = await _fileChooserService.SaveFileAsync(I18nManager.GetString(Localization.TestView.SaveCompressedFile)!,
+            var saveFile = await _fileChooserService.SaveFileAsync(
+                I18nManager.GetString(Localization.TestView.SaveCompressedFile)!,
                 [_zipFilePickerFileType]);
             if (string.IsNullOrWhiteSpace(saveFile))
             {
@@ -97,7 +143,8 @@ public class TestViewModel : ReactiveObject
 
             var zipFile = files[0];
 
-            var dirs = await _fileChooserService.OpenFolderAsync(I18nManager.GetString(Localization.TestView.SelectDirectory)!);
+            var dirs = await _fileChooserService.OpenFolderAsync(
+                I18nManager.GetString(Localization.TestView.SelectDirectory)!);
             if (!(dirs?.Count > 0))
             {
                 return;
@@ -140,9 +187,10 @@ public class TestViewModel : ReactiveObject
 
         _notificationService.Show("Hashtable deserialize", "From Json Success");
         if (deserializeObj.Contains("k1") && deserializeObj["k1"].ToString() == hashtable["k1"].ToString()
-            && (deserializeObj.Contains("k2") && int.Parse(deserializeObj["k2"].ToString()) ==
-                int.Parse(hashtable["k2"].ToString()))
-            && deserializeObj.Contains("k3"))
+                                          && (deserializeObj.Contains("k2") &&
+                                              int.Parse(deserializeObj["k2"].ToString()) ==
+                                              int.Parse(hashtable["k2"].ToString()))
+                                          && deserializeObj.Contains("k3"))
         {
             var k3Obj = deserializeObj["k3"];
             k3Obj.ToJson(out var k3ValueJson, out errorString);

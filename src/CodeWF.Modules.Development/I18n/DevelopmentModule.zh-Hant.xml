@@ -29,5 +29,8 @@
 		<SelectDirectory>解壓後選擇要保存的目錄</SelectDirectory>
 		<DecompressionFileExceptionTitle>解壓文件異常</DecompressionFileExceptionTitle>
 		<DecompressionFileExceptionContent>解壓文件異常: {0}</DecompressionFileExceptionContent>
+		<Normal>正常</Normal>
+		<Warning>警告</Warning>
+		<Fail>异常</Fail>
 	</TestView>
 </Localization>
