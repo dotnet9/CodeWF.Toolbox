@@ -28,22 +28,14 @@
 
         <ComboBox ItemsSource="{Binding PromptItems}"
                   SelectedItem="{Binding SelectedPrompt}"
-                  SelectionBoxItem="{Binding SelectedPrompt}"
+                  Theme="{StaticResource VComboBox}" 
+                  MinWidth="80" Padding="0 5"
                   Margin="0 30 0 0">
-            <ComboBox.SelectionBoxItemTemplate>
-                <DataTemplate x:DataType="model:DropDownItem">
-                    <Grid RowDefinitions="Auto Auto">
-                        <Image Source="{Binding Image}" Width="48" HorizontalAlignment="Center" Margin="0 5" />
-                        <TextBlock Text="{i18n:I18n {Binding TextKey}}" Grid.Row="1" HorizontalAlignment="Center"
-                                   Margin="0 5" />
-                    </Grid>
-                </DataTemplate>
-            </ComboBox.SelectionBoxItemTemplate>
             <ComboBox.ItemTemplate>
                 <DataTemplate x:DataType="model:DropDownItem">
-                    <Grid ColumnDefinitions="Auto Auto">
+                    <Grid RowDefinitions="Auto Auto">
                         <Image Source="{Binding Image}" Width="24" HorizontalAlignment="Center" Margin="0 5" />
-                        <TextBlock Text="{i18n:I18n {Binding TextKey}}" Grid.Column="1" HorizontalAlignment="Center"
+                        <TextBlock Text="{i18n:I18n {Binding TextKey}}" Grid.Row="1" HorizontalAlignment="Center"
                                    Margin="0 5" />
                     </Grid>
                 </DataTemplate>
