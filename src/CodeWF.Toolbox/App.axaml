@@ -10,14 +10,8 @@
         <StyleInclude Source="avares://Semi.Avalonia/Themes/Index.axaml" />
         <u-semi:SemiTheme Locale="zh-CN" />
         <StyleInclude Source="../Styles/Index.axaml" />
+        <StyleInclude Source="avares://CodeWF.AvaloniaControls/Styles.axaml" />
     </prism:PrismApplication.Styles>
-	<prism:PrismApplication.Resources>
-        <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceInclude Source="./Resources/VComboBox.axaml" />
-            </ResourceDictionary.MergedDictionaries>
-        </ResourceDictionary>
-    </prism:PrismApplication.Resources>
     <TrayIcon.Icons>
         <TrayIcons>
             <TrayIcon Icon="/Assets/logo.ico" Clicked="OpenMainWindow_OnClicked" ToolTipText="{i18n:I18n {x:Static language:MainModule.Title}}">

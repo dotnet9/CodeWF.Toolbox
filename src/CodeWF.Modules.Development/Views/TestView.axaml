@@ -28,7 +28,7 @@
 
         <ComboBox ItemsSource="{Binding PromptItems}"
                   SelectedItem="{Binding SelectedPrompt}"
-                  Theme="{StaticResource VComboBox}" 
+                  Theme="{StaticResource VComboBox}"
                   MinWidth="80" Padding="0 5"
                   Margin="0 30 0 0">
             <ComboBox.ItemTemplate>
@@ -40,6 +40,33 @@
                     </Grid>
                 </DataTemplate>
             </ComboBox.ItemTemplate>
+        </ComboBox>
+
+        <ComboBox ItemsSource="{Binding PromptItems}"
+                  SelectedItem="{Binding SelectedPrompt}"
+                  Theme="{StaticResource VComboBox}"
+                  MinWidth="80" Padding="0 5"
+                  Margin="0 30 0 0">
+            <ComboBox.ItemTemplate>
+                <DataTemplate x:DataType="model:DropDownItem">
+                    <Grid ColumnDefinitions="Auto Auto">
+                        <Image Source="{Binding Image}" Grid.Column="0" Width="24" Height="24"
+                               HorizontalAlignment="Center" Margin="10 10 5 10" />
+                        <TextBlock Text="{i18n:I18n {Binding TextKey}}" Grid.Column="1" HorizontalAlignment="Center"
+                                   Margin="5 10 10 10" />
+                    </Grid>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+            <ComboBox.SelectionBoxItemTemplate>
+                <DataTemplate x:DataType="model:DropDownItem">
+                    <Grid RowDefinitions="Auto Auto">
+                        <Image Source="{Binding Image}" Grid.Row="0" Width="24" Height="24"
+                               HorizontalAlignment="Center" Margin="0 5" />
+                        <TextBlock Text="{i18n:I18n {Binding TextKey}}" Grid.Row="1" HorizontalAlignment="Center"
+                                   Margin="0 5" />
+                    </Grid>
+                </DataTemplate>
+            </ComboBox.SelectionBoxItemTemplate>
         </ComboBox>
     </StackPanel>
 </UserControl>
