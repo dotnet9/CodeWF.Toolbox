@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<Localization language="Japanese" description="日語" cultureName="ja-JP">
+	<AvaloniaXmlTranslatorManager>
+		<Title>XMLの国際化</Title>
+	</AvaloniaXmlTranslatorManager>
+	<ManageXMLFilesView>
+		<Title>XML言語ファイルのマージ</Title>
+		<Description>XML言語ファイルを統合し、多モジュールプログラムに適しています。</Description>
+	</ManageXMLFilesView>
+	<MergeXMLFilesView>
+		<Title>XML多言語管理</Title>
+		<Description>XMLの多言語データを集中的に管理および保守します。</Description>
+	</MergeXMLFilesView>
+</Localization>

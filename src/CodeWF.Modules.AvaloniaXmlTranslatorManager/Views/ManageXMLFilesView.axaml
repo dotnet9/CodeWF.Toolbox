@@ -1,0 +1,25 @@
+<UserControl
+    x:Class="CodeWF.Modules.AvaloniaXmlTranslatorManager.Views.ManageXMLFilesView"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:AvaloniaEdit="clr-namespace:AvaloniaEdit;assembly=AvaloniaEdit"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:i18n="https://codewf.com"
+    xmlns:language="clr-namespace:Localization"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:prism="http://prismlibrary.com/"
+    xmlns:vm="clr-namespace:CodeWF.Modules.AvaloniaXmlTranslatorManager.ViewModels"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    prism:ViewModelLocator.AutoWireViewModel="True"
+    x:DataType="vm:ManageXMLFilesViewModel"
+    mc:Ignorable="d">
+    <Design.DataContext>
+		<vm:ManageXMLFilesViewModel />
+    </Design.DataContext>
+
+	<StackPanel>
+        <TextBlock Text="{i18n:I18n {x:Static language:MergeXMLFilesView.Title}}" />
+        <TextBlock Text="{i18n:I18n {x:Static language:MergeXMLFilesView.Description}}" />
+    </StackPanel>
+</UserControl>

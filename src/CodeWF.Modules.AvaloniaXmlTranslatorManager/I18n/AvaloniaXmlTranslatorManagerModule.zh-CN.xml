@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<Localization language="Chinese (Simplified)" description="中文简体" cultureName="zh-CN">
+	<AvaloniaXmlTranslatorManager>
+		<Title>XML国际化</Title>
+	</AvaloniaXmlTranslatorManager>
+	<ManageXMLFilesView>
+		<Title>XML 语言文件合并</Title>
+		<Description>整合 XML 语言文件，适合多模块程序</Description>
+	</ManageXMLFilesView>
+	<MergeXMLFilesView>
+		<Title>XML 多语言管理</Title>
+		<Description>对 XML 多语言数据集中管理维护。</Description>
+	</MergeXMLFilesView>
+</Localization>

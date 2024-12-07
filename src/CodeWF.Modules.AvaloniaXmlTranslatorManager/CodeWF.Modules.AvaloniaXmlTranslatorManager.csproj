@@ -1,0 +1,60 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net9.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<None Include="I18n\Language.cs">
+			<DesignTime>True</DesignTime>
+			<AutoGen>True</AutoGen>
+			<DependentUpon>Language.tt</DependentUpon>
+		</None>
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Prism.DryIoc.Avalonia" Version="9.0.401.11110-pre" />
+		<PackageReference Include="Avalonia.ReactiveUI" Version="11.2.2" />
+		<PackageReference Include="AvaloniaEdit.TextMate" Version="11.1.0" />
+		<PackageReference Include="TextMateSharp.Grammars" Version="1.0.64" />
+		<PackageReference Include="AvaloniaXmlTranslator" Version="0.0.0.1" />
+		<PackageReference Include="CodeWF.Tools" Version="1.2.5.9" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\CodeWF.Core\CodeWF.Core.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Compile Update="I18n\Language.cs">
+			<DesignTime>True</DesignTime>
+			<AutoGen>True</AutoGen>
+			<DependentUpon>Language.tt</DependentUpon>
+		</Compile>
+	</ItemGroup>
+
+	<ItemGroup>
+		<None Update="I18n\AvaloniaXmlTranslatorManagerModule.zh-Hant.xml">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+		<None Update="I18n\AvaloniaXmlTranslatorManagerModule.en-US.xml">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+		<None Update="I18n\AvaloniaXmlTranslatorManagerModule.ja-JP.xml">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+		<None Update="I18n\Language.tt">
+			<Generator>TextTemplatingFileGenerator</Generator>
+			<LastGenOutput>Language.cs</LastGenOutput>
+		</None>
+		<None Update="I18n\AvaloniaXmlTranslatorManagerModule.zh-CN.xml">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Service Include="{508349b6-6b84-4df5-91f0-309beebad82d}" />
+	</ItemGroup>
+</Project>

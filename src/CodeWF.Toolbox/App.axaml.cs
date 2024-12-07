@@ -6,9 +6,7 @@ using CodeWF.Core;
 using CodeWF.Core.IServices;
 using CodeWF.Core.RegionAdapters;
 using CodeWF.Core.Services;
-using CodeWF.Modules.AI;
-using CodeWF.Modules.Converter;
-using CodeWF.Modules.Development;
+using CodeWF.Modules.AvaloniaXmlTranslatorManager;
 using CodeWF.Toolbox.Services;
 using CodeWF.Toolbox.Views;
 using DryIoc;
@@ -19,6 +17,10 @@ using Prism.Navigation.Regions;
 using System;
 using System.Linq;
 using Ursa.PrismExtension;
+using AIModule = CodeWF.Modules.AI.AIModule;
+using ConverterModule = CodeWF.Modules.Converter.ConverterModule;
+using DevelopmentModule = CodeWF.Modules.Development.DevelopmentModule;
+using MainWindow = CodeWF.Toolbox.Views.MainWindow;
 
 namespace CodeWF.Toolbox;
 
@@ -41,6 +43,7 @@ public partial class App : PrismApplication
         moduleCatalog.AddModule<MainModule>();
         moduleCatalog.AddModule<AIModule>();
         moduleCatalog.AddModule<ConverterModule>();
+        moduleCatalog.AddModule<AvaloniaXmlTranslatorManagerModule>();
         moduleCatalog.AddModule<DevelopmentModule>();
         base.ConfigureModuleCatalog(moduleCatalog);
     }

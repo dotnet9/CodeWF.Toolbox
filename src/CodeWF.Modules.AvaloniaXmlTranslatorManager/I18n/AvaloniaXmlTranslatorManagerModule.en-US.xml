@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<Localization language="English" description="English" cultureName="en-US">
+	<AvaloniaXmlTranslatorManager>
+		<Title>XML Internationalization</Title>
+	</AvaloniaXmlTranslatorManager>
+	<ManageXMLFilesView>
+		<Title>XML Language Files Merge</Title>
+		<Description>Integrate XML language files, suitable for multi-module programs.</Description>
+	</ManageXMLFilesView>
+	<MergeXMLFilesView>
+		<Title>XML Multilingual Management</Title>
+		<Description>Centralize the management and maintenance of XML multilingual data.</Description>
+	</MergeXMLFilesView>
+</Localization>

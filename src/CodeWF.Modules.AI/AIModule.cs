@@ -19,10 +19,10 @@ public class AIModule : IModule
         toolMenuService.AddItem(Localization.PolyTranslateView.Title, groupName, Localization.PolyTranslateView.Description,
             nameof(PolyTranslateView),
             Icons.PolyTranslate,
-            ToolStatus.Developing);
+            ToolStatus.Complete);
         toolMenuService.AddItem(Localization.Title2SlugView.Title, groupName, Localization.Title2SlugView.Description, nameof(Title2SlugView),
             Icons.Title2Slug,
-            ToolStatus.Developing);
+            ToolStatus.Complete);
     }
 
     public void OnInitialized(IContainerProvider containerProvider)

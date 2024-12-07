@@ -19,7 +19,7 @@ public class DevelopmentModule : IModule
             ToolStatus.Complete);
         toolMenuService.AddItem("Test", groupName, "Test", nameof(TestView),
             Icons.Json,
-            ToolStatus.Complete);
+            ToolStatus.Developing);
     }
 
     public void OnInitialized(IContainerProvider containerProvider)
