@@ -45,8 +45,8 @@
             <ComboBox.SelectionBoxItemTemplate>
                 <DataTemplate x:DataType="model:WarningItem">
                     <Grid RowDefinitions="Auto Auto">
-                        <Image Source="{Binding Image}" Grid.Row="0" Width="24" Height="24"
-                               HorizontalAlignment="Center" Margin="0 5" />
+                        <Image Source="{Binding Image}" Grid.Row="0" Width="48" Height="48"
+                               HorizontalAlignment="Center" />
                         <TextBlock Text="{i18n:I18n {x:Static language:TestView.TimeoutAlarm}}" Grid.Row="1"
                                    HorizontalAlignment="Center"
                                    Margin="0 5" />

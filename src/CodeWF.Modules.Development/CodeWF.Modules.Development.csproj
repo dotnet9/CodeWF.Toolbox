@@ -8,15 +8,9 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-	  <None Remove="Assets\fail.png" />
-	  <None Remove="Assets\normal.png" />
-	  <None Remove="Assets\warning.png" />
-	</ItemGroup>
-
-	<ItemGroup>
-	  <AvaloniaResource Include="Assets\fail.png" />
-	  <AvaloniaResource Include="Assets\normal.png" />
-	  <AvaloniaResource Include="Assets\warning.png" />
+	  <AvaloniaResource Include="Assets\OvertimeAlarm.png" />
+	  <AvaloniaResource Include="Assets\OvertimeAll.png" />
+	  <AvaloniaResource Include="Assets\OvertimeNormal.png" />
 	</ItemGroup>
 	<ItemGroup>
 		<None Include="I18n\Language.cs">

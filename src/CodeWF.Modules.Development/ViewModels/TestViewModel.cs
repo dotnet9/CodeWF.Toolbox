@@ -78,19 +78,19 @@ public class TestViewModel : ReactiveObject
             new()
             {
                 Image = new Bitmap(
-                    AssetLoader.Open(new Uri("avares://CodeWF.Modules.Development/Assets/normal.png"))),
+                    AssetLoader.Open(new Uri("avares://CodeWF.Modules.Development/Assets/OvertimeAll.png"))),
                 TextKey = Localization.TestView.ShowAll
             },
             new()
             {
                 Image = new Bitmap(
-                    AssetLoader.Open(new Uri("avares://CodeWF.Modules.Development/Assets/warning.png"))),
+                    AssetLoader.Open(new Uri("avares://CodeWF.Modules.Development/Assets/OvertimeAlarm.png"))),
                 TextKey = Localization.TestView.FilterAlarms
             },
             new()
             {
                 Image =
-                    new Bitmap(AssetLoader.Open(new Uri("avares://CodeWF.Modules.Development/Assets/fail.png"))),
+                    new Bitmap(AssetLoader.Open(new Uri("avares://CodeWF.Modules.Development/Assets/OvertimeNormal.png"))),
                 TextKey = Localization.TestView.FilterNormal
             },
         ];
