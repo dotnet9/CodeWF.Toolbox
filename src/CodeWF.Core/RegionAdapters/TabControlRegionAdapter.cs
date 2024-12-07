@@ -1,8 +1,4 @@
-﻿using Avalonia;
-using Avalonia.Controls;
-using Avalonia.Data;
-using AvaloniaXmlTranslator;
-using AvaloniaXmlTranslator.Converters;
+﻿using Avalonia.Controls;
 using AvaloniaXmlTranslator.Markup;
 using System.Collections.Specialized;
 
@@ -10,8 +6,8 @@ namespace CodeWF.Core.RegionAdapters;
 
 public interface ITabItemBase
 {
-    public string? Title { get; set; }
-    public string Message { get; set; }
+    public string? TitleKey { get; set; }
+    public string MessageKey { get; set; }
 }
 
 public class TabControlRegionAdapter : RegionAdapterBase<TabControl>
@@ -32,7 +28,7 @@ public class TabControlRegionAdapter : RegionAdapterBase<TabControl>
         {
             if (regionTarget.SelectedItem is TabItem { Content: UserControl { DataContext: ITabItemBase vm } })
             {
-                regionTarget.Tag = vm.Message;
+                regionTarget.Tag = vm.MessageKey;
             }
         };
 
@@ -47,7 +43,7 @@ public class TabControlRegionAdapter : RegionAdapterBase<TabControl>
                             foreach (var item in e.NewItems)
                             {
                                 var header = item is UserControl { DataContext: ITabItemBase tabItem }
-                                    ? tabItem.Title
+                                    ? tabItem.TitleKey
                                     : item?.GetType().ToString();
                                 var newTabItem = new TabItem { Content = item };
                                 newTabItem.Bind(TabItem.HeaderProperty, new I18nBinding(header));

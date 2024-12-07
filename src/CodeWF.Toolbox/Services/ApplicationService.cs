@@ -1,14 +1,17 @@
 ﻿using Avalonia;
+using Avalonia.Controls;
 using Avalonia.Styling;
 using AvaloniaXmlTranslator;
 using CodeWF.Core.IServices;
 using CodeWF.Toolbox.Models;
 using CodeWF.Tools.Helpers;
+using DynamicData;
 using Semi.Avalonia;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using System.Threading;
 using Ursa.Controls;
 
 namespace CodeWF.Toolbox.Services;
@@ -35,6 +38,7 @@ internal class ApplicationService : IApplicationService
             AppConfigHelper.Set(HideTrayIconOnCloseKey, value);
         }
     }
+
     public bool NeedExitDialogOnClose
     {
         get
@@ -113,6 +117,13 @@ internal class ApplicationService : IApplicationService
                 return language;
             }
 
+            var currentCulture = Thread.CurrentThread.CurrentCulture.Name;
+            if (!string.IsNullOrWhiteSpace(currentCulture) &&
+                I18nManager.Instance.Resources.ContainsKey(currentCulture))
+            {
+                return currentCulture;
+            }
+
             return DefaultLanguage;
         }
         catch (Exception ex)
@@ -137,19 +148,56 @@ internal class ApplicationService : IApplicationService
 
     private void ChangeTheme(string theme)
     {
-        var app = Application.Current;
-        if (app is null)
-        {
-            return;
-        }
-
         var themeObj = Themes.FirstOrDefault(item =>
             string.Equals(theme, item.Name, StringComparison.InvariantCultureIgnoreCase));
-        app.RequestedThemeVariant = themeObj?.Theme;
+        App.Instance.RequestedThemeVariant = themeObj?.Theme;
     }
+
+    private readonly Dictionary<string, ResourceDictionary> _semiCultures = new()
+    {
+        { "en-US", new Semi.Avalonia.Locale.en_us() },
+        { "ja-JP", new Semi.Avalonia.Locale.ja_jp() },
+        { "ru-RU", new Semi.Avalonia.Locale.ru_ru() },
+        { "uk-UA", new Semi.Avalonia.Locale.uk_ua() },
+        { "zh-CN", new Semi.Avalonia.Locale.zh_cn() }
+    };
+
+    private readonly Dictionary<string, ResourceDictionary> _ursaCultures = new()
+    {
+        { "en-US", new Ursa.Themes.Semi.Locale.en_us() }, { "zh-CN", new Ursa.Themes.Semi.Locale.zh_cn() }
+    };
 
     private void ChangeCulture(string language)
     {
-        I18nManager.Instance.Culture = new CultureInfo(language);
+        void ChangeThirdCulture(ResourceDictionary res)
+        {
+            foreach (var kv in res)
+            {
+                if (App.Instance.Resources.ContainsKey(kv.Key))
+                {
+                    App.Instance.Resources.Remove(kv.Key);
+                }
+
+                App.Instance.Resources.Add(kv);
+            }
+        }
+
+        // App owner culture
+        var culture = new CultureInfo(language);
+        I18nManager.Instance.Culture = culture;
+
+        // Semi.Avalonia culture
+
+        if (_semiCultures.ContainsKey(language))
+        {
+            ChangeThirdCulture(_semiCultures[language]);
+        }
+
+        // Ursa.Avalonia culture
+
+        if (_ursaCultures.ContainsKey(language))
+        {
+            ChangeThirdCulture(_ursaCultures[language]);
+        }
     }
 }

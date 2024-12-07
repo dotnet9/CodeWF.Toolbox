@@ -2,6 +2,8 @@
 	<PropertyGroup>
 		<OutputType>WinExe</OutputType>
 		<TargetFrameworks>net9.0;net9.0-windows</TargetFrameworks>
+		<ApplicationManifest>app.manifest</ApplicationManifest>
+		<ApplicationIcon>logo.ico</ApplicationIcon>
 		<Nullable>enable</Nullable>
 		<BuiltInComInteropSupport>true</BuiltInComInteropSupport>
 		<PublishAot>true</PublishAot>
@@ -10,10 +12,6 @@
 	<PropertyGroup Condition="$([MSBuild]::IsTargetFrameworkCompatible('$(TargetFramework)', 'net9.0-windows'))">
 		<IsTrimmable>true</IsTrimmable>
 		<PublishTrimmed>true</PublishTrimmed>
-	</PropertyGroup>
-	<PropertyGroup>
-		<ApplicationManifest>app.manifest</ApplicationManifest>
-		<ApplicationIcon>logo.ico</ApplicationIcon>
 	</PropertyGroup>
 	<ItemGroup>
 		<TrimmerRootDescriptor Include="Roots.xml" />

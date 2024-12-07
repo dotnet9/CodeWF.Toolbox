@@ -8,9 +8,9 @@ namespace CodeWF.Toolbox.ViewModels;
 
 public class AboutViewModel : ViewModelBase, ITabItemBase
 {
-    public string? Title { get; set; } = Localization.AboutView.Title;
+    public string? TitleKey { get; set; } = Localization.AboutView.Title;
     public string? AppName { get; set; }
-    public string? Message { get; set; } = Localization.AboutView.Description;
+    public string? MessageKey { get; set; } = Localization.AboutView.Description;
 
     public string? CompileTime { get; set; } =
         Assembly.GetExecutingAssembly().CompileTime()?.ToString("yyyy-MM-dd HH:mm:ss");

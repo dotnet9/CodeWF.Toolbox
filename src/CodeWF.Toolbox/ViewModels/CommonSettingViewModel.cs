@@ -15,8 +15,8 @@ public class CommonSettingViewModel : ViewModelBase, ITabItemBase
 {
     private readonly IApplicationService _applicationService;
 
-    public string? Title { get; set; }
-    public string Message { get; set; }
+    public string? TitleKey { get; set; }
+    public string MessageKey { get; set; }
 
     public CommonSettingViewModel(IApplicationService applicationService)
     {
@@ -26,8 +26,8 @@ public class CommonSettingViewModel : ViewModelBase, ITabItemBase
         HideTrayIconOnClose = applicationService.HideTrayIconOnClose;
         NeedExitDialogOnClose = applicationService.NeedExitDialogOnClose;
 
-        Title = Localization.CommonSettingView.Title;
-        Message = Localization.CommonSettingView.Description;
+        TitleKey = Localization.CommonSettingView.Title;
+        MessageKey = Localization.CommonSettingView.Description;
     }
 
     private void InitTheme()
