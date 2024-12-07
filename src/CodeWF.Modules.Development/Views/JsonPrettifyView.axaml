@@ -24,7 +24,7 @@
             VerticalAlignment="Top"
             Orientation="Horizontal">
             <CheckBox
-                Margin="0,0,20,0"
+                Margin="0,0,20,0" VerticalAlignment="Center"
                 Content="{i18n:I18n {x:Static language:JsonPrettifyView.SortKey}}"
                 IsChecked="{Binding IsSortKey}" />
             <TextBlock VerticalAlignment="Center" Text="{i18n:I18n {x:Static language:JsonPrettifyView.IndentSize}}" />
