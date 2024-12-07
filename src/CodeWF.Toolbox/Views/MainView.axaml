@@ -17,10 +17,11 @@
         <vm:MainViewModel />
     </Design.DataContext>
     <Grid>
-        <Grid RowDefinitions="*, Auto" ColumnDefinitions="Auto, *">
-            <views:MainMenuView Grid.Row="0" Grid.Column="0" />
-            <views:MainContentView Grid.Row="0" Grid.Column="1" />
+        <Grid ColumnDefinitions="Auto, 1, *">
+            <views:MainMenuView Grid.Column="0" />
+            <GridSplitter Grid.Column="1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" />
+            <views:MainContentView Grid.Column="2" />
         </Grid>
-		<u:OverlayDialogHost HostId="{x:Static core:HostIds.Main}" />
+        <u:OverlayDialogHost HostId="{x:Static core:HostIds.Main}" />
     </Grid>
 </UserControl>

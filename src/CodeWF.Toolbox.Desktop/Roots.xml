@@ -1,6 +1,5 @@
 <linker>
 	<assembly fullname="CodeWF.Toolbox.Desktop" preserve="All" />
-	<assembly fullname="CodeWF.ViewModels" preserve="All" />
 	<assembly fullname="CodeWF.Toolbox" preserve="All" />
 	<assembly fullname="CodeWF.Core" preserve="All" />
 	<assembly fullname="CodeWF.Modules.Converter" preserve="All" />

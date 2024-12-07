@@ -18,7 +18,6 @@
 
 	<ItemGroup>
 		<ProjectReference Include="..\CodeWF.Core\CodeWF.Core.csproj" />
-		<ProjectReference Include="..\CodeWF.ViewModels\CodeWF.ViewModels.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>

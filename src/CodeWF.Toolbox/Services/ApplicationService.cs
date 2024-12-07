@@ -182,18 +182,18 @@ internal class ApplicationService : IApplicationService
             }
         }
 
-        // App owner culture
+        // Change owner culture
         var culture = new CultureInfo(language);
         I18nManager.Instance.Culture = culture;
 
-        // Semi.Avalonia culture
+        // Change Semi.Avalonia culture
 
         if (_semiCultures.ContainsKey(language))
         {
             ChangeThirdCulture(_semiCultures[language]);
         }
 
-        // Ursa.Avalonia culture
+        // Change Ursa.Avalonia culture
 
         if (_ursaCultures.ContainsKey(language))
         {

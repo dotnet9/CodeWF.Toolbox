@@ -2,7 +2,6 @@
 using CodeWF.Modules.AI.Models;
 using ReactiveUI;
 using System.Reactive;
-using System.Reactive.Linq;
 
 namespace CodeWF.Modules.AI.ViewModels;
 
