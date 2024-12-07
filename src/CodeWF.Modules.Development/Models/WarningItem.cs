@@ -2,7 +2,7 @@
 
 namespace CodeWF.Modules.Development.Models;
 
-public class DropDownItem
+public class WarningItem
 {
     public Bitmap? Image { get; set; }
     public string? TextKey { get; set; }

@@ -48,8 +48,9 @@ namespace Localization
         public static readonly string SelectDirectory = "Localization.TestView.SelectDirectory";
         public static readonly string DecompressionFileExceptionTitle = "Localization.TestView.DecompressionFileExceptionTitle";
         public static readonly string DecompressionFileExceptionContent = "Localization.TestView.DecompressionFileExceptionContent";
-        public static readonly string Normal = "Localization.TestView.Normal";
-        public static readonly string Warning = "Localization.TestView.Warning";
-        public static readonly string Fail = "Localization.TestView.Fail";
+        public static readonly string TimeoutAlarm = "Localization.TestView.TimeoutAlarm";
+        public static readonly string ShowAll = "Localization.TestView.ShowAll";
+        public static readonly string FilterAlarms = "Localization.TestView.FilterAlarms";
+        public static readonly string FilterNormal = "Localization.TestView.FilterNormal";
     }
 }

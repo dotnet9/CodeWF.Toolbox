@@ -29,8 +29,9 @@
 		<SelectDirectory>Select the directory to save after decompression</SelectDirectory>
 		<DecompressionFileExceptionTitle>Decompression file exception</DecompressionFileExceptionTitle>
 		<DecompressionFileExceptionContent>Decompression file exception: {0}</DecompressionFileExceptionContent>
-		<Normal>Normal</Normal>
-		<Warning>Warning</Warning>
-		<Fail>Exception</Fail>
+		<TimeoutAlarm>Timeout alarm</TimeoutAlarm>
+		<ShowAll>Show all</ShowAll>
+		<FilterAlarms>Filter alarms</FilterAlarms>
+		<FilterNormal>Filter normal</FilterNormal>
 	</TestView>
 </Localization>

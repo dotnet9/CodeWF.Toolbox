@@ -29,8 +29,9 @@
 		<SelectDirectory>解壓後選擇要保存的目錄</SelectDirectory>
 		<DecompressionFileExceptionTitle>解壓文件異常</DecompressionFileExceptionTitle>
 		<DecompressionFileExceptionContent>解壓文件異常: {0}</DecompressionFileExceptionContent>
-		<Normal>正常</Normal>
-		<Warning>警告</Warning>
-		<Fail>异常</Fail>
+		<TimeoutAlarm>超時告警</TimeoutAlarm>
+		<ShowAll>顯示全部</ShowAll>
+		<FilterAlarms>篩選告警</FilterAlarms>
+		<FilterNormal>篩選正常</FilterNormal>
 	</TestView>
 </Localization>

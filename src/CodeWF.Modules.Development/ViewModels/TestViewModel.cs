@@ -57,11 +57,11 @@ public class TestViewModel : ReactiveObject
         set => this.RaiseAndSetIfChanged(ref _dailyTimeTask, value);
     }
 
-    public ObservableCollection<DropDownItem> PromptItems { get; set; }
+    public ObservableCollection<WarningItem> WarningItems { get; set; }
 
-    private DropDownItem _selectedPrompt;
+    private WarningItem _selectedPrompt;
 
-    public DropDownItem SelectedPrompt
+    public WarningItem SelectedPrompt
     {
         get => _selectedPrompt;
         set => this.RaiseAndSetIfChanged(ref _selectedPrompt, value);
@@ -73,28 +73,28 @@ public class TestViewModel : ReactiveObject
 
     private void InitData()
     {
-        PromptItems =
+        WarningItems =
         [
             new()
             {
                 Image = new Bitmap(
                     AssetLoader.Open(new Uri("avares://CodeWF.Modules.Development/Assets/normal.png"))),
-                TextKey = Localization.TestView.Normal
+                TextKey = Localization.TestView.ShowAll
             },
             new()
             {
                 Image = new Bitmap(
                     AssetLoader.Open(new Uri("avares://CodeWF.Modules.Development/Assets/warning.png"))),
-                TextKey = Localization.TestView.Warning
+                TextKey = Localization.TestView.FilterAlarms
             },
             new()
             {
                 Image =
                     new Bitmap(AssetLoader.Open(new Uri("avares://CodeWF.Modules.Development/Assets/fail.png"))),
-                TextKey = Localization.TestView.Fail
+                TextKey = Localization.TestView.FilterNormal
             },
         ];
-        SelectedPrompt = PromptItems!.First();
+        SelectedPrompt = WarningItems!.First();
     }
 
     private async Task RaiseCompressHandler()
