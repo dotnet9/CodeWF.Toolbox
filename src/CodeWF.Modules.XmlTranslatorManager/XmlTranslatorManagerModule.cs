@@ -1,16 +1,16 @@
 ﻿using CodeWF.Core;
 using CodeWF.Core.Models;
-using CodeWF.Modules.AvaloniaXmlTranslatorManager.Views;
+using CodeWF.Modules.XmlTranslatorManager.Views;
 
-namespace CodeWF.Modules.AvaloniaXmlTranslatorManager;
+namespace CodeWF.Modules.XmlTranslatorManager;
 
-public class AvaloniaXmlTranslatorManagerModule : IModule
+public class XmlTranslatorManagerModule : IModule
 {
-    public AvaloniaXmlTranslatorManagerModule(IToolMenuService toolMenuService)
+    public XmlTranslatorManagerModule(IToolMenuService toolMenuService)
     {
-        var groupName = Localization.AvaloniaXmlTranslatorManager.Title;
+        var groupName = Localization.XmlTranslatorManager.Title;
         toolMenuService.AddSeparator();
-        toolMenuService.AddGroup(groupName, Icons.AvaloniaXmlTranslatorManager);
+        toolMenuService.AddGroup(groupName, Icons.XmlTranslatorManager);
         toolMenuService.AddItem(Localization.MergeXMLFilesView.Title, groupName, Localization.MergeXMLFilesView.Description,
             nameof(MergeXMLFilesView),
             Icons.MergeXMLFiles,

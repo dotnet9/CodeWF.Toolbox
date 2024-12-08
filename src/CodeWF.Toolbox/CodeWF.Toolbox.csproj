@@ -42,7 +42,7 @@
 
 	<ItemGroup>
 	  <ProjectReference Include="..\CodeWF.Modules.AI\CodeWF.Modules.AI.csproj" />
-	  <ProjectReference Include="..\CodeWF.Modules.AvaloniaXmlTranslatorManager\CodeWF.Modules.AvaloniaXmlTranslatorManager.csproj" />
+	  <ProjectReference Include="..\CodeWF.Modules.XmlTranslatorManager\CodeWF.Modules.XmlTranslatorManager.csproj" />
 	  <ProjectReference Include="..\CodeWF.Modules.Converter\CodeWF.Modules.Converter.csproj" />
 	  <ProjectReference Include="..\CodeWF.Modules.Development\CodeWF.Modules.Development.csproj" />
 	</ItemGroup>

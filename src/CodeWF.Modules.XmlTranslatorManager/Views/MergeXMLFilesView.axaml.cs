@@ -1,7 +1,7 @@
 using Avalonia.Controls;
 using Avalonia.Markup.Xaml;
 
-namespace CodeWF.Modules.AvaloniaXmlTranslatorManager.Views;
+namespace CodeWF.Modules.XmlTranslatorManager.Views;
 
 public partial class MergeXMLFilesView : UserControl
 {

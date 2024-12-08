@@ -7,9 +7,9 @@
 //------------------------------------------------------------------------------
 namespace Localization
 {
-    public static class AvaloniaXmlTranslatorManager
+    public static class XmlTranslatorManager
     {
-        public static readonly string Title = "Localization.AvaloniaXmlTranslatorManager.Title";
+        public static readonly string Title = "Localization.XmlTranslatorManager.Title";
     }
 }
 namespace Localization

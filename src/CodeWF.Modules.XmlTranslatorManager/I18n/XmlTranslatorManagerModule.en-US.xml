@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 
 <Localization language="English" description="English" cultureName="en-US">
-	<AvaloniaXmlTranslatorManager>
+	<XmlTranslatorManager>
 		<Title>XML Internationalization</Title>
-	</AvaloniaXmlTranslatorManager>
+	</XmlTranslatorManager>
 	<ManageXMLFilesView>
 		<Title>XML Language Files Merge</Title>
 		<Description>Integrate XML language files, suitable for multi-module programs.</Description>

@@ -1,6 +1,6 @@
 ﻿using ReactiveUI;
 
-namespace CodeWF.Modules.AvaloniaXmlTranslatorManager.ViewModels;
+namespace CodeWF.Modules.XmlTranslatorManager.ViewModels;
 
 public class MergeXMLFilesViewModel : ReactiveObject
 {

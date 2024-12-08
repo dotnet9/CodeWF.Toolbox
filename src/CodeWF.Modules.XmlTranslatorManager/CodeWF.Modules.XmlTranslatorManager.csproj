@@ -36,20 +36,20 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<None Update="I18n\AvaloniaXmlTranslatorManagerModule.zh-Hant.xml">
+		<None Update="I18n\XmlTranslatorManagerModule.zh-Hant.xml">
 			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</None>
-		<None Update="I18n\AvaloniaXmlTranslatorManagerModule.en-US.xml">
+		<None Update="I18n\XmlTranslatorManagerModule.en-US.xml">
 			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</None>
-		<None Update="I18n\AvaloniaXmlTranslatorManagerModule.ja-JP.xml">
+		<None Update="I18n\XmlTranslatorManagerModule.ja-JP.xml">
 			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</None>
 		<None Update="I18n\Language.tt">
 			<Generator>TextTemplatingFileGenerator</Generator>
 			<LastGenOutput>Language.cs</LastGenOutput>
 		</None>
-		<None Update="I18n\AvaloniaXmlTranslatorManagerModule.zh-CN.xml">
+		<None Update="I18n\XmlTranslatorManagerModule.zh-CN.xml">
 			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</None>
 	</ItemGroup>
