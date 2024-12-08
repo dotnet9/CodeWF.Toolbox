@@ -5,6 +5,7 @@
 	<assembly fullname="CodeWF.Modules.Converter" preserve="All" />
 	<assembly fullname="CodeWF.Modules.AI" preserve="All" />
 	<assembly fullname="CodeWF.Modules.Development" preserve="All" />
+	<assembly fullname="CodeWF.Modules.XmlTranslatorManager" preserve="All" />
 	<assembly fullname="AvaloniaExtensions.Axaml" preserve="All" />
 	<assembly fullname="Ursa.PrismExtension" preserve="All" />
 	<assembly fullname="Prism" preserve="All" />
