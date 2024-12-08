@@ -11,11 +11,13 @@ public class XmlTranslatorManagerModule : IModule
         var groupName = Localization.XmlTranslatorManager.Title;
         toolMenuService.AddSeparator();
         toolMenuService.AddGroup(groupName, Icons.XmlTranslatorManager);
-        toolMenuService.AddItem(Localization.MergeXMLFilesView.Title, groupName, Localization.MergeXMLFilesView.Description,
-            nameof(MergeXMLFilesView),
+        toolMenuService.AddItem(Localization.MergeXmlFilesView.Title, groupName,
+            Localization.MergeXmlFilesView.Description,
+            nameof(MergeXmlFilesView),
             Icons.MergeXMLFiles,
-            ToolStatus.Developing);
-        toolMenuService.AddItem(Localization.ManageXMLFilesView.Title, groupName, Localization.ManageXMLFilesView.Description, nameof(ManageXMLFilesView),
+            ToolStatus.Complete);
+        toolMenuService.AddItem(Localization.ManageXmlFilesView.Title, groupName,
+            Localization.ManageXmlFilesView.Description, nameof(ManageXmlFilesView),
             Icons.ManageXMLFiles,
             ToolStatus.Developing);
     }
@@ -23,8 +25,8 @@ public class XmlTranslatorManagerModule : IModule
     public void OnInitialized(IContainerProvider containerProvider)
     {
         IRegionManager? regionManager = containerProvider.Resolve<IRegionManager>();
-        regionManager.RegisterViewWithRegion<MergeXMLFilesView>(RegionNames.ContentRegion);
-        regionManager.RegisterViewWithRegion<ManageXMLFilesView>(RegionNames.ContentRegion);
+        regionManager.RegisterViewWithRegion<MergeXmlFilesView>(RegionNames.ContentRegion);
+        regionManager.RegisterViewWithRegion<ManageXmlFilesView>(RegionNames.ContentRegion);
     }
 
     public void RegisterTypes(IContainerRegistry containerRegistry)

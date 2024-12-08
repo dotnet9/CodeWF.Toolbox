@@ -2,9 +2,9 @@
 
 namespace CodeWF.Modules.XmlTranslatorManager.ViewModels;
 
-public class ManageXMLFilesViewModel : ReactiveObject
+public class ManageXmlFilesViewModel : ReactiveObject
 {
-    public ManageXMLFilesViewModel()
+    public ManageXmlFilesViewModel()
     {
     }
 }

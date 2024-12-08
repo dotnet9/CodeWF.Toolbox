@@ -2,14 +2,25 @@
 
 <Localization language="Chinese (Traditional)" description="中文繁體" cultureName="zh-Hant">
 	<XmlTranslatorManager>
-		<Title>XML國際化</Title>
+		<Title>XML國際化管理</Title>
 	</XmlTranslatorManager>
-	<ManageXMLFilesView>
-		<Title>XML 語言文件合併</Title>
-		<Description>整合XML語言文件，適用於多模塊程序</Description>
-	</ManageXMLFilesView>
-	<MergeXMLFilesView>
-		<Title>XML 多語言管理</Title>
+	<MergeXmlFilesView>
+		<Title>XML多模塊文件合併</Title>
+		<Description>整合XML語言文件，適用於多模塊程序，例如使用了Prism的程序，合併前注意文件備份。</Description>
+		<SelectLanguageDirectory>選擇語言目錄</SelectLanguageDirectory>
+		<InputMergedXmlFileName>請輸入合併後的語言XML文件名</InputMergedXmlFileName>
+		<MergeFiles>合併文件</MergeFiles>
+		<NoLanguageFilesTitle>沒有語言文件</NoLanguageFilesTitle>
+		<NoLanguageFilesContent>請先選擇語言目錄後再執行合併</NoLanguageFilesContent>
+		<WrongNewXmlFileNameTitle>錯誤的新XML語言文件名</WrongNewXmlFileNameTitle>
+		<WrongNewXmlFileNameContent>輸入文件名需要滿足文件名格式</WrongNewXmlFileNameContent>
+		<MergeXmlFilesExceptionTitle>合併語言Xml文件異常</MergeXmlFilesExceptionTitle>
+		<MergeXmlFilesExceptionContent>請檢查已有XML語言文件內容是否合法: {0}</MergeXmlFilesExceptionContent>
+		<ReadXmlFilesExceptionTitle>讀取Xml語言文件異常</ReadXmlFilesExceptionTitle>
+		<ReadXmlFilesExceptionContent>請檢查XML語言文件內容是否合法: {0}</ReadXmlFilesExceptionContent>
+	</MergeXmlFilesView>
+	<ManageXmlFilesView>
+		<Title>XML多語言管理</Title>
 		<Description>對XML多語言數據集中管理維護。</Description>
-	</MergeXMLFilesView>
+	</ManageXmlFilesView>
 </Localization>

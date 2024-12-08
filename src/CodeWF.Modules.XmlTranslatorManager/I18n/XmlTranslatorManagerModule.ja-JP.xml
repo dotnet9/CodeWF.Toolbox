@@ -2,14 +2,25 @@
 
 <Localization language="Japanese" description="日語" cultureName="ja-JP">
 	<XmlTranslatorManager>
-		<Title>XMLの国際化</Title>
+		<Title>XMLの国際化管理</Title>
 	</XmlTranslatorManager>
-	<ManageXMLFilesView>
-		<Title>XML言語ファイルのマージ</Title>
-		<Description>XML言語ファイルを統合し、多モジュールプログラムに適しています。</Description>
-	</ManageXMLFilesView>
-	<MergeXMLFilesView>
-		<Title>XML多言語管理</Title>
-		<Description>XMLの多言語データを集中的に管理および保守します。</Description>
-	</MergeXMLFilesView>
+	<MergeXmlFilesView>
+		<Title>XMLの複数モジュールファイルのマージ</Title>
+		<Description>XML言語ファイルを統合し、Prismを使用しているなどの複数モジュールのプログラムに適しています。マージ前にファイルのバックアップを行ってください。</Description>
+		<SelectLanguageDirectory>言語ディレクトリを選択する</SelectLanguageDirectory>
+		<InputMergedXmlFileName>マージ後の言語XMLファイル名を入力してください</InputMergedXmlFileName>
+		<MergeFiles>ファイルをマージする</MergeFiles>
+		<NoLanguageFilesTitle>言語ファイルがありません</NoLanguageFilesTitle>
+		<NoLanguageFilesContent>マージを実行する前に、まず言語ディレクトリを選択してください</NoLanguageFilesContent>
+		<WrongNewXmlFileNameTitle>新しいXML言語ファイル名が間違っています</WrongNewXmlFileNameTitle>
+		<WrongNewXmlFileNameContent>入力するファイル名はファイル名のフォーマットを満たす必要があります</WrongNewXmlFileNameContent>
+		<MergeXmlFilesExceptionTitle>XML言語ファイルのマージに異常が発生しました</MergeXmlFilesExceptionTitle>
+		<MergeXmlFilesExceptionContent>既存のXML言語ファイルの内容が正しいかどうかを確認してください: {0}</MergeXmlFilesExceptionContent>
+		<ReadXmlFilesExceptionTitle>XML言語ファイルの読み取りに異常が発生しました</ReadXmlFilesExceptionTitle>
+		<ReadXmlFilesExceptionContent>XML言語ファイルの内容が正しいかどうかを確認してください: {0}</ReadXmlFilesExceptionContent>
+	</MergeXmlFilesView>
+	<ManageXmlFilesView>
+		<Title>XMLの多言語管理</Title>
+		<Description>XMLの多言語データを集中的に管理およびメンテナンスします。</Description>
+	</ManageXmlFilesView>
 </Localization>

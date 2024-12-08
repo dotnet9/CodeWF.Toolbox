@@ -14,17 +14,28 @@ namespace Localization
 }
 namespace Localization
 {
-    public static class ManageXMLFilesView
+    public static class MergeXmlFilesView
     {
-        public static readonly string Title = "Localization.ManageXMLFilesView.Title";
-        public static readonly string Description = "Localization.ManageXMLFilesView.Description";
+        public static readonly string Title = "Localization.MergeXmlFilesView.Title";
+        public static readonly string Description = "Localization.MergeXmlFilesView.Description";
+        public static readonly string SelectLanguageDirectory = "Localization.MergeXmlFilesView.SelectLanguageDirectory";
+        public static readonly string InputMergedXmlFileName = "Localization.MergeXmlFilesView.InputMergedXmlFileName";
+        public static readonly string MergeFiles = "Localization.MergeXmlFilesView.MergeFiles";
+        public static readonly string NoLanguageFilesTitle = "Localization.MergeXmlFilesView.NoLanguageFilesTitle";
+        public static readonly string NoLanguageFilesContent = "Localization.MergeXmlFilesView.NoLanguageFilesContent";
+        public static readonly string WrongNewXmlFileNameTitle = "Localization.MergeXmlFilesView.WrongNewXmlFileNameTitle";
+        public static readonly string WrongNewXmlFileNameContent = "Localization.MergeXmlFilesView.WrongNewXmlFileNameContent";
+        public static readonly string MergeXmlFilesExceptionTitle = "Localization.MergeXmlFilesView.MergeXmlFilesExceptionTitle";
+        public static readonly string MergeXmlFilesExceptionContent = "Localization.MergeXmlFilesView.MergeXmlFilesExceptionContent";
+        public static readonly string ReadXmlFilesExceptionTitle = "Localization.MergeXmlFilesView.ReadXmlFilesExceptionTitle";
+        public static readonly string ReadXmlFilesExceptionContent = "Localization.MergeXmlFilesView.ReadXmlFilesExceptionContent";
     }
 }
 namespace Localization
 {
-    public static class MergeXMLFilesView
+    public static class ManageXmlFilesView
     {
-        public static readonly string Title = "Localization.MergeXMLFilesView.Title";
-        public static readonly string Description = "Localization.MergeXMLFilesView.Description";
+        public static readonly string Title = "Localization.ManageXmlFilesView.Title";
+        public static readonly string Description = "Localization.ManageXmlFilesView.Description";
     }
 }

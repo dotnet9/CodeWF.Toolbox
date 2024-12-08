@@ -3,9 +3,9 @@ using Avalonia.Markup.Xaml;
 
 namespace CodeWF.Modules.XmlTranslatorManager.Views;
 
-public partial class ManageXMLFilesView : UserControl
+public partial class ManageXmlFilesView : UserControl
 {
-    public ManageXMLFilesView()
+    public ManageXmlFilesView()
     {
         InitializeComponent();
     }

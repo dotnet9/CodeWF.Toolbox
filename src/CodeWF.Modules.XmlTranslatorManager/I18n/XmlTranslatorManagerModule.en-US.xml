@@ -2,14 +2,25 @@
 
 <Localization language="English" description="English" cultureName="en-US">
 	<XmlTranslatorManager>
-		<Title>XML Internationalization</Title>
+		<Title>XML Internationalization Management</Title>
 	</XmlTranslatorManager>
-	<ManageXMLFilesView>
-		<Title>XML Language Files Merge</Title>
-		<Description>Integrate XML language files, suitable for multi-module programs.</Description>
-	</ManageXMLFilesView>
-	<MergeXMLFilesView>
+	<MergeXmlFilesView>
+		<Title>XML Multi-module File Merging</Title>
+		<Description>Integrate XML language files, suitable for multi-module programs, such as programs using Prism. Please backup files before merging.</Description>
+		<SelectLanguageDirectory>Select Language Directory</SelectLanguageDirectory>
+		<InputMergedXmlFileName>Please enter the file name of the merged XML language file</InputMergedXmlFileName>
+		<MergeFiles>Merge Files</MergeFiles>
+		<NoLanguageFilesTitle>No Language Files</NoLanguageFilesTitle>
+		<NoLanguageFilesContent>Please select the language directory first and then perform the merge</NoLanguageFilesContent>
+		<WrongNewXmlFileNameTitle>Wrong New XML Language File Name</WrongNewXmlFileNameTitle>
+		<WrongNewXmlFileNameContent>The input file name needs to meet the file name format</WrongNewXmlFileNameContent>
+		<MergeXmlFilesExceptionTitle>Exception in Merging XML Language Files</MergeXmlFilesExceptionTitle>
+		<MergeXmlFilesExceptionContent>Please check whether the content of the existing XML language files is valid: {0}</MergeXmlFilesExceptionContent>
+		<ReadXmlFilesExceptionTitle>Exception in Reading XML Language Files</ReadXmlFilesExceptionTitle>
+		<ReadXmlFilesExceptionContent>Please check whether the content of the XML language files is valid: {0}</ReadXmlFilesExceptionContent>
+	</MergeXmlFilesView>
+	<ManageXmlFilesView>
 		<Title>XML Multilingual Management</Title>
 		<Description>Centralize the management and maintenance of XML multilingual data.</Description>
-	</MergeXMLFilesView>
+	</ManageXmlFilesView>
 </Localization>

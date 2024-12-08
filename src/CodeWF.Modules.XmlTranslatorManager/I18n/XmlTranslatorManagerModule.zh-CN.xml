@@ -2,14 +2,25 @@
 
 <Localization language="Chinese (Simplified)" description="中文简体" cultureName="zh-CN">
 	<XmlTranslatorManager>
-		<Title>XML国际化</Title>
+		<Title>XML国际化管理</Title>
 	</XmlTranslatorManager>
-	<ManageXMLFilesView>
-		<Title>XML 语言文件合并</Title>
-		<Description>整合 XML 语言文件，适合多模块程序</Description>
-	</ManageXMLFilesView>
-	<MergeXMLFilesView>
+	<MergeXmlFilesView>
+		<Title>XML 多模块文件合并</Title>
+		<Description>整合 XML 语言文件，适合多模块程序，比如使用了Prism的程序，合并前注意文件备份</Description>
+		<SelectLanguageDirectory>选择语言目录</SelectLanguageDirectory>
+		<InputMergedXmlFileName>请输入合并后的语言XML文件名</InputMergedXmlFileName>
+		<MergeFiles>合并文件</MergeFiles>
+		<NoLanguageFilesTitle>没有语言文件</NoLanguageFilesTitle>
+		<NoLanguageFilesContent>请先选择语言目录后再执行合并</NoLanguageFilesContent>
+		<WrongNewXmlFileNameTitle>错误的新XML语言文件名</WrongNewXmlFileNameTitle>
+		<WrongNewXmlFileNameContent>输入文件名需要满足文件名格式</WrongNewXmlFileNameContent>
+		<MergeXmlFilesExceptionTitle>合并语言Xml文件异常</MergeXmlFilesExceptionTitle>
+		<MergeXmlFilesExceptionContent>请检查已有XML语言文件内容是否合法: {0}</MergeXmlFilesExceptionContent>
+		<ReadXmlFilesExceptionTitle>读取Xml语言文件异常</ReadXmlFilesExceptionTitle>
+		<ReadXmlFilesExceptionContent>请检查XML语言文件内容是否合法: {0}</ReadXmlFilesExceptionContent>
+	</MergeXmlFilesView>
+	<ManageXmlFilesView>
 		<Title>XML 多语言管理</Title>
 		<Description>对 XML 多语言数据集中管理维护。</Description>
-	</MergeXMLFilesView>
+	</ManageXmlFilesView>
 </Localization>
