@@ -21,7 +21,7 @@ public class FileChooserService : IFileChooserService
             Title = title, FileTypeFilter = fileTypeFilters, AllowMultiple = allowMultiple,
         });
 
-        return result.Any() ? result.Select(file => file.Path.AbsolutePath).ToList() : default;
+        return result.Any() ? result.Select(file => file.TryGetLocalPath()).ToList() : default;
     }
 
     public async Task<string?> SaveFileAsync(string title, IReadOnlyList<FilePickerFileType>? fileTypeFilters)
@@ -31,7 +31,7 @@ public class FileChooserService : IFileChooserService
             Title = title, FileTypeChoices = fileTypeFilters
         });
 
-        return result == null ? default : result.Path.AbsolutePath;
+        return result == null ? default : result.TryGetLocalPath();
     }
 
     public async Task<List<string>?> OpenFolderAsync(string title, bool allowMultiple = false)
@@ -41,6 +41,6 @@ public class FileChooserService : IFileChooserService
             Title = title, AllowMultiple = allowMultiple,
         });
 
-        return result.Any() ? result.Select(file => file.Path.AbsolutePath).ToList() : default;
+        return result.Any() ? result.Select(file => file.TryGetLocalPath()).ToList() : default;
     }
 }
