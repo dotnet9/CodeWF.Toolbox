@@ -22,7 +22,7 @@ public class AboutViewModel : ViewModelBase, ITabItemBase
 
     public void OpenOnLineToolbox(UserControl owner)
     {
-        OpenUrlAsync(owner, "https://dotnet9.com");
+        OpenUrlAsync(owner, "https://dotnet9.com/tool");
     }
 
     private async void OpenUrlAsync(UserControl owner, string uri)
