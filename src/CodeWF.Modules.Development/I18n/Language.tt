@@ -40,14 +40,14 @@
         StringBuilder classBuilder = new StringBuilder();
         classBuilder.AppendLine($"namespace {namespaceName}");
         classBuilder.AppendLine("{");
-        classBuilder.AppendLine($"    public static class {className}");
+        classBuilder.AppendLine($"    public class {className}");
         classBuilder.AppendLine("    {");
         var fieldNodes = element.Elements();
         foreach (var fieldNode in fieldNodes)
         {
             var propertyName = fieldNode.Name.LocalName;
             var languageKey = $"{namespaceName}.{className}.{propertyName}";
-            classBuilder.AppendLine($"        public static readonly string {propertyName} = \"{languageKey}\";");
+            classBuilder.AppendLine($"        public const string {propertyName} = \"{languageKey}\";");
         }
         classBuilder.AppendLine("    }");
         classBuilder.AppendLine("}");

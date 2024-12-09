@@ -7,50 +7,50 @@
 //------------------------------------------------------------------------------
 namespace Localization
 {
-    public static class DevelopmentModule
+    public class DevelopmentModule
     {
-        public static readonly string Title = "Localization.DevelopmentModule.Title";
+        public const string Title = "Localization.DevelopmentModule.Title";
     }
 }
 namespace Localization
 {
-    public static class YamlPrettifyView
+    public class YamlPrettifyView
     {
-        public static readonly string Title = "Localization.YamlPrettifyView.Title";
-        public static readonly string Description = "Localization.YamlPrettifyView.Description";
-        public static readonly string RawYaml = "Localization.YamlPrettifyView.RawYaml";
-        public static readonly string PrettifiedVersionYAML = "Localization.YamlPrettifyView.PrettifiedVersionYAML";
+        public const string Title = "Localization.YamlPrettifyView.Title";
+        public const string Description = "Localization.YamlPrettifyView.Description";
+        public const string RawYaml = "Localization.YamlPrettifyView.RawYaml";
+        public const string PrettifiedVersionYAML = "Localization.YamlPrettifyView.PrettifiedVersionYAML";
     }
 }
 namespace Localization
 {
-    public static class JsonPrettifyView
+    public class JsonPrettifyView
     {
-        public static readonly string Title = "Localization.JsonPrettifyView.Title";
-        public static readonly string Description = "Localization.JsonPrettifyView.Description";
-        public static readonly string RawJson = "Localization.JsonPrettifyView.RawJson";
-        public static readonly string PrettifiedVersionJSON = "Localization.JsonPrettifyView.PrettifiedVersionJSON";
-        public static readonly string SortKey = "Localization.JsonPrettifyView.SortKey";
-        public static readonly string IndentSize = "Localization.JsonPrettifyView.IndentSize";
+        public const string Title = "Localization.JsonPrettifyView.Title";
+        public const string Description = "Localization.JsonPrettifyView.Description";
+        public const string RawJson = "Localization.JsonPrettifyView.RawJson";
+        public const string PrettifiedVersionJSON = "Localization.JsonPrettifyView.PrettifiedVersionJSON";
+        public const string SortKey = "Localization.JsonPrettifyView.SortKey";
+        public const string IndentSize = "Localization.JsonPrettifyView.IndentSize";
     }
 }
 namespace Localization
 {
-    public static class TestView
+    public class TestView
     {
-        public static readonly string CompressFiles = "Localization.TestView.CompressFiles";
-        public static readonly string DecompressionFiles = "Localization.TestView.DecompressionFiles";
-        public static readonly string SelectCompressFiles = "Localization.TestView.SelectCompressFiles";
-        public static readonly string SaveCompressedFile = "Localization.TestView.SaveCompressedFile";
-        public static readonly string CompressFileExceptionTitle = "Localization.TestView.CompressFileExceptionTitle";
-        public static readonly string CompressFileExceptionContent = "Localization.TestView.CompressFileExceptionContent";
-        public static readonly string SelectDecompressionFile = "Localization.TestView.SelectDecompressionFile";
-        public static readonly string SelectDirectory = "Localization.TestView.SelectDirectory";
-        public static readonly string DecompressionFileExceptionTitle = "Localization.TestView.DecompressionFileExceptionTitle";
-        public static readonly string DecompressionFileExceptionContent = "Localization.TestView.DecompressionFileExceptionContent";
-        public static readonly string TimeoutAlarm = "Localization.TestView.TimeoutAlarm";
-        public static readonly string ShowAll = "Localization.TestView.ShowAll";
-        public static readonly string FilterAlarms = "Localization.TestView.FilterAlarms";
-        public static readonly string FilterNormal = "Localization.TestView.FilterNormal";
+        public const string CompressFiles = "Localization.TestView.CompressFiles";
+        public const string DecompressionFiles = "Localization.TestView.DecompressionFiles";
+        public const string SelectCompressFiles = "Localization.TestView.SelectCompressFiles";
+        public const string SaveCompressedFile = "Localization.TestView.SaveCompressedFile";
+        public const string CompressFileExceptionTitle = "Localization.TestView.CompressFileExceptionTitle";
+        public const string CompressFileExceptionContent = "Localization.TestView.CompressFileExceptionContent";
+        public const string SelectDecompressionFile = "Localization.TestView.SelectDecompressionFile";
+        public const string SelectDirectory = "Localization.TestView.SelectDirectory";
+        public const string DecompressionFileExceptionTitle = "Localization.TestView.DecompressionFileExceptionTitle";
+        public const string DecompressionFileExceptionContent = "Localization.TestView.DecompressionFileExceptionContent";
+        public const string TimeoutAlarm = "Localization.TestView.TimeoutAlarm";
+        public const string ShowAll = "Localization.TestView.ShowAll";
+        public const string FilterAlarms = "Localization.TestView.FilterAlarms";
+        public const string FilterNormal = "Localization.TestView.FilterNormal";
     }
 }

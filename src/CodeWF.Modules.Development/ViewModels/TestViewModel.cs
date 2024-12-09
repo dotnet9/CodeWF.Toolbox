@@ -57,11 +57,11 @@ public class TestViewModel : ReactiveObject
         set => this.RaiseAndSetIfChanged(ref _dailyTimeTask, value);
     }
 
-    public ObservableCollection<WarningItem> WarningItems { get; set; }
+    public List<WarningKind> WarningItems { get; set; }
 
-    private WarningItem _selectedPrompt;
+    private WarningKind _selectedPrompt;
 
-    public WarningItem SelectedPrompt
+    public WarningKind SelectedPrompt
     {
         get => _selectedPrompt;
         set => this.RaiseAndSetIfChanged(ref _selectedPrompt, value);
@@ -73,27 +73,7 @@ public class TestViewModel : ReactiveObject
 
     private void InitData()
     {
-        WarningItems =
-        [
-            new()
-            {
-                Image = new Bitmap(
-                    AssetLoader.Open(new Uri("avares://CodeWF.Modules.Development/Assets/OvertimeAll.png"))),
-                TextKey = Localization.TestView.ShowAll
-            },
-            new()
-            {
-                Image = new Bitmap(
-                    AssetLoader.Open(new Uri("avares://CodeWF.Modules.Development/Assets/OvertimeAlarm.png"))),
-                TextKey = Localization.TestView.FilterAlarms
-            },
-            new()
-            {
-                Image =
-                    new Bitmap(AssetLoader.Open(new Uri("avares://CodeWF.Modules.Development/Assets/OvertimeNormal.png"))),
-                TextKey = Localization.TestView.FilterNormal
-            },
-        ];
+        WarningItems = Enum.GetValues(typeof(WarningKind)).OfType<WarningKind>().ToList();
         SelectedPrompt = WarningItems!.First();
     }
 

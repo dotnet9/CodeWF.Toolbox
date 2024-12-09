@@ -9,6 +9,7 @@
              xmlns:view="clr-namespace:CodeWF.Modules.Development.Views"
              xmlns:vm="clr-namespace:CodeWF.Modules.Development.ViewModels"
              xmlns:model="clr-namespace:CodeWF.Modules.Development.Models"
+             xmlns:converters="clr-namespace:CodeWF.Modules.Development.Converters"
              prism:ViewModelLocator.AutoWireViewModel="True"
              x:DataType="vm:TestViewModel"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
@@ -16,6 +17,10 @@
     <Design.DataContext>
         <vm:TestViewModel />
     </Design.DataContext>
+    <UserControl.Resources>
+        <converters:WarningKindDescriptionConverter x:Key="WarningKindDescriptionConverter" />
+        <converters:WarningKindImageConverter x:Key="WarningKindImageConverter"></converters:WarningKindImageConverter>
+    </UserControl.Resources>
     <StackPanel>
         <Button Content="{i18n:I18n {x:Static language:TestView.CompressFiles}}"
                 Command="{Binding RaiseCompressCommand}" />
@@ -33,19 +38,22 @@
                   MinWidth="80" Padding="0 5"
                   Margin="0 30 0 0">
             <ComboBox.ItemTemplate>
-                <DataTemplate x:DataType="model:WarningItem">
+                <DataTemplate x:DataType="model:WarningKind">
                     <Grid ColumnDefinitions="Auto Auto">
-                        <Image Source="{Binding Image}" Grid.Column="0" Width="24" Height="24"
+                        <Image Source="{Binding Converter={StaticResource WarningKindImageConverter}}" Grid.Column="0"
+                               Width="24" Height="24"
                                HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0 0 5 0" />
-                        <TextBlock Text="{i18n:I18n {Binding TextKey}}" Grid.Column="1" HorizontalAlignment="Center"
+                        <TextBlock Text="{Binding Converter={StaticResource WarningKindDescriptionConverter}}"
+                                   Grid.Column="1" HorizontalAlignment="Center"
                                    VerticalAlignment="Center" />
                     </Grid>
                 </DataTemplate>
             </ComboBox.ItemTemplate>
             <ComboBox.SelectionBoxItemTemplate>
-                <DataTemplate x:DataType="model:WarningItem">
+                <DataTemplate x:DataType="model:WarningKind">
                     <Grid RowDefinitions="Auto Auto">
-                        <Image Source="{Binding Image}" Grid.Row="0" Width="48" Height="48"
+                        <Image Source="{Binding Converter={StaticResource WarningKindImageConverter}}" Grid.Row="0"
+                               Width="48" Height="48"
                                HorizontalAlignment="Center" />
                         <TextBlock Text="{i18n:I18n {x:Static language:TestView.TimeoutAlarm}}" Grid.Row="1"
                                    HorizontalAlignment="Center"
