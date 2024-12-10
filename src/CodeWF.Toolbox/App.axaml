@@ -5,10 +5,11 @@
     xmlns:i18n="https://codewf.com"
     xmlns:language="clr-namespace:Localization"
     xmlns:prism="http://prismlibrary.com/"
+    xmlns:semi="https://irihi.tech/semi"
     xmlns:u-semi="https://irihi.tech/ursa/themes/semi">
     <prism:PrismApplication.Styles>
-        <StyleInclude Source="avares://Semi.Avalonia/Themes/Index.axaml" />
-        <u-semi:SemiTheme Locale="zh-CN" />
+		<semi:SemiTheme Locale="zh-CN" />
+        <u-semi:SemiTheme Locale="zh-CN"/>
         <StyleInclude Source="../Styles/Index.axaml" />
         <StyleInclude Source="avares://CodeWF.AvaloniaControls/Styles.axaml" />
     </prism:PrismApplication.Styles>
