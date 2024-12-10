@@ -12,8 +12,7 @@ public class WarningKindDescriptionConverter : IValueConverter
     {
         if (value is WarningKind kind)
         {
-            var languageKey = kind.GetDescription();
-            return I18nManager.GetString(languageKey);
+            return kind.GetDescription();
         }
 
         return "Nothing";

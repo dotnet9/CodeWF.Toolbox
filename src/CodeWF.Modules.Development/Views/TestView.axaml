@@ -43,7 +43,7 @@
                         <Image Source="{Binding Converter={StaticResource WarningKindImageConverter}}" Grid.Column="0"
                                Width="24" Height="24"
                                HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0 0 5 0" />
-                        <TextBlock Text="{Binding Converter={StaticResource WarningKindDescriptionConverter}}"
+                        <TextBlock Text="{i18n:I18n {Binding Converter={StaticResource WarningKindDescriptionConverter}}}"
                                    Grid.Column="1" HorizontalAlignment="Center"
                                    VerticalAlignment="Center" />
                     </Grid>
