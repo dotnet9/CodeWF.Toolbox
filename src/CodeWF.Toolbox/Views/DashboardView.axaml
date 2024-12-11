@@ -9,6 +9,7 @@
              xmlns:language="clr-namespace:Localization"
              xmlns:views="clr-namespace:CodeWF.Toolbox.Views"
              xmlns:vm="clr-namespace:CodeWF.Toolbox.ViewModels"
+             xmlns:models="clr-namespace:CodeWF.Toolbox.Models"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="CodeWF.Toolbox.Views.DashboardView"
              x:DataType="vm:DashboardViewModel">
@@ -45,18 +46,16 @@
             </u:IconButton>
         </StackPanel>
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-            <Button Content="{i18n:I18n {x:Static language:DashboardView.AccessToolbox}}" HorizontalAlignment="Center"
-                    VerticalAlignment="Center"
-                    Classes="Success" Theme="{DynamicResource BorderlessButton}"
-                    Height="40" CornerRadius="5"
-                    Command="{Binding OpenOnLineToolbox}"
-                    CommandParameter="{Binding $parent[views:DashboardView]}" />
-            <Button Content="{i18n:I18n {x:Static language:DashboardView.MissingTool}}" HorizontalAlignment="Center"
-                    VerticalAlignment="Center"
-                    Classes="Warning" Theme="{DynamicResource BorderlessButton}"
-                    Height="40" CornerRadius="5"
-                    Command="{Binding OpenRepository}"
-                    CommandParameter="{Binding $parent[views:DashboardView]}" />
+            <HyperlinkButton
+                Classes="WithIcon Underline"
+                Height="20"
+                NavigateUri="{x:Static models:ConstDatas.OnlineToolUrl}"
+                Content="{i18n:I18n {x:Static language:DashboardView.AccessToolbox}}" />
+            <HyperlinkButton
+                Classes="WithIcon Underline"
+                Height="20" Margin="20 0 0 0"
+                NavigateUri="{x:Static models:ConstDatas.RespositoyUrl}"
+                Content="{i18n:I18n {x:Static language:DashboardView.MissingTool}}" />
         </StackPanel>
     </StackPanel>
 </UserControl>
