@@ -25,7 +25,7 @@
 	</SettingView>
 	<CommonSettingView>
 		<Title>General Settings</Title>
-		<Description>The interface style setting and internationalization module involve the use of third-party enterprises in production libraries, and are temporarily not open source</Description>
+		<Description>The interface style setting</Description>
 		<Theme>Theme</Theme>
 		<FollowingSystem>Follow the system</FollowingSystem>
 		<LightMode>Light mode</LightMode>

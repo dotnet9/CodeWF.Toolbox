@@ -25,7 +25,7 @@
 	</SettingView>
 	<CommonSettingView>
 		<Title>通用設置</Title>
-		<Description>介面風格設定，國際化模塊涉及到協力廠商企業在生產庫中使用，暫時不開源</Description>
+		<Description>介面風格設定</Description>
 		<Theme>主題</Theme>
 		<FollowingSystem>跟隨系統</FollowingSystem>
 		<LightMode>白天模式</LightMode>
