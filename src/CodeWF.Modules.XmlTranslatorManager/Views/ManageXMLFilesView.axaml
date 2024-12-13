@@ -15,7 +15,40 @@
     x:DataType="vm:ManageXmlFilesViewModel"
     mc:Ignorable="d">
     <Design.DataContext>
-		<vm:ManageXmlFilesViewModel />
+        <vm:ManageXmlFilesViewModel />
     </Design.DataContext>
+    <UserControl.Styles>
+        <StyleInclude Source="avares://Semi.Avalonia.DataGrid/Index.axaml" />
+    </UserControl.Styles>
+    <Grid RowDefinitions="35 *" ColumnDefinitions="200 1 *">
+        <StackPanel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Orientation="Horizontal">
+            <TextBox Width="500" Text="{Binding LanguageDir, Mode=OneWay}" IsReadOnly="True" />
+            <Button Content="..." Command="{Binding ChoiceLanguageDirCommand}" />
+        </StackPanel>
+        <TreeView Grid.Row="1" Grid.Column="0"
+                  ItemsSource="{Binding XmlFiles}"
+                  SelectedItem="{Binding SelectedClassItem}"
+                  SelectionMode="Single">
+            <TreeView.ItemTemplate>
+                <TreeDataTemplate ItemsSource="{Binding Classes}">
+                    <TextBlock Text="{Binding Name}" />
+                </TreeDataTemplate>
+            </TreeView.ItemTemplate>
+        </TreeView>
 
+        <GridSplitter Grid.Row="1" Grid.Column="1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" />
+
+        <DataGrid Grid.Row="1" Grid.Column="2" x:Name="LanguageDataGrid" 
+                  ItemsSource="{Binding SelectedClassItem.Properties}"
+                  CanUserReorderColumns="True"
+                  CanUserResizeColumns="True"
+                  CanUserSortColumns="True">
+            <Interaction.Behaviors>
+                <EventTriggerBehavior EventName="Loaded" SourceObject="LanguageDataGrid">
+                    <InvokeCommandAction Command="{Binding DataGridLoadedCommand}"
+                                         CommandParameter="{Binding ElementName=LanguageDataGrid}" />
+                </EventTriggerBehavior>
+            </Interaction.Behaviors>
+        </DataGrid>
+    </Grid>
 </UserControl>

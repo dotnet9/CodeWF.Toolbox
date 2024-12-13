@@ -14,4 +14,5 @@ public partial class ManageXmlFilesView : UserControl
     {
         AvaloniaXamlLoader.Load(this);
     }
+    
 }
