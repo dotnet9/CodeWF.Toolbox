@@ -26,7 +26,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		README.md = README.md
 	EndProjectSection
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Moduels", "Moduels", "{44252400-86A6-4AA9-985B-9B42F4B2C8DD}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Modules", "Modules", "{44252400-86A6-4AA9-985B-9B42F4B2C8DD}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeWF.Modules.Converter", "src\CodeWF.Modules.Converter\CodeWF.Modules.Converter.csproj", "{C823B6B3-6BD9-4D6A-BEC9-FD038D66FDB0}"
 EndProject
