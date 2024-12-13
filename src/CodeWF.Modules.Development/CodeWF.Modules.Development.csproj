@@ -26,7 +26,7 @@
 		<PackageReference Include="Avalonia.ReactiveUI" Version="11.2.2" />
 		<PackageReference Include="AvaloniaEdit.TextMate" Version="11.1.0" />
 		<PackageReference Include="Quartz" Version="3.13.1" />
-		<PackageReference Include="TextMateSharp.Grammars" Version="1.0.64" />
+		<PackageReference Include="TextMateSharp.Grammars" Version="1.0.65" />
 		<PackageReference Include="Irihi.Ursa.Themes.Semi" Version="1.6.2" />
 		<PackageReference Include="CodeWF.Tools" Version="1.2.5.9" />
 	</ItemGroup>
