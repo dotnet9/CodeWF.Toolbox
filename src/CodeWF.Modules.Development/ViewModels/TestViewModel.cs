@@ -1,6 +1,4 @@
-﻿using Avalonia.Media.Imaging;
-using Avalonia.Platform;
-using Avalonia.Platform.Storage;
+﻿using Avalonia.Platform.Storage;
 using AvaloniaXmlTranslator;
 using CodeWF.Core.IServices;
 using CodeWF.Modules.Development.Entities;
@@ -12,7 +10,6 @@ using Quartz;
 using Quartz.Impl;
 using ReactiveUI;
 using System.Collections;
-using System.Collections.ObjectModel;
 using System.Reactive;
 
 namespace CodeWF.Modules.Development.ViewModels;

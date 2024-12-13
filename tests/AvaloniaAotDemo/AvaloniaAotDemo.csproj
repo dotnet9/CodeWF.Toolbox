@@ -21,7 +21,7 @@
 		<PackageReference Condition="'$(Configuration)' == 'Debug'" Include="Avalonia.Diagnostics" Version="11.2.2" />
 		<PackageReference Include="Avalonia.ReactiveUI" Version="11.2.2" />
 		<PackageReference Include="CodeWF.EventBus" Version="3.4.4.2" />
-		<PackageReference Include="Semi.Avalonia" Version="11.2.1.1" />
+		<PackageReference Include="Semi.Avalonia" Version="11.2.1.2" />
 		<PackageReference Include="YY-Thunks" Version="1.1.5-Beta1" />
 	</ItemGroup>
 </Project>

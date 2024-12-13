@@ -31,9 +31,9 @@
 		<PackageReference Include="AvaloniaXmlTranslator" Version="0.0.0.1" />
 		<PackageReference Include="CodeWF.EventBus" Version="3.4.4.2" />
 		<PackageReference Include="CodeWF.Tools" Version="1.2.5.9" />
-		<PackageReference Include="Semi.Avalonia" Version="11.2.1.1" />
+		<PackageReference Include="Semi.Avalonia" Version="11.2.1.2" />
 		<PackageReference Include="Irihi.Ursa.PrismExtension" Version="9.0.1" />
-		<PackageReference Include="Irihi.Ursa.Themes.Semi" Version="1.6.1" />
+		<PackageReference Include="Irihi.Ursa.Themes.Semi" Version="1.6.2" />
 		<PackageReference Include="Prism.Avalonia" Version="9.0.401.11110-pre" />
 		<PackageReference Include="Prism.DryIoc.Avalonia" Version="9.0.401.11110-pre" />
 		<PackageReference Include="Avalonia.ReactiveUI" Version="11.2.2" />
