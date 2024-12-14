@@ -211,10 +211,17 @@ public class ManageXmlFilesViewModel : ReactiveObject
                             ((LanguageProperty)obj).Values!.TryGetValue(cultureName, out var value);
                             return value;
                         },
-                        (_, _) => { },
+                        (obj, value) =>
+                        {
+                            if (value is string newValue)
+                            {
+                                ((LanguageProperty)obj).Values[cultureName] = newValue;
+                            }
+                        },
                         typeof(string)),
                     PropertyInfoAccessorFactory.CreateInpcPropertyAccessor)
-                .Build())
+                .Build()),
+            IsReadOnly = false
         });
         foreach (var column in propertyColumns)
         {
