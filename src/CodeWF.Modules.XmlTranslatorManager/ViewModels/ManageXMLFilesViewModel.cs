@@ -216,6 +216,7 @@ public class ManageXmlFilesViewModel : ReactiveObject
                             if (value is string newValue)
                             {
                                 ((LanguageProperty)obj).Values[cultureName] = newValue;
+                                Save(((LanguageProperty)obj).Key, cultureName, newValue);
                             }
                         },
                         typeof(string)),
@@ -227,6 +228,38 @@ public class ManageXmlFilesViewModel : ReactiveObject
         {
             _languagePropertyDataGrid.Columns.Add(column);
         }
+    }
+
+    private void Save(string propertyName, string cultureName, string value)
+    {
+        try
+        {
+            var xmlFile = GetCurrentXmlFile(cultureName);
+
+            var xDoc = XDocument.Load(xmlFile.FilePath);
+
+            var propertyNode = xDoc.Nodes().OfType<XElement>().DescendantsAndSelf()
+                .Where(e => e.Name.LocalName == propertyName && e.Parent.Name.LocalName == SelectedClassItem.Name)
+                ?.FirstOrDefault();
+            if (propertyNode == null)
+            {
+                return;
+            }
+
+            propertyNode.Value = value;
+            xDoc.Save(xmlFile.FilePath);
+        }
+        catch (Exception ex)
+        {
+            _notificationService.Show("Save xml file exception", ex.Message);
+        }
+    }
+
+    private LanguageXmlFileInfo? GetCurrentXmlFile(string cultureName)
+    {
+        var currentXmlFile =
+            XmlFiles.FirstOrDefault(file => file.Classes?.Exists(classObj => classObj == SelectedClassItem) == true);
+        return currentXmlFile?.Files.FirstOrDefault(file => file.CultureName == cultureName);
     }
 
     #endregion
