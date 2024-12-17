@@ -20,7 +20,7 @@
     <PackageReference Include="AvaloniaEdit.TextMate" Version="11.1.0" />
     <PackageReference Include="TextMateSharp.Grammars" Version="1.0.65" />
     <PackageReference Include="AvaloniaXmlTranslator" Version="0.0.0.1" />
-    <PackageReference Include="CodeWF.Tools" Version="1.2.5.9" />
+    <PackageReference Include="CodeWF.Tools" Version="1.2.5.10" />
   </ItemGroup>
 
   <ItemGroup>

@@ -28,7 +28,7 @@
 		<PackageReference Include="Quartz" Version="3.13.1" />
 		<PackageReference Include="TextMateSharp.Grammars" Version="1.0.65" />
 		<PackageReference Include="Irihi.Ursa.Themes.Semi" Version="1.6.2" />
-		<PackageReference Include="CodeWF.Tools" Version="1.2.5.9" />
+		<PackageReference Include="CodeWF.Tools" Version="1.2.5.10" />
 	</ItemGroup>
 
 	<ItemGroup>
