@@ -16,7 +16,7 @@
 
   <ItemGroup>
     <PackageReference Include="Prism.DryIoc.Avalonia" Version="9.0.401.11110-pre" />
-    <PackageReference Include="Avalonia.ReactiveUI" Version="11.2.2" />
+    <PackageReference Include="Avalonia.ReactiveUI" Version="11.2.3" />
     <PackageReference Include="AvaloniaEdit.TextMate" Version="11.1.0" />
     <PackageReference Include="TextMateSharp.Grammars" Version="1.0.65" />
     <PackageReference Include="AvaloniaXmlTranslator" Version="0.0.0.1" />
