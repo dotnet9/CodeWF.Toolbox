@@ -25,14 +25,14 @@
 		<Clear>クリア</Clear>
 	</YamlToJsonView>
 	<ImageToIconView>
-		<Title>画像をicoアイコンに変換する</Title>
-		<ChoiceOtherImageDescription>画像ファイル（形式：png、jpg、jpeg、ico、webp）</ChoiceOtherImageDescription>
-		<ChoiceOtherImageDialogTitle>変換する画像を選択してください。</ChoiceOtherImageDialogTitle>
-		<ChoiceSaveImageDialogTitle>変換後に保存するicoアイコンを選択してください。</ChoiceSaveImageDialogTitle>
+		<Title>画像をICOアイコンに変換</Title>
+		<ChoiceSourceImageDescription>画像ファイル（形式: png、jpg、jpeg、ico、webp）</ChoiceSourceImageDescription>
+		<ChoiceSourceImageDialogTitle>変換する画像を選択してください</ChoiceSourceImageDialogTitle>
 		<DestImageSize>目標サイズ</DestImageSize>
-		<CreateButtonContent>icoアイコンを生成する</CreateButtonContent>
+		<MergeGenerateButtonContent>ICOアイコンをマージ生成</MergeGenerateButtonContent>
+		<SeparateGenerateButtonContent>ICOアイコンを個別生成</SeparateGenerateButtonContent>
 		<MemoTitle>説明</MemoTitle>
-		<MemoContent1>icoファイルは通常、ウェブページのロゴやアプリケーションのロゴに使用できます。</MemoContent1>
-		<MemoContent2>ウェブページでicoファイルを使用する場合、通常は生成されたicoファイルをfavicon.icoと名付け、ウェブサイトのルートディレクトリに配置し、その後ページのheadタグ内に以下のコードを追加します。</MemoContent2>
+		<MemoContent1>ICOファイルは一般的に、ウェブページのロゴやアプリケーションのロゴに使用されます。</MemoContent1>
+		<MemoContent2>ウェブページでICOファイルを使用する場合、通常は生成したICOファイルを「favicon.ico」と命名し、ウェブサイトのルートディレクトリに配置し、次のコードをページの&lt;head&gt;タグ内に追加します: &lt;link rel=&quot;shortcut icon&quot; href=&quot;favicon.ico&quot; type=&quot;image/x-icon&quot; /&gt;</MemoContent2>
 	</ImageToIconView>
 </Localization>

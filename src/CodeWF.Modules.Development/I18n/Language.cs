@@ -38,6 +38,8 @@ namespace Localization
 {
     public class TestView
     {
+        public const string Title = "Localization.TestView.Title";
+        public const string Description = "Localization.TestView.Description";
         public const string CompressFiles = "Localization.TestView.CompressFiles";
         public const string DecompressionFiles = "Localization.TestView.DecompressionFiles";
         public const string SelectCompressFiles = "Localization.TestView.SelectCompressFiles";

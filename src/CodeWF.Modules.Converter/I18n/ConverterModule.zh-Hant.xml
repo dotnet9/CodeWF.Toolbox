@@ -25,14 +25,14 @@
 		<Clear>清空</Clear>
 	</YamlToJsonView>
 	<ImageToIconView>
-		<Title>圖片轉 ico 圖標</Title>
-		<ChoiceOtherImageDescription>圖片文件（格式：png、jpg、jpeg、ico、webp）</ChoiceOtherImageDescription>
-		<ChoiceOtherImageDialogTitle>請選擇需要轉換的圖片</ChoiceOtherImageDialogTitle>
-		<ChoiceSaveImageDialogTitle>請選擇轉換後保存的 ico 圖標</ChoiceSaveImageDialogTitle>
+		<Title>圖片轉ico圖標</Title>
+		<ChoiceSourceImageDescription>圖片文件（格式：png、jpg、jpeg、ico、webp）</ChoiceSourceImageDescription>
+		<ChoiceSourceImageDialogTitle>請選擇需要轉換的圖片</ChoiceSourceImageDialogTitle>
 		<DestImageSize>目標尺寸</DestImageSize>
-		<CreateButtonContent>生成 ico 圖標</CreateButtonContent>
+		<MergeGenerateButtonContent>合併生成ico圖標</MergeGenerateButtonContent>
+		<SeparateGenerateButtonContent>單獨生成ico圖標</SeparateGenerateButtonContent>
 		<MemoTitle>說明</MemoTitle>
-		<MemoContent1>ico 文件一般可用於網頁的 logo 和應用程式的 logo。</MemoContent1>
-		<MemoContent2>ico 文件用在網頁，一般是把生成的 ico 文件，命名成 favicon.ico，並放到網站的根目錄，然後在頁面的 head 標籤內加入以下代碼：</MemoContent2>
+		<MemoContent1>ico文件一般可以用在網頁的logo和應用程序的logo。</MemoContent1>
+		<MemoContent2>ico文件用在網頁，一般是把生成的ico文件，命名成favicon.ico，並放到網站的根目錄，然後在頁面的head標籤內加入以下代碼：&lt;link rel=&quot;shortcut icon&quot; href=&quot;favicon.ico&quot; type=&quot;image/x-icon&quot; /&gt;</MemoContent2>
 	</ImageToIconView>
 </Localization>

@@ -19,6 +19,8 @@
 		<IndentSize>字段缩进：</IndentSize>
 	</JsonPrettifyView>
 	<TestView>
+		<Title>测试</Title>
+		<Description>工具开发过程中，部分功能测试</Description>
 		<CompressFiles>压缩文件</CompressFiles>
 		<DecompressionFiles>解压文件</DecompressionFiles>
 		<SelectCompressFiles>选择要压缩的文件列表</SelectCompressFiles>

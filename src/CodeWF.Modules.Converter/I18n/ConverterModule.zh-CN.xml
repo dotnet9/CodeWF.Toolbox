@@ -26,11 +26,11 @@
 	</YamlToJsonView>
 	<ImageToIconView>
 		<Title>图片转 ico 图标</Title>
-		<ChoiceOtherImageDescription>图片文件（格式：png、jpg、jpeg、ico、webp）</ChoiceOtherImageDescription>
-		<ChoiceOtherImageDialogTitle>请选择需要转换的图片</ChoiceOtherImageDialogTitle>
-		<ChoiceSaveImageDialogTitle>请选择转换后保存的 ico 图标</ChoiceSaveImageDialogTitle>
+		<ChoiceSourceImageDescription>图片文件（格式：png、jpg、jpeg、ico、webp）</ChoiceSourceImageDescription>
+		<ChoiceSourceImageDialogTitle>请选择需要转换的图片</ChoiceSourceImageDialogTitle>
 		<DestImageSize>目标尺寸</DestImageSize>
-		<CreateButtonContent>生成 ico 图标</CreateButtonContent>
+		<MergeGenerateButtonContent>合并生成 ico 图标</MergeGenerateButtonContent>
+		<SeparateGenerateButtonContent>单独生成 ico 图标</SeparateGenerateButtonContent>
 		<MemoTitle>说明</MemoTitle>
 		<MemoContent1>ico 文件一般可以用在网页的 logo 和应用程序的 logo。</MemoContent1>
 		<MemoContent2>ico 文件用在网页，一般是把生成的 ico 文件，命名成 favicon.ico，并放到网站的根目录，然后在页面的 head 标签内加入以下代码：</MemoContent2>

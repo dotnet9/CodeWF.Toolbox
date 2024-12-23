@@ -26,13 +26,13 @@
 	</YamlToJsonView>
 	<ImageToIconView>
 		<Title>Convert Image to ICO Icon</Title>
-		<ChoiceOtherImageDescription>Image files (formats: png, jpg, jpeg, ico, webp)</ChoiceOtherImageDescription>
-		<ChoiceOtherImageDialogTitle>Please select the image that needs to be converted.</ChoiceOtherImageDialogTitle>
-		<ChoiceSaveImageDialogTitle>Please select the ICO icon to save after conversion.</ChoiceSaveImageDialogTitle>
+		<ChoiceSourceImageDescription>Image files (formats: png, jpg, jpeg, ico, webp)</ChoiceSourceImageDescription>
+		<ChoiceSourceImageDialogTitle>Please select the image to be converted</ChoiceSourceImageDialogTitle>
 		<DestImageSize>Target Size</DestImageSize>
-		<CreateButtonContent>Generate ICO Icon</CreateButtonContent>
-		<MemoTitle>Instruction</MemoTitle>
-		<MemoContent1>ICO files can generally be used for the logo of web pages and applications.</MemoContent1>
-		<MemoContent2>When using ICO files on web pages, usually name the generated ICO file as "favicon.ico", put it in the root directory of the website, and then add the following code within the "head" tag of the page:</MemoContent2>
+		<MergeGenerateButtonContent>Merge and Generate ICO Icon</MergeGenerateButtonContent>
+		<SeparateGenerateButtonContent>Generate ICO Icon Separately</SeparateGenerateButtonContent>
+		<MemoTitle>Note</MemoTitle>
+		<MemoContent1>ICO files are generally used for web page logos and application logos.</MemoContent1>
+		<MemoContent2>When using an ICO file on a web page, usually name the generated ICO file as "favicon.ico", put it in the root directory of the website, and then add the following code to the &lt;head&gt; tag of the page: &lt;link rel=&quot;shortcut icon&quot; href=&quot;favicon.ico&quot; type=&quot;image/x-icon&quot; /&gt;</MemoContent2>
 	</ImageToIconView>
 </Localization>

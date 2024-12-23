@@ -19,19 +19,21 @@
 		<IndentSize>Indentation of fields:</IndentSize>
 	</JsonPrettifyView>
 	<TestView>
-		<CompressFiles>Compress files</CompressFiles>
-		<DecompressionFiles>Decompress files</DecompressionFiles>
+		<Title>Test</Title>
+		<Description>During the tool development process, test some functions.</Description>
+		<CompressFiles>Compressed Files</CompressFiles>
+		<DecompressionFiles>Decompressed Files</DecompressionFiles>
 		<SelectCompressFiles>Select the list of files to be compressed</SelectCompressFiles>
 		<SaveCompressedFile>Save the compressed file</SaveCompressedFile>
-		<CompressFileExceptionTitle>Compression file exception</CompressFileExceptionTitle>
-		<CompressFileExceptionContent>Compression file exception: {0}</CompressFileExceptionContent>
+		<CompressFileExceptionTitle>Compressed File Exception</CompressFileExceptionTitle>
+		<CompressFileExceptionContent>Compressed File Exception: {0}</CompressFileExceptionContent>
 		<SelectDecompressionFile>Select the directory to save after decompression</SelectDecompressionFile>
 		<SelectDirectory>Select the directory to save after decompression</SelectDirectory>
-		<DecompressionFileExceptionTitle>Decompression file exception</DecompressionFileExceptionTitle>
-		<DecompressionFileExceptionContent>Decompression file exception: {0}</DecompressionFileExceptionContent>
-		<TimeoutAlarm>Timeout alarm</TimeoutAlarm>
-		<ShowAll>Show all</ShowAll>
-		<FilterAlarms>Filter alarms</FilterAlarms>
-		<FilterNormal>Filter normal</FilterNormal>
+		<DecompressionFileExceptionTitle>Decompressed File Exception</DecompressionFileExceptionTitle>
+		<DecompressionFileExceptionContent>Decompressed File Exception: {0}</DecompressionFileExceptionContent>
+		<TimeoutAlarm>Timeout Alarm</TimeoutAlarm>
+		<ShowAll>Show All</ShowAll>
+		<FilterAlarms>Filter Alarms</FilterAlarms>
+		<FilterNormal>Filter Normal</FilterNormal>
 	</TestView>
 </Localization>

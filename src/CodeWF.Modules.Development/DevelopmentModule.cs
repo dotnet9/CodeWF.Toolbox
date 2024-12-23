@@ -11,13 +11,16 @@ public class DevelopmentModule : IModule
         var groupName = Localization.DevelopmentModule.Title;
         toolMenuService.AddSeparator();
         toolMenuService.AddGroup(groupName, Icons.Development);
-        toolMenuService.AddItem(Localization.YamlPrettifyView.Title, groupName, Localization.YamlPrettifyView.Description, nameof(YamlPrettifyView),
+        toolMenuService.AddItem(Localization.YamlPrettifyView.Title, groupName,
+            Localization.YamlPrettifyView.Description, nameof(YamlPrettifyView),
             Icons.Yaml,
             ToolStatus.Complete);
-        toolMenuService.AddItem(Localization.JsonPrettifyView.Title, groupName, Localization.JsonPrettifyView.Description, nameof(JsonPrettifyView),
+        toolMenuService.AddItem(Localization.JsonPrettifyView.Title, groupName,
+            Localization.JsonPrettifyView.Description, nameof(JsonPrettifyView),
             Icons.Json,
             ToolStatus.Complete);
-        toolMenuService.AddItem("Test", groupName, "Test", nameof(TestView),
+        toolMenuService.AddItem(Localization.TestView.Title, groupName, Localization.TestView.Description,
+            nameof(TestView),
             Icons.Json,
             ToolStatus.Developing);
     }

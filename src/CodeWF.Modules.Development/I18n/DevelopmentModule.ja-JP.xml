@@ -19,8 +19,10 @@
 		<IndentSize>フィールドのインデント：</IndentSize>
 	</JsonPrettifyView>
 	<TestView>
-		<CompressFiles>ファイルを圧縮する</CompressFiles>
-		<DecompressionFiles>ファイルを解凍する</DecompressionFiles>
+		<Title>テスト</Title>
+		<Description>ツール開発過程で、一部の機能をテストする。</Description>
+		<CompressFiles>圧縮ファイル</CompressFiles>
+		<DecompressionFiles>解凍ファイル</DecompressionFiles>
 		<SelectCompressFiles>圧縮するファイルのリストを選択する</SelectCompressFiles>
 		<SaveCompressedFile>圧縮ファイルを保存する</SaveCompressedFile>
 		<CompressFileExceptionTitle>圧縮ファイルのエラー</CompressFileExceptionTitle>
@@ -30,8 +32,8 @@
 		<DecompressionFileExceptionTitle>解凍ファイルのエラー</DecompressionFileExceptionTitle>
 		<DecompressionFileExceptionContent>解凍ファイルのエラー: {0}</DecompressionFileExceptionContent>
 		<TimeoutAlarm>タイムアウトアラーム</TimeoutAlarm>
-		<ShowAll>全て表示</ShowAll>
-		<FilterAlarms>アラームを選別する</FilterAlarms>
-		<FilterNormal>正常を選別する</FilterNormal>
+		<ShowAll>すべて表示</ShowAll>
+		<FilterAlarms>アラームをフィルターする</FilterAlarms>
+		<FilterNormal>正常をフィルターする</FilterNormal>
 	</TestView>
 </Localization>

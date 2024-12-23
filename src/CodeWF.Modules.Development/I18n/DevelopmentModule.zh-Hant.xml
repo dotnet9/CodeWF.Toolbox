@@ -19,6 +19,8 @@
 		<IndentSize>欄位縮進：</IndentSize>
 	</JsonPrettifyView>
 	<TestView>
+		<Title>測試</Title>
+		<Description>工具開發過程中，部分功能測試</Description>
 		<CompressFiles>壓縮文件</CompressFiles>
 		<DecompressionFiles>解壓文件</DecompressionFiles>
 		<SelectCompressFiles>選擇要壓縮的文件列表</SelectCompressFiles>

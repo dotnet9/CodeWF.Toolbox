@@ -41,7 +41,7 @@ public class CommonSettingViewModel : ViewModelBase, ITabItemBase
 
     private void InitLanguage()
     {
-        var languages = I18nManager.Instance.Resources.Select(kvp => kvp.Value).ToList();
+        var languages = I18nManager.Instance.GetLanguages();
         Languages = new ObservableCollection<LocalizationLanguage>(languages);
 
         var language = _applicationService.GetCulture();
