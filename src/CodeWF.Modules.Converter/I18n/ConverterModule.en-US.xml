@@ -24,4 +24,15 @@
 		<Copy>Copy</Copy>
 		<Clear>Clear</Clear>
 	</YamlToJsonView>
+	<ImageToIconView>
+		<Title>Convert Image to ICO Icon</Title>
+		<ChoiceOtherImageDescription>Image files (formats: png, jpg, jpeg, ico, webp)</ChoiceOtherImageDescription>
+		<ChoiceOtherImageDialogTitle>Please select the image that needs to be converted.</ChoiceOtherImageDialogTitle>
+		<ChoiceSaveImageDialogTitle>Please select the ICO icon to save after conversion.</ChoiceSaveImageDialogTitle>
+		<DestImageSize>Target Size</DestImageSize>
+		<CreateButtonContent>Generate ICO Icon</CreateButtonContent>
+		<MemoTitle>Instruction</MemoTitle>
+		<MemoContent1>ICO files can generally be used for the logo of web pages and applications.</MemoContent1>
+		<MemoContent2>When using ICO files on web pages, usually name the generated ICO file as "favicon.ico", put it in the root directory of the website, and then add the following code within the "head" tag of the page:</MemoContent2>
+	</ImageToIconView>
 </Localization>

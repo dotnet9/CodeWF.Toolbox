@@ -79,7 +79,7 @@ public class TestViewModel : ReactiveObject
         try
         {
             var files = await _fileChooserService.OpenFileAsync(
-                I18nManager.GetString(Localization.TestView.SelectCompressFiles)!,
+                I18nManager.Instance.GetResource(Localization.TestView.SelectCompressFiles)!,
                 true,
                 [FilePickerFileTypes.All]);
             if (!(files?.Count > 0))
@@ -88,7 +88,7 @@ public class TestViewModel : ReactiveObject
             }
 
             var saveFile = await _fileChooserService.SaveFileAsync(
-                I18nManager.GetString(Localization.TestView.SaveCompressedFile)!,
+                I18nManager.Instance.GetResource(Localization.TestView.SaveCompressedFile)!,
                 [_zipFilePickerFileType]);
             if (string.IsNullOrWhiteSpace(saveFile))
             {
@@ -101,8 +101,8 @@ public class TestViewModel : ReactiveObject
         }
         catch (Exception ex)
         {
-            _notificationService.Show(I18nManager.GetString(Localization.TestView.CompressFileExceptionTitle)!,
-                string.Format(I18nManager.GetString(Localization.TestView.CompressFileExceptionContent)!, ex));
+            _notificationService.Show(I18nManager.Instance.GetResource(Localization.TestView.CompressFileExceptionTitle)!,
+                string.Format(I18nManager.Instance.GetResource(Localization.TestView.CompressFileExceptionContent)!, ex));
         }
     }
 
@@ -111,7 +111,7 @@ public class TestViewModel : ReactiveObject
         try
         {
             var files = await _fileChooserService.OpenFileAsync(
-                I18nManager.GetString(Localization.TestView.SelectDecompressionFile)!, false,
+                I18nManager.Instance.GetResource(Localization.TestView.SelectDecompressionFile)!, false,
                 [_zipFilePickerFileType]);
             if (!(files?.Count > 0))
             {
@@ -121,7 +121,7 @@ public class TestViewModel : ReactiveObject
             var zipFile = files[0];
 
             var dirs = await _fileChooserService.OpenFolderAsync(
-                I18nManager.GetString(Localization.TestView.SelectDirectory)!);
+                I18nManager.Instance.GetResource(Localization.TestView.SelectDirectory)!);
             if (!(dirs?.Count > 0))
             {
                 return;
@@ -135,8 +135,8 @@ public class TestViewModel : ReactiveObject
         }
         catch (Exception ex)
         {
-            _notificationService.Show(I18nManager.GetString(Localization.TestView.DecompressionFileExceptionTitle)!,
-                string.Format(I18nManager.GetString(Localization.TestView.DecompressionFileExceptionContent)!, ex));
+            _notificationService.Show(I18nManager.Instance.GetResource(Localization.TestView.DecompressionFileExceptionTitle)!,
+                string.Format(I18nManager.Instance.GetResource(Localization.TestView.DecompressionFileExceptionContent)!, ex));
         }
     }
 

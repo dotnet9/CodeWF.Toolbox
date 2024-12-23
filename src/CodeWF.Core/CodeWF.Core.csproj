@@ -12,7 +12,7 @@
     <PackageReference Include="Dapper.AOT" Version="1.0.31" />
     <PackageReference Include="Microsoft.Data.Sqlite" Version="9.0.0" />
     <PackageReference Include="Prism.DryIoc.Avalonia" Version="9.0.401.11110-pre" />
-    <PackageReference Include="AvaloniaXmlTranslator" Version="0.0.0.1" />
+    <PackageReference Include="AvaloniaXmlTranslator" Version="0.0.0.2" />
   </ItemGroup>
 
 </Project>

@@ -81,7 +81,7 @@ public class ManageXmlFilesViewModel : ReactiveObject
     public async Task RaiseChoiceLanguageDir()
     {
         var dirs = await _fileChooserService.OpenFolderAsync(
-            I18nManager.GetString(Localization.MergeXmlFilesView.SelectLanguageDirectory));
+            I18nManager.Instance.GetResource(Localization.MergeXmlFilesView.SelectLanguageDirectory));
         if (!(dirs?.Count > 0))
         {
             LanguageDir = default;

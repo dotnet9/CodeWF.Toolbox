@@ -96,7 +96,7 @@ public class PolyTranslateViewModel : ReactiveObject
         var option =
             new OverlayDialogOptions()
             {
-                Title = I18nManager.GetString(Localization.ChoiceLanguagesView.LanguageKey), Buttons = DialogButton.OK
+                Title = I18nManager.Instance.GetResource(Localization.ChoiceLanguagesView.LanguageKey), Buttons = DialogButton.OK
             };
 
         var vm = _container.Resolve<ChoiceLanguagesViewModel>();

@@ -82,7 +82,7 @@ public class MergeXmlFilesViewModel : ReactiveObject
     public async Task RaiseChoiceLanguageDir()
     {
         var dirs = await _fileChooserService.OpenFolderAsync(
-            I18nManager.GetString(Localization.MergeXmlFilesView.SelectLanguageDirectory));
+            I18nManager.Instance.GetResource(Localization.MergeXmlFilesView.SelectLanguageDirectory));
         if (!(dirs?.Count > 0))
         {
             LanguageDir = default;
@@ -98,16 +98,16 @@ public class MergeXmlFilesViewModel : ReactiveObject
         {
             if (_oldXmlFiles?.Any() != true)
             {
-                _notificationService.Show(I18nManager.GetString(Localization.MergeXmlFilesView.NoLanguageFilesTitle),
-                    I18nManager.GetString(Localization.MergeXmlFilesView.NoLanguageFilesContent));
+                _notificationService.Show(I18nManager.Instance.GetResource(Localization.MergeXmlFilesView.NoLanguageFilesTitle),
+                    I18nManager.Instance.GetResource(Localization.MergeXmlFilesView.NoLanguageFilesContent));
                 return;
             }
 
             if (string.IsNullOrWhiteSpace(MergeXmlLanguageFileName))
             {
                 _notificationService.Show(
-                    I18nManager.GetString(Localization.MergeXmlFilesView.WrongNewXmlFileNameTitle),
-                    I18nManager.GetString(Localization.MergeXmlFilesView.WrongNewXmlFileNameContent));
+                    I18nManager.Instance.GetResource(Localization.MergeXmlFilesView.WrongNewXmlFileNameTitle),
+                    I18nManager.Instance.GetResource(Localization.MergeXmlFilesView.WrongNewXmlFileNameContent));
                 return;
             }
 
@@ -149,8 +149,8 @@ public class MergeXmlFilesViewModel : ReactiveObject
         }
         catch (Exception ex)
         {
-            _notificationService.Show(I18nManager.GetString(Localization.MergeXmlFilesView.MergeXmlFilesExceptionTitle),
-                string.Format(I18nManager.GetString(Localization.MergeXmlFilesView.MergeXmlFilesExceptionContent),
+            _notificationService.Show(I18nManager.Instance.GetResource(Localization.MergeXmlFilesView.MergeXmlFilesExceptionTitle),
+                string.Format(I18nManager.Instance.GetResource(Localization.MergeXmlFilesView.MergeXmlFilesExceptionContent),
                     ex.Message));
         }
     }
@@ -190,8 +190,8 @@ public class MergeXmlFilesViewModel : ReactiveObject
         }
         catch (Exception ex)
         {
-            _notificationService.Show(I18nManager.GetString(Localization.MergeXmlFilesView.ReadXmlFilesExceptionTitle),
-                string.Format(I18nManager.GetString(Localization.MergeXmlFilesView.ReadXmlFilesExceptionContent),
+            _notificationService.Show(I18nManager.Instance.GetResource(Localization.MergeXmlFilesView.ReadXmlFilesExceptionTitle),
+                string.Format(I18nManager.Instance.GetResource(Localization.MergeXmlFilesView.ReadXmlFilesExceptionContent),
                     ex.Message));
         }
     }

@@ -99,7 +99,7 @@ internal class MainMenuViewModel : ViewModelBase
     {
         ContainerLocator.Container.Resolve<SettingView>().ShowDialog(App.Instance.MainWindow as Window);
         //var option =
-        //    new OverlayDialogOptions { Title = I18nManager.GetString(Localization.SettingView.Title), Buttons = DialogButton.OK };
+        //    new OverlayDialogOptions { Title = I18nManager.Instance.GetResource(Localization.SettingView.Title), Buttons = DialogButton.OK };
         //var vm = ContainerLocator.Current.Resolve<SettingViewModel>();
         //await _overlayDialogService.ShowModal(DialogNames.Setting, vm, HostIds.Main, option);
 

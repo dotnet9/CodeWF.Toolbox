@@ -15,11 +15,13 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="IronSoftware.System.Drawing" Version="2024.12.3" />
+    <PackageReference Include="Magick.NET-Q16-AnyCPU" Version="14.2.0" />
     <PackageReference Include="Prism.DryIoc.Avalonia" Version="9.0.401.11110-pre" />
+    <PackageReference Include="Irihi.Ursa.Themes.Semi" Version="1.6.2" />
     <PackageReference Include="Avalonia.ReactiveUI" Version="11.2.3" />
     <PackageReference Include="AvaloniaEdit.TextMate" Version="11.1.0" />
     <PackageReference Include="TextMateSharp.Grammars" Version="1.0.65" />
-    <PackageReference Include="AvaloniaXmlTranslator" Version="0.0.0.1" />
     <PackageReference Include="CodeWF.Tools" Version="1.2.5.10" />
   </ItemGroup>
 

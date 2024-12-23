@@ -24,4 +24,15 @@
 		<Copy>コピー</Copy>
 		<Clear>クリア</Clear>
 	</YamlToJsonView>
+	<ImageToIconView>
+		<Title>画像をicoアイコンに変換する</Title>
+		<ChoiceOtherImageDescription>画像ファイル（形式：png、jpg、jpeg、ico、webp）</ChoiceOtherImageDescription>
+		<ChoiceOtherImageDialogTitle>変換する画像を選択してください。</ChoiceOtherImageDialogTitle>
+		<ChoiceSaveImageDialogTitle>変換後に保存するicoアイコンを選択してください。</ChoiceSaveImageDialogTitle>
+		<DestImageSize>目標サイズ</DestImageSize>
+		<CreateButtonContent>icoアイコンを生成する</CreateButtonContent>
+		<MemoTitle>説明</MemoTitle>
+		<MemoContent1>icoファイルは通常、ウェブページのロゴやアプリケーションのロゴに使用できます。</MemoContent1>
+		<MemoContent2>ウェブページでicoファイルを使用する場合、通常は生成されたicoファイルをfavicon.icoと名付け、ウェブサイトのルートディレクトリに配置し、その後ページのheadタグ内に以下のコードを追加します。</MemoContent2>
+	</ImageToIconView>
 </Localization>

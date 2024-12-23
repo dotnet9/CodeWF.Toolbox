@@ -1,0 +1,43 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:prism="http://prismlibrary.com/"
+             xmlns:u="https://irihi.tech/ursa"
+             xmlns:i18n="https://codewf.com"
+             xmlns:vm="clr-namespace:CodeWF.Modules.Converter.ViewModels"
+             xmlns:language="clr-namespace:Localization"
+             prism:ViewModelLocator.AutoWireViewModel="True"
+             x:DataType="vm:ImageToIconViewModel"
+             x:CompileBindings="True"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="CodeWF.Modules.Converter.ImageToIconView">
+  <StackPanel>
+      <TextBlock Text="{i18n:I18n {x:Static language:ImageToIconView.ChoiceOtherImageDescription}}" />
+      <StackPanel Orientation="Horizontal" Margin="0 10">
+          <TextBox VerticalAlignment="Center" Margin="10 0" Width="400" Classes="Small" Text="{Binding NeedConvertImagePath}" />
+          <Button Content="..." Classes="Small" Command="{Binding RaiseChoiceNeedConvertImageHandler}" />
+      </StackPanel>
+      <StackPanel Orientation="Horizontal">
+          <TextBlock Text="{i18n:I18n {x:Static language:ImageToIconView.DestImageSize}}" />
+          <UniformGrid Columns="7" Margin="10 0">
+              <CheckBox Content="16*16" Tag="16" Command="{Binding RaiseChoiceIconSizeHandler}" CommandParameter="16" />
+			  <CheckBox Content="24*24" IsChecked="True" Tag="24" Command="{Binding RaiseChoiceIconSizeHandler}" CommandParameter="24" />
+			  <CheckBox Content="32*32" Tag="32" Command="{Binding RaiseChoiceIconSizeHandler}" CommandParameter="32" />
+			  <CheckBox Content="48*48" Tag="48" Command="{Binding RaiseChoiceIconSizeHandler}" CommandParameter="48" />
+			  <CheckBox Content="64*64" Tag="64" Command="{Binding RaiseChoiceIconSizeHandler}" CommandParameter="64" />
+			  <CheckBox Content="128*128" Tag="128" Command="{Binding RaiseChoiceIconSizeHandler}" CommandParameter="128" />
+			  <CheckBox Content="256*256" Tag="256" Command="{Binding RaiseChoiceIconSizeHandler}" CommandParameter="256" />
+		  </UniformGrid>
+      </StackPanel>
+
+      <Button HorizontalAlignment="Left" Margin="0 10" Classes="Small" Content="{i18n:I18n {x:Static language:ImageToIconView.CreateButtonContent}}" Command="{Binding RaiseCreateIconHandler}" />
+	  
+      <TextBlock Margin="0 40 0 0" Classes="H4" Theme="{StaticResource TitleTextBlock}" Text="{i18n:I18n {x:Static language:ImageToIconView.MemoTitle}}" />
+      <TextBlock Margin="0 5 0 3" Text="{i18n:I18n {x:Static language:ImageToIconView.MemoContent1}}" />
+      <TextBlock Text="{i18n:I18n {x:Static language:ImageToIconView.MemoContent2}}" />
+      <Border Margin="0,16" Classes="CodeBlock">
+	    <SelectableTextBlock FontFamily="Consolas" Text="&lt;link rel=&quot;shortcut icon&quot; href=&quot;/favicon.ico&quot; type=&quot;image/x-icon&quot; /&gt;" />
+      </Border>
+  </StackPanel>
+</UserControl>

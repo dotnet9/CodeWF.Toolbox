@@ -28,7 +28,6 @@
 		<PackageReference Include="Avalonia" Version="11.2.3" />
 		<!--Condition below is needed to remove Avalonia.Diagnostics package from build output in Release configuration.-->
 		<PackageReference Condition="'$(Configuration)' == 'Debug'" Include="Avalonia.Diagnostics" Version="11.2.3" />
-		<PackageReference Include="AvaloniaXmlTranslator" Version="0.0.0.1" />
 		<PackageReference Include="CodeWF.EventBus" Version="3.4.4.2" />
 		<PackageReference Include="CodeWF.Tools" Version="1.2.5.10" />
 		<PackageReference Include="Semi.Avalonia" Version="11.2.1.2" />

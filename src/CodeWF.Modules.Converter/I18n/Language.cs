@@ -44,3 +44,18 @@ namespace Localization
         public static readonly string Clear = "Localization.YamlToJsonView.Clear";
     }
 }
+namespace Localization
+{
+    public static class ImageToIconView
+    {
+        public static readonly string Title = "Localization.ImageToIconView.Title";
+        public static readonly string ChoiceOtherImageDescription = "Localization.ImageToIconView.ChoiceOtherImageDescription";
+        public static readonly string ChoiceOtherImageDialogTitle = "Localization.ImageToIconView.ChoiceOtherImageDialogTitle";
+        public static readonly string ChoiceSaveImageDialogTitle = "Localization.ImageToIconView.ChoiceSaveImageDialogTitle";
+        public static readonly string DestImageSize = "Localization.ImageToIconView.DestImageSize";
+        public static readonly string CreateButtonContent = "Localization.ImageToIconView.CreateButtonContent";
+        public static readonly string MemoTitle = "Localization.ImageToIconView.MemoTitle";
+        public static readonly string MemoContent1 = "Localization.ImageToIconView.MemoContent1";
+        public static readonly string MemoContent2 = "Localization.ImageToIconView.MemoContent2";
+    }
+}
