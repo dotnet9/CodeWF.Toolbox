@@ -1,11 +1,9 @@
-﻿using Avalonia;
-using Avalonia.Controls;
+﻿using Avalonia.Controls;
 using Avalonia.Styling;
 using AvaloniaXmlTranslator;
 using CodeWF.Core.IServices;
 using CodeWF.Toolbox.Models;
 using CodeWF.Tools.Helpers;
-using DynamicData;
 using Semi.Avalonia;
 using System;
 using System.Collections.Generic;

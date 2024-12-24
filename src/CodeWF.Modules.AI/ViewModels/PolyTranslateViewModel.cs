@@ -96,12 +96,15 @@ public class PolyTranslateViewModel : ReactiveObject
         var option =
             new OverlayDialogOptions()
             {
-                Title = I18nManager.Instance.GetResource(Localization.ChoiceLanguagesView.LanguageKey), Buttons = DialogButton.OK
+                Title = I18nManager.Instance.GetResource(Localization.ChoiceLanguagesView.LanguageKey),
+                Buttons = DialogButton.OK
             };
 
         var vm = _container.Resolve<ChoiceLanguagesViewModel>();
         vm.SelectedLanguages = new RangeObservableCollection<string> { _choiceLanguages };
-        vm.AllLanguages = new RangeObservableCollection<string> { LanguageList.Languages.Except(_choiceLanguages) };
+        var allCulture = I18nManager.Instance.GetAvailableCultures();
+        var canChoiceCulture = allCulture.Select(culture => culture.EnglishName).Except(_choiceLanguages);
+        vm.AllLanguages = new RangeObservableCollection<string> { canChoiceCulture };
         await _overlayDialogService.ShowModal(DialogNames.ChoiceLanguages, vm, HostIds.Main, option);
         _choiceLanguages = vm.SelectedLanguages.ToList();
         Languages = string.Join(",", vm.SelectedLanguages);
