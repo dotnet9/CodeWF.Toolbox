@@ -13,6 +13,7 @@
     <PackageReference Include="Microsoft.Data.Sqlite" Version="9.0.0" />
     <PackageReference Include="Prism.DryIoc.Avalonia" Version="9.0.401.11110-pre" />
     <PackageReference Include="AvaloniaXmlTranslator" Version="1.0.2" />
+    <PackageReference Include="CodeWF.Tools" Version="1.2.6.1" />
   </ItemGroup>
 
 </Project>

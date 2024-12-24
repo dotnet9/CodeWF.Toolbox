@@ -7,8 +7,10 @@ using AvaloniaXmlTranslator;
 using CodeWF.AvaloniaControls.Extensions;
 using CodeWF.Core.IServices;
 using CodeWF.Modules.XmlTranslatorManager.Models;
+using CodeWF.Tools.Exports;
 using CodeWF.Tools.FileExtensions;
 using ReactiveUI;
+using System.Data;
 using System.Xml.Linq;
 using Ursa.Controls;
 
@@ -105,28 +107,9 @@ public class ManageXmlFilesViewModel : ReactiveObject
             return;
         }
 
-        if (savePath.ToLower().EndsWith(".csv"))
-        {
-            if (_languagePropertyDataGrid.ExportToCsv(savePath, out var errorMsg))
-            {
-                FileHelper.OpenFolderAndSelectFile(savePath);
-            }
-            else
-            {
-                MessageBox.ShowOverlayAsync(errorMsg);
-            }
-        }
-        else
-        {
-            if (_languagePropertyDataGrid.ExportToExcel(savePath, out var errorMsg))
-            {
-                FileHelper.OpenFolderAndSelectFile(savePath);
-            }
-            else
-            {
-                MessageBox.ShowOverlayAsync(errorMsg);
-            }
-        }
+        GetDataGridData(out var errorMsg, out var data);
+        data.Export(savePath, out errorMsg);
+        FileHelper.OpenFolderAndSelectFile(savePath);
     }
 
     #endregion
@@ -298,6 +281,51 @@ public class ManageXmlFilesViewModel : ReactiveObject
         var currentXmlFile =
             XmlFiles.FirstOrDefault(file => file.Classes?.Exists(classObj => classObj == SelectedClassItem) == true);
         return currentXmlFile?.Files.FirstOrDefault(file => file.CultureName == cultureName);
+    }
+
+    private bool GetDataGridData(out string? errorMsg, out DataTable dataTable)
+    {
+        errorMsg = default;
+        dataTable = default;
+
+        if (SelectedClassItem?.Properties?.Any() != true)
+        {
+            errorMsg = "Empty data";
+            return false;
+        }
+
+        dataTable = new DataTable();
+
+        foreach (var column in _languagePropertyDataGrid.Columns)
+        {
+            dataTable.Columns.Add(column.Header.ToString());
+        }
+
+        var itemsSource = _languagePropertyDataGrid.ItemsSource;
+        if (itemsSource != null)
+        {
+            foreach (var item in itemsSource)
+            {
+                var data = item as LanguageProperty;
+                var row = dataTable.NewRow();
+                for (int colIndex = 0; colIndex < _languagePropertyDataGrid.Columns.Count; colIndex++)
+                {
+                    var colName = _languagePropertyDataGrid.Columns[colIndex].Header.ToString();
+                    if (colName == nameof(LanguageProperty.Key))
+                    {
+                        row[colIndex] = data.Key;
+                    }
+                    else if (data.Values.ContainsKey(colName))
+                    {
+                        row[colIndex] = data.Values[colName];
+                    }
+                }
+
+                dataTable.Rows.Add(row);
+            }
+        }
+
+        return true;
     }
 
     #endregion
