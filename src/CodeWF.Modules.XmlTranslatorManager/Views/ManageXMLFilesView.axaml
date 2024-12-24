@@ -9,8 +9,9 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:prism="http://prismlibrary.com/"
     xmlns:vm="clr-namespace:CodeWF.Modules.XmlTranslatorManager.ViewModels"
+    xmlns:models="clr-namespace:CodeWF.Modules.XmlTranslatorManager.Models"
     d:DesignHeight="450"
-    d:DesignWidth="800"
+    d:DesignWidth="800" x:CompileBindings="True"
     prism:ViewModelLocator.AutoWireViewModel="True"
     x:DataType="vm:ManageXmlFilesViewModel"
     mc:Ignorable="d">
@@ -23,32 +24,36 @@
     <Grid RowDefinitions="35 *" ColumnDefinitions="200 1 *">
         <StackPanel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Orientation="Horizontal">
             <TextBox Width="500" Text="{Binding LanguageDir, Mode=OneWay}" IsReadOnly="True" />
-            <Button Content="..." Command="{Binding ChoiceLanguageDirCommand}" />
+            <Button Content="..." Command="{Binding RaiseChoiceLanguageDirHandler}" />
         </StackPanel>
         <TreeView Grid.Row="1" Grid.Column="0"
                   ItemsSource="{Binding XmlFiles}"
                   SelectedItem="{Binding SelectedClassItem}"
                   SelectionMode="Single">
             <TreeView.ItemTemplate>
-                <TreeDataTemplate ItemsSource="{Binding Classes}">
+                <TreeDataTemplate ItemsSource="{Binding Classes}" x:CompileBindings="False">
                     <TextBlock Text="{Binding Name}" />
                 </TreeDataTemplate>
             </TreeView.ItemTemplate>
         </TreeView>
 
         <GridSplitter Grid.Row="1" Grid.Column="1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" />
-
-        <DataGrid Grid.Row="1" Grid.Column="2" x:Name="LanguageDataGrid" 
-                  ItemsSource="{Binding SelectedClassItem.Properties}"
-                  CanUserReorderColumns="True"
-                  CanUserResizeColumns="True"
-                  CanUserSortColumns="True">
-            <Interaction.Behaviors>
-                <EventTriggerBehavior EventName="Loaded" SourceObject="LanguageDataGrid">
-                    <InvokeCommandAction Command="{Binding DataGridLoadedCommand}"
-                                         CommandParameter="{Binding ElementName=LanguageDataGrid}" />
-                </EventTriggerBehavior>
-            </Interaction.Behaviors>
-        </DataGrid>
+        <Grid Grid.Row="1" Grid.Column="2" RowDefinitions="Auto *">
+            <StackPanel Orientation="Horizontal">
+                <Button Content="Export" Command="{Binding RaiseExportHandler}" />
+            </StackPanel>
+            <DataGrid Grid.Row="1" x:Name="LanguageDataGrid"
+                      ItemsSource="{Binding SelectedClassItem.Properties}"
+                      CanUserReorderColumns="True"
+                      CanUserResizeColumns="True"
+                      CanUserSortColumns="True">
+                <Interaction.Behaviors>
+                    <EventTriggerBehavior EventName="Loaded" SourceObject="LanguageDataGrid">
+                        <InvokeCommandAction Command="{Binding RaiseDataGridLoadHandler}"
+                                             CommandParameter="{Binding ElementName=LanguageDataGrid}" />
+                    </EventTriggerBehavior>
+                </Interaction.Behaviors>
+            </DataGrid>
+        </Grid>
     </Grid>
 </UserControl>

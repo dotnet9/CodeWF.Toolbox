@@ -1,5 +1,6 @@
 ﻿using CodeWF.Core;
 using CodeWF.Core.Models;
+using CodeWF.Modules.XmlTranslatorManager.ViewModels;
 using CodeWF.Modules.XmlTranslatorManager.Views;
 
 namespace CodeWF.Modules.XmlTranslatorManager;
@@ -31,5 +32,7 @@ public class XmlTranslatorManagerModule : IModule
 
     public void RegisterTypes(IContainerRegistry containerRegistry)
     {
+        ViewModelLocationProvider.Register<MergeXmlFilesView, MergeXmlFilesViewModel>();
+        ViewModelLocationProvider.Register<ManageXmlFilesView, ManageXmlFilesViewModel>();
     }
 }

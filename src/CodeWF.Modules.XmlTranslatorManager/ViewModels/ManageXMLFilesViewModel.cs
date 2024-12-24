@@ -2,14 +2,15 @@
 using Avalonia.Data.Core;
 using Avalonia.Markup.Xaml.MarkupExtensions;
 using Avalonia.Markup.Xaml.MarkupExtensions.CompiledBindings;
+using Avalonia.Platform.Storage;
 using AvaloniaXmlTranslator;
 using CodeWF.AvaloniaControls.Extensions;
 using CodeWF.Core.IServices;
 using CodeWF.Modules.XmlTranslatorManager.Models;
+using CodeWF.Tools.FileExtensions;
 using ReactiveUI;
-using System.Reactive;
-using System.Windows.Input;
 using System.Xml.Linq;
+using Ursa.Controls;
 
 namespace CodeWF.Modules.XmlTranslatorManager.ViewModels;
 
@@ -27,8 +28,6 @@ public class ManageXmlFilesViewModel : ReactiveObject
     {
         _notificationService = notificationService;
         _fileChooserService = fileChooserService;
-        ChoiceLanguageDirCommand = ReactiveCommand.CreateFromTask(RaiseChoiceLanguageDir);
-        DataGridLoadedCommand = ReactiveCommand.Create<DataGrid>(DataGridLoadHandler);
         ReadSampleDir();
     }
 
@@ -63,22 +62,14 @@ public class ManageXmlFilesViewModel : ReactiveObject
 
     #endregion
 
-
-    #region Commands
-
-    public ReactiveCommand<Unit, Unit> ChoiceLanguageDirCommand { get; }
-    public ICommand DataGridLoadedCommand { get; }
-
-    #endregion
-
     #region Command handler
 
-    public void DataGridLoadHandler(DataGrid dataGrid)
+    public void RaiseDataGridLoadHandler(DataGrid dataGrid)
     {
         _languagePropertyDataGrid = dataGrid;
     }
 
-    public async Task RaiseChoiceLanguageDir()
+    public async Task RaiseChoiceLanguageDirHandler()
     {
         var dirs = await _fileChooserService.OpenFolderAsync(
             I18nManager.Instance.GetResource(Localization.MergeXmlFilesView.SelectLanguageDirectory));
@@ -89,6 +80,53 @@ public class ManageXmlFilesViewModel : ReactiveObject
         }
 
         LanguageDir = dirs[0];
+    }
+
+    public async Task RaiseExportHandler()
+    {
+        var fileTypeFilters = new List<FilePickerFileType>
+        {
+            new("CSV files")
+            {
+                Patterns = new List<string> { "*.csv" }, MimeTypes = new List<string> { "text/csv" }
+            },
+            new("Excel Workbook")
+            {
+                Patterns = new List<string> { "*.xlsx" },
+                MimeTypes = new List<string>
+                {
+                    "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+                }
+            }
+        };
+        var savePath = await _fileChooserService.SaveFileAsync("Export", fileTypeFilters);
+        if (string.IsNullOrWhiteSpace(savePath))
+        {
+            return;
+        }
+
+        if (savePath.ToLower().EndsWith(".csv"))
+        {
+            if (_languagePropertyDataGrid.ExportToCsv(savePath, out var errorMsg))
+            {
+                FileHelper.OpenFolderAndSelectFile(savePath);
+            }
+            else
+            {
+                MessageBox.ShowOverlayAsync(errorMsg);
+            }
+        }
+        else
+        {
+            if (_languagePropertyDataGrid.ExportToExcel(savePath, out var errorMsg))
+            {
+                FileHelper.OpenFolderAndSelectFile(savePath);
+            }
+            else
+            {
+                MessageBox.ShowOverlayAsync(errorMsg);
+            }
+        }
     }
 
     #endregion

@@ -17,6 +17,19 @@ public class MergeXmlFilesViewModel : ReactiveObject
     private readonly INotificationService _notificationService;
     private List<LanguageXmlFileInfo>? _oldXmlFiles;
 
+
+    public MergeXmlFilesViewModel(IFileChooserService fileChooserService, INotificationService notificationService)
+    {
+        _fileChooserService = fileChooserService;
+        _notificationService = notificationService;
+
+        ReadSampleDir();
+        MergeXmlLanguageFileName = "Localization";
+    }
+
+
+    #region Preoperty
+
     public TextEditor? XmlTextEditor { get; set; }
     private string? _languageDir;
 
@@ -64,22 +77,11 @@ public class MergeXmlFilesViewModel : ReactiveObject
         }
     }
 
-    public ReactiveCommand<Unit, Unit> ChoiceLanguageDirCommand { get; }
-    public ReactiveCommand<Unit, Unit> MergeXmlFilesCommand { get; }
+    #endregion
 
-    public MergeXmlFilesViewModel(IFileChooserService fileChooserService, INotificationService notificationService)
-    {
-        _fileChooserService = fileChooserService;
-        _notificationService = notificationService;
+    #region Command handler
 
-        ChoiceLanguageDirCommand = ReactiveCommand.CreateFromTask(RaiseChoiceLanguageDir);
-        MergeXmlFilesCommand = ReactiveCommand.CreateFromTask(RaiseMergeXmlFiles);
-
-        ReadSampleDir();
-        MergeXmlLanguageFileName = "Localization";
-    }
-
-    public async Task RaiseChoiceLanguageDir()
+    public async Task RaiseChoiceLanguageDirHandler()
     {
         var dirs = await _fileChooserService.OpenFolderAsync(
             I18nManager.Instance.GetResource(Localization.MergeXmlFilesView.SelectLanguageDirectory));
@@ -92,13 +94,14 @@ public class MergeXmlFilesViewModel : ReactiveObject
         LanguageDir = dirs[0];
     }
 
-    public async Task RaiseMergeXmlFiles()
+    public async Task RaiseMergeXmlFilesHandler()
     {
         try
         {
             if (_oldXmlFiles?.Any() != true)
             {
-                _notificationService.Show(I18nManager.Instance.GetResource(Localization.MergeXmlFilesView.NoLanguageFilesTitle),
+                _notificationService.Show(
+                    I18nManager.Instance.GetResource(Localization.MergeXmlFilesView.NoLanguageFilesTitle),
                     I18nManager.Instance.GetResource(Localization.MergeXmlFilesView.NoLanguageFilesContent));
                 return;
             }
@@ -149,11 +152,17 @@ public class MergeXmlFilesViewModel : ReactiveObject
         }
         catch (Exception ex)
         {
-            _notificationService.Show(I18nManager.Instance.GetResource(Localization.MergeXmlFilesView.MergeXmlFilesExceptionTitle),
-                string.Format(I18nManager.Instance.GetResource(Localization.MergeXmlFilesView.MergeXmlFilesExceptionContent),
+            _notificationService.Show(
+                I18nManager.Instance.GetResource(Localization.MergeXmlFilesView.MergeXmlFilesExceptionTitle),
+                string.Format(
+                    I18nManager.Instance.GetResource(Localization.MergeXmlFilesView.MergeXmlFilesExceptionContent),
                     ex.Message));
         }
     }
+
+    #endregion
+
+    #region private methods
 
     private void ReadSampleDir()
     {
@@ -190,8 +199,10 @@ public class MergeXmlFilesViewModel : ReactiveObject
         }
         catch (Exception ex)
         {
-            _notificationService.Show(I18nManager.Instance.GetResource(Localization.MergeXmlFilesView.ReadXmlFilesExceptionTitle),
-                string.Format(I18nManager.Instance.GetResource(Localization.MergeXmlFilesView.ReadXmlFilesExceptionContent),
+            _notificationService.Show(
+                I18nManager.Instance.GetResource(Localization.MergeXmlFilesView.ReadXmlFilesExceptionTitle),
+                string.Format(
+                    I18nManager.Instance.GetResource(Localization.MergeXmlFilesView.ReadXmlFilesExceptionContent),
                     ex.Message));
         }
     }
@@ -229,4 +240,6 @@ public class MergeXmlFilesViewModel : ReactiveObject
             return false;
         }
     }
+
+    #endregion
 }

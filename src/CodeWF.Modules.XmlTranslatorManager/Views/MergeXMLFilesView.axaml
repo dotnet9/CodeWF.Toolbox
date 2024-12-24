@@ -11,7 +11,7 @@
     xmlns:prism="http://prismlibrary.com/"
     xmlns:vm="clr-namespace:CodeWF.Modules.XmlTranslatorManager.ViewModels"
     d:DesignHeight="450"
-    d:DesignWidth="800"
+    d:DesignWidth="800" x:CompileBindings="True"
     prism:ViewModelLocator.AutoWireViewModel="True"
     x:DataType="vm:MergeXmlFilesViewModel"
     mc:Ignorable="d">
@@ -34,7 +34,7 @@
                 HorizontalAlignment="Stretch"
                 Margin="5,0"
                 VerticalAlignment="Center"
-                Command="{Binding ChoiceLanguageDirCommand}"
+                Command="{Binding RaiseChoiceLanguageDirHandler}"
                 Content="..." />
 
             <TextBox
@@ -50,7 +50,7 @@
                 MinWidth="90"
                 Margin="5,0"
                 VerticalAlignment="Center"
-                Command="{Binding MergeXmlFilesCommand}"
+                Command="{Binding RaiseMergeXmlFilesHandler}"
                 Content="{i18n:I18n {x:Static language:MergeXmlFilesView.MergeFiles}}" />
         </Grid>
         <Grid ColumnDefinitions="200 1 *">
