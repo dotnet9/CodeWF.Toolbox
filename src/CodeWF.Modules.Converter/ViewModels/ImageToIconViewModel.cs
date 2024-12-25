@@ -5,6 +5,7 @@ using CodeWF.Core.IServices;
 using CodeWF.Modules.Converter.Models;
 using CodeWF.Tools.Extensions;
 using CodeWF.Tools.FileExtensions;
+using CodeWF.Tools.Helpers;
 using ImageMagick;
 using ReactiveUI;
 using System.Collections.ObjectModel;
@@ -60,59 +61,36 @@ public class ImageToIconViewModel : ReactiveObject
 
     public async Task RaiseMergeGenerateIconHandler()
     {
-        var (isSuccess, sizes) = await GetGenerateInfo();
+        (bool isSuccess, uint[]? sizes, string? iconPath) = await GetGenerateInfo();
         if (!isSuccess)
         {
             return;
         }
 
-        var folder = Path.GetDirectoryName(NeedConvertImagePath);
-        var fileName = Path.GetFileNameWithoutExtension(NeedConvertImagePath);
-        var savePath = Path.Combine(folder, $"{fileName}.ico");
         try
         {
-            var baseImage = new MagickImage(NeedConvertImagePath);
-            var collection = new MagickImageCollection();
-
-            foreach (var size in sizes)
-            {
-                var resizedImage = baseImage.Clone();
-                resizedImage.Resize((uint)size.Size, (uint)size.Size);
-                collection.Add(resizedImage);
-            }
-
-            await collection.WriteAsync(savePath);
+            await ImageHelper.MergeGenerateIcon(NeedConvertImagePath, iconPath, sizes);
         }
         catch (Exception ex)
         {
             await MessageBox.ShowOverlayAsync(ex.Message);
         }
 
-        FileHelper.OpenFolderAndSelectFile(savePath);
+        FileHelper.OpenFolderAndSelectFile(iconPath);
     }
 
     public async Task RaiseSeparateGenerateIconHandler()
     {
-        var (isSuccess, sizes) = await GetGenerateInfo();
+        (bool isSuccess, uint[]? sizes, string? iconPath) = await GetGenerateInfo();
         if (!isSuccess)
         {
             return;
         }
 
-        var folder = Path.GetDirectoryName(NeedConvertImagePath);
-        var fileName = Path.GetFileNameWithoutExtension(NeedConvertImagePath);
+        var folder = Path.GetDirectoryName(iconPath);
         try
         {
-            var baseImage = new MagickImage(NeedConvertImagePath);
-
-            foreach (var size in sizes)
-            {
-                var resizedImage = baseImage.Clone();
-                resizedImage.Resize((uint)size.Size, (uint)size.Size);
-
-                var savePath = Path.Combine(folder, $"{fileName}.{size.Size.GetDescription()}.ico");
-                resizedImage.WriteAsync(savePath);
-            }
+            await ImageHelper.SeparateGenerateIcon(NeedConvertImagePath, iconPath, sizes);
         }
         catch (Exception ex)
         {
@@ -122,14 +100,14 @@ public class ImageToIconViewModel : ReactiveObject
         FileHelper.OpenFolder(folder);
     }
 
-    private async Task<(bool IsSuccess, List<IconSizeItem>? Sizes)> GetGenerateInfo()
+    private async Task<(bool IsSuccess, uint[]? Sizes, string? DestIconPath)> GetGenerateInfo()
     {
         if (string.IsNullOrWhiteSpace(NeedConvertImagePath)
             || !File.Exists(NeedConvertImagePath))
         {
             await MessageBox.ShowOverlayAsync(
                 I18nManager.Instance.GetResource(Localization.ImageToIconView.ChoiceSourceImageDialogTitle)!);
-            return (default, default);
+            return (false, null, null);
         }
 
         var selectedSize = IconSizes.Where(item => item.IsSelected).ToList();
@@ -137,10 +115,15 @@ public class ImageToIconViewModel : ReactiveObject
         {
             await MessageBox.ShowOverlayAsync(
                 I18nManager.Instance.GetResource(Localization.ImageToIconView.DestImageSize)!);
-            return (default, default);
+            return (false, null, null);
         }
 
-        return (true, selectedSize);
+        var folder = Path.GetDirectoryName(NeedConvertImagePath);
+        var fileName = Path.GetFileNameWithoutExtension(NeedConvertImagePath);
+        var savePath = Path.Combine(folder, $"{fileName}.ico");
+        var destSizes = selectedSize.Select(size => (uint)(size.Size)).ToArray();
+
+        return (true, destSizes, savePath);
     }
 
     #endregion
