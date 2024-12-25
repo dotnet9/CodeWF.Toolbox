@@ -37,6 +37,10 @@
 		<TurnOn>開啟</TurnOn>
 		<TurnOff>關閉</TurnOff>
 	</CommonSettingView>
+	<UpdateLogView>
+		<Title>更新日誌</Title>
+		<Description>此處詳細記錄了工具箱一路走來的更新歷程，每一次重要的版本迭代、功能增強以及問題修復都會如實呈現，方便使用者清晰了解工具箱的演進，跟蹤其發展脈絡。</Description>
+	</UpdateLogView>
 	<AboutView>
 		<Title>關於</Title>
 		<Description>本項目只用於學習使用</Description>

@@ -63,6 +63,14 @@ namespace Localization
 }
 namespace Localization
 {
+    public static class UpdateLogView
+    {
+        public static readonly string Title = "Localization.UpdateLogView.Title";
+        public static readonly string Description = "Localization.UpdateLogView.Description";
+    }
+}
+namespace Localization
+{
     public static class AboutView
     {
         public static readonly string Title = "Localization.AboutView.Title";

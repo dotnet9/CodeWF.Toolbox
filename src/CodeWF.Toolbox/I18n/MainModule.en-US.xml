@@ -37,6 +37,10 @@
 		<TurnOn>Turn on</TurnOn>
 		<TurnOff>Turn off</TurnOff>
 	</CommonSettingView>
+	<UpdateLogView>
+		<Title>Update Log</Title>
+		<Description>This document meticulously records the evolution of the toolbox. Every significant version upgrade, feature enhancement, and bug fix is presented here, enabling users to have a clear understanding of the toolbox's development and track its progress.</Description>
+	</UpdateLogView>
 	<AboutView>
 		<Title>About</Title>
 		<Description>This project is only used for learning purposes.</Description>

@@ -37,6 +37,10 @@
 		<TurnOn>オンにする</TurnOn>
 		<TurnOff>オフにする</TurnOff>
 	</CommonSettingView>
+	<UpdateLogView>
+		<Title>アップデートログ</Title>
+		<Description>ここには、ツールボックスの更新履歴が詳細に記録されています。重要なバージョンアップ、機能強化、バグ修正など、すべてが忠実に反映され、ユーザーがツールボックスの進化を明確に把握し、その発展の流れを追跡できます。</Description>
+	</UpdateLogView>
 	<AboutView>
 		<Title>関於</Title>
 		<Description>このプロジェクトは学習用にのみ使用されます。</Description>

@@ -40,8 +40,8 @@
         <TextBlock
             Margin="5,5,5,20"
             HorizontalAlignment="Left"
-            TextWrapping="Wrap" MinHeight="30"
-            Classes="Tertiary H6"
+            TextWrapping="Wrap" MaxHeight="30"
+            Classes="Tertiary H6" TextTrimming="CharacterEllipsis"
             Text="{i18n:I18n {Binding #MyTab.Tag}}"
             Theme="{StaticResource TitleTextBlock}" />
         <TabControl TabStripPlacement="Top"

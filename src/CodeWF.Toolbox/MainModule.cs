@@ -21,6 +21,7 @@ public class MainModule : IModule
         IRegionManager? regionManager = containerProvider.Resolve<IRegionManager>();
         regionManager.RegisterViewWithRegion<DashboardView>(RegionNames.ContentRegion);
         regionManager.RegisterViewWithRegion<CommonSettingView>(RegionNames.SettingRegion);
+        regionManager.RegisterViewWithRegion<UpdateLogView>(RegionNames.SettingRegion);
         regionManager.RegisterViewWithRegion<AboutView>(RegionNames.SettingRegion);
     }
 

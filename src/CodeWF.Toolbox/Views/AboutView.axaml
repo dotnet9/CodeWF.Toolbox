@@ -31,7 +31,8 @@
                 Margin="0,20,0,0">
         <TextBlock Text="{i18n:I18n {x:Static language:MainModule.Title}}"
                    HorizontalAlignment="Center" Classes="H4" TextWrapping="Wrap"
-                   Theme="{StaticResource TitleTextBlock}" Margin="0 10 0 20" />
+                   Theme="{StaticResource TitleTextBlock}" Margin="0 10 " />
+		<TextBlock Text="{Binding Version}" Margin="0 0 0 20" HorizontalAlignment="Center" />
 
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
             <u:IconButton Content="{i18n:I18n {x:Static language:DashboardView.WeChat}}" IconPlacement="Top"

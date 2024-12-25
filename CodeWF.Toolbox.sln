@@ -21,9 +21,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 	ProjectSection(SolutionItems) = preProject
 		.editorconfig = .editorconfig
 		.gitignore = .gitignore
+		Directory.Build.props = Directory.Build.props
 		LICENSE = LICENSE
 		README-zh_CN.md = README-zh_CN.md
 		README.md = README.md
+		UpdateLog.md = UpdateLog.md
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Modules", "Modules", "{44252400-86A6-4AA9-985B-9B42F4B2C8DD}"
