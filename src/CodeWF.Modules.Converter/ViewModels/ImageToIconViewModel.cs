@@ -61,53 +61,56 @@ public class ImageToIconViewModel : ReactiveObject
 
     public async Task RaiseMergeGenerateIconHandler()
     {
-        (bool isSuccess, uint[]? sizes, string? iconPath) = await GetGenerateInfo();
+        (bool isSuccess, uint[]? sizes) = await GetGenerateInfo();
         if (!isSuccess)
         {
             return;
         }
 
+        var folder = Path.GetDirectoryName(NeedConvertImagePath);
+        var fileName = Path.GetFileNameWithoutExtension(NeedConvertImagePath);
+        var saveIconPath = Path.Combine(folder, $"{fileName}.ico");
         try
         {
-            await ImageHelper.MergeGenerateIcon(NeedConvertImagePath, iconPath, sizes);
+            await ImageHelper.MergeGenerateIcon(NeedConvertImagePath, saveIconPath, sizes);
         }
         catch (Exception ex)
         {
             await MessageBox.ShowOverlayAsync(ex.Message);
         }
 
-        FileHelper.OpenFolderAndSelectFile(iconPath);
+        FileHelper.OpenFolderAndSelectFile(saveIconPath);
     }
 
     public async Task RaiseSeparateGenerateIconHandler()
     {
-        (bool isSuccess, uint[]? sizes, string? iconPath) = await GetGenerateInfo();
+        (bool isSuccess, uint[]? sizes) = await GetGenerateInfo();
         if (!isSuccess)
         {
             return;
         }
 
-        var folder = Path.GetDirectoryName(iconPath);
+        var saveIconFolder = Path.GetDirectoryName(NeedConvertImagePath);
         try
         {
-            await ImageHelper.SeparateGenerateIcon(NeedConvertImagePath, iconPath, sizes);
+            await ImageHelper.SeparateGenerateIcon(NeedConvertImagePath, saveIconFolder, sizes);
         }
         catch (Exception ex)
         {
             await MessageBox.ShowOverlayAsync(ex.Message);
         }
 
-        FileHelper.OpenFolder(folder);
+        FileHelper.OpenFolder(saveIconFolder);
     }
 
-    private async Task<(bool IsSuccess, uint[]? Sizes, string? DestIconPath)> GetGenerateInfo()
+    private async Task<(bool IsSuccess, uint[]? Sizes)> GetGenerateInfo()
     {
         if (string.IsNullOrWhiteSpace(NeedConvertImagePath)
             || !File.Exists(NeedConvertImagePath))
         {
             await MessageBox.ShowOverlayAsync(
                 I18nManager.Instance.GetResource(Localization.ImageToIconView.ChoiceSourceImageDialogTitle)!);
-            return (false, null, null);
+            return (false, null);
         }
 
         var selectedSize = IconSizes.Where(item => item.IsSelected).ToList();
@@ -115,15 +118,12 @@ public class ImageToIconViewModel : ReactiveObject
         {
             await MessageBox.ShowOverlayAsync(
                 I18nManager.Instance.GetResource(Localization.ImageToIconView.DestImageSize)!);
-            return (false, null, null);
+            return (false, null);
         }
 
-        var folder = Path.GetDirectoryName(NeedConvertImagePath);
-        var fileName = Path.GetFileNameWithoutExtension(NeedConvertImagePath);
-        var savePath = Path.Combine(folder, $"{fileName}.ico");
         var destSizes = selectedSize.Select(size => (uint)(size.Size)).ToArray();
 
-        return (true, destSizes, savePath);
+        return (true, destSizes);
     }
 
     #endregion
