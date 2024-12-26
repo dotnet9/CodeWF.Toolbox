@@ -1,9 +1,9 @@
 <Styles xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:system="clr-namespace:System;assembly=System.Runtime">
-  <Styles.Resources>
-      <system:Double x:Key="ControlContentThemeFontSize">12</system:Double>
-      <FontFamily x:Key="ContentControlThemeFontFamily">Cascadia Code,Consolas,Menlo,Monospace</FontFamily>
-  </Styles.Resources>
+    <Styles.Resources>
+        <system:Double x:Key="ControlContentThemeFontSize">12</system:Double>
+        <FontFamily x:Key="ContentControlThemeFontFamily">Cascadia Code,Consolas,Menlo,Monospace</FontFamily>
+    </Styles.Resources>
     <StyleInclude Source="avares://AvaloniaEdit/Themes/Fluent/AvaloniaEdit.xaml" />
 </Styles>
