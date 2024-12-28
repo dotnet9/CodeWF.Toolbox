@@ -3,14 +3,14 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:prism="http://prismlibrary.com/"
-             xmlns:md="https://github.com/whistyun/Markdown.Avalonia"
+             xmlns:md="clr-namespace:MarkdownAIRender.Controls.MarkdownRender;assembly=MarkdownAIRender"
              prism:ViewModelLocator.AutoWireViewModel="True"
              xmlns:vm="clr-namespace:CodeWF.Modules.AI.ViewModels"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="CodeWF.Modules.AI.Views.AskBotView"
              x:DataType="vm:AskBotViewModel">
     <Grid ColumnDefinitions="* 100" RowDefinitions="* 40 40" VerticalAlignment="Top">
-		<md:MarkdownScrollViewer Markdown="{Binding ResponseContent}" Grid.ColumnSpan="2" />
+		<md:MarkdownRender Value="{Binding ResponseContent}" Grid.ColumnSpan="2" />
 
         <TextBox Text="{Binding AskContent}" Grid.Row="2" Grid.Column="0" Classes="TextArea"
                  VerticalAlignment="Stretch" VerticalContentAlignment="Top" TextWrapping="Wrap" />

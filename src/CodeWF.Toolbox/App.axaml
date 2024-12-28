@@ -12,6 +12,7 @@
         <u-semi:SemiTheme Locale="zh-CN"/>
         <StyleInclude Source="../Styles/Index.axaml" />
         <StyleInclude Source="avares://CodeWF.AvaloniaControls/Styles.axaml" />
+        <StyleInclude Source="avares://MarkdownAIRender/Index.axaml" />
     </prism:PrismApplication.Styles>
     <TrayIcon.Icons>
         <TrayIcons>

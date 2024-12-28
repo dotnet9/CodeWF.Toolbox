@@ -7,22 +7,23 @@
     xmlns:markup="https://codewf.com"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:prism="http://prismlibrary.com/"
-    xmlns:md="https://github.com/whistyun/Markdown.Avalonia"
+    xmlns:md="clr-namespace:MarkdownAIRender.Controls.MarkdownRender;assembly=MarkdownAIRender"
     xmlns:vm="clr-namespace:CodeWF.Modules.AI.ViewModels"
     d:DesignHeight="450"
     d:DesignWidth="800"
     prism:ViewModelLocator.AutoWireViewModel="True"
+    x:CompileBindings="True"
     x:DataType="vm:PolyTranslateViewModel"
     mc:Ignorable="d">
     <Grid
         VerticalAlignment="Top"
         ColumnDefinitions="* 100"
         RowDefinitions="300 40 40 60">
-		<md:MarkdownScrollViewer
-                                 Grid.ColumnSpan="2"
-                                 VerticalAlignment="Stretch"
-                                 Classes="TextArea"
-                                 Markdown="{Binding ResponseContent}"/>
+		<md:MarkdownRender 
+                           Grid.ColumnSpan="2"
+                           VerticalAlignment="Stretch"
+                           Classes="TextArea"
+                           Value="{Binding ResponseContent}"/>
 
         <TextBox
             Grid.Row="2"

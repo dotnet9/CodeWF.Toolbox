@@ -3,15 +3,15 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:prism="http://prismlibrary.com/"
-             xmlns:md="https://github.com/whistyun/Markdown.Avalonia"
+             xmlns:md="clr-namespace:MarkdownAIRender.Controls.MarkdownRender;assembly=MarkdownAIRender"
              xmlns:vm="clr-namespace:CodeWF.Modules.AI.ViewModels"
              prism:ViewModelLocator.AutoWireViewModel="True"
              x:DataType="vm:Title2SlugViewModel"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="CodeWF.Modules.AI.Views.Title2SlugView">
     <Grid ColumnDefinitions="* 100" RowDefinitions="300 40 40" VerticalAlignment="Top">
-        <md:MarkdownScrollViewer Markdown="{Binding ResponseContent}" Classes="TextArea"
-                                  Grid.ColumnSpan="2" VerticalAlignment="Stretch" />
+		<md:MarkdownRender Value="{Binding ResponseContent}" Classes="TextArea"
+                           Grid.ColumnSpan="2" VerticalAlignment="Stretch" />
 
         <TextBox Text="{Binding AskContent}" Grid.Row="2" Grid.Column="0" Classes="TextArea"
                  VerticalAlignment="Stretch" VerticalContentAlignment="Top" TextWrapping="Wrap" />

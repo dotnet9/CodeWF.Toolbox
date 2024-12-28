@@ -4,9 +4,9 @@
 		<Company>codewf.com</Company>
 		<Copyright>Copyright © 2024 codewf.com. All rights reserved.</Copyright>
 		<Description>使用.NET 9 + Avalonia UI + Prism开发的工具客户端，支持AOT发布，目前测试可在Windows 7\Windows Server 2019\Windows 10\Windows 11\macOS 11+等平台运行</Description>
-		<Version>0.0.1.0</Version>
-		<AssemblyVersion>0.0.1.0</AssemblyVersion>
-		<FileVersion>0.0.1.0</FileVersion>
-		<InformationalVersion>0.0.1.0</InformationalVersion>
+		<Version>0.0.1.1</Version>
+		<AssemblyVersion>0.0.1.1</AssemblyVersion>
+		<FileVersion>0.0.1.1</FileVersion>
+		<InformationalVersion>0.0.1.1</InformationalVersion>
 	</PropertyGroup>
 </Project>
