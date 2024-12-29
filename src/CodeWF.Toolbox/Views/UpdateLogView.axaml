@@ -6,10 +6,12 @@
              xmlns:md="clr-namespace:MarkdownAIRender.Controls.MarkdownRender;assembly=MarkdownAIRender"
              prism:ViewModelLocator.AutoWireViewModel="True"
              xmlns:vm="clr-namespace:CodeWF.Toolbox.ViewModels"
-             x:DataType="vm:UpdateLogViewModel" Padding="20"
+             x:DataType="vm:UpdateLogViewModel"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="CodeWF.Toolbox.Views.UpdateLogView">
-    <ScrollViewer>
-        <md:MarkdownRender Value="{Binding UpdateLogMarkdownContent}" />
-    </ScrollViewer>
+    <Border Classes="Hover" Theme="{StaticResource CardBorder}">
+        <ScrollViewer>
+            <md:MarkdownRender Value="{Binding UpdateLogMarkdownContent}" />
+        </ScrollViewer>
+    </Border>
 </UserControl>

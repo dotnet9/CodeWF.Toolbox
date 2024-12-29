@@ -6,8 +6,8 @@
     xmlns:language="clr-namespace:Localization"
     xmlns:markup="https://codewf.com"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:prism="http://prismlibrary.com/"
     xmlns:md="clr-namespace:MarkdownAIRender.Controls.MarkdownRender;assembly=MarkdownAIRender"
+    xmlns:prism="http://prismlibrary.com/"
     xmlns:vm="clr-namespace:CodeWF.Modules.AI.ViewModels"
     d:DesignHeight="450"
     d:DesignWidth="800"
@@ -18,24 +18,16 @@
     <Grid
         VerticalAlignment="Top"
         ColumnDefinitions="* 100"
-        RowDefinitions="300 40 40 60">
-		<md:MarkdownRender 
-                           Grid.ColumnSpan="2"
-                           VerticalAlignment="Stretch"
-                           Classes="TextArea"
-                           Value="{Binding ResponseContent}"/>
+        RowDefinitions="40 40 *">
 
         <TextBox
-            Grid.Row="2"
+            Grid.Row="0"
             Grid.Column="0"
-            VerticalAlignment="Stretch"
-            VerticalContentAlignment="Top"
-            Classes="TextArea"
             Text="{Binding AskContent}"
             TextWrapping="Wrap" />
 
         <Button
-            Grid.Row="2"
+            Grid.Row="0"
             Grid.Column="1"
             Margin="10,0,0,0"
             HorizontalAlignment="Stretch"
@@ -44,18 +36,27 @@
             Content="AI" />
 
         <TextBlock
-            Grid.Row="3"
+            Grid.Row="1"
             Grid.Column="0"
             VerticalAlignment="Center"
             Text="{Binding Languages}"
             TextWrapping="Wrap" />
+
         <Button
-            Grid.Row="3"
+            Grid.Row="1"
             Grid.Column="1"
             Margin="10,0,0,0"
             HorizontalAlignment="Stretch"
             VerticalAlignment="Center"
             Command="{Binding RaiseChoiceLanguagesCommand}"
             Content="{markup:I18n {x:Static language:ChoiceLanguagesView.LanguageKey}}" />
+
+        <Border Classes="Hover" Theme="{StaticResource CardBorder}" Grid.Row="2"
+                Grid.Column="0"
+                Grid.ColumnSpan="2">
+            <ScrollViewer>
+                <md:MarkdownRender Value="{Binding ResponseContent}" />
+            </ScrollViewer>
+        </Border>
     </Grid>
 </UserControl>

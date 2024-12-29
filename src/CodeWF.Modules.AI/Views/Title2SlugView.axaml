@@ -6,18 +6,20 @@
              xmlns:md="clr-namespace:MarkdownAIRender.Controls.MarkdownRender;assembly=MarkdownAIRender"
              xmlns:vm="clr-namespace:CodeWF.Modules.AI.ViewModels"
              prism:ViewModelLocator.AutoWireViewModel="True"
-             x:DataType="vm:Title2SlugViewModel"
+             x:DataType="vm:Title2SlugViewModel" x:CompileBindings="True"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="CodeWF.Modules.AI.Views.Title2SlugView">
-    <Grid ColumnDefinitions="* 100" RowDefinitions="300 40 40" VerticalAlignment="Top">
-		<md:MarkdownRender Value="{Binding ResponseContent}" Classes="TextArea"
-                           Grid.ColumnSpan="2" VerticalAlignment="Stretch" />
+    <Grid ColumnDefinitions="* 100" RowDefinitions="40 *" VerticalAlignment="Top">
+        <TextBox Text="{Binding AskContent}" Grid.Row="0" Grid.Column="0" TextWrapping="Wrap" />
 
-        <TextBox Text="{Binding AskContent}" Grid.Row="2" Grid.Column="0" Classes="TextArea"
-                 VerticalAlignment="Stretch" VerticalContentAlignment="Top" TextWrapping="Wrap" />
-
-        <Button Grid.Row="2" Grid.Column="1" Content="AI" 
+        <Button Grid.Row="0" Grid.Column="1" Content="AI"
                 Command="{Binding RaiseConvertCommand}"
                 HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="10 0 0 0" />
+
+        <Border Classes="Hover" Theme="{StaticResource CardBorder}" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2">
+            <ScrollViewer>
+                <md:MarkdownRender Value="{Binding ResponseContent}" />
+            </ScrollViewer>
+        </Border>
     </Grid>
 </UserControl>

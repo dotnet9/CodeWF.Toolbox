@@ -7,15 +7,19 @@
              prism:ViewModelLocator.AutoWireViewModel="True"
              xmlns:vm="clr-namespace:CodeWF.Modules.AI.ViewModels"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-             x:Class="CodeWF.Modules.AI.Views.AskBotView"
+             x:Class="CodeWF.Modules.AI.Views.AskBotView" x:CompileBindings="True"
              x:DataType="vm:AskBotViewModel">
-    <Grid ColumnDefinitions="* 100" RowDefinitions="* 40 40" VerticalAlignment="Top">
-		<md:MarkdownRender Value="{Binding ResponseContent}" Grid.ColumnSpan="2" />
+    <Grid ColumnDefinitions="* 100" RowDefinitions="40 *" VerticalAlignment="Top">
 
-        <TextBox Text="{Binding AskContent}" Grid.Row="2" Grid.Column="0" Classes="TextArea"
-                 VerticalAlignment="Stretch" VerticalContentAlignment="Top" TextWrapping="Wrap" />
+        <TextBox Text="{Binding AskContent}" Grid.Row="0" Grid.Column="0" TextWrapping="Wrap" />
 
-        <Button Grid.Row="2" Grid.Column="1" Content="AI" Command="{Binding RaiseAskAICommand}"
+        <Button Grid.Row="0" Grid.Column="1" Content="AI" Command="{Binding RaiseAskAICommand}"
                 HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="10 0 0 0" />
+
+        <Border Classes="Hover" Theme="{StaticResource CardBorder}" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2">
+            <ScrollViewer>
+                <md:MarkdownRender Value="{Binding ResponseContent}" />
+            </ScrollViewer>
+        </Border>
     </Grid>
 </UserControl>
