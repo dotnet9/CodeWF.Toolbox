@@ -13,7 +13,7 @@
 		<PackageReference Include="Avalonia.ReactiveUI" Version="11.2.3" />
 		<PackageReference Include="Irihi.Ursa.Themes.Semi" Version="1.7.0" />
 		<PackageReference Include="Irihi.Ursa.PrismExtension" Version="9.0.1" />
-		<PackageReference Include="MarkdownAIRender" Version="0.1.12" />
+		<PackageReference Include="MarkdownAIRender" Version="0.1.13" />
 	</ItemGroup>
 
 	<ItemGroup>
