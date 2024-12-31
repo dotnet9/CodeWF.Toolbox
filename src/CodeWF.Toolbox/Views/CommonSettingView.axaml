@@ -11,7 +11,7 @@
              x:Class="CodeWF.Toolbox.Views.CommonSettingView"
              x:DataType="vm:CommonSettingViewModel">
     <Design.DataContext>
-		<vm:CommonSettingViewModel />
+        <vm:CommonSettingViewModel />
     </Design.DataContext>
     <Grid
         Margin="20"
@@ -23,8 +23,8 @@
             Grid.Column="1"
             HorizontalAlignment="Stretch"
             VerticalAlignment="Center"
-            PlaceholderText="Select a theme"
-            DisplayMemberBinding="{Binding Name}"
+            PlaceholderText="{i18n:I18n {x:Static language:CommonSettingView.ThemePlaceholderText}}"
+            DisplayMemberBinding="{i18n:I18n {Binding Name}}"
             ItemsSource="{Binding Themes}"
             SelectedItem="{Binding SelectedTheme}" />
 
@@ -35,7 +35,7 @@
             Grid.Column="1"
             HorizontalAlignment="Stretch"
             VerticalAlignment="Center"
-            PlaceholderText="Select a language"
+            PlaceholderText="{i18n:I18n {x:Static language:CommonSettingView.LanguagePlaceholderText}}"
             DisplayMemberBinding="{Binding Description}"
             ItemsSource="{Binding Languages}"
             SelectedItem="{Binding SelectedLanguage}" />

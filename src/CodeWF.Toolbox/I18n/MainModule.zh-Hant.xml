@@ -27,10 +27,16 @@
 		<Title>通用設置</Title>
 		<Description>介面風格設定</Description>
 		<Theme>主題</Theme>
-		<FollowingSystem>跟隨系統</FollowingSystem>
-		<LightMode>白天模式</LightMode>
-		<DarkMode>黑夜模式</DarkMode>
+		<ThemePlaceholderText>選擇一個主題</ThemePlaceholderText>
+		<Default>跟隨系統</Default>
+		<Light>白天模式</Light>
+		<Dark>黑夜模式</Dark>
+		<Aquatic>水生</Aquatic>
+		<Desert>沙漠</Desert>
+		<Dusk>黃昏</Dusk>
+		<NightSky>夜空</NightSky>
 		<LanguageKey>語言</LanguageKey>
+		<LanguagePlaceholderText>選擇一個語言</LanguagePlaceholderText>
 		<AutoOpenToolboxAtStartup>開機時自動打開工具箱</AutoOpenToolboxAtStartup>
 		<HideTrayIconOnClose>關閉窗體時隱藏托盤圖標</HideTrayIconOnClose>
 		<DisplayPromptWhenClosing>關閉窗體時顯示提示</DisplayPromptWhenClosing>

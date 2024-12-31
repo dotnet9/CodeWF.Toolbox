@@ -52,12 +52,13 @@ internal class ApplicationService : IApplicationService
 
     public List<ThemeItem> Themes { get; } = new()
     {
-        new ThemeItem("Light", ThemeVariant.Light),
-        new ThemeItem("Dark", ThemeVariant.Dark),
-        new ThemeItem("Aquatic", SemiTheme.Aquatic),
-        new ThemeItem("Desert", SemiTheme.Desert),
-        new ThemeItem("Dust", SemiTheme.Dust),
-        new ThemeItem("NightSky", SemiTheme.NightSky),
+        new ThemeItem(Localization.CommonSettingView.Default, nameof(ThemeVariant.Default), ThemeVariant.Default),
+        new ThemeItem(Localization.CommonSettingView.Light, nameof(ThemeVariant.Light), ThemeVariant.Light),
+        new ThemeItem(Localization.CommonSettingView.Dark, nameof(ThemeVariant.Dark), ThemeVariant.Dark),
+        new ThemeItem(Localization.CommonSettingView.Aquatic, nameof(SemiTheme.Aquatic), SemiTheme.Aquatic),
+        new ThemeItem(Localization.CommonSettingView.Desert, nameof(SemiTheme.Desert), SemiTheme.Desert),
+        new ThemeItem(Localization.CommonSettingView.Dusk, nameof(SemiTheme.Dusk), SemiTheme.Dusk),
+        new ThemeItem(Localization.CommonSettingView.NightSky, nameof(SemiTheme.NightSky), SemiTheme.NightSky),
     };
 
     public void Load()
@@ -147,7 +148,7 @@ internal class ApplicationService : IApplicationService
     private void ChangeTheme(string theme)
     {
         var themeObj = Themes.FirstOrDefault(item =>
-            string.Equals(theme, item.Name, StringComparison.InvariantCultureIgnoreCase));
+            string.Equals(theme, item.Key, StringComparison.InvariantCultureIgnoreCase));
         App.Instance.RequestedThemeVariant = themeObj?.Theme;
     }
 

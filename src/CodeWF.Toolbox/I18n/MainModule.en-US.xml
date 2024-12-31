@@ -27,10 +27,16 @@
 		<Title>General Settings</Title>
 		<Description>The interface style setting</Description>
 		<Theme>Theme</Theme>
-		<FollowingSystem>Follow the system</FollowingSystem>
-		<LightMode>Light mode</LightMode>
-		<DarkMode>Dark mode</DarkMode>
+		<ThemePlaceholderText>Choose a theme</ThemePlaceholderText>
+		<Default>Follow the system</Default>
+		<Light>Light</Light>
+		<Dark>Dark</Dark>
+		<Aquatic>Aquatic</Aquatic>
+		<Desert>Desert</Desert>
+		<Dusk>Dusk</Dusk>
+		<NightSky>Night sky</NightSky>
 		<LanguageKey>Language</LanguageKey>
+		<LanguagePlaceholderText>Choose a language</LanguagePlaceholderText>
 		<AutoOpenToolboxAtStartup>Automatically open the toolbox at startup</AutoOpenToolboxAtStartup>
 		<HideTrayIconOnClose>Hide the tray icon when closing the window</HideTrayIconOnClose>
 		<DisplayPromptWhenClosing>Display a prompt when closing the window</DisplayPromptWhenClosing>

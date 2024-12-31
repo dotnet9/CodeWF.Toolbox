@@ -36,7 +36,7 @@ public class CommonSettingViewModel : ViewModelBase, ITabItemBase
         Themes = new ObservableCollection<ThemeItem>(themes);
 
         var theme = _applicationService.GetTheme();
-        _selectedTheme = themes.FirstOrDefault(item => string.Equals(theme, item.Name));
+        _selectedTheme = themes.FirstOrDefault(item => string.Equals(theme, item.Key));
     }
 
     private void InitLanguage()
@@ -105,7 +105,7 @@ public class CommonSettingViewModel : ViewModelBase, ITabItemBase
 
     private void SetTheme()
     {
-        _applicationService.SetTheme(SelectedTheme?.Name);
+        _applicationService.SetTheme(SelectedTheme?.Key);
     }
 
     private void SetLanguage()

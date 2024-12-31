@@ -27,10 +27,16 @@
 		<Title>一般設定</Title>
 		<Description>インタフェーススタイルの設定</Description>
 		<Theme>テーマ</Theme>
-		<FollowingSystem>システムに従う</FollowingSystem>
-		<LightMode>ライトモード</LightMode>
-		<DarkMode>ダークモード</DarkMode>
+		<ThemePlaceholderText>テーマを選ぶ</ThemePlaceholderText>
+		<Default>システムに従う</Default>
+		<Light>昼間モード</Light>
+		<Dark>夜間モード</Dark>
+		<Aquatic>水生（すいせい）</Aquatic>
+		<Desert>砂漠（さばく）</Desert>
+		<Dusk>夕暮れ（ゆうぐれ）</Dusk>
+		<NightSky>夜空（よぞら）</NightSky>
 		<LanguageKey>言語</LanguageKey>
+		<LanguagePlaceholderText>言語を選ぶ</LanguagePlaceholderText>
 		<AutoOpenToolboxAtStartup>起動時に自動的にツールボックスを開く</AutoOpenToolboxAtStartup>
 		<HideTrayIconOnClose>ウィンドウを閉じるときにトレイアイコンを非表示にする</HideTrayIconOnClose>
 		<DisplayPromptWhenClosing>ウィンドウを閉じるときにメッセージを表示する</DisplayPromptWhenClosing>
