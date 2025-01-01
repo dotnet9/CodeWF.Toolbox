@@ -15,7 +15,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Avalonia.Xaml.Behaviors" Version="11.2.0.1" />
+		<PackageReference Include="Avalonia.Xaml.Behaviors" Version="11.2.0.2" />
 		<PackageReference Include="CodeWF.EventBus" Version="3.4.4.2" />
 		<PackageReference Include="Prism.DryIoc.Avalonia" Version="9.0.401.11110-pre" />
 		<PackageReference Include="Avalonia.ReactiveUI" Version="11.2.3" />
