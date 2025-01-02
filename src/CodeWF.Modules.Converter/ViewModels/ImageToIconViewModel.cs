@@ -1,12 +1,9 @@
-﻿using Avalonia.Dialogs.Internal;
-using Avalonia.Platform.Storage;
+﻿using Avalonia.Platform.Storage;
 using AvaloniaXmlTranslator;
 using CodeWF.Core.IServices;
 using CodeWF.Modules.Converter.Models;
-using CodeWF.Tools.Extensions;
+using CodeWF.Tools;
 using CodeWF.Tools.FileExtensions;
-using CodeWF.Tools.Helpers;
-using ImageMagick;
 using ReactiveUI;
 using System.Collections.ObjectModel;
 using Ursa.Controls;

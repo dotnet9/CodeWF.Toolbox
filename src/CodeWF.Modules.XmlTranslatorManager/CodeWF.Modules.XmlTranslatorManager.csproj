@@ -23,7 +23,7 @@
 		<PackageReference Include="Semi.Avalonia.DataGrid" Version="11.2.1.3" />
 		<PackageReference Include="Irihi.Ursa.Themes.Semi" Version="1.7.0" />
 		<PackageReference Include="TextMateSharp.Grammars" Version="1.0.65" />
-		<PackageReference Include="CodeWF.AvaloniaControls" Version="0.0.6" />
+		<PackageReference Include="CodeWF.AvaloniaControls" Version="0.0.7.1" />
 	</ItemGroup>
 
 	<ItemGroup>
