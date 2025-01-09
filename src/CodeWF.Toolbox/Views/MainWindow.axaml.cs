@@ -2,6 +2,7 @@ using Avalonia.Controls;
 using Avalonia.Markup.Xaml;
 using AvaloniaXmlTranslator;
 using CodeWF.Core.IServices;
+using CodeWF.EventBus;
 using CodeWF.Toolbox.Commands;
 using CodeWF.Toolbox.ViewModels;
 using System;
@@ -38,10 +39,11 @@ public partial class MainWindow : UrsaWindow
     private void Init()
     {
         _applicationService.Load();
-        EventBus.EventBus.Default.Subscribe<ChangeApplicationStatusCommand>(ChangeApplicationStatus);
+        EventBus.EventBus.Default.Subscribe(this);
         ChangeApplicationStatus(new ChangeApplicationStatusCommand());
     }
 
+    [EventHandler]
     private void ChangeApplicationStatus(ChangeApplicationStatusCommand command)
     {
         var icon = TrayIcon.GetIcons(App.Instance)?.FirstOrDefault();
@@ -63,7 +65,8 @@ public partial class MainWindow : UrsaWindow
         {
             if (_applicationService.NeedExitDialogOnClose)
             {
-                dialogResult = await ShowOptionDialogAsync(I18nManager.Instance.GetResource(Localization.MainWindow.FindInTrayIcon),
+                dialogResult = await ShowOptionDialogAsync(
+                    I18nManager.Instance.GetResource(Localization.MainWindow.FindInTrayIcon),
                     DialogMode.Info,
                     DialogButton.OKCancel);
             }
@@ -80,7 +83,8 @@ public partial class MainWindow : UrsaWindow
         // Close directly
         if (_applicationService.NeedExitDialogOnClose)
         {
-            dialogResult = await ShowOptionDialogAsync(I18nManager.Instance.GetResource(Localization.MainWindow.SureExit), DialogMode.Warning,
+            dialogResult = await ShowOptionDialogAsync(
+                I18nManager.Instance.GetResource(Localization.MainWindow.SureExit), DialogMode.Warning,
                 DialogButton.OKCancel);
         }
 

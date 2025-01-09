@@ -2,6 +2,7 @@
 
 public interface IApplicationService
 {
+    public bool AutoOpenToolboxAtStartup { get; set; }
     public bool HideTrayIconOnClose { get; set; }
     public bool NeedExitDialogOnClose { get; set; }
     void Load();

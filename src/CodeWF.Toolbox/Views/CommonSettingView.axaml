@@ -48,7 +48,9 @@
             Grid.Row="2"
             Grid.Column="1"
             OffContent="{i18n:I18n {x:Static language:CommonSettingView.TurnOff}}"
-            OnContent="{i18n:I18n {x:Static language:CommonSettingView.TurnOn}}" />
+            OnContent="{i18n:I18n {x:Static language:CommonSettingView.TurnOn}}"
+            IsChecked="{Binding AutoOpenToolboxAtStartup}"
+            Command="{Binding ChangeAutoOpenToolboxAtStartupHandler}" />
 
         <TextBlock
             Grid.Row="3" TextWrapping="Wrap"

@@ -44,6 +44,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeWF.Modules.XmlTranslato
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeWF.Controls", "src\CodeWF.Controls\CodeWF.Controls.csproj", "{CF652CE0-173E-4CAB-97A2-88C7A1507664}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeWF.Toolbox.Tests", "tests\CodeWF.Toolbox.Tests\CodeWF.Toolbox.Tests.csproj", "{0660868A-0A57-4556-8D95-787A970F8D61}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -94,6 +96,10 @@ Global
 		{CF652CE0-173E-4CAB-97A2-88C7A1507664}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CF652CE0-173E-4CAB-97A2-88C7A1507664}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CF652CE0-173E-4CAB-97A2-88C7A1507664}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0660868A-0A57-4556-8D95-787A970F8D61}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0660868A-0A57-4556-8D95-787A970F8D61}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0660868A-0A57-4556-8D95-787A970F8D61}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0660868A-0A57-4556-8D95-787A970F8D61}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -110,6 +116,7 @@ Global
 		{F004FAAF-0FE6-4E60-8B93-80966F460A9F} = {44252400-86A6-4AA9-985B-9B42F4B2C8DD}
 		{52600DD2-2AA4-9245-3C78-CBEA9220970D} = {44252400-86A6-4AA9-985B-9B42F4B2C8DD}
 		{CF652CE0-173E-4CAB-97A2-88C7A1507664} = {755C8FD1-1EAA-4B0B-ADD9-1E0BE922CFEF}
+		{0660868A-0A57-4556-8D95-787A970F8D61} = {C7F43DE4-2C2F-4DE6-94CA-DBEEBC363BAF}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {47147C4F-8BF8-4E62-82C5-A5B969940F69}

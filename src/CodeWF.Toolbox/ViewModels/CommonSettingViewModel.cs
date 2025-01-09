@@ -23,6 +23,7 @@ public class CommonSettingViewModel : ViewModelBase, ITabItemBase
         _applicationService = applicationService;
         InitTheme();
         InitLanguage();
+        AutoOpenToolboxAtStartup = applicationService.AutoOpenToolboxAtStartup;
         HideTrayIconOnClose = applicationService.HideTrayIconOnClose;
         NeedExitDialogOnClose = applicationService.NeedExitDialogOnClose;
 
@@ -46,6 +47,14 @@ public class CommonSettingViewModel : ViewModelBase, ITabItemBase
 
         var language = _applicationService.GetCulture();
         _selectedLanguage = Languages.FirstOrDefault(l => l.CultureName == language);
+    }
+
+    private bool _autoOpenToolboxAtStartup;
+
+    public bool AutoOpenToolboxAtStartup
+    {
+        get => _autoOpenToolboxAtStartup;
+        set => this.RaiseAndSetIfChanged(ref _autoOpenToolboxAtStartup, value);
     }
 
     private bool _hideTrayIconOnClose;
@@ -90,6 +99,12 @@ public class CommonSettingViewModel : ViewModelBase, ITabItemBase
             this.RaiseAndSetIfChanged(ref _selectedLanguage, value);
             SetLanguage();
         }
+    }
+
+    public void ChangeAutoOpenToolboxAtStartupHandler()
+    {
+        _applicationService.AutoOpenToolboxAtStartup = AutoOpenToolboxAtStartup;
+        EventBus.EventBus.Default.Publish(new ChangeApplicationStatusCommand());
     }
 
     public void ChangeHideTrayIconOnCloseHandler()

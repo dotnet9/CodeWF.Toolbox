@@ -1,6 +1,7 @@
 ﻿using Avalonia.Controls;
 using Avalonia.Styling;
 using AvaloniaXmlTranslator;
+using CodeWF.Core.Helpers;
 using CodeWF.Core.IServices;
 using CodeWF.Toolbox.Models;
 using CodeWF.Tools.Helpers;
@@ -18,11 +19,26 @@ internal class ApplicationService : IApplicationService
 {
     private const string ThemeKey = "Theme";
     private const string LanguageKey = "Language";
+    private const string AutoOpenToolboxAtStartupKey = "AutoOpenToolboxAtStartup";
     private const string HideTrayIconOnCloseKey = "HideTrayIconOnClose";
     private const string NeedExitDialogOnCloseKey = "NeedExitDialogOnClose";
 
     private const string DefaultTheme = "Dark";
     private const string DefaultLanguage = "zh-CN";
+
+    public bool AutoOpenToolboxAtStartup
+    {
+        get
+        {
+            return !AppConfigHelper.TryGet<bool>(AutoOpenToolboxAtStartupKey, out var autoOpenToolboxAtStartup) ||
+                   autoOpenToolboxAtStartup;
+        }
+        set
+        {
+            AppConfigHelper.Set(AutoOpenToolboxAtStartupKey, value);
+            StartupHelper.ModifyStartupSettingAsync(value);
+        }
+    }
 
     public bool HideTrayIconOnClose
     {
