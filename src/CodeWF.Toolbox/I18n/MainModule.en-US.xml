@@ -51,4 +51,10 @@
 		<Title>About</Title>
 		<Description>This project is only used for learning purposes.</Description>
 	</AboutView>
+	<ExitOptionView>
+		<Message>Please select the close operation:</Message>
+		<HideTrayIcon>Hide to tray icon</HideTrayIcon>
+		<DirectToClose>Exit the application directly</DirectToClose>
+		<RememberMyChoice>Remember my choice</RememberMyChoice>
+	</ExitOptionView>
 </Localization>

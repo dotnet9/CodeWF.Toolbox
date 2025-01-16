@@ -83,3 +83,13 @@ namespace Localization
         public static readonly string Description = "Localization.AboutView.Description";
     }
 }
+namespace Localization
+{
+    public static class ExitOptionView
+    {
+        public static readonly string Message = "Localization.ExitOptionView.Message";
+        public static readonly string HideTrayIcon = "Localization.ExitOptionView.HideTrayIcon";
+        public static readonly string DirectToClose = "Localization.ExitOptionView.DirectToClose";
+        public static readonly string RememberMyChoice = "Localization.ExitOptionView.RememberMyChoice";
+    }
+}

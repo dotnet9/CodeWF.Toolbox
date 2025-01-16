@@ -60,36 +60,22 @@ public partial class MainWindow : UrsaWindow
         e.Cancel = true;
 
         var dialogResult = DialogResult.OK;
-        // Do not close directly, hide in tray
-        if (_applicationService.HideTrayIconOnClose)
-        {
-            if (_applicationService.NeedExitDialogOnClose)
-            {
-                dialogResult = await ShowOptionDialogAsync(
-                    I18nManager.Instance.GetResource(Localization.MainWindow.FindInTrayIcon),
-                    DialogMode.Info,
-                    DialogButton.OKCancel);
-            }
-
-            if (dialogResult != DialogResult.OK)
-            {
-                return;
-            }
-
-            Hide();
-            return;
-        }
-
-        // Close directly
         if (_applicationService.NeedExitDialogOnClose)
         {
             dialogResult = await ShowOptionDialogAsync(
-                I18nManager.Instance.GetResource(Localization.MainWindow.SureExit), DialogMode.Warning,
+                I18nManager.Instance.GetResource(Localization.MainWindow.FindInTrayIcon),
+                DialogMode.Info,
                 DialogButton.OKCancel);
         }
 
         if (dialogResult != DialogResult.OK)
         {
+            return;
+        }
+
+        if (_applicationService.HideTrayIconOnClose)
+        {
+            Hide();
             return;
         }
 
@@ -113,11 +99,13 @@ public partial class MainWindow : UrsaWindow
         var vm = new ExitOptionViewModel()
         {
             Message = message,
-            Option = !_applicationService.NeedExitDialogOnClose,
+            HideTrayIconOnClose = _applicationService.HideTrayIconOnClose,
+            NeedExitDialogOnClose = _applicationService.NeedExitDialogOnClose,
             OptionContent = I18nManager.Instance.GetResource(Localization.MainWindow.NoMorePrompts)
         };
         var result = await Dialog.ShowModal<ExitOptionView, ExitOptionViewModel>(vm, options: options);
-        _applicationService.NeedExitDialogOnClose = !vm.Option;
+        _applicationService.HideTrayIconOnClose = vm.HideTrayIconOnClose;
+        _applicationService.NeedExitDialogOnClose = vm.NeedExitDialogOnClose;
 
         return result;
     }

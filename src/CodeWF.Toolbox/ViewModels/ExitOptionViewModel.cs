@@ -21,12 +21,19 @@ public class ExitOptionViewModel : ViewModelBase
         set => this.RaiseAndSetIfChanged(ref _optionContent, value);
     }
 
+    private bool _hideTrayIconOnClose;
 
-    private bool _option;
-
-    public bool Option
+    public bool HideTrayIconOnClose
     {
-        get => _option;
-        set => this.RaiseAndSetIfChanged(ref _option, value);
+        get => _hideTrayIconOnClose;
+        set => this.RaiseAndSetIfChanged(ref _hideTrayIconOnClose, value);
+    }
+    
+    private bool _needExitDialogOnClose;
+
+    public bool NeedExitDialogOnClose
+    {
+        get => _needExitDialogOnClose;
+        set => this.RaiseAndSetIfChanged(ref _needExitDialogOnClose, value);
     }
 }

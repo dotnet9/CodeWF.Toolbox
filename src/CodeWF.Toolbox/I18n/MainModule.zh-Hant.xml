@@ -51,4 +51,10 @@
 		<Title>關於</Title>
 		<Description>本項目只用於學習使用</Description>
 	</AboutView>
+	<ExitOptionView>
+		<Message>請選擇關閉操作：</Message>
+		<HideTrayIcon>隱藏至托盤圖標</HideTrayIcon>
+		<DirectToClose>直接退出應用程式</DirectToClose>
+		<RememberMyChoice>記住我的選擇</RememberMyChoice>
+	</ExitOptionView>
 </Localization>

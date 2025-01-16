@@ -51,4 +51,10 @@
 		<Title>関於</Title>
 		<Description>このプロジェクトは学習用にのみ使用されます。</Description>
 	</AboutView>
+	<ExitOptionView>
+		<Message>閉じる操作を選択してください：</Message>
+		<HideTrayIcon>トレイアイコンに隠す</HideTrayIcon>
+		<DirectToClose>アプリケーションを直接終了する</DirectToClose>
+		<RememberMyChoice>私の選択を覚えておく</RememberMyChoice>
+	</ExitOptionView>
 </Localization>
