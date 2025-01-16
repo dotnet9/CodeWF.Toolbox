@@ -62,10 +62,7 @@ public partial class MainWindow : UrsaWindow
         var dialogResult = DialogResult.OK;
         if (_applicationService.NeedExitDialogOnClose)
         {
-            dialogResult = await ShowOptionDialogAsync(
-                I18nManager.Instance.GetResource(Localization.MainWindow.FindInTrayIcon),
-                DialogMode.Info,
-                DialogButton.OKCancel);
+            dialogResult = await ShowOptionDialogAsync(DialogMode.Info, DialogButton.OKCancel);
         }
 
         if (dialogResult != DialogResult.OK)
@@ -82,7 +79,7 @@ public partial class MainWindow : UrsaWindow
         Environment.Exit(0);
     }
 
-    private async Task<DialogResult> ShowOptionDialogAsync(string message, DialogMode mode, DialogButton button)
+    private async Task<DialogResult> ShowOptionDialogAsync(DialogMode mode, DialogButton button)
     {
         var options = new DialogOptions()
         {
@@ -98,10 +95,8 @@ public partial class MainWindow : UrsaWindow
         };
         var vm = new ExitOptionViewModel()
         {
-            Message = message,
             HideTrayIconOnClose = _applicationService.HideTrayIconOnClose,
-            NeedExitDialogOnClose = _applicationService.NeedExitDialogOnClose,
-            OptionContent = I18nManager.Instance.GetResource(Localization.MainWindow.NoMorePrompts)
+            NeedExitDialogOnClose = _applicationService.NeedExitDialogOnClose
         };
         var result = await Dialog.ShowModal<ExitOptionView, ExitOptionViewModel>(vm, options: options);
         _applicationService.HideTrayIconOnClose = vm.HideTrayIconOnClose;

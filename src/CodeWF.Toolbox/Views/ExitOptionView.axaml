@@ -5,7 +5,7 @@
              xmlns:i18n="https://codewf.com"
              xmlns:language="clr-namespace:Localization"
              xmlns:vm="clr-namespace:CodeWF.Toolbox.ViewModels"
-             x:DataType="vm:ExitOptionViewModel"
+             x:DataType="vm:ExitOptionViewModel" x:CompileBindings="True"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="CodeWF.Toolbox.Views.ExitOptionView">
     <Grid RowDefinitions="35 30 30 *">
