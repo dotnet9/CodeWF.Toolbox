@@ -15,6 +15,9 @@
 		<PublishTrimmed>true</PublishTrimmed>
 	</PropertyGroup>
 	<ItemGroup>
+	  <Compile Include="..\..\GlobalAssembly.cs" Link="GlobalAssembly.cs" />
+	</ItemGroup>
+	<ItemGroup>
 		<TrimmerRootDescriptor Include="Roots.xml" />
 		<Content Include="logo.ico" />
 	</ItemGroup>
@@ -32,4 +35,7 @@
 		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</None>
 	</ItemGroup>
+	<Target Name="PreBuild" BeforeTargets="PreBuildEvent">
+	  <Exec Command="powershell -ExecutionPolicy Bypass -File &quot;$(SolutionDir)\UpdateAssemblyVersion.ps1&quot; -assemblyInfoFile &quot;$(SolutionDir)\GlobalAssembly.cs&quot;" />
+	</Target>
 </Project>
