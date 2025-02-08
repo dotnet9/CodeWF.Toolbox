@@ -5,6 +5,7 @@
 		<Nullable>enable</Nullable>
 		<UseWindowsForms>true</UseWindowsForms>
 		<ImplicitUsings>enable</ImplicitUsings>
+		<Platforms>AnyCPU;x64;ARM32;x86</Platforms>
 	</PropertyGroup>
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
 		<InvariantGlobalization>true</InvariantGlobalization>
@@ -13,6 +14,14 @@
 		<TargetPlatformMinVersion>5.1</TargetPlatformMinVersion>
 		<PublishAot>true</PublishAot>
 		<_SuppressWinFormsTrimError>true</_SuppressWinFormsTrimError>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM32'">
+	  <InvariantGlobalization>true</InvariantGlobalization>
+	  <WindowsSupportedOSPlatformVersion>5.1</WindowsSupportedOSPlatformVersion>
+	  <RuntimeIdentifier>win-x64</RuntimeIdentifier>
+	  <TargetPlatformMinVersion>5.1</TargetPlatformMinVersion>
+	  <PublishAot>true</PublishAot>
+	  <_SuppressWinFormsTrimError>true</_SuppressWinFormsTrimError>
 	</PropertyGroup>
 	<ItemGroup>
 		<PackageReference Include="VC-LTL" Version="5.2.1-Beta4" />

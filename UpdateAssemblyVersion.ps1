@@ -67,9 +67,6 @@ if ($Configuration -eq "Debug") {
 	$platformInfo = "A"
 }
 switch ($Platform) {
-	"Win32" {
-		$platformInfo += "-86"
-	}
 	"x86" {
 		$platformInfo += "-86"
 	}

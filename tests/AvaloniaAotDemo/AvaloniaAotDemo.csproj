@@ -7,6 +7,7 @@
 		<ApplicationManifest>app.manifest</ApplicationManifest>
 		<PublishAot>true</PublishAot>
 		<IncludeNativeLibrariesForSelfExtract>true</IncludeNativeLibrariesForSelfExtract>
+		<Platforms>AnyCPU;x64;ARM32;x86</Platforms>
 	</PropertyGroup>
 	<PropertyGroup Condition="$([MSBuild]::IsTargetFrameworkCompatible('$(TargetFramework)', 'net9.0'))">
 		<IsTrimmable>true</IsTrimmable>

@@ -4,6 +4,7 @@
 		<Nullable>enable</Nullable>
 		<LangVersion>latest</LangVersion>
 		<AvaloniaUseCompiledBindingsByDefault>true</AvaloniaUseCompiledBindingsByDefault>
+		<Platforms>AnyCPU;x64;ARM32;x86</Platforms>
 	</PropertyGroup>
 
 	<ItemGroup>
