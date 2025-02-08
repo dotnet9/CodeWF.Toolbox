@@ -9,9 +9,16 @@ param(
 	[string]$Platform
 )
 
+# 检查文件是否存在
+if (-not (Test-Path $AssemblyInfoFile)) {
+    throw "错误：文件 $AssemblyInfoFile 不存在"
+}
+
 Write-Output "AssemblyInfoFile: $AssemblyInfoFile"
 Write-Output "Configuration: $Configuration"
 Write-Output "Platform: $Platform"
+
+
 
 #获取当前日期时间，并生成格式化的时间戳
 $currentDateTime =Get-Date
