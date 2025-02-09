@@ -11,14 +11,14 @@
 		<AssemblyName>codewf</AssemblyName>
 		<!-- 禁用自动生成程序集属性 -->
 		<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
-		<Platforms>AnyCPU;x64;ARM32;x86</Platforms>
+		<Platforms>AnyCPU;x64;x86</Platforms>
 	</PropertyGroup>
 	<PropertyGroup Condition="$([MSBuild]::IsTargetFrameworkCompatible('$(TargetFramework)', 'net9.0-windows'))">
 		<IsTrimmable>true</IsTrimmable>
 		<PublishTrimmed>true</PublishTrimmed>
 	</PropertyGroup>
 	<ItemGroup>
-	  <Compile Include="..\..\GlobalAssembly.cs" Link="GlobalAssembly.cs" />
+	  <Compile Include="..\..\GlobalAssemblies\GlobalAssembly.cs" Link="GlobalAssembly.cs" />
 	</ItemGroup>
 	<ItemGroup>
 		<TrimmerRootDescriptor Include="Roots.xml" />
@@ -38,7 +38,4 @@
 		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</None>
 	</ItemGroup>
-	<Target Name="PreBuild" BeforeTargets="PreBuildEvent">
-	  <Exec Command="powershell -ExecutionPolicy Bypass -File &quot;$(SolutionDir)\UpdateAssemblyVersion.ps1&quot; -AssemblyInfoFile &quot;$(SolutionDir)\GlobalAssembly.cs&quot; -Configuration &quot;$(ConfigurationName)&quot; -Platform &quot;$(PlatformName)&quot;" />
-	</Target>
 </Project>

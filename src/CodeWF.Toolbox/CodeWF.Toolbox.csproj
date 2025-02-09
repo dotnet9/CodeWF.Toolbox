@@ -4,7 +4,9 @@
 		<Nullable>enable</Nullable>
 		<LangVersion>latest</LangVersion>
 		<AvaloniaUseCompiledBindingsByDefault>true</AvaloniaUseCompiledBindingsByDefault>
-		<Platforms>AnyCPU;x64;ARM32;x86</Platforms>
+		<!-- 禁用自动生成程序集属性 -->
+		<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+		<Platforms>AnyCPU;x64;x86</Platforms>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -15,6 +17,10 @@
 	  <EmbeddedResource Remove="Assets\Resources.resx" />
 	  <EmbeddedResource Remove="Assets\Resources.zh-CN.resx" />
 	  <EmbeddedResource Remove="Assets\Resources.zh-Hant.resx" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Compile Include="..\..\GlobalAssemblies\GlobalAssembly.cs" Link="GlobalAssembly.cs" />
 	</ItemGroup>
 
 	<ItemGroup>

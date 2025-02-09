@@ -60,9 +60,9 @@ if($items.Length -eq 4)
 
 $platformInfo = ""
 if ($Configuration -eq "Debug") {
-	$platformInfo = "Debug"
+	$platformInfo = "D"
 } elseif ($Configuration -eq "Release") {
-	$platformInfo = "Release"
+	$platformInfo = "R"
 } else {
 	$platformInfo = "A"
 }
