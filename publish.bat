@@ -28,14 +28,15 @@ for %%a in ("%projects: =","%") do (
 
         rem 拼接 .pubxml 文件的默认路径
         set "pubxmlPath=!projectPath!\Properties\PublishProfiles\FolderProfile-win_x64.pubxml"
+        rem 拼接当前项目的发布路径
+        set "CURRENT_PUBLISH_DIR=!PUBLISH_PATH!\!relativePublishDir!"
 
         echo "projectName after assignment: !projectName!"
         echo "projectPath after assignment: !projectPath!"
         echo "relativePublishDir after assignment: !relativePublishDir!"
         echo "pubxmlPath after assignment: !pubxmlPath!"
+        echo "current publish dir after assignment: !CURRENT_PUBLISH_DIR!"
 
-        rem 拼接当前项目的发布路径
-        set "CURRENT_PUBLISH_DIR=!PUBLISH_PATH!\!relativePublishDir!"
 
         echo Publishing !projectName! for win-64...
         rem 清空发布目录
