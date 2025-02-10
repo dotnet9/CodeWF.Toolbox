@@ -13,7 +13,7 @@ for %%f in (GlobalAssemblies\*) do (
 )
 
 rem 设置发布路径
-set PUBLISH_PATH=publish/win64
+set PUBLISH_PATH=publish/win-x64
 
 rem 定义项目信息数组，格式为 项目名称,项目路径（精确到.csproj 文件）,相对发布目录名
 set "projects=码界工坊工具箱,src/CodeWF.Toolbox.Desktop/CodeWF.Toolbox.Desktop.csproj,codewf Avalonia发布测试,tests/AvaloniaAotDemo/AvaloniaAotDemo.csproj,AvaloniaAotDemo"
@@ -46,7 +46,7 @@ for %%a in ("%projects: =","%") do (
         rem 创建发布目录
         mkdir /p "!CURRENT_PUBLISH_DIR!" 2>nul
         rem 执行 dotnet publish 命令进行 AOT 发布，并指定目标框架
-        dotnet publish !projectPath! -r win-x64 -c Release --sc -f net9.0-windows /p:PublishSingleFile=true /p:IncludeNativeLibrariesForSelfExtract=true /p:PublishAot=true -o "!CURRENT_PUBLISH_DIR!"
+        dotnet publish !projectPath! -r win-x64 -c Release --sc -f net9.0-windows /p:PublishSingleFile=true /p:IncludeNativeLibrariesForSelfExtract=true /p:PublishAot=true /p:PublishReadyToRun=true -o "!CURRENT_PUBLISH_DIR!"
         rem 检查 dotnet publish 命令的退出代码
         if !errorlevel! neq 0 (
             echo Publish of !projectName! failed!
