@@ -50,7 +50,7 @@ $items=$currentCommitHash.Split('-')
 $hashInfo=$items[$items.Length-1]
 $firstFileVersion="0.0"
 $secondFileVersion="100"
-if($items.Length -eq 4)
+if($items.Length -eq 3)
 {
 	$firstFileVersion=$items[0].Replace("v","");
 	$firstFileItems=$firstFileVersion.split('.');
