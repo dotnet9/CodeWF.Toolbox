@@ -28,7 +28,7 @@
 		<PackageReference Include="Avalonia.Desktop" Version="11.2.4" />
 		<!--Condition below is needed to remove Avalonia.Diagnostics package from build output in Release configuration.-->
 		<PackageReference Condition="'$(Configuration)' == 'Debug'" Include="Avalonia.Diagnostics" Version="11.2.4" />
-		<PackageReference Include="YY-Thunks" Version="1.1.6-Beta6" />
+		<PackageReference Include="YY-Thunks" Version="1.1.6-Beta8" />
 	</ItemGroup>
 	<ItemGroup>
 		<ProjectReference Include="..\CodeWF.Toolbox\CodeWF.Toolbox.csproj" />

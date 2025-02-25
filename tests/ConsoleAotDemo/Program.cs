@@ -4,6 +4,11 @@ using ConsoleAotDemo;
 using ConsoleAotDemo.Dtos;
 using System.Reflection;
 
+int number;
+number = 20;
+Console.WriteLine(number);
+Console.ReadKey();
+
 DBHeper.Test();
 
 var student = new Person { Name = "帅哥", Property = 100 };

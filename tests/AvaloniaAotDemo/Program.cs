@@ -17,6 +17,7 @@ internal sealed class Program
     public static AppBuilder BuildAvaloniaApp()
         => AppBuilder.Configure<App>()
             .UsePlatformDetect()
+            //.With(new Win32PlatformOptions() { RenderingMode = [ Win32RenderingMode.Software ] }) // Software rendering mode
             .WithInterFont()
             .LogToTrace()
             .UseReactiveUI();
