@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFramework>net9.0</TargetFramework>
+		<TargetFrameworks>net9.0;net10.0</TargetFrameworks>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
 		<InterceptorsPreviewNamespaces>$(InterceptorsPreviewNamespaces);Dapper.AOT</InterceptorsPreviewNamespaces>
@@ -9,9 +9,9 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-	  <AvaloniaResource Include="Assets\OvertimeAlarm.png" />
-	  <AvaloniaResource Include="Assets\OvertimeAll.png" />
-	  <AvaloniaResource Include="Assets\OvertimeNormal.png" />
+		<AvaloniaResource Include="Assets\OvertimeAlarm.png" />
+		<AvaloniaResource Include="Assets\OvertimeAll.png" />
+		<AvaloniaResource Include="Assets\OvertimeNormal.png" />
 	</ItemGroup>
 	<ItemGroup>
 		<None Include="I18n\Language.cs">
@@ -36,33 +36,33 @@
 
 	<ItemGroup>
 		<Compile Update="I18n\Language.cs">
-		  <DesignTime>True</DesignTime>
-		  <AutoGen>True</AutoGen>
-		  <DependentUpon>Language.tt</DependentUpon>
+			<DesignTime>True</DesignTime>
+			<AutoGen>True</AutoGen>
+			<DependentUpon>Language.tt</DependentUpon>
 		</Compile>
 	</ItemGroup>
 
 	<ItemGroup>
 		<None Update="I18n\DevelopmentModule.zh-Hant.xml">
-		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</None>
 		<None Update="I18n\DevelopmentModule.en-US.xml">
-		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</None>
 		<None Update="I18n\DevelopmentModule.ja-JP.xml">
-		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</None>
 		<None Update="I18n\Language.tt">
 			<Generator>TextTemplatingFileGenerator</Generator>
 			<LastGenOutput>Language.cs</LastGenOutput>
 		</None>
 		<None Update="I18n\DevelopmentModule.zh-CN.xml">
-		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</None>
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Service Include="{508349b6-6b84-4df5-91f0-309beebad82d}" />
+		<Service Include="{508349b6-6b84-4df5-91f0-309beebad82d}" />
 	</ItemGroup>
 
 </Project>

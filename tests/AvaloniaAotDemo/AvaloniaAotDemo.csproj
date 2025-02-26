@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
 		<OutputType>WinExe</OutputType>
-		<TargetFramework>net9.0-windows</TargetFramework>
+		<TargetFrameworks>net9.0-windows;net10.0-windows</TargetFrameworks>
 		<Nullable>enable</Nullable>
 		<BuiltInComInteropSupport>true</BuiltInComInteropSupport>
 		<ApplicationManifest>app.manifest</ApplicationManifest>
@@ -21,8 +21,8 @@
 		<!--Condition below is needed to remove Avalonia.Diagnostics package from build output in Release configuration.-->
 		<PackageReference Condition="'$(Configuration)' == 'Debug'" Include="Avalonia.Diagnostics" Version="11.2.4" />
 		<PackageReference Include="Avalonia.ReactiveUI" Version="11.2.4" />
-		<PackageReference Include="CodeWF.EventBus" Version="3.4.4.2" />
+		<PackageReference Include="CodeWF.EventBus" Version="3.4.5" />
 		<PackageReference Include="Semi.Avalonia" Version="11.2.1.4" />
-		<PackageReference Include="YY-Thunks" Version="1.1.6-Beta8" />
+		<PackageReference Include="YY-Thunks" Version="1.1.6-Beta9" />
 	</ItemGroup>
 </Project>

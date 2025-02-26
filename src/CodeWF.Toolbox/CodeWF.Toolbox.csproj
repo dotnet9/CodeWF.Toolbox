@@ -1,6 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
-		<TargetFramework>net9.0</TargetFramework>
+		<TargetFrameworks>net9.0;net10.0</TargetFrameworks>
 		<Nullable>enable</Nullable>
 		<LangVersion>latest</LangVersion>
 		<AvaloniaUseCompiledBindingsByDefault>true</AvaloniaUseCompiledBindingsByDefault>
@@ -35,7 +35,7 @@
 		<PackageReference Include="Avalonia" Version="11.2.4" />
 		<!--Condition below is needed to remove Avalonia.Diagnostics package from build output in Release configuration.-->
 		<PackageReference Condition="'$(Configuration)' == 'Debug'" Include="Avalonia.Diagnostics" Version="11.2.4" />
-		<PackageReference Include="CodeWF.EventBus" Version="3.4.4.2" />
+		<PackageReference Include="CodeWF.EventBus" Version="3.4.5" />
 		<PackageReference Include="MarkdownAIRender" Version="0.1.16" />
 		<PackageReference Include="Semi.Avalonia" Version="11.2.1.4" />
 		<PackageReference Include="Irihi.Ursa.PrismExtension" Version="9.0.1" />
