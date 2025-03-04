@@ -16,7 +16,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Avalonia.Xaml.Behaviors" Version="11.2.0.9" />
+		<PackageReference Include="Avalonia.Xaml.Behaviors" Version="11.2.0.11" />
 		<PackageReference Include="CodeWF.EventBus" Version="3.4.5" />
 		<PackageReference Include="Prism.DryIoc.Avalonia" Version="9.0.401.11110-pre" />
 		<PackageReference Include="Avalonia.ReactiveUI" Version="11.2.5" />
@@ -24,7 +24,7 @@
 		<PackageReference Include="Semi.Avalonia.DataGrid" Version="11.2.1.5" />
 		<PackageReference Include="Irihi.Ursa.Themes.Semi" Version="1.9.0" />
 		<PackageReference Include="TextMateSharp.Grammars" Version="1.0.66" />
-		<PackageReference Include="CodeWF.AvaloniaControls" Version="0.0.8" />
+		<PackageReference Include="CodeWF.AvaloniaControls" Version="0.0.9" />
 	</ItemGroup>
 
 	<ItemGroup>
