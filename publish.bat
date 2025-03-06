@@ -16,7 +16,7 @@ rem 设置发布路径
 set PUBLISH_PATH=publish\win-x64
 
 rem 定义项目信息数组，格式为 项目名称,项目路径（只写项目目录）,相对发布目录名
-set "projects=码界工坊工具箱,src\CodeWF.Toolbox.Desktop,codewf Avalonia发布测试,tests\AvaloniaAotDemo,AvaloniaAotDemo"
+set "projects=码坊工具箱,src\CodeWF.Toolbox.Desktop,codewf Avalonia发布测试,tests\AvaloniaAotDemo,AvaloniaAotDemo"
 
 rem 遍历项目数组
 for %%a in ("%projects: =","%") do (

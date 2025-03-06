@@ -2,7 +2,7 @@
 
 <Localization language="Chinese (Simplified)" description="中文简体" cultureName="zh-CN">
 	<MainModule>
-		<Title>码界工坊工具箱</Title>
+		<Title>码坊工具箱</Title>
 		<ShowMainWindow>显示主窗口</ShowMainWindow>
 		<Exit>退出</Exit>
 	</MainModule>

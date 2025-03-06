@@ -17,7 +17,8 @@
         <TextBlock Text="{i18n:I18n {x:Static language:ImageToIconView.ChoiceSourceImageDescription}}" />
         <StackPanel Orientation="Horizontal" Margin="0 10">
             <TextBox VerticalAlignment="Center" Margin="10 0" Width="400" Classes="Small"
-                     Text="{Binding NeedConvertImagePath}" />
+                     Text="{Binding NeedConvertImagePath}" 
+                     DragDrop.AllowDrop="True" DragDrop.Drop="RaiseDropSourceImagePath"/>
             <Button Content="..." Classes="Small" Command="{Binding RaiseChoiceNeedConvertImageHandler}" />
         </StackPanel>
         <StackPanel Orientation="Horizontal">
