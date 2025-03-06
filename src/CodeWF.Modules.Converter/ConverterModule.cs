@@ -43,5 +43,6 @@ public class ConverterModule : IModule
     public void RegisterTypes(IContainerRegistry containerRegistry)
     {
         ViewModelLocationProvider.Register<ImageToIconView, ImageToIconViewModel>();
+        ViewModelLocationProvider.Register<DateTimeConverterView, DateTimeConverterViewModel>();
     }
 }

@@ -2,12 +2,40 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:prism="http://prismlibrary.com/"
              xmlns:i18n="https://codewf.com"
              xmlns:language="clr-namespace:Localization"
+             xmlns:vm="clr-namespace:CodeWF.Modules.Converter.ViewModels"
+             prism:ViewModelLocator.AutoWireViewModel="True"
+             x:DataType="vm:DateTimeConverterViewModel"
+             x:CompileBindings="True"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="CodeWF.Modules.Converter.Views.DateTimeConverterView">
-    <StackPanel>
-        <TextBlock Text="{i18n:I18n {x:Static language:DateTimeConverterView.Title}}" />
-        <TextBlock Text="{i18n:I18n {x:Static language:DateTimeConverterView.Description}}" />
+    <UserControl.DataContext>
+        <vm:DateTimeConverterViewModel />
+    </UserControl.DataContext>
+    <StackPanel Spacing="10">
+
+        <StackPanel Orientation="Horizontal" Spacing="10">
+            <TextBlock Text="{Binding CurrentTimestamp}" VerticalAlignment="Center" />
+            <Button Content="开始" Command="{Binding StartRefreshing}" />
+            <Button Content="停止" Command="{Binding StopRefreshing}" />
+            <Button Content="刷新" Command="{Binding RefreshTimestamp}" />
+        </StackPanel>
+
+        <StackPanel Orientation="Horizontal" Spacing="10">
+            <TextBox Text="{Binding InputTimestamp}" Watermark="输入时间戳" />
+            <CheckBox Content="使用毫秒" IsChecked="{Binding IsMillisecondsForInput}" />
+            <Button Content="转换" Command="{Binding ConvertTimestampToDate}" />
+            <TextBlock Text="{Binding OutputDate}" VerticalAlignment="Center" />
+        </StackPanel>
+
+        <StackPanel Orientation="Horizontal" Spacing="10">
+            <TextBox Text="{Binding InputDate}" Watermark="输入日期" />
+            <TextBox Text="{Binding InputDateFormat}" Watermark="日期格式（默认: yyyy/MM/dd HH:mm:ss）" />
+            <CheckBox Content="使用毫秒" IsChecked="{Binding IsMillisecondsForOutput}" />
+            <Button Content="转换" Command="{Binding ConvertDateToTimestamp}" />
+            <TextBlock Text="{Binding OutputTimestamp}" VerticalAlignment="Center" />
+        </StackPanel>
     </StackPanel>
 </UserControl>
