@@ -4,10 +4,6 @@
 	<ConverterModule>
 		<Title>Converter</Title>
 	</ConverterModule>
-	<DateTimeConverterView>
-		<Title>Date and Time Converter</Title>
-		<Description>Convert date and time into various different formats.</Description>
-	</DateTimeConverterView>
 	<JsonToYamlView>
 		<Title>JSON to YAML Converter</Title>
 		<Description>Use the online converter to convert JSON into YAML.</Description>
@@ -35,4 +31,29 @@
 		<MemoContent1>ICO files are generally used for web page logos and application logos.</MemoContent1>
 		<MemoContent2>When using an ICO file on a web page, usually name the generated ICO file as "favicon.ico", put it in the root directory of the website, and then add the following code to the &lt;head&gt; tag of the page: &lt;link rel=&quot;shortcut icon&quot; href=&quot;favicon.ico&quot; type=&quot;image/x-icon&quot; /&gt;</MemoContent2>
 	</ImageToIconView>
+	<DateTimeConverterView>
+		<Title>Date and Time Converter</Title>
+		<Description>Convert date and time into various different formats.</Description>
+		<CurrentTimestampLabel>The current Unix timestamp is:</CurrentTimestampLabel>
+		<TimetampLabel>Unix timestamp</TimetampLabel>
+		<SecondLabel>Seconds</SecondLabel>
+		<MillisecondsLabel>Milliseconds</MillisecondsLabel>
+		<DateTimeFormatLabel>Date and Time (Year/Month/Day Hour:Minute:Second)</DateTimeFormatLabel>
+		<ConvertToTimestampLabel>Convert to Unix Timestamp</ConvertToTimestampLabel>
+		<StartButtonContent>Start</StartButtonContent>
+		<StopButtonContent>Stop</StopButtonContent>
+		<RefreshButtonContent>Refresh</RefreshButtonContent>
+		<ConvertButtonContent>Convert</ConvertButtonContent>
+	</DateTimeConverterView>
+	<QrCodeGeneratorView>
+		<Title>QR Code Generator</Title>
+		<Description>It can be used for generating codes for moving vehicles, etc.</Description>
+		<InputTitle>Title</InputTitle>
+		<InputAd>Promotion</InputAd>
+		<InputPhoneNumber>Phone Number</InputPhoneNumber>
+		<DefaultTitle>Temporarily parked. Scan the QR code to move the vehicle.</DefaultTitle>
+		<CreateButtonContent>Generate QR Code</CreateButtonContent>
+		<NeedInputTip>Please enter information before clicking Generate.</NeedInputTip>
+		<CreateErrorMessage>Failed to generate the QR code.</CreateErrorMessage>
+	</QrCodeGeneratorView>
 </Localization>

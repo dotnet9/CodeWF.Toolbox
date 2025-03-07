@@ -4,10 +4,6 @@
 	<ConverterModule>
 		<Title>コンバーター</Title>
 	</ConverterModule>
-	<DateTimeConverterView>
-		<Title>日付と時刻のコンバーター</Title>
-		<Description>日付と時刻をさまざまな形式に変換します。</Description>
-	</DateTimeConverterView>
 	<JsonToYamlView>
 		<Title>JSONからYAMLへのコンバーター</Title>
 		<Description>オンラインコンバーターを使ってJSONをYAMLに変換します。</Description>
@@ -35,4 +31,29 @@
 		<MemoContent1>ICOファイルは一般的に、ウェブページのロゴやアプリケーションのロゴに使用されます。</MemoContent1>
 		<MemoContent2>ウェブページでICOファイルを使用する場合、通常は生成したICOファイルを「favicon.ico」と命名し、ウェブサイトのルートディレクトリに配置し、次のコードをページの&lt;head&gt;タグ内に追加します: &lt;link rel=&quot;shortcut icon&quot; href=&quot;favicon.ico&quot; type=&quot;image/x-icon&quot; /&gt;</MemoContent2>
 	</ImageToIconView>
+	<DateTimeConverterView>
+		<Title>日付と時刻のコンバーター</Title>
+		<Description>日付と時刻をさまざまな形式に変換します。</Description>
+		<CurrentTimestampLabel>現在のUnixタイムスタンプ (Unix timestamp) は：</CurrentTimestampLabel>
+		<TimetampLabel>Unixタイムスタンプ (Unix timestamp)</TimetampLabel>
+		<SecondLabel>秒</SecondLabel>
+		<MillisecondsLabel>ミリ秒</MillisecondsLabel>
+		<DateTimeFormatLabel>日時 (年/月/日 時:分:秒)</DateTimeFormatLabel>
+		<ConvertToTimestampLabel>Unixタイムスタンプに変換する</ConvertToTimestampLabel>
+		<StartButtonContent>開始</StartButtonContent>
+		<StopButtonContent>停止</StopButtonContent>
+		<RefreshButtonContent>更新</RefreshButtonContent>
+		<ConvertButtonContent>変換</ConvertButtonContent>
+	</DateTimeConverterView>
+	<QrCodeGeneratorView>
+		<Title>QRコード生成</Title>
+		<Description>車の移動用コード生成などに使用できます。</Description>
+		<InputTitle>タイトル</InputTitle>
+		<InputAd>宣伝</InputAd>
+		<InputPhoneNumber>電話番号</InputPhoneNumber>
+		<DefaultTitle>一時停車中、QRコードをスキャンして車を移動させてください。</DefaultTitle>
+		<CreateButtonContent>QRコードを生成する</CreateButtonContent>
+		<NeedInputTip>情報を入力してから生成をクリックしてください。</NeedInputTip>
+		<CreateErrorMessage>QRコードの生成に失敗しました。</CreateErrorMessage>
+	</QrCodeGeneratorView>
 </Localization>

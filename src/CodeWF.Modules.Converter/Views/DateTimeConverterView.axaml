@@ -17,33 +17,33 @@
     </UserControl.DataContext>
     <StackPanel Spacing="10">
         <StackPanel Orientation="Horizontal" Spacing="10">
-            <TextBlock Text="当前的Unix时间戳(Unix timestamp)是:" VerticalAlignment="Center" />
+            <TextBlock Text="{i18n:I18n {x:Static language:DateTimeConverterView.CurrentTimestampLabel}}" VerticalAlignment="Center" />
             <SelectableTextBlock Text="{Binding CurrentTimestamp}" Foreground="Red" VerticalAlignment="Center" />
-            <Button Content="开始" Command="{Binding StartRefreshing}" />
-            <Button Content="停止" Command="{Binding StopRefreshing}" />
-            <Button Content="刷新" Command="{Binding RefreshTimestamp}" />
+            <Button Content="{i18n:I18n {x:Static language:DateTimeConverterView.StartButtonContent}}" Command="{Binding StartRefreshing}" />
+            <Button Content="{i18n:I18n {x:Static language:DateTimeConverterView.StopButtonContent}}" Command="{Binding StopRefreshing}" />
+            <Button Content="{i18n:I18n {x:Static language:DateTimeConverterView.RefreshButtonContent}}" Command="{Binding RefreshTimestamp}" />
         </StackPanel>
 
         <StackPanel Orientation="Horizontal" Spacing="10">
-            <TextBlock Text="Unix时间戳 (Unix timestamp)" VerticalAlignment="Center" />
+            <TextBlock Text="{i18n:I18n {x:Static language:DateTimeConverterView.TimetampLabel}}" VerticalAlignment="Center" />
             <TextBox Text="{Binding InputTimestamp}" Width="150" />
             <ComboBox Width="80" SelectedIndex="0">
-                <ComboBoxItem Content="秒" IsSelected="{Binding !IsMillisecondsForInput}" />
-                <ComboBoxItem Content="毫秒" IsSelected="{Binding IsMillisecondsForInput}" />
+                <ComboBoxItem Content="{i18n:I18n {x:Static language:DateTimeConverterView.SecondLabel}}" IsSelected="{Binding !IsMillisecondsForInput}" />
+                <ComboBoxItem Content="{i18n:I18n {x:Static language:DateTimeConverterView.MillisecondsLabel}}" IsSelected="{Binding IsMillisecondsForInput}" />
             </ComboBox>
-            <Button Content="转换" Command="{Binding ConvertTimestampToDate}" />
+            <Button Content="{i18n:I18n {x:Static language:DateTimeConverterView.ConvertButtonContent}}" Command="{Binding ConvertTimestampToDate}" />
             <TextBox Text="{Binding OutputDate}" Width="200" IsReadOnly="True" />
         </StackPanel>
 
         <StackPanel Orientation="Horizontal" Spacing="10">
-            <TextBlock Text="时间 (年/月/日 时:分:秒)" VerticalAlignment="Center" />
+            <TextBlock Text="{i18n:I18n {x:Static language:DateTimeConverterView.DateTimeFormatLabel}}" VerticalAlignment="Center" />
             <u:DateTimePicker SelectedDate="{Binding InputDate}" Width="200" Classes="ClearButton"
                               DisplayFormat="yyyy/MM/dd HH:mm:ss" />
-            <Button Content="转换成Unix时间戳" Command="{Binding ConvertDateToTimestamp}" />
+            <Button Content="{i18n:I18n {x:Static language:DateTimeConverterView.ConvertToTimestampLabel}}" Command="{Binding ConvertDateToTimestamp}" />
             <TextBox Text="{Binding OutputTimestamp}" Width="150" IsReadOnly="True" />
             <ComboBox Width="80" SelectedIndex="0">
-                <ComboBoxItem Content="秒" IsSelected="{Binding !IsMillisecondsForOutput}" />
-                <ComboBoxItem Content="毫秒" IsSelected="{Binding IsMillisecondsForOutput}" />
+                <ComboBoxItem Content="{i18n:I18n {x:Static language:DateTimeConverterView.SecondLabel}}" IsSelected="{Binding !IsMillisecondsForOutput}" />
+                <ComboBoxItem Content="{i18n:I18n {x:Static language:DateTimeConverterView.MillisecondsLabel}}" IsSelected="{Binding IsMillisecondsForOutput}" />
             </ComboBox>
         </StackPanel>
     </StackPanel>

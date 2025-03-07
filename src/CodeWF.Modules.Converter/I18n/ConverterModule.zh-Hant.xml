@@ -4,10 +4,6 @@
 	<ConverterModule>
 		<Title>轉換器</Title>
 	</ConverterModule>
-	<DateTimeConverterView>
-		<Title>日期時間轉換器</Title>
-		<Description>將日期和時間轉換為各種不同的格式。</Description>
-	</DateTimeConverterView>
 	<JsonToYamlView>
 		<Title>JSON到YAML轉換器</Title>
 		<Description>在線轉換將JSON轉換為YAML。</Description>
@@ -35,4 +31,29 @@
 		<MemoContent1>ico文件一般可以用在網頁的logo和應用程序的logo。</MemoContent1>
 		<MemoContent2>ico文件用在網頁，一般是把生成的ico文件，命名成favicon.ico，並放到網站的根目錄，然後在頁面的head標籤內加入以下代碼：&lt;link rel=&quot;shortcut icon&quot; href=&quot;favicon.ico&quot; type=&quot;image/x-icon&quot; /&gt;</MemoContent2>
 	</ImageToIconView>
+	<DateTimeConverterView>
+		<Title>日期時間轉換器</Title>
+		<Description>將日期和時間轉換為各種不同的格式。</Description>
+		<CurrentTimestampLabel>當前的Unix時間戳 (Unix timestamp) 是：</CurrentTimestampLabel>
+		<TimetampLabel>Unix時間戳 (Unix timestamp)</TimetampLabel>
+		<SecondLabel>秒</SecondLabel>
+		<MillisecondsLabel>毫秒</MillisecondsLabel>
+		<DateTimeFormatLabel>時間 (年/月/日 時:分:秒)</DateTimeFormatLabel>
+		<ConvertToTimestampLabel>轉換成Unix時間戳</ConvertToTimestampLabel>
+		<StartButtonContent>開始</StartButtonContent>
+		<StopButtonContent>停止</StopButtonContent>
+		<RefreshButtonContent>刷新</RefreshButtonContent>
+		<ConvertButtonContent>轉換</ConvertButtonContent>
+	</DateTimeConverterView>
+	<QrCodeGeneratorView>
+		<Title>二維碼生成</Title>
+		<Description>可用於挪車碼生成等</Description>
+		<InputTitle>標題</InputTitle>
+		<InputAd>推廣</InputAd>
+		<InputPhoneNumber>電話號碼</InputPhoneNumber>
+		<DefaultTitle>臨時停靠，掃碼挪車</DefaultTitle>
+		<CreateButtonContent>生成二維碼</CreateButtonContent>
+		<NeedInputTip>請輸入資訊再點擊生成</NeedInputTip>
+		<CreateErrorMessage>生成二維碼失敗</CreateErrorMessage>
+	</QrCodeGeneratorView>
 </Localization>

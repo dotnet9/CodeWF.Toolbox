@@ -14,14 +14,6 @@ namespace Localization
 }
 namespace Localization
 {
-    public static class DateTimeConverterView
-    {
-        public static readonly string Title = "Localization.DateTimeConverterView.Title";
-        public static readonly string Description = "Localization.DateTimeConverterView.Description";
-    }
-}
-namespace Localization
-{
     public static class JsonToYamlView
     {
         public static readonly string Title = "Localization.JsonToYamlView.Title";
@@ -57,5 +49,38 @@ namespace Localization
         public static readonly string MemoTitle = "Localization.ImageToIconView.MemoTitle";
         public static readonly string MemoContent1 = "Localization.ImageToIconView.MemoContent1";
         public static readonly string MemoContent2 = "Localization.ImageToIconView.MemoContent2";
+    }
+}
+namespace Localization
+{
+    public static class DateTimeConverterView
+    {
+        public static readonly string Title = "Localization.DateTimeConverterView.Title";
+        public static readonly string Description = "Localization.DateTimeConverterView.Description";
+        public static readonly string CurrentTimestampLabel = "Localization.DateTimeConverterView.CurrentTimestampLabel";
+        public static readonly string TimetampLabel = "Localization.DateTimeConverterView.TimetampLabel";
+        public static readonly string SecondLabel = "Localization.DateTimeConverterView.SecondLabel";
+        public static readonly string MillisecondsLabel = "Localization.DateTimeConverterView.MillisecondsLabel";
+        public static readonly string DateTimeFormatLabel = "Localization.DateTimeConverterView.DateTimeFormatLabel";
+        public static readonly string ConvertToTimestampLabel = "Localization.DateTimeConverterView.ConvertToTimestampLabel";
+        public static readonly string StartButtonContent = "Localization.DateTimeConverterView.StartButtonContent";
+        public static readonly string StopButtonContent = "Localization.DateTimeConverterView.StopButtonContent";
+        public static readonly string RefreshButtonContent = "Localization.DateTimeConverterView.RefreshButtonContent";
+        public static readonly string ConvertButtonContent = "Localization.DateTimeConverterView.ConvertButtonContent";
+    }
+}
+namespace Localization
+{
+    public static class QrCodeGeneratorView
+    {
+        public static readonly string Title = "Localization.QrCodeGeneratorView.Title";
+        public static readonly string Description = "Localization.QrCodeGeneratorView.Description";
+        public static readonly string InputTitle = "Localization.QrCodeGeneratorView.InputTitle";
+        public static readonly string InputAd = "Localization.QrCodeGeneratorView.InputAd";
+        public static readonly string InputPhoneNumber = "Localization.QrCodeGeneratorView.InputPhoneNumber";
+        public static readonly string DefaultTitle = "Localization.QrCodeGeneratorView.DefaultTitle";
+        public static readonly string CreateButtonContent = "Localization.QrCodeGeneratorView.CreateButtonContent";
+        public static readonly string NeedInputTip = "Localization.QrCodeGeneratorView.NeedInputTip";
+        public static readonly string CreateErrorMessage = "Localization.QrCodeGeneratorView.CreateErrorMessage";
     }
 }
