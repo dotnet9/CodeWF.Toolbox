@@ -77,8 +77,15 @@ namespace Localization
         public static readonly string Description = "Localization.QrCodeGeneratorView.Description";
         public static readonly string InputTitle = "Localization.QrCodeGeneratorView.InputTitle";
         public static readonly string InputAd = "Localization.QrCodeGeneratorView.InputAd";
+        public static readonly string WebTitle = "Localization.QrCodeGeneratorView.WebTitle";
+        public static readonly string WebDescription = "Localization.QrCodeGeneratorView.WebDescription";
+        public static readonly string WebButtonContent = "Localization.QrCodeGeneratorView.WebButtonContent";
         public static readonly string InputPhoneNumber = "Localization.QrCodeGeneratorView.InputPhoneNumber";
-        public static readonly string DefaultTitle = "Localization.QrCodeGeneratorView.DefaultTitle";
+        public static readonly string DefaultInputTitle = "Localization.QrCodeGeneratorView.DefaultInputTitle";
+        public static readonly string DefaultInputAd = "Localization.QrCodeGeneratorView.DefaultInputAd";
+        public static readonly string DefaultWebTitle = "Localization.QrCodeGeneratorView.DefaultWebTitle";
+        public static readonly string DefaultWebDescription = "Localization.QrCodeGeneratorView.DefaultWebDescription";
+        public static readonly string DefaultWebButtonContent = "Localization.QrCodeGeneratorView.DefaultWebButtonContent";
         public static readonly string CreateButtonContent = "Localization.QrCodeGeneratorView.CreateButtonContent";
         public static readonly string NeedInputTip = "Localization.QrCodeGeneratorView.NeedInputTip";
         public static readonly string CreateErrorMessage = "Localization.QrCodeGeneratorView.CreateErrorMessage";

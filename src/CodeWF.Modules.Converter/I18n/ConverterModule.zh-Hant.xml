@@ -48,12 +48,19 @@
 	<QrCodeGeneratorView>
 		<Title>二維碼生成</Title>
 		<Description>可用於挪車碼生成等</Description>
-		<InputTitle>標題</InputTitle>
-		<InputAd>推廣</InputAd>
+		<InputTitle>標題(二維碼上顯示)</InputTitle>
+		<InputAd>推廣(二維碼上顯示)</InputAd>
+		<WebTitle>標題(掃碼後網頁顯示)</WebTitle>
+		<WebDescription>描述(掃碼後網頁顯示)</WebDescription>
+		<WebButtonContent>按鈕內容(掃碼後網頁顯示)</WebButtonContent>
 		<InputPhoneNumber>電話號碼</InputPhoneNumber>
-		<DefaultTitle>臨時停靠，掃碼挪車</DefaultTitle>
+		<DefaultInputTitle>掃一掃挪車</DefaultInputTitle>
+		<DefaultInputAd>碼坊：https://codewf.com</DefaultInputAd>
+		<DefaultWebTitle>臨時停靠，請多關照</DefaultWebTitle>
+		<DefaultWebDescription>如果我的車阻礙了您的車輛通行，點擊下方按鈕通知我，給您帶來不便敬請諒解。</DefaultWebDescription>
+		<DefaultWebButtonContent>撥打車主電話</DefaultWebButtonContent>
 		<CreateButtonContent>生成二維碼</CreateButtonContent>
-		<NeedInputTip>請輸入資訊再點擊生成</NeedInputTip>
+		<NeedInputTip>請輸入信息再點擊生成</NeedInputTip>
 		<CreateErrorMessage>生成二維碼失敗</CreateErrorMessage>
 	</QrCodeGeneratorView>
 </Localization>

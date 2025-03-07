@@ -48,10 +48,17 @@
 	<QrCodeGeneratorView>
 		<Title>二维码生成</Title>
 		<Description>可用于挪车码生成等</Description>
-		<InputTitle>标题</InputTitle>
-		<InputAd>推广</InputAd>
+		<InputTitle>标题(二维码上显示)</InputTitle>
+		<InputAd>推广(二维码上显示)</InputAd>
+		<WebTitle>标题(扫码后网页显示)</WebTitle>
+		<WebDescription>描述(扫码后网页显示)</WebDescription>
+		<WebButtonContent>按钮内容(扫码后网页显示)</WebButtonContent>
 		<InputPhoneNumber>电话号码</InputPhoneNumber>
-		<DefaultTitle>临时停靠，扫码挪车</DefaultTitle>
+		<DefaultInputTitle>扫一扫挪车</DefaultInputTitle>
+		<DefaultInputAd>码坊：https://codewf.com</DefaultInputAd>
+		<DefaultWebTitle>临时停靠，请多关照</DefaultWebTitle>
+		<DefaultWebDescription>如果我的车阻碍了您的车辆通行，点击下方按钮通知我，给您带来不便敬请谅解。</DefaultWebDescription>
+		<DefaultWebButtonContent>拨打车主电话</DefaultWebButtonContent>
 		<CreateButtonContent>生成二维码</CreateButtonContent>
 		<NeedInputTip>请输入信息再点击生成</NeedInputTip>
 		<CreateErrorMessage>生成二维码失败</CreateErrorMessage>

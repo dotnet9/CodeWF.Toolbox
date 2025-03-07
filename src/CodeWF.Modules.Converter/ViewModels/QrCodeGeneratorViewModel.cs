@@ -10,35 +10,59 @@ namespace CodeWF.Modules.Converter.ViewModels;
 public class QrCodeGeneratorViewModel : ReactiveObject
 {
     private readonly INotificationService _notificationService;
-    private string _title;
-    private string _adText;
+    private string _inputTitle;
+    private string _inputAd;
     private string _phoneNumber;
+    private string _webTitle;
+    private string _webDescription;
+    private string _webButtonContent;
     private Bitmap _qrCodeImage;
 
     public QrCodeGeneratorViewModel(INotificationService notificationService)
     {
         _notificationService = notificationService;
-        Title = I18nManager.Instance.GetResource(Localization.QrCodeGeneratorView.DefaultTitle);
-        AdText = "Âë·»£ºhttps://codewf.com";
+        InputTitle = I18nManager.Instance.GetResource(Localization.QrCodeGeneratorView.DefaultInputTitle);
+        InputAd = I18nManager.Instance.GetResource(Localization.QrCodeGeneratorView.DefaultInputAd);
         PhoneNumber = "16899999999";
+        WebTitle = I18nManager.Instance.GetResource(Localization.QrCodeGeneratorView.DefaultWebTitle);
+        WebDescription = I18nManager.Instance.GetResource(Localization.QrCodeGeneratorView.DefaultWebDescription);
+        WebButtonContent = I18nManager.Instance.GetResource(Localization.QrCodeGeneratorView.DefaultWebButtonContent);
     }
 
-    public string Title
+    public string InputTitle
     {
-        get => _title;
-        set => this.RaiseAndSetIfChanged(ref _title, value);
+        get => _inputTitle;
+        set => this.RaiseAndSetIfChanged(ref _inputTitle, value);
     }
 
-    public string AdText
+    public string InputAd
     {
-        get => _adText;
-        set => this.RaiseAndSetIfChanged(ref _adText, value);
+        get => _inputAd;
+        set => this.RaiseAndSetIfChanged(ref _inputAd, value);
     }
 
     public string PhoneNumber
     {
         get => _phoneNumber;
         set => this.RaiseAndSetIfChanged(ref _phoneNumber, value);
+    }
+
+    public string WebTitle
+    {
+        get => _webTitle;
+        set => this.RaiseAndSetIfChanged(ref _webTitle, value);
+    }
+
+    public string WebDescription
+    {
+        get => _webDescription;
+        set => this.RaiseAndSetIfChanged(ref _webDescription, value);
+    }
+
+    public string WebButtonContent
+    {
+        get => _webButtonContent;
+        set => this.RaiseAndSetIfChanged(ref _webButtonContent, value);
     }
 
     public Bitmap QrCodeImage
@@ -49,8 +73,12 @@ public class QrCodeGeneratorViewModel : ReactiveObject
 
     public void GenerateQrCode()
     {
-        if (string.IsNullOrWhiteSpace(Title) || string.IsNullOrWhiteSpace(AdText) ||
-            string.IsNullOrWhiteSpace(PhoneNumber))
+        if (string.IsNullOrWhiteSpace(InputTitle) 
+            || string.IsNullOrWhiteSpace(InputAd) 
+            || string.IsNullOrWhiteSpace(PhoneNumber)
+            || string.IsNullOrWhiteSpace(WebTitle)
+            || string.IsNullOrWhiteSpace(WebDescription)
+            || string.IsNullOrWhiteSpace(PhoneNumber))
         {
             _notificationService.Show(I18nManager.Instance.GetResource(Localization.QrCodeGeneratorView.Title), I18nManager.Instance.GetResource(Localization.QrCodeGeneratorView.NeedInputTip));
             return;
@@ -58,10 +86,10 @@ public class QrCodeGeneratorViewModel : ReactiveObject
 
         try
         {
-            var content = $"Title: {Title}, Ad: {AdText}, Phone: {PhoneNumber}";
+            var content = $"https://codewf.com?title={WebTitle}&description={WebDescription}&button={WebButtonContent}&phone={PhoneNumber}";
             var imagePath = Path.Combine(Path.GetTempPath(), "qrcode.png");
 
-            QrCodeGenerator.GenerateQrCode(Title, AdText, content, imagePath);
+            QrCodeGenerator.GenerateQrCode(InputTitle, InputAd, content, imagePath);
 
             QrCodeImage = new Bitmap(imagePath);
         }

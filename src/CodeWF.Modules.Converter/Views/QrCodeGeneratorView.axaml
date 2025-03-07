@@ -16,13 +16,17 @@
              mc:Ignorable="d">
     <StackPanel Margin="10">
 		<u:Form LabelPosition="Left" LabelWidth="*">
-            <TextBox Width="300" u:FormItem.Label="{i18n:I18n {x:Static language:QrCodeGeneratorView.InputTitle}}" u:FormItem.IsRequired="True" Text="{Binding Title}"/>
-            <TextBox Width="300" u:FormItem.Label="{i18n:I18n {x:Static language:QrCodeGeneratorView.InputAd}}" u:FormItem.IsRequired="True" Text="{Binding AdText}" />
+            <TextBox Width="300" u:FormItem.Label="{i18n:I18n {x:Static language:QrCodeGeneratorView.InputTitle}}" u:FormItem.IsRequired="True" Text="{Binding InputTitle}"/>
+            <TextBox Width="300" u:FormItem.Label="{i18n:I18n {x:Static language:QrCodeGeneratorView.InputAd}}" u:FormItem.IsRequired="True" Text="{Binding InputAd}" />
             <TextBox Width="300" u:FormItem.Label="{i18n:I18n {x:Static language:QrCodeGeneratorView.InputPhoneNumber}}" u:FormItem.IsRequired="True" Text="{Binding PhoneNumber}" />
+            <TextBox Width="300" u:FormItem.Label="{i18n:I18n {x:Static language:QrCodeGeneratorView.WebTitle}}" u:FormItem.IsRequired="True" Text="{Binding WebTitle}" />
+            <TextBox Width="300" u:FormItem.Label="{i18n:I18n {x:Static language:QrCodeGeneratorView.WebDescription}}" Classes="TextArea"
+                     u:FormItem.IsRequired="True" Text="{Binding WebDescription}" />
+            <TextBox Width="300" u:FormItem.Label="{i18n:I18n {x:Static language:QrCodeGeneratorView.WebButtonContent}}" u:FormItem.IsRequired="True" Text="{Binding WebButtonContent}" />
         </u:Form>
         
         <Button Content="{i18n:I18n {x:Static language:QrCodeGeneratorView.CreateButtonContent}}" Command="{Binding GenerateQrCode}" Margin="0,0,0,10"/>
         
-        <Image Source="{Binding QrCodeImage}" Width="240" Height="240"/>
+        <Image Source="{Binding QrCodeImage}" Width="340" Height="340"/>
     </StackPanel>
 </UserControl> 

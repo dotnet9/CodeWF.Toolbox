@@ -46,14 +46,21 @@
 		<ConvertButtonContent>Convert</ConvertButtonContent>
 	</DateTimeConverterView>
 	<QrCodeGeneratorView>
-		<Title>QR Code Generator</Title>
-		<Description>It can be used for generating codes for moving vehicles, etc.</Description>
-		<InputTitle>Title</InputTitle>
-		<InputAd>Promotion</InputAd>
+		<Title>QR Code Generation</Title>
+		<Description>It can be used for generating car moving codes, etc.</Description>
+		<InputTitle>Title (displayed on the QR code)</InputTitle>
+		<InputAd>Promotion (displayed on the QR code)</InputAd>
+		<WebTitle>Title (displayed on the web page after scanning the code)</WebTitle>
+		<WebDescription>Description (displayed on the web page after scanning the code)</WebDescription>
+		<WebButtonContent>Button content (displayed on the web page after scanning the code)</WebButtonContent>
 		<InputPhoneNumber>Phone Number</InputPhoneNumber>
-		<DefaultTitle>Temporarily parked. Scan the QR code to move the vehicle.</DefaultTitle>
+		<DefaultInputTitle>Scan to Move the Car</DefaultInputTitle>
+		<DefaultInputAd>Code Workshop: https://codewf.com</DefaultInputAd>
+		<DefaultWebTitle>Temporarily parked. Your kind understanding is appreciated.</DefaultWebTitle>
+		<DefaultWebDescription>If my car is blocking your vehicle's passage, click the button below to notify me. We apologize for any inconvenience caused.</DefaultWebDescription>
+		<DefaultWebButtonContent>Call the Car Owner</DefaultWebButtonContent>
 		<CreateButtonContent>Generate QR Code</CreateButtonContent>
-		<NeedInputTip>Please enter information before clicking Generate.</NeedInputTip>
+		<NeedInputTip>Please enter the information and then click to generate.</NeedInputTip>
 		<CreateErrorMessage>Failed to generate the QR code.</CreateErrorMessage>
 	</QrCodeGeneratorView>
 </Localization>

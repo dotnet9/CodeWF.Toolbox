@@ -47,13 +47,20 @@
 	</DateTimeConverterView>
 	<QrCodeGeneratorView>
 		<Title>QRコード生成</Title>
-		<Description>車の移動用コード生成などに使用できます。</Description>
-		<InputTitle>タイトル</InputTitle>
-		<InputAd>宣伝</InputAd>
+		<Description>車の移動用コード生成などに利用できます</Description>
+		<InputTitle>タイトル(QRコードに表示)</InputTitle>
+		<InputAd>広告(QRコードに表示)</InputAd>
+		<WebTitle>タイトル(コードをスキャン後のウェブページに表示)</WebTitle>
+		<WebDescription>説明(コードをスキャン後のウェブページに表示)</WebDescription>
+		<WebButtonContent>ボタンの内容(コードをスキャン後のウェブページに表示)</WebButtonContent>
 		<InputPhoneNumber>電話番号</InputPhoneNumber>
-		<DefaultTitle>一時停車中、QRコードをスキャンして車を移動させてください。</DefaultTitle>
+		<DefaultInputTitle>スキャンして車を移動</DefaultInputTitle>
+		<DefaultInputAd>コードファン：https://codewf.com</DefaultInputAd>
+		<DefaultWebTitle>一時的に駐車しております。何卒よろしくお願いいたします。</DefaultWebTitle>
+		<DefaultWebDescription>もし私の車があなたの車の通行を妨げている場合、下のボタンをクリックして私に通知してください。ご不便をおかけして申し訳ありません。</DefaultWebDescription>
+		<DefaultWebButtonContent>車主に電話をかける</DefaultWebButtonContent>
 		<CreateButtonContent>QRコードを生成する</CreateButtonContent>
-		<NeedInputTip>情報を入力してから生成をクリックしてください。</NeedInputTip>
-		<CreateErrorMessage>QRコードの生成に失敗しました。</CreateErrorMessage>
+		<NeedInputTip>情報を入力してから生成をクリックしてください</NeedInputTip>
+		<CreateErrorMessage>QRコードの生成に失敗しました</CreateErrorMessage>
 	</QrCodeGeneratorView>
 </Localization>
