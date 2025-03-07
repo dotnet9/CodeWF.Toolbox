@@ -8,24 +8,24 @@ namespace CodeWF.Modules.Converter.ViewModels;
 
 public class DateTimeConverterViewModel : ReactiveObject, IDisposable
 {
-    private string _currentTimestamp;
-    private string _inputTimestamp;
+    private long _currentTimestamp;
+    private long _inputTimestamp;
     private string _outputDate;
-    private string _inputDate;
-    private string _outputTimestamp;
-    private bool _isMillisecondsForInput;
-    private bool _isMillisecondsForOutput;
+    private DateTime _inputDate = DateTime.Now;
+    private long _outputTimestamp;
+    private bool _isMillisecondsForInput = false;
+    private bool _isMillisecondsForOutput = false;
     private bool _isRefreshing;
     private string _inputDateFormat = "yyyy/MM/dd HH:mm:ss";
     private CompositeDisposable _disposables = new CompositeDisposable();
 
-    public string CurrentTimestamp
+    public long CurrentTimestamp
     {
         get => _currentTimestamp;
         set => this.RaiseAndSetIfChanged(ref _currentTimestamp, value);
     }
 
-    public string InputTimestamp
+    public long InputTimestamp
     {
         get => _inputTimestamp;
         set => this.RaiseAndSetIfChanged(ref _inputTimestamp, value);
@@ -37,13 +37,13 @@ public class DateTimeConverterViewModel : ReactiveObject, IDisposable
         set => this.RaiseAndSetIfChanged(ref _outputDate, value);
     }
 
-    public string InputDate
+    public DateTime InputDate
     {
         get => _inputDate;
         set => this.RaiseAndSetIfChanged(ref _inputDate, value);
     }
 
-    public string OutputTimestamp
+    public long OutputTimestamp
     {
         get => _outputTimestamp;
         set => this.RaiseAndSetIfChanged(ref _outputTimestamp, value);
@@ -95,35 +95,18 @@ public class DateTimeConverterViewModel : ReactiveObject, IDisposable
 
     private void UpdateCurrentTimestamp()
     {
-        var now = DateTimeOffset.UtcNow;
-        var timestamp = now.ToUnixTimeSeconds();
-        CurrentTimestamp = timestamp.ToString();
+        CurrentTimestamp = DateTimeOffset.UtcNow.ToUnixTimeSeconds();
     }
 
     public void ConvertTimestampToDate()
     {
-        if (long.TryParse(InputTimestamp, out var timestamp))
-        {
-            DateTime dateTime = IsMillisecondsForInput ? timestamp.FromUnixTimeMillisecondsToDateTime() : timestamp.FromUnixTimeSecondsToDateTime();
-            OutputDate = dateTime.ToString("yyyy/MM/dd HH:mm:ss", CultureInfo.InvariantCulture);
-        }
-        else
-        {
-            OutputDate = "输入的时间戳格式不正确";
-        }
+        DateTime dateTime = IsMillisecondsForInput ? InputTimestamp.FromUnixTimeMillisecondsToDateTime() : InputTimestamp.FromUnixTimeSecondsToDateTime();
+        OutputDate = dateTime.ToString("yyyy/MM/dd HH:mm:ss", CultureInfo.InvariantCulture);
     }
 
     public void ConvertDateToTimestamp()
     {
-        if (DateTime.TryParseExact(InputDate, InputDateFormat, CultureInfo.InvariantCulture, DateTimeStyles.None, out var dateTime))
-        {
-            long timestamp = IsMillisecondsForOutput ? dateTime.GetUnixTimeMilliseconds() : dateTime.GetUnixTimeSeconds();
-            OutputTimestamp = timestamp.ToString();
-        }
-        else
-        {
-            OutputTimestamp = "输入的日期格式不正确";
-        }
+        OutputTimestamp = IsMillisecondsForOutput ? InputDate.GetUnixTimeMilliseconds() : InputDate.GetUnixTimeSeconds();
     }
 
     public void Dispose()
