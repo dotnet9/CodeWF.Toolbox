@@ -18,7 +18,13 @@
         <StackPanel Orientation="Horizontal" Margin="0 10">
             <TextBox VerticalAlignment="Center" Margin="10 0" Width="400" Classes="Small"
                      Text="{Binding NeedConvertImagePath}" 
-                     DragDrop.AllowDrop="True" DragDrop.Drop="RaiseDropSourceImagePath"/>
+                     DragDrop.AllowDrop="True">
+                <Interaction.Behaviors>
+                    <RoutedEventTriggerBehavior RoutedEvent="{x:Static DragDrop.DropEvent}">
+                        <InvokeCommandAction Command="{Binding RaiseDropSourceImagePath}" PassEventArgsToCommand="True" />
+                    </RoutedEventTriggerBehavior>
+                </Interaction.Behaviors>
+            </TextBox>
             <Button Content="..." Classes="Small" Command="{Binding RaiseChoiceNeedConvertImageHandler}" />
         </StackPanel>
         <StackPanel Orientation="Horizontal">

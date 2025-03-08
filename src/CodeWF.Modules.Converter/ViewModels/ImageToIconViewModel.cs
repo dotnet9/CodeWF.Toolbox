@@ -1,4 +1,5 @@
-﻿using Avalonia.Platform.Storage;
+﻿using Avalonia.Input;
+using Avalonia.Platform.Storage;
 using AvaloniaXmlTranslator;
 using CodeWF.Core.IServices;
 using CodeWF.Modules.Converter.Models;
@@ -54,6 +55,20 @@ public class ImageToIconViewModel : ReactiveObject
         }
 
         NeedConvertImagePath = files[0];
+    }
+
+
+    public void RaiseDropSourceImagePath(DragEventArgs e)
+    {
+        var files = e.Data.GetFiles();
+        var file = files?.FirstOrDefault();
+        if (file == null)
+        {
+            return;
+        }
+
+        NeedConvertImagePath = file.TryGetLocalPath();
+        e.Handled = true;
     }
 
     public async Task RaiseMergeGenerateIconHandler()
