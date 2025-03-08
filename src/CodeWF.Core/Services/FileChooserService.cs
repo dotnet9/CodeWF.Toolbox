@@ -8,6 +8,8 @@ public class FileChooserService : IFileChooserService
 {
     private IStorageProvider? _storageProvider;
 
+    public IStorageProvider StorageProvider { get => _storageProvider; }
+
     public void SetHostWindow(TopLevel level)
     {
         _storageProvider = level?.StorageProvider;

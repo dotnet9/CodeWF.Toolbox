@@ -45,22 +45,24 @@
 		<RefreshButtonContent>Refresh</RefreshButtonContent>
 		<ConvertButtonContent>Convert</ConvertButtonContent>
 	</DateTimeConverterView>
-	<QrCodeGeneratorView>
-		<Title>QR Code Generation</Title>
-		<Description>It can be used for generating car moving codes, etc.</Description>
-		<InputTitle>Title (displayed on the QR code)</InputTitle>
-		<InputAd>Promotion (displayed on the QR code)</InputAd>
-		<WebTitle>Title (displayed on the web page after scanning the code)</WebTitle>
-		<WebDescription>Description (displayed on the web page after scanning the code)</WebDescription>
-		<WebButtonContent>Button content (displayed on the web page after scanning the code)</WebButtonContent>
-		<InputPhoneNumber>Phone Number</InputPhoneNumber>
-		<DefaultInputTitle>Scan to Move the Car</DefaultInputTitle>
+	<NuoCheView>
+		<Title>Car Relocation QR Code Generator</Title>
+		<Description>Used to generate QR codes for car relocation</Description>
+		<InputPhoneNumber>Phone number for car relocation notification</InputPhoneNumber>
+		<InputTitle>Prompt text for car relocation (Keep it as short as possible)</InputTitle>
+		<InputAd>Promotional text</InputAd>
+		<DefaultInputTitle>Scan the QR code with WeChat to notify car relocation</DefaultInputTitle>
 		<DefaultInputAd>Code Workshop: https://codewf.com</DefaultInputAd>
-		<DefaultWebTitle>Temporarily parked. Your kind understanding is appreciated.</DefaultWebTitle>
-		<DefaultWebDescription>If my car is blocking your vehicle's passage, click the button below to notify me. We apologize for any inconvenience caused.</DefaultWebDescription>
-		<DefaultWebButtonContent>Call the Car Owner</DefaultWebButtonContent>
-		<CreateButtonContent>Generate QR Code</CreateButtonContent>
-		<NeedInputTip>Please enter the information and then click to generate.</NeedInputTip>
-		<CreateErrorMessage>Failed to generate the QR code.</CreateErrorMessage>
-	</QrCodeGeneratorView>
+		<CreateButtonContent>Generate the car relocation QR code immediately</CreateButtonContent>
+		<NeedInputTip>Please enter the information and then click to generate</NeedInputTip>
+		<CreateErrorMessage>Failed to generate the QR code</CreateErrorMessage>
+		<SaveNotificationTitle>Prompt</SaveNotificationTitle>
+		<SaveNoQrCodeMessage>Please generate the car relocation QR code first</SaveNoQrCodeMessage>
+		<SaveQrCodeFileTitle>Save the car relocation QR code image</SaveQrCodeFileTitle>
+		<PreviewNuoCheUrl>Preview the URL for scanning the car relocation QR code</PreviewNuoCheUrl>
+		<SaveQrCodeFileFormat>PNG image</SaveQrCodeFileFormat>
+		<SaveQrCodeSuccessTitle>Success</SaveQrCodeSuccessTitle>
+		<SaveQrCodeSuccessMessage>The car relocation QR code image has been saved</SaveQrCodeSuccessMessage>
+		<SaveQrCodeErrorMessage>Failed to save the car relocation QR code image</SaveQrCodeErrorMessage>
+	</NuoCheView>
 </Localization>

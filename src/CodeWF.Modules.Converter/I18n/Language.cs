@@ -71,23 +71,25 @@ namespace Localization
 }
 namespace Localization
 {
-    public static class QrCodeGeneratorView
+    public static class NuoCheView
     {
-        public static readonly string Title = "Localization.QrCodeGeneratorView.Title";
-        public static readonly string Description = "Localization.QrCodeGeneratorView.Description";
-        public static readonly string InputTitle = "Localization.QrCodeGeneratorView.InputTitle";
-        public static readonly string InputAd = "Localization.QrCodeGeneratorView.InputAd";
-        public static readonly string WebTitle = "Localization.QrCodeGeneratorView.WebTitle";
-        public static readonly string WebDescription = "Localization.QrCodeGeneratorView.WebDescription";
-        public static readonly string WebButtonContent = "Localization.QrCodeGeneratorView.WebButtonContent";
-        public static readonly string InputPhoneNumber = "Localization.QrCodeGeneratorView.InputPhoneNumber";
-        public static readonly string DefaultInputTitle = "Localization.QrCodeGeneratorView.DefaultInputTitle";
-        public static readonly string DefaultInputAd = "Localization.QrCodeGeneratorView.DefaultInputAd";
-        public static readonly string DefaultWebTitle = "Localization.QrCodeGeneratorView.DefaultWebTitle";
-        public static readonly string DefaultWebDescription = "Localization.QrCodeGeneratorView.DefaultWebDescription";
-        public static readonly string DefaultWebButtonContent = "Localization.QrCodeGeneratorView.DefaultWebButtonContent";
-        public static readonly string CreateButtonContent = "Localization.QrCodeGeneratorView.CreateButtonContent";
-        public static readonly string NeedInputTip = "Localization.QrCodeGeneratorView.NeedInputTip";
-        public static readonly string CreateErrorMessage = "Localization.QrCodeGeneratorView.CreateErrorMessage";
+        public static readonly string Title = "Localization.NuoCheView.Title";
+        public static readonly string Description = "Localization.NuoCheView.Description";
+        public static readonly string InputPhoneNumber = "Localization.NuoCheView.InputPhoneNumber";
+        public static readonly string InputTitle = "Localization.NuoCheView.InputTitle";
+        public static readonly string InputAd = "Localization.NuoCheView.InputAd";
+        public static readonly string DefaultInputTitle = "Localization.NuoCheView.DefaultInputTitle";
+        public static readonly string DefaultInputAd = "Localization.NuoCheView.DefaultInputAd";
+        public static readonly string CreateButtonContent = "Localization.NuoCheView.CreateButtonContent";
+        public static readonly string NeedInputTip = "Localization.NuoCheView.NeedInputTip";
+        public static readonly string CreateErrorMessage = "Localization.NuoCheView.CreateErrorMessage";
+        public static readonly string SaveNotificationTitle = "Localization.NuoCheView.SaveNotificationTitle";
+        public static readonly string SaveNoQrCodeMessage = "Localization.NuoCheView.SaveNoQrCodeMessage";
+        public static readonly string SaveQrCodeFileTitle = "Localization.NuoCheView.SaveQrCodeFileTitle";
+        public static readonly string PreviewNuoCheUrl = "Localization.NuoCheView.PreviewNuoCheUrl";
+        public static readonly string SaveQrCodeFileFormat = "Localization.NuoCheView.SaveQrCodeFileFormat";
+        public static readonly string SaveQrCodeSuccessTitle = "Localization.NuoCheView.SaveQrCodeSuccessTitle";
+        public static readonly string SaveQrCodeSuccessMessage = "Localization.NuoCheView.SaveQrCodeSuccessMessage";
+        public static readonly string SaveQrCodeErrorMessage = "Localization.NuoCheView.SaveQrCodeErrorMessage";
     }
 }

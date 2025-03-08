@@ -29,10 +29,10 @@ public class ConverterModule : IModule
             Localization.ImageToIconView.MemoContent1, nameof(ImageToIconView),
             Icons.Icon,
             ToolStatus.Complete);
-        toolMenuService.AddItem(Localization.QrCodeGeneratorView.Title, groupName,
-            Localization.QrCodeGeneratorView.Description, nameof(QrCodeGeneratorView),
+        toolMenuService.AddItem(Localization.NuoCheView.Title, groupName,
+            Localization.NuoCheView.Description, nameof(NuoCheView),
             Icons.Icon,
-            ToolStatus.Developing);
+            ToolStatus.Complete);
     }
 
     public void OnInitialized(IContainerProvider containerProvider)
@@ -42,13 +42,13 @@ public class ConverterModule : IModule
         regionManager.RegisterViewWithRegion<YamlToJsonView>(RegionNames.ContentRegion);
         regionManager.RegisterViewWithRegion<JsonToYamlView>(RegionNames.ContentRegion);
         regionManager.RegisterViewWithRegion<ImageToIconView>(RegionNames.ContentRegion);
-        regionManager.RegisterViewWithRegion<QrCodeGeneratorView>(RegionNames.ContentRegion);
+        regionManager.RegisterViewWithRegion<NuoCheView>(RegionNames.ContentRegion);
     }
 
     public void RegisterTypes(IContainerRegistry containerRegistry)
     {
         ViewModelLocationProvider.Register<ImageToIconView, ImageToIconViewModel>();
         ViewModelLocationProvider.Register<DateTimeConverterView, DateTimeConverterViewModel>();
-        ViewModelLocationProvider.Register<QrCodeGeneratorView, QrCodeGeneratorViewModel>();
+        ViewModelLocationProvider.Register<NuoCheView, NuoCheViewModel>();
     }
 }

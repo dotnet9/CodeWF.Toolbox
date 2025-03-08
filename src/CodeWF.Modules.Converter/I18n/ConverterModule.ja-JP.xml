@@ -45,22 +45,24 @@
 		<RefreshButtonContent>更新</RefreshButtonContent>
 		<ConvertButtonContent>変換</ConvertButtonContent>
 	</DateTimeConverterView>
-	<QrCodeGeneratorView>
-		<Title>QRコード生成</Title>
-		<Description>車の移動用コード生成などに利用できます</Description>
-		<InputTitle>タイトル(QRコードに表示)</InputTitle>
-		<InputAd>広告(QRコードに表示)</InputAd>
-		<WebTitle>タイトル(コードをスキャン後のウェブページに表示)</WebTitle>
-		<WebDescription>説明(コードをスキャン後のウェブページに表示)</WebDescription>
-		<WebButtonContent>ボタンの内容(コードをスキャン後のウェブページに表示)</WebButtonContent>
-		<InputPhoneNumber>電話番号</InputPhoneNumber>
-		<DefaultInputTitle>スキャンして車を移動</DefaultInputTitle>
-		<DefaultInputAd>コードファン：https://codewf.com</DefaultInputAd>
-		<DefaultWebTitle>一時的に駐車しております。何卒よろしくお願いいたします。</DefaultWebTitle>
-		<DefaultWebDescription>もし私の車があなたの車の通行を妨げている場合、下のボタンをクリックして私に通知してください。ご不便をおかけして申し訳ありません。</DefaultWebDescription>
-		<DefaultWebButtonContent>車主に電話をかける</DefaultWebButtonContent>
-		<CreateButtonContent>QRコードを生成する</CreateButtonContent>
-		<NeedInputTip>情報を入力してから生成をクリックしてください</NeedInputTip>
+	<NuoCheView>
+		<Title>車移動用QRコード生成ツール</Title>
+		<Description>車の移動用QRコードを生成するために使用します</Description>
+		<InputPhoneNumber>車移動通知用電話番号</InputPhoneNumber>
+		<InputTitle>車移動のお知らせテキスト（できるだけ短くしてください）</InputTitle>
+		<InputAd>宣伝文</InputAd>
+		<DefaultInputTitle>WeChatでQRコードをスキャンして、車の移動を通知する</DefaultInputTitle>
+		<DefaultInputAd>コード工房：https://codewf.com</DefaultInputAd>
+		<CreateButtonContent>すぐに車移動用QRコードを生成する</CreateButtonContent>
+		<NeedInputTip>情報を入力してから生成ボタンをクリックしてください</NeedInputTip>
 		<CreateErrorMessage>QRコードの生成に失敗しました</CreateErrorMessage>
-	</QrCodeGeneratorView>
+		<SaveNotificationTitle>メッセージ</SaveNotificationTitle>
+		<SaveNoQrCodeMessage>まず車移動用QRコードを生成してください</SaveNoQrCodeMessage>
+		<SaveQrCodeFileTitle>車移動用QRコード画像を保存する</SaveQrCodeFileTitle>
+		<PreviewNuoCheUrl>車移動用QRコードのスキャンURLをプレビューする</PreviewNuoCheUrl>
+		<SaveQrCodeFileFormat>PNG画像</SaveQrCodeFileFormat>
+		<SaveQrCodeSuccessTitle>成功</SaveQrCodeSuccessTitle>
+		<SaveQrCodeSuccessMessage>車移動用QRコード画像が保存されました</SaveQrCodeSuccessMessage>
+		<SaveQrCodeErrorMessage>車移動用QRコード画像の保存に失敗しました</SaveQrCodeErrorMessage>
+	</NuoCheView>
 </Localization>

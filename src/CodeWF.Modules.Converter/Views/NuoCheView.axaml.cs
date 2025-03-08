@@ -3,9 +3,11 @@ using Avalonia.Markup.Xaml;
 
 namespace CodeWF.Modules.Converter.Views;
 
-public partial class QrCodeGeneratorView : UserControl
+public partial class NuoCheView : UserControl
 {
-    public QrCodeGeneratorView()
+    private Image _qrCodeImage;
+
+    public NuoCheView()
     {
         InitializeComponent();
     }

@@ -5,6 +5,7 @@ namespace CodeWF.Core.IServices;
 
 public interface IFileChooserService
 {
+    IStorageProvider StorageProvider { get; }
     void SetHostWindow(TopLevel level);
 
     Task<List<string>?> OpenFileAsync(string title, bool allowMultiple,

@@ -1,0 +1,45 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="clr-namespace:CodeWF.Modules.Converter.ViewModels"
+             xmlns:prism="http://prismlibrary.com/"
+             xmlns:u="https://irihi.tech/ursa"
+             xmlns:i18n="https://codewf.com"
+             xmlns:language="clr-namespace:Localization"
+             prism:ViewModelLocator.AutoWireViewModel="True"
+             x:CompileBindings="True"
+             x:DataType="vm:NuoCheViewModel"
+             d:DesignHeight="450"
+             d:DesignWidth="800"
+             x:Class="CodeWF.Modules.Converter.Views.NuoCheView"
+             mc:Ignorable="d">
+    <StackPanel Margin="10">
+        <u:Form LabelPosition="Left" LabelWidth="*">
+            <TextBox Width="300" u:FormItem.Label="{i18n:I18n {x:Static language:NuoCheView.InputPhoneNumber}}"
+                     u:FormItem.IsRequired="True" Text="{Binding PhoneNumber}" />
+            <TextBox Width="300" u:FormItem.Label="{i18n:I18n {x:Static language:NuoCheView.InputTitle}}"
+                     u:FormItem.IsRequired="True" Text="{Binding InputTitle}" />
+            <TextBox Width="300" u:FormItem.Label="{i18n:I18n {x:Static language:NuoCheView.InputAd}}"
+                     u:FormItem.IsRequired="True" Text="{Binding InputAd}" />
+        </u:Form>
+
+        <StackPanel Orientation="Horizontal" Spacing="10" Margin="0,0,0,10">
+            <Button Content="{i18n:I18n {x:Static language:NuoCheView.CreateButtonContent}}"
+                    Command="{Binding GenerateQrCode}" />
+            <Button Content="{i18n:I18n {x:Static language:NuoCheView.SaveQrCodeFileTitle}}"
+                    Command="{Binding SaveQrCode}" />
+            <HyperlinkButton Content="{i18n:I18n {x:Static language:NuoCheView.PreviewNuoCheUrl}}"
+                             NavigateUri="{Binding GeneratedUrl}" Classes="WithIcon Underline"
+                             VerticalAlignment="Center" />
+        </StackPanel>
+
+        <Image Source="{Binding QrCodeImage}" Width="340" Height="340" DragDrop.AllowDrop="True">
+            <Interaction.Behaviors>
+                <EventTriggerBehavior EventName="PointerPressed">
+                    <InvokeCommandAction Command="{Binding RaisePointerPressed}" PassEventArgsToCommand="True" />
+                </EventTriggerBehavior>
+            </Interaction.Behaviors>
+        </Image>
+    </StackPanel>
+</UserControl>
