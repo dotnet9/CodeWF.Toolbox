@@ -20,8 +20,6 @@
                      u:FormItem.IsRequired="True" Text="{Binding PhoneNumber}" />
             <TextBox Width="300" u:FormItem.Label="{i18n:I18n {x:Static language:NuoCheView.InputTitle}}"
                      u:FormItem.IsRequired="True" Text="{Binding InputTitle}" />
-            <TextBox Width="300" u:FormItem.Label="{i18n:I18n {x:Static language:NuoCheView.InputAd}}"
-                     u:FormItem.IsRequired="True" Text="{Binding InputAd}" />
         </u:Form>
 
         <StackPanel Orientation="Horizontal" Spacing="10" Margin="0,0,0,10">

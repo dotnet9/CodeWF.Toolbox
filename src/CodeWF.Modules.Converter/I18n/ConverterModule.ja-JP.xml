@@ -50,9 +50,7 @@
 		<Description>車の移動用QRコードを生成するために使用します</Description>
 		<InputPhoneNumber>車移動通知用電話番号</InputPhoneNumber>
 		<InputTitle>車移動のお知らせテキスト（できるだけ短くしてください）</InputTitle>
-		<InputAd>宣伝文</InputAd>
-		<DefaultInputTitle>WeChatでQRコードをスキャンして、車の移動を通知する</DefaultInputTitle>
-		<DefaultInputAd>コード工房：https://codewf.com</DefaultInputAd>
+		<DefaultInputTitle>コードをスキャンし車移動</DefaultInputTitle>
 		<CreateButtonContent>すぐに車移動用QRコードを生成する</CreateButtonContent>
 		<NeedInputTip>情報を入力してから生成ボタンをクリックしてください</NeedInputTip>
 		<CreateErrorMessage>QRコードの生成に失敗しました</CreateErrorMessage>

@@ -50,9 +50,7 @@
 		<Description>用於生成挪車二維碼</Description>
 		<InputPhoneNumber>挪車通知電話號碼</InputPhoneNumber>
 		<InputTitle>挪車提示文字（儘量簡短）</InputTitle>
-		<InputAd>推廣文字</InputAd>
-		<DefaultInputTitle>微信掃碼，通知挪車</DefaultInputTitle>
-		<DefaultInputAd>碼坊：https://codewf.com</DefaultInputAd>
+		<DefaultInputTitle>掃碼挪車</DefaultInputTitle>
 		<CreateButtonContent>立即生成挪車二維碼</CreateButtonContent>
 		<NeedInputTip>請輸入資訊再點擊生成</NeedInputTip>
 		<CreateErrorMessage>生成二維碼失敗</CreateErrorMessage>

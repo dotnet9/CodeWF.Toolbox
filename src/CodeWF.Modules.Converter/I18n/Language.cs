@@ -77,9 +77,7 @@ namespace Localization
         public static readonly string Description = "Localization.NuoCheView.Description";
         public static readonly string InputPhoneNumber = "Localization.NuoCheView.InputPhoneNumber";
         public static readonly string InputTitle = "Localization.NuoCheView.InputTitle";
-        public static readonly string InputAd = "Localization.NuoCheView.InputAd";
         public static readonly string DefaultInputTitle = "Localization.NuoCheView.DefaultInputTitle";
-        public static readonly string DefaultInputAd = "Localization.NuoCheView.DefaultInputAd";
         public static readonly string CreateButtonContent = "Localization.NuoCheView.CreateButtonContent";
         public static readonly string NeedInputTip = "Localization.NuoCheView.NeedInputTip";
         public static readonly string CreateErrorMessage = "Localization.NuoCheView.CreateErrorMessage";

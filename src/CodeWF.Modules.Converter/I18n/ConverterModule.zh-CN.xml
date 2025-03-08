@@ -50,9 +50,7 @@
 		<Description>用于生成挪车二维码</Description>
 		<InputPhoneNumber>挪车通知电话号码</InputPhoneNumber>
 		<InputTitle>挪车提示文字（尽量简短）</InputTitle>
-		<InputAd>推广文字</InputAd>
-		<DefaultInputTitle>微信扫码，通知挪车</DefaultInputTitle>
-		<DefaultInputAd>码坊：https://codewf.com</DefaultInputAd>
+		<DefaultInputTitle>扫码挪车</DefaultInputTitle>
 		<CreateButtonContent>立即生成挪车二维码</CreateButtonContent>
 		<NeedInputTip>请输入信息再点击生成</NeedInputTip>
 		<CreateErrorMessage>生成二维码失败</CreateErrorMessage>
