@@ -19,6 +19,8 @@ public class NuoCheViewModel : ReactiveObject
     private Bitmap? _qrCodeImage;
     private string _qrCodeImagePath;
     private string _generatedUrl;
+    private string _subTitle;
+    private bool _enableSubTitle;
 
     public NuoCheViewModel(INotificationService notificationService, IFileChooserService fileChooserService)
     {
@@ -27,6 +29,8 @@ public class NuoCheViewModel : ReactiveObject
 
         InputTitle = I18nManager.Instance.GetResource(Localization.NuoCheView.DefaultInputTitle);
         PhoneNumber = 16899999999;
+        SubTitle = $"{I18nManager.Instance.GetResource(Localization.NuoCheView.DefaultSubTitlePrefix)}: {PhoneNumber}";
+        EnableSubTitle = false;
     }
 
     public string InputTitle
@@ -59,6 +63,23 @@ public class NuoCheViewModel : ReactiveObject
         private set => this.RaiseAndSetIfChanged(ref _generatedUrl, value);
     }
 
+    public string SubTitle
+    {
+        get => _subTitle;
+        set => this.RaiseAndSetIfChanged(ref _subTitle, value);
+    }
+
+    public bool EnableSubTitle
+    {
+        get => _enableSubTitle;
+        set => this.RaiseAndSetIfChanged(ref _enableSubTitle, value);
+    }
+
+    public void EnableSubTitleHandler()
+    {
+        SubTitle = $"{I18nManager.Instance.GetResource(Localization.NuoCheView.DefaultSubTitlePrefix)}: {PhoneNumber}";
+    }
+
     public void GenerateQrCode()
     {
         if (string.IsNullOrWhiteSpace(InputTitle))
@@ -76,7 +97,8 @@ public class NuoCheViewModel : ReactiveObject
                 $"https://codewf.com/nuoche?p={encodedPhone}";
             QrCodeImagePath = Path.Combine(Path.GetTempPath(), "nuoche.png");
 
-            QrCodeGenerator.GenerateQrCode(InputTitle, GeneratedUrl, QrCodeImagePath);
+            QrCodeGenerator.GenerateQrCode(InputTitle, GeneratedUrl, QrCodeImagePath, 
+                EnableSubTitle ? SubTitle : null);
 
             QrCodeImage = new Bitmap(QrCodeImagePath);
         }

@@ -49,7 +49,9 @@
 		<Title>車移動用QRコード生成ツール</Title>
 		<Description>車の移動用QRコードを生成するために使用します</Description>
 		<InputPhoneNumber>車移動通知用電話番号</InputPhoneNumber>
-		<InputTitle>車移動のお知らせテキスト（できるだけ短くしてください）</InputTitle>
+		<EnableSubTitle>小見出しを追加する</EnableSubTitle>
+		<DefaultInputTitle>コードをスキャンして車を移動する</DefaultInputTitle>
+		<DefaultSubTitlePrefix>コードをスキャンして車主に連絡するか、電話をかける</DefaultSubTitlePrefix>
 		<DefaultInputTitle>コードをスキャンし車移動</DefaultInputTitle>
 		<CreateButtonContent>すぐに車移動用QRコードを生成する</CreateButtonContent>
 		<NeedInputTip>情報を入力してから生成ボタンをクリックしてください</NeedInputTip>

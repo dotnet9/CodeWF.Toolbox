@@ -50,7 +50,9 @@
 		<Description>用于生成挪车二维码</Description>
 		<InputPhoneNumber>挪车通知电话号码</InputPhoneNumber>
 		<InputTitle>挪车提示文字（尽量简短）</InputTitle>
+		<EnableSubTitle>添加小标题</EnableSubTitle>
 		<DefaultInputTitle>扫码挪车</DefaultInputTitle>
+		<DefaultSubTitlePrefix>扫码联系车主或拨打电话</DefaultSubTitlePrefix>
 		<CreateButtonContent>立即生成挪车二维码</CreateButtonContent>
 		<NeedInputTip>请输入信息再点击生成</NeedInputTip>
 		<CreateErrorMessage>生成二维码失败</CreateErrorMessage>

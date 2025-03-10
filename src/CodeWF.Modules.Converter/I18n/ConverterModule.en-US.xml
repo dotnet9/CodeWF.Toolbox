@@ -50,7 +50,9 @@
 		<Description>Used to generate QR codes for car relocation</Description>
 		<InputPhoneNumber>Phone number for car relocation notification</InputPhoneNumber>
 		<InputTitle>Prompt text for car relocation (Keep it as short as possible)</InputTitle>
-		<DefaultInputTitle>Scan Code to Move Car</DefaultInputTitle>
+		<EnableSubTitle>Add Subtitle</EnableSubTitle>
+		<DefaultInputTitle>Scan the Code to Move the Car</DefaultInputTitle>
+		<DefaultSubTitlePrefix>Scan the Code to Contact the Car Owner or Make a Phone Call</DefaultSubTitlePrefix>
 		<CreateButtonContent>Generate the car relocation QR code immediately</CreateButtonContent>
 		<NeedInputTip>Please enter the information and then click to generate</NeedInputTip>
 		<CreateErrorMessage>Failed to generate the QR code</CreateErrorMessage>

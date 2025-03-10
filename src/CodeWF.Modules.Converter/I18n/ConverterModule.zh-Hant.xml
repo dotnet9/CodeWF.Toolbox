@@ -50,7 +50,9 @@
 		<Description>用於生成挪車二維碼</Description>
 		<InputPhoneNumber>挪車通知電話號碼</InputPhoneNumber>
 		<InputTitle>挪車提示文字（儘量簡短）</InputTitle>
+		<EnableSubTitle>添加小標題</EnableSubTitle>
 		<DefaultInputTitle>掃碼挪車</DefaultInputTitle>
+		<DefaultSubTitlePrefix>掃碼聯繫車主或撥打電話</DefaultSubTitlePrefix>
 		<CreateButtonContent>立即生成挪車二維碼</CreateButtonContent>
 		<NeedInputTip>請輸入資訊再點擊生成</NeedInputTip>
 		<CreateErrorMessage>生成二維碼失敗</CreateErrorMessage>
