@@ -2,9 +2,9 @@
     x:Class="CodeWF.Modules.Development.Views.JsonPrettifyView"
     xmlns="https://github.com/avaloniaui"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:AvaloniaEdit="clr-namespace:AvaloniaEdit;assembly=AvaloniaEdit"
+    xmlns:avaloniaEdit="clr-namespace:AvaloniaEdit;assembly=AvaloniaEdit"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:i18n="https://codewf.com"
+    xmlns:i18N="https://codewf.com"
     xmlns:language="clr-namespace:Localization"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:prism="http://prismlibrary.com/"
@@ -25,9 +25,9 @@
             Orientation="Horizontal">
             <CheckBox
                 Margin="0,0,20,0" VerticalAlignment="Center"
-                Content="{i18n:I18n {x:Static language:JsonPrettifyView.SortKey}}"
+                Content="{i18N:I18n {x:Static language:JsonPrettifyView.SortKey}}"
                 IsChecked="{Binding IsSortKey}" />
-            <TextBlock VerticalAlignment="Center" Text="{i18n:I18n {x:Static language:JsonPrettifyView.IndentSize}}" />
+            <TextBlock VerticalAlignment="Center" Text="{i18N:I18n {x:Static language:JsonPrettifyView.IndentSize}}" />
             <ComboBox
                 Width="100"
                 ItemsSource="{Binding IndentSizes}"
@@ -37,7 +37,7 @@
         <TextBlock
             Grid.Row="1"
             Grid.Column="0"
-            Text="{i18n:I18n {x:Static language:JsonPrettifyView.RawJson}}" />
+            Text="{i18N:I18n {x:Static language:JsonPrettifyView.RawJson}}" />
         <TextBox
             Grid.Row="2"
             Grid.Column="0"
@@ -57,9 +57,9 @@
         <TextBlock
             Grid.Row="1"
             Grid.Column="2"
-            Text="{i18n:I18n {x:Static language:JsonPrettifyView.PrettifiedVersionJSON}}" />
+            Text="{i18N:I18n {x:Static language:JsonPrettifyView.PrettifiedVersionJSON}}" />
 
-        <AvaloniaEdit:TextEditor
+        <avaloniaEdit:TextEditor
             x:Name="FormatEditor"
             Grid.Row="2"
             Grid.Column="2"

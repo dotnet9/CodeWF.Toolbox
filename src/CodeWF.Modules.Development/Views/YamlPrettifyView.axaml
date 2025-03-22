@@ -2,9 +2,9 @@
     x:Class="CodeWF.Modules.Development.Views.YamlPrettifyView"
     xmlns="https://github.com/avaloniaui"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:AvaloniaEdit="clr-namespace:AvaloniaEdit;assembly=AvaloniaEdit"
+    xmlns:avaloniaEdit="clr-namespace:AvaloniaEdit;assembly=AvaloniaEdit"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:i18n="https://codewf.com"
+    xmlns:i18N="https://codewf.com"
     xmlns:language="clr-namespace:Localization"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:prism="http://prismlibrary.com/"
@@ -22,7 +22,7 @@
         <TextBlock
             Grid.Row="0"
             Grid.Column="0"
-            Text="{i18n:I18n {x:Static language:YamlPrettifyView.RawYaml}}" />
+            Text="{i18N:I18n {x:Static language:YamlPrettifyView.RawYaml}}" />
         <TextBox
             Grid.Row="1"
             Grid.Column="0"
@@ -42,8 +42,8 @@
         <TextBlock
             Grid.Row="0"
             Grid.Column="2"
-            Text="{i18n:I18n {x:Static language:YamlPrettifyView.PrettifiedVersionYAML}}" />
-        <AvaloniaEdit:TextEditor
+            Text="{i18N:I18n {x:Static language:YamlPrettifyView.PrettifiedVersionYAML}}" />
+        <avaloniaEdit:TextEditor
             x:Name="Editor"
             Grid.Row="1"
             Grid.Column="2"

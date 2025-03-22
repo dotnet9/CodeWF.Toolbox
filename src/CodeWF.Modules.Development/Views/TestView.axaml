@@ -3,10 +3,8 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:prism="http://prismlibrary.com/"
-             xmlns:u="https://irihi.tech/ursa"
-             xmlns:i18n="https://codewf.com"
+             xmlns:i18N="https://codewf.com"
              xmlns:language="clr-namespace:Localization"
-             xmlns:view="clr-namespace:CodeWF.Modules.Development.Views"
              xmlns:vm="clr-namespace:CodeWF.Modules.Development.ViewModels"
              xmlns:model="clr-namespace:CodeWF.Modules.Development.Models"
              xmlns:converters="clr-namespace:CodeWF.Modules.Development.Converters"
@@ -22,9 +20,9 @@
         <converters:WarningKindImageConverter x:Key="WarningKindImageConverter"></converters:WarningKindImageConverter>
     </UserControl.Resources>
     <StackPanel>
-        <Button Content="{i18n:I18n {x:Static language:TestView.CompressFiles}}"
+        <Button Content="{i18N:I18n {x:Static language:TestView.CompressFiles}}"
                 Command="{Binding RaiseCompressCommand}" />
-        <Button Content="{i18n:I18n {x:Static language:TestView.DecompressionFiles}}"
+        <Button Content="{i18N:I18n {x:Static language:TestView.DecompressionFiles}}"
                 Command="{Binding RaiseDecompressionCommand}" Margin="10 0" />
         <Button Content="Hashtable Serialize"
                 Command="{Binding RaiseHashtableSerializeCommand}" Margin="10 0" />
@@ -43,7 +41,7 @@
                         <Image Source="{Binding Converter={StaticResource WarningKindImageConverter}}" Grid.Column="0"
                                Width="24" Height="24"
                                HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0 0 5 0" />
-                        <TextBlock Text="{i18n:I18n {Binding Converter={StaticResource WarningKindDescriptionConverter}}}"
+                        <TextBlock Text="{i18N:I18n {Binding Converter={StaticResource WarningKindDescriptionConverter}}}"
                                    Grid.Column="1" HorizontalAlignment="Center"
                                    VerticalAlignment="Center" />
                     </Grid>
@@ -55,7 +53,7 @@
                         <Image Source="{Binding Converter={StaticResource WarningKindImageConverter}}" Grid.Row="0"
                                Width="48" Height="48"
                                HorizontalAlignment="Center" />
-                        <TextBlock Text="{i18n:I18n {x:Static language:TestView.TimeoutAlarm}}" Grid.Row="1"
+                        <TextBlock Text="{i18N:I18n {x:Static language:TestView.TimeoutAlarm}}" Grid.Row="1"
                                    HorizontalAlignment="Center"
                                    Margin="0 5" />
                     </Grid>
