@@ -1,0 +1,27 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <Design.PreviewWith>
+    <Border Padding="20">
+      <WrapPanel Orientation="Horizontal">
+          <Border Width="20" Height="20" Background="#FF0000" />
+          <Border Width="20" Height="20" Background="#00FF00" />
+          <Border Width="20" Height="20" Background="#0000FF" />
+          <Border Width="20" Height="20" Background="#FFFF00" />
+          <Border Width="20" Height="20" Background="#FF00FF" />
+          <Border Width="20" Height="20" Background="#00FFFF" />
+          <Border Width="20" Height="20" Background="#FFA500" />
+          <Border Width="20" Height="20" Background="#800080" />
+          <Border Width="20" Height="20" Background="#00FF7F" />
+          <Border Width="20" Height="20" Background="#FF007F" />
+          <Border Width="20" Height="20" Background="#7F00FF" />
+          <Border Width="20" Height="20" Background="#007FFF" />
+          <Border Width="20" Height="20" Background="#FF7F00" />
+          <Border Width="20" Height="20" Background="#ADFF2F" />
+          <Border Width="20" Height="20" Background="#00FFD7" />
+          <Border Width="20" Height="20" Background="#FF00D7" />
+      </WrapPanel>
+    </Border>
+  </Design.PreviewWith>
+
+  <!-- Add Styles Here -->
+</Styles>

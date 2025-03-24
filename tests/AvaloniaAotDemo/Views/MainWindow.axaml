@@ -17,6 +17,9 @@
     <StackPanel>
         <TextBlock x:Name="Txt" Text="{Binding Greeting}" HorizontalAlignment="Center" VerticalAlignment="Center" />
         <Button Content="Send Event" Click="Button_OnClick" />
+        <Border Background="Black" CornerRadius="30" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="3">
+            <TextBlock Text="16" FontSize="11" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center" />
+        </Border>
     </StackPanel>
 
 </Window>
