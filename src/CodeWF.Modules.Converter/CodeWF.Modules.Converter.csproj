@@ -22,7 +22,7 @@
 		<PackageReference Include="Hashids.net" Version="1.7.0" />
 		<PackageReference Include="Prism.DryIoc.Avalonia" Version="9.0.401.11110-pre" />
 		<PackageReference Include="Irihi.Ursa.Themes.Semi" Version="1.10.0" />
-		<PackageReference Include="Avalonia.ReactiveUI" Version="11.2.5" />
+		<PackageReference Include="Avalonia.ReactiveUI" Version="11.2.6" />
 		<PackageReference Include="AvaloniaEdit.TextMate" Version="11.2.0" />
 		<PackageReference Include="TextMateSharp.Grammars" Version="1.0.66" />
 	</ItemGroup>

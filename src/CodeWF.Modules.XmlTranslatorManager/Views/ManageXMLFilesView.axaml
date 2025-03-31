@@ -38,11 +38,13 @@
         </TreeView>
 
         <GridSplitter Grid.Row="1" Grid.Column="1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" />
-        <Grid Grid.Row="1" Grid.Column="2" RowDefinitions="Auto *">
+        <Grid Grid.Row="1" Grid.Column="2" RowDefinitions="Auto *"> 
             <StackPanel Orientation="Horizontal">
                 <Button Content="Export" Command="{Binding RaiseExportHandler}" />
             </StackPanel>
-            <DataGrid Grid.Row="1" x:Name="LanguageDataGrid"
+            <DataGrid Grid.Row="1" x:Name="LanguageDataGrid"  
+                      Classes.InsetContent="True"
+                      ScrollViewer.AllowAutoHide="False"
                       ItemsSource="{Binding SelectedClassItem.Properties}"
                       CanUserReorderColumns="True"
                       CanUserResizeColumns="True"
