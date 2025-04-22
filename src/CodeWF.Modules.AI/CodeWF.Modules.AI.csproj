@@ -9,9 +9,9 @@
 	</PropertyGroup>
 	<ItemGroup>
 		<PackageReference Include="CodeWF.AvaloniaControls" Version="0.0.9" />
-		<PackageReference Include="Prism.Avalonia" Version="9.0.401.11110-pre" />
-		<PackageReference Include="Prism.DryIoc.Avalonia" Version="9.0.401.11110-pre" />
-		<PackageReference Include="Avalonia.ReactiveUI" Version="11.3.0-beta1" />
+		<PackageReference Include="Prism.Avalonia" Version="9.0.537.11130" />
+		<PackageReference Include="Prism.DryIoc.Avalonia" Version="9.0.537.11130" />
+		<PackageReference Include="Avalonia.ReactiveUI" Version="11.3.0-beta2" />
 		<PackageReference Include="Irihi.Ursa.Themes.Semi" Version="1.10.0" />
 		<PackageReference Include="Irihi.Ursa.PrismExtension" Version="9.0.1" />
 		<PackageReference Include="MarkdownAIRender" Version="0.1.16" />
