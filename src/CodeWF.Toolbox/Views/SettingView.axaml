@@ -44,7 +44,7 @@
             Classes="Tertiary H6" TextTrimming="CharacterEllipsis"
             Text="{i18n:I18n {Binding #MyTab.Tag}}"
             Theme="{StaticResource TitleTextBlock}" />
-        <TabControl TabStripPlacement="Top"
+        <TabControl TabStripPlacement="Top" Theme="{StaticResource CardTabControl}"
                     prism:RegionManager.RegionName="{x:Static core:RegionNames.SettingRegion}"
                     Name="MyTab" />
     </StackPanel>
