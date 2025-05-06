@@ -11,7 +11,7 @@
 		<PackageReference Include="CodeWF.AvaloniaControls" Version="0.0.9" />
 		<PackageReference Include="Prism.Avalonia" Version="9.0.537.11130" />
 		<PackageReference Include="Prism.DryIoc.Avalonia" Version="9.0.537.11130" />
-		<PackageReference Include="Avalonia.ReactiveUI" Version="11.3.0-rc1" />
+		<PackageReference Include="Avalonia.ReactiveUI" Version="11.3.0" />
 		<PackageReference Include="Irihi.Ursa.Themes.Semi" Version="1.11.0" />
 		<PackageReference Include="Irihi.Ursa.PrismExtension" Version="9.0.1" />
 		<PackageReference Include="MarkdownAIRender" Version="0.1.16" />

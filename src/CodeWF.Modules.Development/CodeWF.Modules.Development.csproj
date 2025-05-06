@@ -23,8 +23,8 @@
 
 	<ItemGroup>
 		<PackageReference Include="Prism.DryIoc.Avalonia" Version="9.0.537.11130" />
-		<PackageReference Include="Avalonia.ReactiveUI" Version="11.3.0-rc1" />
-		<PackageReference Include="AvaloniaEdit.TextMate" Version="11.2.0" />
+		<PackageReference Include="Avalonia.ReactiveUI" Version="11.3.0" />
+		<PackageReference Include="AvaloniaEdit.TextMate" Version="11.3.0" />
 		<PackageReference Include="Quartz" Version="3.14.0" />
 		<PackageReference Include="TextMateSharp.Grammars" Version="1.0.66" />
 		<PackageReference Include="Irihi.Ursa.Themes.Semi" Version="1.11.0" />
