@@ -16,14 +16,14 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Avalonia.Xaml.Behaviors" Version="11.3.0" />
+		<PackageReference Include="Avalonia.Xaml.Behaviors" Version="11.3.0.6" />
 		<PackageReference Include="CodeWF.EventBus" Version="3.4.5" />
-		<PackageReference Include="Prism.DryIoc.Avalonia" Version="9.0.537.11130" />
-		<PackageReference Include="Avalonia.ReactiveUI" Version="11.3.0" />
+		<PackageReference Include="Prism.DryIoc.Avalonia" Version="9.0.537.11300-pre" />
+		<PackageReference Include="Avalonia.ReactiveUI" Version="11.3.1" />
 		<PackageReference Include="AvaloniaEdit.TextMate" Version="11.3.0" />
-		<PackageReference Include="Semi.Avalonia.DataGrid" Version="11.2.1.7" />
-		<PackageReference Include="Irihi.Ursa.Themes.Semi" Version="1.11.0" />
-		<PackageReference Include="TextMateSharp.Grammars" Version="1.0.66" />
+		<PackageReference Include="Semi.Avalonia.DataGrid" Version="11.2.1.8" />
+		<PackageReference Include="Irihi.Ursa.Themes.Semi" Version="1.11.1" />
+		<PackageReference Include="TextMateSharp.Grammars" Version="1.0.69" />
 		<PackageReference Include="CodeWF.AvaloniaControls" Version="0.0.9" />
 	</ItemGroup>
 
