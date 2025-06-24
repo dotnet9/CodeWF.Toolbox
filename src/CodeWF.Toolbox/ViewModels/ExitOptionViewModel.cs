@@ -1,8 +1,10 @@
-﻿using ReactiveUI;
+﻿using Irihi.Avalonia.Shared.Contracts;
+using ReactiveUI;
+using System;
 
 namespace CodeWF.Toolbox.ViewModels;
 
-public class ExitOptionViewModel : ViewModelBase
+public class ExitOptionViewModel : ViewModelBase, IDialogContext
 {
     private bool _hideTrayIconOnClose;
 
@@ -19,4 +21,16 @@ public class ExitOptionViewModel : ViewModelBase
         get => _needExitDialogOnClose;
         set => this.RaiseAndSetIfChanged(ref _needExitDialogOnClose, value);
     }
+
+    public void Close()
+    {
+        RequestClose?.Invoke(this, null);
+    }
+
+    public void RaiseCloseHandler()
+    {
+        Close();
+    }
+
+    public event EventHandler<object?>? RequestClose;
 }
