@@ -5,11 +5,11 @@
     xmlns:core="clr-namespace:CodeWF.Core;assembly=CodeWF.Core"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:u="https://irihi.tech/ursa"
     xmlns:prism="http://prismlibrary.com/"
-    xmlns:i18n="https://codewf.com"
+    xmlns:codewf="https://codewf.com"
     xmlns:language="clr-namespace:Localization"
     xmlns:vm="clr-namespace:CodeWF.Toolbox.ViewModels"
-    xmlns:u="https://irihi.tech/ursa"
     prism:ViewModelLocator.AutoWireViewModel="True"
     Width="600" WindowStartupLocation="CenterOwner"
     Height="500"
@@ -17,7 +17,7 @@
     d:DesignWidth="500"
     mc:Ignorable="d" Padding="10"
     x:DataType="vm:SettingViewModel"
-    Title="{i18n:I18n {x:Static language:SettingView.Title}}">
+    Title="{codewf:I18n {x:Static language:SettingView.Title}}">
     <Design.DataContext>
         <!-- This only sets the DataContext for the previewer in an IDE,
          to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
@@ -32,7 +32,7 @@
                 <Viewbox Height="24" Width="24" IsHitTestVisible="False">
                     <Image Source="\Assets\logo.ico" />
                 </Viewbox>
-                <TextBlock Text="{i18n:I18n {x:Static language:SettingView.Title}}" />
+                <TextBlock Text="{codewf:I18n {x:Static language:SettingView.Title}}" />
             </StackPanel>
         </Grid>
     </u:UrsaWindow.LeftContent>
@@ -42,10 +42,22 @@
             HorizontalAlignment="Left"
             TextWrapping="Wrap" MaxHeight="30"
             Classes="Tertiary H6" TextTrimming="CharacterEllipsis"
-            Text="{i18n:I18n {Binding #MyTab.Tag}}"
+            Text="{codewf:I18n {Binding #MyTab.Tag}}"
             Theme="{StaticResource TitleTextBlock}" />
-        <TabControl TabStripPlacement="Top" Theme="{StaticResource CardTabControl}"
+        <TabControl TabStripPlacement="Top"
                     prism:RegionManager.RegionName="{x:Static core:RegionNames.SettingRegion}"
-                    Name="MyTab" />
+                    Name="MyTab">
+			<TabControl.Styles>
+                <Style Selector="codewf|TrapezoidShapedTabItem">
+                    <Setter Property="CornerRadius" Value="10 10 0 0" />
+                    <Setter Property="Padding" Value="12 8" />
+                    <Setter Property="MinHeight" Value="35" />
+                    <Setter Property="BorderThickness" Value="1" />
+                </Style>
+            </TabControl.Styles>
+            <TabControl.Resources>
+                <SolidColorBrush x:Key="TabItemLinePipeSelectedBackground">#DDCCCCCC</SolidColorBrush>
+            </TabControl.Resources>
+        </TabControl>
     </StackPanel>
 </u:UrsaWindow>

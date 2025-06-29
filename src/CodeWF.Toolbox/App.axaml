@@ -6,13 +6,14 @@
     xmlns:language="clr-namespace:Localization"
     xmlns:prism="http://prismlibrary.com/"
     xmlns:semi="https://irihi.tech/semi"
-    xmlns:u-Semi="https://irihi.tech/ursa/themes/semi">
+    xmlns:u-Semi="https://irihi.tech/ursa/themes/semi"
+    xmlns:codewf="https://codewf.com">
     <prism:PrismApplication.Styles>
 		<semi:SemiTheme Locale="zh-CN" />
 		<semi:AvaloniaEditSemiTheme />
         <u-Semi:SemiTheme Locale="zh-CN"/>
         <StyleInclude Source="../Styles/Index.axaml" />
-        <StyleInclude Source="avares://CodeWF.AvaloniaControls/Themes/Index.axaml" />
+        <codewf:CodeWFTheme />
         <StyleInclude Source="avares://MarkdownAIRender/Index.axaml" />
     </prism:PrismApplication.Styles>
     <TrayIcon.Icons>

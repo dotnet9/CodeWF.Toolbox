@@ -101,10 +101,12 @@ public class PolyTranslateViewModel : ReactiveObject
             };
 
         var vm = _container.Resolve<ChoiceLanguagesViewModel>();
-        vm.SelectedLanguages = new RangeObservableCollection<string> { _choiceLanguages };
+        vm.SelectedLanguages = [];
+        vm.SelectedLanguages.AddRange(_choiceLanguages);
         var allCulture = I18nManager.Instance.GetAvailableCultures();
         var canChoiceCulture = allCulture.Select(culture => culture.EnglishName).Except(_choiceLanguages);
-        vm.AllLanguages = new RangeObservableCollection<string> { canChoiceCulture };
+        vm.AllLanguages = [];
+        vm.AllLanguages.AddRange(canChoiceCulture);
         await _overlayDialogService.ShowModal(DialogNames.ChoiceLanguages, vm, HostIds.Main, option);
         _choiceLanguages = vm.SelectedLanguages.ToList();
         Languages = string.Join(",", vm.SelectedLanguages);

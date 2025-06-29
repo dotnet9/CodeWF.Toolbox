@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Threading;
+using CodeWF.Core.Events;
 using Ursa.Controls;
 
 namespace CodeWF.Toolbox.Services;
@@ -116,6 +117,7 @@ internal class ApplicationService : IApplicationService
         {
             AppConfigHelper.Set(ThemeKey, theme);
             ChangeTheme(theme);
+            EventBus.EventBus.Default.Publish(new ThemeChangedCommand());
         }
         catch
         {
