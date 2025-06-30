@@ -52,12 +52,8 @@
                     <Setter Property="CornerRadius" Value="10 10 0 0" />
                     <Setter Property="Padding" Value="12 8" />
                     <Setter Property="MinHeight" Value="35" />
-                    <Setter Property="BorderThickness" Value="1" />
                 </Style>
             </TabControl.Styles>
-            <TabControl.Resources>
-                <SolidColorBrush x:Key="TabItemLinePipeSelectedBackground">#DDCCCCCC</SolidColorBrush>
-            </TabControl.Resources>
         </TabControl>
     </StackPanel>
 </u:UrsaWindow>
