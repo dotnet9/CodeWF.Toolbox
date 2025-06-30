@@ -44,11 +44,11 @@
             Classes="Tertiary H6" TextTrimming="CharacterEllipsis"
             Text="{codewf:I18n {Binding #MyTab.Tag}}"
             Theme="{StaticResource TitleTextBlock}" />
-        <TabControl TabStripPlacement="Top"
+        <TabControl TabStripPlacement="Top" Theme="{StaticResource TrapezoidShapedTabControl}"
                     prism:RegionManager.RegionName="{x:Static core:RegionNames.SettingRegion}"
                     Name="MyTab">
 			<TabControl.Styles>
-                <Style Selector="codewf|TrapezoidShapedTabItem">
+                <Style Selector="TabItem">
                     <Setter Property="CornerRadius" Value="10 10 0 0" />
                     <Setter Property="Padding" Value="12 8" />
                     <Setter Property="MinHeight" Value="35" />
