@@ -22,7 +22,7 @@
 		<PackageReference Include="AvaloniaEdit.TextMate" Version="11.3.0" />
 		<PackageReference Include="Semi.Avalonia.DataGrid" Version="11.2.1.8" />
 		<PackageReference Include="Irihi.Ursa.Themes.Semi" Version="1.11.1" />
-		<PackageReference Include="TextMateSharp.Grammars" Version="1.0.69" />
+		<PackageReference Include="TextMateSharp.Grammars" Version="1.0.70" />
 	</ItemGroup>
 
 	<ItemGroup>

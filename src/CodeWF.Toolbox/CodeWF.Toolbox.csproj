@@ -42,7 +42,7 @@
 		<PackageReference Include="Prism.Avalonia" Version="9.0.537.11300-pre" />
 		<PackageReference Include="Prism.DryIoc.Avalonia" Version="9.0.537.11300-pre" />
 		<PackageReference Include="Avalonia.ReactiveUI" Version="11.3.2" />
-		<PackageReference Include="Semi.Avalonia.AvaloniaEdit" Version="11.2.0" />
+		<PackageReference Include="Semi.Avalonia.AvaloniaEdit" Version="11.2.0.1" />
 	</ItemGroup>
 
 	<ItemGroup>
