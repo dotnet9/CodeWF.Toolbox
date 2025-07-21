@@ -23,6 +23,6 @@
 		<PackageReference Include="Avalonia.ReactiveUI" Version="11.3.2" />
 		<PackageReference Include="CodeWF.EventBus" Version="3.4.5" />
 		<PackageReference Include="Semi.Avalonia" Version="11.2.1.9" />
-		<PackageReference Include="YY-Thunks" Version="1.1.8-Beta3" />
+		<PackageReference Include="YY-Thunks" Version="1.1.8-Beta4" />
 	</ItemGroup>
 </Project>
