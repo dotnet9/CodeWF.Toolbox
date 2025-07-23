@@ -27,6 +27,11 @@ public partial class MainWindow : UrsaWindow
         InitializeComponent();
         Init();
         AdjustWindowSize();
+
+        if (OperatingSystem.IsWindows() && !OperatingSystem.IsWindowsVersionAtLeast(6, 2)) // Windows 7╪╟ртоб
+        {
+            SystemDecorations = SystemDecorations.None;
+        }
     }
 
     private void InitializeComponent()
