@@ -2,11 +2,9 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:u="https://irihi.tech/ursa"
+             xmlns:codewf="https://codewf.com" 
+             HorizontalContentAlignment="Right" VerticalContentAlignment="Center" Padding="0 0 10 0"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="CodeWF.Toolbox.Views.MainTaskView">
-	<u:DualBadge Classes="Plastic" Header="在线" CornerRadius="15" Padding="8 1"
-                 HeaderBackground="#73D13D" HeaderForeground="#FFFFFF" Background="#F6FFED" Foreground="#000000" BorderBrush="#B7EB8F" BorderThickness="1">
-        15
-    </u:DualBadge>
+    <codewf:StatusLabel LeftText="在线" RightText="58" Kind="{x:Static codewf:StatusLabelKind.Alarm}" />
 </UserControl>

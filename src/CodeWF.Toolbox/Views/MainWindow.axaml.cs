@@ -8,6 +8,7 @@ using CodeWF.Toolbox.ViewModels;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
+using CodeWF.AvaloniaControls.Helpers;
 using Ursa.Controls;
 
 namespace CodeWF.Toolbox.Views;
@@ -27,11 +28,7 @@ public partial class MainWindow : UrsaWindow
         InitializeComponent();
         Init();
         AdjustWindowSize();
-
-        if (OperatingSystem.IsWindows() && !OperatingSystem.IsWindowsVersionAtLeast(6, 2)) // Windows 7╪╟ртоб
-        {
-            SystemDecorations = SystemDecorations.None;
-        }
+        this.EnableOSVersionAwareDecorations();
     }
 
     private void InitializeComponent()
