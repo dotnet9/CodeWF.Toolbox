@@ -1,6 +1,9 @@
 using Avalonia.Controls;
 using Avalonia.Markup.Xaml;
+using Avalonia.Media;
+using Avalonia.Media.Imaging;
 using AvaloniaXmlTranslator;
+using CodeWF.AvaloniaControls.Helpers;
 using CodeWF.Core.IServices;
 using CodeWF.EventBus;
 using CodeWF.Toolbox.Commands;
@@ -8,7 +11,6 @@ using CodeWF.Toolbox.ViewModels;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
-using CodeWF.AvaloniaControls.Helpers;
 using Ursa.Controls;
 
 namespace CodeWF.Toolbox.Views;
@@ -29,6 +31,10 @@ public partial class MainWindow : UrsaWindow
         Init();
         AdjustWindowSize();
         this.EnableOSVersionAwareDecorations();
+
+        RenderOptions.SetTextRenderingMode(this, TextRenderingMode.SubpixelAntialias);
+        RenderOptions.SetBitmapInterpolationMode(this, BitmapInterpolationMode.HighQuality);
+        RenderOptions.SetEdgeMode(this, EdgeMode.Antialias);
     }
 
     private void InitializeComponent()
