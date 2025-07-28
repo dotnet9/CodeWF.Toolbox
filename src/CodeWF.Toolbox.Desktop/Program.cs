@@ -21,6 +21,7 @@ internal sealed class Program
         => AppBuilder.Configure<App>()
             .UsePlatformDetect()
             //.With(new Win32PlatformOptions() { RenderingMode = [Win32RenderingMode.Software] })   // Software rendering mode
+            .WithFont_SourceHanSansCN()
             .UseReactiveUI()
             .LogToTrace();
 }

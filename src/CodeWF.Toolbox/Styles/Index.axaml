@@ -4,10 +4,6 @@
     <Styles.Resources>
         <system:Double x:Key="ControlContentThemeFontSize">12</system:Double>
         <FontFamily x:Key="ContentControlThemeFontFamily">Cascadia Code,Consolas,Menlo,Monospace</FontFamily>
-        <FontFamily x:Key="NotoSansSC">avares://CodeWF.Toolbox/Assets/Fonts#Noto Sans SC</FontFamily>
     </Styles.Resources>
     <StyleInclude Source="avares://AvaloniaEdit/Themes/Fluent/AvaloniaEdit.xaml" />
-    <Style Selector="Window">
-        <Setter Property="FontFamily" Value="{DynamicResource NotoSansSC}" />
-    </Style>
 </Styles>
