@@ -6,7 +6,6 @@
 		<ApplicationIcon>logo.ico</ApplicationIcon>
 		<Nullable>enable</Nullable>
 		<BuiltInComInteropSupport>true</BuiltInComInteropSupport>
-		<PublishAot>true</PublishAot>
 		<IncludeNativeLibrariesForSelfExtract>true</IncludeNativeLibrariesForSelfExtract>
 		<AssemblyName>codewf</AssemblyName>
 		<!-- 禁用自动生成程序集属性 -->
