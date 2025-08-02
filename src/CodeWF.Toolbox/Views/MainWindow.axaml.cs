@@ -11,6 +11,7 @@ using CodeWF.Toolbox.ViewModels;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
+using Avalonia.Platform;
 using Ursa.Controls;
 
 namespace CodeWF.Toolbox.Views;
@@ -115,33 +116,16 @@ public partial class MainWindow : UrsaWindow
 
     private void AdjustWindowSize()
     {
-        var screen = Screens.Primary;
-        if (screen == null)
+        if (Screens.Primary is not { } screen)
         {
             return;
         }
 
-        var width = screen.WorkingArea.Width;
-        var height = screen.WorkingArea.Height;
-
-        switch (width)
-        {
-            case <= 1920 when height <= 1080:
-                Width = 800;
-                Height = 580;
-                break;
-            case <= 2560 when height <= 1440:
-                Width = 1180;
-                Height = 720;
-                break;
-            case <= 3840 when height <= 2160:
-                Width = 1300;
-                Height = 900;
-                break;
-            default:
-                Width = 1520;
-                Height = 1080;
-                break;
-        }
+        const double resolutionThreshold = 1920 + 50;
+        var isSmaller = screen.WorkingArea.Width < resolutionThreshold;
+        var targetWidth = isSmaller ? 1440 : 1920;
+        var targetHeight = isSmaller ? 810 : 1080;
+        MinWidth = Width = Math.Min(targetWidth, screen.WorkingArea.Width);
+        MinHeight = Height = Math.Min(targetHeight, screen.WorkingArea.Height);
     }
 }
