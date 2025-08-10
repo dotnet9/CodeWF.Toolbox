@@ -11,9 +11,8 @@ namespace Localization
     {
         public static readonly string Title = "Localization.XmlTranslatorManager.Title";
     }
-}
-namespace Localization
-{
+
+
     public static class MergeXmlFilesView
     {
         public static readonly string Title = "Localization.MergeXmlFilesView.Title";
@@ -30,12 +29,15 @@ namespace Localization
         public static readonly string ReadXmlFilesExceptionTitle = "Localization.MergeXmlFilesView.ReadXmlFilesExceptionTitle";
         public static readonly string ReadXmlFilesExceptionContent = "Localization.MergeXmlFilesView.ReadXmlFilesExceptionContent";
     }
-}
-namespace Localization
-{
+
+
     public static class ManageXmlFilesView
     {
         public static readonly string Title = "Localization.ManageXmlFilesView.Title";
         public static readonly string Description = "Localization.ManageXmlFilesView.Description";
     }
+
+
 }
+
+

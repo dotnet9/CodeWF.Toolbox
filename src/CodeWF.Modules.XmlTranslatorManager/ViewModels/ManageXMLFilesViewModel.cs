@@ -3,16 +3,15 @@ using Avalonia.Data.Core;
 using Avalonia.Markup.Xaml.MarkupExtensions;
 using Avalonia.Markup.Xaml.MarkupExtensions.CompiledBindings;
 using Avalonia.Platform.Storage;
-using AvaloniaXmlTranslator;
 using CodeWF.AvaloniaControls.Extensions;
 using CodeWF.Core.IServices;
 using CodeWF.Modules.XmlTranslatorManager.Models;
 using CodeWF.Tools.Exports;
 using CodeWF.Tools.FileExtensions;
+using Lang.Avalonia;
 using ReactiveUI;
 using System.Data;
 using System.Xml.Linq;
-using Ursa.Controls;
 
 namespace CodeWF.Modules.XmlTranslatorManager.ViewModels;
 

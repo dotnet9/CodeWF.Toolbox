@@ -2,7 +2,6 @@ using Avalonia.Controls;
 using Avalonia.Markup.Xaml;
 using Avalonia.Media;
 using Avalonia.Media.Imaging;
-using AvaloniaXmlTranslator;
 using CodeWF.AvaloniaControls.Helpers;
 using CodeWF.Core.IServices;
 using CodeWF.EventBus;
@@ -11,7 +10,7 @@ using CodeWF.Toolbox.ViewModels;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
-using Avalonia.Platform;
+using Lang.Avalonia;
 using Ursa.Controls;
 
 namespace CodeWF.Toolbox.Views;

@@ -1,13 +1,12 @@
 ﻿using AvaloniaEdit;
-using AvaloniaXmlTranslator;
 using CodeWF.Core.IServices;
 using CodeWF.Modules.XmlTranslatorManager.Models;
 using CodeWF.Tools.FileExtensions;
 using ReactiveUI;
 using System.Collections.ObjectModel;
-using System.Reactive;
 using System.Xml;
 using System.Xml.Linq;
+using Lang.Avalonia;
 
 namespace CodeWF.Modules.XmlTranslatorManager.ViewModels;
 

@@ -1,5 +1,4 @@
 ﻿using Avalonia.Data.Converters;
-using AvaloniaXmlTranslator;
 using CodeWF.Modules.Development.Models;
 using CodeWF.Tools.Extensions;
 using System.Globalization;

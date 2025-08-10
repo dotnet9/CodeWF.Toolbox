@@ -7,24 +7,22 @@
 //------------------------------------------------------------------------------
 namespace Localization
 {
-    public class DevelopmentModule
+    public static class DevelopmentModule
     {
         public const string Title = "Localization.DevelopmentModule.Title";
     }
-}
-namespace Localization
-{
-    public class YamlPrettifyView
+
+
+    public static class YamlPrettifyView
     {
         public const string Title = "Localization.YamlPrettifyView.Title";
         public const string Description = "Localization.YamlPrettifyView.Description";
         public const string RawYaml = "Localization.YamlPrettifyView.RawYaml";
         public const string PrettifiedVersionYAML = "Localization.YamlPrettifyView.PrettifiedVersionYAML";
     }
-}
-namespace Localization
-{
-    public class JsonPrettifyView
+
+
+    public static class JsonPrettifyView
     {
         public const string Title = "Localization.JsonPrettifyView.Title";
         public const string Description = "Localization.JsonPrettifyView.Description";
@@ -33,10 +31,9 @@ namespace Localization
         public const string SortKey = "Localization.JsonPrettifyView.SortKey";
         public const string IndentSize = "Localization.JsonPrettifyView.IndentSize";
     }
-}
-namespace Localization
-{
-    public class TestView
+
+
+    public static class TestView
     {
         public const string Title = "Localization.TestView.Title";
         public const string Description = "Localization.TestView.Description";
@@ -55,4 +52,8 @@ namespace Localization
         public const string FilterAlarms = "Localization.TestView.FilterAlarms";
         public const string FilterNormal = "Localization.TestView.FilterNormal";
     }
+
+
 }
+
+

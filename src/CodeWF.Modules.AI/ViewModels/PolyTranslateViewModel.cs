@@ -1,11 +1,11 @@
-﻿using AvaloniaXmlTranslator;
-using CodeWF.AvaloniaControls.Extensions;
+﻿using System.Globalization;
 using CodeWF.Core;
 using CodeWF.Modules.AI.Helpers;
 using CodeWF.Modules.AI.Models;
 using ReactiveUI;
 using System.Reactive;
 using System.Reactive.Linq;
+using Lang.Avalonia;
 using Ursa.Controls;
 using Ursa.PrismExtension;
 
@@ -77,10 +77,8 @@ public class PolyTranslateViewModel : ReactiveObject
         try
         {
             await _apiClient.CreateChatGptClient(_chatGptOptions.PolyTranslateHttpUrl,
-                new PolyTranslateRequest(AskContent, _choiceLanguages), result =>
-                {
-                    ResponseContent += result + "\r\n";
-                }, status =>
+                new PolyTranslateRequest(AskContent, _choiceLanguages),
+                result => { ResponseContent += result + "\r\n"; }, status =>
                 {
                     //AskContent = string.Empty;
                 });
@@ -103,7 +101,7 @@ public class PolyTranslateViewModel : ReactiveObject
         var vm = _container.Resolve<ChoiceLanguagesViewModel>();
         vm.SelectedLanguages = [];
         vm.SelectedLanguages.AddRange(_choiceLanguages);
-        var allCulture = I18nManager.Instance.GetAvailableCultures();
+        var allCulture = GetAvailableCultures();
         var canChoiceCulture = allCulture.Select(culture => culture.EnglishName).Except(_choiceLanguages);
         vm.AllLanguages = [];
         vm.AllLanguages.AddRange(canChoiceCulture);
@@ -111,5 +109,16 @@ public class PolyTranslateViewModel : ReactiveObject
         _choiceLanguages = vm.SelectedLanguages.ToList();
         Languages = string.Join(",", vm.SelectedLanguages);
         ConfigHelper.UpdateTranslateLanguages(_choiceLanguages);
+    }
+
+    private List<CultureInfo> GetAvailableCultures()
+    {
+        var availableCultures = CultureInfo.GetCultures(CultureTypes.AllCultures)
+            .Where(culture => !CultureInfo.InvariantCulture.Equals(culture))
+            //.Except(existingLanguages)
+            .OrderBy(culture => culture.DisplayName)
+            .ToList();
+
+        return availableCultures;
     }
 }

@@ -15,7 +15,10 @@ using Prism.Ioc;
 using Prism.Modularity;
 using Prism.Navigation.Regions;
 using System;
+using System.Globalization;
 using System.Linq;
+using Lang.Avalonia;
+using Lang.Avalonia.Xml;
 using Ursa.PrismExtension;
 using AIModule = CodeWF.Modules.AI.AIModule;
 using ConverterModule = CodeWF.Modules.Converter.ConverterModule;
@@ -35,6 +38,7 @@ public partial class App : PrismApplication
     public override void Initialize()
     {
         AvaloniaXamlLoader.Load(this);
+        I18nManager.Instance.Register(new XmlLangPlugin(), new CultureInfo("zh-CN"), out _);
         base.Initialize(); // <-- Required
     }
 

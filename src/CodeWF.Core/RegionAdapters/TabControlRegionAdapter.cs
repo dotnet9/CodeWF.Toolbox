@@ -1,6 +1,6 @@
 ﻿using Avalonia.Controls;
-using AvaloniaXmlTranslator.Markup;
 using System.Collections.Specialized;
+using Lang.Avalonia.MarkupExtensions;
 
 namespace CodeWF.Core.RegionAdapters;
 

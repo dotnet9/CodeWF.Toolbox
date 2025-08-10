@@ -7,6 +7,7 @@
 	<assembly fullname="CodeWF.Modules.Development" preserve="All" />
 	<assembly fullname="CodeWF.Modules.XmlTranslatorManager" preserve="All" />
 	<assembly fullname="AvaloniaExtensions.Axaml" preserve="All" />
+	<assembly fullname="Lang.Avalonia" preserve="All" />
 	<assembly fullname="Ursa.PrismExtension" preserve="All" />
 	<assembly fullname="Prism" preserve="All" />
 	<assembly fullname="DryIoc" preserve="All" />
@@ -18,5 +19,4 @@
 	<assembly fullname="Quartz" preserve="All" />
 	<assembly fullname="System.Net.Http" preserve="All" />
 	<assembly fullname="System.Configuration.ConfigurationManager" preserve="All" />
-	<assembly fullname="AvaloniaXmlTranslator" preserve="All" />
 </linker>

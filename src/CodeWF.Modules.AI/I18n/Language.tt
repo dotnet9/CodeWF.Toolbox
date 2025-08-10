@@ -18,15 +18,50 @@
 <#
     string templateDirectory = Path.GetDirectoryName(Host.TemplateFile);
     string xmlFilePath = Directory.GetFiles(templateDirectory, "*.xml").FirstOrDefault();
-    if (xmlFilePath!= null)
+    
+    if (xmlFilePath != null)
     {
         XDocument xdoc = XDocument.Load(xmlFilePath);
-        var classNodes = xdoc.Nodes().OfType<XElement>().DescendantsAndSelf().Where(e => e.Descendants().Count() == 0).Select(e => e.Parent).Distinct().ToList();
+        // 获取所有作为类节点的元素（有子节点但没有孙节点的元素）
+        var classNodes = xdoc.Nodes().OfType<XElement>()
+                            .DescendantsAndSelf()
+                            .Where(e => e.HasElements && !e.Elements().Any(c => c.HasElements))
+                            .Distinct()
+                            .ToList();
+
+        // 按命名空间分组
+        var namespaceGroups = new Dictionary<string, List<XElement>>();
+        
         foreach (var classNode in classNodes)
         {
             var namespaceSegments = classNode.Ancestors().Reverse().Select(node => node.Name.LocalName);
             string namespaceName = string.Join(".", namespaceSegments);
-            GenerateClasses(classNode, namespaceName);
+            
+            if (!namespaceGroups.ContainsKey(namespaceName))
+            {
+                namespaceGroups[namespaceName] = new List<XElement>();
+            }
+            namespaceGroups[namespaceName].Add(classNode);
+        }
+
+        // 生成每个命名空间及其包含的类
+        foreach (var nsGroup in namespaceGroups)
+        {
+            string namespaceName = nsGroup.Key;
+            var classNodesInNs = nsGroup.Value;
+            
+            // 生成命名空间块
+            WriteLine($"namespace {namespaceName}");
+            WriteLine("{");
+            
+            // 在命名空间内生成所有类
+            foreach (var classNode in classNodesInNs)
+            {
+                GenerateClass(classNode, namespaceName);
+            }
+            
+            WriteLine("}");
+            WriteLine("\r\n"); // 命名空间之间添加空行
         }
     }
     else
@@ -34,23 +69,24 @@
         Write("XML file not found, please ensure that there is an XML file in the current directory");
     }
 
-    void GenerateClasses(XElement element, string namespaceName)
+    // 生成单个类的代码
+    void GenerateClass(XElement element, string namespaceName)
     {
         string className = element.Name.LocalName;
-        StringBuilder classBuilder = new StringBuilder();
-        classBuilder.AppendLine($"namespace {namespaceName}");
-        classBuilder.AppendLine("{");
-        classBuilder.AppendLine($"    public static class {className}");
-        classBuilder.AppendLine("    {");
+        
+        WriteLine($"    public static class {className}");
+        WriteLine("    {");
+        
         var fieldNodes = element.Elements();
         foreach (var fieldNode in fieldNodes)
         {
             var propertyName = fieldNode.Name.LocalName;
+            // 构建完整的语言键
             var languageKey = $"{namespaceName}.{className}.{propertyName}";
-            classBuilder.AppendLine($"        public static readonly string {propertyName} = \"{languageKey}\";");
+            WriteLine($"        public static readonly string {propertyName} = \"{languageKey}\";");
         }
-        classBuilder.AppendLine("    }");
-        classBuilder.AppendLine("}");
-        Write(classBuilder.ToString());
+        
+        WriteLine("    }");
+        WriteLine("\r\n"); // 类之间添加空行
     }
 #>

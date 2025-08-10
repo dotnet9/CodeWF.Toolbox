@@ -1,6 +1,6 @@
 ﻿using Avalonia.Controls;
 using Avalonia.Styling;
-using AvaloniaXmlTranslator;
+using CodeWF.Core.Events;
 using CodeWF.Core.Helpers;
 using CodeWF.Core.IServices;
 using CodeWF.Toolbox.Models;
@@ -11,7 +11,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Threading;
-using CodeWF.Core.Events;
+using Lang.Avalonia;
 using Ursa.Controls;
 
 namespace CodeWF.Toolbox.Services;
@@ -136,7 +136,7 @@ internal class ApplicationService : IApplicationService
 
             var currentCulture = Thread.CurrentThread.CurrentCulture.Name;
             if (!string.IsNullOrWhiteSpace(currentCulture) &&
-                I18nManager.Instance.Resources.ContainsKey(currentCulture))
+                I18nManager.Instance.GetLanguages().Exists(c=>c.CultureName == currentCulture))
             {
                 return currentCulture;
             }

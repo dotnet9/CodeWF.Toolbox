@@ -11,9 +11,8 @@ namespace Localization
     {
         public static readonly string Title = "Localization.ConverterModule.Title";
     }
-}
-namespace Localization
-{
+
+
     public static class JsonToYamlView
     {
         public static readonly string Title = "Localization.JsonToYamlView.Title";
@@ -23,9 +22,8 @@ namespace Localization
         public static readonly string Copy = "Localization.JsonToYamlView.Copy";
         public static readonly string Clear = "Localization.JsonToYamlView.Clear";
     }
-}
-namespace Localization
-{
+
+
     public static class YamlToJsonView
     {
         public static readonly string Title = "Localization.YamlToJsonView.Title";
@@ -35,9 +33,8 @@ namespace Localization
         public static readonly string Copy = "Localization.YamlToJsonView.Copy";
         public static readonly string Clear = "Localization.YamlToJsonView.Clear";
     }
-}
-namespace Localization
-{
+
+
     public static class ImageToIconView
     {
         public static readonly string Title = "Localization.ImageToIconView.Title";
@@ -50,9 +47,8 @@ namespace Localization
         public static readonly string MemoContent1 = "Localization.ImageToIconView.MemoContent1";
         public static readonly string MemoContent2 = "Localization.ImageToIconView.MemoContent2";
     }
-}
-namespace Localization
-{
+
+
     public static class DateTimeConverterView
     {
         public static readonly string Title = "Localization.DateTimeConverterView.Title";
@@ -68,9 +64,8 @@ namespace Localization
         public static readonly string RefreshButtonContent = "Localization.DateTimeConverterView.RefreshButtonContent";
         public static readonly string ConvertButtonContent = "Localization.DateTimeConverterView.ConvertButtonContent";
     }
-}
-namespace Localization
-{
+
+
     public static class NuoCheView
     {
         public static readonly string Title = "Localization.NuoCheView.Title";
@@ -92,4 +87,8 @@ namespace Localization
         public static readonly string SaveQrCodeSuccessMessage = "Localization.NuoCheView.SaveQrCodeSuccessMessage";
         public static readonly string SaveQrCodeErrorMessage = "Localization.NuoCheView.SaveQrCodeErrorMessage";
     }
+
+
 }
+
+

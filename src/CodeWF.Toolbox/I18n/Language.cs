@@ -13,9 +13,8 @@ namespace Localization
         public static readonly string ShowMainWindow = "Localization.MainModule.ShowMainWindow";
         public static readonly string Exit = "Localization.MainModule.Exit";
     }
-}
-namespace Localization
-{
+
+
     public static class MainWindow
     {
         public static readonly string SearchToolTip = "Localization.MainWindow.SearchToolTip";
@@ -23,9 +22,8 @@ namespace Localization
         public static readonly string SureExit = "Localization.MainWindow.SureExit";
         public static readonly string FindInTrayIcon = "Localization.MainWindow.FindInTrayIcon";
     }
-}
-namespace Localization
-{
+
+
     public static class DashboardView
     {
         public static readonly string Title = "Localization.DashboardView.Title";
@@ -35,16 +33,14 @@ namespace Localization
         public static readonly string AccessToolbox = "Localization.DashboardView.AccessToolbox";
         public static readonly string MissingTool = "Localization.DashboardView.MissingTool";
     }
-}
-namespace Localization
-{
+
+
     public static class SettingView
     {
         public static readonly string Title = "Localization.SettingView.Title";
     }
-}
-namespace Localization
-{
+
+
     public static class CommonSettingView
     {
         public static readonly string Title = "Localization.CommonSettingView.Title";
@@ -66,25 +62,22 @@ namespace Localization
         public static readonly string TurnOn = "Localization.CommonSettingView.TurnOn";
         public static readonly string TurnOff = "Localization.CommonSettingView.TurnOff";
     }
-}
-namespace Localization
-{
+
+
     public static class UpdateLogView
     {
         public static readonly string Title = "Localization.UpdateLogView.Title";
         public static readonly string Description = "Localization.UpdateLogView.Description";
     }
-}
-namespace Localization
-{
+
+
     public static class AboutView
     {
         public static readonly string Title = "Localization.AboutView.Title";
         public static readonly string Description = "Localization.AboutView.Description";
     }
-}
-namespace Localization
-{
+
+
     public static class ExitOptionView
     {
         public static readonly string Message = "Localization.ExitOptionView.Message";
@@ -92,4 +85,8 @@ namespace Localization
         public static readonly string DirectToClose = "Localization.ExitOptionView.DirectToClose";
         public static readonly string RememberMyChoice = "Localization.ExitOptionView.RememberMyChoice";
     }
+
+
 }
+
+

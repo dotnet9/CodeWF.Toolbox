@@ -14,7 +14,6 @@
         <u-Semi:SemiTheme Locale="zh-CN"/>
         <StyleInclude Source="../Styles/Index.axaml" />
         <codewf:CodeWFTheme />
-        <StyleInclude Source="avares://MarkdownAIRender/Index.axaml" />
     </prism:PrismApplication.Styles>
     <TrayIcon.Icons>
         <TrayIcons>

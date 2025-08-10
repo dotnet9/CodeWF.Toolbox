@@ -1,11 +1,11 @@
 ﻿using Avalonia.Platform.Storage;
-using AvaloniaXmlTranslator;
 using CodeWF.Core.IServices;
 using CodeWF.Modules.Development.Entities;
 using CodeWF.Modules.Development.Jobs;
 using CodeWF.Modules.Development.Models;
 using CodeWF.Tools.Extensions;
 using CodeWF.Tools.FileExtensions;
+using Lang.Avalonia;
 using Quartz;
 using Quartz.Impl;
 using ReactiveUI;

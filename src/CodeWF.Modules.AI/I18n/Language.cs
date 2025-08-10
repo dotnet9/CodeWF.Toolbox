@@ -11,37 +11,37 @@ namespace Localization
     {
         public static readonly string Title = "Localization.AIModule.Title";
     }
-}
-namespace Localization
-{
+
+
     public static class AskBotView
     {
         public static readonly string Title = "Localization.AskBotView.Title";
         public static readonly string Description = "Localization.AskBotView.Description";
     }
-}
-namespace Localization
-{
+
+
     public static class PolyTranslateView
     {
         public static readonly string Title = "Localization.PolyTranslateView.Title";
         public static readonly string Description = "Localization.PolyTranslateView.Description";
     }
-}
-namespace Localization
-{
+
+
     public static class Title2SlugView
     {
         public static readonly string Title = "Localization.Title2SlugView.Title";
         public static readonly string Description = "Localization.Title2SlugView.Description";
     }
-}
-namespace Localization
-{
+
+
     public static class ChoiceLanguagesView
     {
         public static readonly string LanguageKey = "Localization.ChoiceLanguagesView.LanguageKey";
         public static readonly string Selectable = "Localization.ChoiceLanguagesView.Selectable";
         public static readonly string Selected = "Localization.ChoiceLanguagesView.Selected";
     }
+
+
 }
+
+

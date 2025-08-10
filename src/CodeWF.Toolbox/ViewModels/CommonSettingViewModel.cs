@@ -1,6 +1,4 @@
-﻿using AvaloniaXmlTranslator;
-using AvaloniaXmlTranslator.Models;
-using CodeWF.Core.IServices;
+﻿using CodeWF.Core.IServices;
 using CodeWF.Core.RegionAdapters;
 using CodeWF.Toolbox.Commands;
 using CodeWF.Toolbox.Models;
@@ -8,6 +6,7 @@ using CodeWF.Toolbox.Services;
 using ReactiveUI;
 using System.Collections.ObjectModel;
 using System.Linq;
+using Lang.Avalonia;
 
 namespace CodeWF.Toolbox.ViewModels;
 
