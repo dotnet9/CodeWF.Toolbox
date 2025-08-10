@@ -24,7 +24,7 @@
 		<PackageReference Include="Avalonia.ReactiveUI" Version="$(AvaloniaVersion)" />
 		<PackageReference Include="AvaloniaEdit.TextMate" Version="11.3.0" />
 		<PackageReference Include="TextMateSharp.Grammars" Version="1.0.70" />
-		<PackageReference Include="Xaml.Behaviors" Version="$(AvaloniaVersion)" />
+		<PackageReference Include="Xaml.Behaviors" Version="$(AvaloniaThirdVersion)" />
 	</ItemGroup>
 
 	<ItemGroup>

@@ -16,7 +16,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Xaml.Behaviors" Version="$(AvaloniaVersion)" />
+		<PackageReference Include="Xaml.Behaviors" Version="$(AvaloniaThirdVersion)" />
 		<PackageReference Include="Prism.DryIoc.Avalonia" Version="9.0.537.11300-pre" />
 		<PackageReference Include="Avalonia.ReactiveUI" Version="$(AvaloniaVersion)" />
 		<PackageReference Include="AvaloniaEdit.TextMate" Version="11.3.0" />
