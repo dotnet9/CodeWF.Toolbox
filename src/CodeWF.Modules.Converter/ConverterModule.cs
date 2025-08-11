@@ -2,6 +2,7 @@
 using CodeWF.Core.Models;
 using CodeWF.Modules.Converter.ViewModels;
 using CodeWF.Modules.Converter.Views;
+using Lang.Avalonia;
 
 namespace CodeWF.Modules.Converter;
 
@@ -9,6 +10,7 @@ public class ConverterModule : IModule
 {
     public ConverterModule(IToolMenuService toolMenuService)
     {
+        I18nManager.Instance.AddResource(typeof(ConverterModule).Assembly);
         var groupName = Localization.ConverterModule.Title;
         toolMenuService.AddSeparator();
         toolMenuService.AddGroup(groupName, Icons.Converter);

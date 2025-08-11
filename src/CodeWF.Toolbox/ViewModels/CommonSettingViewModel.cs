@@ -1,4 +1,5 @@
-﻿using CodeWF.Core.IServices;
+﻿using CodeWF.Core.Helpers;
+using CodeWF.Core.IServices;
 using CodeWF.Core.RegionAdapters;
 using CodeWF.Toolbox.Commands;
 using CodeWF.Toolbox.Models;
@@ -41,7 +42,7 @@ public class CommonSettingViewModel : ViewModelBase, ITabItemBase
 
     private void InitLanguage()
     {
-        var languages = I18nManager.Instance.GetLanguages();
+        var languages = LangHelper.GetLanguages();
         Languages = new ObservableCollection<LocalizationLanguage>(languages);
 
         var language = _applicationService.GetCulture();

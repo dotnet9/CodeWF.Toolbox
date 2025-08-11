@@ -1,6 +1,7 @@
 ﻿using CodeWF.Core;
 using CodeWF.Core.Models;
 using CodeWF.Modules.Development.Views;
+using Lang.Avalonia;
 
 namespace CodeWF.Modules.Development;
 
@@ -8,6 +9,7 @@ public class DevelopmentModule : IModule
 {
     public DevelopmentModule(IToolMenuService toolMenuService)
     {
+        I18nManager.Instance.AddResource(typeof(DevelopmentModule).Assembly);
         var groupName = Localization.DevelopmentModule.Title;
         toolMenuService.AddSeparator();
         toolMenuService.AddGroup(groupName, Icons.Development);

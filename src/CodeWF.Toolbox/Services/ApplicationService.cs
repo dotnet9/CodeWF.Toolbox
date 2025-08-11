@@ -136,7 +136,7 @@ internal class ApplicationService : IApplicationService
 
             var currentCulture = Thread.CurrentThread.CurrentCulture.Name;
             if (!string.IsNullOrWhiteSpace(currentCulture) &&
-                I18nManager.Instance.GetLanguages().Exists(c=>c.CultureName == currentCulture))
+                LangHelper.GetLanguages()?.Exists(c => c.CultureName == currentCulture) == true)
             {
                 return currentCulture;
             }

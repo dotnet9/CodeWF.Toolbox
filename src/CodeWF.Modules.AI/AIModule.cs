@@ -2,6 +2,7 @@
 using CodeWF.Core.Models;
 using CodeWF.Modules.AI.Helpers;
 using CodeWF.Modules.AI.Views;
+using Lang.Avalonia;
 using Ursa.PrismExtension;
 
 namespace CodeWF.Modules.AI;
@@ -10,6 +11,7 @@ public class AIModule : IModule
 {
     public AIModule(IToolMenuService toolMenuService)
     {
+        I18nManager.Instance.AddResource(typeof(AIModule).Assembly);
         var groupName = Localization.AIModule.Title;
         toolMenuService.AddSeparator();
         toolMenuService.AddGroup(groupName, Icons.AI);
