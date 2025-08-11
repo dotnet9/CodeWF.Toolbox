@@ -5,6 +5,7 @@
 //     the code is regenerated.  
 // </auto-generated>  
 //------------------------------------------------------------------------------
+
 namespace Localization
 {
     public static class MainModule
@@ -14,55 +15,18 @@ namespace Localization
         public static readonly string Exit = "Localization.MainModule.Exit";
     }
 
-
     public static class MainWindow
     {
         public static readonly string SearchToolTip = "Localization.MainWindow.SearchToolTip";
-        public static readonly string NoMorePrompts = "Localization.MainWindow.NoMorePrompts";
-        public static readonly string SureExit = "Localization.MainWindow.SureExit";
         public static readonly string FindInTrayIcon = "Localization.MainWindow.FindInTrayIcon";
+        public static readonly string SureExit = "Localization.MainWindow.SureExit";
+        public static readonly string NoMorePrompts = "Localization.MainWindow.NoMorePrompts";
     }
-
-
-    public static class DashboardView
-    {
-        public static readonly string Title = "Localization.DashboardView.Title";
-        public static readonly string WeChat = "Localization.DashboardView.WeChat";
-        public static readonly string WeChatPublic = "Localization.DashboardView.WeChatPublic";
-        public static readonly string DesiredAvailabilityNotification = "Localization.DashboardView.DesiredAvailabilityNotification";
-        public static readonly string AccessToolbox = "Localization.DashboardView.AccessToolbox";
-        public static readonly string MissingTool = "Localization.DashboardView.MissingTool";
-    }
-
 
     public static class SettingView
     {
         public static readonly string Title = "Localization.SettingView.Title";
     }
-
-
-    public static class CommonSettingView
-    {
-        public static readonly string Title = "Localization.CommonSettingView.Title";
-        public static readonly string Description = "Localization.CommonSettingView.Description";
-        public static readonly string Theme = "Localization.CommonSettingView.Theme";
-        public static readonly string ThemePlaceholderText = "Localization.CommonSettingView.ThemePlaceholderText";
-        public static readonly string Default = "Localization.CommonSettingView.Default";
-        public static readonly string Light = "Localization.CommonSettingView.Light";
-        public static readonly string Dark = "Localization.CommonSettingView.Dark";
-        public static readonly string Aquatic = "Localization.CommonSettingView.Aquatic";
-        public static readonly string Desert = "Localization.CommonSettingView.Desert";
-        public static readonly string Dusk = "Localization.CommonSettingView.Dusk";
-        public static readonly string NightSky = "Localization.CommonSettingView.NightSky";
-        public static readonly string LanguageKey = "Localization.CommonSettingView.LanguageKey";
-        public static readonly string LanguagePlaceholderText = "Localization.CommonSettingView.LanguagePlaceholderText";
-        public static readonly string AutoOpenToolboxAtStartup = "Localization.CommonSettingView.AutoOpenToolboxAtStartup";
-        public static readonly string HideTrayIconOnClose = "Localization.CommonSettingView.HideTrayIconOnClose";
-        public static readonly string DisplayPromptWhenClosing = "Localization.CommonSettingView.DisplayPromptWhenClosing";
-        public static readonly string TurnOn = "Localization.CommonSettingView.TurnOn";
-        public static readonly string TurnOff = "Localization.CommonSettingView.TurnOff";
-    }
-
 
     public static class UpdateLogView
     {
@@ -70,23 +34,51 @@ namespace Localization
         public static readonly string Description = "Localization.UpdateLogView.Description";
     }
 
-
     public static class AboutView
     {
         public static readonly string Title = "Localization.AboutView.Title";
         public static readonly string Description = "Localization.AboutView.Description";
     }
 
-
     public static class ExitOptionView
     {
         public static readonly string Message = "Localization.ExitOptionView.Message";
-        public static readonly string HideTrayIcon = "Localization.ExitOptionView.HideTrayIcon";
-        public static readonly string DirectToClose = "Localization.ExitOptionView.DirectToClose";
         public static readonly string RememberMyChoice = "Localization.ExitOptionView.RememberMyChoice";
+        public static readonly string DirectToClose = "Localization.ExitOptionView.DirectToClose";
+        public static readonly string HideTrayIcon = "Localization.ExitOptionView.HideTrayIcon";
     }
 
+    public static class CommonSettingView
+    {
+        public static readonly string Title = "Localization.CommonSettingView.Title";
+        public static readonly string TurnOff = "Localization.CommonSettingView.TurnOff";
+        public static readonly string TurnOn = "Localization.CommonSettingView.TurnOn";
+        public static readonly string DisplayPromptWhenClosing = "Localization.CommonSettingView.DisplayPromptWhenClosing";
+        public static readonly string HideTrayIconOnClose = "Localization.CommonSettingView.HideTrayIconOnClose";
+        public static readonly string AutoOpenToolboxAtStartup = "Localization.CommonSettingView.AutoOpenToolboxAtStartup";
+        public static readonly string LanguagePlaceholderText = "Localization.CommonSettingView.LanguagePlaceholderText";
+        public static readonly string LanguageKey = "Localization.CommonSettingView.LanguageKey";
+        public static readonly string NightSky = "Localization.CommonSettingView.NightSky";
+        public static readonly string Dusk = "Localization.CommonSettingView.Dusk";
+        public static readonly string Desert = "Localization.CommonSettingView.Desert";
+        public static readonly string Aquatic = "Localization.CommonSettingView.Aquatic";
+        public static readonly string Dark = "Localization.CommonSettingView.Dark";
+        public static readonly string Light = "Localization.CommonSettingView.Light";
+        public static readonly string Default = "Localization.CommonSettingView.Default";
+        public static readonly string ThemePlaceholderText = "Localization.CommonSettingView.ThemePlaceholderText";
+        public static readonly string Theme = "Localization.CommonSettingView.Theme";
+        public static readonly string Description = "Localization.CommonSettingView.Description";
+    }
+
+    public static class DashboardView
+    {
+        public static readonly string Title = "Localization.DashboardView.Title";
+        public static readonly string MissingTool = "Localization.DashboardView.MissingTool";
+        public static readonly string AccessToolbox = "Localization.DashboardView.AccessToolbox";
+        public static readonly string DesiredAvailabilityNotification = "Localization.DashboardView.DesiredAvailabilityNotification";
+        public static readonly string WeChatPublic = "Localization.DashboardView.WeChatPublic";
+        public static readonly string WeChat = "Localization.DashboardView.WeChat";
+    }
 
 }
-
 

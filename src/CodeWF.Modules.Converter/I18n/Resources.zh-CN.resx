@@ -1,0 +1,276 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Localization.ConverterModule.Title" xml:space="preserve">
+    <value>转换器</value>
+  </data>
+  <data name="Localization.JsonToYamlView.Title" xml:space="preserve">
+    <value>在线转换将JSON转换为YAML。</value>
+  </data>
+  <data name="Localization.JsonToYamlView.Description" xml:space="preserve">
+    <value>JSON到YAML转换器</value>
+  </data>
+  <data name="Localization.JsonToYamlView.RawJson" xml:space="preserve">
+    <value>原始Json格式：</value>
+  </data>
+  <data name="Localization.JsonToYamlView.AfterYaml" xml:space="preserve">
+    <value>转换后的Yaml格式：</value>
+  </data>
+  <data name="Localization.JsonToYamlView.Copy" xml:space="preserve">
+    <value>复制</value>
+  </data>
+  <data name="Localization.JsonToYamlView.Clear" xml:space="preserve">
+    <value>清空</value>
+  </data>
+  <data name="Localization.YamlToJsonView.Title" xml:space="preserve">
+    <value>YAML到JSON转换器</value>
+  </data>
+  <data name="Localization.DateTimeConverterView.Title" xml:space="preserve">
+    <value>日期时间转换器</value>
+  </data>
+  <data name="Localization.NuoCheView.Title" xml:space="preserve">
+    <value>挪车二维码生成器</value>
+  </data>
+  <data name="Localization.NuoCheView.SaveQrCodeErrorMessage" xml:space="preserve">
+    <value>保存挪车二维码图片失败</value>
+  </data>
+  <data name="Localization.NuoCheView.SaveQrCodeSuccessMessage" xml:space="preserve">
+    <value>挪车二维码图片已保存</value>
+  </data>
+  <data name="Localization.NuoCheView.SaveQrCodeSuccessTitle" xml:space="preserve">
+    <value>成功</value>
+  </data>
+  <data name="Localization.NuoCheView.SaveQrCodeFileFormat" xml:space="preserve">
+    <value>PNG图片</value>
+  </data>
+  <data name="Localization.NuoCheView.PreviewNuoCheUrl" xml:space="preserve">
+    <value>预览挪车扫码网址</value>
+  </data>
+  <data name="Localization.NuoCheView.SaveQrCodeFileTitle" xml:space="preserve">
+    <value>保存挪车二维码图片</value>
+  </data>
+  <data name="Localization.NuoCheView.SaveNoQrCodeMessage" xml:space="preserve">
+    <value>请先生成挪车二维码</value>
+  </data>
+  <data name="Localization.NuoCheView.SaveNotificationTitle" xml:space="preserve">
+    <value>提示</value>
+  </data>
+  <data name="Localization.NuoCheView.CreateErrorMessage" xml:space="preserve">
+    <value>生成二维码失败</value>
+  </data>
+  <data name="Localization.NuoCheView.NeedInputTip" xml:space="preserve">
+    <value>请输入信息再点击生成</value>
+  </data>
+  <data name="Localization.NuoCheView.CreateButtonContent" xml:space="preserve">
+    <value>立即生成挪车二维码</value>
+  </data>
+  <data name="Localization.NuoCheView.DefaultSubTitlePrefix" xml:space="preserve">
+    <value>扫码联系车主或拨打电话</value>
+  </data>
+  <data name="Localization.NuoCheView.DefaultInputTitle" xml:space="preserve">
+    <value>扫码挪车</value>
+  </data>
+  <data name="Localization.NuoCheView.EnableSubTitle" xml:space="preserve">
+    <value>添加小标题</value>
+  </data>
+  <data name="Localization.NuoCheView.InputTitle" xml:space="preserve">
+    <value>挪车提示文字（尽量简短）</value>
+  </data>
+  <data name="Localization.NuoCheView.InputPhoneNumber" xml:space="preserve">
+    <value>挪车通知电话号码</value>
+  </data>
+  <data name="Localization.NuoCheView.Description" xml:space="preserve">
+    <value>用于生成挪车二维码</value>
+  </data>
+  <data name="Localization.DateTimeConverterView.ConvertButtonContent" xml:space="preserve">
+    <value>转换</value>
+  </data>
+  <data name="Localization.DateTimeConverterView.RefreshButtonContent" xml:space="preserve">
+    <value>RefreshButtonContent</value>
+  </data>
+  <data name="Localization.DateTimeConverterView.StopButtonContent" xml:space="preserve">
+    <value>停止</value>
+  </data>
+  <data name="Localization.DateTimeConverterView.StartButtonContent" xml:space="preserve">
+    <value>开始</value>
+  </data>
+  <data name="Localization.DateTimeConverterView.ConvertToTimestampLabel" xml:space="preserve">
+    <value>转换成Unix时间戳</value>
+  </data>
+  <data name="Localization.DateTimeConverterView.DateTimeFormatLabel" xml:space="preserve">
+    <value>时间 (年/月/日 时:分:秒)</value>
+  </data>
+  <data name="Localization.DateTimeConverterView.MillisecondsLabel" xml:space="preserve">
+    <value>毫秒</value>
+  </data>
+  <data name="Localization.DateTimeConverterView.SecondLabel" xml:space="preserve">
+    <value>秒</value>
+  </data>
+  <data name="Localization.DateTimeConverterView.TimetampLabel" xml:space="preserve">
+    <value>Unix时间戳 (Unix timestamp)</value>
+  </data>
+  <data name="Localization.DateTimeConverterView.CurrentTimestampLabel" xml:space="preserve">
+    <value>当前的Unix时间戳(Unix timestamp)是:</value>
+  </data>
+  <data name="Localization.DateTimeConverterView.Description" xml:space="preserve">
+    <value>将日期和时间转换为各种不同的格式</value>
+  </data>
+  <data name="Localization.YamlToJsonView.Clear" xml:space="preserve">
+    <value>清空</value>
+  </data>
+  <data name="Localization.YamlToJsonView.Copy" xml:space="preserve">
+    <value>复制</value>
+  </data>
+  <data name="Localization.ImageToIconView.Title" xml:space="preserve">
+    <value>图片转 ico 图标</value>
+  </data>
+  <data name="Localization.ImageToIconView.MemoContent2" xml:space="preserve">
+    <value>ico 文件用在网页，一般是把生成的 ico 文件，命名成 favicon.ico，并放到网站的根目录，然后在页面的 head 标签内加入以下代码：</value>
+  </data>
+  <data name="Localization.ImageToIconView.MemoContent1" xml:space="preserve">
+    <value>ico 文件一般可以用在网页的 logo 和应用程序的 logo。</value>
+  </data>
+  <data name="Localization.ImageToIconView.MemoTitle" xml:space="preserve">
+    <value>说明</value>
+  </data>
+  <data name="Localization.ImageToIconView.SeparateGenerateButtonContent" xml:space="preserve">
+    <value>单独生成 ico 图标</value>
+  </data>
+  <data name="Localization.ImageToIconView.MergeGenerateButtonContent" xml:space="preserve">
+    <value>合并生成 ico 图标</value>
+  </data>
+  <data name="Localization.ImageToIconView.DestImageSize" xml:space="preserve">
+    <value>目标尺寸</value>
+  </data>
+  <data name="Localization.ImageToIconView.ChoiceSourceImageDialogTitle" xml:space="preserve">
+    <value>请选择需要转换的图片</value>
+  </data>
+  <data name="Localization.ImageToIconView.ChoiceSourceImageDescription" xml:space="preserve">
+    <value>图片文件（格式：png、jpg、jpeg、ico、webp）</value>
+  </data>
+  <data name="Localization.YamlToJsonView.AfterJson" xml:space="preserve">
+    <value>转换后的Json格式：</value>
+  </data>
+  <data name="Localization.YamlToJsonView.RawYaml" xml:space="preserve">
+    <value>原始YAML格式：</value>
+  </data>
+  <data name="Localization.YamlToJsonView.Description" xml:space="preserve">
+    <value>使用此在线转换器将YAML转换为JSON。</value>
+  </data>
+</root>

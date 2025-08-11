@@ -1,0 +1,240 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Localization.MainModule.Title" xml:space="preserve">
+    <value>碼坊工具箱</value>
+  </data>
+  <data name="Localization.MainModule.ShowMainWindow" xml:space="preserve">
+    <value>顯示主窗口</value>
+  </data>
+  <data name="Localization.MainModule.Exit" xml:space="preserve">
+    <value>退出</value>
+  </data>
+  <data name="Localization.MainWindow.SearchToolTip" xml:space="preserve">
+    <value>搜你所想</value>
+  </data>
+  <data name="Localization.MainWindow.FindInTrayIcon" xml:space="preserve">
+    <value>你可以在托盤圖標上找到我！</value>
+  </data>
+  <data name="Localization.MainWindow.SureExit" xml:space="preserve">
+    <value>您確定要退出嗎？</value>
+  </data>
+  <data name="Localization.SettingView.Title" xml:space="preserve">
+    <value>設置</value>
+  </data>
+  <data name="Localization.UpdateLogView.Title" xml:space="preserve">
+    <value>更新日誌</value>
+  </data>
+  <data name="Localization.AboutView.Title" xml:space="preserve">
+    <value>本項目只用於學習使用</value>
+  </data>
+  <data name="Localization.AboutView.Description" xml:space="preserve">
+    <value>關於</value>
+  </data>
+  <data name="Localization.ExitOptionView.Message" xml:space="preserve">
+    <value>請選擇關閉操作：</value>
+  </data>
+  <data name="Localization.ExitOptionView.RememberMyChoice" xml:space="preserve">
+    <value>記住我的選擇</value>
+  </data>
+  <data name="Localization.ExitOptionView.DirectToClose" xml:space="preserve">
+    <value>直接退出應用</value>
+  </data>
+  <data name="Localization.ExitOptionView.HideTrayIcon" xml:space="preserve">
+    <value>隱藏到托盤圖標</value>
+  </data>
+  <data name="Localization.UpdateLogView.Description" xml:space="preserve">
+    <value>這裡全方位展現了工具箱在發展進程中的每一步蛻變。無論是全新功能的重磅上線，讓操作更加便捷高效；還是對既有功能的精細打磨，使其穩定性與兼容性大幅提升；亦或是針對用戶反饋迅速開展的問題修復行動，點點滴滴都詳盡記錄於此。旨在為您撥開迷霧，精准洞悉工具箱的成長軌跡，使其更好地服務於您的需求。</value>
+  </data>
+  <data name="Localization.CommonSettingView.Title" xml:space="preserve">
+    <value>通用設置</value>
+  </data>
+  <data name="Localization.CommonSettingView.TurnOff" xml:space="preserve">
+    <value>關閉</value>
+  </data>
+  <data name="Localization.CommonSettingView.TurnOn" xml:space="preserve">
+    <value>開啟</value>
+  </data>
+  <data name="Localization.CommonSettingView.DisplayPromptWhenClosing" xml:space="preserve">
+    <value>關閉窗體時顯示提示</value>
+  </data>
+  <data name="Localization.CommonSettingView.HideTrayIconOnClose" xml:space="preserve">
+    <value>關閉窗體時隱藏托盤圖標</value>
+  </data>
+  <data name="Localization.CommonSettingView.AutoOpenToolboxAtStartup" xml:space="preserve">
+    <value>開機時自動打開工具箱</value>
+  </data>
+  <data name="Localization.CommonSettingView.LanguagePlaceholderText" xml:space="preserve">
+    <value>選擇一個語言</value>
+  </data>
+  <data name="Localization.CommonSettingView.LanguageKey" xml:space="preserve">
+    <value>語言</value>
+  </data>
+  <data name="Localization.CommonSettingView.NightSky" xml:space="preserve">
+    <value>夜空</value>
+  </data>
+  <data name="Localization.CommonSettingView.Dusk" xml:space="preserve">
+    <value>黃昏</value>
+  </data>
+  <data name="Localization.CommonSettingView.Desert" xml:space="preserve">
+    <value>沙漠</value>
+  </data>
+  <data name="Localization.CommonSettingView.Aquatic" xml:space="preserve">
+    <value>水生</value>
+  </data>
+  <data name="Localization.CommonSettingView.Dark" xml:space="preserve">
+    <value>黑夜模式</value>
+  </data>
+  <data name="Localization.CommonSettingView.Light" xml:space="preserve">
+    <value>白天模式</value>
+  </data>
+  <data name="Localization.CommonSettingView.Default" xml:space="preserve">
+    <value>跟隨系統</value>
+  </data>
+  <data name="Localization.CommonSettingView.ThemePlaceholderText" xml:space="preserve">
+    <value>選擇一個主題</value>
+  </data>
+  <data name="Localization.CommonSettingView.Theme" xml:space="preserve">
+    <value>主題</value>
+  </data>
+  <data name="Localization.CommonSettingView.Description" xml:space="preserve">
+    <value>界面風格設置</value>
+  </data>
+  <data name="Localization.DashboardView.Title" xml:space="preserve">
+    <value>首頁</value>
+  </data>
+  <data name="Localization.DashboardView.MissingTool" xml:space="preserve">
+    <value>沒有我要的工具...</value>
+  </data>
+  <data name="Localization.DashboardView.AccessToolbox" xml:space="preserve">
+    <value>訪問在線工具箱</value>
+  </data>
+  <data name="Localization.DashboardView.DesiredAvailabilityNotification" xml:space="preserve">
+    <value>想要的都有，沒有請告知。</value>
+  </data>
+  <data name="Localization.DashboardView.WeChatPublic" xml:space="preserve">
+    <value>關注微信公眾號</value>
+  </data>
+  <data name="Localization.DashboardView.WeChat" xml:space="preserve">
+    <value>聯繫微信號</value>
+  </data>
+  <data name="Localization.MainWindow.NoMorePrompts" xml:space="preserve">
+    <value>不再提示</value>
+  </data>
+</root>

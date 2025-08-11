@@ -15,78 +15,99 @@
 //     the code is regenerated.  
 // </auto-generated>  
 //------------------------------------------------------------------------------
+
 <#
-    string templateDirectory = Path.GetDirectoryName(Host.TemplateFile);
-    string xmlFilePath = Directory.GetFiles(templateDirectory, "*.xml").FirstOrDefault();
+    const string ResourceFileName = "Resources.resx";
     
-    if (xmlFilePath != null)
+    // 读取所有资源键
+    var resourceKeys = XElement.Load(this.Host.ResolvePath(ResourceFileName))
+        .Elements("data")
+        .Select(item => item.Attribute("name")?.Value)
+        .Where(item => !string.IsNullOrEmpty(item))
+        .ToList();
+
+    // 构建层级结构：命名空间 -> 类名 -> 字段集合
+    var namespaceGroups = new Dictionary<string, Dictionary<string, List<(string fieldName, string fullKey)>>>();
+
+    foreach (var fullKey in resourceKeys)
     {
-        XDocument xdoc = XDocument.Load(xmlFilePath);
-        // 获取所有作为类节点的元素（有子节点但没有孙节点的元素）
-        var classNodes = xdoc.Nodes().OfType<XElement>()
-                            .DescendantsAndSelf()
-                            .Where(e => e.HasElements && !e.Elements().Any(c => c.HasElements))
-                            .Distinct()
-                            .ToList();
+        var parts = fullKey.Split('.');
+        string namespaceName;
+        string className;
+        string fieldName;
 
-        // 按命名空间分组
-        var namespaceGroups = new Dictionary<string, List<XElement>>();
-        
-        foreach (var classNode in classNodes)
+        // 根据不同层级处理命名空间和类名
+        if (parts.Length == 1)
         {
-            var namespaceSegments = classNode.Ancestors().Reverse().Select(node => node.Name.LocalName);
-            string namespaceName = string.Join(".", namespaceSegments);
-            
-            if (!namespaceGroups.ContainsKey(namespaceName))
-            {
-                namespaceGroups[namespaceName] = new List<XElement>();
-            }
-            namespaceGroups[namespaceName].Add(classNode);
+            // 单层结构：默认命名空间Localization，类Language
+            namespaceName = "Localization";
+            className = "Language";
+            fieldName = parts[0];
+        }
+        else if (parts.Length == 2)
+        {
+            // 双层结构：默认命名空间Localization，类为第一部分
+            namespaceName = "Localization";
+            className = parts[0];
+            fieldName = parts[1];
+        }
+        else
+        {
+            // 三层及以上：前n-2部分为命名空间，第n-2部分为类名
+            var namespaceParts = parts.Take(parts.Length - 2).ToArray();
+            namespaceName = string.Join(".", namespaceParts);
+            className = parts[parts.Length - 2];
+            fieldName = parts[parts.Length - 1];
         }
 
-        // 生成每个命名空间及其包含的类
-        foreach (var nsGroup in namespaceGroups)
+        // 初始化命名空间分组
+        if (!namespaceGroups.ContainsKey(namespaceName))
         {
-            string namespaceName = nsGroup.Key;
-            var classNodesInNs = nsGroup.Value;
-            
-            // 生成命名空间块
-            WriteLine($"namespace {namespaceName}");
-            WriteLine("{");
-            
-            // 在命名空间内生成所有类
-            foreach (var classNode in classNodesInNs)
-            {
-                GenerateClass(classNode, namespaceName);
-            }
-            
-            WriteLine("}");
-            WriteLine("\r\n"); // 命名空间之间添加空行
+            namespaceGroups[namespaceName] = new Dictionary<string, List<(string, string)>>();
         }
+
+        // 初始化类分组
+        var classGroups = namespaceGroups[namespaceName];
+        if (!classGroups.ContainsKey(className))
+        {
+            classGroups[className] = new List<(string, string)>();
+        }
+
+        // 添加字段
+        classGroups[className].Add((fieldName, fullKey));
     }
-    else
+
+    // 生成代码
+    foreach (var nsGroup in namespaceGroups)
     {
-        Write("XML file not found, please ensure that there is an XML file in the current directory");
+        var namespaceName = nsGroup.Key;
+        var classGroups = nsGroup.Value;
+#>
+namespace <#= namespaceName #>
+{
+<#
+        foreach (var classGroup in classGroups)
+        {
+            var className = classGroup.Key;
+            var fields = classGroup.Value;
+#>
+    public static class <#= className #>
+    {
+<#
+            foreach (var field in fields)
+            {
+#>
+        public const string <#= field.fieldName #> = "<#= field.fullKey #>";
+<#
+            }
+#>
     }
 
-    // 生成单个类的代码
-    void GenerateClass(XElement element, string namespaceName)
-    {
-        string className = element.Name.LocalName;
-        
-        WriteLine($"    public static class {className}");
-        WriteLine("    {");
-        
-        var fieldNodes = element.Elements();
-        foreach (var fieldNode in fieldNodes)
-        {
-            var propertyName = fieldNode.Name.LocalName;
-            // 构建完整的语言键
-            var languageKey = $"{namespaceName}.{className}.{propertyName}";
-            WriteLine($"        public const string {propertyName} = \"{languageKey}\";");
+<#
         }
-        
-        WriteLine("    }");
-        WriteLine("\r\n"); // 类之间添加空行
+#>
+}
+
+<#
     }
 #>

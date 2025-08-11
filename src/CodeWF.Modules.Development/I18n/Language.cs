@@ -5,6 +5,7 @@
 //     the code is regenerated.  
 // </auto-generated>  
 //------------------------------------------------------------------------------
+
 namespace Localization
 {
     public static class DevelopmentModule
@@ -12,48 +13,43 @@ namespace Localization
         public const string Title = "Localization.DevelopmentModule.Title";
     }
 
-
     public static class YamlPrettifyView
     {
         public const string Title = "Localization.YamlPrettifyView.Title";
-        public const string Description = "Localization.YamlPrettifyView.Description";
-        public const string RawYaml = "Localization.YamlPrettifyView.RawYaml";
         public const string PrettifiedVersionYAML = "Localization.YamlPrettifyView.PrettifiedVersionYAML";
+        public const string RawYaml = "Localization.YamlPrettifyView.RawYaml";
+        public const string Description = "Localization.YamlPrettifyView.Description";
     }
-
 
     public static class JsonPrettifyView
     {
         public const string Title = "Localization.JsonPrettifyView.Title";
-        public const string Description = "Localization.JsonPrettifyView.Description";
-        public const string RawJson = "Localization.JsonPrettifyView.RawJson";
-        public const string PrettifiedVersionJSON = "Localization.JsonPrettifyView.PrettifiedVersionJSON";
-        public const string SortKey = "Localization.JsonPrettifyView.SortKey";
         public const string IndentSize = "Localization.JsonPrettifyView.IndentSize";
+        public const string SortKey = "Localization.JsonPrettifyView.SortKey";
+        public const string PrettifiedVersionJSON = "Localization.JsonPrettifyView.PrettifiedVersionJSON";
+        public const string RawJson = "Localization.JsonPrettifyView.RawJson";
+        public const string Description = "Localization.JsonPrettifyView.Description";
     }
-
 
     public static class TestView
     {
         public const string Title = "Localization.TestView.Title";
-        public const string Description = "Localization.TestView.Description";
-        public const string CompressFiles = "Localization.TestView.CompressFiles";
-        public const string DecompressionFiles = "Localization.TestView.DecompressionFiles";
-        public const string SelectCompressFiles = "Localization.TestView.SelectCompressFiles";
-        public const string SaveCompressedFile = "Localization.TestView.SaveCompressedFile";
-        public const string CompressFileExceptionTitle = "Localization.TestView.CompressFileExceptionTitle";
-        public const string CompressFileExceptionContent = "Localization.TestView.CompressFileExceptionContent";
-        public const string SelectDecompressionFile = "Localization.TestView.SelectDecompressionFile";
-        public const string SelectDirectory = "Localization.TestView.SelectDirectory";
-        public const string DecompressionFileExceptionTitle = "Localization.TestView.DecompressionFileExceptionTitle";
-        public const string DecompressionFileExceptionContent = "Localization.TestView.DecompressionFileExceptionContent";
-        public const string TimeoutAlarm = "Localization.TestView.TimeoutAlarm";
-        public const string ShowAll = "Localization.TestView.ShowAll";
-        public const string FilterAlarms = "Localization.TestView.FilterAlarms";
         public const string FilterNormal = "Localization.TestView.FilterNormal";
+        public const string FilterAlarms = "Localization.TestView.FilterAlarms";
+        public const string ShowAll = "Localization.TestView.ShowAll";
+        public const string TimeoutAlarm = "Localization.TestView.TimeoutAlarm";
+        public const string DecompressionFileExceptionContent = "Localization.TestView.DecompressionFileExceptionContent";
+        public const string DecompressionFileExceptionTitle = "Localization.TestView.DecompressionFileExceptionTitle";
+        public const string SelectDirectory = "Localization.TestView.SelectDirectory";
+        public const string SelectDecompressionFile = "Localization.TestView.SelectDecompressionFile";
+        public const string CompressFileExceptionContent = "Localization.TestView.CompressFileExceptionContent";
+        public const string CompressFileExceptionTitle = "Localization.TestView.CompressFileExceptionTitle";
+        public const string SaveCompressedFile = "Localization.TestView.SaveCompressedFile";
+        public const string SelectCompressFiles = "Localization.TestView.SelectCompressFiles";
+        public const string DecompressionFiles = "Localization.TestView.DecompressionFiles";
+        public const string CompressFiles = "Localization.TestView.CompressFiles";
+        public const string Description = "Localization.TestView.Description";
     }
 
-
 }
-
 

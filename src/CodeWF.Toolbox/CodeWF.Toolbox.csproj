@@ -47,7 +47,6 @@
 	<ItemGroup>
 	  <ProjectReference Include="..\CodeWF.Controls\CodeWF.Controls.csproj" />
 	  <ProjectReference Include="..\CodeWF.Modules.AI\CodeWF.Modules.AI.csproj" />
-	  <ProjectReference Include="..\CodeWF.Modules.XmlTranslatorManager\CodeWF.Modules.XmlTranslatorManager.csproj" />
 	  <ProjectReference Include="..\CodeWF.Modules.Converter\CodeWF.Modules.Converter.csproj" />
 	  <ProjectReference Include="..\CodeWF.Modules.Development\CodeWF.Modules.Development.csproj" />
 	</ItemGroup>
@@ -62,24 +61,24 @@
 	    <AutoGen>True</AutoGen>
 	    <DependentUpon>Language.tt</DependentUpon>
 	  </Compile>
+	  <Compile Update="I18n\Resources.Designer.cs">
+	    <DesignTime>True</DesignTime>
+	    <AutoGen>True</AutoGen>
+	    <DependentUpon>Resources.resx</DependentUpon>
+	  </Compile>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <EmbeddedResource Update="I18n\Resources.resx">
+	    <Generator>ResXFileCodeGenerator</Generator>
+	    <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+	  </EmbeddedResource>
 	</ItemGroup>
 
 	<ItemGroup>
 	  <None Update="I18n\Language.tt">
 	    <Generator>TextTemplatingFileGenerator</Generator>
 	    <LastGenOutput>Language.cs</LastGenOutput>
-	  </None>
-	  <None Update="I18n\MainModule.en-US.xml">
-	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-	  </None>
-	  <None Update="I18n\MainModule.ja-JP.xml">
-	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-	  </None>
-	  <None Update="I18n\MainModule.zh-Hant.xml">
-	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-	  </None>
-	  <None Update="I18n\MainModule.zh-CN.xml">
-	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 	  </None>
 	</ItemGroup>
 </Project>

@@ -5,13 +5,13 @@
 //     the code is regenerated.  
 // </auto-generated>  
 //------------------------------------------------------------------------------
+
 namespace Localization
 {
     public static class ConverterModule
     {
         public static readonly string Title = "Localization.ConverterModule.Title";
     }
-
 
     public static class JsonToYamlView
     {
@@ -23,72 +23,66 @@ namespace Localization
         public static readonly string Clear = "Localization.JsonToYamlView.Clear";
     }
 
-
     public static class YamlToJsonView
     {
         public static readonly string Title = "Localization.YamlToJsonView.Title";
-        public static readonly string Description = "Localization.YamlToJsonView.Description";
-        public static readonly string RawYaml = "Localization.YamlToJsonView.RawYaml";
-        public static readonly string AfterJson = "Localization.YamlToJsonView.AfterJson";
-        public static readonly string Copy = "Localization.YamlToJsonView.Copy";
         public static readonly string Clear = "Localization.YamlToJsonView.Clear";
+        public static readonly string Copy = "Localization.YamlToJsonView.Copy";
+        public static readonly string AfterJson = "Localization.YamlToJsonView.AfterJson";
+        public static readonly string RawYaml = "Localization.YamlToJsonView.RawYaml";
+        public static readonly string Description = "Localization.YamlToJsonView.Description";
     }
-
-
-    public static class ImageToIconView
-    {
-        public static readonly string Title = "Localization.ImageToIconView.Title";
-        public static readonly string ChoiceSourceImageDescription = "Localization.ImageToIconView.ChoiceSourceImageDescription";
-        public static readonly string ChoiceSourceImageDialogTitle = "Localization.ImageToIconView.ChoiceSourceImageDialogTitle";
-        public static readonly string DestImageSize = "Localization.ImageToIconView.DestImageSize";
-        public static readonly string MergeGenerateButtonContent = "Localization.ImageToIconView.MergeGenerateButtonContent";
-        public static readonly string SeparateGenerateButtonContent = "Localization.ImageToIconView.SeparateGenerateButtonContent";
-        public static readonly string MemoTitle = "Localization.ImageToIconView.MemoTitle";
-        public static readonly string MemoContent1 = "Localization.ImageToIconView.MemoContent1";
-        public static readonly string MemoContent2 = "Localization.ImageToIconView.MemoContent2";
-    }
-
 
     public static class DateTimeConverterView
     {
         public static readonly string Title = "Localization.DateTimeConverterView.Title";
-        public static readonly string Description = "Localization.DateTimeConverterView.Description";
-        public static readonly string CurrentTimestampLabel = "Localization.DateTimeConverterView.CurrentTimestampLabel";
-        public static readonly string TimetampLabel = "Localization.DateTimeConverterView.TimetampLabel";
-        public static readonly string SecondLabel = "Localization.DateTimeConverterView.SecondLabel";
-        public static readonly string MillisecondsLabel = "Localization.DateTimeConverterView.MillisecondsLabel";
-        public static readonly string DateTimeFormatLabel = "Localization.DateTimeConverterView.DateTimeFormatLabel";
-        public static readonly string ConvertToTimestampLabel = "Localization.DateTimeConverterView.ConvertToTimestampLabel";
-        public static readonly string StartButtonContent = "Localization.DateTimeConverterView.StartButtonContent";
-        public static readonly string StopButtonContent = "Localization.DateTimeConverterView.StopButtonContent";
-        public static readonly string RefreshButtonContent = "Localization.DateTimeConverterView.RefreshButtonContent";
         public static readonly string ConvertButtonContent = "Localization.DateTimeConverterView.ConvertButtonContent";
+        public static readonly string RefreshButtonContent = "Localization.DateTimeConverterView.RefreshButtonContent";
+        public static readonly string StopButtonContent = "Localization.DateTimeConverterView.StopButtonContent";
+        public static readonly string StartButtonContent = "Localization.DateTimeConverterView.StartButtonContent";
+        public static readonly string ConvertToTimestampLabel = "Localization.DateTimeConverterView.ConvertToTimestampLabel";
+        public static readonly string DateTimeFormatLabel = "Localization.DateTimeConverterView.DateTimeFormatLabel";
+        public static readonly string MillisecondsLabel = "Localization.DateTimeConverterView.MillisecondsLabel";
+        public static readonly string SecondLabel = "Localization.DateTimeConverterView.SecondLabel";
+        public static readonly string TimetampLabel = "Localization.DateTimeConverterView.TimetampLabel";
+        public static readonly string CurrentTimestampLabel = "Localization.DateTimeConverterView.CurrentTimestampLabel";
+        public static readonly string Description = "Localization.DateTimeConverterView.Description";
     }
-
 
     public static class NuoCheView
     {
         public static readonly string Title = "Localization.NuoCheView.Title";
-        public static readonly string Description = "Localization.NuoCheView.Description";
-        public static readonly string InputPhoneNumber = "Localization.NuoCheView.InputPhoneNumber";
-        public static readonly string InputTitle = "Localization.NuoCheView.InputTitle";
-        public static readonly string EnableSubTitle = "Localization.NuoCheView.EnableSubTitle";
-        public static readonly string DefaultInputTitle = "Localization.NuoCheView.DefaultInputTitle";
-        public static readonly string DefaultSubTitlePrefix = "Localization.NuoCheView.DefaultSubTitlePrefix";
-        public static readonly string CreateButtonContent = "Localization.NuoCheView.CreateButtonContent";
-        public static readonly string NeedInputTip = "Localization.NuoCheView.NeedInputTip";
-        public static readonly string CreateErrorMessage = "Localization.NuoCheView.CreateErrorMessage";
-        public static readonly string SaveNotificationTitle = "Localization.NuoCheView.SaveNotificationTitle";
-        public static readonly string SaveNoQrCodeMessage = "Localization.NuoCheView.SaveNoQrCodeMessage";
-        public static readonly string SaveQrCodeFileTitle = "Localization.NuoCheView.SaveQrCodeFileTitle";
-        public static readonly string PreviewNuoCheUrl = "Localization.NuoCheView.PreviewNuoCheUrl";
-        public static readonly string SaveQrCodeFileFormat = "Localization.NuoCheView.SaveQrCodeFileFormat";
-        public static readonly string SaveQrCodeSuccessTitle = "Localization.NuoCheView.SaveQrCodeSuccessTitle";
-        public static readonly string SaveQrCodeSuccessMessage = "Localization.NuoCheView.SaveQrCodeSuccessMessage";
         public static readonly string SaveQrCodeErrorMessage = "Localization.NuoCheView.SaveQrCodeErrorMessage";
+        public static readonly string SaveQrCodeSuccessMessage = "Localization.NuoCheView.SaveQrCodeSuccessMessage";
+        public static readonly string SaveQrCodeSuccessTitle = "Localization.NuoCheView.SaveQrCodeSuccessTitle";
+        public static readonly string SaveQrCodeFileFormat = "Localization.NuoCheView.SaveQrCodeFileFormat";
+        public static readonly string PreviewNuoCheUrl = "Localization.NuoCheView.PreviewNuoCheUrl";
+        public static readonly string SaveQrCodeFileTitle = "Localization.NuoCheView.SaveQrCodeFileTitle";
+        public static readonly string SaveNoQrCodeMessage = "Localization.NuoCheView.SaveNoQrCodeMessage";
+        public static readonly string SaveNotificationTitle = "Localization.NuoCheView.SaveNotificationTitle";
+        public static readonly string CreateErrorMessage = "Localization.NuoCheView.CreateErrorMessage";
+        public static readonly string NeedInputTip = "Localization.NuoCheView.NeedInputTip";
+        public static readonly string CreateButtonContent = "Localization.NuoCheView.CreateButtonContent";
+        public static readonly string DefaultSubTitlePrefix = "Localization.NuoCheView.DefaultSubTitlePrefix";
+        public static readonly string DefaultInputTitle = "Localization.NuoCheView.DefaultInputTitle";
+        public static readonly string EnableSubTitle = "Localization.NuoCheView.EnableSubTitle";
+        public static readonly string InputTitle = "Localization.NuoCheView.InputTitle";
+        public static readonly string InputPhoneNumber = "Localization.NuoCheView.InputPhoneNumber";
+        public static readonly string Description = "Localization.NuoCheView.Description";
     }
 
+    public static class ImageToIconView
+    {
+        public static readonly string Title = "Localization.ImageToIconView.Title";
+        public static readonly string MemoContent2 = "Localization.ImageToIconView.MemoContent2";
+        public static readonly string MemoContent1 = "Localization.ImageToIconView.MemoContent1";
+        public static readonly string MemoTitle = "Localization.ImageToIconView.MemoTitle";
+        public static readonly string SeparateGenerateButtonContent = "Localization.ImageToIconView.SeparateGenerateButtonContent";
+        public static readonly string MergeGenerateButtonContent = "Localization.ImageToIconView.MergeGenerateButtonContent";
+        public static readonly string DestImageSize = "Localization.ImageToIconView.DestImageSize";
+        public static readonly string ChoiceSourceImageDialogTitle = "Localization.ImageToIconView.ChoiceSourceImageDialogTitle";
+        public static readonly string ChoiceSourceImageDescription = "Localization.ImageToIconView.ChoiceSourceImageDescription";
+    }
 
 }
-
 

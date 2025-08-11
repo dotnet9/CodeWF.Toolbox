@@ -5,6 +5,7 @@
 //     the code is regenerated.  
 // </auto-generated>  
 //------------------------------------------------------------------------------
+
 namespace Localization
 {
     public static class AIModule
@@ -12,13 +13,11 @@ namespace Localization
         public static readonly string Title = "Localization.AIModule.Title";
     }
 
-
     public static class AskBotView
     {
         public static readonly string Title = "Localization.AskBotView.Title";
         public static readonly string Description = "Localization.AskBotView.Description";
     }
-
 
     public static class PolyTranslateView
     {
@@ -26,13 +25,11 @@ namespace Localization
         public static readonly string Description = "Localization.PolyTranslateView.Description";
     }
 
-
     public static class Title2SlugView
     {
         public static readonly string Title = "Localization.Title2SlugView.Title";
         public static readonly string Description = "Localization.Title2SlugView.Description";
     }
-
 
     public static class ChoiceLanguagesView
     {
@@ -41,7 +38,5 @@ namespace Localization
         public static readonly string Selected = "Localization.ChoiceLanguagesView.Selected";
     }
 
-
 }
-
 

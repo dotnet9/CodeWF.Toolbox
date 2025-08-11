@@ -6,10 +6,11 @@ using CodeWF.Core;
 using CodeWF.Core.IServices;
 using CodeWF.Core.RegionAdapters;
 using CodeWF.Core.Services;
-using CodeWF.Modules.XmlTranslatorManager;
 using CodeWF.Toolbox.Services;
 using CodeWF.Toolbox.Views;
 using DryIoc;
+using Lang.Avalonia;
+using Lang.Avalonia.Resx;
 using Prism.DryIoc;
 using Prism.Ioc;
 using Prism.Modularity;
@@ -17,8 +18,6 @@ using Prism.Navigation.Regions;
 using System;
 using System.Globalization;
 using System.Linq;
-using Lang.Avalonia;
-using Lang.Avalonia.Xml;
 using Ursa.PrismExtension;
 using AIModule = CodeWF.Modules.AI.AIModule;
 using ConverterModule = CodeWF.Modules.Converter.ConverterModule;
@@ -38,7 +37,7 @@ public partial class App : PrismApplication
     public override void Initialize()
     {
         AvaloniaXamlLoader.Load(this);
-        I18nManager.Instance.Register(new XmlLangPlugin(), new CultureInfo("zh-CN"), out _);
+        I18nManager.Instance.Register(new ResxLangPlugin(), new CultureInfo("zh-CN"), out _);
         base.Initialize(); // <-- Required
     }
 
@@ -47,7 +46,6 @@ public partial class App : PrismApplication
         moduleCatalog.AddModule<MainModule>();
         moduleCatalog.AddModule<AIModule>();
         moduleCatalog.AddModule<ConverterModule>();
-        moduleCatalog.AddModule<XmlTranslatorManagerModule>();
         moduleCatalog.AddModule<DevelopmentModule>();
         base.ConfigureModuleCatalog(moduleCatalog);
     }
