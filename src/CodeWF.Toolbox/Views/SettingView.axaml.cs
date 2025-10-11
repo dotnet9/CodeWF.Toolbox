@@ -1,5 +1,6 @@
 using Avalonia.Controls;
 using Avalonia.Markup.Xaml;
+using CodeWF.AvaloniaControls.Helpers;
 using CodeWF.Core.Events;
 using CodeWF.EventBus;
 using Ursa.Controls;
@@ -14,6 +15,7 @@ public partial class SettingView : UrsaWindow
         InitializeComponent();
         _tabControl = this.FindControl<TabControl>(nameof(MyTab));
         EventBus.EventBus.Default.Subscribe(this);
+        this.EnableOSVersionAwareDecorations();
     }
 
     private void InitializeComponent()
