@@ -11,6 +11,7 @@ using CodeWF.Tools.FileExtensions;
 using Lang.Avalonia;
 using ReactiveUI;
 using System.Data;
+using System.Text;
 using System.Xml.Linq;
 
 namespace CodeWF.Modules.XmlTranslatorManager.ViewModels;
@@ -107,7 +108,7 @@ public class ManageXmlFilesViewModel : ReactiveObject
         }
 
         GetDataGridData(out var errorMsg, out var data);
-        data.Export(savePath, out errorMsg);
+        data.Export(savePath, Encoding.Default, out errorMsg);
         FileHelper.OpenFolderAndSelectFile(savePath);
     }
 

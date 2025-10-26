@@ -10,7 +10,7 @@
 	<ItemGroup>
 		<PackageReference Include="Prism.Avalonia" Version="9.0.537.11300-pre" />
 		<PackageReference Include="Prism.DryIoc.Avalonia" Version="9.0.537.11300-pre" />
-		<PackageReference Include="Avalonia.ReactiveUI" Version="$(AvaloniaVersion)" />
+		<PackageReference Include="ReactiveUI.Avalonia" Version="$(AvaloniaVersion)" />
 		<PackageReference Include="Irihi.Ursa.Themes.Semi" Version="1.13.0" />
 		<PackageReference Include="Irihi.Ursa.PrismExtension" Version="9.0.1" />
 	</ItemGroup>
