@@ -19,10 +19,10 @@
 	  <PublishAot>true</PublishAot>
 	</PropertyGroup>
 	<ItemGroup>
-		<PackageReference Include="CodeWF.NetWeaver" Version="2.0.0" />
+		<PackageReference Include="CodeWF.NetWeaver" Version="2.0.0.1" />
 		<PackageReference Include="Dapper" Version="2.1.66" />
 		<PackageReference Include="Dapper.AOT" Version="1.0.48" />
-		<PackageReference Include="Microsoft.Data.Sqlite" Version="10.0.0-rc.2.25502.107" />
+		<PackageReference Include="Microsoft.Data.Sqlite" Version="10.0.0" />
 		<PackageReference Include="VC-LTL" Version="5.2.2" />
 	</ItemGroup>
 </Project>
