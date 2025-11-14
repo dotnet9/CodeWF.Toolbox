@@ -19,7 +19,7 @@ namespace CodeWF.Modules.AI.I18n {
     // 类通过类似于 ResGen 或 Visual Studio 的工具自动生成的。
     // 若要添加或移除成员，请编辑 .ResX 文件，然后重新运行 ResGen
     // (以 /str 作为命令选项)，或重新生成 VS 项目。
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "18.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
@@ -70,7 +70,7 @@ namespace CodeWF.Modules.AI.I18n {
         }
         
         /// <summary>
-        ///   查找类似 AI 的本地化字符串。
+        ///   查找类似 Intelligent QA Assistant 的本地化字符串。
         /// </summary>
         internal static string Localization_AskBotView_Description {
             get {
@@ -79,7 +79,7 @@ namespace CodeWF.Modules.AI.I18n {
         }
         
         /// <summary>
-        ///   查找类似 AI 的本地化字符串。
+        ///   查找类似 Ask with one click, get answers instantly. The intelligent QA assistant is here to solve your doubts. 的本地化字符串。
         /// </summary>
         internal static string Localization_AskBotView_Title {
             get {
@@ -88,7 +88,7 @@ namespace CodeWF.Modules.AI.I18n {
         }
         
         /// <summary>
-        ///   查找类似 AI 的本地化字符串。
+        ///   查找类似 Language 的本地化字符串。
         /// </summary>
         internal static string Localization_ChoiceLanguagesView_LanguageKey {
             get {
@@ -97,7 +97,7 @@ namespace CodeWF.Modules.AI.I18n {
         }
         
         /// <summary>
-        ///   查找类似 AI 的本地化字符串。
+        ///   查找类似 Selectable 的本地化字符串。
         /// </summary>
         internal static string Localization_ChoiceLanguagesView_Selectable {
             get {
@@ -106,7 +106,7 @@ namespace CodeWF.Modules.AI.I18n {
         }
         
         /// <summary>
-        ///   查找类似 AI 的本地化字符串。
+        ///   查找类似 Selected 的本地化字符串。
         /// </summary>
         internal static string Localization_ChoiceLanguagesView_Selected {
             get {
@@ -115,7 +115,7 @@ namespace CodeWF.Modules.AI.I18n {
         }
         
         /// <summary>
-        ///   查找类似 AI 的本地化字符串。
+        ///   查找类似 AI One-Click Multi-Language Translation Tool 的本地化字符串。
         /// </summary>
         internal static string Localization_PolyTranslateView_Description {
             get {
@@ -124,7 +124,7 @@ namespace CodeWF.Modules.AI.I18n {
         }
         
         /// <summary>
-        ///   查找类似 AI 的本地化字符串。
+        ///   查找类似 Easily achieve one-click translation, supporting mutual translation between multiple languages to make communication boundless! 的本地化字符串。
         /// </summary>
         internal static string Localization_PolyTranslateView_Title {
             get {
@@ -133,7 +133,7 @@ namespace CodeWF.Modules.AI.I18n {
         }
         
         /// <summary>
-        ///   查找类似 AI 的本地化字符串。
+        ///   查找类似 Easily convert Chinese, English and other article titles into English URL slugs with one click. 的本地化字符串。
         /// </summary>
         internal static string Localization_Title2SlugView_Description {
             get {
@@ -142,7 +142,7 @@ namespace CodeWF.Modules.AI.I18n {
         }
         
         /// <summary>
-        ///   查找类似 AI 的本地化字符串。
+        ///   查找类似 AI One-Click Convert to URL Slug 的本地化字符串。
         /// </summary>
         internal static string Localization_Title2SlugView_Title {
             get {

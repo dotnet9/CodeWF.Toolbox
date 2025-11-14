@@ -19,7 +19,7 @@ namespace CodeWF.Modules.Converter.I18n {
     // 类通过类似于 ResGen 或 Visual Studio 的工具自动生成的。
     // 若要添加或移除成员，请编辑 .ResX 文件，然后重新运行 ResGen
     // (以 /str 作为命令选项)，或重新生成 VS 项目。
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "18.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
@@ -61,7 +61,7 @@ namespace CodeWF.Modules.Converter.I18n {
         }
         
         /// <summary>
-        ///   查找类似 转换器 的本地化字符串。
+        ///   查找类似 Converter 的本地化字符串。
         /// </summary>
         internal static string Localization_ConverterModule_Title {
             get {
@@ -70,7 +70,7 @@ namespace CodeWF.Modules.Converter.I18n {
         }
         
         /// <summary>
-        ///   查找类似 转换 的本地化字符串。
+        ///   查找类似 Convert 的本地化字符串。
         /// </summary>
         internal static string Localization_DateTimeConverterView_ConvertButtonContent {
             get {
@@ -79,7 +79,7 @@ namespace CodeWF.Modules.Converter.I18n {
         }
         
         /// <summary>
-        ///   查找类似 转换成Unix时间戳 的本地化字符串。
+        ///   查找类似 Convert to Unix Timestamp 的本地化字符串。
         /// </summary>
         internal static string Localization_DateTimeConverterView_ConvertToTimestampLabel {
             get {
@@ -88,7 +88,7 @@ namespace CodeWF.Modules.Converter.I18n {
         }
         
         /// <summary>
-        ///   查找类似 当前的Unix时间戳(Unix timestamp)是: 的本地化字符串。
+        ///   查找类似 The current Unix timestamp (Unix timestamp) is: 的本地化字符串。
         /// </summary>
         internal static string Localization_DateTimeConverterView_CurrentTimestampLabel {
             get {
@@ -97,7 +97,7 @@ namespace CodeWF.Modules.Converter.I18n {
         }
         
         /// <summary>
-        ///   查找类似 时间 (年/月/日 时:分:秒) 的本地化字符串。
+        ///   查找类似 Time (Year/Month/Day Hour:Minute:Second) 的本地化字符串。
         /// </summary>
         internal static string Localization_DateTimeConverterView_DateTimeFormatLabel {
             get {
@@ -106,7 +106,7 @@ namespace CodeWF.Modules.Converter.I18n {
         }
         
         /// <summary>
-        ///   查找类似 将日期和时间转换为各种不同的格式 的本地化字符串。
+        ///   查找类似 Convert dates and times into various formats 的本地化字符串。
         /// </summary>
         internal static string Localization_DateTimeConverterView_Description {
             get {
@@ -115,7 +115,7 @@ namespace CodeWF.Modules.Converter.I18n {
         }
         
         /// <summary>
-        ///   查找类似 毫秒 的本地化字符串。
+        ///   查找类似 Milliseconds 的本地化字符串。
         /// </summary>
         internal static string Localization_DateTimeConverterView_MillisecondsLabel {
             get {
@@ -133,7 +133,7 @@ namespace CodeWF.Modules.Converter.I18n {
         }
         
         /// <summary>
-        ///   查找类似 秒 的本地化字符串。
+        ///   查找类似 Seconds 的本地化字符串。
         /// </summary>
         internal static string Localization_DateTimeConverterView_SecondLabel {
             get {
@@ -142,7 +142,7 @@ namespace CodeWF.Modules.Converter.I18n {
         }
         
         /// <summary>
-        ///   查找类似 开始 的本地化字符串。
+        ///   查找类似 Start 的本地化字符串。
         /// </summary>
         internal static string Localization_DateTimeConverterView_StartButtonContent {
             get {
@@ -151,7 +151,7 @@ namespace CodeWF.Modules.Converter.I18n {
         }
         
         /// <summary>
-        ///   查找类似 停止 的本地化字符串。
+        ///   查找类似 Stop 的本地化字符串。
         /// </summary>
         internal static string Localization_DateTimeConverterView_StopButtonContent {
             get {
@@ -160,7 +160,7 @@ namespace CodeWF.Modules.Converter.I18n {
         }
         
         /// <summary>
-        ///   查找类似 Unix时间戳 (Unix timestamp) 的本地化字符串。
+        ///   查找类似 Unix Timestamp (Unix timestamp) 的本地化字符串。
         /// </summary>
         internal static string Localization_DateTimeConverterView_TimetampLabel {
             get {
@@ -169,7 +169,7 @@ namespace CodeWF.Modules.Converter.I18n {
         }
         
         /// <summary>
-        ///   查找类似 日期时间转换器 的本地化字符串。
+        ///   查找类似 Date Time Converter 的本地化字符串。
         /// </summary>
         internal static string Localization_DateTimeConverterView_Title {
             get {
@@ -178,7 +178,7 @@ namespace CodeWF.Modules.Converter.I18n {
         }
         
         /// <summary>
-        ///   查找类似 图片文件（格式：png、jpg、jpeg、ico、webp） 的本地化字符串。
+        ///   查找类似 Image files (formats: png, jpg, jpeg, ico, webp) 的本地化字符串。
         /// </summary>
         internal static string Localization_ImageToIconView_ChoiceSourceImageDescription {
             get {
@@ -187,7 +187,7 @@ namespace CodeWF.Modules.Converter.I18n {
         }
         
         /// <summary>
-        ///   查找类似 请选择需要转换的图片 的本地化字符串。
+        ///   查找类似 Please select the image to convert 的本地化字符串。
         /// </summary>
         internal static string Localization_ImageToIconView_ChoiceSourceImageDialogTitle {
             get {
@@ -196,7 +196,7 @@ namespace CodeWF.Modules.Converter.I18n {
         }
         
         /// <summary>
-        ///   查找类似 目标尺寸 的本地化字符串。
+        ///   查找类似 Target Size 的本地化字符串。
         /// </summary>
         internal static string Localization_ImageToIconView_DestImageSize {
             get {
@@ -205,7 +205,7 @@ namespace CodeWF.Modules.Converter.I18n {
         }
         
         /// <summary>
-        ///   查找类似 ico 文件一般可以用在网页的 logo 和应用程序的 logo。 的本地化字符串。
+        ///   查找类似 ICO files can generally be used for web page logos and application logos. 的本地化字符串。
         /// </summary>
         internal static string Localization_ImageToIconView_MemoContent1 {
             get {
@@ -214,7 +214,7 @@ namespace CodeWF.Modules.Converter.I18n {
         }
         
         /// <summary>
-        ///   查找类似 ico 文件用在网页，一般是把生成的 ico 文件，命名成 favicon.ico，并放到网站的根目录，然后在页面的 head 标签内加入以下代码： 的本地化字符串。
+        ///   查找类似 When using ICO files on web pages, generally rename the generated ICO file to favicon.ico, place it in the root directory of the website, and add the following code inside the head tag of the page: 的本地化字符串。
         /// </summary>
         internal static string Localization_ImageToIconView_MemoContent2 {
             get {
@@ -223,7 +223,7 @@ namespace CodeWF.Modules.Converter.I18n {
         }
         
         /// <summary>
-        ///   查找类似 说明 的本地化字符串。
+        ///   查找类似 Description 的本地化字符串。
         /// </summary>
         internal static string Localization_ImageToIconView_MemoTitle {
             get {
@@ -232,7 +232,7 @@ namespace CodeWF.Modules.Converter.I18n {
         }
         
         /// <summary>
-        ///   查找类似 合并生成 ico 图标 的本地化字符串。
+        ///   查找类似 Merge and Generate ICO Icons 的本地化字符串。
         /// </summary>
         internal static string Localization_ImageToIconView_MergeGenerateButtonContent {
             get {
@@ -241,7 +241,7 @@ namespace CodeWF.Modules.Converter.I18n {
         }
         
         /// <summary>
-        ///   查找类似 单独生成 ico 图标 的本地化字符串。
+        ///   查找类似 Generate ICO Icons Separately 的本地化字符串。
         /// </summary>
         internal static string Localization_ImageToIconView_SeparateGenerateButtonContent {
             get {
@@ -250,7 +250,7 @@ namespace CodeWF.Modules.Converter.I18n {
         }
         
         /// <summary>
-        ///   查找类似 图片转 ico 图标 的本地化字符串。
+        ///   查找类似 Image to ICO Icon 的本地化字符串。
         /// </summary>
         internal static string Localization_ImageToIconView_Title {
             get {
@@ -259,7 +259,7 @@ namespace CodeWF.Modules.Converter.I18n {
         }
         
         /// <summary>
-        ///   查找类似 转换后的Yaml格式： 的本地化字符串。
+        ///   查找类似 Converted Yaml format: 的本地化字符串。
         /// </summary>
         internal static string Localization_JsonToYamlView_AfterYaml {
             get {
@@ -268,7 +268,7 @@ namespace CodeWF.Modules.Converter.I18n {
         }
         
         /// <summary>
-        ///   查找类似 清空 的本地化字符串。
+        ///   查找类似 Clear 的本地化字符串。
         /// </summary>
         internal static string Localization_JsonToYamlView_Clear {
             get {
@@ -277,7 +277,7 @@ namespace CodeWF.Modules.Converter.I18n {
         }
         
         /// <summary>
-        ///   查找类似 复制 的本地化字符串。
+        ///   查找类似 Copy 的本地化字符串。
         /// </summary>
         internal static string Localization_JsonToYamlView_Copy {
             get {
@@ -286,7 +286,7 @@ namespace CodeWF.Modules.Converter.I18n {
         }
         
         /// <summary>
-        ///   查找类似 JSON到YAML转换器 的本地化字符串。
+        ///   查找类似 JSON to YAML Converter 的本地化字符串。
         /// </summary>
         internal static string Localization_JsonToYamlView_Description {
             get {
@@ -295,7 +295,7 @@ namespace CodeWF.Modules.Converter.I18n {
         }
         
         /// <summary>
-        ///   查找类似 原始Json格式： 的本地化字符串。
+        ///   查找类似 Original Json format: 的本地化字符串。
         /// </summary>
         internal static string Localization_JsonToYamlView_RawJson {
             get {
@@ -304,7 +304,7 @@ namespace CodeWF.Modules.Converter.I18n {
         }
         
         /// <summary>
-        ///   查找类似 在线转换将JSON转换为YAML。 的本地化字符串。
+        ///   查找类似 Convert JSON to YAML online. 的本地化字符串。
         /// </summary>
         internal static string Localization_JsonToYamlView_Title {
             get {
@@ -313,7 +313,7 @@ namespace CodeWF.Modules.Converter.I18n {
         }
         
         /// <summary>
-        ///   查找类似 立即生成挪车二维码 的本地化字符串。
+        ///   查找类似 Generate Car Relocation QR Code Immediately 的本地化字符串。
         /// </summary>
         internal static string Localization_NuoCheView_CreateButtonContent {
             get {
@@ -322,7 +322,7 @@ namespace CodeWF.Modules.Converter.I18n {
         }
         
         /// <summary>
-        ///   查找类似 生成二维码失败 的本地化字符串。
+        ///   查找类似 Failed to generate QR code 的本地化字符串。
         /// </summary>
         internal static string Localization_NuoCheView_CreateErrorMessage {
             get {
@@ -331,7 +331,7 @@ namespace CodeWF.Modules.Converter.I18n {
         }
         
         /// <summary>
-        ///   查找类似 扫码挪车 的本地化字符串。
+        ///   查找类似 Scan QR Code to Relocate Car 的本地化字符串。
         /// </summary>
         internal static string Localization_NuoCheView_DefaultInputTitle {
             get {
@@ -340,7 +340,7 @@ namespace CodeWF.Modules.Converter.I18n {
         }
         
         /// <summary>
-        ///   查找类似 扫码联系车主或拨打电话 的本地化字符串。
+        ///   查找类似 Scan to contact the car owner or make a call 的本地化字符串。
         /// </summary>
         internal static string Localization_NuoCheView_DefaultSubTitlePrefix {
             get {
@@ -349,7 +349,7 @@ namespace CodeWF.Modules.Converter.I18n {
         }
         
         /// <summary>
-        ///   查找类似 用于生成挪车二维码 的本地化字符串。
+        ///   查找类似 Used to generate car relocation QR codes 的本地化字符串。
         /// </summary>
         internal static string Localization_NuoCheView_Description {
             get {
@@ -358,7 +358,7 @@ namespace CodeWF.Modules.Converter.I18n {
         }
         
         /// <summary>
-        ///   查找类似 添加小标题 的本地化字符串。
+        ///   查找类似 Add Subtitle 的本地化字符串。
         /// </summary>
         internal static string Localization_NuoCheView_EnableSubTitle {
             get {
@@ -367,7 +367,7 @@ namespace CodeWF.Modules.Converter.I18n {
         }
         
         /// <summary>
-        ///   查找类似 挪车通知电话号码 的本地化字符串。
+        ///   查找类似 Car relocation notification phone number 的本地化字符串。
         /// </summary>
         internal static string Localization_NuoCheView_InputPhoneNumber {
             get {
@@ -376,7 +376,7 @@ namespace CodeWF.Modules.Converter.I18n {
         }
         
         /// <summary>
-        ///   查找类似 挪车提示文字（尽量简短） 的本地化字符串。
+        ///   查找类似 Car relocation prompt text (keep it concise) 的本地化字符串。
         /// </summary>
         internal static string Localization_NuoCheView_InputTitle {
             get {
@@ -385,7 +385,7 @@ namespace CodeWF.Modules.Converter.I18n {
         }
         
         /// <summary>
-        ///   查找类似 请输入信息再点击生成 的本地化字符串。
+        ///   查找类似 Please enter information before clicking generate 的本地化字符串。
         /// </summary>
         internal static string Localization_NuoCheView_NeedInputTip {
             get {
@@ -394,7 +394,7 @@ namespace CodeWF.Modules.Converter.I18n {
         }
         
         /// <summary>
-        ///   查找类似 预览挪车扫码网址 的本地化字符串。
+        ///   查找类似 Preview car relocation QR code URL 的本地化字符串。
         /// </summary>
         internal static string Localization_NuoCheView_PreviewNuoCheUrl {
             get {
@@ -403,7 +403,7 @@ namespace CodeWF.Modules.Converter.I18n {
         }
         
         /// <summary>
-        ///   查找类似 请先生成挪车二维码 的本地化字符串。
+        ///   查找类似 Please generate the car relocation QR code first 的本地化字符串。
         /// </summary>
         internal static string Localization_NuoCheView_SaveNoQrCodeMessage {
             get {
@@ -412,7 +412,7 @@ namespace CodeWF.Modules.Converter.I18n {
         }
         
         /// <summary>
-        ///   查找类似 提示 的本地化字符串。
+        ///   查找类似 Prompt 的本地化字符串。
         /// </summary>
         internal static string Localization_NuoCheView_SaveNotificationTitle {
             get {
@@ -421,7 +421,7 @@ namespace CodeWF.Modules.Converter.I18n {
         }
         
         /// <summary>
-        ///   查找类似 保存挪车二维码图片失败 的本地化字符串。
+        ///   查找类似 Failed to save the car relocation QR code image 的本地化字符串。
         /// </summary>
         internal static string Localization_NuoCheView_SaveQrCodeErrorMessage {
             get {
@@ -430,7 +430,7 @@ namespace CodeWF.Modules.Converter.I18n {
         }
         
         /// <summary>
-        ///   查找类似 PNG图片 的本地化字符串。
+        ///   查找类似 PNG Image 的本地化字符串。
         /// </summary>
         internal static string Localization_NuoCheView_SaveQrCodeFileFormat {
             get {
@@ -439,7 +439,7 @@ namespace CodeWF.Modules.Converter.I18n {
         }
         
         /// <summary>
-        ///   查找类似 保存挪车二维码图片 的本地化字符串。
+        ///   查找类似 Save Car Relocation QR Code Image 的本地化字符串。
         /// </summary>
         internal static string Localization_NuoCheView_SaveQrCodeFileTitle {
             get {
@@ -448,7 +448,7 @@ namespace CodeWF.Modules.Converter.I18n {
         }
         
         /// <summary>
-        ///   查找类似 挪车二维码图片已保存 的本地化字符串。
+        ///   查找类似 Car relocation QR code image has been saved 的本地化字符串。
         /// </summary>
         internal static string Localization_NuoCheView_SaveQrCodeSuccessMessage {
             get {
@@ -457,7 +457,7 @@ namespace CodeWF.Modules.Converter.I18n {
         }
         
         /// <summary>
-        ///   查找类似 成功 的本地化字符串。
+        ///   查找类似 Success 的本地化字符串。
         /// </summary>
         internal static string Localization_NuoCheView_SaveQrCodeSuccessTitle {
             get {
@@ -466,7 +466,7 @@ namespace CodeWF.Modules.Converter.I18n {
         }
         
         /// <summary>
-        ///   查找类似 挪车二维码生成器 的本地化字符串。
+        ///   查找类似 Car Relocation QR Code Generator 的本地化字符串。
         /// </summary>
         internal static string Localization_NuoCheView_Title {
             get {
@@ -475,7 +475,7 @@ namespace CodeWF.Modules.Converter.I18n {
         }
         
         /// <summary>
-        ///   查找类似 转换后的Json格式： 的本地化字符串。
+        ///   查找类似 Converted Json format: 的本地化字符串。
         /// </summary>
         internal static string Localization_YamlToJsonView_AfterJson {
             get {
@@ -484,7 +484,7 @@ namespace CodeWF.Modules.Converter.I18n {
         }
         
         /// <summary>
-        ///   查找类似 清空 的本地化字符串。
+        ///   查找类似 Clear 的本地化字符串。
         /// </summary>
         internal static string Localization_YamlToJsonView_Clear {
             get {
@@ -493,7 +493,7 @@ namespace CodeWF.Modules.Converter.I18n {
         }
         
         /// <summary>
-        ///   查找类似 复制 的本地化字符串。
+        ///   查找类似 Copy 的本地化字符串。
         /// </summary>
         internal static string Localization_YamlToJsonView_Copy {
             get {
@@ -502,7 +502,7 @@ namespace CodeWF.Modules.Converter.I18n {
         }
         
         /// <summary>
-        ///   查找类似 使用此在线转换器将YAML转换为JSON。 的本地化字符串。
+        ///   查找类似 Use this online converter to convert YAML to JSON. 的本地化字符串。
         /// </summary>
         internal static string Localization_YamlToJsonView_Description {
             get {
@@ -511,7 +511,7 @@ namespace CodeWF.Modules.Converter.I18n {
         }
         
         /// <summary>
-        ///   查找类似 原始YAML格式： 的本地化字符串。
+        ///   查找类似 Original YAML format: 的本地化字符串。
         /// </summary>
         internal static string Localization_YamlToJsonView_RawYaml {
             get {
@@ -520,7 +520,7 @@ namespace CodeWF.Modules.Converter.I18n {
         }
         
         /// <summary>
-        ///   查找类似 YAML到JSON转换器 的本地化字符串。
+        ///   查找类似 YAML to JSON Converter 的本地化字符串。
         /// </summary>
         internal static string Localization_YamlToJsonView_Title {
             get {

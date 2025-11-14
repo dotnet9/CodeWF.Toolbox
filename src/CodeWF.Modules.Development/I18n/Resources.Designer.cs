@@ -19,7 +19,7 @@ namespace CodeWF.Modules.Development.I18n {
     // 类通过类似于 ResGen 或 Visual Studio 的工具自动生成的。
     // 若要添加或移除成员，请编辑 .ResX 文件，然后重新运行 ResGen
     // (以 /str 作为命令选项)，或重新生成 VS 项目。
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "18.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
@@ -61,7 +61,7 @@ namespace CodeWF.Modules.Development.I18n {
         }
         
         /// <summary>
-        ///   查找类似 开发 的本地化字符串。
+        ///   查找类似 Development 的本地化字符串。
         /// </summary>
         internal static string Localization_DevelopmentModule_Title {
             get {
@@ -70,7 +70,7 @@ namespace CodeWF.Modules.Development.I18n {
         }
         
         /// <summary>
-        ///   查找类似 将JSON字符串修饰为友好的可读格式。 的本地化字符串。
+        ///   查找类似 Format JSON strings into a user-friendly readable format. 的本地化字符串。
         /// </summary>
         internal static string Localization_JsonPrettifyView_Description {
             get {
@@ -79,7 +79,7 @@ namespace CodeWF.Modules.Development.I18n {
         }
         
         /// <summary>
-        ///   查找类似 字段缩进： 的本地化字符串。
+        ///   查找类似 Field indentation: 的本地化字符串。
         /// </summary>
         internal static string Localization_JsonPrettifyView_IndentSize {
             get {
@@ -88,7 +88,7 @@ namespace CodeWF.Modules.Development.I18n {
         }
         
         /// <summary>
-        ///   查找类似 格式化后的Json格式： 的本地化字符串。
+        ///   查找类似 Formatted Json format: 的本地化字符串。
         /// </summary>
         internal static string Localization_JsonPrettifyView_PrettifiedVersionJSON {
             get {
@@ -97,7 +97,7 @@ namespace CodeWF.Modules.Development.I18n {
         }
         
         /// <summary>
-        ///   查找类似 原始Json格式： 的本地化字符串。
+        ///   查找类似 Original Json format: 的本地化字符串。
         /// </summary>
         internal static string Localization_JsonPrettifyView_RawJson {
             get {
@@ -106,7 +106,7 @@ namespace CodeWF.Modules.Development.I18n {
         }
         
         /// <summary>
-        ///   查找类似 对Key排序： 的本地化字符串。
+        ///   查找类似 Sort by Key: 的本地化字符串。
         /// </summary>
         internal static string Localization_JsonPrettifyView_SortKey {
             get {
@@ -115,7 +115,7 @@ namespace CodeWF.Modules.Development.I18n {
         }
         
         /// <summary>
-        ///   查找类似 JSON美化和格式化 的本地化字符串。
+        ///   查找类似 JSON Beautify and Format 的本地化字符串。
         /// </summary>
         internal static string Localization_JsonPrettifyView_Title {
             get {
@@ -124,7 +124,7 @@ namespace CodeWF.Modules.Development.I18n {
         }
         
         /// <summary>
-        ///   查找类似 压缩文件异常: {0} 的本地化字符串。
+        ///   查找类似 File compression error: {0} 的本地化字符串。
         /// </summary>
         internal static string Localization_TestView_CompressFileExceptionContent {
             get {
@@ -133,7 +133,7 @@ namespace CodeWF.Modules.Development.I18n {
         }
         
         /// <summary>
-        ///   查找类似 压缩文件异常 的本地化字符串。
+        ///   查找类似 File Compression Error 的本地化字符串。
         /// </summary>
         internal static string Localization_TestView_CompressFileExceptionTitle {
             get {
@@ -142,7 +142,7 @@ namespace CodeWF.Modules.Development.I18n {
         }
         
         /// <summary>
-        ///   查找类似 压缩文件 的本地化字符串。
+        ///   查找类似 Compress Files 的本地化字符串。
         /// </summary>
         internal static string Localization_TestView_CompressFiles {
             get {
@@ -151,7 +151,7 @@ namespace CodeWF.Modules.Development.I18n {
         }
         
         /// <summary>
-        ///   查找类似 解压文件异常: {0} 的本地化字符串。
+        ///   查找类似 File decompression error: {0} 的本地化字符串。
         /// </summary>
         internal static string Localization_TestView_DecompressionFileExceptionContent {
             get {
@@ -160,7 +160,7 @@ namespace CodeWF.Modules.Development.I18n {
         }
         
         /// <summary>
-        ///   查找类似 解压文件异常 的本地化字符串。
+        ///   查找类似 File Decompression Error 的本地化字符串。
         /// </summary>
         internal static string Localization_TestView_DecompressionFileExceptionTitle {
             get {
@@ -169,7 +169,7 @@ namespace CodeWF.Modules.Development.I18n {
         }
         
         /// <summary>
-        ///   查找类似 解压文件 的本地化字符串。
+        ///   查找类似 Decompress Files 的本地化字符串。
         /// </summary>
         internal static string Localization_TestView_DecompressionFiles {
             get {
@@ -178,7 +178,7 @@ namespace CodeWF.Modules.Development.I18n {
         }
         
         /// <summary>
-        ///   查找类似 工具开发过程中，部分功能测试 的本地化字符串。
+        ///   查找类似 Testing of some functions during tool development 的本地化字符串。
         /// </summary>
         internal static string Localization_TestView_Description {
             get {
@@ -187,7 +187,7 @@ namespace CodeWF.Modules.Development.I18n {
         }
         
         /// <summary>
-        ///   查找类似 筛选告警 的本地化字符串。
+        ///   查找类似 Filter Alarms 的本地化字符串。
         /// </summary>
         internal static string Localization_TestView_FilterAlarms {
             get {
@@ -196,7 +196,7 @@ namespace CodeWF.Modules.Development.I18n {
         }
         
         /// <summary>
-        ///   查找类似 筛选正常 的本地化字符串。
+        ///   查找类似 Filter Normal 的本地化字符串。
         /// </summary>
         internal static string Localization_TestView_FilterNormal {
             get {
@@ -205,7 +205,7 @@ namespace CodeWF.Modules.Development.I18n {
         }
         
         /// <summary>
-        ///   查找类似 保存压缩文件 的本地化字符串。
+        ///   查找类似 Save Compressed File 的本地化字符串。
         /// </summary>
         internal static string Localization_TestView_SaveCompressedFile {
             get {
@@ -214,7 +214,7 @@ namespace CodeWF.Modules.Development.I18n {
         }
         
         /// <summary>
-        ///   查找类似 选择要压缩的文件列表 的本地化字符串。
+        ///   查找类似 Select list of files to compress 的本地化字符串。
         /// </summary>
         internal static string Localization_TestView_SelectCompressFiles {
             get {
@@ -223,7 +223,7 @@ namespace CodeWF.Modules.Development.I18n {
         }
         
         /// <summary>
-        ///   查找类似 解压后选择要保存的目录 的本地化字符串。
+        ///   查找类似 Select directory to save after decompression 的本地化字符串。
         /// </summary>
         internal static string Localization_TestView_SelectDecompressionFile {
             get {
@@ -232,7 +232,7 @@ namespace CodeWF.Modules.Development.I18n {
         }
         
         /// <summary>
-        ///   查找类似 解压后选择要保存的目录 的本地化字符串。
+        ///   查找类似 Select directory to save after decompression 的本地化字符串。
         /// </summary>
         internal static string Localization_TestView_SelectDirectory {
             get {
@@ -241,7 +241,7 @@ namespace CodeWF.Modules.Development.I18n {
         }
         
         /// <summary>
-        ///   查找类似 显示全部 的本地化字符串。
+        ///   查找类似 Show All 的本地化字符串。
         /// </summary>
         internal static string Localization_TestView_ShowAll {
             get {
@@ -250,7 +250,7 @@ namespace CodeWF.Modules.Development.I18n {
         }
         
         /// <summary>
-        ///   查找类似 超时告警 的本地化字符串。
+        ///   查找类似 Timeout Alarm 的本地化字符串。
         /// </summary>
         internal static string Localization_TestView_TimeoutAlarm {
             get {
@@ -259,7 +259,7 @@ namespace CodeWF.Modules.Development.I18n {
         }
         
         /// <summary>
-        ///   查找类似 测试 的本地化字符串。
+        ///   查找类似 Test 的本地化字符串。
         /// </summary>
         internal static string Localization_TestView_Title {
             get {
@@ -268,7 +268,7 @@ namespace CodeWF.Modules.Development.I18n {
         }
         
         /// <summary>
-        ///   查找类似 YAML美化和格式化 的本地化字符串。
+        ///   查找类似 YAML Beautify and Format 的本地化字符串。
         /// </summary>
         internal static string Localization_YamlPrettifyView_Description {
             get {
@@ -277,7 +277,7 @@ namespace CodeWF.Modules.Development.I18n {
         }
         
         /// <summary>
-        ///   查找类似 美化后的Yaml格式 的本地化字符串。
+        ///   查找类似 Beautified Yaml format 的本地化字符串。
         /// </summary>
         internal static string Localization_YamlPrettifyView_PrettifiedVersionYAML {
             get {
@@ -286,7 +286,7 @@ namespace CodeWF.Modules.Development.I18n {
         }
         
         /// <summary>
-        ///   查找类似 原始Yaml格式 的本地化字符串。
+        ///   查找类似 Original Yaml format 的本地化字符串。
         /// </summary>
         internal static string Localization_YamlPrettifyView_RawYaml {
             get {
@@ -295,7 +295,7 @@ namespace CodeWF.Modules.Development.I18n {
         }
         
         /// <summary>
-        ///   查找类似 将YAML字符串修饰为友好的可读格式。 的本地化字符串。
+        ///   查找类似 Format YAML strings into a user-friendly readable format. 的本地化字符串。
         /// </summary>
         internal static string Localization_YamlPrettifyView_Title {
             get {
