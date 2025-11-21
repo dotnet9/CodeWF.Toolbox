@@ -21,7 +21,7 @@
 		<PackageReference Include="Hashids.net" Version="1.7.0" />
 		<PackageReference Include="Prism.DryIoc.Avalonia" Version="9.0.537.11300-pre" />
 		<PackageReference Include="Irihi.Ursa.Themes.Semi" Version="1.14.0" />
-		<PackageReference Include="ReactiveUI.Avalonia" Version="$(AvaloniaVersion)" />
+		<PackageReference Include="ReactiveUI.Avalonia" Version="11.3.8" />
 		<PackageReference Include="AvaloniaEdit.TextMate" Version="11.3.0" />
 		<PackageReference Include="TextMateSharp.Grammars" Version="1.0.70" />
 		<PackageReference Include="Xaml.Behaviors" Version="11.3.8.2" />
