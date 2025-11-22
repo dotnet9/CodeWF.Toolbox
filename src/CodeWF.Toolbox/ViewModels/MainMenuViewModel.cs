@@ -10,6 +10,7 @@ using Prism.Navigation.Regions;
 using ReactiveUI;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Threading.Tasks;
 using Ursa.PrismExtension;
 
 namespace CodeWF.Toolbox.ViewModels;
@@ -95,7 +96,7 @@ internal class MainMenuViewModel : ViewModelBase
         EventBus.EventBus.Default.Publish(new ChangeToolMenuCommand(_selectedMenuItem!));
     }
 
-    public async void RaiseOpenSettingHandlerAsync()
+    public async Task RaiseOpenSettingHandlerAsync()
     {
         ContainerLocator.Container.Resolve<SettingView>().ShowDialog(App.Instance.MainWindow as Window);
         //var option =

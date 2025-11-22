@@ -16,12 +16,11 @@ public class AskBotViewModel : ReactiveObject
         RaiseAskAICommand = ReactiveCommand.CreateFromTask(RaiseAskAICommandHandlerAsync);
     }
 
-    private string? _askContent;
 
     public string? AskContent
     {
-        get => _askContent;
-        set => this.RaiseAndSetIfChanged(ref _askContent, value);
+        get ;
+        set => this.RaiseAndSetIfChanged(ref field, value);
     }
 
     private string? _responseContent;

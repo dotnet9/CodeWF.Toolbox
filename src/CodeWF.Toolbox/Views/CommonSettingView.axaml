@@ -50,7 +50,7 @@
             OffContent="{i18n:I18n {x:Static language:CommonSettingView.TurnOff}}"
             OnContent="{i18n:I18n {x:Static language:CommonSettingView.TurnOn}}"
             IsChecked="{Binding AutoOpenToolboxAtStartup}"
-            Command="{Binding ChangeAutoOpenToolboxAtStartupHandler}" />
+            Command="{Binding ChangeAutoOpenToolboxAtStartupHandlerAsync}" />
 
         <TextBlock
             Grid.Row="3" TextWrapping="Wrap"
@@ -62,7 +62,7 @@
             OffContent="{i18n:I18n {x:Static language:CommonSettingView.TurnOff}}"
             OnContent="{i18n:I18n {x:Static language:CommonSettingView.TurnOn}}"
             IsChecked="{Binding HideTrayIconOnClose}"
-            Command="{Binding ChangeHideTrayIconOnCloseHandler}" />
+            Command="{Binding ChangeHideTrayIconOnCloseHandlerAsync}" />
 
         <TextBlock
             Grid.Row="4" TextWrapping="Wrap"
@@ -74,6 +74,6 @@
             OffContent="{i18n:I18n {x:Static language:CommonSettingView.TurnOff}}"
             OnContent="{i18n:I18n {x:Static language:CommonSettingView.TurnOn}}"
             IsChecked="{Binding NeedExitDialogOnClose}"
-            Command="{Binding ChangeDisplayPromptWhenClosingHandler}" />
+            Command="{Binding ChangeDisplayPromptWhenClosingHandlerAsync}" />
     </Grid>
 </UserControl>

@@ -7,6 +7,7 @@ using ReactiveUI;
 using System.Collections.ObjectModel;
 using System.Linq;
 using Lang.Avalonia;
+using System.Threading.Tasks;
 
 namespace CodeWF.Toolbox.ViewModels;
 
@@ -100,19 +101,19 @@ public class CommonSettingViewModel : ViewModelBase, ITabItemBase
         }
     }
 
-    public void ChangeAutoOpenToolboxAtStartupHandler()
+    public async Task ChangeAutoOpenToolboxAtStartupHandlerAsync()
     {
         _applicationService.AutoOpenToolboxAtStartup = AutoOpenToolboxAtStartup;
         EventBus.EventBus.Default.Publish(new ChangeApplicationStatusCommand());
     }
 
-    public void ChangeHideTrayIconOnCloseHandler()
+    public async Task ChangeHideTrayIconOnCloseHandlerAsync()
     {
         _applicationService.HideTrayIconOnClose = HideTrayIconOnClose;
         EventBus.EventBus.Default.Publish(new ChangeApplicationStatusCommand());
     }
 
-    public void ChangeDisplayPromptWhenClosingHandler()
+    public async Task ChangeDisplayPromptWhenClosingHandlerAsync()
     {
         _applicationService.NeedExitDialogOnClose = NeedExitDialogOnClose;
     }

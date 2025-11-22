@@ -8,71 +8,63 @@ namespace CodeWF.Modules.Converter.ViewModels;
 
 public class DateTimeConverterViewModel : ReactiveObject, IDisposable
 {
-    private long _currentTimestamp;
-    private long _inputTimestamp;
-    private string _outputDate;
-    private DateTime _inputDate = DateTime.Now;
-    private long _outputTimestamp;
-    private bool _isMillisecondsForInput = false;
-    private bool _isMillisecondsForOutput = false;
     private bool _isRefreshing;
-    private string _inputDateFormat = "yyyy/MM/dd HH:mm:ss";
-    private CompositeDisposable _disposables = new CompositeDisposable();
+    private CompositeDisposable _disposables = new();
 
     public long CurrentTimestamp
     {
-        get => _currentTimestamp;
-        set => this.RaiseAndSetIfChanged(ref _currentTimestamp, value);
+        get;
+        set => this.RaiseAndSetIfChanged(ref field, value);
     }
 
     public long InputTimestamp
     {
-        get => _inputTimestamp;
-        set => this.RaiseAndSetIfChanged(ref _inputTimestamp, value);
+        get;
+        set => this.RaiseAndSetIfChanged(ref field, value);
     }
 
     public string OutputDate
     {
-        get => _outputDate;
-        set => this.RaiseAndSetIfChanged(ref _outputDate, value);
+        get;
+        set => this.RaiseAndSetIfChanged(ref field, value);
     }
 
     public DateTime InputDate
     {
-        get => _inputDate;
-        set => this.RaiseAndSetIfChanged(ref _inputDate, value);
-    }
+        get;
+        set => this.RaiseAndSetIfChanged(ref field, value);
+    } = DateTime.Now;
 
     public long OutputTimestamp
     {
-        get => _outputTimestamp;
-        set => this.RaiseAndSetIfChanged(ref _outputTimestamp, value);
+        get;
+        set => this.RaiseAndSetIfChanged(ref field, value);
     }
 
     public bool IsMillisecondsForInput
     {
-        get => _isMillisecondsForInput;
-        set => this.RaiseAndSetIfChanged(ref _isMillisecondsForInput, value);
-    }
+        get;
+        set => this.RaiseAndSetIfChanged(ref field, value);
+    } = false;
 
     public bool IsMillisecondsForOutput
     {
-        get => _isMillisecondsForOutput;
-        set => this.RaiseAndSetIfChanged(ref _isMillisecondsForOutput, value);
-    }
+        get;
+        set => this.RaiseAndSetIfChanged(ref field, value);
+    } = false;
 
     public string InputDateFormat
     {
-        get => _inputDateFormat;
-        set => this.RaiseAndSetIfChanged(ref _inputDateFormat, value);
-    }
+        get;
+        set => this.RaiseAndSetIfChanged(ref field, value);
+    } = "yyyy/MM/dd HH:mm:ss";
 
     public DateTimeConverterViewModel()
     {
-        StartRefreshing();
+        StartRefreshingAsync();
     }
 
-    public void StartRefreshing()
+    public async Task StartRefreshingAsync()
     {
         _isRefreshing = true;
         var timer = Observable.Interval(TimeSpan.FromSeconds(1))
@@ -81,14 +73,14 @@ public class DateTimeConverterViewModel : ReactiveObject, IDisposable
         _disposables.Add(timer);
     }
 
-    public void StopRefreshing()
+    public async Task StopRefreshingAsync()
     {
         _isRefreshing = false;
         _disposables.Dispose();
         _disposables = new CompositeDisposable();
     }
 
-    public void RefreshTimestamp()
+    public async Task RefreshTimestampAsync()
     {
         UpdateCurrentTimestamp();
     }
@@ -98,13 +90,13 @@ public class DateTimeConverterViewModel : ReactiveObject, IDisposable
         CurrentTimestamp = DateTimeOffset.UtcNow.ToUnixTimeSeconds();
     }
 
-    public void ConvertTimestampToDate()
+    public async Task ConvertTimestampToDateAsync()
     {
         DateTime dateTime = IsMillisecondsForInput ? InputTimestamp.FromUnixTimeMillisecondsToDateTime() : InputTimestamp.FromUnixTimeSecondsToDateTime();
         OutputDate = dateTime.ToString("yyyy/MM/dd HH:mm:ss", CultureInfo.InvariantCulture);
     }
 
-    public void ConvertDateToTimestamp()
+    public async Task ConvertDateToTimestampAsync()
     {
         OutputTimestamp = IsMillisecondsForOutput ? InputDate.GetUnixTimeMilliseconds() : InputDate.GetUnixTimeSeconds();
     }

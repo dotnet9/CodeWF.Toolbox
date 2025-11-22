@@ -21,16 +21,16 @@
             <TextBox Width="300" u:FormItem.Label="{i18n:I18n {x:Static language:NuoCheView.InputTitle}}"
                      u:FormItem.IsRequired="True" Text="{Binding InputTitle}" />
             <StackPanel Orientation="Horizontal" u:FormItem.Label="{i18n:I18n {x:Static language:NuoCheView.EnableSubTitle}}">
-                <CheckBox IsChecked="{Binding EnableSubTitle}" Command="{Binding EnableSubTitleHandler}" VerticalAlignment="Center" Content="显示" Margin="5 0" />
+                <CheckBox IsChecked="{Binding EnableSubTitle}" Command="{Binding EnableSubTitleHandlerAsync}" VerticalAlignment="Center" Content="显示" Margin="5 0" />
                 <TextBox Width="300" Text="{Binding SubTitle}" IsEnabled="{Binding EnableSubTitle}" VerticalAlignment="Center" />
             </StackPanel>
         </u:Form>
 
         <StackPanel Orientation="Horizontal" Spacing="10" Margin="0,0,0,10">
             <Button Content="{i18n:I18n {x:Static language:NuoCheView.CreateButtonContent}}"
-                    Command="{Binding GenerateQrCode}" />
+                    Command="{Binding GenerateQrCodeAsync}" />
             <Button Content="{i18n:I18n {x:Static language:NuoCheView.SaveQrCodeFileTitle}}"
-                    Command="{Binding SaveQrCode}" />
+                    Command="{Binding SaveQrCodeAsync}" />
             <HyperlinkButton Content="{i18n:I18n {x:Static language:NuoCheView.PreviewNuoCheUrl}}"
                              NavigateUri="{Binding GeneratedUrl}" Classes="WithIcon Underline"
                              VerticalAlignment="Center" />
@@ -39,7 +39,7 @@
         <Image Source="{Binding QrCodeImage}" Width="340" Height="340" DragDrop.AllowDrop="True">
             <Interaction.Behaviors>
                 <EventTriggerBehavior EventName="PointerPressed">
-                    <InvokeCommandAction Command="{Binding RaisePointerPressed}" PassEventArgsToCommand="True" />
+                    <InvokeCommandAction Command="{Binding RaisePointerPressedAsync}" PassEventArgsToCommand="True" />
                 </EventTriggerBehavior>
             </Interaction.Behaviors>
         </Image>

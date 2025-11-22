@@ -27,20 +27,16 @@ public class JsonToYamlViewModel : ReactiveObject
         JsonEditor!.TextChanged += (s, e) => JsonString = JsonEditor.Text;
     }
 
-    private string? _jsonString;
-
     public string? JsonString
     {
-        get => _jsonString;
-        set => this.RaiseAndSetIfChanged(ref _jsonString, value);
+        get;
+        set => this.RaiseAndSetIfChanged(ref field, value);
     }
-
-    private string? _errorMessage;
 
     public string? ErrorMessage
     {
-        get => _errorMessage;
-        set => this.RaiseAndSetIfChanged(ref _errorMessage, value);
+        get;
+        set => this.RaiseAndSetIfChanged(ref field, value);
     }
 
     public ReactiveCommand<Unit, Unit> RaiseClearCommand { get; }

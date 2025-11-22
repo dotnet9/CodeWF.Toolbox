@@ -35,28 +35,22 @@ public class PolyTranslateViewModel : ReactiveObject
         RaiseChoiceLanguagesCommand = ReactiveCommand.CreateFromTask(RaiseChoiceLanguagesCommandHandlerAsync);
     }
 
-    private string? _askContent;
-
     public string? AskContent
     {
-        get => _askContent;
-        set => this.RaiseAndSetIfChanged(ref _askContent, value);
+        get;
+        set => this.RaiseAndSetIfChanged(ref field, value);
     }
-
-    private string? _responseContent;
 
     public string? ResponseContent
     {
-        get => _responseContent;
-        set => this.RaiseAndSetIfChanged(ref _responseContent, value);
+        get;
+        set => this.RaiseAndSetIfChanged(ref field, value);
     }
-
-    private string? _languages;
 
     public string? Languages
     {
-        get => _languages;
-        set => this.RaiseAndSetIfChanged(ref _languages, value);
+        get;
+        set => this.RaiseAndSetIfChanged(ref field, value);
     }
 
     public ReactiveCommand<Unit, Unit> RaiseTranslateCommand { get; }

@@ -3,6 +3,7 @@
 		<OutputType>WinExe</OutputType>
 		<TargetFrameworks>net9.0-windows;net10.0-windows</TargetFrameworks>
 		<Nullable>enable</Nullable>
+		<LangVersion>latest</LangVersion>
 		<UseWindowsForms>true</UseWindowsForms>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Platforms>AnyCPU;x64;ARM32;x86</Platforms>

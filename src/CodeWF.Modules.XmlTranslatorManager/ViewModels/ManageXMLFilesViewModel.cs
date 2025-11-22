@@ -37,26 +37,22 @@ public class ManageXmlFilesViewModel : ReactiveObject
 
     public RangeObservableCollection<LanguageXmlModel> XmlFiles { get; } = new();
 
-    private LanguageClassModel? _selectedClassItem;
-
     public LanguageClassModel? SelectedClassItem
     {
-        get => _selectedClassItem;
+        get;
         set
         {
-            this.RaiseAndSetIfChanged(ref _selectedClassItem, value);
+            this.RaiseAndSetIfChanged(ref field, value);
             ChangeLanguageClass();
         }
     }
 
-    private string? _languageDir;
-
     public string? LanguageDir
     {
-        get => _languageDir;
+        get;
         set
         {
-            this.RaiseAndSetIfChanged(ref _languageDir, value);
+            this.RaiseAndSetIfChanged(ref field, value);
 
             ReadXmlFiles();
         }
@@ -66,12 +62,12 @@ public class ManageXmlFilesViewModel : ReactiveObject
 
     #region Command handler
 
-    public void RaiseDataGridLoadHandler(DataGrid dataGrid)
+    public async Task RaiseDataGridLoadHandlerAsync(DataGrid dataGrid)
     {
         _languagePropertyDataGrid = dataGrid;
     }
 
-    public async Task RaiseChoiceLanguageDirHandler()
+    public async Task RaiseChoiceLanguageDirHandlerAsync()
     {
         var dirs = await _fileChooserService.OpenFolderAsync(
             I18nManager.Instance.GetResource(Localization.MergeXmlFilesView.SelectLanguageDirectory));
@@ -84,7 +80,7 @@ public class ManageXmlFilesViewModel : ReactiveObject
         LanguageDir = dirs[0];
     }
 
-    public async Task RaiseExportHandler()
+    public async Task RaiseExportHandlerAsync()
     {
         var fileTypeFilters = new List<FilePickerFileType>
         {

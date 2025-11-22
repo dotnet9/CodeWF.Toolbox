@@ -80,7 +80,7 @@ public class MergeXmlFilesViewModel : ReactiveObject
 
     #region Command handler
 
-    public async Task RaiseChoiceLanguageDirHandler()
+    public async Task RaiseChoiceLanguageDirHandlerAsync()
     {
         var dirs = await _fileChooserService.OpenFolderAsync(
             I18nManager.Instance.GetResource(Localization.MergeXmlFilesView.SelectLanguageDirectory));

@@ -21,20 +21,16 @@ public class YamlPrettifyViewModel : ReactiveObject
             .Subscribe(RawYamlChanged);
     }
 
-    private string? _rawYaml;
-
     public string? RawYaml
     {
-        get => _rawYaml;
-        set => this.RaiseAndSetIfChanged(ref _rawYaml, value);
+        get;
+        set => this.RaiseAndSetIfChanged(ref field, value);
     }
-
-    private string? _errorMessage;
 
     public string? ErrorMessage
     {
-        get => _errorMessage;
-        set => this.RaiseAndSetIfChanged(ref _errorMessage, value);
+        get;
+        set => this.RaiseAndSetIfChanged(ref field, value);
     }
 
     public ReactiveCommand<Unit, Unit> RaiseCopyCommand { get; }

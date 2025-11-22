@@ -34,7 +34,7 @@
                 HorizontalAlignment="Stretch"
                 Margin="5,0"
                 VerticalAlignment="Center"
-                Command="{Binding RaiseChoiceLanguageDirHandler}"
+                Command="{Binding RaiseChoiceLanguageDirHandlerAsync}"
                 Content="..." />
 
             <TextBox

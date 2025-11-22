@@ -38,30 +38,25 @@ public class TestViewModel : ReactiveObject
     }
 
     public static TestViewModel Instance { get; private set; }
-    private string _currentTime;
 
     public string CurrentTime
     {
-        get => _currentTime;
-        set => this.RaiseAndSetIfChanged(ref _currentTime, value);
+        get;
+        set => this.RaiseAndSetIfChanged(ref field, value);
     }
-
-    private string _dailyTimeTask;
 
     public string DailyTimeTask
     {
-        get => _dailyTimeTask;
-        set => this.RaiseAndSetIfChanged(ref _dailyTimeTask, value);
+        get;
+        set => this.RaiseAndSetIfChanged(ref field, value);
     }
 
     public List<WarningKind> WarningItems { get; set; }
 
-    private WarningKind _selectedPrompt;
-
     public WarningKind SelectedPrompt
     {
-        get => _selectedPrompt;
-        set => this.RaiseAndSetIfChanged(ref _selectedPrompt, value);
+        get;
+        set => this.RaiseAndSetIfChanged(ref field, value);
     }
 
     public ReactiveCommand<Unit, Unit> RaiseCompressCommand { get; }

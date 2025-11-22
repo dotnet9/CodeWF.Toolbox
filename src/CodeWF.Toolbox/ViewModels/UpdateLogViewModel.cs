@@ -22,11 +22,10 @@ public class UpdateLogViewModel : ViewModelBase, ITabItemBase
     public string? TitleKey { get; set; } = Localization.UpdateLogView.Title;
     public string? MessageKey { get; set; } = Localization.UpdateLogView.Description;
 
-    private string? _updateLogMarkdownContent;
 
     public string? UpdateLogMarkdownContent
     {
-        get => _updateLogMarkdownContent;
-        set => this.RaiseAndSetIfChanged(ref _updateLogMarkdownContent, value);
+        get ;
+        set => this.RaiseAndSetIfChanged(ref field, value);
     }
 }

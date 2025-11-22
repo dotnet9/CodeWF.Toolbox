@@ -14,15 +14,10 @@ namespace CodeWF.Modules.Converter.ViewModels;
 public class ImageToIconViewModel : ReactiveObject
 {
     private readonly IFileChooserService _fileChooserService;
-    private readonly INotificationService _notificationService;
-
-    private readonly FilePickerFileType _icoFilePickerFileType =
-        new("Icon file") { Patterns = ["*.ico"] };
 
     public ImageToIconViewModel(IFileChooserService fileChooserService, INotificationService notificationService)
     {
         _fileChooserService = fileChooserService;
-        _notificationService = notificationService;
         IconSizes.AddRange(Enum.GetValues<IconSize>()
             .Select(size => new IconSizeItem(size)));
     }
@@ -31,12 +26,10 @@ public class ImageToIconViewModel : ReactiveObject
 
     public ObservableCollection<IconSizeItem> IconSizes { get; } = new();
 
-    private string? _needConvertImagePath;
-
     public string? NeedConvertImagePath
     {
-        get => _needConvertImagePath;
-        set => this.RaiseAndSetIfChanged(ref _needConvertImagePath, value);
+        get;
+        set => this.RaiseAndSetIfChanged(ref field, value);
     }
 
     #endregion
@@ -58,7 +51,7 @@ public class ImageToIconViewModel : ReactiveObject
     }
 
 
-    public void RaiseDropSourceImagePath(DragEventArgs e)
+    public async Task RaiseDropSourceImagePathAsync(DragEventArgs e)
     {
         var files = e.Data.GetFiles();
         var file = files?.FirstOrDefault();
@@ -71,9 +64,9 @@ public class ImageToIconViewModel : ReactiveObject
         e.Handled = true;
     }
 
-    public async Task RaiseMergeGenerateIconHandler()
+    public async Task RaiseMergeGenerateIconHandlerAsync()
     {
-        (bool isSuccess, uint[]? sizes) = await GetGenerateInfo();
+        (bool isSuccess, uint[]? sizes) = await GetGenerateInfoAsync();
         if (!isSuccess)
         {
             return;
@@ -94,9 +87,9 @@ public class ImageToIconViewModel : ReactiveObject
         FileHelper.OpenFolderAndSelectFile(saveIconPath);
     }
 
-    public async Task RaiseSeparateGenerateIconHandler()
+    public async Task RaiseSeparateGenerateIconHandlerAsync()
     {
-        (bool isSuccess, uint[]? sizes) = await GetGenerateInfo();
+        (bool isSuccess, uint[]? sizes) = await GetGenerateInfoAsync();
         if (!isSuccess)
         {
             return;
@@ -115,7 +108,7 @@ public class ImageToIconViewModel : ReactiveObject
         FileHelper.OpenFolder(saveIconFolder);
     }
 
-    private async Task<(bool IsSuccess, uint[]? Sizes)> GetGenerateInfo()
+    private async Task<(bool IsSuccess, uint[]? Sizes)> GetGenerateInfoAsync()
     {
         if (string.IsNullOrWhiteSpace(NeedConvertImagePath)
             || !File.Exists(NeedConvertImagePath))

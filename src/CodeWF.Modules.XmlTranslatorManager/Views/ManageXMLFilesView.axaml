@@ -24,7 +24,7 @@
     <Grid RowDefinitions="35 *" ColumnDefinitions="200 1 *">
         <StackPanel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Orientation="Horizontal">
             <TextBox Width="500" Text="{Binding LanguageDir, Mode=OneWay}" IsReadOnly="True" />
-            <Button Content="..." Command="{Binding RaiseChoiceLanguageDirHandler}" />
+            <Button Content="..." Command="{Binding RaiseChoiceLanguageDirHandlerAsync}" />
         </StackPanel>
         <TreeView Grid.Row="1" Grid.Column="0"
                   ItemsSource="{Binding XmlFiles}"
@@ -40,7 +40,7 @@
         <GridSplitter Grid.Row="1" Grid.Column="1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" />
         <Grid Grid.Row="1" Grid.Column="2" RowDefinitions="Auto *"> 
             <StackPanel Orientation="Horizontal">
-                <Button Content="Export" Command="{Binding RaiseExportHandler}" />
+                <Button Content="Export" Command="{Binding RaiseExportHandlerAsync}" />
             </StackPanel>
             <DataGrid Grid.Row="1" x:Name="LanguageDataGrid"  
                       Classes.InsetContent="True"
@@ -51,7 +51,7 @@
                       CanUserSortColumns="True">
                 <Interaction.Behaviors>
                     <EventTriggerBehavior EventName="Loaded" SourceObject="LanguageDataGrid">
-                        <InvokeCommandAction Command="{Binding RaiseDataGridLoadHandler}"
+                        <InvokeCommandAction Command="{Binding RaiseDataGridLoadHandlerAsync}"
                                              CommandParameter="{Binding ElementName=LanguageDataGrid}" />
                     </EventTriggerBehavior>
                 </Interaction.Behaviors>

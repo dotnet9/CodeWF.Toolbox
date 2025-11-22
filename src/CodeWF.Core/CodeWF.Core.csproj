@@ -4,6 +4,7 @@
 		<TargetFrameworks>net9.0;net10.0</TargetFrameworks>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
+		<LangVersion>latest</LangVersion>
 		<Platforms>AnyCPU;x64;ARM32;x86</Platforms>
 	</PropertyGroup>
 
@@ -11,7 +12,7 @@
 		<PackageReference Include="Avalonia" Version="$(AvaloniaVersion)" />
 		<PackageReference Include="Dapper" Version="2.1.66" />
 		<PackageReference Include="Dapper.AOT" Version="1.0.48" />
-		<PackageReference Include="Lang.Avalonia.Xml" Version="1.0.0.3" />
+		<PackageReference Include="Lang.Avalonia.Xml" Version="11.3.9" />
 		<PackageReference Include="Microsoft.Data.Sqlite" Version="10.0.0" />
 		<PackageReference Include="Prism.DryIoc.Avalonia" Version="9.0.537.11300-pre" />
 		<PackageReference Include="CodeWF.Tools" Version="1.3.8.8" />

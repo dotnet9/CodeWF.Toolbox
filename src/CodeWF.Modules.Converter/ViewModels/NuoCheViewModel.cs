@@ -14,13 +14,6 @@ public class NuoCheViewModel : ReactiveObject
 {
     private readonly INotificationService _notificationService;
     private readonly IFileChooserService _fileChooserService;
-    private string _inputTitle;
-    private long _phoneNumber;
-    private Bitmap? _qrCodeImage;
-    private string _qrCodeImagePath;
-    private string _generatedUrl;
-    private string _subTitle;
-    private bool _enableSubTitle;
 
     public NuoCheViewModel(INotificationService notificationService, IFileChooserService fileChooserService)
     {
@@ -35,52 +28,52 @@ public class NuoCheViewModel : ReactiveObject
 
     public string InputTitle
     {
-        get => _inputTitle;
-        set => this.RaiseAndSetIfChanged(ref _inputTitle, value);
+        get;
+        set => this.RaiseAndSetIfChanged(ref field, value);
     }
 
     public long PhoneNumber
     {
-        get => _phoneNumber;
-        set => this.RaiseAndSetIfChanged(ref _phoneNumber, value);
+        get;
+        set => this.RaiseAndSetIfChanged(ref field, value);
     }
 
     public Bitmap? QrCodeImage
     {
-        get => _qrCodeImage;
-        private set => this.RaiseAndSetIfChanged(ref _qrCodeImage, value);
+        get;
+        private set => this.RaiseAndSetIfChanged(ref field, value);
     }
 
     public string QrCodeImagePath
     {
-        get => _qrCodeImagePath;
-        private set => this.RaiseAndSetIfChanged(ref _qrCodeImagePath, value);
+        get;
+        private set => this.RaiseAndSetIfChanged(ref field, value);
     }
 
     public string GeneratedUrl
     {
-        get => _generatedUrl;
-        private set => this.RaiseAndSetIfChanged(ref _generatedUrl, value);
+        get;
+        private set => this.RaiseAndSetIfChanged(ref field, value);
     }
 
     public string SubTitle
     {
-        get => _subTitle;
-        set => this.RaiseAndSetIfChanged(ref _subTitle, value);
+        get;
+        set => this.RaiseAndSetIfChanged(ref field, value);
     }
 
     public bool EnableSubTitle
     {
-        get => _enableSubTitle;
-        set => this.RaiseAndSetIfChanged(ref _enableSubTitle, value);
+        get;
+        set => this.RaiseAndSetIfChanged(ref field, value);
     }
 
-    public void EnableSubTitleHandler()
+    public async Task EnableSubTitleHandlerAsync()
     {
         SubTitle = $"{I18nManager.Instance.GetResource(Localization.NuoCheView.DefaultSubTitlePrefix)}: {PhoneNumber}";
     }
 
-    public void GenerateQrCode()
+    public async Task GenerateQrCodeAsync()
     {
         if (string.IsNullOrWhiteSpace(InputTitle))
         {
@@ -111,7 +104,7 @@ public class NuoCheViewModel : ReactiveObject
     }
 
 
-    public async Task SaveQrCode()
+    public async Task SaveQrCodeAsync()
     {
         if (QrCodeImage == null || string.IsNullOrEmpty(QrCodeImagePath))
         {
@@ -149,7 +142,7 @@ public class NuoCheViewModel : ReactiveObject
         }
     }
 
-    public async Task RaisePointerPressed(PointerPressedEventArgs e)
+    public async Task RaisePointerPressedAsync(PointerPressedEventArgs e)
     {
         if (string.IsNullOrWhiteSpace(QrCodeImagePath) || !File.Exists(QrCodeImagePath))
         {

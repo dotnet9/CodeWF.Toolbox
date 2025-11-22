@@ -19,9 +19,9 @@
         <StackPanel Orientation="Horizontal" Spacing="10">
             <TextBlock Text="{i18n:I18n {x:Static language:DateTimeConverterView.CurrentTimestampLabel}}" VerticalAlignment="Center" />
             <SelectableTextBlock Text="{Binding CurrentTimestamp}" Foreground="Red" VerticalAlignment="Center" />
-            <Button Content="{i18n:I18n {x:Static language:DateTimeConverterView.StartButtonContent}}" Command="{Binding StartRefreshing}" />
-            <Button Content="{i18n:I18n {x:Static language:DateTimeConverterView.StopButtonContent}}" Command="{Binding StopRefreshing}" />
-            <Button Content="{i18n:I18n {x:Static language:DateTimeConverterView.RefreshButtonContent}}" Command="{Binding RefreshTimestamp}" />
+            <Button Content="{i18n:I18n {x:Static language:DateTimeConverterView.StartButtonContent}}" Command="{Binding StartRefreshingAsync}" />
+            <Button Content="{i18n:I18n {x:Static language:DateTimeConverterView.StopButtonContent}}" Command="{Binding StopRefreshingAsync}" />
+            <Button Content="{i18n:I18n {x:Static language:DateTimeConverterView.RefreshButtonContent}}" Command="{Binding RefreshTimestampAsync}" />
         </StackPanel>
 
         <StackPanel Orientation="Horizontal" Spacing="10">
@@ -31,7 +31,7 @@
                 <ComboBoxItem Content="{i18n:I18n {x:Static language:DateTimeConverterView.SecondLabel}}" IsSelected="{Binding !IsMillisecondsForInput}" />
                 <ComboBoxItem Content="{i18n:I18n {x:Static language:DateTimeConverterView.MillisecondsLabel}}" IsSelected="{Binding IsMillisecondsForInput}" />
             </ComboBox>
-            <Button Content="{i18n:I18n {x:Static language:DateTimeConverterView.ConvertButtonContent}}" Command="{Binding ConvertTimestampToDate}" />
+            <Button Content="{i18n:I18n {x:Static language:DateTimeConverterView.ConvertButtonContent}}" Command="{Binding ConvertTimestampToDateAsync}" />
             <TextBox Text="{Binding OutputDate}" Width="200" IsReadOnly="True" />
         </StackPanel>
 
@@ -39,7 +39,7 @@
             <TextBlock Text="{i18n:I18n {x:Static language:DateTimeConverterView.DateTimeFormatLabel}}" VerticalAlignment="Center" />
             <u:DateTimePicker SelectedDate="{Binding InputDate}" Width="200" Classes="ClearButton"
                               DisplayFormat="yyyy/MM/dd HH:mm:ss" />
-            <Button Content="{i18n:I18n {x:Static language:DateTimeConverterView.ConvertToTimestampLabel}}" Command="{Binding ConvertDateToTimestamp}" />
+            <Button Content="{i18n:I18n {x:Static language:DateTimeConverterView.ConvertToTimestampLabel}}" Command="{Binding ConvertDateToTimestampAsync}" />
             <TextBox Text="{Binding OutputTimestamp}" Width="150" IsReadOnly="True" />
             <ComboBox Width="80" SelectedIndex="0">
                 <ComboBoxItem Content="{i18n:I18n {x:Static language:DateTimeConverterView.SecondLabel}}" IsSelected="{Binding !IsMillisecondsForOutput}" />

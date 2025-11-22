@@ -5,6 +5,7 @@
 		<ApplicationManifest>app.manifest</ApplicationManifest>
 		<ApplicationIcon>logo.ico</ApplicationIcon>
 		<Nullable>enable</Nullable>
+		<LangVersion>latest</LangVersion>
 		<BuiltInComInteropSupport>true</BuiltInComInteropSupport>
 		<IncludeNativeLibrariesForSelfExtract>true</IncludeNativeLibrariesForSelfExtract>
 		<AssemblyName>codewf</AssemblyName>

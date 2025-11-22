@@ -21,7 +21,7 @@
                      DragDrop.AllowDrop="True">
                 <Interaction.Behaviors>
                     <RoutedEventTriggerBehavior RoutedEvent="{x:Static DragDrop.DropEvent}">
-                        <InvokeCommandAction Command="{Binding RaiseDropSourceImagePath}" PassEventArgsToCommand="True" />
+                        <InvokeCommandAction Command="{Binding RaiseDropSourceImagePathAsync}" PassEventArgsToCommand="True" />
                     </RoutedEventTriggerBehavior>
                 </Interaction.Behaviors>
             </TextBox>
@@ -43,10 +43,10 @@
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
             <Button Margin="10" Classes="Small"
                     Content="{i18n:I18n {x:Static language:ImageToIconView.MergeGenerateButtonContent}}"
-                    Command="{Binding RaiseMergeGenerateIconHandler}" />
+                    Command="{Binding RaiseMergeGenerateIconHandlerAsync}" />
             <Button Classes="Small"
                     Content="{i18n:I18n {x:Static language:ImageToIconView.SeparateGenerateButtonContent}}"
-                    Command="{Binding RaiseSeparateGenerateIconHandler}" />
+                    Command="{Binding RaiseSeparateGenerateIconHandlerAsync}" />
         </StackPanel>
 
         <TextBlock Margin="0 40 0 0" Classes="H4" Theme="{StaticResource TitleTextBlock}"
