@@ -18,6 +18,20 @@
               Title="登录"
               WindowStartupLocation="CenterScreen"
               CanResize="False">
+    <u:UrsaWindow.Styles>
+        <Style Selector="TextBlock.Left">
+            <Setter Property="VerticalAlignment" Value="Center" />
+        </Style>
+        <Style Selector="TextBox.Right">
+            <Setter Property="VerticalAlignment" Value="Center" />
+            <Setter Property="Width" Value="220" />
+            <Setter Property="Height" Value="30" />
+        </Style>
+        <Style Selector="Button.Common">
+            <Setter Property="Width" Value="100" />
+            <Setter Property="Height" Value="30" />
+        </Style>
+    </u:UrsaWindow.Styles>
     <u:UrsaWindow.LeftContent>
         <StackPanel x:Name="LogoAndTitle" Grid.Row="0" Grid.Column="0" IsHitTestVisible="False"
                     VerticalAlignment="Center" Classes="h7" Margin="5 5"
@@ -26,30 +40,18 @@
             <TextBlock Text="{i18n:I18n {x:Static language:MainModule.Title}}" />
         </StackPanel>
 	</u:UrsaWindow.LeftContent>
-    <Grid Margin="20 40 20 20">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="*" />
-        </Grid.RowDefinitions>
+    <Grid Margin="30 60 30 30" RowDefinitions="55 55 30 *" ColumnDefinitions="80 *">
+
+        <TextBlock Grid.Row="0" Grid.Column="0" Text="用户名" Classes="Left" />
+        <TextBox Grid.Row="0" Grid.Column="1" Text="{Binding Username}" Classes="Right" />
         
-        <!-- 用户名输入 -->
-        <StackPanel Grid.Row="0" Margin="0 10 0 5" Orientation="Vertical">
-            <TextBlock Text="用户名" Margin="0 0 0 5" />
-            <TextBox Text="{Binding Username}" Width="300" Height="30" />
-        </StackPanel>
-        
-        <!-- 密码输入 -->
-        <StackPanel Grid.Row="1" Margin="0 10 0 5" Orientation="Vertical">
-            <TextBlock Text="密码" Margin="0 0 0 5" />
-            <TextBox Text="{Binding Password}" Classes="revealPasswordButton" Width="300" Height="30" />
-        </StackPanel>
+        <TextBlock Grid.Row="1" Grid.Column="0" Text="密码" Classes="Left" />
+        <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding Password}" Classes="revealPasswordButton Right" />
         
         <!-- 状态信息 -->
         <TextBlock 
             Grid.Row="2" 
+            Grid.ColumnSpan="2"
             Text="{Binding StatusMessage}" 
             Foreground="Red" 
             HorizontalAlignment="Center" 
@@ -57,20 +59,17 @@
         />
         
         <!-- 按钮区域 -->
-        <StackPanel Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 10">
-            <Button 
+        <StackPanel Grid.Row="3" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 10">
+            <Button Classes="Common"
                 Content="登录" 
                 Command="{Binding LoginAsync}" 
-                CommandParameter="{Binding #loginWindow}"
-                Width="100" 
-                Height="30" 
+                CommandParameter="{Binding #loginWindow}" 
                 Margin="0 0 10 0" />
-            <Button 
+            <Button Classes="Common"
                 Content="游客登录" 
                 Command="{Binding GuestLoginAsync}" 
                 CommandParameter="{Binding #loginWindow}" 
-                Width="100" 
-                Height="30" />
+                Margin="0 0 0 0" />  
         </StackPanel>
     </Grid>
 </u:UrsaWindow>
