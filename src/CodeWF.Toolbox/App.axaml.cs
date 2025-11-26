@@ -8,8 +8,11 @@ using CodeWF.Core.RegionAdapters;
 using CodeWF.Core.Services;
 using CodeWF.Modules.XmlTranslatorManager;
 using CodeWF.Toolbox.Services;
+using CodeWF.Toolbox.ViewModels;
 using CodeWF.Toolbox.Views;
 using DryIoc;
+using Lang.Avalonia;
+using Lang.Avalonia.Xml;
 using Prism.DryIoc;
 using Prism.Ioc;
 using Prism.Modularity;
@@ -17,13 +20,10 @@ using Prism.Navigation.Regions;
 using System;
 using System.Globalization;
 using System.Linq;
-using Lang.Avalonia;
-using Lang.Avalonia.Xml;
 using Ursa.PrismExtension;
 using AIModule = CodeWF.Modules.AI.AIModule;
 using ConverterModule = CodeWF.Modules.Converter.ConverterModule;
 using DevelopmentModule = CodeWF.Modules.Development.DevelopmentModule;
-using MainWindow = CodeWF.Toolbox.Views.MainWindow;
 
 namespace CodeWF.Toolbox;
 
@@ -34,6 +34,7 @@ public partial class App : PrismApplication
             .Any(a => a == "--fbdev" || a == "--drm");
 
     public static App Instance { get; private set; }
+    public static bool IsLoggedIn { get; set; } = false;
 
     public override void Initialize()
     {
@@ -59,12 +60,11 @@ public partial class App : PrismApplication
     }
 
     protected override AvaloniaObject CreateShell()
-    {
+    {        
         Instance = this;
-        if (IsSingleViewLifetime)
-            return Container.Resolve<MainView>();
-        return Container.Resolve<MainWindow>();
+        return Container.Resolve<LoginWindow>();
     }
+   
 
     protected override void RegisterTypes(IContainerRegistry containerRegistry)
     {
@@ -74,8 +74,11 @@ public partial class App : PrismApplication
         containerRegistry.RegisterSingleton<IToolMenuService, ToolMenuService>();
         containerRegistry.RegisterSingleton<IFileChooserService, FileChooserService>();
         containerRegistry.RegisterSingleton<INotificationService, NotificationService>();
+        containerRegistry.RegisterSingleton<ILoginService, LoginService>();
 
+        containerRegistry.RegisterSingleton<LoginViewModel>();
         containerRegistry.Register<MainWindow>();
+        containerRegistry.Register<LoginWindow>();
     }
 
     private void OpenMainWindow_OnClicked(object? sender, EventArgs e)

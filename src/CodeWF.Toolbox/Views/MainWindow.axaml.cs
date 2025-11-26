@@ -46,7 +46,6 @@ public partial class MainWindow : UrsaWindow
 
     private void Init()
     {
-        _applicationService.Load();
         EventBus.EventBus.Default.Subscribe(this);
         ChangeApplicationStatus(new ChangeApplicationStatusCommand());
     }
