@@ -2,7 +2,7 @@ using Avalonia.Input;
 using Avalonia.Media.Imaging;
 using Avalonia.Platform.Storage;
 using CodeWF.Core.IServices;
-using CodeWF.LogViewer.Avalonia;
+using CodeWF.Log.Core;
 using CodeWF.Tools.Image;
 using HashidsNet;
 using Lang.Avalonia;

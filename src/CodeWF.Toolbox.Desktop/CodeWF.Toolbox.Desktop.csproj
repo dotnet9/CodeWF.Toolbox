@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
 		<OutputType>WinExe</OutputType>
-		<TargetFrameworks>net9.0;net9.0-windows;net10.0;net10.0-windows</TargetFrameworks>
+		<TargetFrameworks>net10.0;net10.0-windows</TargetFrameworks>
 		<ApplicationManifest>app.manifest</ApplicationManifest>
 		<ApplicationIcon>logo.ico</ApplicationIcon>
 		<Nullable>enable</Nullable>
@@ -12,10 +12,6 @@
 		<!-- 禁用自动生成程序集属性 -->
 		<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
 		<Platforms>AnyCPU;x64;x86</Platforms>
-	</PropertyGroup>
-	<PropertyGroup Condition="$([MSBuild]::IsTargetFrameworkCompatible('$(TargetFramework)', 'net9.0-windows'))">
-		<IsTrimmable>true</IsTrimmable>
-		<PublishTrimmed>true</PublishTrimmed>
 	</PropertyGroup>
 	<PropertyGroup Condition="$([MSBuild]::IsTargetFrameworkCompatible('$(TargetFramework)', 'net10.0-windows'))">
 		<IsTrimmable>true</IsTrimmable>
