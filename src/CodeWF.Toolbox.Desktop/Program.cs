@@ -6,9 +6,6 @@ namespace CodeWF.Toolbox.Desktop;
 
 internal sealed class Program
 {
-    // Initialization code. Don't use any Avalonia, third-party APIs or any
-    // SynchronizationContext-reliant code before AppMain is called: things aren't initialized
-    // yet and stuff might break.
     [STAThread]
     public static void Main(string[] args)
     {
@@ -16,11 +13,22 @@ internal sealed class Program
             .StartWithClassicDesktopLifetime(args);
     }
 
-    // Avalonia configuration, don't remove; also used by visual designer.
     public static AppBuilder BuildAvaloniaApp()
         => AppBuilder.Configure<App>()
             .UsePlatformDetect()
-            //.With(new Win32PlatformOptions() { RenderingMode = [Win32RenderingMode.Software] })   // Software rendering mode
+            .With(new Win32PlatformOptions() 
+            {
+                RenderingMode = [Win32RenderingMode.Software],   // 软渲染
+                OverlayPopups = true,
+            })   
+            .With(new X11PlatformOptions 
+            {
+                OverlayPopups = true
+            })
+            .With(new AvaloniaNativePlatformOptions
+            { 
+                OverlayPopups=true
+            })
             .WithFont_SourceHanSansCN()
             .UseReactiveUI()
             .LogToTrace();
