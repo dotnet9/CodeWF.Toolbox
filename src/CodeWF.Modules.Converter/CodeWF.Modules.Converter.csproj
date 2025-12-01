@@ -65,7 +65,7 @@
 
 	<ItemGroup Condition="'$(TargetFramework)' == 'net10.0'">
 	  <PackageReference Include="CodeWF.Log.Core">
-	    <Version>11.3.9.2</Version>
+	    <Version>11.3.9.4</Version>
 	  </PackageReference>
 	</ItemGroup>
 
