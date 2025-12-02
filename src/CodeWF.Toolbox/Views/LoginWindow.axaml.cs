@@ -1,4 +1,5 @@
 using Avalonia.Markup.Xaml;
+using CodeWF.AvaloniaControls.Helpers;
 using CodeWF.Core.IServices;
 using CodeWF.Toolbox.Services;
 using CodeWF.Toolbox.ViewModels;
@@ -12,6 +13,7 @@ public partial class LoginWindow : UrsaWindow
     {
         DataContext = new LoginViewModel(loginService);
         InitializeComponent();
+        this.EnableOSVersionAwareDecorations();
         applicationService.Load();
     }
     
