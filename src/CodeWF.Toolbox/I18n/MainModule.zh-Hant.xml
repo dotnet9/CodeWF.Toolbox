@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 
 <Localization language="Chinese (Traditional)" description="中文繁體" cultureName="zh-Hant">
 	<MainModule>
@@ -57,4 +57,18 @@
 		<DirectToClose>直接退出應用程式</DirectToClose>
 		<RememberMyChoice>記住我的選擇</RememberMyChoice>
 	</ExitOptionView>
+	<LoginWindow>
+		<Title>登錄</Title>
+		<UsernameWatermark>請輸入用戶名</UsernameWatermark>
+		<PasswordWatermark>請輸入密碼</PasswordWatermark>
+		<LoginButton>登錄</LoginButton>
+		<GuestLoginButton>遊客登錄</GuestLoginButton>
+		<NotConnected>未連接服務</NotConnected>
+		<LoginSuccess>登錄成功</LoginSuccess>
+		<LoginFailed>用戶名或密碼錯誤</LoginFailed>
+		<GuestLoginSuccess>遊客登錄成功</GuestLoginSuccess>
+	</LoginWindow>
+	<MainTaskView>
+		<Online>線上</Online>
+	</MainTaskView>
 </Localization>

@@ -5,11 +5,13 @@
     xmlns:c="https://codewf.com"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:i18n="https://codewf.com"
+    xmlns:language="clr-namespace:Localization"
     Padding="0,0,10,0"
     HorizontalContentAlignment="Right"
     VerticalContentAlignment="Center"
     d:DesignHeight="450"
     d:DesignWidth="800"
     mc:Ignorable="d">
-    <c:StatusLabel LeftText="在线" RightText="58" />
+    <c:StatusLabel LeftText="{i18n:I18n {x:Static language:MainTaskView.Online}}" RightText="58" />
 </UserControl>

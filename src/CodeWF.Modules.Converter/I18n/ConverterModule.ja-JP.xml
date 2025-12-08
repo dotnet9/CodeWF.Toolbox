@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 
 <Localization language="Japanese" description="日語" cultureName="ja-JP">
 	<ConverterModule>
@@ -50,6 +50,7 @@
 		<Description>車の移動用QRコードを生成するために使用します</Description>
 		<InputPhoneNumber>車移動通知用電話番号</InputPhoneNumber>
 		<EnableSubTitle>小見出しを追加する</EnableSubTitle>
+		<Show>表示</Show>
 		<DefaultInputTitle>コードをスキャンして車を移動する</DefaultInputTitle>
 		<DefaultSubTitlePrefix>コードをスキャンして車主に連絡するか、電話をかける</DefaultSubTitlePrefix>
 		<DefaultInputTitle>コードをスキャンし車移動</DefaultInputTitle>

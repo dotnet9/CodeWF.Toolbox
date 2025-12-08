@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 
 <Localization language="English" description="English" cultureName="en-US">
 	<MainModule>
@@ -52,9 +52,23 @@
 		<Description>This project is only used for learning purposes.</Description>
 	</AboutView>
 	<ExitOptionView>
-		<Message>Please select the close operation:</Message>
+		<Message>Please select a close operation:</Message>
 		<HideTrayIcon>Hide to tray icon</HideTrayIcon>
-		<DirectToClose>Exit the application directly</DirectToClose>
+		<DirectToClose>Exit application directly</DirectToClose>
 		<RememberMyChoice>Remember my choice</RememberMyChoice>
 	</ExitOptionView>
+	<LoginWindow>
+		<Title>Login</Title>
+		<UsernameWatermark>Please enter username</UsernameWatermark>
+		<PasswordWatermark>Please enter password</PasswordWatermark>
+		<LoginButton>Login</LoginButton>
+		<GuestLoginButton>Guest Login</GuestLoginButton>
+		<NotConnected>Not connected</NotConnected>
+		<LoginSuccess>Login successful</LoginSuccess>
+		<LoginFailed>Invalid username or password</LoginFailed>
+		<GuestLoginSuccess>Guest login successful</GuestLoginSuccess>
+	</LoginWindow>
+	<MainTaskView>
+		<Online>Online</Online>
+	</MainTaskView>
 </Localization>

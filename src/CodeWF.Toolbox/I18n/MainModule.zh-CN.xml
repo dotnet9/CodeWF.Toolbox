@@ -57,4 +57,18 @@
 		<DirectToClose>直接退出应用</DirectToClose>
 		<RememberMyChoice>记住我的选择</RememberMyChoice>
 	</ExitOptionView>
+	<LoginWindow>
+		<Title>登录</Title>
+		<UsernameWatermark>请输入用户名</UsernameWatermark>
+		<PasswordWatermark>请输入密码</PasswordWatermark>
+		<LoginButton>登录</LoginButton>
+		<GuestLoginButton>游客登录</GuestLoginButton>
+		<NotConnected>未连接服务</NotConnected>
+		<LoginSuccess>登录成功</LoginSuccess>
+		<LoginFailed>用户名或密码错误</LoginFailed>
+		<GuestLoginSuccess>游客登录成功</GuestLoginSuccess>
+	</LoginWindow>
+	<MainTaskView>
+		<Online>在线</Online>
+	</MainTaskView>
 </Localization>

@@ -42,7 +42,7 @@ public class LoginViewModel : ViewModelBase
     {
         _loginService = loginService;
         // 初始化状态信息
-        StatusMessage = "未连接服务";
+        StatusMessage = Localization.LoginWindow.NotConnected;
     }
 
     /// <summary>
@@ -53,7 +53,7 @@ public class LoginViewModel : ViewModelBase
         // 使用登录服务进行验证
         bool isValid = _loginService.Login(Username, Password);
         IsConnected = isValid;
-        StatusMessage = isValid ? "登录成功" : "用户名或密码错误";
+        StatusMessage = isValid ? Localization.LoginWindow.LoginSuccess : Localization.LoginWindow.LoginFailed;
         
         if (isValid)
         {
@@ -78,7 +78,7 @@ public class LoginViewModel : ViewModelBase
         _loginService.GuestLogin();
         Username = "guest";
         IsConnected = true;
-        StatusMessage = "游客登录成功";
+        StatusMessage = Localization.LoginWindow.GuestLoginSuccess;
         
         // 触发登录成功事件
         OnLoginSuccess?.Invoke();

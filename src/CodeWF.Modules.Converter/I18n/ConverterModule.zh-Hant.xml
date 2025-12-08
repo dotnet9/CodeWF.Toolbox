@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 
 <Localization language="Chinese (Traditional)" description="中文繁體" cultureName="zh-Hant">
 	<ConverterModule>
@@ -51,6 +51,7 @@
 		<InputPhoneNumber>挪車通知電話號碼</InputPhoneNumber>
 		<InputTitle>挪車提示文字（儘量簡短）</InputTitle>
 		<EnableSubTitle>添加小標題</EnableSubTitle>
+		<Show>顯示</Show>
 		<DefaultInputTitle>掃碼挪車</DefaultInputTitle>
 		<DefaultSubTitlePrefix>掃碼聯繫車主或撥打電話</DefaultSubTitlePrefix>
 		<CreateButtonContent>立即生成挪車二維碼</CreateButtonContent>

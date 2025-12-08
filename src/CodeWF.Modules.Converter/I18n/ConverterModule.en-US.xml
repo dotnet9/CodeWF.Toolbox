@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 
 <Localization language="English" description="English" cultureName="en-US">
 	<ConverterModule>
@@ -51,6 +51,7 @@
 		<InputPhoneNumber>Phone number for car relocation notification</InputPhoneNumber>
 		<InputTitle>Prompt text for car relocation (Keep it as short as possible)</InputTitle>
 		<EnableSubTitle>Add Subtitle</EnableSubTitle>
+		<Show>Show</Show>
 		<DefaultInputTitle>Scan the Code to Move the Car</DefaultInputTitle>
 		<DefaultSubTitlePrefix>Scan the Code to Contact the Car Owner or Make a Phone Call</DefaultSubTitlePrefix>
 		<CreateButtonContent>Generate the car relocation QR code immediately</CreateButtonContent>

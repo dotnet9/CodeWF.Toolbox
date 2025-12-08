@@ -21,7 +21,7 @@
             <TextBox Width="300" u:FormItem.Label="{i18n:I18n {x:Static language:NuoCheView.InputTitle}}"
                      u:FormItem.IsRequired="True" Text="{Binding InputTitle}" />
             <StackPanel Orientation="Horizontal" u:FormItem.Label="{i18n:I18n {x:Static language:NuoCheView.EnableSubTitle}}">
-                <CheckBox IsChecked="{Binding EnableSubTitle}" Command="{Binding EnableSubTitleHandlerAsync}" VerticalAlignment="Center" Content="显示" Margin="5 0" />
+                <CheckBox IsChecked="{Binding EnableSubTitle}" Command="{Binding EnableSubTitleHandlerAsync}" VerticalAlignment="Center" Content="{i18n:I18n {x:Static language:NuoCheView.Show}}" Margin="5 0" />
                 <TextBox Width="300" Text="{Binding SubTitle}" IsEnabled="{Binding EnableSubTitle}" VerticalAlignment="Center" />
             </StackPanel>
         </u:Form>
