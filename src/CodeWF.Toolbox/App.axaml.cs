@@ -20,6 +20,7 @@ using Prism.Regions;
 using System;
 using System.Globalization;
 using System.Linq;
+using System.Threading.Tasks;
 using Ursa.PrismExtension;
 using AIModule = CodeWF.Modules.AI.AIModule;
 using ConverterModule = CodeWF.Modules.Converter.ConverterModule;
@@ -60,9 +61,20 @@ public partial class App : PrismApplication
     }
 
     protected override AvaloniaObject CreateShell()
-    {        
+    {
         Instance = this;
-        return Container.Resolve<LoginWindow>();
+
+        var mainWindow = Container.Resolve<MainWindow>();
+        return mainWindow;
+    }
+
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+        
+        // 显示登录窗口
+        var loginWindow = Container.Resolve<LoginWindow>();
+        loginWindow.ShowDialog(MainWindow as Window);
     }
    
 

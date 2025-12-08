@@ -1,9 +1,6 @@
 using Avalonia.Controls;
 using Avalonia.Controls.ApplicationLifetimes;
 using CodeWF.Toolbox.Services;
-using CodeWF.Toolbox.Views;
-using DryIoc;
-using Prism.Ioc;
 using ReactiveUI;
 using System;
 using System.Threading.Tasks;
@@ -13,9 +10,9 @@ namespace CodeWF.Toolbox.ViewModels;
 public class LoginViewModel : ViewModelBase
 {
     private readonly ILoginService _loginService;
-    
+
     // 登录成功事件
-    public event Action? OnLoginSuccess;
+    private bool _isSuccess;
 
     public string? Username 
     {    
@@ -58,7 +55,7 @@ public class LoginViewModel : ViewModelBase
         if (isValid)
         {
             // 触发登录成功事件
-            OnLoginSuccess?.Invoke();
+            _isSuccess = true;
             
             // 登录成功，准备关闭窗口
             await Task.Delay(500); // 给用户一点时间看到成功消息
@@ -79,9 +76,9 @@ public class LoginViewModel : ViewModelBase
         Username = "guest";
         IsConnected = true;
         StatusMessage = Localization.LoginWindow.GuestLoginSuccess;
-        
+
         // 触发登录成功事件
-        OnLoginSuccess?.Invoke();
+        _isSuccess = true;
         
         // 登录成功，准备关闭窗口
         await Task.Delay(500); // 给用户一点时间看到成功消息
@@ -89,13 +86,19 @@ public class LoginViewModel : ViewModelBase
         owner.Close();
     }
 
+    public async Task RaiseClosingHandlerAsync()
+    {
+        if(!_isSuccess)
+        {
+            Environment.Exit(0);
+        }
+    }
+
     private void ShowMainWindow()
     {
-        var mainWindow = ContainerLocator.Container.Resolve<MainWindow>();
         if (App.Instance.ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
         {
-            desktop.MainWindow = mainWindow;
+            desktop.MainWindow?.Show();
         }
-        mainWindow.Show();
     }
 }

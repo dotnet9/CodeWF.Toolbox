@@ -6,7 +6,7 @@
               xmlns:u="https://irihi.tech/ursa"
               xmlns:views="using:CodeWF.Toolbox.Views"
               xmlns:vm="using:CodeWF.Toolbox.ViewModels"
-              xmlns:i18n="https://codewf.com"
+              xmlns:i18n="https://codewf.com" 
               xmlns:language="clr-namespace:Localization"
               prism:ViewModelLocator.AutoWireViewModel="True"
               x:Class="CodeWF.Toolbox.Views.LoginWindow"
@@ -40,6 +40,11 @@
             <TextBlock Text="{i18n:I18n {x:Static language:MainModule.Title}}" />
         </StackPanel>
 	</u:UrsaWindow.LeftContent>
+    <Interaction.Behaviors>
+                    <EventTriggerBehavior EventName="Closing">
+                        <InvokeCommandAction Command="{Binding RaiseClosingHandlerAsync}" />
+                    </EventTriggerBehavior>
+                </Interaction.Behaviors>
     <Grid Margin="30 60 30 30" RowDefinitions="55 55 30 *">
         <TextBox Grid.Row="0" Text="{Binding Username}" Watermark="{i18n:I18n {x:Static language:LoginWindow.UsernameWatermark}}" Classes="Right" />
         
