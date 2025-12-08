@@ -8,6 +8,7 @@ using System.Reactive.Linq;
 using Lang.Avalonia;
 using Ursa.Controls;
 using Ursa.PrismExtension;
+using Prism.Ioc;
 
 namespace CodeWF.Modules.AI.ViewModels;
 

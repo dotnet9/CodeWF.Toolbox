@@ -2,6 +2,10 @@
 using CodeWF.Core.Models;
 using CodeWF.Modules.Converter.ViewModels;
 using CodeWF.Modules.Converter.Views;
+using Prism.Ioc;
+using Prism.Modularity;
+using Prism.Mvvm;
+using Prism.Regions;
 
 namespace CodeWF.Modules.Converter;
 

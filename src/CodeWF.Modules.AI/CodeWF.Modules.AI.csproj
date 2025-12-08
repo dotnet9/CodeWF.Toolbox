@@ -9,11 +9,11 @@
 		<Platforms>AnyCPU;x64;ARM32;x86</Platforms>
 	</PropertyGroup>
 	<ItemGroup>
-		<PackageReference Include="Prism.Avalonia" Version="9.0.537.11300-pre" />
-		<PackageReference Include="Prism.DryIoc.Avalonia" Version="9.0.537.11300-pre" />
+		<PackageReference Include="Prism.Avalonia" Version="8.1.97.11073" />
+		<PackageReference Include="Prism.DryIoc.Avalonia" Version="8.1.97.11073" />
 		<PackageReference Include="ReactiveUI.Avalonia" Version="11.3.8" />
 		<PackageReference Include="Irihi.Ursa.Themes.Semi" Version="1.14.0" />
-		<PackageReference Include="Irihi.Ursa.PrismExtension" Version="9.0.1" />
+		<PackageReference Include="Irihi.Ursa.PrismExtension" Version="1.0.1" />
 	</ItemGroup>
 
 	<ItemGroup>

@@ -2,6 +2,9 @@
 using CodeWF.Core.Models;
 using CodeWF.Modules.AI.Helpers;
 using CodeWF.Modules.AI.Views;
+using Prism.Ioc;
+using Prism.Modularity;
+using Prism.Regions;
 using Ursa.PrismExtension;
 
 namespace CodeWF.Modules.AI;

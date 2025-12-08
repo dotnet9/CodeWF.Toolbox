@@ -16,7 +16,7 @@ using Lang.Avalonia.Xml;
 using Prism.DryIoc;
 using Prism.Ioc;
 using Prism.Modularity;
-using Prism.Navigation.Regions;
+using Prism.Regions;
 using System;
 using System.Globalization;
 using System.Linq;

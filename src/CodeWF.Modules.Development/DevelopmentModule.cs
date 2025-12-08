@@ -1,6 +1,9 @@
 ﻿using CodeWF.Core;
 using CodeWF.Core.Models;
 using CodeWF.Modules.Development.Views;
+using Prism.Ioc;
+using Prism.Modularity;
+using Prism.Regions;
 
 namespace CodeWF.Modules.Development;
 

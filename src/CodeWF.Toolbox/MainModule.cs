@@ -3,7 +3,7 @@ using CodeWF.Core.Models;
 using CodeWF.Toolbox.Views;
 using Prism.Ioc;
 using Prism.Modularity;
-using Prism.Navigation.Regions;
+using Prism.Regions;
 using Ursa.PrismExtension;
 
 namespace CodeWF.Toolbox;

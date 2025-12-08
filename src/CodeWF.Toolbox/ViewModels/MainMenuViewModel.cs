@@ -1,4 +1,4 @@
-﻿using Avalonia.Controls;
+using Avalonia.Controls;
 using Avalonia.Controls.Notifications;
 using CodeWF.Core;
 using CodeWF.Core.Models;
@@ -6,7 +6,7 @@ using CodeWF.Toolbox.Commands;
 using CodeWF.Toolbox.Views;
 using DryIoc;
 using Prism.Ioc;
-using Prism.Navigation.Regions;
+using Prism.Regions;
 using ReactiveUI;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -53,11 +53,17 @@ internal class MainMenuViewModel : ViewModelBase
 
         MenuItems = _toolMenuService.MenuItems;
         _toolMenuService.ToolMenuChanged += MenuChangedHandler;
+        
+        // 初始化SelectedMenuItem为第一个非分隔符的菜单项
+        if (MenuItems != null && MenuItems.Any())
+        {
+            SelectedMenuItem = MenuItems.FirstOrDefault(item => !item.IsSeparator);
+        }
     }
 
     private void MenuChangedHandler()
     {
-        SelectedMenuItem = SelectedMenuItem == null ? MenuItems?.First() : GetMenuItem(SelectedMenuItem.Name!);
+        SelectedMenuItem = SelectedMenuItem == null ? MenuItems?.FirstOrDefault(item => !item.IsSeparator) : GetMenuItem(SelectedMenuItem.Name!);
     }
 
     private ToolMenuItem? GetMenuItem(string name)
@@ -85,15 +91,18 @@ internal class MainMenuViewModel : ViewModelBase
 
     private void ChangeTool()
     {
-        _regionManager.RequestNavigate(RegionNames.ContentRegion, _selectedMenuItem?.ViewName);
-        SelectedMenuStatus = _selectedMenuItem?.Status switch
+        if (_selectedMenuItem == null)
+            return;
+            
+        _regionManager.RequestNavigate(RegionNames.ContentRegion, _selectedMenuItem.ViewName);
+        SelectedMenuStatus = _selectedMenuItem.Status switch
         {
             ToolStatus.Planned => NotificationType.Warning,
             ToolStatus.Developing => NotificationType.Information,
             ToolStatus.Complete => NotificationType.Success,
             _ => NotificationType.Information
         };
-        EventBus.EventBus.Default.Publish(new ChangeToolMenuCommand(_selectedMenuItem!));
+        EventBus.EventBus.Default.Publish(new ChangeToolMenuCommand(_selectedMenuItem));
     }
 
     public async Task RaiseOpenSettingHandlerAsync()

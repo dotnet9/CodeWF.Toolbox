@@ -2,6 +2,10 @@
 using CodeWF.Core.Models;
 using CodeWF.Modules.XmlTranslatorManager.ViewModels;
 using CodeWF.Modules.XmlTranslatorManager.Views;
+using Prism.Ioc;
+using Prism.Modularity;
+using Prism.Mvvm;
+using Prism.Regions;
 
 namespace CodeWF.Modules.XmlTranslatorManager;
 
