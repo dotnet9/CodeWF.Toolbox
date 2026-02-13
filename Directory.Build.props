@@ -1,6 +1,6 @@
 <Project>
     <PropertyGroup>
-        <AvaloniaVersion>11.3.11</AvaloniaVersion>
-        <DataGridVersion>11.3.11</DataGridVersion>
+        <AvaloniaVersion>11.3.12</AvaloniaVersion>
+        <DataGridVersion>11.3.12</DataGridVersion>
     </PropertyGroup>
 </Project>
