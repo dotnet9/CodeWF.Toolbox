@@ -17,7 +17,7 @@ public class YamlPrettifyViewModel : ReactiveObject
 
         this.WhenAnyValue(x => x.RawYaml)
             .Throttle(TimeSpan.FromMilliseconds(400))
-            .ObserveOn(RxApp.MainThreadScheduler)
+            .ObserveOn(RxSchedulers.MainThreadScheduler)
             .Subscribe(RawYamlChanged);
     }
 

@@ -22,7 +22,7 @@ public class YamlToJsonViewModel : ReactiveObject
     {
         this.WhenAnyValue(x => x.YamlString)
             .Throttle(TimeSpan.FromMilliseconds(400))
-            .ObserveOn(RxApp.MainThreadScheduler)
+            .ObserveOn(RxSchedulers.MainThreadScheduler)
             .Subscribe(_ => YamlChanged());
         YamlEditor!.TextChanged += (s, e) => YamlString = YamlEditor.Text;
     }

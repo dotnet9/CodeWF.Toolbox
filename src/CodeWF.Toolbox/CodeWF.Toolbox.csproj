@@ -34,7 +34,7 @@
 		<PackageReference Include="Irihi.Ursa.Themes.Semi" Version="1.14.1" />
 		<PackageReference Include="Prism.Avalonia" Version="8.1.97.11073" />
 		<PackageReference Include="Prism.DryIoc.Avalonia" Version="8.1.97.11073" />
-		<PackageReference Include="ReactiveUI.Avalonia" Version="11.3.8" />
+		<PackageReference Include="ReactiveUI.Avalonia" Version="11.4.7" />
 		<PackageReference Include="Semi.Avalonia.AvaloniaEdit" Version="11.2.0.1" />
 	</ItemGroup>
 

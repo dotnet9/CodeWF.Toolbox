@@ -30,6 +30,6 @@ internal sealed class Program
                 OverlayPopups=true
             })
             .WithFont_SourceHanSansCN()
-            .UseReactiveUI()
+            .UseReactiveUI(_ => { })
             .LogToTrace();
 }

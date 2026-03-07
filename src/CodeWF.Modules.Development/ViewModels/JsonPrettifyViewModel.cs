@@ -26,15 +26,15 @@ public class JsonPrettifyViewModel : ReactiveObject
 
         this.WhenAnyValue(x => x.RawJson)
             .Throttle(TimeSpan.FromMilliseconds(400))
-            .ObserveOn(RxApp.MainThreadScheduler)
+            .ObserveOn(RxSchedulers.MainThreadScheduler)
             .Subscribe(_ => RawJsonChanged());
 
         this.WhenAnyValue(x => x.IsSortKey)
-            .ObserveOn(RxApp.MainThreadScheduler)
+            .ObserveOn(RxSchedulers.MainThreadScheduler)
             .Subscribe(_ => RawJsonChanged());
 
         this.WhenAnyValue(x => x.IndentSize)
-            .ObserveOn(RxApp.MainThreadScheduler)
+            .ObserveOn(RxSchedulers.MainThreadScheduler)
             .Subscribe(_ => RawJsonChanged());
     }
 

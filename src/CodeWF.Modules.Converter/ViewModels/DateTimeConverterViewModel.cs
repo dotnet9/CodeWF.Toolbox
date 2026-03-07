@@ -68,7 +68,7 @@ public class DateTimeConverterViewModel : ReactiveObject, IDisposable
     {
         _isRefreshing = true;
         var timer = Observable.Interval(TimeSpan.FromSeconds(1))
-           .ObserveOn(RxApp.MainThreadScheduler)
+           .ObserveOn(RxSchedulers.MainThreadScheduler)
            .Subscribe(_ => UpdateCurrentTimestamp());
         _disposables.Add(timer);
     }

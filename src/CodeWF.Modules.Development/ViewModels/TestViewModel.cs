@@ -90,7 +90,7 @@ public class TestViewModel : ReactiveObject
                 return;
             }
 
-            ISevenZipCompressor zipHelper = new SevenZipCompressor();
+            ISevenZipCompressor zipHelper = new SevenZipCompressor(default);
             zipHelper.Zip(files, saveFile);
             FileHelper.OpenFolderAndSelectFile(saveFile);
         }
@@ -123,7 +123,7 @@ public class TestViewModel : ReactiveObject
             }
 
             var saveDir = dirs[0];
-            ISevenZipCompressor zipHelper = new SevenZipCompressor();
+            ISevenZipCompressor zipHelper = new SevenZipCompressor(default);
             zipHelper.Decompress(zipFile, saveDir);
 
             FileHelper.OpenFolder(saveDir);
