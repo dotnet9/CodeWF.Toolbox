@@ -46,7 +46,7 @@ for %%a in ("%projects: =","%") do (
         rem 创建发布目录
         mkdir /p "!CURRENT_PUBLISH_DIR!" 2>nul
         rem 执行 dotnet publish 命令进行 AOT 发布，并指定目标框架
-        dotnet publish "!projectPath!" /p:PublishProfile="!pubxmlPath!" -f net9.0-windows -o "!CURRENT_PUBLISH_DIR!"
+        dotnet publish "!projectPath!" /p:PublishProfile="!pubxmlPath!" -f net10.0-windows -o "!CURRENT_PUBLISH_DIR!"
         rem 检查 dotnet publish 命令的退出代码
         if !errorlevel! neq 0 (
             echo Publish of !projectName! failed!

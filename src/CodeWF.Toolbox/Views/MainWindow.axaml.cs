@@ -3,6 +3,7 @@ using Avalonia.Markup.Xaml;
 using Avalonia.Media;
 using Avalonia.Media.Imaging;
 using CodeWF.AvaloniaControls.Helpers;
+using CodeWF.Core.Helpers;
 using CodeWF.Core.IServices;
 using CodeWF.EventBus;
 using CodeWF.Toolbox.Commands;
@@ -40,8 +41,8 @@ public partial class MainWindow : UrsaWindow
     private void InitializeComponent()
     {
         AvaloniaXamlLoader.Load(this);
-        _fileChooserService.SetHostWindow(this);
-        _notificationService.SetHostWindow(this);
+        _fileChooserService?.SetHostWindow(this);
+        _notificationService?.SetHostWindow(this);
     }
 
     private void Init()

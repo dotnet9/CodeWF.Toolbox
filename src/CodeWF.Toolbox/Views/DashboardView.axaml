@@ -25,9 +25,11 @@
         </Style>
     </UserControl.Styles>
     <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-        <TextBlock Text="{i18n:I18n {x:Static language:MainModule.Title}}"
-                   HorizontalAlignment="Center" Classes="H3" TextWrapping="Wrap"
-                   Theme="{StaticResource TitleTextBlock}" />
+        <TextBlock HorizontalAlignment="Center" Classes="H3" TextWrapping="Wrap"
+                   Theme="{StaticResource TitleTextBlock}">
+            <Run Text="{i18n:I18n {x:Static language:MainModule.Title}}" />
+            <Run Text="{Binding OSInfo}" />
+        </TextBlock>
         <TextBlock Text="{i18n:I18n {x:Static language:DashboardView.DesiredAvailabilityNotification}}"
                    HorizontalAlignment="Center" Classes="Tertiary H6" TextWrapping="Wrap"
                    Theme="{StaticResource TitleTextBlock}" Margin="0 10 0 30" />
