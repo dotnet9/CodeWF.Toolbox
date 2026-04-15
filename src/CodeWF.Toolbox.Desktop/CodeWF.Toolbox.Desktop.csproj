@@ -11,6 +11,10 @@
 		<AssemblyName>codewf</AssemblyName>
 		<!-- 禁用自动生成程序集属性 -->
 		<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+		<WindowsSupportedOSPlatformVersion>6.1</WindowsSupportedOSPlatformVersion>
+		<!-- Win7 版本号 -->
+		<TargetPlatformMinVersion>6.1</TargetPlatformMinVersion>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(TargetFramework)' == 'net10.0' And '$(RuntimeIdentifier)' == 'linux-x64'">
