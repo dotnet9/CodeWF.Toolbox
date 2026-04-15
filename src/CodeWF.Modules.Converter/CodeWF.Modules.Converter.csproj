@@ -5,7 +5,6 @@
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
 		<LangVersion>latest</LangVersion>
-		<Platforms>AnyCPU;x64;ARM32;x86</Platforms>
 	</PropertyGroup>
 
 	<ItemGroup>

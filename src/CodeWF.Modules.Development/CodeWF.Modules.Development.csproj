@@ -6,7 +6,6 @@
 		<Nullable>enable</Nullable>
 		<LangVersion>latest</LangVersion>
 		<InterceptorsPreviewNamespaces>$(InterceptorsPreviewNamespaces);Dapper.AOT</InterceptorsPreviewNamespaces>
-		<Platforms>AnyCPU;x64;ARM32;x86</Platforms>
 	</PropertyGroup>
 
 	<ItemGroup>

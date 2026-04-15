@@ -6,7 +6,6 @@
 		<AvaloniaUseCompiledBindingsByDefault>true</AvaloniaUseCompiledBindingsByDefault>
 		<!-- 禁用自动生成程序集属性 -->
 		<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
-		<Platforms>AnyCPU;x64;x86</Platforms>
 	</PropertyGroup>
 
 	<ItemGroup>
