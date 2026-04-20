@@ -1,4 +1,4 @@
-﻿using CodeWF.Core.RegionAdapters;
+using CodeWF.Core.RegionAdapters;
 using CodeWF.Tools.Extensions;
 using System.Reflection;
 
@@ -19,14 +19,14 @@ public class AboutViewModel : ViewModelBase, ITabItemBase
 
     public AboutViewModel()
     {
-#if LINUX_X64
-        Platform = "Linux X64";
-#elif LINUX_ARM64
+#if PLATFORM_LINUX_X64
+        Platform = "Linux x64";
+#elif PLATFORM_LINUX_ARM64
         Platform = "Linux ARM64";
-#elif WIN_X64
-        Platform = "Windows X64";
-#elif WIN_X86
-        Platform = "Windows X86";
+#elif PLATFORM_WIN_X64
+        Platform = "Windows x64";
+#elif PLATFORM_WIN_X86
+        Platform = "Windows x86";
 #else
         Platform = "Unknown";
 #endif

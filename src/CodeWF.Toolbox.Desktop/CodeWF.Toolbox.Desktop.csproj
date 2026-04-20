@@ -9,28 +9,10 @@
 		<BuiltInComInteropSupport>true</BuiltInComInteropSupport>
 		<IncludeNativeLibrariesForSelfExtract>true</IncludeNativeLibrariesForSelfExtract>
 		<AssemblyName>codewf</AssemblyName>
-		<!-- 禁用自动生成程序集属性 -->
 		<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
 		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
 		<WindowsSupportedOSPlatformVersion>6.1</WindowsSupportedOSPlatformVersion>
-		<!-- Win7 版本号 -->
 		<TargetPlatformMinVersion>6.1</TargetPlatformMinVersion>
-	</PropertyGroup>
-
-	<PropertyGroup Condition="'$(TargetFramework)' == 'net10.0' And '$(RuntimeIdentifier)' == 'linux-x64'">
-		<DefineConstants>LINUX_X64</DefineConstants>
-	</PropertyGroup>
-
-	<PropertyGroup Condition="'$(TargetFramework)' == 'net10.0' And '$(RuntimeIdentifier)' == 'linux-arm64'">
-		<DefineConstants>LINUX_ARM64</DefineConstants>
-	</PropertyGroup>
-
-	<PropertyGroup Condition="'$(TargetFramework)' == 'net10.0-windows' And '$(RuntimeIdentifier)' == 'win-x64'">
-		<DefineConstants>WIN_X64</DefineConstants>
-	</PropertyGroup>
-
-	<PropertyGroup Condition="'$(TargetFramework)' == 'net10.0-windows' And '$(RuntimeIdentifier)' == 'win-x86'">
-		<DefineConstants>WIN_X86</DefineConstants>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="$([MSBuild]::IsTargetFrameworkCompatible('$(TargetFramework)', 'net10.0-windows'))">
@@ -46,7 +28,6 @@
 	</ItemGroup>
 	<ItemGroup>
 		<PackageReference Include="Avalonia.Desktop" Version="$(AvaloniaVersion)" />
-		<!--Condition below is needed to remove Avalonia.Diagnostics package from build output in Release configuration.-->
 		<PackageReference Condition="'$(Configuration)' == 'Debug'" Include="Avalonia.Diagnostics" Version="$(AvaloniaVersion)" />
 		<PackageReference Include="VC-LTL" Version="5.3.1" />
 		<PackageReference Include="YY-Thunks" Version="1.2.1-Beta.2" />

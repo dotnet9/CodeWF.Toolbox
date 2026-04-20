@@ -1,4 +1,4 @@
-﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿using Avalonia.Controls;
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿using Avalonia.Controls;
 using Avalonia.Styling;
 using CodeWF.Core.Events;
 using CodeWF.Core.Helpers;

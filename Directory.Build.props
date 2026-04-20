@@ -1,6 +1,7 @@
-<Project>
+﻿<Project>
     <PropertyGroup>
         <AvaloniaVersion>11.3.12</AvaloniaVersion>
         <DataGridVersion>11.3.12</DataGridVersion>
+        <DefineConstants>$(DefineConstants);PLATFORM_WIN_X86</DefineConstants>
     </PropertyGroup>
 </Project>
