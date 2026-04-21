@@ -52,6 +52,7 @@ if exist "%~dp0publish" (
     echo *.pdb files removed.
 )
 explorer "%~dp0publish"
+pause
 goto :eof
 
 :error
