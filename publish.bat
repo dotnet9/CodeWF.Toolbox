@@ -20,13 +20,25 @@ for %%p in (%platforms%) do (
     for %%f in (GlobalAssemblies\*) do (
         echo Updating assembly version for %%f...
         powershell -ExecutionPolicy Bypass -File "UpdateAssemblyVersion.ps1" -AssemblyInfoFile "%%f" -Configuration "Release" -Platform "%%p"
+        if errorlevel 1 (
+            echo Error: Failed to update assembly version for %%f
+            goto :error
+        )
     )
 
     powershell -ExecutionPolicy Bypass -File "SetPlatformMacro.ps1" -Platform "%%p"
+    if errorlevel 1 (
+        echo Error: Failed to set platform macro
+        goto :error
+    )
 
     for %%d in (%project_paths%) do (
         echo Publishing %%d for %%p...
         dotnet publish "%%d" -f !tfm! /p:PublishProfile="%%d\Properties\PublishProfiles\!pubxml!"
+        if errorlevel 1 (
+            echo Error: Failed to publish %%d for %%p
+            goto :error
+        )
     )
     echo.
 )
@@ -34,4 +46,17 @@ for %%p in (%platforms%) do (
 echo ========================================
 echo All platforms published successfully!
 echo ========================================
+echo Removing *.pdb files...
+if exist "%~dp0publish" (
+    for /r "%~dp0publish" %%f in (*.pdb) do del /q "%%f" 2>nul
+    echo *.pdb files removed.
+)
 explorer "%~dp0publish"
+goto :eof
+
+:error
+echo ========================================
+echo Build failed! Please check the errors above.
+echo ========================================
+pause
+exit /b 1
