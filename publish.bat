@@ -1,8 +1,17 @@
 @echo off
 setlocal enabledelayedexpansion
 
-set "project_paths=src\CodeWF.Toolbox.Desktop"
-set "platforms=linux-x64 linux-arm64 win-x64 win-x86"
+if "%~1"=="" (
+    set "project_paths=src\CodeWF.Toolbox.Desktop"
+) else (
+    set "project_paths=%~1"
+)
+
+if "%~2"=="" (
+    set "platforms=linux-x64 linux-arm64 win-x64 win-x86"
+) else (
+    set "platforms=%~2"
+)
 
 for %%p in (%platforms%) do (
     set "tfm="
