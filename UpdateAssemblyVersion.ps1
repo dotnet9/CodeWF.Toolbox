@@ -67,17 +67,17 @@ if ($Configuration -eq "Debug") {
 	$platformInfo = "A"
 }
 switch ($Platform) {
-	"x86" {
-		$platformInfo += "-86"
+	"win-x86" {
+		$platformInfo += "-x86"
 	}
-	"x64" {
-		$platformInfo += "-64"
+	"win-x64" {
+		$platformInfo += "-x64"
 	}
-	"ARM" {
-		$platformInfo += "-ARM"
+	"linux-x64" {
+		$platformInfo += "-x64"
 	}
-	"AnyCPU" {
-		$platformInfo += "-AnyCPU"
+	"linux-arm64" {
+		$platformInfo += "-arm64"
 	}
 	default {
 		$platformInfo += "-Unknow"
