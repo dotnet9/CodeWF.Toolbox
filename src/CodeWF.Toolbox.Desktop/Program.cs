@@ -1,4 +1,5 @@
 ﻿using Avalonia;
+using CodeWF.Toolbox;
 using ReactiveUI.Avalonia;
 using System;
 
@@ -16,20 +17,20 @@ internal sealed class Program
     public static AppBuilder BuildAvaloniaApp()
         => AppBuilder.Configure<App>()
             .UsePlatformDetect()
-            .With(new Win32PlatformOptions() 
+            .With(new Win32PlatformOptions
             {
-                RenderingMode = [Win32RenderingMode.Software],   // 软渲染
+                RenderingMode = [Win32RenderingMode.Software],
                 OverlayPopups = true,
-            })   
-            .With(new X11PlatformOptions 
+            })
+            .With(new X11PlatformOptions
             {
                 OverlayPopups = true
             })
             .With(new AvaloniaNativePlatformOptions
-            { 
-                OverlayPopups=true
+            {
+                OverlayPopups = true
             })
-            .WithFont_SourceHanSansCN()
+            .WithBundledSourceHanSansCnFont()
             .UseReactiveUI(_ => { })
             .LogToTrace();
 }

@@ -9,6 +9,7 @@ public partial class MarkdownView : UserControl
     {
         InitializeComponent();
     }
+
     public static readonly StyledProperty<string?> MarkdownProperty =
         AvaloniaProperty.Register<MarkdownView, string?>(nameof(Markdown));
 

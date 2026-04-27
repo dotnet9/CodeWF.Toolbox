@@ -9,7 +9,7 @@
              x:DataType="vm:UpdateLogViewModel"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="CodeWF.Toolbox.Views.UpdateLogView">
-    <Border Classes="Hover" Theme="{StaticResource CardBorder}">
+    <Grid>
         <md:MarkdownView Markdown="{Binding UpdateLogMarkdownContent}" />
-    </Border>
+    </Grid>
 </UserControl>

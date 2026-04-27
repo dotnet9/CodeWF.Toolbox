@@ -3,8 +3,23 @@
         xmlns:system="clr-namespace:System;assembly=System.Runtime">
     <Styles.Resources>
         <system:Double x:Key="ControlContentThemeFontSize">12</system:Double>
-        <FontFamily x:Key="ContentControlThemeFontFamily">Segoe UI,Microsoft YaHei UI,Arial,Sans-Serif</FontFamily>
+        <FontFamily x:Key="ContentControlThemeFontFamily">avares://CodeWF.Toolbox/Assets/Fonts#Source Han Sans CN</FontFamily>
         <FontFamily x:Key="CodeEditorThemeFontFamily">Cascadia Code,Consolas,Menlo,Monospace</FontFamily>
     </Styles.Resources>
     <StyleInclude Source="avares://AvaloniaEdit/Themes/Fluent/AvaloniaEdit.xaml" />
+
+    <Style Selector="Control">
+        <Setter Property="TextElement.FontFamily" Value="{DynamicResource ContentControlThemeFontFamily}" />
+        <Setter Property="TextElement.FontSize" Value="{DynamicResource ControlContentThemeFontSize}" />
+    </Style>
+
+    <Style Selector="TextBlock">
+        <Setter Property="FontFamily" Value="{DynamicResource ContentControlThemeFontFamily}" />
+        <Setter Property="FontSize" Value="{DynamicResource ControlContentThemeFontSize}" />
+    </Style>
+
+    <Style Selector="SelectableTextBlock">
+        <Setter Property="FontFamily" Value="{DynamicResource ContentControlThemeFontFamily}" />
+        <Setter Property="FontSize" Value="{DynamicResource ControlContentThemeFontSize}" />
+    </Style>
 </Styles>

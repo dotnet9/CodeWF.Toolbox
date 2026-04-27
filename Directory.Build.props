@@ -1,5 +1,11 @@
 ﻿<Project>
     <PropertyGroup>
+        <ApplicationVersion>1.2.0.0</ApplicationVersion>
+        <Version>$(ApplicationVersion)</Version>
+        <AssemblyVersion>$(ApplicationVersion)</AssemblyVersion>
+        <FileVersion>$(ApplicationVersion)</FileVersion>
+        <InformationalVersion>$(ApplicationVersion)</InformationalVersion>
+        <PackageVersion>$(ApplicationVersion)</PackageVersion>
         <AvaloniaVersion>11.3.14</AvaloniaVersion>
         <DataGridVersion>11.3.13</DataGridVersion>
         <DefineConstants>$(DefineConstants);PLATFORM_WIN_X64</DefineConstants>
