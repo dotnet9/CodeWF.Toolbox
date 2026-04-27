@@ -18,22 +18,4 @@
 		<SortKey>键名排序</SortKey>
 		<IndentSize>缩进空格</IndentSize>
 	</JsonPrettifyView>
-	<TestView>
-		<Title>实验工具</Title>
-		<Description>开发阶段的内部验证工具。</Description>
-		<CompressFiles>压缩文件</CompressFiles>
-		<DecompressionFiles>解压文件</DecompressionFiles>
-		<SelectCompressFiles>选择要压缩的文件列表</SelectCompressFiles>
-		<SaveCompressedFile>保存压缩文件</SaveCompressedFile>
-		<CompressFileExceptionTitle>压缩文件异常</CompressFileExceptionTitle>
-		<CompressFileExceptionContent>压缩文件异常: {0}</CompressFileExceptionContent>
-		<SelectDecompressionFile>解压后选择要保存的目录</SelectDecompressionFile>
-		<SelectDirectory>解压后选择要保存的目录</SelectDirectory>
-		<DecompressionFileExceptionTitle>解压文件异常</DecompressionFileExceptionTitle>
-		<DecompressionFileExceptionContent>解压文件异常: {0}</DecompressionFileExceptionContent>
-		<TimeoutAlarm>超时告警</TimeoutAlarm>
-		<ShowAll>显示全部</ShowAll>
-		<FilterAlarms>筛选告警</FilterAlarms>
-		<FilterNormal>筛选正常</FilterNormal>
-	</TestView>
 </Localization>

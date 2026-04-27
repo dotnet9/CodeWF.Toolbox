@@ -27,11 +27,18 @@ namespace Localization
     public static class DashboardView
     {
         public static readonly string Title = "Localization.DashboardView.Title";
+        public static readonly string DesiredAvailabilityNotification = "Localization.DashboardView.DesiredAvailabilityNotification";
+        public static readonly string ProjectIntro = "Localization.DashboardView.ProjectIntro";
+        public static readonly string ToolCountLabel = "Localization.DashboardView.ToolCountLabel";
+        public static readonly string ModuleCountLabel = "Localization.DashboardView.ModuleCountLabel";
+        public static readonly string PlatformLabel = "Localization.DashboardView.PlatformLabel";
+        public static readonly string CommunityTitle = "Localization.DashboardView.CommunityTitle";
+        public static readonly string CommunityDescription = "Localization.DashboardView.CommunityDescription";
         public static readonly string WeChat = "Localization.DashboardView.WeChat";
         public static readonly string WeChatPublic = "Localization.DashboardView.WeChatPublic";
-        public static readonly string DesiredAvailabilityNotification = "Localization.DashboardView.DesiredAvailabilityNotification";
         public static readonly string AccessToolbox = "Localization.DashboardView.AccessToolbox";
-        public static readonly string MissingTool = "Localization.DashboardView.MissingTool";
+        public static readonly string SourceCode = "Localization.DashboardView.SourceCode";
+        public static readonly string DeveloperGuide = "Localization.DashboardView.DeveloperGuide";
     }
 
 
@@ -75,6 +82,10 @@ namespace Localization
     {
         public static readonly string Title = "Localization.AboutView.Title";
         public static readonly string Description = "Localization.AboutView.Description";
+        public static readonly string VersionLabel = "Localization.AboutView.VersionLabel";
+        public static readonly string PlatformLabel = "Localization.AboutView.PlatformLabel";
+        public static readonly string BuildTimeLabel = "Localization.AboutView.BuildTimeLabel";
+        public static readonly string CopyrightLabel = "Localization.AboutView.CopyrightLabel";
     }
 
 
@@ -99,13 +110,6 @@ namespace Localization
         public static readonly string LoginFailed = "Localization.LoginWindow.LoginFailed";
         public static readonly string GuestLoginSuccess = "Localization.LoginWindow.GuestLoginSuccess";
     }
-
-
-    public static class MainTaskView
-    {
-        public static readonly string Online = "Localization.MainTaskView.Online";
-    }
-
 
 }
 

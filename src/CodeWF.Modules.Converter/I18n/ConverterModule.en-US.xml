@@ -21,12 +21,12 @@
 		<Clear>Clear</Clear>
 	</YamlToJsonView>
 	<ImageToIconView>
-		<Title>Convert Image to ICO Icon</Title>
-		<ChoiceSourceImageDescription>Image files (formats: png, jpg, jpeg, ico, webp)</ChoiceSourceImageDescription>
-		<ChoiceSourceImageDialogTitle>Please select the image to be converted</ChoiceSourceImageDialogTitle>
-		<DestImageSize>Target Size</DestImageSize>
-		<MergeGenerateButtonContent>Merge and Generate ICO Icon</MergeGenerateButtonContent>
-		<SeparateGenerateButtonContent>Generate ICO Icon Separately</SeparateGenerateButtonContent>
+		<Title>Image to ICO</Title>
+		<ChoiceSourceImageDescription>Image files (png, jpg, jpeg, ico, webp)</ChoiceSourceImageDescription>
+		<ChoiceSourceImageDialogTitle>Select an image to convert</ChoiceSourceImageDialogTitle>
+		<DestImageSize>Target size</DestImageSize>
+		<MergeGenerateButtonContent>Generate one ICO file</MergeGenerateButtonContent>
+		<SeparateGenerateButtonContent>Generate ICO files by size</SeparateGenerateButtonContent>
 		<MemoTitle>Note</MemoTitle>
 		<MemoContent1>ICO files are generally used for web page logos and application logos.</MemoContent1>
 		<MemoContent2>When using an ICO file on a web page, usually name the generated ICO file as "favicon.ico", put it in the root directory of the website, and then add the following code to the &lt;head&gt; tag of the page: &lt;link rel=&quot;shortcut icon&quot; href=&quot;favicon.ico&quot; type=&quot;image/x-icon&quot; /&gt;</MemoContent2>
@@ -68,21 +68,21 @@
 		<Clear>Clear</Clear>
 	</GuidGeneratorView>
 	<NuoCheView>
-		<Title>Car Relocation QR Code Generator</Title>
-		<Description>Used to generate QR codes for car relocation</Description>
-		<InputPhoneNumber>Phone number for car relocation notification</InputPhoneNumber>
+		<Title>Parking Contact QR Code</Title>
+		<Description>Generate a QR code that lets others contact the vehicle owner.</Description>
+		<InputPhoneNumber>Contact phone number</InputPhoneNumber>
 		<InputTitle>Prompt text for car relocation (Keep it as short as possible)</InputTitle>
 		<EnableSubTitle>Add Subtitle</EnableSubTitle>
 		<Show>Show</Show>
 		<DefaultInputTitle>Scan the Code to Move the Car</DefaultInputTitle>
 		<DefaultSubTitlePrefix>Scan the Code to Contact the Car Owner or Make a Phone Call</DefaultSubTitlePrefix>
-		<CreateButtonContent>Generate the car relocation QR code immediately</CreateButtonContent>
-		<NeedInputTip>Please enter the information and then click to generate</NeedInputTip>
+		<CreateButtonContent>Generate QR code</CreateButtonContent>
+		<NeedInputTip>Please complete the required information first.</NeedInputTip>
 		<CreateErrorMessage>Failed to generate the QR code</CreateErrorMessage>
-		<SaveNotificationTitle>Prompt</SaveNotificationTitle>
+		<SaveNotificationTitle>Save QR code</SaveNotificationTitle>
 		<SaveNoQrCodeMessage>Please generate the car relocation QR code first</SaveNoQrCodeMessage>
 		<SaveQrCodeFileTitle>Save the car relocation QR code image</SaveQrCodeFileTitle>
-		<PreviewNuoCheUrl>Preview the URL for scanning the car relocation QR code</PreviewNuoCheUrl>
+		<PreviewNuoCheUrl>Preview scan URL</PreviewNuoCheUrl>
 		<SaveQrCodeFileFormat>PNG image</SaveQrCodeFileFormat>
 		<SaveQrCodeSuccessTitle>Success</SaveQrCodeSuccessTitle>
 		<SaveQrCodeSuccessMessage>The car relocation QR code image has been saved</SaveQrCodeSuccessMessage>

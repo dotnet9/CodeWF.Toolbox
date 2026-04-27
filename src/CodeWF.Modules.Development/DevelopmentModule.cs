@@ -22,10 +22,6 @@ public class DevelopmentModule : IModule
             Localization.JsonPrettifyView.Description, nameof(JsonPrettifyView),
             Icons.Json,
             ToolStatus.Complete);
-        toolMenuService.AddItem(Localization.TestView.Title, groupName, Localization.TestView.Description,
-            nameof(TestView),
-            Icons.Json,
-            ToolStatus.Developing);
     }
 
     public void OnInitialized(IContainerProvider containerProvider)
@@ -33,7 +29,6 @@ public class DevelopmentModule : IModule
         IRegionManager? regionManager = containerProvider.Resolve<IRegionManager>();
         regionManager.RegisterViewWithRegion<YamlPrettifyView>(RegionNames.ContentRegion);
         regionManager.RegisterViewWithRegion<JsonPrettifyView>(RegionNames.ContentRegion);
-        regionManager.RegisterViewWithRegion<TestView>(RegionNames.ContentRegion);
     }
 
     public void RegisterTypes(IContainerRegistry containerRegistry)

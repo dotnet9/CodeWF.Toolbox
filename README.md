@@ -1,8 +1,8 @@
 # CodeWF Toolbox
 
-English | [简体中文](README-zh_CN.md)
+English | [简体中文](README.zh-CN.md)
 
-CodeWF Toolbox is an Avalonia + Prism desktop demo for building a modular tool client. It keeps the shell, common services, and feature modules separated so new tools can be added without turning the main application into one large window class.
+CodeWF Toolbox is an Avalonia + Prism modular desktop toolbox for developer productivity scenarios. It keeps the shell, common services, and feature modules separated so new tools can be added without turning the main application into one large window class.
 
 ![Application screenshot](screen.png)
 
@@ -11,7 +11,7 @@ CodeWF Toolbox is an Avalonia + Prism desktop demo for building a modular tool c
 - Cross-platform desktop UI based on Avalonia UI and Semi/Ursa controls.
 - Prism module catalog, dependency injection, and region navigation.
 - XML-based internationalization with Simplified Chinese, Traditional Chinese, English, and Japanese resources.
-- Tool modules for AI helpers, format converters, development utilities, and XML translation management.
+- Tool modules for AI helpers, format converters, log viewing, development utilities, and XML translation management.
 - Native AOT-oriented publishing scripts and platform constants.
 - Improved menu registration, searchable tool navigation, and safer region navigation.
 
@@ -47,11 +47,12 @@ src/
   CodeWF.Controls/                   Shared controls
   CodeWF.Modules.AI/                 AI utility module
   CodeWF.Modules.Converter/          Converter tools
+  CodeWF.Modules.LogViewer/          Large-file log viewer with tail monitoring
   CodeWF.Modules.Development/        Development tools
   CodeWF.Modules.XmlTranslatorManager/ XML i18n management tools
 docs/
   assets/                            Standalone SVG diagrams
-tests/                               Demo and unit test projects
+tests/                               Unit test projects
 ```
 
 ## Adding a Module
@@ -64,3 +65,10 @@ tests/                               Demo and unit test projects
 6. Add localization XML files and generated language keys.
 
 See the developer guide for the detailed conventions.
+
+## Included Tools
+
+- Log Viewer: opens large log files quickly, renders only the visible range, and follows appended content when tail mode is enabled.
+- Format converters: JSON/YAML, Base64, GUID, date-time, and image-to-icon utilities.
+- Development helpers: JSON/YAML formatting and small productivity tools.
+- XML translation manager: compares, merges, and maintains XML localization resources.

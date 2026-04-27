@@ -7,24 +7,31 @@
 		<Exit>Exit</Exit>
 	</MainModule>
 	<MainWindow>
-		<SearchToolTip>Search tools, converters, generators</SearchToolTip>
-		<NoMorePrompts>No more prompts</NoMorePrompts>
+		<SearchToolTip>Search tools, converters, or generators</SearchToolTip>
+		<NoMorePrompts>Do not show again</NoMorePrompts>
 		<SureExit>Are you sure you want to exit?</SureExit>
 		<FindInTrayIcon>The app has been minimized to the system tray.</FindInTrayIcon>
 	</MainWindow>
 	<DashboardView>
-		<Title>Homepage</Title>
-		<WeChat>Author's WeChat ID</WeChat>
-		<WeChatPublic>Follow WeChat official account</WeChatPublic>
-		<DesiredAvailabilityNotification>Focused developer and conversion tools, ready when you need them.</DesiredAvailabilityNotification>
-		<AccessToolbox>Access the online toolbox</AccessToolbox>
-		<MissingTool>Request a tool</MissingTool>
+		<Title>Home</Title>
+		<DesiredAvailabilityNotification>Focused developer and conversion tools, organized for everyday work.</DesiredAvailabilityNotification>
+		<ProjectIntro>A modular desktop toolbox built with Avalonia and Prism, with clear boundaries between the shell, shared services, and feature modules.</ProjectIntro>
+		<ToolCountLabel>Available tools</ToolCountLabel>
+		<ModuleCountLabel>Feature modules</ModuleCountLabel>
+		<PlatformLabel>Current platform</PlatformLabel>
+		<CommunityTitle>Follow and feedback</CommunityTitle>
+		<CommunityDescription>Scan the QR codes for toolbox updates, Avalonia articles, module plans, and feedback to the author.</CommunityDescription>
+		<WeChat>Contact author</WeChat>
+		<WeChatPublic>WeChat official account</WeChatPublic>
+		<AccessToolbox>Open online toolbox</AccessToolbox>
+		<SourceCode>Source repository</SourceCode>
+		<DeveloperGuide>Developer guide</DeveloperGuide>
 	</DashboardView>
 	<SettingView>
 		<Title>Settings</Title>
 	</SettingView>
 	<CommonSettingView>
-		<Title>General Settings</Title>
+		<Title>Preferences</Title>
 		<Description>Adjust theme, language, and startup behavior.</Description>
 		<Theme>Theme</Theme>
 		<ThemePlaceholderText>Choose a theme</ThemePlaceholderText>
@@ -37,9 +44,9 @@
 		<NightSky>Night sky</NightSky>
 		<LanguageKey>Language</LanguageKey>
 		<LanguagePlaceholderText>Choose a language</LanguagePlaceholderText>
-		<AutoOpenToolboxAtStartup>Automatically open the toolbox at startup</AutoOpenToolboxAtStartup>
-		<HideTrayIconOnClose>Hide the tray icon when closing the window</HideTrayIconOnClose>
-		<DisplayPromptWhenClosing>Display a prompt when closing the window</DisplayPromptWhenClosing>
+		<AutoOpenToolboxAtStartup>Open CodeWF Toolbox when the system starts</AutoOpenToolboxAtStartup>
+		<HideTrayIconOnClose>Hide the tray icon when the window closes</HideTrayIconOnClose>
+		<DisplayPromptWhenClosing>Show confirmation before closing the window</DisplayPromptWhenClosing>
 		<TurnOn>Turn on</TurnOn>
 		<TurnOff>Turn off</TurnOff>
 	</CommonSettingView>
@@ -49,26 +56,27 @@
 	</UpdateLogView>
 	<AboutView>
 		<Title>About</Title>
-		<Description>CodeWF Toolbox is a desktop toolkit for everyday development and productivity tasks.</Description>
+		<Description>CodeWF Toolbox is a modular desktop toolkit for everyday developer productivity.</Description>
+		<VersionLabel>Version</VersionLabel>
+		<PlatformLabel>Platform</PlatformLabel>
+		<BuildTimeLabel>Build time</BuildTimeLabel>
+		<CopyrightLabel>Copyright</CopyrightLabel>
 	</AboutView>
 	<ExitOptionView>
-		<Message>Please select a close operation:</Message>
-		<HideTrayIcon>Hide to tray icon</HideTrayIcon>
-		<DirectToClose>Exit application directly</DirectToClose>
+		<Message>Choose how to close the application:</Message>
+		<HideTrayIcon>Minimize to system tray</HideTrayIcon>
+		<DirectToClose>Exit application</DirectToClose>
 		<RememberMyChoice>Remember my choice</RememberMyChoice>
 	</ExitOptionView>
 	<LoginWindow>
 		<Title>Login</Title>
-		<UsernameWatermark>Please enter username</UsernameWatermark>
-		<PasswordWatermark>Please enter password</PasswordWatermark>
+		<UsernameWatermark>Username</UsernameWatermark>
+		<PasswordWatermark>Password</PasswordWatermark>
 		<LoginButton>Login</LoginButton>
-		<GuestLoginButton>Guest Login</GuestLoginButton>
-		<NotConnected>Not connected</NotConnected>
+		<GuestLoginButton>Continue as guest</GuestLoginButton>
+		<NotConnected>Service unavailable</NotConnected>
 		<LoginSuccess>Login successful</LoginSuccess>
 		<LoginFailed>Invalid username or password</LoginFailed>
-		<GuestLoginSuccess>Guest login successful</GuestLoginSuccess>
+		<GuestLoginSuccess>Guest mode enabled</GuestLoginSuccess>
 	</LoginWindow>
-	<MainTaskView>
-		<Online>Online</Online>
-	</MainTaskView>
 </Localization>

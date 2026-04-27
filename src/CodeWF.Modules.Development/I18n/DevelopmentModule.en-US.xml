@@ -18,22 +18,4 @@
 		<SortKey>Sort keys</SortKey>
 		<IndentSize>Indent spaces</IndentSize>
 	</JsonPrettifyView>
-	<TestView>
-		<Title>Lab Tools</Title>
-		<Description>Internal validation tools for features under development.</Description>
-		<CompressFiles>Compressed Files</CompressFiles>
-		<DecompressionFiles>Decompressed Files</DecompressionFiles>
-		<SelectCompressFiles>Select the list of files to be compressed</SelectCompressFiles>
-		<SaveCompressedFile>Save the compressed file</SaveCompressedFile>
-		<CompressFileExceptionTitle>Compressed File Exception</CompressFileExceptionTitle>
-		<CompressFileExceptionContent>Compressed File Exception: {0}</CompressFileExceptionContent>
-		<SelectDecompressionFile>Select the directory to save after decompression</SelectDecompressionFile>
-		<SelectDirectory>Select the directory to save after decompression</SelectDirectory>
-		<DecompressionFileExceptionTitle>Decompressed File Exception</DecompressionFileExceptionTitle>
-		<DecompressionFileExceptionContent>Decompressed File Exception: {0}</DecompressionFileExceptionContent>
-		<TimeoutAlarm>Timeout Alarm</TimeoutAlarm>
-		<ShowAll>Show All</ShowAll>
-		<FilterAlarms>Filter Alarms</FilterAlarms>
-		<FilterNormal>Filter Normal</FilterNormal>
-	</TestView>
 </Localization>

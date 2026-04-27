@@ -5,16 +5,16 @@
 		<Title>AI</Title>
 	</AIModule>
 	<AskBotView>
-		<Title>Intelligent Question and Answer Assistant</Title>
-		<Description>Ask questions with one click and get answers immediately. The intelligent question and answer assistant will help you solve your doubts.</Description>
+		<Title>AI Q&amp;A Assistant</Title>
+		<Description>Process prompts with the configured AI service for quick references and structured thinking.</Description>
 	</AskBotView>
 	<PolyTranslateView>
-		<Title>AI One-Click Multi-language Translation Tool</Title>
-		<Description>Easily achieve one-click translation, support mutual translation among multiple languages, and make communication without boundaries!</Description>
+		<Title>AI Multilingual Translation</Title>
+		<Description>Translate content across multiple languages for copywriting and localization workflows.</Description>
 	</PolyTranslateView>
 	<Title2SlugView>
-		<Title>AI One-Click Conversion to URL Slug</Title>
-		<Description>Effortlessly convert article titles in Chinese, English and other languages into English URL Slugs with just one click.</Description>
+		<Title>Title to URL Slug</Title>
+		<Description>Convert article titles into clean English URL slugs for blogs, documentation, and content systems.</Description>
 	</Title2SlugView>
 	<ChoiceLanguagesView>
 		<LanguageKey>Language</LanguageKey>

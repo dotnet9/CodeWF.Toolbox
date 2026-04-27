@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="960" height="600" viewBox="0 0 960 600" role="img" aria-labelledby="title desc">
   <title id="title">CodeWF Toolbox architecture</title>
-  <desc id="desc">Layered architecture diagram for the Avalonia and Prism modular toolbox demo.</desc>
+  <desc id="desc">Layered architecture diagram for the Avalonia and Prism modular toolbox.</desc>
   <defs>
     <style>
       .bg { fill: #f8fafc; }

@@ -2,25 +2,25 @@
 
 <Localization language="English" description="English" cultureName="en-US">
 	<XmlTranslatorManager>
-		<Title>XML Internationalization Management</Title>
+		<Title>XML Localization Manager</Title>
 	</XmlTranslatorManager>
 	<MergeXmlFilesView>
-		<Title>XML Multi-module File Merging</Title>
-		<Description>Integrate XML language files, suitable for multi-module programs, such as programs using Prism. Please backup files before merging.</Description>
-		<SelectLanguageDirectory>Select Language Directory</SelectLanguageDirectory>
-		<InputMergedXmlFileName>Please enter the file name of the merged XML language file</InputMergedXmlFileName>
-		<MergeFiles>Merge Files</MergeFiles>
-		<NoLanguageFilesTitle>No Language Files</NoLanguageFilesTitle>
-		<NoLanguageFilesContent>Please select the language directory first and then perform the merge</NoLanguageFilesContent>
-		<WrongNewXmlFileNameTitle>Wrong New XML Language File Name</WrongNewXmlFileNameTitle>
-		<WrongNewXmlFileNameContent>The input file name needs to meet the file name format</WrongNewXmlFileNameContent>
-		<MergeXmlFilesExceptionTitle>Exception in Merging XML Language Files</MergeXmlFilesExceptionTitle>
-		<MergeXmlFilesExceptionContent>Please check whether the content of the existing XML language files is valid: {0}</MergeXmlFilesExceptionContent>
-		<ReadXmlFilesExceptionTitle>Exception in Reading XML Language Files</ReadXmlFilesExceptionTitle>
-		<ReadXmlFilesExceptionContent>Please check whether the content of the XML language files is valid: {0}</ReadXmlFilesExceptionContent>
+		<Title>Merge XML Language Files</Title>
+		<Description>Merge XML language resources from multiple modules. Recommended for Prism-style modular applications; back up files before merging.</Description>
+		<SelectLanguageDirectory>Select language directory</SelectLanguageDirectory>
+		<InputMergedXmlFileName>Merged XML language file name</InputMergedXmlFileName>
+		<MergeFiles>Merge files</MergeFiles>
+		<NoLanguageFilesTitle>No language files</NoLanguageFilesTitle>
+		<NoLanguageFilesContent>Select a language directory first.</NoLanguageFilesContent>
+		<WrongNewXmlFileNameTitle>Invalid XML language file name</WrongNewXmlFileNameTitle>
+		<WrongNewXmlFileNameContent>Enter a valid XML file name.</WrongNewXmlFileNameContent>
+		<MergeXmlFilesExceptionTitle>Failed to merge XML language files</MergeXmlFilesExceptionTitle>
+		<MergeXmlFilesExceptionContent>Check whether the existing XML language files are valid: {0}</MergeXmlFilesExceptionContent>
+		<ReadXmlFilesExceptionTitle>Failed to read XML language files</ReadXmlFilesExceptionTitle>
+		<ReadXmlFilesExceptionContent>Check whether the XML language files are valid: {0}</ReadXmlFilesExceptionContent>
 	</MergeXmlFilesView>
 	<ManageXmlFilesView>
-		<Title>XML Multilingual Management</Title>
-		<Description>Centralize the management and maintenance of XML multilingual data.</Description>
+		<Title>Manage XML Localization</Title>
+		<Description>Maintain XML localization resources in one place for comparison, completion, and translation consistency.</Description>
 	</ManageXmlFilesView>
 </Localization>

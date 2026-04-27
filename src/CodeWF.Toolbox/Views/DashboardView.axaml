@@ -2,62 +2,158 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:u="https://irihi.tech/ursa"
              xmlns:prism="http://prismlibrary.com/"
              prism:ViewModelLocator.AutoWireViewModel="True"
              xmlns:i18n="https://codewf.com"
              xmlns:language="clr-namespace:Localization"
-             xmlns:views="clr-namespace:CodeWF.Toolbox.Views"
              xmlns:vm="clr-namespace:CodeWF.Toolbox.ViewModels"
              xmlns:models="clr-namespace:CodeWF.Toolbox.Models"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="CodeWF.Toolbox.Views.DashboardView"
              x:DataType="vm:DashboardViewModel">
     <UserControl.Styles>
-        <Style Selector="Border.ToolItem">
-            <Setter Property="Margin" Value="7" />
-            <Setter Property="Padding" Value="20" />
-            <Setter Property="CornerRadius" Value="10" />
+        <Style Selector="Border.MetricItem">
+            <Setter Property="Padding" Value="18 14" />
+            <Setter Property="CornerRadius" Value="8" />
+            <Setter Property="Background" Value="{DynamicResource SemiGrey1}" />
+            <Setter Property="BorderBrush" Value="{DynamicResource SemiGrey2}" />
+            <Setter Property="BorderThickness" Value="1" />
         </Style>
-        <Style Selector="Image.ToolItem">
-            <Setter Property="HorizontalAlignment" Value="Left" />
-            <Setter Property="Margin" Value="0 0 0 20" />
+        <Style Selector="TextBlock.MetricValue">
+            <Setter Property="FontSize" Value="26" />
+            <Setter Property="FontWeight" Value="SemiBold" />
+        </Style>
+        <Style Selector="TextBlock.MetricLabel">
+            <Setter Property="Foreground" Value="{DynamicResource SemiGrey6}" />
+            <Setter Property="Margin" Value="0 6 0 0" />
+        </Style>
+        <Style Selector="Border.CommunityItem">
+            <Setter Property="Padding" Value="10" />
+            <Setter Property="CornerRadius" Value="8" />
+            <Setter Property="Background" Value="{DynamicResource SemiGrey0}" />
+            <Setter Property="BorderBrush" Value="{DynamicResource SemiGrey2}" />
+            <Setter Property="BorderThickness" Value="1" />
+        </Style>
+        <Style Selector="Image.CommunityQrCode">
+            <Setter Property="Width" Value="96" />
+            <Setter Property="Height" Value="96" />
+            <Setter Property="Stretch" Value="Uniform" />
         </Style>
     </UserControl.Styles>
-    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-        <TextBlock HorizontalAlignment="Center" Classes="H3" TextWrapping="Wrap"
-                   Theme="{StaticResource TitleTextBlock}">
-            <Run Text="{i18n:I18n {x:Static language:MainModule.Title}}" />
-            <Run Text="{Binding OSInfo}" />
-        </TextBlock>
-        <TextBlock Text="{i18n:I18n {x:Static language:DashboardView.DesiredAvailabilityNotification}}"
-                   HorizontalAlignment="Center" Classes="Tertiary H6" TextWrapping="Wrap"
-                   Theme="{StaticResource TitleTextBlock}" Margin="0 10 0 30" />
-        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-            <u:IconButton Content="{i18n:I18n {x:Static language:DashboardView.WeChat}}" IconPlacement="Top"
-                          Margin="5 5 20 15">
-                <u:IconButton.Icon>
-                    <Image Source="../Assets/wechatowner.jpg" Width="120" Margin="0 8 0 0" />
-                </u:IconButton.Icon>
-            </u:IconButton>
-            <u:IconButton Content="{i18n:I18n {x:Static language:DashboardView.WeChatPublic}}" IconPlacement="Top"
-                          Margin="20 5 5 15">
-                <u:IconButton.Icon>
-                    <Image Source="../Assets/wechatpublic.jpg" Width="120" Margin="0 8 0 0" />
-                </u:IconButton.Icon>
-            </u:IconButton>
+
+    <Grid
+        MaxWidth="860"
+        Margin="32"
+        HorizontalAlignment="Stretch"
+        RowDefinitions="Auto, Auto, Auto, Auto, *"
+        RowSpacing="20">
+        <StackPanel Spacing="8">
+            <TextBlock
+                Classes="H3"
+                FontWeight="SemiBold"
+                Text="{i18n:I18n {x:Static language:MainModule.Title}}"
+                TextWrapping="Wrap" />
+            <TextBlock
+                Classes="Tertiary H6"
+                MaxWidth="720"
+                Text="{i18n:I18n {x:Static language:DashboardView.DesiredAvailabilityNotification}}"
+                TextWrapping="Wrap" />
         </StackPanel>
-        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-            <HyperlinkButton
-                Classes="WithIcon Underline"
-                Height="20"
-                NavigateUri="{x:Static models:ConstDatas.OnlineToolUrl}"
-                Content="{i18n:I18n {x:Static language:DashboardView.AccessToolbox}}" />
-            <HyperlinkButton
-                Classes="WithIcon Underline"
-                Height="20" Margin="20 0 0 0"
-                NavigateUri="{x:Static models:ConstDatas.RespositoyUrl}"
-                Content="{i18n:I18n {x:Static language:DashboardView.MissingTool}}" />
-        </StackPanel>
-    </StackPanel>
+
+        <TextBlock
+            Grid.Row="1"
+            Classes="Tertiary"
+            MaxWidth="760"
+            Text="{i18n:I18n {x:Static language:DashboardView.ProjectIntro}}"
+            TextWrapping="Wrap" />
+
+        <Grid Grid.Row="2" ColumnDefinitions="*, *, *" ColumnSpacing="12">
+            <Border Classes="MetricItem">
+                <StackPanel>
+                    <TextBlock Classes="MetricValue" Text="{Binding ToolCount}" />
+                    <TextBlock Classes="MetricLabel" Text="{i18n:I18n {x:Static language:DashboardView.ToolCountLabel}}" />
+                </StackPanel>
+            </Border>
+            <Border Grid.Column="1" Classes="MetricItem">
+                <StackPanel>
+                    <TextBlock Classes="MetricValue" Text="{Binding ModuleCount}" />
+                    <TextBlock Classes="MetricLabel" Text="{i18n:I18n {x:Static language:DashboardView.ModuleCountLabel}}" />
+                </StackPanel>
+            </Border>
+            <Border Grid.Column="2" Classes="MetricItem">
+                <StackPanel>
+                    <TextBlock Classes="MetricValue" Text="{Binding OSInfo}" />
+                    <TextBlock Classes="MetricLabel" Text="{i18n:I18n {x:Static language:DashboardView.PlatformLabel}}" />
+                </StackPanel>
+            </Border>
+        </Grid>
+
+        <Border
+            Grid.Row="3"
+            Padding="0 18 0 0"
+            BorderBrush="{DynamicResource SemiGrey2}"
+            BorderThickness="0 1 0 0">
+            <StackPanel Orientation="Horizontal" Spacing="18">
+                <HyperlinkButton
+                    Classes="WithIcon Underline"
+                    Height="24"
+                    NavigateUri="{x:Static models:AppLinks.RepositoryUrl}"
+                    Content="{i18n:I18n {x:Static language:DashboardView.SourceCode}}" />
+                <HyperlinkButton
+                    Classes="WithIcon Underline"
+                    Height="24"
+                    NavigateUri="{x:Static models:AppLinks.DeveloperGuideUrl}"
+                    Content="{i18n:I18n {x:Static language:DashboardView.DeveloperGuide}}" />
+                <HyperlinkButton
+                    Classes="WithIcon Underline"
+                    Height="24"
+                    NavigateUri="{x:Static models:AppLinks.OnlineToolUrl}"
+                    Content="{i18n:I18n {x:Static language:DashboardView.AccessToolbox}}" />
+            </StackPanel>
+        </Border>
+
+        <Border
+            Grid.Row="4"
+            Padding="18"
+            Background="{DynamicResource SemiGrey1}"
+            BorderBrush="{DynamicResource SemiGrey2}"
+            BorderThickness="1"
+            CornerRadius="8">
+            <Grid ColumnDefinitions="*, Auto" ColumnSpacing="24">
+                <StackPanel Spacing="8" VerticalAlignment="Center">
+                    <TextBlock
+                        FontWeight="SemiBold"
+                        Text="{i18n:I18n {x:Static language:DashboardView.CommunityTitle}}"
+                        TextWrapping="Wrap" />
+                    <TextBlock
+                        Classes="Tertiary"
+                        MaxWidth="460"
+                        Text="{i18n:I18n {x:Static language:DashboardView.CommunityDescription}}"
+                        TextWrapping="Wrap" />
+                </StackPanel>
+
+                <StackPanel
+                    Grid.Column="1"
+                    Orientation="Horizontal"
+                    Spacing="12">
+                    <Border Classes="CommunityItem">
+                        <StackPanel Spacing="8">
+                            <Image Classes="CommunityQrCode" Source="../Assets/wechatowner.jpg" />
+                            <TextBlock
+                                HorizontalAlignment="Center"
+                                Text="{i18n:I18n {x:Static language:DashboardView.WeChat}}" />
+                        </StackPanel>
+                    </Border>
+                    <Border Classes="CommunityItem">
+                        <StackPanel Spacing="8">
+                            <Image Classes="CommunityQrCode" Source="../Assets/wechatpublic.jpg" />
+                            <TextBlock
+                                HorizontalAlignment="Center"
+                                Text="{i18n:I18n {x:Static language:DashboardView.WeChatPublic}}" />
+                        </StackPanel>
+                    </Border>
+                </StackPanel>
+            </Grid>
+        </Border>
+    </Grid>
 </UserControl>

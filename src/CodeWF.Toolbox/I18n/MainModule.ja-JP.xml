@@ -7,18 +7,25 @@
 		<Exit>終了する</Exit>
 	</MainModule>
 	<MainWindow>
-		<SearchToolTip>ツール、変換、生成を検索</SearchToolTip>
-		<NoMorePrompts>もうメッセージを表示しない</NoMorePrompts>
+		<SearchToolTip>ツール、変換、生成機能を検索</SearchToolTip>
+		<NoMorePrompts>今後表示しない</NoMorePrompts>
 		<SureExit>本当に終了しますか？</SureExit>
 		<FindInTrayIcon>アプリはシステムトレイに最小化されました。</FindInTrayIcon>
 	</MainWindow>
 	<DashboardView>
-		<Title>ホームページ</Title>
-		<WeChat>著者のマイクロ信号</WeChat>
-		<WeChatPublic>ウィーチャットの公式アカウントに注目</WeChatPublic>
-		<DesiredAvailabilityNotification>開発と変換のための実用的なツールをすばやく利用できます。</DesiredAvailabilityNotification>
-		<AccessToolbox>オンラインツールボックスにアクセスする</AccessToolbox>
-		<MissingTool>ツールをリクエスト</MissingTool>
+		<Title>ホーム</Title>
+		<DesiredAvailabilityNotification>日常の開発と変換作業に使うツールを整理して提供します。</DesiredAvailabilityNotification>
+		<ProjectIntro>Avalonia + Prism で構築したモジュール式デスクトップツールボックスです。</ProjectIntro>
+		<ToolCountLabel>利用可能なツール</ToolCountLabel>
+		<ModuleCountLabel>機能モジュール</ModuleCountLabel>
+		<PlatformLabel>現在のプラットフォーム</PlatformLabel>
+		<CommunityTitle>フォローとフィードバック</CommunityTitle>
+		<CommunityDescription>QR コードからツール更新、Avalonia 記事、モジュール計画を確認し、作者へフィードバックできます。</CommunityDescription>
+		<WeChat>作者に連絡</WeChat>
+		<WeChatPublic>WeChat 公式アカウント</WeChatPublic>
+		<AccessToolbox>オンラインツールボックスを開く</AccessToolbox>
+		<SourceCode>ソースリポジトリ</SourceCode>
+		<DeveloperGuide>開発ドキュメント</DeveloperGuide>
 	</DashboardView>
 	<SettingView>
 		<Title>設定</Title>
@@ -28,18 +35,18 @@
 		<Description>テーマ、言語、起動動作を調整します。</Description>
 		<Theme>テーマ</Theme>
 		<ThemePlaceholderText>テーマを選ぶ</ThemePlaceholderText>
-		<Default>システムに従う</Default>
-		<Light>昼間モード</Light>
-		<Dark>夜間モード</Dark>
+		<Default>システム設定に従う</Default>
+		<Light>ライトモード</Light>
+		<Dark>ダークモード</Dark>
 		<Aquatic>水生（すいせい）</Aquatic>
 		<Desert>砂漠（さばく）</Desert>
 		<Dusk>夕暮れ（ゆうぐれ）</Dusk>
 		<NightSky>夜空（よぞら）</NightSky>
 		<LanguageKey>言語</LanguageKey>
 		<LanguagePlaceholderText>言語を選ぶ</LanguagePlaceholderText>
-		<AutoOpenToolboxAtStartup>起動時に自動的にツールボックスを開く</AutoOpenToolboxAtStartup>
-		<HideTrayIconOnClose>ウィンドウを閉じるときにトレイアイコンを非表示にする</HideTrayIconOnClose>
-		<DisplayPromptWhenClosing>ウィンドウを閉じるときにメッセージを表示する</DisplayPromptWhenClosing>
+		<AutoOpenToolboxAtStartup>システム起動時に CodeWF Toolbox を開く</AutoOpenToolboxAtStartup>
+		<HideTrayIconOnClose>ウィンドウを閉じるときにトレイアイコンを隠す</HideTrayIconOnClose>
+		<DisplayPromptWhenClosing>ウィンドウを閉じる前に確認する</DisplayPromptWhenClosing>
 		<TurnOn>オンにする</TurnOn>
 		<TurnOff>オフにする</TurnOff>
 	</CommonSettingView>
@@ -48,27 +55,28 @@
 		<Description>バージョン更新、改善、修正を記録します。</Description>
 	</UpdateLogView>
 	<AboutView>
-		<Title>関於</Title>
-		<Description>CodeWF Toolbox は、日常の開発と生産性タスク向けのデスクトップツールキットです。</Description>
+		<Title>概要</Title>
+		<Description>CodeWF Toolbox は、開発者の日常作業向けのモジュール式デスクトップツールキットです。</Description>
+		<VersionLabel>バージョン</VersionLabel>
+		<PlatformLabel>プラットフォーム</PlatformLabel>
+		<BuildTimeLabel>ビルド時刻</BuildTimeLabel>
+		<CopyrightLabel>著作権</CopyrightLabel>
 	</AboutView>
 	<ExitOptionView>
-		<Message>閉じる操作を選択してください：</Message>
-		<HideTrayIcon>トレイアイコンに隠す</HideTrayIcon>
-		<DirectToClose>アプリケーションを直接終了する</DirectToClose>
+		<Message>終了方法を選択してください：</Message>
+		<HideTrayIcon>システムトレイに最小化</HideTrayIcon>
+		<DirectToClose>アプリケーションを終了</DirectToClose>
 		<RememberMyChoice>私の選択を覚えておく</RememberMyChoice>
 	</ExitOptionView>
 	<LoginWindow>
 		<Title>ログイン</Title>
-		<UsernameWatermark>ユーザー名を入力してください</UsernameWatermark>
-		<PasswordWatermark>パスワードを入力してください</PasswordWatermark>
+		<UsernameWatermark>ユーザー名</UsernameWatermark>
+		<PasswordWatermark>パスワード</PasswordWatermark>
 		<LoginButton>ログイン</LoginButton>
-		<GuestLoginButton>ゲストログイン</GuestLoginButton>
-		<NotConnected>サーバーに接続されていません</NotConnected>
+		<GuestLoginButton>ゲストとして続行</GuestLoginButton>
+		<NotConnected>サービスに接続できません</NotConnected>
 		<LoginSuccess>ログイン成功</LoginSuccess>
 		<LoginFailed>ユーザー名またはパスワードが正しくありません</LoginFailed>
-		<GuestLoginSuccess>ゲストログイン成功</GuestLoginSuccess>
+		<GuestLoginSuccess>ゲストモードで開始しました</GuestLoginSuccess>
 	</LoginWindow>
-	<MainTaskView>
-		<Online>オンライン</Online>
-	</MainTaskView>
 </Localization>

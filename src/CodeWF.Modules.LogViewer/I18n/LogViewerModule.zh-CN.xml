@@ -6,10 +6,10 @@
 	</LogViewerModule>
 	<LogViewerView>
 		<Title>日志阅读器</Title>
-		<Description>秒开大日志文件，支持虚拟滚动和实时 tail 追踪。</Description>
+		<Description>快速打开大日志文件，支持虚拟滚动和实时尾部追踪。</Description>
 		<OpenFile>打开日志</OpenFile>
 		<Reload>重新加载</Reload>
-		<FollowTail>实时追踪</FollowTail>
+		<FollowTail>跟随尾部</FollowTail>
 		<JumpToTail>跳到末尾</JumpToTail>
 		<FilePath>文件</FilePath>
 		<FilePathWatermark>选择 .log、.txt 或任意文本日志文件</FilePathWatermark>

@@ -13,8 +13,8 @@ The solution is organized into five areas:
 - `CodeWF.Toolbox.Desktop`: desktop entry point, AppBuilder setup, icon, manifest, and publish profiles.
 - `CodeWF.Toolbox`: application shell, main window, menu, settings, themes, login window, and Prism module catalog.
 - `CodeWF.Core`: shared abstractions, file chooser, notifications, tool menu service, region names, and TabControl region adapter.
-- `CodeWF.Modules.*`: feature modules. Each module owns its menu entries, views, view models, and resources.
-- `docs`/`tests`/`publish`: documentation, validation projects, and publishing scripts.
+- `CodeWF.Modules.*`: feature modules. Each module owns its menu entries, views, view models, and resources. Current modules include AI helpers, converters, log viewing, development tools, and XML localization management.
+- `docs`/`tests`/`publish`: documentation, unit tests, and publishing scripts.
 
 ## Module Lifecycle
 
@@ -45,26 +45,26 @@ At startup, `App.ConfigureModuleCatalog` adds modules to the Prism catalog. A mo
 Example:
 
 ```csharp
-public class DemoModule : IModule
+public class SampleModule : IModule
 {
-    public DemoModule(IToolMenuService toolMenuService)
+    public SampleModule(IToolMenuService toolMenuService)
     {
-        var groupName = Localization.DemoModule.Title;
+        var groupName = Localization.SampleModule.Title;
         toolMenuService.AddSeparator();
-        toolMenuService.AddGroup(groupName, Icons.Demo);
+        toolMenuService.AddGroup(groupName, Icons.Sample);
         toolMenuService.AddItem(
-            Localization.DemoView.Title,
+            Localization.SampleView.Title,
             groupName,
-            Localization.DemoView.Description,
-            nameof(DemoView),
-            Icons.Demo,
+            Localization.SampleView.Description,
+            nameof(SampleView),
+            Icons.Sample,
             ToolStatus.Developing);
     }
 
     public void OnInitialized(IContainerProvider containerProvider)
     {
         var regionManager = containerProvider.Resolve<IRegionManager>();
-        regionManager.RegisterViewWithRegion<DemoView>(RegionNames.ContentRegion);
+        regionManager.RegisterViewWithRegion<SampleView>(RegionNames.ContentRegion);
     }
 
     public void RegisterTypes(IContainerRegistry containerRegistry)
@@ -101,6 +101,7 @@ Check that:
 - File chooser, clipboard, and drag/drop flows handle cancellation and null values.
 - ViewModel async methods either await work or explicitly return `Task.CompletedTask`.
 - Localization displays correctly in at least Chinese and English.
+- Large text viewers should keep business logic in ViewModels and use shared editor helpers for selection, font, and scroll behavior.
 
 ## Publishing
 

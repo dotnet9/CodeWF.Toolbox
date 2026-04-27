@@ -11,14 +11,13 @@
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="CodeWF.Toolbox.Views.MainContentView"
              x:DataType="vm:MainContentViewModel">
-    <Border Padding="18" Background="{DynamicResource SemiGrey0}">
+    <Border Padding="20 18" Background="{DynamicResource SemiGrey0}">
         <Grid RowDefinitions="Auto, *">
             <Border
-                Padding="14 12"
+                Padding="0 0 0 14"
                 Background="{DynamicResource SemiGrey0}"
                 BorderBrush="{DynamicResource SemiGrey2}"
-                BorderThickness="1"
-                CornerRadius="8">
+                BorderThickness="0 0 0 1">
                 <StackPanel Spacing="4">
                     <TextBlock
                         Classes="H5"

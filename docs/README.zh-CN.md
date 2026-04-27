@@ -13,8 +13,8 @@
 - `CodeWF.Toolbox.Desktop`：桌面启动入口，负责创建 Avalonia AppBuilder、应用图标、Manifest 和发布配置。
 - `CodeWF.Toolbox`：应用 Shell，包含主窗口、菜单、设置、主题、登录窗口和模块目录配置。
 - `CodeWF.Core`：公共基础层，提供服务接口、文件选择、通知、工具菜单、Region 名称与 TabControl 适配器。
-- `CodeWF.Modules.*`：业务模块层，每个模块只注册自己的菜单、View、ViewModel 和资源。
-- `docs`/`tests`/`publish`：文档、验证项目和发布脚本。
+- `CodeWF.Modules.*`：业务模块层，每个模块只注册自己的菜单、View、ViewModel 和资源；当前包含 AI、转换工具、日志阅读、开发辅助和 XML 国际化管理等模块。
+- `docs`/`tests`/`publish`：文档、单元测试和发布脚本。
 
 ## 模块生命周期
 
@@ -45,26 +45,26 @@
 示例：
 
 ```csharp
-public class DemoModule : IModule
+public class SampleModule : IModule
 {
-    public DemoModule(IToolMenuService toolMenuService)
+    public SampleModule(IToolMenuService toolMenuService)
     {
-        var groupName = Localization.DemoModule.Title;
+        var groupName = Localization.SampleModule.Title;
         toolMenuService.AddSeparator();
-        toolMenuService.AddGroup(groupName, Icons.Demo);
+        toolMenuService.AddGroup(groupName, Icons.Sample);
         toolMenuService.AddItem(
-            Localization.DemoView.Title,
+            Localization.SampleView.Title,
             groupName,
-            Localization.DemoView.Description,
-            nameof(DemoView),
-            Icons.Demo,
+            Localization.SampleView.Description,
+            nameof(SampleView),
+            Icons.Sample,
             ToolStatus.Developing);
     }
 
     public void OnInitialized(IContainerProvider containerProvider)
     {
         var regionManager = containerProvider.Resolve<IRegionManager>();
-        regionManager.RegisterViewWithRegion<DemoView>(RegionNames.ContentRegion);
+        regionManager.RegisterViewWithRegion<SampleView>(RegionNames.ContentRegion);
     }
 
     public void RegisterTypes(IContainerRegistry containerRegistry)
@@ -101,6 +101,7 @@ dotnet test tests/CodeWF.Toolbox.Tests/CodeWF.Toolbox.Tests.csproj
 - 文件选择、剪贴板、拖放等桌面能力有空值和取消操作保护。
 - ViewModel 中的异步方法要么 `await`，要么明确返回 `Task.CompletedTask`。
 - 多语言资源在至少中文和英文下能正常显示。
+- 大文本展示类工具应把业务行为放在 ViewModel 中，并复用公共编辑器样式，保证选择、字体和滚动行为一致。
 
 ## 发布
 

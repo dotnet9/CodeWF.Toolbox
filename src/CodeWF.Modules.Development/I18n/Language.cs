@@ -32,28 +32,6 @@ namespace Localization
         public const string IndentSize = "Localization.JsonPrettifyView.IndentSize";
     }
 
-
-    public static class TestView
-    {
-        public const string Title = "Localization.TestView.Title";
-        public const string Description = "Localization.TestView.Description";
-        public const string CompressFiles = "Localization.TestView.CompressFiles";
-        public const string DecompressionFiles = "Localization.TestView.DecompressionFiles";
-        public const string SelectCompressFiles = "Localization.TestView.SelectCompressFiles";
-        public const string SaveCompressedFile = "Localization.TestView.SaveCompressedFile";
-        public const string CompressFileExceptionTitle = "Localization.TestView.CompressFileExceptionTitle";
-        public const string CompressFileExceptionContent = "Localization.TestView.CompressFileExceptionContent";
-        public const string SelectDecompressionFile = "Localization.TestView.SelectDecompressionFile";
-        public const string SelectDirectory = "Localization.TestView.SelectDirectory";
-        public const string DecompressionFileExceptionTitle = "Localization.TestView.DecompressionFileExceptionTitle";
-        public const string DecompressionFileExceptionContent = "Localization.TestView.DecompressionFileExceptionContent";
-        public const string TimeoutAlarm = "Localization.TestView.TimeoutAlarm";
-        public const string ShowAll = "Localization.TestView.ShowAll";
-        public const string FilterAlarms = "Localization.TestView.FilterAlarms";
-        public const string FilterNormal = "Localization.TestView.FilterNormal";
-    }
-
-
 }
 
 

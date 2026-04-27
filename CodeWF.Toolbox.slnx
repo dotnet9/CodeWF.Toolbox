@@ -50,7 +50,7 @@
     <File Path=".gitignore" />
     <File Path="Directory.Build.props" />
     <File Path="publish.bat" />
-    <File Path="README-zh_CN.md" />
+    <File Path="README.zh-CN.md" />
     <File Path="README.md" />
     <File Path="docs/README.zh-CN.md" />
     <File Path="docs/README.md" />

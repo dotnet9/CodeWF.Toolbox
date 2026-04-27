@@ -207,6 +207,7 @@ public class LogViewerViewModel : ReactiveObject, IDisposable
 
     private void InitializeIndex(string path)
     {
+        // 大文件不一次性读入内存，只维护行起始偏移，滚动时按可见窗口读取。
         _fileLength = GetFileLength(path);
         _tailPosition = _fileLength;
         _indexedBytes = 0;
@@ -857,6 +858,7 @@ public class LogViewerViewModel : ReactiveObject, IDisposable
         var newLength = GetFileLength(path);
         var oldLength = _fileLength;
         var wasIndexedToTail = _indexedBytes >= oldLength;
+        // 只有用户仍停留在末尾时才自动跟随，手动上翻或正在选择文本时保留当前位置。
         var shouldKeepTail = FollowTail && await Dispatcher.UIThread.InvokeAsync(IsEditorVerticalScrollAtTail);
         var preservedOffset = shouldKeepTail
             ? null

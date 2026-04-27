@@ -11,7 +11,7 @@
     xmlns:language="clr-namespace:Localization"
     xmlns:vm="clr-namespace:CodeWF.Toolbox.ViewModels"
     prism:ViewModelLocator.AutoWireViewModel="True"
-    Width="680" WindowStartupLocation="CenterOwner"
+    Width="720" WindowStartupLocation="CenterOwner"
     Height="560"
     d:DesignHeight="600"
     d:DesignWidth="500"
@@ -19,20 +19,17 @@
     x:DataType="vm:SettingViewModel"
     Title="{codewf:I18n {x:Static language:SettingView.Title}}">
     <Design.DataContext>
-        <!-- This only sets the DataContext for the previewer in an IDE,
-         to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
         <vm:SettingViewModel />
     </Design.DataContext>
     <u:UrsaWindow.LeftContent>
-        <Grid ColumnDefinitions="Auto, *, Auto, Auto">
-
+        <Grid ColumnDefinitions="Auto">
             <StackPanel x:Name="LogoAndTitle" Grid.Row="0" Grid.Column="0" IsHitTestVisible="False"
                         VerticalAlignment="Center" Classes="h7" Margin="5 5"
-                        TextElement.FontWeight="Light" Orientation="Horizontal" ClipToBounds="False">
+                        TextElement.FontWeight="SemiBold" Orientation="Horizontal" ClipToBounds="False">
                 <Viewbox Height="24" Width="24" IsHitTestVisible="False">
                     <Image Source="\Assets\logo.ico" />
                 </Viewbox>
-                <TextBlock Text="{codewf:I18n {x:Static language:SettingView.Title}}" />
+                <TextBlock Margin="8 0 0 0" Text="{codewf:I18n {x:Static language:SettingView.Title}}" />
             </StackPanel>
         </Grid>
     </u:UrsaWindow.LeftContent>
@@ -45,13 +42,13 @@
             Text="{codewf:I18n {Binding #MyTab.Tag}}"
             Theme="{StaticResource TitleTextBlock}" />
         <TabControl
-                    Grid.Row="1"
-                    HorizontalAlignment="Stretch"
-                    VerticalAlignment="Stretch"
-                    TabStripPlacement="Top"
-                    prism:RegionManager.RegionName="{x:Static core:RegionNames.SettingRegion}"
-                    Name="MyTab">
-			<TabControl.Styles>
+            Grid.Row="1"
+            HorizontalAlignment="Stretch"
+            VerticalAlignment="Stretch"
+            TabStripPlacement="Top"
+            prism:RegionManager.RegionName="{x:Static core:RegionNames.SettingRegion}"
+            Name="MyTab">
+            <TabControl.Styles>
                 <Style Selector="TabItem">
                     <Setter Property="CornerRadius" Value="6" />
                     <Setter Property="Padding" Value="12 8" />
