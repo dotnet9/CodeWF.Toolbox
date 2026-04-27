@@ -20,11 +20,16 @@ public class YamlToJsonViewModel : ReactiveObject
 
     public void StartListen()
     {
+        if (YamlEditor == null)
+        {
+            return;
+        }
+
         this.WhenAnyValue(x => x.YamlString)
             .Throttle(TimeSpan.FromMilliseconds(400))
             .ObserveOn(RxSchedulers.MainThreadScheduler)
             .Subscribe(_ => YamlChanged());
-        YamlEditor!.TextChanged += (s, e) => YamlString = YamlEditor.Text;
+        YamlEditor.TextChanged += (s, e) => YamlString = YamlEditor.Text;
     }
 
     private string? _yamlString;
@@ -73,6 +78,6 @@ public class YamlToJsonViewModel : ReactiveObject
 
     private async Task RaiseCopyHandlerAsync()
     {
-        TopLevel.GetTopLevel(JsonEditor)?.Clipboard?.SetTextAsync(JsonEditor.Text);
+        await (TopLevel.GetTopLevel(JsonEditor)?.Clipboard?.SetTextAsync(JsonEditor?.Text) ?? Task.CompletedTask);
     }
 }

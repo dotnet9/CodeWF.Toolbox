@@ -48,6 +48,10 @@
     <File Path="publish.bat" />
     <File Path="README-zh_CN.md" />
     <File Path="README.md" />
+    <File Path="docs/README.zh-CN.md" />
+    <File Path="docs/README.md" />
+    <File Path="docs/assets/architecture.svg" />
+    <File Path="docs/assets/module-lifecycle.svg" />
     <File Path="UpdateAssemblyVersion.ps1" />
     <File Path="UpdateLog.md" />
   </Folder>

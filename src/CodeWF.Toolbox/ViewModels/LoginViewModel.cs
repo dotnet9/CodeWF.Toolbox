@@ -11,7 +11,7 @@ public class LoginViewModel : ViewModelBase
 {
     private readonly ILoginService _loginService;
 
-    // 登录成功事件
+    // 关闭登录窗口时用它区分“登录成功关闭”和“用户主动关闭”。
     private bool _isSuccess;
 
     public string? Username 
@@ -23,7 +23,7 @@ public class LoginViewModel : ViewModelBase
     {
         get;
         set => this.RaiseAndSetIfChanged(ref field, value);
-    }
+    } = string.Empty;
     public string StatusMessage
     {
         get;
@@ -48,7 +48,7 @@ public class LoginViewModel : ViewModelBase
     public async Task<bool> LoginAsync(Window owner)
     {        
         // 使用登录服务进行验证
-        bool isValid = _loginService.Login(Username, Password);
+        bool isValid = _loginService.Login(Username ?? string.Empty, Password);
         IsConnected = isValid;
         StatusMessage = isValid ? Localization.LoginWindow.LoginSuccess : Localization.LoginWindow.LoginFailed;
         

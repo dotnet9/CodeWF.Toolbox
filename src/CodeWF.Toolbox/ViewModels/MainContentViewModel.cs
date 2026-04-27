@@ -39,12 +39,14 @@ internal class MainContentViewModel : ViewModelBase
     }
 
     [EventHandler]
-    private async Task ChangeToolMenuHandlerAsync(ChangeToolMenuCommand command)
+    private Task ChangeToolMenuHandlerAsync(ChangeToolMenuCommand command)
     {
         SelectedMenuItem = command.ToolMenuItem;
         Bordered = SelectedMenuItem.Status == ToolStatus.Developing;
         SelectedType = SelectedMenuItem.Status == ToolStatus.Complete
             ? NotificationType.Success
             : NotificationType.Warning;
+
+        return Task.CompletedTask;
     }
 }

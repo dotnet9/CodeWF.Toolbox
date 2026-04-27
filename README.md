@@ -1,30 +1,66 @@
-# 码坊工具箱
+# CodeWF Toolbox
 
 English | [简体中文](README-zh_CN.md)
 
-Use. NET 9+Avalonia UI+Prism developed tool client, supports AOT publishing, currently tested to run on Windows 7 \ Windows Server 2019 \ Windows 10 \ Windows 11 \ macOS 11+platforms
+CodeWF Toolbox is an Avalonia + Prism desktop demo for building a modular tool client. It keeps the shell, common services, and feature modules separated so new tools can be added without turning the main application into one large window class.
 
-**Solution screenshot**
+![Application screenshot](screen.png)
 
-![]( https://img1.dotnet9.com/site/doc/tool/imgs/0101.png )
+## Highlights
 
-**Directory after AOT release**
+- Cross-platform desktop UI based on Avalonia UI and Semi/Ursa controls.
+- Prism module catalog, dependency injection, and region navigation.
+- XML-based internationalization with Simplified Chinese, Traditional Chinese, English, and Japanese resources.
+- Tool modules for AI helpers, format converters, development utilities, and XML translation management.
+- Native AOT-oriented publishing scripts and platform constants.
+- Improved menu registration, searchable tool navigation, and safer region navigation.
 
-![]( https://img1.dotnet9.com/site/doc/tool/imgs/0102.png )
+## Documentation
 
-**Black and White Theme Switching**
+- [Developer guide](docs/README.md)
+- [中文开发文档](docs/README.zh-CN.md)
+- [Architecture SVG](docs/assets/architecture.svg)
+- [Module lifecycle SVG](docs/assets/module-lifecycle.svg)
 
-![]( https://img1.dotnet9.com/site/doc/tool/imgs/0103.gif )
+![Architecture](docs/assets/architecture.svg)
 
-**Internationalization**
+## Quick Start
 
-![]( https://img1.dotnet9.com/site/doc/tool/imgs/0104.gif )
-At the same time, it includes practical Json beautification tools and YAML to Json tools, as shown in the following figures:
+Requirements:
 
-**Json Beautification Tool**
+- .NET SDK that can build `net10.0` projects
+- Windows, macOS, or Linux desktop runtime supported by Avalonia
 
-![]( https://img1.dotnet9.com/2024/09/0108.png )
+```powershell
+dotnet restore CodeWF.Toolbox.slnx
+dotnet build CodeWF.Toolbox.slnx
+dotnet run --project src/CodeWF.Toolbox.Desktop/CodeWF.Toolbox.Desktop.csproj
+```
 
-**YAML to JSON conversion tool**
+## Solution Layout
 
-![]( https://img1.dotnet9.com/2024/09/0109.png )
+```text
+src/
+  CodeWF.Toolbox.Desktop/            Desktop entry point
+  CodeWF.Toolbox/                    Shell, main views, settings, resources
+  CodeWF.Core/                       Shared abstractions, services, regions
+  CodeWF.Controls/                   Shared controls
+  CodeWF.Modules.AI/                 AI utility module
+  CodeWF.Modules.Converter/          Converter tools
+  CodeWF.Modules.Development/        Development tools
+  CodeWF.Modules.XmlTranslatorManager/ XML i18n management tools
+docs/
+  assets/                            Standalone SVG diagrams
+tests/                               Demo and unit test projects
+```
+
+## Adding a Module
+
+1. Create a module project under `src/CodeWF.Modules.*`.
+2. Implement `IModule`.
+3. Register menu entries through `IToolMenuService`.
+4. Register views with `RegionNames.ContentRegion`.
+5. Add the module to `App.ConfigureModuleCatalog`.
+6. Add localization XML files and generated language keys.
+
+See the developer guide for the detailed conventions.

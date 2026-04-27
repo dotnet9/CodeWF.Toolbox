@@ -51,6 +51,11 @@ public partial class MainWindow : UrsaWindow
         ChangeApplicationStatus(new ChangeApplicationStatusCommand());
     }
 
+    private void Search_OnTextChanged(object? sender, TextChangedEventArgs e)
+    {
+        EventBus.EventBus.Default.Publish(new SearchToolMenuCommand((sender as TextBox)?.Text));
+    }
+
     [EventHandler]
     private void ChangeApplicationStatus(ChangeApplicationStatusCommand command)
     {

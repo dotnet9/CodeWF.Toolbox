@@ -117,7 +117,8 @@ public class JsonPrettifyViewModel : ReactiveObject
     private async Task RaiseCopyHandlerAsync()
     {
         string? newJson = IndentSize > 0 ? FormatEditor?.Text : NoFormatEditor?.Text;
+        Control? clipboardOwner = FormatEditor ?? (Control?)NoFormatEditor;
 
-        TopLevel.GetTopLevel(FormatEditor)?.Clipboard?.SetTextAsync(newJson);
+        await (TopLevel.GetTopLevel(clipboardOwner)?.Clipboard?.SetTextAsync(newJson) ?? Task.CompletedTask);
     }
 }

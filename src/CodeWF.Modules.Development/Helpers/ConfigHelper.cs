@@ -24,7 +24,7 @@ public static class ConfigHelper
             using var command = new SqliteCommand(sql, connection);
             return command.ExecuteNonQuery() > 0;
         }
-        catch (Exception ex)
+        catch
         {
             return false;
         }
@@ -47,7 +47,7 @@ public static class ConfigHelper
 
             return config;
         }
-        catch (Exception ex)
+        catch
         {
             return new JsonPrettifyEntity() { IsSortKey = false, IndentSize = 2 };
         }
@@ -69,7 +69,7 @@ public static class ConfigHelper
                 config);
             return result > 0;
         }
-        catch (Exception ex)
+        catch
         {
             return false;
         }

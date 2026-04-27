@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="600" viewBox="0 0 960 600" role="img" aria-labelledby="title desc">
+  <title id="title">CodeWF Toolbox architecture</title>
+  <desc id="desc">Layered architecture diagram for the Avalonia and Prism modular toolbox demo.</desc>
+  <defs>
+    <style>
+      .bg { fill: #f8fafc; }
+      .title { fill: #111827; font: 700 28px "Segoe UI", Arial, sans-serif; }
+      .subtitle { fill: #4b5563; font: 400 14px "Segoe UI", Arial, sans-serif; }
+      .layer { fill: #ffffff; stroke: #cbd5e1; stroke-width: 2; rx: 12; }
+      .layer-title { fill: #0f172a; font: 700 18px "Segoe UI", Arial, sans-serif; }
+      .text { fill: #374151; font: 400 13px "Segoe UI", Arial, sans-serif; }
+      .tag { fill: #eef2ff; stroke: #818cf8; stroke-width: 1.4; rx: 8; }
+      .tag-text { fill: #312e81; font: 600 12px "Segoe UI", Arial, sans-serif; }
+      .arrow { stroke: #64748b; stroke-width: 2.2; fill: none; marker-end: url(#arrowhead); }
+      .accent-blue { fill: #dbeafe; stroke: #60a5fa; }
+      .accent-green { fill: #dcfce7; stroke: #4ade80; }
+      .accent-amber { fill: #fef3c7; stroke: #f59e0b; }
+      .accent-rose { fill: #ffe4e6; stroke: #fb7185; }
+    </style>
+    <marker id="arrowhead" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto">
+      <path d="M0,0 L10,4 L0,8 Z" fill="#64748b" />
+    </marker>
+  </defs>
+
+  <rect class="bg" x="0" y="0" width="960" height="600" />
+  <text class="title" x="48" y="56">CodeWF Toolbox Architecture</text>
+  <text class="subtitle" x="48" y="82">Avalonia shell, Prism regions, shared services, and feature modules</text>
+
+  <rect class="layer accent-blue" x="60" y="120" width="840" height="76" rx="12" />
+  <text class="layer-title" x="92" y="152">Desktop Host</text>
+  <text class="text" x="92" y="176">CodeWF.Toolbox.Desktop: AppBuilder, manifest, icon, platform publish profiles</text>
+
+  <rect class="layer accent-green" x="60" y="236" width="840" height="96" rx="12" />
+  <text class="layer-title" x="92" y="268">Application Shell</text>
+  <text class="text" x="92" y="292">CodeWF.Toolbox: MainWindow, menu, search, settings, login, theme, i18n bootstrap</text>
+
+  <rect class="layer accent-amber" x="60" y="372" width="390" height="116" rx="12" />
+  <text class="layer-title" x="92" y="404">Core Infrastructure</text>
+  <text class="text" x="92" y="428">CodeWF.Core: services, abstractions, regions, events</text>
+  <rect class="tag" x="92" y="448" width="128" height="28" rx="8" />
+  <text class="tag-text" x="108" y="467">IToolMenuService</text>
+  <rect class="tag" x="232" y="448" width="126" height="28" rx="8" />
+  <text class="tag-text" x="248" y="467">RegionAdapters</text>
+
+  <rect class="layer accent-rose" x="510" y="372" width="390" height="116" rx="12" />
+  <text class="layer-title" x="542" y="404">Feature Modules</text>
+  <text class="text" x="542" y="428">CodeWF.Modules.*: views, view models, resources, module-specific helpers</text>
+  <rect class="tag" x="542" y="448" width="72" height="28" rx="8" />
+  <text class="tag-text" x="562" y="467">AI</text>
+  <rect class="tag" x="626" y="448" width="92" height="28" rx="8" />
+  <text class="tag-text" x="643" y="467">Converter</text>
+  <rect class="tag" x="730" y="448" width="104" height="28" rx="8" />
+  <text class="tag-text" x="746" y="467">Development</text>
+
+  <rect class="layer" x="250" y="522" width="460" height="46" rx="12" />
+  <text class="text" x="284" y="550">XML i18n resources, tests, publish scripts, and documentation assets</text>
+
+  <path class="arrow" d="M480 196 L480 232" />
+  <path class="arrow" d="M480 332 L276 368" />
+  <path class="arrow" d="M480 332 L684 368" />
+  <path class="arrow" d="M450 430 L506 430" />
+  <path class="arrow" d="M480 488 L480 518" />
+</svg>

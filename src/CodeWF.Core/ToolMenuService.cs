@@ -11,11 +11,9 @@ public class ToolMenuService : IToolMenuService
     public void AddItem(string name, string? parentName = null, string? description = null, string? viewName = null,
         string? icon = null, ToolStatus? status = null)
     {
-        ToolMenuItem? parent = null;
-        if (parentName != null)
+        if (string.IsNullOrWhiteSpace(name))
         {
-            parent = MenuItems.FirstOrDefault(item => item.Name == parentName) ??
-                     new ToolMenuItem { Name = parentName, Children = [] };
+            throw new ArgumentException("菜单名称不能为空。", nameof(name));
         }
 
         var toolMenuItem = new ToolMenuItem()
@@ -26,25 +24,54 @@ public class ToolMenuService : IToolMenuService
             Status = status,
             Icon = icon
         };
-        if (parent == null)
+
+        if (string.IsNullOrWhiteSpace(parentName))
         {
             MenuItems.Add(toolMenuItem);
         }
         else
         {
+            var parent = EnsureGroup(parentName);
             parent.Children.Add(toolMenuItem);
         }
 
-        ToolMenuChanged?.Invoke();
+        NotifyChanged();
     }
 
     public void AddSeparator()
     {
+        if (MenuItems.Count == 0 || MenuItems[^1].IsSeparator)
+        {
+            return;
+        }
+
         MenuItems.Add(new ToolMenuItem() { IsSeparator = true });
+        NotifyChanged();
     }
 
     public void AddGroup(string name, string? icon = null)
     {
-        MenuItems.Add(new ToolMenuItem() { Name = name, Icon = icon });
+        var group = EnsureGroup(name);
+        group.Icon ??= icon;
+        NotifyChanged();
+    }
+
+    private ToolMenuItem EnsureGroup(string name)
+    {
+        // 模块加载顺序调整时，子菜单可能先于分组注册；这里统一兜底创建分组。
+        var group = MenuItems.FirstOrDefault(item => !item.IsSeparator && item.Name == name);
+        if (group != null)
+        {
+            return group;
+        }
+
+        group = new ToolMenuItem { Name = name, Children = [] };
+        MenuItems.Add(group);
+        return group;
+    }
+
+    private void NotifyChanged()
+    {
+        ToolMenuChanged?.Invoke();
     }
 }

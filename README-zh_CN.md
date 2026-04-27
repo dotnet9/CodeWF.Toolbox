@@ -1,30 +1,66 @@
-# CodeWF Toolbox
+# 码坊工具箱
 
-简体中文 | [English](README.md)
+[English](README.md) | 简体中文
 
-使用.NET 9 + Avalonia UI + Prism开发的工具客户端，支持AOT发布，目前测试可在Windows 7\Windows Server 2019\Windows 10\Windows 11\macOS 11+平台运行
+码坊工具箱是一个基于 Avalonia UI + Prism 的模块化桌面工具客户端 Demo。项目重点演示如何把主壳、公共服务、工具菜单、区域导航和业务模块拆开，让后续新增工具时不必把逻辑堆进主窗口。
 
-**解决方案截图**
+![应用截图](screen.png)
 
-![](https://img1.dotnet9.com/site/doc/tool/imgs/0101.png)
+## 亮点
 
-**AOT发布后目录**
+- 基于 Avalonia UI、Semi.Avalonia、Ursa 控件构建跨平台桌面界面。
+- 使用 Prism 模块目录、依赖注入与 Region 导航组织工具页面。
+- 使用 XML 资源做国际化，已包含简体中文、繁体中文、英文、日文。
+- 内置 AI、格式转换、开发辅助、XML 翻译管理等模块。
+- 保留面向 Native AOT 发布的脚本和平台常量。
+- 已完善菜单注册、顶部工具搜索和区域导航边界处理。
 
-![](https://img1.dotnet9.com/site/doc/tool/imgs/0102.png)
+## 文档
 
-**黑白主题切换**
+- [中文开发文档](docs/README.zh-CN.md)
+- [Developer guide](docs/README.md)
+- [架构 SVG](docs/assets/architecture.svg)
+- [模块生命周期 SVG](docs/assets/module-lifecycle.svg)
 
-![](https://img1.dotnet9.com/site/doc/tool/imgs/0103.gif)
+![架构设计](docs/assets/architecture.svg)
 
-**国际化**
+## 快速开始
 
-![](https://img1.dotnet9.com/site/doc/tool/imgs/0104.gif)
-同时，包含实用的 Json 美化工具和 YAML 转 Json 工具，分别如下图所示：
+环境要求：
 
-**Json 美化工具**
+- 能构建 `net10.0` 项目的 .NET SDK
+- Avalonia 支持的 Windows、macOS 或 Linux 桌面环境
 
-![](https://img1.dotnet9.com/2024/09/0108.png)
+```powershell
+dotnet restore CodeWF.Toolbox.slnx
+dotnet build CodeWF.Toolbox.slnx
+dotnet run --project src/CodeWF.Toolbox.Desktop/CodeWF.Toolbox.Desktop.csproj
+```
 
-**YAML转Json工具**
+## 目录结构
 
-![](https://img1.dotnet9.com/2024/09/0109.png)
+```text
+src/
+  CodeWF.Toolbox.Desktop/            桌面入口项目
+  CodeWF.Toolbox/                    主壳、主界面、设置、资源
+  CodeWF.Core/                       公共抽象、服务、区域适配器
+  CodeWF.Controls/                   公共控件
+  CodeWF.Modules.AI/                 AI 工具模块
+  CodeWF.Modules.Converter/          转换工具模块
+  CodeWF.Modules.Development/        开发辅助模块
+  CodeWF.Modules.XmlTranslatorManager/ XML 国际化管理模块
+docs/
+  assets/                            独立 SVG 图
+tests/                               Demo 与单元测试项目
+```
+
+## 新增模块流程
+
+1. 在 `src/CodeWF.Modules.*` 下创建模块项目。
+2. 实现 `IModule`。
+3. 通过 `IToolMenuService` 注册分组和工具菜单。
+4. 将工具页面注册到 `RegionNames.ContentRegion`。
+5. 在 `App.ConfigureModuleCatalog` 中加入模块。
+6. 补齐本模块的 XML 多语言资源和生成的语言键。
+
+详细约定见中文开发文档。

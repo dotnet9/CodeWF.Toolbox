@@ -13,23 +13,21 @@ public partial class YamlToJsonView : UserControl
     {
         InitializeComponent();
 
-        //First of all you need to have a reference for your TextEditor for it to be used inside AvaloniaEdit.TextMate project.
-        var jsonEditor = this.FindControl<TextEditor>("JsonEditor");
-        var yamlEditor = this.FindControl<TextEditor>("YamlEditor");
+        // AvaloniaEdit 的语法高亮需要在控件加载后绑定 TextMate 语法。
+        var jsonEditor = this.FindControl<TextEditor>("JsonEditor")
+            ?? throw new InvalidOperationException("JsonEditor 控件未找到。");
+        var yamlEditor = this.FindControl<TextEditor>("YamlEditor")
+            ?? throw new InvalidOperationException("YamlEditor 控件未找到。");
 
-        //Here we initialize RegistryOptions with the theme we want to use.
         var registryOptions = new RegistryOptions(ThemeName.DarkPlus);
 
-        //Initial setup of TextMate.
         var jsonTextMateInstallation = jsonEditor.InstallTextMate(registryOptions);
         var yamlTextMateInstallation = yamlEditor.InstallTextMate(registryOptions);
 
-        //Here we are getting the language by the extension and right after that we are initializing grammar with this language.
-        //And that's all ??, you are ready to use AvaloniaEdit with syntax highlighting!
         jsonTextMateInstallation.SetGrammar(
-            registryOptions.GetScopeByLanguageId(registryOptions.GetLanguageByExtension(".cs").Id));
+            registryOptions.GetScopeByLanguageId(registryOptions.GetLanguageByExtension(".json").Id));
         yamlTextMateInstallation.SetGrammar(
-            registryOptions.GetScopeByLanguageId(registryOptions.GetLanguageByExtension(".cs").Id));
+            registryOptions.GetScopeByLanguageId(registryOptions.GetLanguageByExtension(".yaml").Id));
 
         if (DataContext is not YamlToJsonViewModel vm)
         {

@@ -32,32 +32,32 @@ public class TestViewModel : ReactiveObject
         RaiseHashtableSerializeCommand = ReactiveCommand.CreateFromTask(RaiseHashtableSerializeHandler);
 
         Instance = this;
-        StartTaskAsync();
+        _ = StartTaskAsync();
 
         InitData();
     }
 
-    public static TestViewModel Instance { get; private set; }
+    public static TestViewModel Instance { get; private set; } = null!;
 
     public string CurrentTime
     {
         get;
         set => this.RaiseAndSetIfChanged(ref field, value);
-    }
+    } = string.Empty;
 
     public string DailyTimeTask
     {
         get;
         set => this.RaiseAndSetIfChanged(ref field, value);
-    }
+    } = string.Empty;
 
-    public List<WarningKind> WarningItems { get; set; }
+    public List<WarningKind> WarningItems { get; set; } = [];
 
     public WarningKind SelectedPrompt
     {
         get;
         set => this.RaiseAndSetIfChanged(ref field, value);
-    }
+    } = WarningKind.All;
 
     public ReactiveCommand<Unit, Unit> RaiseCompressCommand { get; }
     public ReactiveCommand<Unit, Unit> RaiseDecompressionCommand { get; }
@@ -66,7 +66,7 @@ public class TestViewModel : ReactiveObject
     private void InitData()
     {
         WarningItems = Enum.GetValues(typeof(WarningKind)).OfType<WarningKind>().ToList();
-        SelectedPrompt = WarningItems!.First();
+        SelectedPrompt = WarningItems.First();
     }
 
     private async Task RaiseCompressHandler()
@@ -90,7 +90,7 @@ public class TestViewModel : ReactiveObject
                 return;
             }
 
-            ISevenZipCompressor zipHelper = new SevenZipCompressor(default);
+            ISevenZipCompressor zipHelper = new SevenZipCompressor(default!);
             zipHelper.Zip(files, saveFile);
             FileHelper.OpenFolderAndSelectFile(saveFile);
         }
@@ -123,7 +123,7 @@ public class TestViewModel : ReactiveObject
             }
 
             var saveDir = dirs[0];
-            ISevenZipCompressor zipHelper = new SevenZipCompressor(default);
+            ISevenZipCompressor zipHelper = new SevenZipCompressor(default!);
             zipHelper.Decompress(zipFile, saveDir);
 
             FileHelper.OpenFolder(saveDir);
@@ -135,7 +135,7 @@ public class TestViewModel : ReactiveObject
         }
     }
 
-    private async Task RaiseHashtableSerializeHandler()
+    private Task RaiseHashtableSerializeHandler()
     {
         var k3Value = new JsonPrettifyEntity { IndentSize = 2, IsSortKey = false };
         Hashtable hashtable = new();
@@ -145,23 +145,23 @@ public class TestViewModel : ReactiveObject
 
         if (!hashtable.ToJson(out var json, out var errorString))
         {
-            _notificationService.Show("Hashtable serialize", errorString);
-            return;
+            _notificationService.Show("Hashtable serialize", errorString ?? string.Empty);
+            return Task.CompletedTask;
         }
 
         _notificationService.Show("Hashtable serialize", "To Json Success");
 
         if (!json.FromJson<Hashtable>(out var deserializeObj, out errorString) || deserializeObj == null)
         {
-            _notificationService.Show("Hashtable deserialize", errorString);
-            return;
+            _notificationService.Show("Hashtable deserialize", errorString ?? string.Empty);
+            return Task.CompletedTask;
         }
 
         _notificationService.Show("Hashtable deserialize", "From Json Success");
-        if (deserializeObj.Contains("k1") && deserializeObj["k1"].ToString() == hashtable["k1"].ToString()
+        if (deserializeObj.Contains("k1") && deserializeObj["k1"]?.ToString() == hashtable["k1"]?.ToString()
                                           && (deserializeObj.Contains("k2") &&
-                                              int.Parse(deserializeObj["k2"].ToString()) ==
-                                              int.Parse(hashtable["k2"].ToString()))
+                                              int.Parse(deserializeObj["k2"]?.ToString() ?? "0") ==
+                                              int.Parse(hashtable["k2"]?.ToString() ?? "0"))
                                           && deserializeObj.Contains("k3"))
         {
             var k3Obj = deserializeObj["k3"];
@@ -180,6 +180,8 @@ public class TestViewModel : ReactiveObject
         {
             _notificationService.Show("Hashtable deserialize", "Deserialize fail");
         }
+
+        return Task.CompletedTask;
     }
 
     private async Task StartTaskAsync()
@@ -206,13 +208,13 @@ public class TestViewModel : ReactiveObject
                 .WithIdentity(nameof(DailyTimeJob), nameof(DailyTimeJob))
                 .Build();
 
+            var nextRunTime = DateTime.Now.AddMinutes(1);
             var dailyTaskTrigger = TriggerBuilder.Create()
                 .WithIdentity(nameof(DailyTimeJob), nameof(DailyTimeJob))
                 .WithDailyTimeIntervalSchedule(s =>
                     s.WithIntervalInHours(24)
                         .OnEveryDay()
-                        .StartingDailyAt(new TimeOfDay(DateTime.Now.Hour, DateTime.Now.Minute + 1,
-                            0)))
+                        .StartingDailyAt(new TimeOfDay(nextRunTime.Hour, nextRunTime.Minute, 0)))
                 .Build();
 
             await scheduler.ScheduleJob(simpleJob, simpleTrigger);

@@ -9,7 +9,7 @@
 
 	<ItemGroup>
 		<PackageReference Include="Avalonia" Version="$(AvaloniaVersion)" />
-		<PackageReference Include="Avalonia.Controls.DataGrid" Version="$(AvaloniaVersion)" />
+		<PackageReference Include="Avalonia.Controls.DataGrid" Version="$(DataGridVersion)" />
 		<PackageReference Include="Markdown.Avalonia" Version="11.0.3-a1" />
 	</ItemGroup>
 </Project>

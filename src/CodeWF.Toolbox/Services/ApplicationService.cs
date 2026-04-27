@@ -37,7 +37,7 @@ internal class ApplicationService : IApplicationService
         set
         {
             AppConfigHelper.Set(AutoOpenToolboxAtStartupKey, value);
-            StartupHelper.ModifyStartupSettingAsync(value);
+            _ = StartupHelper.ModifyStartupSettingAsync(value);
         }
     }
 
@@ -106,7 +106,7 @@ internal class ApplicationService : IApplicationService
         }
         catch (Exception ex)
         {
-            MessageBox.ShowAsync(ex.ToString());
+            _ = MessageBox.ShowAsync(ex.ToString());
             return DefaultTheme;
         }
     }
@@ -136,7 +136,7 @@ internal class ApplicationService : IApplicationService
 
             var currentCulture = Thread.CurrentThread.CurrentCulture.Name;
             if (!string.IsNullOrWhiteSpace(currentCulture) &&
-                I18nManager.Instance.GetLanguages().Exists(c=>c.CultureName == currentCulture))
+                I18nManager.Instance.GetLanguages()?.Exists(c => c.CultureName == currentCulture) == true)
             {
                 return currentCulture;
             }
@@ -145,7 +145,7 @@ internal class ApplicationService : IApplicationService
         }
         catch (Exception ex)
         {
-            MessageBox.ShowAsync(ex.ToString());
+            _ = MessageBox.ShowAsync(ex.ToString());
             return DefaultLanguage;
         }
     }
@@ -199,19 +199,17 @@ internal class ApplicationService : IApplicationService
             }
         }
 
-        // Change owner culture
+        // 切换业务资源语言。
         var culture = new CultureInfo(language);
         I18nManager.Instance.Culture = culture;
 
-        // Change Semi.Avalonia culture
-
+        // 同步切换 Semi.Avalonia 内置控件语言。
         if (_semiCultures.ContainsKey(language))
         {
             ChangeThirdCulture(_semiCultures[language]);
         }
 
-        // Change Ursa.Avalonia culture
-
+        // 同步切换 Ursa 控件语言。
         if (_ursaCultures.ContainsKey(language))
         {
             ChangeThirdCulture(_ursaCultures[language]);

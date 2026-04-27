@@ -8,7 +8,7 @@ namespace CodeWF.Core.RegionAdapters;
 public interface ITabItemBase
 {
     public string? TitleKey { get; set; }
-    public string MessageKey { get; set; }
+    public string? MessageKey { get; set; }
 }
 
 public class TabControlRegionAdapter : RegionAdapterBase<TabControl>
@@ -25,6 +25,8 @@ public class TabControlRegionAdapter : RegionAdapterBase<TabControl>
         if (regionTarget == null)
             throw new ArgumentNullException(nameof(regionTarget));
 
+        // Prism 默认不认识 Ursa/Semi 主题下的 TabControl 该如何承载 Region，
+        // 这里把每个 View 包装成 TabItem，并把 ViewModel 暴露的语言 Key 绑定到页签头。
         regionTarget.SelectionChanged += (s, e) =>
         {
             if (regionTarget.SelectedItem is TabItem { Content: UserControl { DataContext: ITabItemBase vm } })
@@ -44,8 +46,8 @@ public class TabControlRegionAdapter : RegionAdapterBase<TabControl>
                             foreach (var item in e.NewItems)
                             {
                                 var header = item is UserControl { DataContext: ITabItemBase tabItem }
-                                    ? tabItem.TitleKey
-                                    : item?.GetType().ToString();
+                                    ? tabItem.TitleKey ?? item.GetType().ToString()
+                                    : item?.GetType().ToString() ?? string.Empty;
                                 var newTabItem = new TabItem { Content = item };
                                 newTabItem.Bind(TabItem.HeaderProperty, new I18nBinding(header));
                                 regionTarget.Items.Add(newTabItem);
@@ -62,7 +64,10 @@ public class TabControlRegionAdapter : RegionAdapterBase<TabControl>
                             {
                                 var tabToDelete = regionTarget.Items.OfType<TabItem>()
                                     .FirstOrDefault(n => n.Content == item);
-                                regionTarget.Items.Remove(tabToDelete);
+                                if (tabToDelete != null)
+                                {
+                                    regionTarget.Items.Remove(tabToDelete);
+                                }
                             }
                         }
 

@@ -25,7 +25,9 @@
                 <TextBlock Text="{i18n:I18n {x:Static language:MainModule.Title}}" />
             </StackPanel>
 
-            <TextBox x:Name="Search" Grid.Row="0" Grid.Column="1" Width="300" Height="35" Margin="20 2 0 0" Watermark="{i18n:I18n {x:Static language:MainWindow.SearchToolTip}}" />
+            <TextBox x:Name="Search" Grid.Row="0" Grid.Column="1" Width="300" Height="35" Margin="20 2 0 0"
+                     TextChanged="Search_OnTextChanged"
+                     Watermark="{i18n:I18n {x:Static language:MainWindow.SearchToolTip}}" />
         </Grid>
 	</u:UrsaWindow.LeftContent>
     <views:MainView Margin="0 40 0 0" />

@@ -16,7 +16,7 @@ public class CommonSettingViewModel : ViewModelBase, ITabItemBase
     private readonly IApplicationService _applicationService;
 
     public string? TitleKey { get; set; }
-    public string MessageKey { get; set; }
+    public string? MessageKey { get; set; }
 
     public CommonSettingViewModel(IApplicationService applicationService)
     {
@@ -42,7 +42,7 @@ public class CommonSettingViewModel : ViewModelBase, ITabItemBase
 
     private void InitLanguage()
     {
-        var languages = I18nManager.Instance.GetLanguages();
+        var languages = I18nManager.Instance.GetLanguages() ?? [];
         Languages = new ObservableCollection<LocalizationLanguage>(languages);
 
         var language = _applicationService.GetCulture();
@@ -73,7 +73,7 @@ public class CommonSettingViewModel : ViewModelBase, ITabItemBase
         set => this.RaiseAndSetIfChanged(ref _needExitDialogOnClose, value);
     }
 
-    public ObservableCollection<ThemeItem> Themes { get; private set; }
+    public ObservableCollection<ThemeItem> Themes { get; private set; } = [];
 
     private ThemeItem? _selectedTheme;
 
@@ -87,7 +87,7 @@ public class CommonSettingViewModel : ViewModelBase, ITabItemBase
         }
     }
 
-    public ObservableCollection<LocalizationLanguage> Languages { get; private set; }
+    public ObservableCollection<LocalizationLanguage> Languages { get; private set; } = [];
 
     private LocalizationLanguage? _selectedLanguage;
 
@@ -101,30 +101,39 @@ public class CommonSettingViewModel : ViewModelBase, ITabItemBase
         }
     }
 
-    public async Task ChangeAutoOpenToolboxAtStartupHandlerAsync()
+    public Task ChangeAutoOpenToolboxAtStartupHandlerAsync()
     {
         _applicationService.AutoOpenToolboxAtStartup = AutoOpenToolboxAtStartup;
         EventBus.EventBus.Default.Publish(new ChangeApplicationStatusCommand());
+        return Task.CompletedTask;
     }
 
-    public async Task ChangeHideTrayIconOnCloseHandlerAsync()
+    public Task ChangeHideTrayIconOnCloseHandlerAsync()
     {
         _applicationService.HideTrayIconOnClose = HideTrayIconOnClose;
         EventBus.EventBus.Default.Publish(new ChangeApplicationStatusCommand());
+        return Task.CompletedTask;
     }
 
-    public async Task ChangeDisplayPromptWhenClosingHandlerAsync()
+    public Task ChangeDisplayPromptWhenClosingHandlerAsync()
     {
         _applicationService.NeedExitDialogOnClose = NeedExitDialogOnClose;
+        return Task.CompletedTask;
     }
 
     private void SetTheme()
     {
-        _applicationService.SetTheme(SelectedTheme?.Key);
+        if (SelectedTheme?.Key is { } theme)
+        {
+            _applicationService.SetTheme(theme);
+        }
     }
 
     private void SetLanguage()
     {
-        _applicationService.SetCulture(SelectedLanguage?.CultureName);
+        if (SelectedLanguage?.CultureName is { } cultureName)
+        {
+            _applicationService.SetCulture(cultureName);
+        }
     }
 }

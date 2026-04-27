@@ -27,7 +27,7 @@ public class DateTimeConverterViewModel : ReactiveObject, IDisposable
     {
         get;
         set => this.RaiseAndSetIfChanged(ref field, value);
-    }
+    } = string.Empty;
 
     public DateTime InputDate
     {
@@ -61,28 +61,52 @@ public class DateTimeConverterViewModel : ReactiveObject, IDisposable
 
     public DateTimeConverterViewModel()
     {
-        StartRefreshingAsync();
+        StartRefreshing();
     }
 
-    public async Task StartRefreshingAsync()
+    public Task StartRefreshingAsync()
     {
+        StartRefreshing();
+        return Task.CompletedTask;
+    }
+
+    public Task StopRefreshingAsync()
+    {
+        StopRefreshing();
+        return Task.CompletedTask;
+    }
+
+    public Task RefreshTimestampAsync()
+    {
+        UpdateCurrentTimestamp();
+        return Task.CompletedTask;
+    }
+
+    private void StartRefreshing()
+    {
+        if (_isRefreshing)
+        {
+            return;
+        }
+
         _isRefreshing = true;
         var timer = Observable.Interval(TimeSpan.FromSeconds(1))
            .ObserveOn(RxSchedulers.MainThreadScheduler)
            .Subscribe(_ => UpdateCurrentTimestamp());
         _disposables.Add(timer);
+        UpdateCurrentTimestamp();
     }
 
-    public async Task StopRefreshingAsync()
+    private void StopRefreshing()
     {
+        if (!_isRefreshing)
+        {
+            return;
+        }
+
         _isRefreshing = false;
         _disposables.Dispose();
         _disposables = new CompositeDisposable();
-    }
-
-    public async Task RefreshTimestampAsync()
-    {
-        UpdateCurrentTimestamp();
     }
 
     private void UpdateCurrentTimestamp()
@@ -90,15 +114,17 @@ public class DateTimeConverterViewModel : ReactiveObject, IDisposable
         CurrentTimestamp = DateTimeOffset.UtcNow.ToUnixTimeSeconds();
     }
 
-    public async Task ConvertTimestampToDateAsync()
+    public Task ConvertTimestampToDateAsync()
     {
         DateTime dateTime = IsMillisecondsForInput ? InputTimestamp.FromUnixTimeMillisecondsToDateTime() : InputTimestamp.FromUnixTimeSecondsToDateTime();
         OutputDate = dateTime.ToString("yyyy/MM/dd HH:mm:ss", CultureInfo.InvariantCulture);
+        return Task.CompletedTask;
     }
 
-    public async Task ConvertDateToTimestampAsync()
+    public Task ConvertDateToTimestampAsync()
     {
         OutputTimestamp = IsMillisecondsForOutput ? InputDate.GetUnixTimeMilliseconds() : InputDate.GetUnixTimeSeconds();
+        return Task.CompletedTask;
     }
 
     public void Dispose()

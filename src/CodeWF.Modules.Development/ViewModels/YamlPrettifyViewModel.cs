@@ -37,20 +37,25 @@ public class YamlPrettifyViewModel : ReactiveObject
 
     private void RawYamlChanged(string? newRawYaml)
     {
-        if (RawYaml.YamlPrettify(out var newYaml, out var errorMessage))
+        if (YamlTextEditor == null)
         {
-            YamlTextEditor!.Text = newYaml;
+            return;
+        }
+
+        if (newRawYaml.YamlPrettify(out var newYaml, out var errorMessage))
+        {
+            YamlTextEditor.Text = newYaml;
             ErrorMessage = default;
         }
         else
         {
-            YamlTextEditor!.Text = string.Empty;
+            YamlTextEditor.Text = string.Empty;
             ErrorMessage = errorMessage;
         }
     }
 
     private async Task RaiseCopyHandlerAsync()
     {
-        TopLevel.GetTopLevel(YamlTextEditor)?.Clipboard?.SetTextAsync(YamlTextEditor.Text);
+        await (TopLevel.GetTopLevel(YamlTextEditor)?.Clipboard?.SetTextAsync(YamlTextEditor?.Text) ?? Task.CompletedTask);
     }
 }

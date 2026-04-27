@@ -34,7 +34,7 @@ public partial class App : PrismApplication
         Environment.GetCommandLineArgs()
             .Any(a => a == "--fbdev" || a == "--drm");
 
-    public static App Instance { get; private set; }
+    public static App Instance { get; private set; } = null!;
     public static bool IsLoggedIn { get; set; } = false;
 
     public override void Initialize()
@@ -68,13 +68,19 @@ public partial class App : PrismApplication
         return mainWindow;
     }
 
-    protected override void OnInitialized()
+    protected override async void OnInitialized()
     {
         base.OnInitialized();
-        
-        // 显示登录窗口
+
+        // Prism Shell 创建完成后再弹出登录窗口，避免登录窗口找不到 Owner。
         var loginWindow = Container.Resolve<LoginWindow>();
-        loginWindow.ShowDialog(MainWindow as Window);
+        if (MainWindow is Window owner)
+        {
+            await loginWindow.ShowDialog(owner);
+            return;
+        }
+
+        loginWindow.Show();
     }
    
 
@@ -108,16 +114,22 @@ public partial class App : PrismApplication
     {
         if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
         {
-            OpenUrlAsync(desktop.MainWindow, "https://github.com/dotnet9/CodeWF.Toolbox");
+            _ = OpenUrlAsync(desktop.MainWindow, "https://github.com/dotnet9/CodeWF.Toolbox");
         }
     }
 
     private void ExitApplication_OnClicked(object? sender, EventArgs e)
     {
+        if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
+        {
+            desktop.Shutdown();
+            return;
+        }
+
         Environment.Exit(0);
     }
 
-    private async void OpenUrlAsync(Visual? owner, string uri)
+    private static async Task OpenUrlAsync(Visual? owner, string uri)
     {
         var top = TopLevel.GetTopLevel(owner);
         if (top is null) return;
