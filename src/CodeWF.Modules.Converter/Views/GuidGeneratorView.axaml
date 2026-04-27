@@ -1,0 +1,67 @@
+<UserControl
+    x:Class="CodeWF.Modules.Converter.Views.GuidGeneratorView"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:i18n="https://codewf.com"
+    xmlns:language="clr-namespace:Localization"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:prism="http://prismlibrary.com/"
+    xmlns:vm="clr-namespace:CodeWF.Modules.Converter.ViewModels"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    prism:ViewModelLocator.AutoWireViewModel="True"
+    x:DataType="vm:GuidGeneratorViewModel"
+    mc:Ignorable="d">
+    <Design.DataContext>
+        <vm:GuidGeneratorViewModel />
+    </Design.DataContext>
+
+    <Grid RowDefinitions="Auto, *" RowSpacing="12">
+        <StackPanel Orientation="Horizontal" Spacing="10">
+            <TextBlock
+                VerticalAlignment="Center"
+                FontWeight="SemiBold"
+                Text="{i18n:I18n {x:Static language:GuidGeneratorView.Count}}" />
+            <TextBox
+                Width="84"
+                Text="{Binding Count, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+
+            <TextBlock
+                Margin="14 0 0 0"
+                VerticalAlignment="Center"
+                FontWeight="SemiBold"
+                Text="{i18n:I18n {x:Static language:GuidGeneratorView.Format}}" />
+            <ComboBox Width="96" SelectedIndex="{Binding FormatIndex}">
+                <ComboBoxItem Content="D" />
+                <ComboBoxItem Content="N" />
+                <ComboBoxItem Content="B" />
+                <ComboBoxItem Content="P" />
+            </ComboBox>
+
+            <CheckBox
+                VerticalAlignment="Center"
+                Content="{i18n:I18n {x:Static language:GuidGeneratorView.Uppercase}}"
+                IsChecked="{Binding Uppercase}" />
+            <Button
+                Classes="Success"
+                Command="{Binding GenerateCommand}"
+                Content="{i18n:I18n {x:Static language:GuidGeneratorView.Generate}}" />
+            <Button
+                Command="{Binding CopyCommand}"
+                Content="{i18n:I18n {x:Static language:GuidGeneratorView.Copy}}" />
+            <Button
+                Command="{Binding ClearCommand}"
+                Content="{i18n:I18n {x:Static language:GuidGeneratorView.Clear}}" />
+        </StackPanel>
+
+        <TextBox
+            Grid.Row="1"
+            AcceptsReturn="True"
+            FontFamily="{StaticResource CodeEditorThemeFontFamily}"
+            IsReadOnly="True"
+            Text="{Binding OutputText}"
+            TextWrapping="NoWrap"
+            VerticalContentAlignment="Top" />
+    </Grid>
+</UserControl>

@@ -2,30 +2,30 @@
 
 <Localization language="English" description="English" cultureName="en-US">
 	<MainModule>
-		<Title>Toolbox of Code World Workshop</Title>
+		<Title>CodeWF Toolbox</Title>
 		<ShowMainWindow>Show main window</ShowMainWindow>
 		<Exit>Exit</Exit>
 	</MainModule>
 	<MainWindow>
-		<SearchToolTip>Search what you want</SearchToolTip>
+		<SearchToolTip>Search tools, converters, generators</SearchToolTip>
 		<NoMorePrompts>No more prompts</NoMorePrompts>
 		<SureExit>Are you sure you want to exit?</SureExit>
-		<FindInTrayIcon>You can find me on the tray icon!</FindInTrayIcon>
+		<FindInTrayIcon>The app has been minimized to the system tray.</FindInTrayIcon>
 	</MainWindow>
 	<DashboardView>
 		<Title>Homepage</Title>
 		<WeChat>Author's WeChat ID</WeChat>
 		<WeChatPublic>Follow WeChat official account</WeChatPublic>
-		<DesiredAvailabilityNotification>Everything you want is available. If not, please let us know.</DesiredAvailabilityNotification>
+		<DesiredAvailabilityNotification>Focused developer and conversion tools, ready when you need them.</DesiredAvailabilityNotification>
 		<AccessToolbox>Access the online toolbox</AccessToolbox>
-		<MissingTool>There's no tool I want...</MissingTool>
+		<MissingTool>Request a tool</MissingTool>
 	</DashboardView>
 	<SettingView>
 		<Title>Settings</Title>
 	</SettingView>
 	<CommonSettingView>
 		<Title>General Settings</Title>
-		<Description>The interface style setting</Description>
+		<Description>Adjust theme, language, and startup behavior.</Description>
 		<Theme>Theme</Theme>
 		<ThemePlaceholderText>Choose a theme</ThemePlaceholderText>
 		<Default>Follow the system</Default>
@@ -45,11 +45,11 @@
 	</CommonSettingView>
 	<UpdateLogView>
 		<Title>Update Log</Title>
-		<Description>This document meticulously records the evolution of the toolbox. Every significant version upgrade, feature enhancement, and bug fix is presented here, enabling users to have a clear understanding of the toolbox's development and track its progress.</Description>
+		<Description>Version updates, improvements, and fixes.</Description>
 	</UpdateLogView>
 	<AboutView>
 		<Title>About</Title>
-		<Description>This project is only used for learning purposes.</Description>
+		<Description>CodeWF Toolbox is a desktop toolkit for everyday development and productivity tasks.</Description>
 	</AboutView>
 	<ExitOptionView>
 		<Message>Please select a close operation:</Message>

@@ -70,7 +70,7 @@
             <AvaloniaEdit:TextEditor
                 x:Name="Editor"
                 Grid.Column="2"
-                FontFamily="{StaticResource ContentControlThemeFontFamily}"
+                FontFamily="{StaticResource CodeEditorThemeFontFamily}"
                 ShowLineNumbers="True"
                 SyntaxHighlighting="Xml" />
         </Grid>

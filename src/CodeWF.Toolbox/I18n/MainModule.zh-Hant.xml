@@ -2,30 +2,30 @@
 
 <Localization language="Chinese (Traditional)" description="中文繁體" cultureName="zh-Hant">
 	<MainModule>
-		<Title>碼界工坊工具箱</Title>
+		<Title>CodeWF 工具箱</Title>
 		<ShowMainWindow>顯示主視窗</ShowMainWindow>
 		<Exit>退出</Exit>
 	</MainModule>
 	<MainWindow>
-		<SearchToolTip>搜尋你所想</SearchToolTip>
+		<SearchToolTip>搜尋工具、格式轉換、生成器</SearchToolTip>
 		<NoMorePrompts>不再提示</NoMorePrompts>
 		<SureExit>您確定要退出嗎？</SureExit>
-		<FindInTrayIcon>你可以在托盤圖標上找到我！</FindInTrayIcon>
+		<FindInTrayIcon>應用程式已最小化到系統托盤。</FindInTrayIcon>
 	</MainWindow>
 	<DashboardView>
 		<Title>首頁</Title>
 		<WeChat>作者微訊號</WeChat>
 		<WeChatPublic>關注微信公眾號</WeChatPublic>
-		<DesiredAvailabilityNotification>想要的都有，沒有請告知。</DesiredAvailabilityNotification>
+		<DesiredAvailabilityNotification>常用開發與轉換工具，集中、高效、即開即用。</DesiredAvailabilityNotification>
 		<AccessToolbox>訪問線上工具箱</AccessToolbox>
-		<MissingTool>沒有我要的工具...</MissingTool>
+		<MissingTool>提交工具建議</MissingTool>
 	</DashboardView>
 	<SettingView>
 		<Title>設置</Title>
 	</SettingView>
 	<CommonSettingView>
 		<Title>通用設置</Title>
-		<Description>介面風格設定</Description>
+		<Description>調整主題、語言與啟動行為。</Description>
 		<Theme>主題</Theme>
 		<ThemePlaceholderText>選擇一個主題</ThemePlaceholderText>
 		<Default>跟隨系統</Default>
@@ -45,11 +45,11 @@
 	</CommonSettingView>
 	<UpdateLogView>
 		<Title>更新日誌</Title>
-		<Description>此處詳細記錄了工具箱一路走來的更新歷程，每一次重要的版本迭代、功能增強以及問題修復都會如實呈現，方便使用者清晰了解工具箱的演進，跟蹤其發展脈絡。</Description>
+		<Description>記錄版本更新、功能優化與問題修復。</Description>
 	</UpdateLogView>
 	<AboutView>
 		<Title>關於</Title>
-		<Description>本項目只用於學習使用</Description>
+		<Description>CodeWF Toolbox 是一個面向日常開發與效率場景的桌面工具箱。</Description>
 	</AboutView>
 	<ExitOptionView>
 		<Message>請選擇關閉操作：</Message>

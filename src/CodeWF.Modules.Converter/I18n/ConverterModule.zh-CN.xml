@@ -2,21 +2,21 @@
 
 <Localization language="Chinese (Simplified)" description="中文简体" cultureName="zh-CN">
 	<ConverterModule>
-		<Title>转换器</Title>
+		<Title>转换工具</Title>
 	</ConverterModule>
 	<JsonToYamlView>
-		<Title>JSON到YAML转换器</Title>
-		<Description>在线转换将JSON转换为YAML。</Description>
-		<RawJson>原始Json格式：</RawJson>
-		<AfterYaml>转换后的Yaml格式：</AfterYaml>
+		<Title>JSON 转 YAML</Title>
+		<Description>将 JSON 文本转换为 YAML，适合配置整理与迁移。</Description>
+		<RawJson>JSON 输入</RawJson>
+		<AfterYaml>YAML 结果</AfterYaml>
 		<Copy>复制</Copy>
 		<Clear>清空</Clear>
 	</JsonToYamlView>
 	<YamlToJsonView>
-		<Title>YAML到JSON转换器</Title>
-		<Description>使用此在线转换器将YAML转换为JSON。</Description>
-		<RawYaml>原始YAML格式：</RawYaml>
-		<AfterJson>转换后的Json格式：</AfterJson>
+		<Title>YAML 转 JSON</Title>
+		<Description>将 YAML 文本转换为 JSON，便于接口调试与数据处理。</Description>
+		<RawYaml>YAML 输入</RawYaml>
+		<AfterJson>JSON 结果</AfterJson>
 		<Copy>复制</Copy>
 		<Clear>清空</Clear>
 	</YamlToJsonView>
@@ -32,10 +32,10 @@
 		<MemoContent2>ico 文件用在网页，一般是把生成的 ico 文件，命名成 favicon.ico，并放到网站的根目录，然后在页面的 head 标签内加入以下代码：</MemoContent2>
 	</ImageToIconView>
 	<DateTimeConverterView>
-		<Title>日期时间转换器</Title>
-		<Description>将日期和时间转换为各种不同的格式</Description>
-		<CurrentTimestampLabel>当前的Unix时间戳(Unix timestamp)是:</CurrentTimestampLabel>
-		<TimetampLabel>Unix时间戳 (Unix timestamp)</TimetampLabel>
+		<Title>时间戳转换</Title>
+		<Description>Unix 时间戳与本地日期时间互转。</Description>
+		<CurrentTimestampLabel>当前 Unix 时间戳</CurrentTimestampLabel>
+		<TimetampLabel>Unix 时间戳</TimetampLabel>
 		<SecondLabel>秒</SecondLabel>
 		<MillisecondsLabel>毫秒</MillisecondsLabel>
 		<DateTimeFormatLabel>时间 (年/月/日 时:分:秒)</DateTimeFormatLabel>
@@ -45,6 +45,28 @@
 		<RefreshButtonContent>刷新</RefreshButtonContent>
 		<ConvertButtonContent>转换</ConvertButtonContent>		
 	</DateTimeConverterView>
+	<Base64CodecView>
+		<Title>Base64 编解码</Title>
+		<Description>对 UTF-8 文本进行 Base64 编码或解码。</Description>
+		<Encode>编码</Encode>
+		<Decode>解码</Decode>
+		<Swap>交换</Swap>
+		<CopyResult>复制结果</CopyResult>
+		<Clear>清空</Clear>
+		<InputText>输入</InputText>
+		<OutputText>结果</OutputText>
+		<InvalidBase64Input>请输入有效的 Base64 文本。</InvalidBase64Input>
+	</Base64CodecView>
+	<GuidGeneratorView>
+		<Title>GUID 生成器</Title>
+		<Description>批量生成标准 GUID，可选择格式和大小写。</Description>
+		<Count>数量</Count>
+		<Format>格式</Format>
+		<Uppercase>大写</Uppercase>
+		<Generate>生成</Generate>
+		<Copy>复制</Copy>
+		<Clear>清空</Clear>
+	</GuidGeneratorView>
 	<NuoCheView>
 		<Title>挪车二维码生成器</Title>
 		<Description>用于生成挪车二维码</Description>

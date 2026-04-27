@@ -47,7 +47,7 @@
             x:Name="Editor"
             Grid.Row="1"
             Grid.Column="2"
-            FontFamily="{StaticResource ContentControlThemeFontFamily}"
+            FontFamily="{StaticResource CodeEditorThemeFontFamily}"
             ShowLineNumbers="True"
             SyntaxHighlighting="Yaml" />
 

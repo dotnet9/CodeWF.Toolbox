@@ -21,6 +21,16 @@ public class ConverterModule : IModule
             nameof(DateTimeConverterView),
             Icons.Timestamp,
             ToolStatus.Complete);
+        toolMenuService.AddItem(Localization.Base64CodecView.Title, groupName,
+            Localization.Base64CodecView.Description,
+            nameof(Base64CodecView),
+            Icons.Converter,
+            ToolStatus.Complete);
+        toolMenuService.AddItem(Localization.GuidGeneratorView.Title, groupName,
+            Localization.GuidGeneratorView.Description,
+            nameof(GuidGeneratorView),
+            Icons.Timestamp,
+            ToolStatus.Complete);
         toolMenuService.AddItem(Localization.YamlToJsonView.Title, groupName, Localization.YamlToJsonView.Description,
             nameof(YamlToJsonView),
             Icons.Yaml,
@@ -43,6 +53,8 @@ public class ConverterModule : IModule
     {
         IRegionManager? regionManager = containerProvider.Resolve<IRegionManager>();
         regionManager.RegisterViewWithRegion<DateTimeConverterView>(RegionNames.ContentRegion);
+        regionManager.RegisterViewWithRegion<Base64CodecView>(RegionNames.ContentRegion);
+        regionManager.RegisterViewWithRegion<GuidGeneratorView>(RegionNames.ContentRegion);
         regionManager.RegisterViewWithRegion<YamlToJsonView>(RegionNames.ContentRegion);
         regionManager.RegisterViewWithRegion<JsonToYamlView>(RegionNames.ContentRegion);
         regionManager.RegisterViewWithRegion<ImageToIconView>(RegionNames.ContentRegion);
@@ -53,6 +65,8 @@ public class ConverterModule : IModule
     {
         ViewModelLocationProvider.Register<ImageToIconView, ImageToIconViewModel>();
         ViewModelLocationProvider.Register<DateTimeConverterView, DateTimeConverterViewModel>();
+        ViewModelLocationProvider.Register<Base64CodecView, Base64CodecViewModel>();
+        ViewModelLocationProvider.Register<GuidGeneratorView, GuidGeneratorViewModel>();
         ViewModelLocationProvider.Register<NuoCheView, NuoCheViewModel>();
     }
 }

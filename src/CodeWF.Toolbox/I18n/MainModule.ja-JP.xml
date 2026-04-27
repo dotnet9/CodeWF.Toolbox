@@ -2,30 +2,30 @@
 
 <Localization language="Japanese" description="日語" cultureName="ja-JP">
 	<MainModule>
-		<Title>コードワールドワークショップのツールボックス</Title>
+		<Title>CodeWF Toolbox</Title>
 		<ShowMainWindow>メインウィンドウを表示する</ShowMainWindow>
 		<Exit>終了する</Exit>
 	</MainModule>
 	<MainWindow>
-		<SearchToolTip>あなたが考えることを検索する</SearchToolTip>
+		<SearchToolTip>ツール、変換、生成を検索</SearchToolTip>
 		<NoMorePrompts>もうメッセージを表示しない</NoMorePrompts>
 		<SureExit>本当に終了しますか？</SureExit>
-		<FindInTrayIcon>トレイアイコンで私を見つけることができます！</FindInTrayIcon>
+		<FindInTrayIcon>アプリはシステムトレイに最小化されました。</FindInTrayIcon>
 	</MainWindow>
 	<DashboardView>
 		<Title>ホームページ</Title>
 		<WeChat>著者のマイクロ信号</WeChat>
 		<WeChatPublic>ウィーチャットの公式アカウントに注目</WeChatPublic>
-		<DesiredAvailabilityNotification>欲しいものはすべてあります。ない場合はお知らせください。</DesiredAvailabilityNotification>
+		<DesiredAvailabilityNotification>開発と変換のための実用的なツールをすばやく利用できます。</DesiredAvailabilityNotification>
 		<AccessToolbox>オンラインツールボックスにアクセスする</AccessToolbox>
-		<MissingTool>欲しいツールがありません...</MissingTool>
+		<MissingTool>ツールをリクエスト</MissingTool>
 	</DashboardView>
 	<SettingView>
 		<Title>設定</Title>
 	</SettingView>
 	<CommonSettingView>
 		<Title>一般設定</Title>
-		<Description>インタフェーススタイルの設定</Description>
+		<Description>テーマ、言語、起動動作を調整します。</Description>
 		<Theme>テーマ</Theme>
 		<ThemePlaceholderText>テーマを選ぶ</ThemePlaceholderText>
 		<Default>システムに従う</Default>
@@ -45,11 +45,11 @@
 	</CommonSettingView>
 	<UpdateLogView>
 		<Title>アップデートログ</Title>
-		<Description>ここには、ツールボックスの更新履歴が詳細に記録されています。重要なバージョンアップ、機能強化、バグ修正など、すべてが忠実に反映され、ユーザーがツールボックスの進化を明確に把握し、その発展の流れを追跡できます。</Description>
+		<Description>バージョン更新、改善、修正を記録します。</Description>
 	</UpdateLogView>
 	<AboutView>
 		<Title>関於</Title>
-		<Description>このプロジェクトは学習用にのみ使用されます。</Description>
+		<Description>CodeWF Toolbox は、日常の開発と生産性タスク向けのデスクトップツールキットです。</Description>
 	</AboutView>
 	<ExitOptionView>
 		<Message>閉じる操作を選択してください：</Message>

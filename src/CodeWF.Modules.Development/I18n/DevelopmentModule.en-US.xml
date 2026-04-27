@@ -2,25 +2,25 @@
 
 <Localization language="English" description="English" cultureName="en-US">
 	<DevelopmentModule>
-		<Title>Development</Title>
+		<Title>Developer Tools</Title>
 	</DevelopmentModule>
 	<YamlPrettifyView>
-		<Title>YAML Beautification and Formatting</Title>
-		<Description>Modify the YAML string into a user-friendly and readable format.</Description>
-		<RawYaml>Original Yaml format</RawYaml>
-		<PrettifiedVersionYAML>Beautified Yaml format</PrettifiedVersionYAML>
+		<Title>YAML Formatter</Title>
+		<Description>Format YAML text for cleaner, more readable configuration files.</Description>
+		<RawYaml>YAML input</RawYaml>
+		<PrettifiedVersionYAML>Formatted result</PrettifiedVersionYAML>
 	</YamlPrettifyView>
 	<JsonPrettifyView>
-		<Title>JSON Beautification and Formatting</Title>
-		<Description>Modify the JSON string into a user-friendly and readable format.</Description>
-		<RawJson>Original Json format:</RawJson>
-		<PrettifiedVersionJSON>Formatted Json format:</PrettifiedVersionJSON>
-		<SortKey>Sort Keys:</SortKey>
-		<IndentSize>Indentation of fields:</IndentSize>
+		<Title>JSON Formatter</Title>
+		<Description>Format JSON text with optional key sorting and indentation control.</Description>
+		<RawJson>JSON input</RawJson>
+		<PrettifiedVersionJSON>Formatted result</PrettifiedVersionJSON>
+		<SortKey>Sort keys</SortKey>
+		<IndentSize>Indent spaces</IndentSize>
 	</JsonPrettifyView>
 	<TestView>
-		<Title>Test</Title>
-		<Description>During the tool development process, test some functions.</Description>
+		<Title>Lab Tools</Title>
+		<Description>Internal validation tools for features under development.</Description>
 		<CompressFiles>Compressed Files</CompressFiles>
 		<DecompressionFiles>Decompressed Files</DecompressionFiles>
 		<SelectCompressFiles>Select the list of files to be compressed</SelectCompressFiles>

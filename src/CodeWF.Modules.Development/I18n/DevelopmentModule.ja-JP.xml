@@ -2,25 +2,25 @@
 
 <Localization language="Japanese" description="日語" cultureName="ja-JP">
 	<DevelopmentModule>
-		<Title>開発</Title>
+		<Title>開発ツール</Title>
 	</DevelopmentModule>
 	<YamlPrettifyView>
-		<Title>YAMLの美化とフォーマット</Title>
-		<Description>YAML文字列を読みやすいフレンドリーな形式に整形します。</Description>
-		<RawYaml>元のYaml形式</RawYaml>
-		<PrettifiedVersionYAML>美化されたYaml形式</PrettifiedVersionYAML>
+		<Title>YAML フォーマッター</Title>
+		<Description>YAML テキストを整形し、設定ファイルを読みやすくします。</Description>
+		<RawYaml>YAML 入力</RawYaml>
+		<PrettifiedVersionYAML>整形結果</PrettifiedVersionYAML>
 	</YamlPrettifyView>
 	<JsonPrettifyView>
-		<Title>JSONの美化とフォーマット</Title>
-		<Description>JSON文字列を読みやすいフレンドリーな形式に整形します。</Description>
-		<RawJson>元のJson形式：</RawJson>
-		<PrettifiedVersionJSON>フォーマットされたJson形式：</PrettifiedVersionJSON>
-		<SortKey>キーの並び替え：</SortKey>
-		<IndentSize>フィールドのインデント：</IndentSize>
+		<Title>JSON フォーマッター</Title>
+		<Description>キーの並び替えとインデントを指定して JSON テキストを整形します。</Description>
+		<RawJson>JSON 入力</RawJson>
+		<PrettifiedVersionJSON>整形結果</PrettifiedVersionJSON>
+		<SortKey>キーを並び替え</SortKey>
+		<IndentSize>インデント幅</IndentSize>
 	</JsonPrettifyView>
 	<TestView>
-		<Title>テスト</Title>
-		<Description>ツール開発過程で、一部の機能をテストする。</Description>
+		<Title>ラボツール</Title>
+		<Description>開発中機能の内部検証ツールです。</Description>
 		<CompressFiles>圧縮ファイル</CompressFiles>
 		<DecompressionFiles>解凍ファイル</DecompressionFiles>
 		<SelectCompressFiles>圧縮するファイルのリストを選択する</SelectCompressFiles>

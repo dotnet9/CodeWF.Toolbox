@@ -2,21 +2,21 @@
 
 <Localization language="Chinese (Traditional)" description="中文繁體" cultureName="zh-Hant">
 	<ConverterModule>
-		<Title>轉換器</Title>
+		<Title>轉換工具</Title>
 	</ConverterModule>
 	<JsonToYamlView>
-		<Title>JSON到YAML轉換器</Title>
-		<Description>在線轉換將JSON轉換為YAML。</Description>
-		<RawJson>原始Json格式：</RawJson>
-		<AfterYaml>轉換後的Yaml格式：</AfterYaml>
+		<Title>JSON 轉 YAML</Title>
+		<Description>將 JSON 文字轉換為 YAML，適合設定整理與遷移。</Description>
+		<RawJson>JSON 輸入</RawJson>
+		<AfterYaml>YAML 結果</AfterYaml>
 		<Copy>複製</Copy>
 		<Clear>清空</Clear>
 	</JsonToYamlView>
 	<YamlToJsonView>
-		<Title>YAML到JSON轉換器</Title>
-		<Description>使用此在線轉換器將YAML轉換為JSON。</Description>
-		<RawYaml>原始YAML格式：</RawYaml>
-		<AfterJson>轉換後的Json格式：</AfterJson>
+		<Title>YAML 轉 JSON</Title>
+		<Description>將 YAML 文字轉換為 JSON，便於介面調試與資料處理。</Description>
+		<RawYaml>YAML 輸入</RawYaml>
+		<AfterJson>JSON 結果</AfterJson>
 		<Copy>複製</Copy>
 		<Clear>清空</Clear>
 	</YamlToJsonView>
@@ -32,10 +32,10 @@
 		<MemoContent2>ico文件用在網頁，一般是把生成的ico文件，命名成favicon.ico，並放到網站的根目錄，然後在頁面的head標籤內加入以下代碼：&lt;link rel=&quot;shortcut icon&quot; href=&quot;favicon.ico&quot; type=&quot;image/x-icon&quot; /&gt;</MemoContent2>
 	</ImageToIconView>
 	<DateTimeConverterView>
-		<Title>日期時間轉換器</Title>
-		<Description>將日期和時間轉換為各種不同的格式。</Description>
-		<CurrentTimestampLabel>當前的Unix時間戳 (Unix timestamp) 是：</CurrentTimestampLabel>
-		<TimetampLabel>Unix時間戳 (Unix timestamp)</TimetampLabel>
+		<Title>時間戳轉換</Title>
+		<Description>Unix 時間戳與本機日期時間互轉。</Description>
+		<CurrentTimestampLabel>目前 Unix 時間戳</CurrentTimestampLabel>
+		<TimetampLabel>Unix 時間戳</TimetampLabel>
 		<SecondLabel>秒</SecondLabel>
 		<MillisecondsLabel>毫秒</MillisecondsLabel>
 		<DateTimeFormatLabel>時間 (年/月/日 時:分:秒)</DateTimeFormatLabel>
@@ -45,6 +45,28 @@
 		<RefreshButtonContent>刷新</RefreshButtonContent>
 		<ConvertButtonContent>轉換</ConvertButtonContent>
 	</DateTimeConverterView>
+	<Base64CodecView>
+		<Title>Base64 編解碼</Title>
+		<Description>對 UTF-8 文字進行 Base64 編碼或解碼。</Description>
+		<Encode>編碼</Encode>
+		<Decode>解碼</Decode>
+		<Swap>交換</Swap>
+		<CopyResult>複製結果</CopyResult>
+		<Clear>清空</Clear>
+		<InputText>輸入</InputText>
+		<OutputText>結果</OutputText>
+		<InvalidBase64Input>請輸入有效的 Base64 文字。</InvalidBase64Input>
+	</Base64CodecView>
+	<GuidGeneratorView>
+		<Title>GUID 生成器</Title>
+		<Description>批次生成標準 GUID，可選擇格式和大小寫。</Description>
+		<Count>數量</Count>
+		<Format>格式</Format>
+		<Uppercase>大寫</Uppercase>
+		<Generate>生成</Generate>
+		<Copy>複製</Copy>
+		<Clear>清空</Clear>
+	</GuidGeneratorView>
 	<NuoCheView>
 		<Title>挪車二維碼生成器</Title>
 		<Description>用於生成挪車二維碼</Description>

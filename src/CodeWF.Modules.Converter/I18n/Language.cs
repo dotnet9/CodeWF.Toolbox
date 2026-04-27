@@ -66,6 +66,34 @@ namespace Localization
     }
 
 
+    public static class Base64CodecView
+    {
+        public static readonly string Title = "Localization.Base64CodecView.Title";
+        public static readonly string Description = "Localization.Base64CodecView.Description";
+        public static readonly string Encode = "Localization.Base64CodecView.Encode";
+        public static readonly string Decode = "Localization.Base64CodecView.Decode";
+        public static readonly string Swap = "Localization.Base64CodecView.Swap";
+        public static readonly string CopyResult = "Localization.Base64CodecView.CopyResult";
+        public static readonly string Clear = "Localization.Base64CodecView.Clear";
+        public static readonly string InputText = "Localization.Base64CodecView.InputText";
+        public static readonly string OutputText = "Localization.Base64CodecView.OutputText";
+        public static readonly string InvalidBase64Input = "Localization.Base64CodecView.InvalidBase64Input";
+    }
+
+
+    public static class GuidGeneratorView
+    {
+        public static readonly string Title = "Localization.GuidGeneratorView.Title";
+        public static readonly string Description = "Localization.GuidGeneratorView.Description";
+        public static readonly string Count = "Localization.GuidGeneratorView.Count";
+        public static readonly string Format = "Localization.GuidGeneratorView.Format";
+        public static readonly string Uppercase = "Localization.GuidGeneratorView.Uppercase";
+        public static readonly string Generate = "Localization.GuidGeneratorView.Generate";
+        public static readonly string Copy = "Localization.GuidGeneratorView.Copy";
+        public static readonly string Clear = "Localization.GuidGeneratorView.Clear";
+    }
+
+
     public static class NuoCheView
     {
         public static readonly string Title = "Localization.NuoCheView.Title";

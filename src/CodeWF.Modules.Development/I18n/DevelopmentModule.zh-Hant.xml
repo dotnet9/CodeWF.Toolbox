@@ -2,25 +2,25 @@
 
 <Localization language="Chinese (Traditional)" description="中文繁體" cultureName="zh-Hant">
 	<DevelopmentModule>
-		<Title>開發</Title>
+		<Title>開發工具</Title>
 	</DevelopmentModule>
 	<YamlPrettifyView>
-		<Title>YAML美化和格式化</Title>
-		<Description>將YAML字串修飾為友好的可讀格式。</Description>
-		<RawYaml>原始Yaml格式</RawYaml>
-		<PrettifiedVersionYAML>美化後的Yaml格式</PrettifiedVersionYAML>
+		<Title>YAML 格式化</Title>
+		<Description>整理 YAML 文字結構，提升設定檔可讀性。</Description>
+		<RawYaml>YAML 輸入</RawYaml>
+		<PrettifiedVersionYAML>格式化結果</PrettifiedVersionYAML>
 	</YamlPrettifyView>
 	<JsonPrettifyView>
-		<Title>JSON美化和格式化</Title>
-		<Description>將JSON字串修飾為友好的可讀格式。</Description>
-		<RawJson>原始Json格式：</RawJson>
-		<PrettifiedVersionJSON>格式化後的Json格式：</PrettifiedVersionJSON>
-		<SortKey>對Key排序：</SortKey>
-		<IndentSize>欄位縮進：</IndentSize>
+		<Title>JSON 格式化</Title>
+		<Description>格式化 JSON 文字，可按需排序鍵名與調整縮排。</Description>
+		<RawJson>JSON 輸入</RawJson>
+		<PrettifiedVersionJSON>格式化結果</PrettifiedVersionJSON>
+		<SortKey>鍵名排序</SortKey>
+		<IndentSize>縮排空格</IndentSize>
 	</JsonPrettifyView>
 	<TestView>
-		<Title>測試</Title>
-		<Description>工具開發過程中，部分功能測試</Description>
+		<Title>實驗工具</Title>
+		<Description>開發階段的內部驗證工具。</Description>
 		<CompressFiles>壓縮文件</CompressFiles>
 		<DecompressionFiles>解壓文件</DecompressionFiles>
 		<SelectCompressFiles>選擇要壓縮的文件列表</SelectCompressFiles>

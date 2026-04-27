@@ -17,7 +17,7 @@
         <vm:MainViewModel />
     </Design.DataContext>
     <Grid>
-        <Grid RowDefinitions="*, 32" ColumnDefinitions="Auto, 1, *">
+        <Grid RowDefinitions="*, 32" ColumnDefinitions="248, 1, *">
             <views:MainMenuView Grid.Column="0" />
             <GridSplitter Grid.Row="0" Grid.Column="1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" />
             <views:MainContentView Grid.Row="0" Grid.Column="2" />

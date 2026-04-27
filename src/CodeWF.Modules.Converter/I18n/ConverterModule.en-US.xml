@@ -2,21 +2,21 @@
 
 <Localization language="English" description="English" cultureName="en-US">
 	<ConverterModule>
-		<Title>Converter</Title>
+		<Title>Converters</Title>
 	</ConverterModule>
 	<JsonToYamlView>
-		<Title>JSON to YAML Converter</Title>
-		<Description>Use the online converter to convert JSON into YAML.</Description>
-		<RawJson>Original Json format:</RawJson>
-		<AfterYaml>Converted Yaml format:</AfterYaml>
+		<Title>JSON to YAML</Title>
+		<Description>Convert JSON text to YAML for configuration cleanup and migration.</Description>
+		<RawJson>JSON input</RawJson>
+		<AfterYaml>YAML result</AfterYaml>
 		<Copy>Copy</Copy>
 		<Clear>Clear</Clear>
 	</JsonToYamlView>
 	<YamlToJsonView>
-		<Title>YAML to JSON Converter</Title>
-		<Description>Use this online converter to convert YAML into JSON.</Description>
-		<RawYaml>Original YAML format:</RawYaml>
-		<AfterJson>Converted Json format:</AfterJson>
+		<Title>YAML to JSON</Title>
+		<Description>Convert YAML text to JSON for API debugging and data processing.</Description>
+		<RawYaml>YAML input</RawYaml>
+		<AfterJson>JSON result</AfterJson>
 		<Copy>Copy</Copy>
 		<Clear>Clear</Clear>
 	</YamlToJsonView>
@@ -32,9 +32,9 @@
 		<MemoContent2>When using an ICO file on a web page, usually name the generated ICO file as "favicon.ico", put it in the root directory of the website, and then add the following code to the &lt;head&gt; tag of the page: &lt;link rel=&quot;shortcut icon&quot; href=&quot;favicon.ico&quot; type=&quot;image/x-icon&quot; /&gt;</MemoContent2>
 	</ImageToIconView>
 	<DateTimeConverterView>
-		<Title>Date and Time Converter</Title>
-		<Description>Convert date and time into various different formats.</Description>
-		<CurrentTimestampLabel>The current Unix timestamp is:</CurrentTimestampLabel>
+		<Title>Timestamp Converter</Title>
+		<Description>Convert between Unix timestamps and local date time.</Description>
+		<CurrentTimestampLabel>Current Unix timestamp</CurrentTimestampLabel>
 		<TimetampLabel>Unix timestamp</TimetampLabel>
 		<SecondLabel>Seconds</SecondLabel>
 		<MillisecondsLabel>Milliseconds</MillisecondsLabel>
@@ -45,6 +45,28 @@
 		<RefreshButtonContent>Refresh</RefreshButtonContent>
 		<ConvertButtonContent>Convert</ConvertButtonContent>
 	</DateTimeConverterView>
+	<Base64CodecView>
+		<Title>Base64 Codec</Title>
+		<Description>Encode or decode UTF-8 text with Base64.</Description>
+		<Encode>Encode</Encode>
+		<Decode>Decode</Decode>
+		<Swap>Swap</Swap>
+		<CopyResult>Copy result</CopyResult>
+		<Clear>Clear</Clear>
+		<InputText>Input</InputText>
+		<OutputText>Result</OutputText>
+		<InvalidBase64Input>Please enter valid Base64 text.</InvalidBase64Input>
+	</Base64CodecView>
+	<GuidGeneratorView>
+		<Title>GUID Generator</Title>
+		<Description>Generate GUIDs in bulk with selectable format and casing.</Description>
+		<Count>Count</Count>
+		<Format>Format</Format>
+		<Uppercase>Uppercase</Uppercase>
+		<Generate>Generate</Generate>
+		<Copy>Copy</Copy>
+		<Clear>Clear</Clear>
+	</GuidGeneratorView>
 	<NuoCheView>
 		<Title>Car Relocation QR Code Generator</Title>
 		<Description>Used to generate QR codes for car relocation</Description>
