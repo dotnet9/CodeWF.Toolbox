@@ -37,6 +37,10 @@
       <Platform Solution="*|x64" Project="x64" />
       <Platform Solution="*|x86" Project="x86" />
     </Project>
+    <Project Path="src/CodeWF.Modules.LogViewer/CodeWF.Modules.LogViewer.csproj">
+      <Platform Solution="*|x64" Project="x64" />
+      <Platform Solution="*|x86" Project="x86" />
+    </Project>
     <Project Path="src/CodeWF.Modules.XmlTranslatorManager/CodeWF.Modules.XmlTranslatorManager.csproj">
       <Platform Solution="*|x64" Project="x64" />
       <Platform Solution="*|x86" Project="x86" />

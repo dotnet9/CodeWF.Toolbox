@@ -1,0 +1,60 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFrameworks>net10.0</TargetFrameworks>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+		<LangVersion>latest</LangVersion>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Prism.Avalonia" Version="8.1.97.11073" />
+		<PackageReference Include="Prism.DryIoc.Avalonia" Version="8.1.97.11073" />
+		<PackageReference Include="ReactiveUI.Avalonia" Version="11.4.7" />
+		<PackageReference Include="Irihi.Ursa.Themes.Semi" Version="1.14.1" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\CodeWF.Core\CodeWF.Core.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<None Include="I18n\Language.cs">
+			<DesignTime>True</DesignTime>
+			<AutoGen>True</AutoGen>
+			<DependentUpon>Language.tt</DependentUpon>
+		</None>
+	</ItemGroup>
+
+	<ItemGroup>
+		<Compile Update="I18n\Language.cs">
+			<DesignTime>True</DesignTime>
+			<AutoGen>True</AutoGen>
+			<DependentUpon>Language.tt</DependentUpon>
+		</Compile>
+	</ItemGroup>
+
+	<ItemGroup>
+		<None Update="I18n\Language.tt">
+			<Generator>TextTemplatingFileGenerator</Generator>
+			<LastGenOutput>Language.cs</LastGenOutput>
+		</None>
+		<None Update="I18n\LogViewerModule.en-US.xml">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+		<None Update="I18n\LogViewerModule.ja-JP.xml">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+		<None Update="I18n\LogViewerModule.zh-CN.xml">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+		<None Update="I18n\LogViewerModule.zh-Hant.xml">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+	</ItemGroup>
+
+	<ItemGroup>
+		<Service Include="{508349b6-6b84-4df5-91f0-309beebad82d}" />
+	</ItemGroup>
+
+</Project>

@@ -43,6 +43,7 @@
 	  <ProjectReference Include="..\CodeWF.Modules.XmlTranslatorManager\CodeWF.Modules.XmlTranslatorManager.csproj" />
 	  <ProjectReference Include="..\CodeWF.Modules.Converter\CodeWF.Modules.Converter.csproj" />
 	  <ProjectReference Include="..\CodeWF.Modules.Development\CodeWF.Modules.Development.csproj" />
+	  <ProjectReference Include="..\CodeWF.Modules.LogViewer\CodeWF.Modules.LogViewer.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>

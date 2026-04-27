@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<Localization language="English" description="English" cultureName="en-US">
+	<LogViewerModule>
+		<Title>Log Tools</Title>
+	</LogViewerModule>
+	<LogViewerView>
+		<Title>Log Viewer</Title>
+		<Description>Open large log files quickly with virtual scrolling and live tail tracking.</Description>
+		<OpenFile>Open log</OpenFile>
+		<Reload>Reload</Reload>
+		<FollowTail>Follow tail</FollowTail>
+		<JumpToTail>Jump to tail</JumpToTail>
+		<FilePath>File</FilePath>
+		<FilePathWatermark>Select a .log, .txt, or any text log file</FilePathWatermark>
+		<OpenLogFileDialogTitle>Select log file</OpenLogFileDialogTitle>
+		<ReadyStatus>Ready</ReadyStatus>
+		<OpeningStatus>Opening</OpeningStatus>
+		<IndexingStatus>Indexing</IndexingStatus>
+		<MonitoringStatus>Monitoring</MonitoringStatus>
+		<EmptyFileStatus>Empty file</EmptyFileStatus>
+		<FileDeletedStatus>File was deleted or is not accessible</FileDeletedStatus>
+		<LinesStatus>Indexed lines</LinesStatus>
+		<SizeStatus>File size</SizeStatus>
+		<TailPreviewStatus>Tail preview</TailPreviewStatus>
+		<OpenHint>After opening a log file, only the current visible window is rendered here.</OpenHint>
+	</LogViewerView>
+</Localization>

@@ -1,0 +1,112 @@
+<UserControl
+    x:Class="CodeWF.Modules.LogViewer.Views.LogViewerView"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:i18n="https://codewf.com"
+    xmlns:language="clr-namespace:Localization"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:models="clr-namespace:CodeWF.Modules.LogViewer.Models"
+    xmlns:prism="http://prismlibrary.com/"
+    xmlns:vm="clr-namespace:CodeWF.Modules.LogViewer.ViewModels"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    prism:ViewModelLocator.AutoWireViewModel="True"
+    x:DataType="vm:LogViewerViewModel"
+    mc:Ignorable="d">
+    <Grid RowDefinitions="Auto, Auto, *" RowSpacing="10">
+        <Grid ColumnDefinitions="Auto, Auto, Auto, *, Auto" ColumnSpacing="8">
+            <Button
+                Classes="Success"
+                Command="{Binding OpenFileCommand}"
+                Content="{i18n:I18n {x:Static language:LogViewerView.OpenFile}}" />
+            <Button
+                Grid.Column="1"
+                Command="{Binding ReloadCommand}"
+                Content="{i18n:I18n {x:Static language:LogViewerView.Reload}}" />
+            <Button
+                Grid.Column="2"
+                Command="{Binding JumpToTailCommand}"
+                Content="{i18n:I18n {x:Static language:LogViewerView.JumpToTail}}" />
+            <CheckBox
+                Grid.Column="4"
+                VerticalAlignment="Center"
+                Content="{i18n:I18n {x:Static language:LogViewerView.FollowTail}}"
+                IsChecked="{Binding FollowTail}" />
+        </Grid>
+
+        <Grid Grid.Row="1" ColumnDefinitions="Auto, *, Auto" ColumnSpacing="8">
+            <TextBlock
+                VerticalAlignment="Center"
+                FontWeight="SemiBold"
+                Text="{i18n:I18n {x:Static language:LogViewerView.FilePath}}" />
+            <TextBox
+                Grid.Column="1"
+                IsReadOnly="True"
+                Text="{Binding FilePath}"
+                TextWrapping="NoWrap"
+                Watermark="{i18n:I18n {x:Static language:LogViewerView.FilePathWatermark}}" />
+            <TextBlock
+                Grid.Column="2"
+                VerticalAlignment="Center"
+                Classes="Tertiary"
+                Text="{Binding StatusText}" />
+        </Grid>
+
+        <Grid Grid.Row="2" ColumnDefinitions="*, Auto">
+            <Border
+                Background="{DynamicResource SemiGrey0}"
+                BorderBrush="{DynamicResource SemiGrey2}"
+                BorderThickness="1"
+                CornerRadius="8">
+                <Grid>
+                    <TextBlock
+                        Margin="20"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        Classes="Tertiary"
+                        IsVisible="{Binding !IsLogOpened}"
+                        Text="{i18n:I18n {x:Static language:LogViewerView.OpenHint}}"
+                        TextWrapping="Wrap" />
+                    <ListBox
+                        x:Name="LogLines"
+                        Background="{DynamicResource SemiGrey0}"
+                        BorderThickness="0"
+                        FontFamily="{StaticResource CodeEditorThemeFontFamily}"
+                        IsVisible="{Binding IsLogOpened}"
+                        ItemsSource="{Binding VisibleLines}">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate x:DataType="models:LogLine">
+                                <Grid ColumnDefinitions="88, *">
+                                    <TextBlock
+                                        Margin="0 0 12 0"
+                                        HorizontalAlignment="Right"
+                                        Classes="Tertiary"
+                                        FontSize="12"
+                                        Text="{Binding Number}" />
+                                    <SelectableTextBlock
+                                        Grid.Column="1"
+                                        FontSize="12"
+                                        Text="{Binding Text}"
+                                        TextWrapping="NoWrap" />
+                                </Grid>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                </Grid>
+            </Border>
+
+            <ScrollBar
+                Grid.Column="1"
+                Width="18"
+                Margin="8 0 0 0"
+                LargeChange="{Binding ViewportLineCount}"
+                Maximum="{Binding ScrollMaximum}"
+                Minimum="0"
+                Orientation="Vertical"
+                SmallChange="1"
+                Value="{Binding FirstLineIndex, Mode=TwoWay}"
+                ViewportSize="{Binding ViewportLineCount}" />
+        </Grid>
+    </Grid>
+</UserControl>

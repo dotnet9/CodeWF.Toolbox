@@ -25,6 +25,7 @@ using Ursa.PrismExtension;
 using AIModule = CodeWF.Modules.AI.AIModule;
 using ConverterModule = CodeWF.Modules.Converter.ConverterModule;
 using DevelopmentModule = CodeWF.Modules.Development.DevelopmentModule;
+using LogViewerModule = CodeWF.Modules.LogViewer.LogViewerModule;
 
 namespace CodeWF.Toolbox;
 
@@ -49,6 +50,7 @@ public partial class App : PrismApplication
         moduleCatalog.AddModule<MainModule>();
         moduleCatalog.AddModule<AIModule>();
         moduleCatalog.AddModule<ConverterModule>();
+        moduleCatalog.AddModule<LogViewerModule>();
         moduleCatalog.AddModule<XmlTranslatorManagerModule>();
         moduleCatalog.AddModule<DevelopmentModule>();
         base.ConfigureModuleCatalog(moduleCatalog);
