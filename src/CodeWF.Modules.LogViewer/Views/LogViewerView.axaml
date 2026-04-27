@@ -2,11 +2,11 @@
     x:Class="CodeWF.Modules.LogViewer.Views.LogViewerView"
     xmlns="https://github.com/avaloniaui"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:avaloniaEdit="clr-namespace:AvaloniaEdit;assembly=AvaloniaEdit"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:i18n="https://codewf.com"
     xmlns:language="clr-namespace:Localization"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:models="clr-namespace:CodeWF.Modules.LogViewer.Models"
     xmlns:prism="http://prismlibrary.com/"
     xmlns:vm="clr-namespace:CodeWF.Modules.LogViewer.ViewModels"
     d:DesignHeight="450"
@@ -68,31 +68,19 @@
                         IsVisible="{Binding !IsLogOpened}"
                         Text="{i18n:I18n {x:Static language:LogViewerView.OpenHint}}"
                         TextWrapping="Wrap" />
-                    <ListBox
-                        x:Name="LogLines"
+                    <avaloniaEdit:TextEditor
+                        x:Name="LogEditor"
                         Background="{DynamicResource SemiGrey0}"
                         BorderThickness="0"
                         FontFamily="{StaticResource CodeEditorThemeFontFamily}"
+                        FontSize="12"
+                        Focusable="True"
+                        HorizontalScrollBarVisibility="Auto"
+                        IsReadOnly="True"
                         IsVisible="{Binding IsLogOpened}"
-                        ItemsSource="{Binding VisibleLines}">
-                        <ListBox.ItemTemplate>
-                            <DataTemplate x:DataType="models:LogLine">
-                                <Grid ColumnDefinitions="88, *">
-                                    <TextBlock
-                                        Margin="0 0 12 0"
-                                        HorizontalAlignment="Right"
-                                        Classes="Tertiary"
-                                        FontSize="12"
-                                        Text="{Binding Number}" />
-                                    <SelectableTextBlock
-                                        Grid.Column="1"
-                                        FontSize="12"
-                                        Text="{Binding Text}"
-                                        TextWrapping="NoWrap" />
-                                </Grid>
-                            </DataTemplate>
-                        </ListBox.ItemTemplate>
-                    </ListBox>
+                        ShowLineNumbers="False"
+                        VerticalScrollBarVisibility="Auto"
+                        WordWrap="False" />
                 </Grid>
             </Border>
 

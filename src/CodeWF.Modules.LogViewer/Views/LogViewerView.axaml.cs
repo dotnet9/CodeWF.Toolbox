@@ -1,23 +1,39 @@
-using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Markup.Xaml;
-using Avalonia.Threading;
-using Avalonia.VisualTree;
+using AvaloniaEdit;
+using AvaloniaEdit.TextMate;
+using CodeWF.Core.Helpers;
 using CodeWF.Modules.LogViewer.ViewModels;
 using System;
-using System.Linq;
-using System.Threading.Tasks;
+using TextMateSharp.Grammars;
 
 namespace CodeWF.Modules.LogViewer.Views;
 
 public partial class LogViewerView : UserControl
 {
+    private readonly TextEditor _logEditor;
     private LogViewerViewModel? _viewModel;
 
     public LogViewerView()
     {
         InitializeComponent();
+
+        _logEditor = this.FindControl<TextEditor>("LogEditor")
+            ?? throw new InvalidOperationException("LogEditor 控件未找到。");
+        _logEditor.ApplyCodeEditorStyle(enableTextDragDrop: false);
+        InstallDefaultHighlighting(_logEditor);
+
         DataContextChanged += OnDataContextChanged;
+        OnDataContextChanged(this, EventArgs.Empty);
+    }
+
+    private static void InstallDefaultHighlighting(TextEditor logEditor)
+    {
+        var registryOptions = new RegistryOptions(ThemeName.DarkPlus);
+        var textMateInstallation = logEditor.InstallTextMate(registryOptions);
+        textMateInstallation.SetGrammar(
+            registryOptions.GetScopeByLanguageId(registryOptions.GetLanguageByExtension(".json").Id));
+        logEditor.ApplyCodeEditorStyle(enableTextDragDrop: false);
     }
 
     private void InitializeComponent()
@@ -29,46 +45,13 @@ public partial class LogViewerView : UserControl
     {
         if (_viewModel != null)
         {
-            _viewModel.ScrollToTailRequested -= ScrollToTailRequested;
+            _viewModel.DetachEditor(_logEditor);
         }
 
         _viewModel = DataContext as LogViewerViewModel;
         if (_viewModel != null)
         {
-            _viewModel.ScrollToTailRequested += ScrollToTailRequested;
+            _viewModel.AttachEditor(_logEditor);
         }
-    }
-
-    private void ScrollToTailRequested(object? sender, EventArgs e)
-    {
-        _ = ScrollToTailAfterLayoutAsync();
-    }
-
-    private async Task ScrollToTailAfterLayoutAsync()
-    {
-        await Dispatcher.UIThread.InvokeAsync(ScrollLogLinesToTail, DispatcherPriority.Background);
-        await Dispatcher.UIThread.InvokeAsync(ScrollLogLinesToTail, DispatcherPriority.Render);
-    }
-
-    private void ScrollLogLinesToTail()
-    {
-        if (_viewModel?.VisibleLines.LastOrDefault() is not { } lastLine)
-        {
-            return;
-        }
-
-        LogLines.ScrollIntoView(lastLine);
-
-        var scrollViewer = LogLines
-            .GetVisualDescendants()
-            .OfType<ScrollViewer>()
-            .FirstOrDefault();
-        if (scrollViewer == null)
-        {
-            return;
-        }
-
-        var maxY = Math.Max(0, scrollViewer.Extent.Height - scrollViewer.Viewport.Height);
-        scrollViewer.Offset = new Vector(scrollViewer.Offset.X, maxY);
     }
 }

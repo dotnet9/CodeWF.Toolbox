@@ -2,6 +2,7 @@ using Avalonia.Controls;
 using Avalonia.Markup.Xaml;
 using AvaloniaEdit;
 using AvaloniaEdit.TextMate;
+using CodeWF.Core.Helpers;
 using CodeWF.Modules.XmlTranslatorManager.ViewModels;
 using TextMateSharp.Grammars;
 
@@ -14,7 +15,9 @@ public partial class MergeXmlFilesView : UserControl
         InitializeComponent();
 
         //First of all you need to have a reference for your TextEditor for it to be used inside AvaloniaEdit.TextMate project.
-        var textEditor = this.FindControl<TextEditor>("Editor");
+        var textEditor = this.FindControl<TextEditor>("Editor")
+            ?? throw new InvalidOperationException("Editor 控件未找到。");
+        textEditor.ApplyCodeEditorStyle();
 
         //Here we initialize RegistryOptions with the theme we want to use.
         var registryOptions = new RegistryOptions(ThemeName.DarkPlus);

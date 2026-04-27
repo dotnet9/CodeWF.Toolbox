@@ -1,10 +1,12 @@
+using Avalonia;
+using Avalonia.Controls;
 using Avalonia.Platform.Storage;
 using Avalonia.Threading;
+using Avalonia.VisualTree;
+using AvaloniaEdit;
 using CodeWF.Core.IServices;
-using CodeWF.Modules.LogViewer.Models;
 using Lang.Avalonia;
 using ReactiveUI;
-using System.Collections.ObjectModel;
 using System.Reactive;
 using System.Text;
 
@@ -14,7 +16,7 @@ public class LogViewerViewModel : ReactiveObject, IDisposable
 {
     private const int BufferSize = 64 * 1024;
     private const int InitialIndexLineCount = 600;
-    private const int MaxDisplayedLineChars = 20_000;
+    private const int MaxDisplayedTextBytes = 4 * 1024 * 1024;
     private const int IndexNotifyLineBatch = 5_000;
 
     private static readonly FilePickerFileType LogFilePickerFileType =
@@ -34,6 +36,7 @@ public class LogViewerViewModel : ReactiveObject, IDisposable
     private bool _isDisposed;
     private int _fileChangePending;
     private double _firstLineIndex;
+    private string _displayedText = string.Empty;
     private bool _followTail = true;
 
     public LogViewerViewModel(IFileChooserService fileChooserService)
@@ -45,9 +48,25 @@ public class LogViewerViewModel : ReactiveObject, IDisposable
         StatusText = T(Localization.LogViewerView.ReadyStatus);
     }
 
-    public ObservableCollection<LogLine> VisibleLines { get; } = [];
+    public TextEditor? LogEditor { get; private set; }
 
-    public event EventHandler? ScrollToTailRequested;
+    public void AttachEditor(TextEditor logEditor)
+    {
+        LogEditor = logEditor;
+        SetEditorText(ToEditorDisplayText(_displayedText));
+        if (FollowTail)
+        {
+            ScrollEditorToTail();
+        }
+    }
+
+    public void DetachEditor(TextEditor logEditor)
+    {
+        if (ReferenceEquals(LogEditor, logEditor))
+        {
+            LogEditor = null;
+        }
+    }
 
     public string FilePath
     {
@@ -97,7 +116,7 @@ public class LogViewerViewModel : ReactiveObject, IDisposable
                 this.RaisePropertyChanged(nameof(FollowTail));
             }
 
-            RefreshVisibleLinesFromIndex();
+            RefreshEditorTextFromIndex();
         }
     }
 
@@ -157,7 +176,7 @@ public class LogViewerViewModel : ReactiveObject, IDisposable
         _activeFilePath = path;
         FilePath = path;
         IsLogOpened = true;
-        VisibleLines.Clear();
+        ReplaceEditorText(string.Empty);
         StatusText = T(Localization.LogViewerView.OpeningStatus);
 
         _loadCts = new CancellationTokenSource();
@@ -180,7 +199,7 @@ public class LogViewerViewModel : ReactiveObject, IDisposable
         else
         {
             await IndexToLineCountAsync(InitialIndexLineCount, token);
-            RefreshVisibleLinesFromIndex();
+            RefreshEditorTextFromIndex();
         }
 
         StartBackgroundIndexing();
@@ -214,8 +233,8 @@ public class LogViewerViewModel : ReactiveObject, IDisposable
         var token = _loadCts?.Token ?? CancellationToken.None;
         try
         {
-            var lines = await Task.Run(() => ReadLastLines(path, ViewportLineCount, token), token);
-            ReplaceVisibleLines(lines);
+            var text = await Task.Run(() => ReadLastText(path, ViewportLineCount, token), token);
+            ReplaceEditorText(text);
             _tailPosition = GetFileLength(path);
             UpdateMetrics(_isIndexComplete
                 ? T(Localization.LogViewerView.MonitoringStatus)
@@ -303,13 +322,13 @@ public class LogViewerViewModel : ReactiveObject, IDisposable
         await Dispatcher.UIThread.InvokeAsync(() =>
         {
             UpdateMetrics(T(Localization.LogViewerView.MonitoringStatus));
-            if (FollowTail && _isIndexComplete)
+            if (FollowTail && _isIndexComplete && IsEditorVerticalScrollAtTail())
             {
                 JumpToTail();
                 return;
             }
 
-            if (FollowTail)
+            if (FollowTail && IsEditorVerticalScrollAtTail())
             {
                 KeepTailInView();
             }
@@ -379,7 +398,7 @@ public class LogViewerViewModel : ReactiveObject, IDisposable
                     UpdateMetrics(T(Localization.LogViewerView.IndexingStatus));
                     if (!FollowTail)
                     {
-                        RefreshVisibleLinesFromIndex();
+                        RefreshEditorTextFromIndex();
                     }
                 });
             }
@@ -394,18 +413,18 @@ public class LogViewerViewModel : ReactiveObject, IDisposable
         _isIndexComplete = _indexedBytes >= endOffset;
     }
 
-    private void RefreshVisibleLinesFromIndex()
+    private void RefreshEditorTextFromIndex()
     {
         var path = _activeFilePath;
         if (string.IsNullOrWhiteSpace(path) || !File.Exists(path))
         {
-            VisibleLines.Clear();
+            ReplaceEditorText(string.Empty);
             return;
         }
 
         var start = (int)Math.Clamp(FirstLineIndex, 0, int.MaxValue);
-        var lines = ReadIndexedLines(path, start, ViewportLineCount);
-        ReplaceVisibleLines(lines);
+        var text = ReadIndexedText(path, start, ViewportLineCount);
+        ReplaceEditorText(text);
         UpdateMetrics(_isIndexComplete
             ? T(Localization.LogViewerView.MonitoringStatus)
             : T(Localization.LogViewerView.IndexingStatus));
@@ -413,43 +432,38 @@ public class LogViewerViewModel : ReactiveObject, IDisposable
 
     private void JumpToTail()
     {
-        if (!_isIndexComplete)
-        {
-            _ = ShowTailPreviewAsync();
-            return;
-        }
-
         var start = Math.Max(0, GetIndexedLineCount() - ViewportLineCount);
         _firstLineIndex = start;
         this.RaisePropertyChanged(nameof(FirstLineIndex));
-        RefreshVisibleLinesFromIndex();
-        KeepTailInView();
+        _ = ShowTailPreviewAsync();
     }
 
-    private List<LogLine> ReadIndexedLines(string path, int startLineIndex, int count)
+    private string ReadIndexedText(string path, int startLineIndex, int count)
     {
         List<long> offsets;
         lock (_indexLock)
         {
-            offsets = _lineOffsets.Skip(startLineIndex).Take(count).ToList();
+            offsets = _lineOffsets.Skip(startLineIndex).Take(count + 1).ToList();
         }
 
-        var lines = new List<LogLine>(offsets.Count);
-        for (var i = 0; i < offsets.Count; i++)
+        if (offsets.Count == 0)
         {
-            var text = ReadLineAt(path, offsets[i]);
-            lines.Add(new LogLine((startLineIndex + i + 1).ToString("N0"), text));
+            return string.Empty;
         }
 
-        return lines;
+        var startOffset = offsets[0];
+        var endOffset = offsets.Count > count
+            ? offsets[^1]
+            : GetFileLength(path);
+        return ReadTextRange(path, startOffset, endOffset);
     }
 
-    private List<LogLine> ReadLastLines(string path, int count, CancellationToken token)
+    private string ReadLastText(string path, int count, CancellationToken token)
     {
         var length = GetFileLength(path);
         if (length == 0)
         {
-            return [];
+            return string.Empty;
         }
 
         var offsets = new List<long>();
@@ -460,8 +474,14 @@ public class LogViewerViewModel : ReactiveObject, IDisposable
             FileShare.ReadWrite | FileShare.Delete,
             BufferSize,
             FileOptions.RandomAccess);
+        var contentEnd = FindLastContentEndOffset(stream, length, token);
+        if (contentEnd == 0)
+        {
+            return string.Empty;
+        }
+
         var buffer = new byte[BufferSize];
-        var position = length;
+        var position = contentEnd;
 
         while (position > 0 && offsets.Count < count)
         {
@@ -492,15 +512,51 @@ public class LogViewerViewModel : ReactiveObject, IDisposable
             offsets.Add(0);
         }
 
-        return offsets
+        var startOffset = offsets
             .Distinct()
             .OrderBy(offset => offset)
-            .Select(offset => new LogLine(string.Empty, ReadLineAt(path, offset)))
-            .ToList();
+            .First();
+        var text = TrimTextToLastLines(ReadTextRange(path, startOffset, contentEnd), count);
+        return contentEnd < length
+            ? $"{text}\n"
+            : text;
     }
 
-    private static string ReadLineAt(string path, long offset)
+    private static long FindLastContentEndOffset(FileStream stream, long length, CancellationToken token)
     {
+        var buffer = new byte[BufferSize];
+        var position = length;
+
+        while (position > 0)
+        {
+            token.ThrowIfCancellationRequested();
+
+            var readSize = (int)Math.Min(BufferSize, position);
+            position -= readSize;
+            stream.Position = position;
+            var read = stream.Read(buffer, 0, readSize);
+
+            for (var i = read - 1; i >= 0; i--)
+            {
+                if (buffer[i] != (byte)'\r' && buffer[i] != (byte)'\n')
+                {
+                    return position + i + 1;
+                }
+            }
+        }
+
+        return 0;
+    }
+
+    private static string ReadTextRange(string path, long startOffset, long endOffset)
+    {
+        if (startOffset >= endOffset || !File.Exists(path))
+        {
+            return string.Empty;
+        }
+
+        var bytesToRead = (int)Math.Min(endOffset - startOffset, MaxDisplayedTextBytes);
+        var buffer = new byte[bytesToRead];
         using var stream = new FileStream(
             path,
             FileMode.Open,
@@ -508,67 +564,234 @@ public class LogViewerViewModel : ReactiveObject, IDisposable
             FileShare.ReadWrite | FileShare.Delete,
             BufferSize,
             FileOptions.RandomAccess);
-        stream.Position = offset;
-        using var reader = new StreamReader(stream, Encoding.UTF8, detectEncodingFromByteOrderMarks: true);
-        var line = reader.ReadLine() ?? string.Empty;
-        if (offset == 0)
-        {
-            line = line.TrimStart('\uFEFF');
-        }
-
-        return line.Length <= MaxDisplayedLineChars
-            ? line
-            : $"{line[..MaxDisplayedLineChars]} ...";
-    }
-
-    private List<LogLine> ReadAppendedLines(string path, long startOffset, long endOffset)
-    {
-        if (startOffset >= endOffset || !File.Exists(path))
-        {
-            return [];
-        }
-
-        using var stream = new FileStream(
-            path,
-            FileMode.Open,
-            FileAccess.Read,
-            FileShare.ReadWrite | FileShare.Delete,
-            BufferSize,
-            FileOptions.SequentialScan);
         stream.Position = startOffset;
-        using var reader = new StreamReader(stream, Encoding.UTF8, detectEncodingFromByteOrderMarks: true);
-        var lines = new List<LogLine>();
 
-        while (reader.ReadLine() is { } line)
+        var totalRead = 0;
+        while (totalRead < bytesToRead)
         {
-            lines.Add(new LogLine(string.Empty, line.Length <= MaxDisplayedLineChars
-                ? line
-                : $"{line[..MaxDisplayedLineChars]} ..."));
+            var read = stream.Read(buffer, totalRead, bytesToRead - totalRead);
+            if (read == 0)
+            {
+                break;
+            }
+
+            totalRead += read;
         }
 
-        return lines;
+        var text = Encoding.UTF8.GetString(buffer, 0, totalRead);
+        return startOffset == 0
+            ? text.TrimStart('\uFEFF')
+            : text;
     }
 
-    private void ReplaceVisibleLines(IEnumerable<LogLine> lines)
+    private void ReplaceEditorText(string text)
     {
-        VisibleLines.Clear();
-        foreach (var line in lines)
+        _displayedText = TrimTextToLastLines(text, ViewportLineCount);
+        SetEditorText(ToEditorDisplayText(_displayedText));
+    }
+
+    private void AppendEditorText(string text)
+    {
+        if (string.IsNullOrEmpty(text))
         {
-            VisibleLines.Add(line);
+            return;
+        }
+
+        AppendEditorText(text, trimToViewport: true);
+    }
+
+    private void AppendEditorText(string text, bool trimToViewport)
+    {
+        if (string.IsNullOrEmpty(text))
+        {
+            return;
+        }
+
+        var previousDisplayText = ToEditorDisplayText(_displayedText);
+        var nextText = _displayedText + text;
+        var trimmedText = trimToViewport
+            ? TrimTextToLastLines(nextText, ViewportLineCount)
+            : TrimTextToMaxChars(nextText, MaxDisplayedTextBytes);
+        _displayedText = trimmedText;
+        AppendOrSetEditorText(previousDisplayText, ToEditorDisplayText(_displayedText));
+    }
+
+    private static string TrimTextToLastLines(string text, int lineCount)
+    {
+        if (string.IsNullOrEmpty(text) || lineCount <= 0)
+        {
+            return string.Empty;
+        }
+
+        var linesSeen = 0;
+        for (var i = text.Length - 1; i >= 0; i--)
+        {
+            if (text[i] != '\n')
+            {
+                continue;
+            }
+
+            linesSeen++;
+            if (linesSeen > lineCount)
+            {
+                return text[(i + 1)..];
+            }
+        }
+
+        return text;
+    }
+
+    private static string TrimTextToMaxChars(string text, int maxChars)
+    {
+        if (text.Length <= maxChars)
+        {
+            return text;
+        }
+
+        return text[^maxChars..];
+    }
+
+    private static string ToEditorDisplayText(string text)
+    {
+        return text.TrimEnd('\r', '\n');
+    }
+
+    private void SetEditorText(string text)
+    {
+        var editor = LogEditor;
+        if (editor == null)
+        {
+            return;
+        }
+
+        if (Dispatcher.UIThread.CheckAccess())
+        {
+            editor.Text = text;
+            return;
+        }
+
+        Dispatcher.UIThread.Post(() =>
+        {
+            if (ReferenceEquals(LogEditor, editor))
+            {
+                editor.Text = text;
+            }
+        });
+    }
+
+    private void AppendOrSetEditorText(string previousDisplayText, string nextDisplayText)
+    {
+        var editor = LogEditor;
+        if (editor == null)
+        {
+            return;
+        }
+
+        if (Dispatcher.UIThread.CheckAccess())
+        {
+            AppendOrSetEditorTextCore(editor, previousDisplayText, nextDisplayText);
+            return;
+        }
+
+        Dispatcher.UIThread.Post(() =>
+        {
+            if (ReferenceEquals(LogEditor, editor))
+            {
+                AppendOrSetEditorTextCore(editor, previousDisplayText, nextDisplayText);
+            }
+        });
+    }
+
+    private static void AppendOrSetEditorTextCore(TextEditor editor, string previousDisplayText, string nextDisplayText)
+    {
+        if (editor.Text == previousDisplayText
+            && nextDisplayText.StartsWith(previousDisplayText, StringComparison.Ordinal))
+        {
+            editor.AppendText(nextDisplayText[previousDisplayText.Length..]);
+            return;
+        }
+
+        editor.Text = nextDisplayText;
+    }
+
+    private void ScrollEditorToTail()
+    {
+        var editor = LogEditor;
+        if (editor == null)
+        {
+            return;
+        }
+
+        Dispatcher.UIThread.Post(() =>
+        {
+            if (!ReferenceEquals(LogEditor, editor) || editor.Document == null)
+            {
+                return;
+            }
+
+            editor.CaretOffset = editor.Document.TextLength;
+            editor.ScrollToEnd();
+        }, DispatcherPriority.Render);
+    }
+
+    private bool IsEditorVerticalScrollAtTail()
+    {
+        var editor = LogEditor;
+        if (editor == null)
+        {
+            return IsScrollAtTail();
+        }
+
+        var scrollViewer = GetEditorScrollViewer(editor);
+        if (scrollViewer == null)
+        {
+            return true;
+        }
+
+        if (editor.SelectionLength > 0)
+        {
+            return false;
+        }
+
+        var maxY = Math.Max(0, scrollViewer.Extent.Height - scrollViewer.Viewport.Height);
+        return maxY <= 1 || scrollViewer.Offset.Y >= maxY - 1;
+    }
+
+    private Vector? CaptureEditorScrollOffset()
+    {
+        var editor = LogEditor;
+        var scrollViewer = editor == null ? null : GetEditorScrollViewer(editor);
+        return scrollViewer?.Offset;
+    }
+
+    private void RestoreEditorScrollOffset(Vector? offset)
+    {
+        if (!offset.HasValue)
+        {
+            return;
+        }
+
+        var editor = LogEditor;
+        var scrollViewer = editor == null ? null : GetEditorScrollViewer(editor);
+        if (scrollViewer != null)
+        {
+            scrollViewer.Offset = offset.Value;
+            Dispatcher.UIThread.Post(() =>
+            {
+                if (ReferenceEquals(LogEditor, editor))
+                {
+                    scrollViewer.Offset = offset.Value;
+                }
+            }, DispatcherPriority.Render);
         }
     }
 
-    private void AppendTailLines(IEnumerable<LogLine> lines)
+    private static ScrollViewer? GetEditorScrollViewer(TextEditor editor)
     {
-        foreach (var line in lines)
-        {
-            VisibleLines.Add(line);
-        }
-
-        while (VisibleLines.Count > ViewportLineCount)
-        {
-            VisibleLines.RemoveAt(0);
-        }
+        return editor
+            .GetVisualDescendants()
+            .OfType<ScrollViewer>()
+            .FirstOrDefault();
     }
 
     private void SetupWatcher(string path)
@@ -634,7 +857,10 @@ public class LogViewerViewModel : ReactiveObject, IDisposable
         var newLength = GetFileLength(path);
         var oldLength = _fileLength;
         var wasIndexedToTail = _indexedBytes >= oldLength;
-        var shouldKeepTail = FollowTail || IsScrollAtTail();
+        var shouldKeepTail = FollowTail && await Dispatcher.UIThread.InvokeAsync(IsEditorVerticalScrollAtTail);
+        var preservedOffset = shouldKeepTail
+            ? null
+            : await Dispatcher.UIThread.InvokeAsync(CaptureEditorScrollOffset);
         if (newLength < _fileLength)
         {
             Dispatcher.UIThread.Post(async () => await LoadFileAsync(path));
@@ -656,18 +882,43 @@ public class LogViewerViewModel : ReactiveObject, IDisposable
 
         if (shouldKeepTail)
         {
-            var appendedLines = ReadAppendedLines(path, oldTailPosition, newLength);
             _tailPosition = newLength;
+            if (newLength - oldTailPosition > MaxDisplayedTextBytes)
+            {
+                await ShowTailPreviewAsync();
+                StartBackgroundIndexing();
+                return;
+            }
+
+            var appendedText = ReadTextRange(path, oldTailPosition, newLength);
             await Dispatcher.UIThread.InvokeAsync(() =>
             {
-                AppendTailLines(appendedLines);
+                AppendEditorText(appendedText);
                 UpdateMetrics(T(Localization.LogViewerView.MonitoringStatus));
                 KeepTailInView();
             });
         }
         else
         {
-            await Dispatcher.UIThread.InvokeAsync(() => UpdateMetrics(T(Localization.LogViewerView.MonitoringStatus)));
+            _tailPosition = newLength;
+            if (newLength - oldTailPosition > MaxDisplayedTextBytes)
+            {
+                await Dispatcher.UIThread.InvokeAsync(() =>
+                {
+                    UpdateMetrics(T(Localization.LogViewerView.MonitoringStatus));
+                    RestoreEditorScrollOffset(preservedOffset);
+                });
+                StartBackgroundIndexing();
+                return;
+            }
+
+            var appendedText = ReadTextRange(path, oldTailPosition, newLength);
+            await Dispatcher.UIThread.InvokeAsync(() =>
+            {
+                AppendEditorText(appendedText, trimToViewport: false);
+                UpdateMetrics(T(Localization.LogViewerView.MonitoringStatus));
+                RestoreEditorScrollOffset(preservedOffset);
+            });
         }
 
         StartBackgroundIndexing();
@@ -712,7 +963,7 @@ public class LogViewerViewModel : ReactiveObject, IDisposable
     private void KeepTailInView()
     {
         MoveScrollBarToTail();
-        ScrollToTailRequested?.Invoke(this, EventArgs.Empty);
+        ScrollEditorToTail();
     }
 
     private void MoveScrollBarToTail()

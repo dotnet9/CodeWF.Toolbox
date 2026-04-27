@@ -9,6 +9,7 @@
 
 	<ItemGroup>
 		<PackageReference Include="Avalonia" Version="$(AvaloniaVersion)" />
+		<PackageReference Include="Avalonia.AvaloniaEdit" Version="11.4.1" />
 		<PackageReference Include="Dapper" Version="2.1.72" />
 		<PackageReference Include="Dapper.AOT" Version="1.0.48" />
 		<PackageReference Include="Lang.Avalonia.Xml" Version="11.3.12.1" />

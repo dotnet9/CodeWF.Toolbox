@@ -2,6 +2,7 @@ using Avalonia.Controls;
 using Avalonia.Markup.Xaml;
 using AvaloniaEdit;
 using AvaloniaEdit.TextMate;
+using CodeWF.Core.Helpers;
 using CodeWF.Modules.Development.ViewModels;
 using TextMateSharp.Grammars;
 
@@ -16,6 +17,7 @@ public partial class JsonPrettifyView : UserControl
         // AvaloniaEdit 的语法高亮需要在控件加载后绑定 TextMate 语法。
         var formatEditor = this.FindControl<TextEditor>("FormatEditor")
             ?? throw new InvalidOperationException("FormatEditor 控件未找到。");
+        formatEditor.ApplyCodeEditorStyle();
 
         var registryOptions = new RegistryOptions(ThemeName.DarkPlus);
 

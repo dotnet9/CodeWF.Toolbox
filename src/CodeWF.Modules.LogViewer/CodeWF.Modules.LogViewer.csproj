@@ -11,6 +11,7 @@
 		<PackageReference Include="Prism.Avalonia" Version="8.1.97.11073" />
 		<PackageReference Include="Prism.DryIoc.Avalonia" Version="8.1.97.11073" />
 		<PackageReference Include="ReactiveUI.Avalonia" Version="11.4.7" />
+		<PackageReference Include="AvaloniaEdit.TextMate" Version="11.4.1" />
 		<PackageReference Include="Irihi.Ursa.Themes.Semi" Version="1.14.1" />
 	</ItemGroup>
 

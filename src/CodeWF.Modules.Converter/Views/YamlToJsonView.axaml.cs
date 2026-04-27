@@ -2,6 +2,7 @@ using Avalonia.Controls;
 using Avalonia.Markup.Xaml;
 using AvaloniaEdit;
 using AvaloniaEdit.TextMate;
+using CodeWF.Core.Helpers;
 using CodeWF.Modules.Converter.ViewModels;
 using TextMateSharp.Grammars;
 
@@ -18,6 +19,8 @@ public partial class YamlToJsonView : UserControl
             ?? throw new InvalidOperationException("JsonEditor 控件未找到。");
         var yamlEditor = this.FindControl<TextEditor>("YamlEditor")
             ?? throw new InvalidOperationException("YamlEditor 控件未找到。");
+        jsonEditor.ApplyCodeEditorStyle();
+        yamlEditor.ApplyCodeEditorStyle();
 
         var registryOptions = new RegistryOptions(ThemeName.DarkPlus);
 
