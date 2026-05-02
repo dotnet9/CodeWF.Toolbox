@@ -1,4 +1,5 @@
 using Avalonia.Controls;
+using CodeWF.Core.Helpers;
 using ReactiveUI;
 using System.Reactive;
 using System.Text;
@@ -83,6 +84,6 @@ public class Base64CodecViewModel : ReactiveObject
 
     private async Task CopyAsync()
     {
-        await (TopLevel.GetTopLevel(ClipboardOwner)?.Clipboard?.SetTextAsync(OutputText) ?? Task.CompletedTask);
+        await ClipboardHelper.SetTextAsync(ClipboardOwner, OutputText);
     }
 }

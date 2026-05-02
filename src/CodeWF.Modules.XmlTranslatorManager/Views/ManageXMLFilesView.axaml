@@ -18,9 +18,6 @@
     <Design.DataContext>
         <vm:ManageXmlFilesViewModel />
     </Design.DataContext>
-    <UserControl.Styles>
-        <StyleInclude Source="avares://Semi.Avalonia.DataGrid/Index.axaml" />
-    </UserControl.Styles>
     <Grid RowDefinitions="35 *" ColumnDefinitions="200 1 *">
         <StackPanel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Orientation="Horizontal">
             <TextBox Width="500" Text="{Binding LanguageDir, Mode=OneWay}" IsReadOnly="True" />

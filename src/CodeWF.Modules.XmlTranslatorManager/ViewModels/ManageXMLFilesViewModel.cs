@@ -1,7 +1,5 @@
-﻿using Avalonia.Controls;
-using Avalonia.Data.Core;
-using Avalonia.Markup.Xaml.MarkupExtensions;
-using Avalonia.Markup.Xaml.MarkupExtensions.CompiledBindings;
+using Avalonia.Controls;
+using Avalonia.Data;
 using Avalonia.Platform.Storage;
 using CodeWF.AvaloniaControls.Extensions;
 using CodeWF.Core.IServices;
@@ -86,15 +84,15 @@ public class ManageXmlFilesViewModel : ReactiveObject
         {
             new("CSV files")
             {
-                Patterns = new List<string> { "*.csv" }, MimeTypes = new List<string> { "text/csv" }
+                Patterns = ["*.csv"], MimeTypes = ["text/csv"]
             },
             new("Excel Workbook")
             {
-                Patterns = new List<string> { "*.xlsx" },
-                MimeTypes = new List<string>
-                {
+                Patterns = ["*.xlsx"],
+                MimeTypes =
+                [
                     "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
-                }
+                ]
             }
         };
         var savePath = await _fileChooserService.SaveFileAsync("Export", fileTypeFilters);
@@ -164,7 +162,6 @@ public class ManageXmlFilesViewModel : ReactiveObject
                             languageXmlModel.Classes.Add(classModel);
                         }
 
-                        // 遍历类元素下的子节点作为属性填充到Properties列表中
                         foreach (var propertyElement in classElement.Elements())
                         {
                             var propertyName = propertyElement.Name.LocalName;
@@ -173,7 +170,9 @@ public class ManageXmlFilesViewModel : ReactiveObject
                             {
                                 property = new LanguageProperty()
                                 {
-                                    Key = propertyName, Values = new Dictionary<string, string>()
+                                    Key = propertyName,
+                                    Values = new Dictionary<string, string>(),
+                                    PersistValueAction = Save
                                 };
                                 classModel.Properties!.Add(property);
                             }
@@ -205,40 +204,22 @@ public class ManageXmlFilesViewModel : ReactiveObject
             return;
         }
 
+        foreach (var property in SelectedClassItem.Properties)
+        {
+            property.PersistValueAction = Save;
+        }
+
         _languagePropertyDataGrid.Columns.Add(new DataGridTextColumn()
         {
             Header = nameof(LanguageProperty.Key),
-            Binding = new CompiledBindingExtension(new CompiledBindingPathBuilder()
-                .Property(new ClrPropertyInfo(nameof(LanguageProperty.Key),
-                        obj => ((LanguageProperty)obj).Key,
-                        (_, _) => { },
-                        typeof(string)),
-                    PropertyInfoAccessorFactory.CreateInpcPropertyAccessor)
-                .Build())
+            Binding = new ReflectionBinding(nameof(LanguageProperty.Key))
         });
 
         var cultureNames = SelectedClassItem.Properties.First().Values!.Keys.ToList();
         var propertyColumns = cultureNames.Select(cultureName => new DataGridTextColumn()
         {
             Header = cultureName,
-            Binding = new CompiledBindingExtension(new CompiledBindingPathBuilder()
-                .Property(new ClrPropertyInfo(cultureName,
-                        obj =>
-                        {
-                            ((LanguageProperty)obj).Values!.TryGetValue(cultureName, out var value);
-                            return value;
-                        },
-                        (obj, value) =>
-                        {
-                            if (value is string newValue)
-                            {
-                                ((LanguageProperty)obj).Values[cultureName] = newValue;
-                                Save(((LanguageProperty)obj).Key, cultureName, newValue);
-                            }
-                        },
-                        typeof(string)),
-                    PropertyInfoAccessorFactory.CreateInpcPropertyAccessor)
-                .Build()),
+            Binding = new ReflectionBinding($"[{cultureName}]"),
             IsReadOnly = false
         });
         foreach (var column in propertyColumns)

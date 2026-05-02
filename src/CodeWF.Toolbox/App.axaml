@@ -11,6 +11,7 @@
     <prism:PrismApplication.Styles>
 		<semi:SemiTheme Locale="zh-CN" />
 		<semi:AvaloniaEditSemiTheme />
+		<semi:ProDataGridSemiTheme />
         <u-Semi:SemiTheme Locale="zh-CN"/>
         <StyleInclude Source="../Styles/Index.axaml" />
         <codewf:CodeWFTheme />

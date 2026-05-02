@@ -1,5 +1,6 @@
-﻿using Avalonia.Controls;
+using Avalonia.Controls;
 using AvaloniaEdit;
+using CodeWF.Core.Helpers;
 using CodeWF.Tools.Extensions;
 using ReactiveUI;
 using System.Reactive;
@@ -56,6 +57,6 @@ public class YamlPrettifyViewModel : ReactiveObject
 
     private async Task RaiseCopyHandlerAsync()
     {
-        await (TopLevel.GetTopLevel(YamlTextEditor)?.Clipboard?.SetTextAsync(YamlTextEditor?.Text) ?? Task.CompletedTask);
+        await ClipboardHelper.SetTextAsync(YamlTextEditor, YamlTextEditor?.Text);
     }
 }

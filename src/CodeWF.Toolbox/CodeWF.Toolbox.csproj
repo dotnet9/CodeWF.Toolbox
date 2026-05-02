@@ -1,6 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
-		<TargetFrameworks>net10.0</TargetFrameworks>
+		<TargetFrameworks>net11.0</TargetFrameworks>
 		<Nullable>enable</Nullable>
 		<LangVersion>latest</LangVersion>
 		<AvaloniaUseCompiledBindingsByDefault>true</AvaloniaUseCompiledBindingsByDefault>
@@ -25,16 +25,16 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Avalonia" Version="$(AvaloniaVersion)" />
-		<!--Condition below is needed to remove Avalonia.Diagnostics package from build output in Release configuration.-->
-		<PackageReference Condition="'$(Configuration)' == 'Debug'" Include="Avalonia.Diagnostics" Version="$(AvaloniaVersion)" />
-		<PackageReference Include="Semi.Avalonia" Version="11.3.7.2" />
-		<PackageReference Include="Irihi.Ursa.PrismExtension" Version="1.0.1" />
-		<PackageReference Include="Irihi.Ursa.Themes.Semi" Version="1.14.1" />
-		<PackageReference Include="Prism.Avalonia" Version="8.1.97.11073" />
-		<PackageReference Include="Prism.DryIoc.Avalonia" Version="8.1.97.11073" />
-		<PackageReference Include="ReactiveUI.Avalonia" Version="11.4.7" />
-		<PackageReference Include="Semi.Avalonia.AvaloniaEdit" Version="11.2.0.1" />
+		<PackageReference Include="Avalonia" />
+		<!--Condition below keeps diagnostics support out of Release output.-->
+		<PackageReference Condition="'$(Configuration)' == 'Debug'" Include="AvaloniaUI.DiagnosticsSupport" />
+		<PackageReference Include="Semi.Avalonia" />
+		<PackageReference Include="Irihi.Ursa.PrismExtension" />
+		<PackageReference Include="Irihi.Ursa.Themes.Semi" />
+		<PackageReference Include="Prism.Avalonia" />
+		<PackageReference Include="Prism.DryIoc.Avalonia" />
+		<PackageReference Include="ReactiveUI.Avalonia" />
+		<PackageReference Include="Semi.Avalonia.AvaloniaEdit" />
 	</ItemGroup>
 
 	<ItemGroup>

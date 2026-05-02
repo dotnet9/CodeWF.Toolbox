@@ -1,23 +1,23 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFrameworks>net10.0</TargetFrameworks>
+		<TargetFrameworks>net11.0</TargetFrameworks>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
 		<LangVersion>latest</LangVersion>
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Avalonia" Version="$(AvaloniaVersion)" />
-		<PackageReference Include="Avalonia.AvaloniaEdit" Version="11.4.1" />
-		<PackageReference Include="Dapper" Version="2.1.72" />
-		<PackageReference Include="Dapper.AOT" Version="1.0.48" />
-		<PackageReference Include="Lang.Avalonia.Xml" Version="11.3.12.1" />
-		<PackageReference Include="Microsoft.Data.Sqlite" Version="11.0.0-preview.3.26207.106" />
-		<PackageReference Include="Prism.DryIoc.Avalonia" Version="8.1.97.11073" />
-		<PackageReference Include="CodeWF.Tools" Version="1.3.12.3" />
-		<PackageReference Include="CodeWF.AvaloniaControls" Version="11.3.12.3" />
-		<PackageReference Include="CodeWF.EventBus" Version="3.4.5.1" />
+		<PackageReference Include="Avalonia" />
+		<PackageReference Include="Avalonia.AvaloniaEdit" />
+		<PackageReference Include="Dapper" />
+		<PackageReference Include="Dapper.AOT" />
+		<PackageReference Include="Lang.Avalonia.Xml" />
+		<PackageReference Include="Microsoft.Data.Sqlite" />
+		<PackageReference Include="Prism.DryIoc.Avalonia" />
+		<PackageReference Include="CodeWF.Tools" />
+		<PackageReference Include="CodeWF.AvaloniaControls" />
+		<PackageReference Include="CodeWF.EventBus" />
 	</ItemGroup>
 
 </Project>

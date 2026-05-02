@@ -91,7 +91,7 @@ public class SampleModule : IModule
 ```powershell
 dotnet restore CodeWF.Toolbox.slnx
 dotnet build CodeWF.Toolbox.slnx
-dotnet test tests/CodeWF.Toolbox.Tests/CodeWF.Toolbox.Tests.csproj
+dotnet test src/CodeWF.Toolbox.Tests/CodeWF.Toolbox.Tests.csproj
 ```
 
 关注点：

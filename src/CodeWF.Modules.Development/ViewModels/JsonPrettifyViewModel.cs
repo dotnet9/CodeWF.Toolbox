@@ -1,7 +1,8 @@
-﻿using Avalonia.Controls;
+using Avalonia.Controls;
 using AvaloniaEdit;
-using CodeWF.Modules.Development.Helpers;
+using CodeWF.Core.Helpers;
 using CodeWF.Modules.Development.Entities;
+using CodeWF.Modules.Development.Helpers;
 using CodeWF.Tools.Extensions;
 using ReactiveUI;
 using System.Reactive;
@@ -14,7 +15,7 @@ public class JsonPrettifyViewModel : ReactiveObject
     public TextEditor? FormatEditor { get; set; }
     public TextBox? NoFormatEditor { get; set; }
 
-    private JsonPrettifyEntity _config; 
+    private JsonPrettifyEntity _config;
 
     public JsonPrettifyViewModel()
     {
@@ -38,7 +39,7 @@ public class JsonPrettifyViewModel : ReactiveObject
             .Subscribe(_ => RawJsonChanged());
     }
 
-    private bool _isSortKey = false;
+    private bool _isSortKey;
 
     public bool IsSortKey
     {
@@ -65,7 +66,6 @@ public class JsonPrettifyViewModel : ReactiveObject
             ConfigHelper.UpdateJsonPrettifyConfig(_config);
         }
     }
-
 
     private string? _rawJson;
 
@@ -117,8 +117,8 @@ public class JsonPrettifyViewModel : ReactiveObject
     private async Task RaiseCopyHandlerAsync()
     {
         string? newJson = IndentSize > 0 ? FormatEditor?.Text : NoFormatEditor?.Text;
-        Control? clipboardOwner = FormatEditor ?? (Control?)NoFormatEditor;
+        Control? clipboardOwner = FormatEditor != null ? FormatEditor : NoFormatEditor;
 
-        await (TopLevel.GetTopLevel(clipboardOwner)?.Clipboard?.SetTextAsync(newJson) ?? Task.CompletedTask);
+        await ClipboardHelper.SetTextAsync(clipboardOwner, newJson);
     }
 }

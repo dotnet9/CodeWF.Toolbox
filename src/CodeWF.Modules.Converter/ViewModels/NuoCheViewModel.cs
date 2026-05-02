@@ -90,7 +90,7 @@ public class NuoCheViewModel : ReactiveObject
                 $"https://codewf.com/nuoche?p={encodedPhone}";
             QrCodeImagePath = Path.Combine(Path.GetTempPath(), "nuoche.png");
 
-            QrCodeGenerator.GenerateQrCode(InputTitle, GeneratedUrl, QrCodeImagePath, 
+            QrCodeGenerator.GenerateQrCode(InputTitle, GeneratedUrl, QrCodeImagePath,
                 EnableSubTitle ? SubTitle : null);
 
             QrCodeImage = new Bitmap(QrCodeImagePath);
@@ -102,7 +102,6 @@ public class NuoCheViewModel : ReactiveObject
                 $"{I18nManager.Instance.GetResource(Localization.NuoCheView.CreateErrorMessage)}: {ex}");
         }
     }
-
 
     public async Task SaveQrCodeAsync()
     {
@@ -117,15 +116,13 @@ public class NuoCheViewModel : ReactiveObject
         {
             var file = await _fileChooserService.SaveFileAsync(
                 I18nManager.Instance.GetResource(Localization.NuoCheView.SaveQrCodeFileTitle),
-                new[]
-                {
+                [
                     new FilePickerFileType(
                         I18nManager.Instance.GetResource(Localization.NuoCheView.SaveQrCodeFileFormat))
                     {
-                        Patterns = new[] { "*.png" }
+                        Patterns = ["*.png"]
                     }
-                }
-            );
+                ]);
 
             if (file != null)
             {
@@ -149,12 +146,12 @@ public class NuoCheViewModel : ReactiveObject
             return;
         }
 
-        var dragData = new DataObject();
+        var dragData = new DataTransfer();
         if (await _fileChooserService.StorageProvider.TryGetFileFromPathAsync(QrCodeImagePath) is { } storageFile)
         {
-            dragData.Set(DataFormats.Files, new[] { storageFile });
+            dragData.Add(DataTransferItem.CreateFile(storageFile));
         }
 
-        await DragDrop.DoDragDrop(e, dragData, DragDropEffects.Copy);
+        await DragDrop.DoDragDropAsync(e, dragData, DragDropEffects.Copy);
     }
 }

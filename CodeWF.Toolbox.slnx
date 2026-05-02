@@ -46,9 +46,17 @@
       <Platform Solution="*|x86" Project="x86" />
     </Project>
   </Folder>
+  <Folder Name="/Tests/">
+    <Project Path="src/CodeWF.Toolbox.Tests/CodeWF.Toolbox.Tests.csproj">
+      <Platform Solution="*|x64" Project="x64" />
+      <Platform Solution="*|x86" Project="x86" />
+    </Project>
+  </Folder>
   <Folder Name="/Solution Items/">
     <File Path=".gitignore" />
     <File Path="Directory.Build.props" />
+    <File Path="Directory.Packages.props" />
+    <File Path="global.json" />
     <File Path="publish.bat" />
     <File Path="README.zh-CN.md" />
     <File Path="README.md" />

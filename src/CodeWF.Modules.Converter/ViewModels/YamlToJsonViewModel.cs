@@ -1,5 +1,6 @@
-﻿using Avalonia.Controls;
+using Avalonia.Controls;
 using AvaloniaEdit;
+using CodeWF.Core.Helpers;
 using CodeWF.Tools.Extensions;
 using ReactiveUI;
 using System.Reactive;
@@ -29,7 +30,7 @@ public class YamlToJsonViewModel : ReactiveObject
             .Throttle(TimeSpan.FromMilliseconds(400))
             .ObserveOn(RxSchedulers.MainThreadScheduler)
             .Subscribe(_ => YamlChanged());
-        YamlEditor.TextChanged += (s, e) => YamlString = YamlEditor.Text;
+        YamlEditor.TextChanged += (_, _) => YamlString = YamlEditor.Text;
     }
 
     private string? _yamlString;
@@ -39,7 +40,6 @@ public class YamlToJsonViewModel : ReactiveObject
         get => _yamlString;
         set => this.RaiseAndSetIfChanged(ref _yamlString, value);
     }
-
 
     private string? _errorMessage;
 
@@ -78,6 +78,6 @@ public class YamlToJsonViewModel : ReactiveObject
 
     private async Task RaiseCopyHandlerAsync()
     {
-        await (TopLevel.GetTopLevel(JsonEditor)?.Clipboard?.SetTextAsync(JsonEditor?.Text) ?? Task.CompletedTask);
+        await ClipboardHelper.SetTextAsync(JsonEditor, JsonEditor?.Text);
     }
 }

@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFrameworks>net10.0</TargetFrameworks>
+		<TargetFrameworks>net11.0</TargetFrameworks>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
 		<LangVersion>latest</LangVersion>
@@ -16,13 +16,13 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Xaml.Behaviors" Version="11.3.9.5" />
-		<PackageReference Include="Prism.DryIoc.Avalonia" Version="8.1.97.11073" />
-		<PackageReference Include="ReactiveUI.Avalonia" Version="11.4.7" />
-		<PackageReference Include="AvaloniaEdit.TextMate" Version="11.4.1" />
-		<PackageReference Include="Semi.Avalonia.DataGrid" Version="11.3.7.3" />
-		<PackageReference Include="Irihi.Ursa.Themes.Semi" Version="1.14.1" />
-		<PackageReference Include="TextMateSharp.Grammars" Version="2.0.3" />
+		<PackageReference Include="Xaml.Behaviors" />
+		<PackageReference Include="Prism.DryIoc.Avalonia" />
+		<PackageReference Include="ReactiveUI.Avalonia" />
+		<PackageReference Include="AvaloniaEdit.TextMate" />
+		<PackageReference Include="CodeWF.AvaloniaControls.ProDataGrid" />
+		<PackageReference Include="Irihi.Ursa.Themes.Semi" />
+		<PackageReference Include="TextMateSharp.Grammars" />
 	</ItemGroup>
 
 	<ItemGroup>

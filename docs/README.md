@@ -91,7 +91,7 @@ Before submitting changes, run:
 ```powershell
 dotnet restore CodeWF.Toolbox.slnx
 dotnet build CodeWF.Toolbox.slnx
-dotnet test tests/CodeWF.Toolbox.Tests/CodeWF.Toolbox.Tests.csproj
+dotnet test src/CodeWF.Toolbox.Tests/CodeWF.Toolbox.Tests.csproj
 ```
 
 Check that:

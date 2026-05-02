@@ -1,12 +1,12 @@
-﻿using Avalonia.Input;
+using Avalonia.Input;
 using Avalonia.Platform.Storage;
 using CodeWF.Core.IServices;
 using CodeWF.Modules.Converter.Models;
 using CodeWF.Tools;
 using CodeWF.Tools.FileExtensions;
+using Lang.Avalonia;
 using ReactiveUI;
 using System.Collections.ObjectModel;
-using Lang.Avalonia;
 using Ursa.Controls;
 
 namespace CodeWF.Modules.Converter.ViewModels;
@@ -50,11 +50,9 @@ public class ImageToIconViewModel : ReactiveObject
         NeedConvertImagePath = files[0];
     }
 
-
     public async Task RaiseDropSourceImagePathAsync(DragEventArgs e)
     {
-        var files = e.Data.GetFiles();
-        var file = files?.FirstOrDefault();
+        var file = e.DataTransfer.TryGetFiles()?.FirstOrDefault();
         if (file == null)
         {
             return;
@@ -126,7 +124,7 @@ public class ImageToIconViewModel : ReactiveObject
             return (false, null);
         }
 
-        var destSizes = selectedSize.Select(size => (uint)(size.Size)).ToArray();
+        var destSizes = selectedSize.Select(size => (uint)size.Size).ToArray();
 
         return (true, destSizes);
     }

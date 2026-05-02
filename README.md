@@ -2,7 +2,7 @@
 
 English | [简体中文](README.zh-CN.md)
 
-CodeWF Toolbox is an Avalonia + Prism modular desktop toolbox for developer productivity scenarios. It keeps the shell, common services, and feature modules separated so new tools can be added without turning the main application into one large window class.
+CodeWF Toolbox is an Avalonia + Prism modular desktop toolbox for developer productivity scenarios. It keeps the shell, shared services, and feature modules separated so new tools can be added without turning the main application into one large window class.
 
 ![Application screenshot](screen.png)
 
@@ -28,7 +28,7 @@ CodeWF Toolbox is an Avalonia + Prism modular desktop toolbox for developer prod
 
 Requirements:
 
-- .NET SDK that can build `net10.0` projects
+- .NET 11 SDK
 - Windows, macOS, or Linux desktop runtime supported by Avalonia
 
 ```powershell
@@ -47,12 +47,12 @@ src/
   CodeWF.Controls/                   Shared controls
   CodeWF.Modules.AI/                 AI utility module
   CodeWF.Modules.Converter/          Converter tools
-  CodeWF.Modules.LogViewer/          Large-file log viewer with tail monitoring
   CodeWF.Modules.Development/        Development tools
+  CodeWF.Modules.LogViewer/          Large-file log viewer with tail monitoring
   CodeWF.Modules.XmlTranslatorManager/ XML i18n management tools
+  CodeWF.Toolbox.Tests/              Unit test project
 docs/
   assets/                            Standalone SVG diagrams
-tests/                               Unit test projects
 ```
 
 ## Adding a Module
