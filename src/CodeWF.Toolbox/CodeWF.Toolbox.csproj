@@ -40,10 +40,19 @@
 	<ItemGroup>
 	  <ProjectReference Include="..\CodeWF.Controls\CodeWF.Controls.csproj" />
 	  <ProjectReference Include="..\CodeWF.Modules.AI\CodeWF.Modules.AI.csproj" />
-	  <ProjectReference Include="..\CodeWF.Modules.XmlTranslatorManager\CodeWF.Modules.XmlTranslatorManager.csproj" />
 	  <ProjectReference Include="..\CodeWF.Modules.Converter\CodeWF.Modules.Converter.csproj" />
+	  <ProjectReference Include="..\CodeWF.Modules.Data\CodeWF.Modules.Data.csproj" />
 	  <ProjectReference Include="..\CodeWF.Modules.Development\CodeWF.Modules.Development.csproj" />
+	  <ProjectReference Include="..\CodeWF.Modules.Math\CodeWF.Modules.Math.csproj" />
+	  <ProjectReference Include="..\CodeWF.Modules.Measurement\CodeWF.Modules.Measurement.csproj" />
+	  <ProjectReference Include="..\CodeWF.Modules.Media\CodeWF.Modules.Media.csproj" />
+	  <ProjectReference Include="..\CodeWF.Modules.Network\CodeWF.Modules.Network.csproj" />
+	  <ProjectReference Include="..\CodeWF.Modules.Security\CodeWF.Modules.Security.csproj" />
+	  <ProjectReference Include="..\CodeWF.Modules.Text\CodeWF.Modules.Text.csproj" />
+	  <ProjectReference Include="..\CodeWF.Modules.ToolFramework\CodeWF.Modules.ToolFramework.csproj" />
+	  <ProjectReference Include="..\CodeWF.Modules.Web\CodeWF.Modules.Web.csproj" />
 	  <ProjectReference Include="..\CodeWF.Modules.LogViewer\CodeWF.Modules.LogViewer.csproj" />
+	  <ProjectReference Include="..\CodeWF.Modules.XmlTranslatorManager\CodeWF.Modules.XmlTranslatorManager.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>

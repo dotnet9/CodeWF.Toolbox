@@ -1,4 +1,5 @@
 ﻿using Avalonia.Controls;
+using Avalonia.Data;
 using Lang.Avalonia.MarkupExtensions;
 using Prism.Regions;
 using System.Collections.Specialized;
@@ -49,7 +50,10 @@ public class TabControlRegionAdapter : RegionAdapterBase<TabControl>
                                     ? tabItem.TitleKey ?? item.GetType().ToString()
                                     : item?.GetType().ToString() ?? string.Empty;
                                 var newTabItem = new TabItem { Content = item };
-                                newTabItem.Bind(TabItem.HeaderProperty, new I18nBinding(header));
+                                if (new I18nBinding(header).ProvideValue(null!) is BindingBase headerBinding)
+                                {
+                                    newTabItem.Bind(TabItem.HeaderProperty, headerBinding);
+                                }
                                 regionTarget.Items.Add(newTabItem);
                             }
                         }
@@ -79,3 +83,4 @@ public class TabControlRegionAdapter : RegionAdapterBase<TabControl>
 
     protected override IRegion CreateRegion() => new SingleActiveRegion();
 }
+

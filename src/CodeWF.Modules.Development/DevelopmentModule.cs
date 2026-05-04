@@ -1,6 +1,7 @@
 ﻿using CodeWF.Core;
 using CodeWF.Core.Models;
 using CodeWF.Modules.Development.Views;
+using CodeWF.Modules.ToolFramework.Services;
 using Prism.Ioc;
 using Prism.Modularity;
 using Prism.Regions;
@@ -22,6 +23,11 @@ public class DevelopmentModule : IModule
             Localization.JsonPrettifyView.Description, nameof(JsonPrettifyView),
             Icons.Json,
             ToolStatus.Complete);
+        ToolMenuRegistrar.RegisterCategory(
+            toolMenuService,
+            ToolCategories.Development,
+            groupName,
+            Icons.Development);
     }
 
     public void OnInitialized(IContainerProvider containerProvider)
@@ -35,3 +41,4 @@ public class DevelopmentModule : IModule
     {
     }
 }
+

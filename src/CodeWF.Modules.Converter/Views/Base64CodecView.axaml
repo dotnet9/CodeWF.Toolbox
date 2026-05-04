@@ -37,7 +37,7 @@
                 Content="{i18n:I18n {x:Static language:Base64CodecView.Clear}}" />
         </StackPanel>
 
-        <TextBlock
+		<SelectableTextBlock
             Grid.Row="1"
             FontWeight="SemiBold"
             Text="{i18n:I18n {x:Static language:Base64CodecView.InputText}}" />
@@ -49,10 +49,10 @@
             VerticalContentAlignment="Top" />
 
         <StackPanel Grid.Row="3" Orientation="Horizontal" Spacing="12">
-            <TextBlock
+			<SelectableTextBlock
                 FontWeight="SemiBold"
                 Text="{i18n:I18n {x:Static language:Base64CodecView.OutputText}}" />
-            <TextBlock
+			<SelectableTextBlock
                 Foreground="{DynamicResource SemiRed5}"
                 Text="{i18n:I18n {Binding ErrorMessage}}"
                 TextWrapping="Wrap" />

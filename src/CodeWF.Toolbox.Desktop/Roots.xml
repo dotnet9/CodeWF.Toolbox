@@ -2,9 +2,18 @@
 	<assembly fullname="CodeWF.Toolbox.Desktop" preserve="All" />
 	<assembly fullname="CodeWF.Toolbox" preserve="All" />
 	<assembly fullname="CodeWF.Core" preserve="All" />
+	<assembly fullname="CodeWF.Modules.ToolFramework" preserve="All" />
 	<assembly fullname="CodeWF.Modules.Converter" preserve="All" />
 	<assembly fullname="CodeWF.Modules.AI" preserve="All" />
 	<assembly fullname="CodeWF.Modules.Development" preserve="All" />
+	<assembly fullname="CodeWF.Modules.Security" preserve="All" />
+	<assembly fullname="CodeWF.Modules.Web" preserve="All" />
+	<assembly fullname="CodeWF.Modules.Media" preserve="All" />
+	<assembly fullname="CodeWF.Modules.Network" preserve="All" />
+	<assembly fullname="CodeWF.Modules.Math" preserve="All" />
+	<assembly fullname="CodeWF.Modules.Measurement" preserve="All" />
+	<assembly fullname="CodeWF.Modules.Text" preserve="All" />
+	<assembly fullname="CodeWF.Modules.Data" preserve="All" />
 	<assembly fullname="CodeWF.Modules.XmlTranslatorManager" preserve="All" />
 	<assembly fullname="AvaloniaExtensions.Axaml" preserve="All" />
 	<assembly fullname="Lang.Avalonia" preserve="All" />

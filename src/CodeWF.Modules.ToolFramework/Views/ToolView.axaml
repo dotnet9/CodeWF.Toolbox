@@ -1,0 +1,166 @@
+﻿<UserControl
+    x:Class="CodeWF.Modules.ToolFramework.Views.ToolView"
+    x:Name="Root"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:i18n="https://codewf.com"
+    xmlns:models="clr-namespace:CodeWF.Modules.ToolFramework.Models"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:prism="http://prismlibrary.com/"
+    xmlns:vm="clr-namespace:CodeWF.Modules.ToolFramework.ViewModels"
+    d:DesignHeight="560"
+    d:DesignWidth="960"
+    Focusable="True"
+    KeyDown="OnKeyDown"
+    prism:ViewModelLocator.AutoWireViewModel="True"
+    x:DataType="vm:ToolViewModel"
+    mc:Ignorable="d">
+    <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
+        <StackPanel Spacing="16">
+            <Border
+                Padding="12"
+                Background="{DynamicResource SemiGrey1}"
+                BorderBrush="{DynamicResource SemiGrey2}"
+                BorderThickness="1"
+                CornerRadius="6">
+                <StackPanel Spacing="12">
+                    <ItemsControl ItemsSource="{Binding Fields}">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate x:DataType="models:ToolField">
+                                <Grid
+                                    Margin="0 0 0 10"
+                                    ColumnDefinitions="180,*"
+                                    RowDefinitions="Auto">
+                                    <TextBlock
+                                        Margin="0 6 16 0"
+                                        FontWeight="SemiBold"
+                                        Text="{i18n:I18n {Binding Label}}"
+                                        TextWrapping="Wrap" />
+
+                                    <Grid Grid.Column="1">
+                                        <TextBox
+                                            IsVisible="{Binding IsText}"
+                                            Text="{Binding Text, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                            PlaceholderText="{i18n:I18n {Binding Placeholder}}" />
+
+                                        <TextBox
+                                            MinHeight="120"
+                                            AcceptsReturn="True"
+                                            IsVisible="{Binding IsMultiLine}"
+                                            Text="{Binding Text, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                            TextWrapping="Wrap"
+                                            VerticalContentAlignment="Top"
+                                            PlaceholderText="{i18n:I18n {Binding Placeholder}}" />
+
+                                        <NumericUpDown
+                                            IsVisible="{Binding IsNumber}"
+                                            Value="{Binding Number, Mode=TwoWay}" />
+
+                                        <CheckBox
+                                            VerticalAlignment="Center"
+                                            IsChecked="{Binding Boolean, Mode=TwoWay}"
+                                            IsVisible="{Binding IsBoolean}" />
+
+                                        <ComboBox
+                                            DisplayMemberBinding="{i18n:I18n {Binding Label}}"
+                                            IsVisible="{Binding IsSelect}"
+                                            ItemsSource="{Binding Options}"
+                                            SelectedItem="{Binding SelectedOption, Mode=TwoWay}" />
+
+                                        <Grid
+                                            ColumnDefinitions="*,Auto"
+                                            ColumnSpacing="8"
+                                            IsVisible="{Binding IsPath}">
+                                            <TextBox
+                                                Text="{Binding Text, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                PlaceholderText="{i18n:I18n {Binding Placeholder}}" />
+                                            <Button
+                                                Grid.Column="1"
+                                                Command="{Binding #Root.DataContext.BrowsePathCommand}"
+                                                CommandParameter="{Binding}"
+                                                Content="{i18n:I18n {Binding #Root.DataContext.BrowseLabel}}" />
+                                        </Grid>
+                                    </Grid>
+                                </Grid>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+
+                    <StackPanel Orientation="Horizontal" Spacing="8">
+                        <ItemsControl ItemsSource="{Binding Actions}">
+                            <ItemsControl.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <StackPanel Orientation="Horizontal" Spacing="8" />
+                                </ItemsPanelTemplate>
+                            </ItemsControl.ItemsPanel>
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate x:DataType="models:ToolActionItem">
+                                    <Button
+                                        Classes="Success"
+                                        Command="{Binding Command}"
+                                        Content="{i18n:I18n {Binding Label}}" />
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                        <TextBlock
+                            VerticalAlignment="Center"
+                            Foreground="{DynamicResource SemiRed5}"
+                            IsVisible="{Binding HasError}"
+                            Text="{Binding ErrorMessage}"
+                            TextWrapping="Wrap" />
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+
+            <ItemsControl ItemsSource="{Binding Outputs}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate x:DataType="models:ToolOutput">
+                        <Border
+                            Margin="0 0 0 12"
+                            Padding="12"
+                            Background="{DynamicResource SemiGrey0}"
+                            BorderBrush="{DynamicResource SemiGrey2}"
+                            BorderThickness="1"
+                            CornerRadius="6">
+                            <Grid RowDefinitions="Auto,Auto" RowSpacing="8">
+                                <Grid ColumnDefinitions="*,Auto">
+                                    <TextBlock
+                                        FontWeight="SemiBold"
+                                        Text="{i18n:I18n {Binding Label}}" />
+                                    <Button
+                                        Grid.Column="1"
+                                        Command="{Binding #Root.DataContext.CopyOutputCommand}"
+                                        CommandParameter="{Binding}"
+                                        Content="{i18n:I18n {Binding #Root.DataContext.CopyLabel}}" />
+                                </Grid>
+
+                                <Grid Grid.Row="1">
+                                    <TextBox
+                                        MinHeight="120"
+                                        AcceptsReturn="True"
+                                        IsReadOnly="True"
+                                        IsVisible="{Binding HasText}"
+                                        Text="{Binding Text}"
+                                        TextWrapping="Wrap"
+                                        VerticalContentAlignment="Top" />
+                                    <Border
+                                        Padding="8"
+                                        Background="{DynamicResource SemiGrey1}"
+                                        IsVisible="{Binding HasBitmap}">
+                                        <Image
+                                            MaxWidth="420"
+                                            MaxHeight="420"
+                                            HorizontalAlignment="Left"
+                                            Source="{Binding Bitmap}" />
+                                    </Border>
+                                </Grid>
+                            </Grid>
+                        </Border>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </StackPanel>
+    </ScrollViewer>
+</UserControl>
+

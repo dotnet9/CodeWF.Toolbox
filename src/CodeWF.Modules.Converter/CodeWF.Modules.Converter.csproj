@@ -29,6 +29,7 @@
 
 	<ItemGroup>
 		<ProjectReference Include="..\CodeWF.Core\CodeWF.Core.csproj" />
+		<ProjectReference Include="..\CodeWF.Modules.ToolFramework\CodeWF.Modules.ToolFramework.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>

@@ -24,8 +24,17 @@ using System.Threading.Tasks;
 using Ursa.PrismExtension;
 using AIModule = CodeWF.Modules.AI.AIModule;
 using ConverterModule = CodeWF.Modules.Converter.ConverterModule;
+using DataModule = CodeWF.Modules.Data.DataModule;
 using DevelopmentModule = CodeWF.Modules.Development.DevelopmentModule;
 using LogViewerModule = CodeWF.Modules.LogViewer.LogViewerModule;
+using MathModule = CodeWF.Modules.Math.MathModule;
+using MeasurementModule = CodeWF.Modules.Measurement.MeasurementModule;
+using MediaModule = CodeWF.Modules.Media.MediaModule;
+using NetworkModule = CodeWF.Modules.Network.NetworkModule;
+using SecurityModule = CodeWF.Modules.Security.SecurityModule;
+using TextModule = CodeWF.Modules.Text.TextModule;
+using ToolFrameworkModule = CodeWF.Modules.ToolFramework.ToolFrameworkModule;
+using WebModule = CodeWF.Modules.Web.WebModule;
 
 namespace CodeWF.Toolbox;
 
@@ -48,11 +57,20 @@ public partial class App : PrismApplication
     protected override void ConfigureModuleCatalog(IModuleCatalog moduleCatalog)
     {
         moduleCatalog.AddModule<MainModule>();
+        moduleCatalog.AddModule<ToolFrameworkModule>();
         moduleCatalog.AddModule<AIModule>();
         moduleCatalog.AddModule<ConverterModule>();
+        moduleCatalog.AddModule<DevelopmentModule>();
+        moduleCatalog.AddModule<SecurityModule>();
+        moduleCatalog.AddModule<WebModule>();
+        moduleCatalog.AddModule<MediaModule>();
+        moduleCatalog.AddModule<NetworkModule>();
+        moduleCatalog.AddModule<MathModule>();
+        moduleCatalog.AddModule<MeasurementModule>();
+        moduleCatalog.AddModule<TextModule>();
+        moduleCatalog.AddModule<DataModule>();
         moduleCatalog.AddModule<LogViewerModule>();
         moduleCatalog.AddModule<XmlTranslatorManagerModule>();
-        moduleCatalog.AddModule<DevelopmentModule>();
         base.ConfigureModuleCatalog(moduleCatalog);
     }
 

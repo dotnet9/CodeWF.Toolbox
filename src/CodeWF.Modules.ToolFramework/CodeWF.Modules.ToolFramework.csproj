@@ -1,0 +1,46 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFrameworks>net11.0</TargetFrameworks>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+		<LangVersion>latest</LangVersion>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Prism.DryIoc.Avalonia" />
+		<PackageReference Include="ReactiveUI.Avalonia" />
+		<PackageReference Include="Irihi.Ursa.Themes.Semi" />
+		<PackageReference Include="Avalonia.AvaloniaEdit" />
+		<PackageReference Include="BCrypt.Net-Next" />
+		<PackageReference Include="BouncyCastle.Cryptography" />
+		<PackageReference Include="CronExpressionDescriptor" />
+		<PackageReference Include="DiffPlex" />
+		<PackageReference Include="Figgle" />
+		<PackageReference Include="Figgle.Fonts" />
+		<PackageReference Include="IbanNet" />
+		<PackageReference Include="Markdig" />
+		<PackageReference Include="NBitcoin" />
+		<PackageReference Include="NUlid" />
+		<PackageReference Include="OpenCvSharp4" />
+		<PackageReference Include="OpenCvSharp4.official.runtime.linux-x64" />
+		<PackageReference Include="OpenCvSharp4.runtime.win" />
+		<PackageReference Include="Otp.NET" />
+		<PackageReference Include="libphonenumber-csharp" />
+		<PackageReference Include="QRCoder" />
+		<PackageReference Include="Tomlyn" />
+		<PackageReference Include="UAParser" />
+		<PackageReference Include="YamlDotNet" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\CodeWF.Core\CodeWF.Core.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<EmbeddedResource Include="Resources\**" />
+		<None Include="I18n\*.xml" CopyToOutputDirectory="PreserveNewest" />
+	</ItemGroup>
+
+</Project>
+

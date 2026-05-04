@@ -1,5 +1,6 @@
 ﻿using CodeWF.Core;
 using CodeWF.Core.Models;
+using CodeWF.Modules.ToolFramework.Services;
 using CodeWF.Modules.Converter.ViewModels;
 using CodeWF.Modules.Converter.Views;
 using Prism.Ioc;
@@ -47,6 +48,11 @@ public class ConverterModule : IModule
             Localization.NuoCheView.Description, nameof(NuoCheView),
             Icons.Icon,
             ToolStatus.Complete);
+        ToolMenuRegistrar.RegisterCategory(
+            toolMenuService,
+            ToolCategories.Converter,
+            groupName,
+            Icons.Converter);
     }
 
     public void OnInitialized(IContainerProvider containerProvider)

@@ -1,0 +1,1127 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<Localization language="日本語" description="日本語" cultureName="ja-JP">
+	<ToolboxTools>
+		<Common>
+			<Run>実行</Run>
+			<Browse>参照</Browse>
+			<Copy>コピー</Copy>
+			<OpenFile>ファイルを開く</OpenFile>
+			<SaveFile>ファイルを保存</SaveFile>
+			<MissingToolId>ツール ID がありません。</MissingToolId>
+			<ToolNotRegistered>ツール '{0}' は登録されていません。</ToolNotRegistered>
+		</Common>
+		<Groups>
+			<Security>セキュリティ</Security>
+			<Web>Web</Web>
+			<Media>メディア</Media>
+			<Network>ネットワーク</Network>
+			<Math>数学</Math>
+			<Measurement>計測</Measurement>
+			<Text>テキスト</Text>
+			<Data>データ</Data>
+		</Groups>
+		<Tools>
+			<base64_file_converter>
+				<Title>Base64 file 変換</Title>
+				<Description>Base64 file 変換を処理するためのツールです。</Description>
+				<Fields>
+					<file>入力ファイル</file>
+					<base64>Base64 入力</base64>
+					<save>復号ファイルの保存先</save>
+					<mode>モード</mode>
+				</Fields>
+				<Options>
+					<mode>
+						<File_to_Base64>ファイルから Base64</File_to_Base64>
+						<Base64_to_File>Base64 からファイル</Base64_to_File>
+					</mode>
+				</Options>
+				<Outputs>
+					<result>結果</result>
+				</Outputs>
+			</base64_file_converter>
+			<base64_string_converter>
+				<Title>Base64 文字列エンコード/デコード</Title>
+				<Description>Base64 文字列エンコード/デコードを処理するためのツールです。</Description>
+				<Fields>
+					<text>入力</text>
+					<urlSafe>URL セーフ</urlSafe>
+					<mode>モード</mode>
+				</Fields>
+				<Options>
+					<mode>
+						<Encode>エンコード</Encode>
+						<Decode>デコード</Decode>
+					</mode>
+				</Options>
+				<Outputs>
+					<result>結果</result>
+				</Outputs>
+			</base64_string_converter>
+			<case_converter>
+				<Title>Case 変換</Title>
+				<Description>Case 変換を処理するためのツールです。</Description>
+				<Fields>
+					<text>テキスト</text>
+				</Fields>
+				<Outputs>
+					<result>結果</result>
+				</Outputs>
+			</case_converter>
+			<color_converter>
+				<Title>Color 変換</Title>
+				<Description>Color 変換を処理するためのツールです。</Description>
+				<Fields>
+					<color>色</color>
+				</Fields>
+				<Outputs>
+					<result>結果</result>
+				</Outputs>
+			</color_converter>
+			<date_time_converter>
+				<Title>Date-time 変換</Title>
+				<Description>Date-time 変換を処理するためのツールです。</Description>
+				<Fields>
+					<date>日付</date>
+					<format>入力形式</format>
+				</Fields>
+				<Placeholders>
+					<date>Leave empty for current time</date>
+				</Placeholders>
+				<Options>
+					<format>
+						<Auto>自動</Auto>
+						<ISO_8601>ISO 8601</ISO_8601>
+						<Unix_timestamp>Unix タイムスタンプ</Unix_timestamp>
+						<Timestamp_milliseconds>ミリ秒タイムスタンプ</Timestamp_milliseconds>
+						<RFC_1123_RFC_7231>RFC 1123/RFC 7231</RFC_1123_RFC_7231>
+						<Mongo_ObjectId>Mongo ObjectId</Mongo_ObjectId>
+						<Excel_date_time>Excel date/time</Excel_date_time>
+					</format>
+				</Options>
+				<Outputs>
+					<result>Converted formats</result>
+				</Outputs>
+			</date_time_converter>
+			<integer_base_converter>
+				<Title>Integer base 変換</Title>
+				<Description>Integer base 変換を処理するためのツールです。</Description>
+				<Fields>
+					<number>数値</number>
+					<fromBase>入力基数</fromBase>
+					<toBase>出力基数</toBase>
+				</Fields>
+				<Outputs>
+					<result>結果</result>
+				</Outputs>
+			</integer_base_converter>
+			<json_to_toml>
+				<Title>JSON to TOML</Title>
+				<Description>JSON to TOMLを処理するためのツールです。</Description>
+				<Fields>
+					<json>JSON</json>
+				</Fields>
+				<Outputs>
+					<result>TOML</result>
+				</Outputs>
+			</json_to_toml>
+			<json_to_xml>
+				<Title>JSON to XML</Title>
+				<Description>JSON to XMLを処理するためのツールです。</Description>
+				<Fields>
+					<json>JSON</json>
+				</Fields>
+				<Outputs>
+					<result>XML</result>
+				</Outputs>
+			</json_to_xml>
+			<json_to_yaml_converter>
+				<Title>JSON to YAML 変換</Title>
+				<Description>JSON to YAML 変換を処理するためのツールです。</Description>
+				<Fields>
+					<json>JSON</json>
+				</Fields>
+				<Outputs>
+					<result>YAML</result>
+				</Outputs>
+			</json_to_yaml_converter>
+			<list_converter>
+				<Title>List 変換</Title>
+				<Description>List 変換を処理するためのツールです。</Description>
+				<Fields>
+					<list>リスト</list>
+					<prefix>接頭辞</prefix>
+					<suffix>接尾辞</suffix>
+					<truncate>切り詰め長</truncate>
+					<operation>Operation</operation>
+				</Fields>
+				<Options>
+					<operation>
+						<None>なし</None>
+						<Sort>並べ替え</Sort>
+						<Reverse>反転</Reverse>
+						<Lowercase>小文字</Lowercase>
+						<Uppercase>大文字</Uppercase>
+						<Transpose>転置</Transpose>
+						<Unique>重複削除</Unique>
+					</operation>
+				</Options>
+				<Outputs>
+					<result>結果</result>
+				</Outputs>
+			</list_converter>
+			<markdown_to_html>
+				<Title>Markdown to HTML</Title>
+				<Description>Markdown to HTMLを処理するためのツールです。</Description>
+				<Fields>
+					<markdown>Markdown</markdown>
+				</Fields>
+				<Outputs>
+					<result>HTML</result>
+				</Outputs>
+			</markdown_to_html>
+			<roman_numeral_converter>
+				<Title>Roman numeral 変換</Title>
+				<Description>Roman numeral 変換を処理するためのツールです。</Description>
+				<Fields>
+					<value>値</value>
+					<mode>モード</mode>
+				</Fields>
+				<Options>
+					<mode>
+						<Number_to_Roman>数値からローマ数字</Number_to_Roman>
+						<Roman_to_Number>ローマ数字から数値</Roman_to_Number>
+					</mode>
+				</Options>
+				<Outputs>
+					<result>結果</result>
+				</Outputs>
+			</roman_numeral_converter>
+			<temperature_converter>
+				<Title>Temperature 変換</Title>
+				<Description>Temperature 変換を処理するためのツールです。</Description>
+				<Fields>
+					<value>値</value>
+					<unit>Unit</unit>
+				</Fields>
+				<Options>
+					<unit>
+						<Celsius>Celsius</Celsius>
+						<Kelvin>Kelvin</Kelvin>
+						<Fahrenheit>Fahrenheit</Fahrenheit>
+						<Rankine>Rankine</Rankine>
+						<Delisle>Delisle</Delisle>
+						<Newton>Newton</Newton>
+						<Reaumur>Reaumur</Reaumur>
+						<Romer>Romer</Romer>
+					</unit>
+				</Options>
+				<Outputs>
+					<result>結果</result>
+				</Outputs>
+			</temperature_converter>
+			<text_to_binary>
+				<Title>テキスト to ASCII binary</Title>
+				<Description>テキスト to ASCII binaryを処理するためのツールです。</Description>
+				<Fields>
+					<text>入力</text>
+					<mode>モード</mode>
+				</Fields>
+				<Options>
+					<mode>
+						<Text_to_Binary>テキストからバイナリ</Text_to_Binary>
+						<Binary_to_Text>バイナリからテキスト</Binary_to_Text>
+					</mode>
+				</Options>
+				<Outputs>
+					<result>結果</result>
+				</Outputs>
+			</text_to_binary>
+			<text_to_nato_alphabet>
+				<Title>テキスト to NATO alphabet</Title>
+				<Description>テキスト to NATO alphabetを処理するためのツールです。</Description>
+				<Fields>
+					<text>テキスト</text>
+				</Fields>
+				<Outputs>
+					<result>結果</result>
+				</Outputs>
+			</text_to_nato_alphabet>
+			<text_to_unicode>
+				<Title>テキスト to Unicode</Title>
+				<Description>テキスト to Unicodeを処理するためのツールです。</Description>
+				<Fields>
+					<text>入力</text>
+					<mode>モード</mode>
+				</Fields>
+				<Options>
+					<mode>
+						<Text_to_Unicode>テキストから Unicode</Text_to_Unicode>
+						<Unicode_to_Text>Unicode からテキスト</Unicode_to_Text>
+					</mode>
+				</Options>
+				<Outputs>
+					<result>結果</result>
+				</Outputs>
+			</text_to_unicode>
+			<toml_to_json>
+				<Title>TOML to JSON</Title>
+				<Description>TOML to JSONを処理するためのツールです。</Description>
+				<Fields>
+					<toml>TOML</toml>
+				</Fields>
+				<Outputs>
+					<result>JSON</result>
+				</Outputs>
+			</toml_to_json>
+			<toml_to_yaml>
+				<Title>TOML to YAML</Title>
+				<Description>TOML to YAMLを処理するためのツールです。</Description>
+				<Fields>
+					<toml>TOML</toml>
+				</Fields>
+				<Outputs>
+					<result>YAML</result>
+				</Outputs>
+			</toml_to_yaml>
+			<xml_to_json>
+				<Title>XML to JSON</Title>
+				<Description>XML to JSONを処理するためのツールです。</Description>
+				<Fields>
+					<xml>XML</xml>
+				</Fields>
+				<Outputs>
+					<result>JSON</result>
+				</Outputs>
+			</xml_to_json>
+			<yaml_to_json_converter>
+				<Title>YAML to JSON 変換</Title>
+				<Description>YAML to JSON 変換を処理するためのツールです。</Description>
+				<Fields>
+					<yaml>YAML</yaml>
+				</Fields>
+				<Outputs>
+					<result>JSON</result>
+				</Outputs>
+			</yaml_to_json_converter>
+			<yaml_to_toml>
+				<Title>YAML to TOML</Title>
+				<Description>YAML to TOMLを処理するためのツールです。</Description>
+				<Fields>
+					<yaml>YAML</yaml>
+				</Fields>
+				<Outputs>
+					<result>TOML</result>
+				</Outputs>
+			</yaml_to_toml>
+			<chmod_calculator>
+				<Title>Chmod 計算</Title>
+				<Description>Chmod 計算を処理するためのツールです。</Description>
+				<Fields>
+					<ur>所有者 読み取り</ur>
+					<uw>所有者 書き込み</uw>
+					<ux>所有者 実行</ux>
+					<gr>グループ 読み取り</gr>
+					<gw>グループ 書き込み</gw>
+					<gx>グループ 実行</gx>
+					<or>その他 読み取り</or>
+					<ow>その他 書き込み</ow>
+					<ox>その他 実行</ox>
+				</Fields>
+				<Outputs>
+					<result>結果</result>
+				</Outputs>
+			</chmod_calculator>
+			<crontab_generator>
+				<Title>Crontab 生成</Title>
+				<Description>Crontab 生成を処理するためのツールです。</Description>
+				<Fields>
+					<cron>Cron 式</cron>
+				</Fields>
+				<Outputs>
+					<result>結果</result>
+				</Outputs>
+			</crontab_generator>
+			<docker_run_to_docker_compose_converter>
+				<Title>Docker run to Docker compose 変換</Title>
+				<Description>Docker run to Docker compose 変換を処理するためのツールです。</Description>
+				<Fields>
+					<command>docker run コマンド</command>
+				</Fields>
+				<Outputs>
+					<result>docker-compose.yml</result>
+				</Outputs>
+			</docker_run_to_docker_compose_converter>
+			<email_normalizer>
+				<Title>Email normalizer</Title>
+				<Description>Email normalizerを処理するためのツールです。</Description>
+				<Fields>
+					<emails>メールアドレス</emails>
+				</Fields>
+				<Outputs>
+					<result>Normalized</result>
+				</Outputs>
+			</email_normalizer>
+			<git_memo>
+				<Title>Git チートシート</Title>
+				<Description>Git チートシートを処理するためのツールです。</Description>
+				<Outputs>
+					<result>チートシート</result>
+				</Outputs>
+			</git_memo>
+			<json_diff>
+				<Title>JSON 差分</Title>
+				<Description>JSON 差分を処理するためのツールです。</Description>
+				<Fields>
+					<left>左 JSON</left>
+					<right>右 JSON</right>
+				</Fields>
+				<Outputs>
+					<result>Diff</result>
+				</Outputs>
+			</json_diff>
+			<json_minify>
+				<Title>JSON minify</Title>
+				<Description>JSON minifyを処理するためのツールです。</Description>
+				<Fields>
+					<json>JSON</json>
+				</Fields>
+				<Outputs>
+					<result>Minified JSON</result>
+				</Outputs>
+			</json_minify>
+			<json_to_csv>
+				<Title>JSON to CSV</Title>
+				<Description>JSON to CSVを処理するためのツールです。</Description>
+				<Fields>
+					<json>JSON</json>
+				</Fields>
+				<Outputs>
+					<result>CSV</result>
+				</Outputs>
+			</json_to_csv>
+			<json_viewer>
+				<Title>JSON 整形</Title>
+				<Description>JSON 整形を処理するためのツールです。</Description>
+				<Fields>
+					<json>JSON</json>
+				</Fields>
+				<Outputs>
+					<result>Formatted JSON</result>
+				</Outputs>
+			</json_viewer>
+			<random_port_generator>
+				<Title>Random port 生成</Title>
+				<Description>Random port 生成を処理するためのツールです。</Description>
+				<Fields>
+					<count>件数</count>
+					<min>最小</min>
+					<max>最大</max>
+				</Fields>
+				<Outputs>
+					<result>Ports</result>
+				</Outputs>
+			</random_port_generator>
+			<regex_memo>
+				<Title>Regex チートシート</Title>
+				<Description>Regex チートシートを処理するためのツールです。</Description>
+				<Outputs>
+					<result>チートシート</result>
+				</Outputs>
+			</regex_memo>
+			<regex_tester>
+				<Title>Regex Tester</Title>
+				<Description>Regex Testerを処理するためのツールです。</Description>
+				<Fields>
+					<pattern>パターン</pattern>
+					<text>サンプルテキスト</text>
+					<ignoreCase>大文字小文字を無視</ignoreCase>
+					<multiline>複数行</multiline>
+				</Fields>
+				<Outputs>
+					<result>一致</result>
+				</Outputs>
+			</regex_tester>
+			<sql_prettify>
+				<Title>SQL 整形</Title>
+				<Description>SQL 整形を処理するためのツールです。</Description>
+				<Fields>
+					<sql>SQL</sql>
+				</Fields>
+				<Outputs>
+					<result>Formatted SQL</result>
+				</Outputs>
+			</sql_prettify>
+			<xml_formatter>
+				<Title>XML 整形</Title>
+				<Description>XML 整形を処理するためのツールです。</Description>
+				<Fields>
+					<xml>XML</xml>
+				</Fields>
+				<Outputs>
+					<result>Formatted XML</result>
+				</Outputs>
+			</xml_formatter>
+			<yaml_viewer>
+				<Title>YAML 整形</Title>
+				<Description>YAML 整形を処理するためのツールです。</Description>
+				<Fields>
+					<yaml>YAML</yaml>
+				</Fields>
+				<Outputs>
+					<result>Formatted YAML</result>
+				</Outputs>
+			</yaml_viewer>
+			<bcrypt>
+				<Title>Bcrypt</Title>
+				<Description>Bcryptを処理するためのツールです。</Description>
+				<Fields>
+					<text>テキスト</text>
+					<hash>比較するハッシュ</hash>
+					<rounds>ラウンド</rounds>
+					<mode>モード</mode>
+				</Fields>
+				<Options>
+					<mode>
+						<Hash>ハッシュ</Hash>
+						<Compare>比較</Compare>
+					</mode>
+				</Options>
+				<Outputs>
+					<result>結果</result>
+				</Outputs>
+			</bcrypt>
+			<bip39_generator>
+				<Title>BIP39 passphrase 生成</Title>
+				<Description>BIP39 passphrase 生成を処理するためのツールです。</Description>
+				<Fields>
+					<words>単語数</words>
+					<passphrase>パスフレーズ</passphrase>
+				</Fields>
+				<Outputs>
+					<result>Mnemonic and seed</result>
+				</Outputs>
+			</bip39_generator>
+			<encryption>
+				<Title>テキスト暗号化/復号</Title>
+				<Description>テキスト暗号化/復号を処理するためのツールです。</Description>
+				<Fields>
+					<text>入力</text>
+					<password>パスワード</password>
+					<algorithm>アルゴリズム</algorithm>
+					<mode>モード</mode>
+				</Fields>
+				<Options>
+					<algorithm>
+						<AES>AES</AES>
+						<TripleDES>TripleDES</TripleDES>
+					</algorithm>
+					<mode>
+						<Encrypt>Encrypt</Encrypt>
+						<Decrypt>Decrypt</Decrypt>
+					</mode>
+				</Options>
+				<Outputs>
+					<result>結果</result>
+				</Outputs>
+			</encryption>
+			<hash_text>
+				<Title>Hash テキスト</Title>
+				<Description>Hash テキストを処理するためのツールです。</Description>
+				<Fields>
+					<text>テキスト</text>
+					<algorithm>アルゴリズム</algorithm>
+				</Fields>
+				<Options>
+					<algorithm>
+						<MD5>MD5</MD5>
+						<SHA1>SHA1</SHA1>
+						<SHA224>SHA224</SHA224>
+						<SHA256>SHA256</SHA256>
+						<SHA384>SHA384</SHA384>
+						<SHA512>SHA512</SHA512>
+						<SHA3_256>SHA3-256</SHA3_256>
+						<SHA3_512>SHA3-512</SHA3_512>
+						<RIPEMD160>RIPEMD160</RIPEMD160>
+					</algorithm>
+				</Options>
+				<Outputs>
+					<result>Digest</result>
+				</Outputs>
+			</hash_text>
+			<hmac_generator>
+				<Title>Hmac 生成</Title>
+				<Description>Hmac 生成を処理するためのツールです。</Description>
+				<Fields>
+					<text>メッセージ</text>
+					<key>秘密鍵</key>
+					<algorithm>アルゴリズム</algorithm>
+				</Fields>
+				<Options>
+					<algorithm>
+						<MD5>MD5</MD5>
+						<SHA1>SHA1</SHA1>
+						<SHA256>SHA256</SHA256>
+						<SHA384>SHA384</SHA384>
+						<SHA512>SHA512</SHA512>
+						<SHA3_256>SHA3-256</SHA3_256>
+						<RIPEMD160>RIPEMD160</RIPEMD160>
+					</algorithm>
+				</Options>
+				<Outputs>
+					<result>HMAC</result>
+				</Outputs>
+			</hmac_generator>
+			<password_strength_analyser>
+				<Title>パスワード strength 分析</Title>
+				<Description>パスワード strength 分析を処理するためのツールです。</Description>
+				<Fields>
+					<password>パスワード</password>
+				</Fields>
+				<Outputs>
+					<result>分析</result>
+				</Outputs>
+			</password_strength_analyser>
+			<pdf_signature_checker>
+				<Title>PDF signature チェック</Title>
+				<Description>PDF signature チェックを処理するためのツールです。</Description>
+				<Fields>
+					<file>PDF ファイル</file>
+				</Fields>
+				<Outputs>
+					<result>Signature details</result>
+				</Outputs>
+			</pdf_signature_checker>
+			<rsa_key_pair_generator>
+				<Title>RSA key pair 生成</Title>
+				<Description>RSA key pair 生成を処理するためのツールです。</Description>
+				<Fields>
+					<size>鍵サイズ</size>
+				</Fields>
+				<Outputs>
+					<result>PEM keys</result>
+				</Outputs>
+			</rsa_key_pair_generator>
+			<token_generator>
+				<Title>Token 生成</Title>
+				<Description>Token 生成を処理するためのツールです。</Description>
+				<Fields>
+					<length>長さ</length>
+					<upper>大文字</upper>
+					<lower>小文字</lower>
+					<numbers>数字</numbers>
+					<symbols>記号</symbols>
+				</Fields>
+				<Outputs>
+					<result>Token</result>
+				</Outputs>
+			</token_generator>
+			<ulid_generator>
+				<Title>ULID 生成</Title>
+				<Description>ULID 生成を処理するためのツールです。</Description>
+				<Fields>
+					<count>件数</count>
+				</Fields>
+				<Outputs>
+					<result>ULIDs</result>
+				</Outputs>
+			</ulid_generator>
+			<uuid_generator>
+				<Title>UUIDs 生成</Title>
+				<Description>UUIDs 生成を処理するためのツールです。</Description>
+				<Fields>
+					<count>件数</count>
+					<uppercase>大文字</uppercase>
+				</Fields>
+				<Outputs>
+					<result>UUIDs</result>
+				</Outputs>
+			</uuid_generator>
+			<basic_auth_generator>
+				<Title>Basic auth 生成</Title>
+				<Description>Basic auth 生成を処理するためのツールです。</Description>
+				<Fields>
+					<username>ユーザー名</username>
+					<password>パスワード</password>
+				</Fields>
+				<Outputs>
+					<result>ヘッダー</result>
+				</Outputs>
+			</basic_auth_generator>
+			<device_information>
+				<Title>Device 情報</Title>
+				<Description>Device 情報を処理するためのツールです。</Description>
+				<Outputs>
+					<result>デバイス情報</result>
+				</Outputs>
+			</device_information>
+			<html_entities>
+				<Title>Escape HTML entities</Title>
+				<Description>Escape HTML entitiesを処理するためのツールです。</Description>
+				<Fields>
+					<text>入力</text>
+					<mode>モード</mode>
+				</Fields>
+				<Options>
+					<mode>
+						<Escape>エスケープ</Escape>
+						<Unescape>アンエスケープ</Unescape>
+					</mode>
+				</Options>
+				<Outputs>
+					<result>結果</result>
+				</Outputs>
+			</html_entities>
+			<html_wysiwyg_editor>
+				<Title>HTML WYSIWYG editor</Title>
+				<Description>HTML WYSIWYG editorを処理するためのツールです。</Description>
+				<Fields>
+					<content>内容</content>
+					<mode>ブロック種別</mode>
+				</Fields>
+				<Options>
+					<mode>
+						<Paragraphs>段落</Paragraphs>
+						<Unordered_list>箇条書き</Unordered_list>
+						<Ordered_list>番号付きリスト</Ordered_list>
+						<Raw_HTML_preview>生 HTML プレビュー</Raw_HTML_preview>
+					</mode>
+				</Options>
+				<Outputs>
+					<result>HTML source</result>
+				</Outputs>
+			</html_wysiwyg_editor>
+			<http_status_codes>
+				<Title>HTTP ステータスコード</Title>
+				<Description>HTTP ステータスコードを処理するためのツールです。</Description>
+				<Fields>
+					<query>検索</query>
+				</Fields>
+				<Outputs>
+					<result>Status codes</result>
+				</Outputs>
+			</http_status_codes>
+			<jwt_parser>
+				<Title>JWT 解析</Title>
+				<Description>JWT 解析を処理するためのツールです。</Description>
+				<Fields>
+					<jwt>JWT</jwt>
+				</Fields>
+				<Outputs>
+					<result>Decoded JWT</result>
+				</Outputs>
+			</jwt_parser>
+			<keycode_info>
+				<Title>Keycode info</Title>
+				<Description>Keycode infoを処理するためのツールです。</Description>
+				<Outputs>
+					<result>結果</result>
+				</Outputs>
+			</keycode_info>
+			<meta_tag_generator>
+				<Title>Open graph meta 生成</Title>
+				<Description>Open graph meta 生成を処理するためのツールです。</Description>
+				<Fields>
+					<title>タイトル</title>
+					<description>説明</description>
+					<url>URL</url>
+					<image>画像 URL</image>
+					<site>サイト名</site>
+					<type>種類</type>
+				</Fields>
+				<Options>
+					<type>
+						<website>website</website>
+						<article>article</article>
+						<profile>profile</profile>
+						<book>book</book>
+						<music_song>music.song</music_song>
+						<video_movie>video.movie</video_movie>
+					</type>
+				</Options>
+				<Outputs>
+					<result>Meta tags</result>
+				</Outputs>
+			</meta_tag_generator>
+			<mime_types>
+				<Title>MIME types</Title>
+				<Description>MIME typesを処理するためのツールです。</Description>
+				<Fields>
+					<query>MIME タイプまたは拡張子</query>
+				</Fields>
+				<Outputs>
+					<result>一致</result>
+				</Outputs>
+			</mime_types>
+			<otp_code_generator_and_validator>
+				<Title>OTP code 生成</Title>
+				<Description>OTP code 生成を処理するためのツールです。</Description>
+				<Fields>
+					<secret>シークレット (Base32)</secret>
+					<digits>桁数</digits>
+					<period>周期秒</period>
+					<code>検証コード</code>
+				</Fields>
+				<Outputs>
+					<result>OTP</result>
+				</Outputs>
+			</otp_code_generator_and_validator>
+			<safelink_decoder>
+				<Title>Outlook Safelink decoder</Title>
+				<Description>Outlook Safelink decoderを処理するためのツールです。</Description>
+				<Fields>
+					<url>SafeLink URL</url>
+				</Fields>
+				<Outputs>
+					<result>Decoded URL</result>
+				</Outputs>
+			</safelink_decoder>
+			<slugify_string>
+				<Title>Slugify 文字列</Title>
+				<Description>Slugify 文字列を処理するためのツールです。</Description>
+				<Fields>
+					<text>テキスト</text>
+					<lower>小文字</lower>
+				</Fields>
+				<Outputs>
+					<result>Slug</result>
+				</Outputs>
+			</slugify_string>
+			<url_encoder>
+				<Title>URL 形式文字列エンコード/デコード</Title>
+				<Description>URL 形式文字列エンコード/デコードを処理するためのツールです。</Description>
+				<Fields>
+					<text>入力</text>
+					<mode>モード</mode>
+				</Fields>
+				<Options>
+					<mode>
+						<Encode>エンコード</Encode>
+						<Decode>デコード</Decode>
+					</mode>
+				</Options>
+				<Outputs>
+					<result>結果</result>
+				</Outputs>
+			</url_encoder>
+			<url_parser>
+				<Title>URL 解析</Title>
+				<Description>URL 解析を処理するためのツールです。</Description>
+				<Fields>
+					<url>URL</url>
+				</Fields>
+				<Outputs>
+					<result>URL parts</result>
+				</Outputs>
+			</url_parser>
+			<user_agent_parser>
+				<Title>User-agent 解析</Title>
+				<Description>User-agent 解析を処理するためのツールです。</Description>
+				<Fields>
+					<userAgent>User-Agent</userAgent>
+				</Fields>
+				<Outputs>
+					<result>Parsed user-agent</result>
+				</Outputs>
+			</user_agent_parser>
+			<camera_recorder>
+				<Title>Camera 記録</Title>
+				<Description>Camera 記録を処理するためのツールです。</Description>
+				<Fields>
+					<index>カメラ番号</index>
+					<mode>モード</mode>
+					<seconds>録画秒数</seconds>
+					<save>動画の保存先</save>
+				</Fields>
+				<Options>
+					<mode>
+						<Snapshot>スナップショット</Snapshot>
+						<Record_AVI>AVI 録画</Record_AVI>
+					</mode>
+				</Options>
+				<Outputs>
+					<image>スナップショット</image>
+					<result>結果</result>
+				</Outputs>
+			</camera_recorder>
+			<qr_code_generator>
+				<Title>QR Code 生成</Title>
+				<Description>QR Code 生成を処理するためのツールです。</Description>
+				<Fields>
+					<text>テキスト</text>
+					<pixels>モジュールあたりのピクセル</pixels>
+				</Fields>
+				<Outputs>
+					<image>QR コード</image>
+					<result>ペイロード</result>
+				</Outputs>
+			</qr_code_generator>
+			<svg_placeholder_generator>
+				<Title>SVG placeholder 生成</Title>
+				<Description>SVG placeholder 生成を処理するためのツールです。</Description>
+				<Fields>
+					<width>幅</width>
+					<height>高さ</height>
+					<text>テキスト</text>
+					<bg>背景</bg>
+					<fg>前景</fg>
+				</Fields>
+				<Outputs>
+					<result>SVG</result>
+				</Outputs>
+			</svg_placeholder_generator>
+			<wifi_qr_code_generator>
+				<Title>WiFi QR Code 生成</Title>
+				<Description>WiFi QR Code 生成を処理するためのツールです。</Description>
+				<Fields>
+					<ssid>SSID</ssid>
+					<password>パスワード</password>
+					<auth>認証方式</auth>
+					<hidden>SSID を隠す</hidden>
+				</Fields>
+				<Options>
+					<auth>
+						<WPA>WPA</WPA>
+						<WEP>WEP</WEP>
+						<nopass>nopass</nopass>
+					</auth>
+				</Options>
+				<Outputs>
+					<image>QR コード</image>
+					<result>WiFi payload</result>
+				</Outputs>
+			</wifi_qr_code_generator>
+			<ipv4_address_converter>
+				<Title>IPv4 アドレス 変換</Title>
+				<Description>IPv4 アドレス 変換を処理するためのツールです。</Description>
+				<Fields>
+					<ip>IPv4 アドレス</ip>
+				</Fields>
+				<Outputs>
+					<result>結果</result>
+				</Outputs>
+			</ipv4_address_converter>
+			<ipv4_range_expander>
+				<Title>IPv4 range expander</Title>
+				<Description>IPv4 range expanderを処理するためのツールです。</Description>
+				<Fields>
+					<start>開始 IPv4</start>
+					<end>終了 IPv4</end>
+				</Fields>
+				<Outputs>
+					<result>CIDR ranges</result>
+				</Outputs>
+			</ipv4_range_expander>
+			<ipv4_subnet_calculator>
+				<Title>IPv4 subnet 計算</Title>
+				<Description>IPv4 subnet 計算を処理するためのツールです。</Description>
+				<Fields>
+					<cidr>CIDR</cidr>
+				</Fields>
+				<Outputs>
+					<result>Subnet</result>
+				</Outputs>
+			</ipv4_subnet_calculator>
+			<ipv6_ula_generator>
+				<Title>IPv6 ULA 生成</Title>
+				<Description>IPv6 ULA 生成を処理するためのツールです。</Description>
+				<Fields>
+					<count>件数</count>
+				</Fields>
+				<Outputs>
+					<result>ULA prefixes</result>
+				</Outputs>
+			</ipv6_ula_generator>
+			<mac_address_generator>
+				<Title>MAC アドレス 生成</Title>
+				<Description>MAC アドレス 生成を処理するためのツールです。</Description>
+				<Fields>
+					<count>件数</count>
+					<prefix>接頭辞</prefix>
+					<uppercase>大文字</uppercase>
+				</Fields>
+				<Outputs>
+					<result>MAC addresses</result>
+				</Outputs>
+			</mac_address_generator>
+			<mac_address_lookup>
+				<Title>MAC アドレス 検索</Title>
+				<Description>MAC アドレス 検索を処理するためのツールです。</Description>
+				<Fields>
+					<mac>MAC アドレス</mac>
+				</Fields>
+				<Outputs>
+					<result>ベンダー</result>
+				</Outputs>
+			</mac_address_lookup>
+			<eta_calculator>
+				<Title>ETA 計算</Title>
+				<Description>ETA 計算を処理するためのツールです。</Description>
+				<Fields>
+					<done>完了</done>
+					<total>合計</total>
+					<rate>毎秒単位</rate>
+				</Fields>
+				<Outputs>
+					<result>ETA</result>
+				</Outputs>
+			</eta_calculator>
+			<math_evaluator>
+				<Title>Math evaluator</Title>
+				<Description>Math evaluatorを処理するためのツールです。</Description>
+				<Fields>
+					<expression>式</expression>
+				</Fields>
+				<Outputs>
+					<result>結果</result>
+				</Outputs>
+			</math_evaluator>
+			<percentage_calculator>
+				<Title>Percentage 計算</Title>
+				<Description>Percentage 計算を処理するためのツールです。</Description>
+				<Fields>
+					<a>値 A</a>
+					<b>値 B</b>
+				</Fields>
+				<Outputs>
+					<result>結果</result>
+				</Outputs>
+			</percentage_calculator>
+			<benchmark_builder>
+				<Title>Benchmark builder</Title>
+				<Description>Benchmark builderを処理するためのツールです。</Description>
+				<Fields>
+					<iterations>反復回数</iterations>
+					<task>タスク</task>
+				</Fields>
+				<Options>
+					<task>
+						<String_concat>String concat</String_concat>
+						<StringBuilder>StringBuilder</StringBuilder>
+						<Random_numbers>Random numbers</Random_numbers>
+						<SHA256_hash>SHA256 hash</SHA256_hash>
+					</task>
+				</Options>
+				<Outputs>
+					<result>Benchmark</result>
+				</Outputs>
+			</benchmark_builder>
+			<chronometer>
+				<Title>Chronometer</Title>
+				<Description>Chronometerを処理するためのツールです。</Description>
+				<Fields>
+					<start>開始時刻</start>
+					<end>終了時刻</end>
+				</Fields>
+				<Outputs>
+					<result>期間</result>
+				</Outputs>
+			</chronometer>
+			<ascii_text_drawer>
+				<Title>ASCII アートテキスト生成</Title>
+				<Description>ASCII アートテキスト生成を処理するためのツールです。</Description>
+				<Fields>
+					<text>テキスト</text>
+					<font>フォント</font>
+				</Fields>
+				<Options>
+					<font>
+						<Standard>Standard</Standard>
+						<Slant>Slant</Slant>
+						<Small>Small</Small>
+						<Big>Big</Big>
+					</font>
+				</Options>
+				<Outputs>
+					<result>ASCII art</result>
+				</Outputs>
+			</ascii_text_drawer>
+			<emoji_picker>
+				<Title>Emoji 選択</Title>
+				<Description>Emoji 選択を処理するためのツールです。</Description>
+				<Fields>
+					<query>検索</query>
+				</Fields>
+				<Outputs>
+					<result>Emojis</result>
+				</Outputs>
+			</emoji_picker>
+			<lorem_ipsum_generator>
+				<Title>Lorem ipsum 生成</Title>
+				<Description>Lorem ipsum 生成を処理するためのツールです。</Description>
+				<Fields>
+					<paragraphs>段落</paragraphs>
+				</Fields>
+				<Outputs>
+					<result>Lorem ipsum</result>
+				</Outputs>
+			</lorem_ipsum_generator>
+			<numeronym_generator>
+				<Title>Numeronym 生成</Title>
+				<Description>Numeronym 生成を処理するためのツールです。</Description>
+				<Fields>
+					<text>単語</text>
+				</Fields>
+				<Outputs>
+					<result>Numeronyms</result>
+				</Outputs>
+			</numeronym_generator>
+			<string_obfuscator>
+				<Title>文字列 難読化</Title>
+				<Description>文字列 難読化を処理するためのツールです。</Description>
+				<Fields>
+					<text>テキスト</text>
+					<keepStart>先頭を保持</keepStart>
+					<keepEnd>末尾を保持</keepEnd>
+					<mask>マスク</mask>
+				</Fields>
+				<Outputs>
+					<result>Obfuscated</result>
+				</Outputs>
+			</string_obfuscator>
+			<text_diff>
+				<Title>テキスト 差分</Title>
+				<Description>テキスト 差分を処理するためのツールです。</Description>
+				<Fields>
+					<left>左テキスト</left>
+					<right>右テキスト</right>
+				</Fields>
+				<Outputs>
+					<result>Diff</result>
+				</Outputs>
+			</text_diff>
+			<text_statistics>
+				<Title>テキスト 統計</Title>
+				<Description>テキスト 統計を処理するためのツールです。</Description>
+				<Fields>
+					<text>テキスト</text>
+				</Fields>
+				<Outputs>
+					<result>統計</result>
+				</Outputs>
+			</text_statistics>
+			<iban_validator_and_parser>
+				<Title>IBAN validator and 解析</Title>
+				<Description>IBAN validator and 解析を処理するためのツールです。</Description>
+				<Fields>
+					<iban>IBAN</iban>
+				</Fields>
+				<Outputs>
+					<result>IBAN</result>
+				</Outputs>
+			</iban_validator_and_parser>
+			<phone_parser_and_formatter>
+				<Title>Phone 解析 and 整形</Title>
+				<Description>Phone 解析 and 整形を処理するためのツールです。</Description>
+				<Fields>
+					<phone>電話番号</phone>
+					<region>既定の地域</region>
+				</Fields>
+				<Outputs>
+					<result>Phone</result>
+				</Outputs>
+			</phone_parser_and_formatter>
+		</Tools>
+	</ToolboxTools>
+</Localization>

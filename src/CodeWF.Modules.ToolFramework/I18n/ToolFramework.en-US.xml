@@ -1,0 +1,1127 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<Localization language="English" description="English" cultureName="en-US">
+	<ToolboxTools>
+		<Common>
+			<Run>Run</Run>
+			<Browse>Browse</Browse>
+			<Copy>Copy</Copy>
+			<OpenFile>Open file</OpenFile>
+			<SaveFile>Save file</SaveFile>
+			<MissingToolId>Missing tool id.</MissingToolId>
+			<ToolNotRegistered>Tool '{0}' is not registered.</ToolNotRegistered>
+		</Common>
+		<Groups>
+			<Security>Security</Security>
+			<Web>Web</Web>
+			<Media>Media</Media>
+			<Network>Network</Network>
+			<Math>Math</Math>
+			<Measurement>Measurement</Measurement>
+			<Text>Text</Text>
+			<Data>Data</Data>
+		</Groups>
+		<Tools>
+			<base64_file_converter>
+				<Title>Base64 file converter</Title>
+				<Description>Convert a file to base64 or decode base64 into a file.</Description>
+				<Fields>
+					<file>Input file</file>
+					<base64>Base64 input</base64>
+					<save>Save decoded file as</save>
+					<mode>Mode</mode>
+				</Fields>
+				<Options>
+					<mode>
+						<File_to_Base64>File to Base64</File_to_Base64>
+						<Base64_to_File>Base64 to File</Base64_to_File>
+					</mode>
+				</Options>
+				<Outputs>
+					<result>Result</result>
+				</Outputs>
+			</base64_file_converter>
+			<base64_string_converter>
+				<Title>Base64 string encoder/decoder</Title>
+				<Description>Encode and decode strings into base64, including URL-safe base64.</Description>
+				<Fields>
+					<text>Input</text>
+					<urlSafe>URL safe</urlSafe>
+					<mode>Mode</mode>
+				</Fields>
+				<Options>
+					<mode>
+						<Encode>Encode</Encode>
+						<Decode>Decode</Decode>
+					</mode>
+				</Options>
+				<Outputs>
+					<result>Result</result>
+				</Outputs>
+			</base64_string_converter>
+			<case_converter>
+				<Title>Case converter</Title>
+				<Description>Transform text between common naming conventions.</Description>
+				<Fields>
+					<text>Text</text>
+				</Fields>
+				<Outputs>
+					<result>Result</result>
+				</Outputs>
+			</case_converter>
+			<color_converter>
+				<Title>Color converter</Title>
+				<Description>Convert color between hex, RGB, HSL and known CSS names.</Description>
+				<Fields>
+					<color>Color</color>
+				</Fields>
+				<Outputs>
+					<result>Result</result>
+				</Outputs>
+			</color_converter>
+			<date_time_converter>
+				<Title>Date-time converter</Title>
+				<Description>Convert date and time into ISO, RFC, timestamp, Mongo ObjectId and Excel formats.</Description>
+				<Fields>
+					<date>Date</date>
+					<format>Input format</format>
+				</Fields>
+				<Placeholders>
+					<date>Leave empty for current time</date>
+				</Placeholders>
+				<Options>
+					<format>
+						<Auto>Auto</Auto>
+						<ISO_8601>ISO 8601</ISO_8601>
+						<Unix_timestamp>Unix timestamp</Unix_timestamp>
+						<Timestamp_milliseconds>Timestamp milliseconds</Timestamp_milliseconds>
+						<RFC_1123_RFC_7231>RFC 1123/RFC 7231</RFC_1123_RFC_7231>
+						<Mongo_ObjectId>Mongo ObjectId</Mongo_ObjectId>
+						<Excel_date_time>Excel date/time</Excel_date_time>
+					</format>
+				</Options>
+				<Outputs>
+					<result>Converted formats</result>
+				</Outputs>
+			</date_time_converter>
+			<integer_base_converter>
+				<Title>Integer base converter</Title>
+				<Description>Convert a number between decimal, hexadecimal, binary, octal and base64.</Description>
+				<Fields>
+					<number>Number</number>
+					<fromBase>Input base</fromBase>
+					<toBase>Output base</toBase>
+				</Fields>
+				<Outputs>
+					<result>Result</result>
+				</Outputs>
+			</integer_base_converter>
+			<json_to_toml>
+				<Title>JSON to TOML</Title>
+				<Description>Parse and convert JSON to TOML.</Description>
+				<Fields>
+					<json>JSON</json>
+				</Fields>
+				<Outputs>
+					<result>TOML</result>
+				</Outputs>
+			</json_to_toml>
+			<json_to_xml>
+				<Title>JSON to XML</Title>
+				<Description>Convert JSON to XML.</Description>
+				<Fields>
+					<json>JSON</json>
+				</Fields>
+				<Outputs>
+					<result>XML</result>
+				</Outputs>
+			</json_to_xml>
+			<json_to_yaml_converter>
+				<Title>JSON to YAML converter</Title>
+				<Description>Convert JSON to YAML.</Description>
+				<Fields>
+					<json>JSON</json>
+				</Fields>
+				<Outputs>
+					<result>YAML</result>
+				</Outputs>
+			</json_to_yaml_converter>
+			<list_converter>
+				<Title>List converter</Title>
+				<Description>Apply sorting, reversing, prefix/suffix, casing and transpose operations to line-based data.</Description>
+				<Fields>
+					<list>List</list>
+					<prefix>Prefix</prefix>
+					<suffix>Suffix</suffix>
+					<truncate>Truncate length</truncate>
+					<operation>Operation</operation>
+				</Fields>
+				<Options>
+					<operation>
+						<None>None</None>
+						<Sort>Sort</Sort>
+						<Reverse>Reverse</Reverse>
+						<Lowercase>Lowercase</Lowercase>
+						<Uppercase>Uppercase</Uppercase>
+						<Transpose>Transpose</Transpose>
+						<Unique>Unique</Unique>
+					</operation>
+				</Options>
+				<Outputs>
+					<result>Result</result>
+				</Outputs>
+			</list_converter>
+			<markdown_to_html>
+				<Title>Markdown to HTML</Title>
+				<Description>Convert Markdown to HTML.</Description>
+				<Fields>
+					<markdown>Markdown</markdown>
+				</Fields>
+				<Outputs>
+					<result>HTML</result>
+				</Outputs>
+			</markdown_to_html>
+			<roman_numeral_converter>
+				<Title>Roman numeral converter</Title>
+				<Description>Convert Roman numerals to numbers and numbers to Roman numerals.</Description>
+				<Fields>
+					<value>Value</value>
+					<mode>Mode</mode>
+				</Fields>
+				<Options>
+					<mode>
+						<Number_to_Roman>Number to Roman</Number_to_Roman>
+						<Roman_to_Number>Roman to Number</Roman_to_Number>
+					</mode>
+				</Options>
+				<Outputs>
+					<result>Result</result>
+				</Outputs>
+			</roman_numeral_converter>
+			<temperature_converter>
+				<Title>Temperature converter</Title>
+				<Description>Convert Kelvin, Celsius, Fahrenheit, Rankine, Delisle, Newton, Reaumur and Romer.</Description>
+				<Fields>
+					<value>Value</value>
+					<unit>Unit</unit>
+				</Fields>
+				<Options>
+					<unit>
+						<Celsius>Celsius</Celsius>
+						<Kelvin>Kelvin</Kelvin>
+						<Fahrenheit>Fahrenheit</Fahrenheit>
+						<Rankine>Rankine</Rankine>
+						<Delisle>Delisle</Delisle>
+						<Newton>Newton</Newton>
+						<Reaumur>Reaumur</Reaumur>
+						<Romer>Romer</Romer>
+					</unit>
+				</Options>
+				<Outputs>
+					<result>Result</result>
+				</Outputs>
+			</temperature_converter>
+			<text_to_binary>
+				<Title>Text to ASCII binary</Title>
+				<Description>Convert text to its ASCII/UTF-8 binary representation and back.</Description>
+				<Fields>
+					<text>Input</text>
+					<mode>Mode</mode>
+				</Fields>
+				<Options>
+					<mode>
+						<Text_to_Binary>Text to Binary</Text_to_Binary>
+						<Binary_to_Text>Binary to Text</Binary_to_Text>
+					</mode>
+				</Options>
+				<Outputs>
+					<result>Result</result>
+				</Outputs>
+			</text_to_binary>
+			<text_to_nato_alphabet>
+				<Title>Text to NATO alphabet</Title>
+				<Description>Transform text into the NATO phonetic alphabet.</Description>
+				<Fields>
+					<text>Text</text>
+				</Fields>
+				<Outputs>
+					<result>Result</result>
+				</Outputs>
+			</text_to_nato_alphabet>
+			<text_to_unicode>
+				<Title>Text to Unicode</Title>
+				<Description>Convert text to Unicode escape sequences and back.</Description>
+				<Fields>
+					<text>Input</text>
+					<mode>Mode</mode>
+				</Fields>
+				<Options>
+					<mode>
+						<Text_to_Unicode>Text to Unicode</Text_to_Unicode>
+						<Unicode_to_Text>Unicode to Text</Unicode_to_Text>
+					</mode>
+				</Options>
+				<Outputs>
+					<result>Result</result>
+				</Outputs>
+			</text_to_unicode>
+			<toml_to_json>
+				<Title>TOML to JSON</Title>
+				<Description>Parse and convert TOML to JSON.</Description>
+				<Fields>
+					<toml>TOML</toml>
+				</Fields>
+				<Outputs>
+					<result>JSON</result>
+				</Outputs>
+			</toml_to_json>
+			<toml_to_yaml>
+				<Title>TOML to YAML</Title>
+				<Description>Parse and convert TOML to YAML.</Description>
+				<Fields>
+					<toml>TOML</toml>
+				</Fields>
+				<Outputs>
+					<result>YAML</result>
+				</Outputs>
+			</toml_to_yaml>
+			<xml_to_json>
+				<Title>XML to JSON</Title>
+				<Description>Convert XML to JSON.</Description>
+				<Fields>
+					<xml>XML</xml>
+				</Fields>
+				<Outputs>
+					<result>JSON</result>
+				</Outputs>
+			</xml_to_json>
+			<yaml_to_json_converter>
+				<Title>YAML to JSON converter</Title>
+				<Description>Convert YAML to JSON.</Description>
+				<Fields>
+					<yaml>YAML</yaml>
+				</Fields>
+				<Outputs>
+					<result>JSON</result>
+				</Outputs>
+			</yaml_to_json_converter>
+			<yaml_to_toml>
+				<Title>YAML to TOML</Title>
+				<Description>Parse and convert YAML to TOML.</Description>
+				<Fields>
+					<yaml>YAML</yaml>
+				</Fields>
+				<Outputs>
+					<result>TOML</result>
+				</Outputs>
+			</yaml_to_toml>
+			<chmod_calculator>
+				<Title>Chmod calculator</Title>
+				<Description>Compute chmod permissions and commands.</Description>
+				<Fields>
+					<ur>Owner read</ur>
+					<uw>Owner write</uw>
+					<ux>Owner execute</ux>
+					<gr>Group read</gr>
+					<gw>Group write</gw>
+					<gx>Group execute</gx>
+					<or>Others read</or>
+					<ow>Others write</ow>
+					<ox>Others execute</ox>
+				</Fields>
+				<Outputs>
+					<result>Result</result>
+				</Outputs>
+			</chmod_calculator>
+			<crontab_generator>
+				<Title>Crontab generator</Title>
+				<Description>Validate crontab expressions and generate a human-readable description.</Description>
+				<Fields>
+					<cron>Cron expression</cron>
+				</Fields>
+				<Outputs>
+					<result>Result</result>
+				</Outputs>
+			</crontab_generator>
+			<docker_run_to_docker_compose_converter>
+				<Title>Docker run to Docker compose converter</Title>
+				<Description>Transform docker run commands into docker-compose YAML.</Description>
+				<Fields>
+					<command>docker run command</command>
+				</Fields>
+				<Outputs>
+					<result>docker-compose.yml</result>
+				</Outputs>
+			</docker_run_to_docker_compose_converter>
+			<email_normalizer>
+				<Title>Email normalizer</Title>
+				<Description>Normalize email addresses for easier comparison and deduplication.</Description>
+				<Fields>
+					<emails>Email addresses</emails>
+				</Fields>
+				<Outputs>
+					<result>Normalized</result>
+				</Outputs>
+			</email_normalizer>
+			<git_memo>
+				<Title>Git cheatsheet</Title>
+				<Description>Quick access to common git commands.</Description>
+				<Outputs>
+					<result>Cheatsheet</result>
+				</Outputs>
+			</git_memo>
+			<json_diff>
+				<Title>JSON diff</Title>
+				<Description>Compare two JSON values and show line-level differences after formatting.</Description>
+				<Fields>
+					<left>Left JSON</left>
+					<right>Right JSON</right>
+				</Fields>
+				<Outputs>
+					<result>Diff</result>
+				</Outputs>
+			</json_diff>
+			<json_minify>
+				<Title>JSON minify</Title>
+				<Description>Minify JSON by removing unnecessary whitespace.</Description>
+				<Fields>
+					<json>JSON</json>
+				</Fields>
+				<Outputs>
+					<result>Minified JSON</result>
+				</Outputs>
+			</json_minify>
+			<json_to_csv>
+				<Title>JSON to CSV</Title>
+				<Description>Convert JSON arrays or objects to CSV with automatic header detection.</Description>
+				<Fields>
+					<json>JSON</json>
+				</Fields>
+				<Outputs>
+					<result>CSV</result>
+				</Outputs>
+			</json_to_csv>
+			<json_viewer>
+				<Title>JSON prettify and format</Title>
+				<Description>Prettify JSON into a readable format.</Description>
+				<Fields>
+					<json>JSON</json>
+				</Fields>
+				<Outputs>
+					<result>Formatted JSON</result>
+				</Outputs>
+			</json_viewer>
+			<random_port_generator>
+				<Title>Random port generator</Title>
+				<Description>Generate random ports outside the known-port range.</Description>
+				<Fields>
+					<count>Count</count>
+					<min>Min</min>
+					<max>Max</max>
+				</Fields>
+				<Outputs>
+					<result>Ports</result>
+				</Outputs>
+			</random_port_generator>
+			<regex_memo>
+				<Title>Regex cheatsheet</Title>
+				<Description>Regular expression cheatsheet.</Description>
+				<Outputs>
+					<result>Cheatsheet</result>
+				</Outputs>
+			</regex_memo>
+			<regex_tester>
+				<Title>Regex Tester</Title>
+				<Description>Test regular expressions with sample text.</Description>
+				<Fields>
+					<pattern>Pattern</pattern>
+					<text>Sample text</text>
+					<ignoreCase>Ignore case</ignoreCase>
+					<multiline>Multiline</multiline>
+				</Fields>
+				<Outputs>
+					<result>Matches</result>
+				</Outputs>
+			</regex_tester>
+			<sql_prettify>
+				<Title>SQL prettify and format</Title>
+				<Description>Format and prettify SQL queries.</Description>
+				<Fields>
+					<sql>SQL</sql>
+				</Fields>
+				<Outputs>
+					<result>Formatted SQL</result>
+				</Outputs>
+			</sql_prettify>
+			<xml_formatter>
+				<Title>XML formatter</Title>
+				<Description>Prettify XML into a readable format.</Description>
+				<Fields>
+					<xml>XML</xml>
+				</Fields>
+				<Outputs>
+					<result>Formatted XML</result>
+				</Outputs>
+			</xml_formatter>
+			<yaml_viewer>
+				<Title>YAML prettify and format</Title>
+				<Description>Prettify YAML into a readable format.</Description>
+				<Fields>
+					<yaml>YAML</yaml>
+				</Fields>
+				<Outputs>
+					<result>Formatted YAML</result>
+				</Outputs>
+			</yaml_viewer>
+			<bcrypt>
+				<Title>Bcrypt</Title>
+				<Description>Hash and compare text using bcrypt.</Description>
+				<Fields>
+					<text>Text</text>
+					<hash>Hash to compare</hash>
+					<rounds>Rounds</rounds>
+					<mode>Mode</mode>
+				</Fields>
+				<Options>
+					<mode>
+						<Hash>Hash</Hash>
+						<Compare>Compare</Compare>
+					</mode>
+				</Options>
+				<Outputs>
+					<result>Result</result>
+				</Outputs>
+			</bcrypt>
+			<bip39_generator>
+				<Title>BIP39 passphrase generator</Title>
+				<Description>Generate a BIP39 mnemonic and seed.</Description>
+				<Fields>
+					<words>Word count</words>
+					<passphrase>Passphrase</passphrase>
+				</Fields>
+				<Outputs>
+					<result>Mnemonic and seed</result>
+				</Outputs>
+			</bip39_generator>
+			<encryption>
+				<Title>Encrypt / decrypt text</Title>
+				<Description>Encrypt clear text and decrypt ciphertext using AES or TripleDES.</Description>
+				<Fields>
+					<text>Input</text>
+					<password>Password</password>
+					<algorithm>Algorithm</algorithm>
+					<mode>Mode</mode>
+				</Fields>
+				<Options>
+					<algorithm>
+						<AES>AES</AES>
+						<TripleDES>TripleDES</TripleDES>
+					</algorithm>
+					<mode>
+						<Encrypt>Encrypt</Encrypt>
+						<Decrypt>Decrypt</Decrypt>
+					</mode>
+				</Options>
+				<Outputs>
+					<result>Result</result>
+				</Outputs>
+			</encryption>
+			<hash_text>
+				<Title>Hash text</Title>
+				<Description>Hash a text string using MD5, SHA1, SHA2, SHA3 or RIPEMD160.</Description>
+				<Fields>
+					<text>Text</text>
+					<algorithm>Algorithm</algorithm>
+				</Fields>
+				<Options>
+					<algorithm>
+						<MD5>MD5</MD5>
+						<SHA1>SHA1</SHA1>
+						<SHA224>SHA224</SHA224>
+						<SHA256>SHA256</SHA256>
+						<SHA384>SHA384</SHA384>
+						<SHA512>SHA512</SHA512>
+						<SHA3_256>SHA3-256</SHA3_256>
+						<SHA3_512>SHA3-512</SHA3_512>
+						<RIPEMD160>RIPEMD160</RIPEMD160>
+					</algorithm>
+				</Options>
+				<Outputs>
+					<result>Digest</result>
+				</Outputs>
+			</hash_text>
+			<hmac_generator>
+				<Title>Hmac generator</Title>
+				<Description>Compute an HMAC with a secret key and selected hash function.</Description>
+				<Fields>
+					<text>Message</text>
+					<key>Secret key</key>
+					<algorithm>Algorithm</algorithm>
+				</Fields>
+				<Options>
+					<algorithm>
+						<MD5>MD5</MD5>
+						<SHA1>SHA1</SHA1>
+						<SHA256>SHA256</SHA256>
+						<SHA384>SHA384</SHA384>
+						<SHA512>SHA512</SHA512>
+						<SHA3_256>SHA3-256</SHA3_256>
+						<RIPEMD160>RIPEMD160</RIPEMD160>
+					</algorithm>
+				</Options>
+				<Outputs>
+					<result>HMAC</result>
+				</Outputs>
+			</hmac_generator>
+			<password_strength_analyser>
+				<Title>Password strength analyser</Title>
+				<Description>Estimate password strength, entropy and rough crack time.</Description>
+				<Fields>
+					<password>Password</password>
+				</Fields>
+				<Outputs>
+					<result>Analysis</result>
+				</Outputs>
+			</password_strength_analyser>
+			<pdf_signature_checker>
+				<Title>PDF signature checker</Title>
+				<Description>Inspect and verify embedded PDF signature containers when possible.</Description>
+				<Fields>
+					<file>PDF file</file>
+				</Fields>
+				<Outputs>
+					<result>Signature details</result>
+				</Outputs>
+			</pdf_signature_checker>
+			<rsa_key_pair_generator>
+				<Title>RSA key pair generator</Title>
+				<Description>Generate RSA private and public PEM key pairs.</Description>
+				<Fields>
+					<size>Key size</size>
+				</Fields>
+				<Outputs>
+					<result>PEM keys</result>
+				</Outputs>
+			</rsa_key_pair_generator>
+			<token_generator>
+				<Title>Token generator</Title>
+				<Description>Generate random strings with chosen character sets.</Description>
+				<Fields>
+					<length>Length</length>
+					<upper>Uppercase</upper>
+					<lower>Lowercase</lower>
+					<numbers>Numbers</numbers>
+					<symbols>Symbols</symbols>
+				</Fields>
+				<Outputs>
+					<result>Token</result>
+				</Outputs>
+			</token_generator>
+			<ulid_generator>
+				<Title>ULID generator</Title>
+				<Description>Generate Universally Unique Lexicographically Sortable Identifiers.</Description>
+				<Fields>
+					<count>Count</count>
+				</Fields>
+				<Outputs>
+					<result>ULIDs</result>
+				</Outputs>
+			</ulid_generator>
+			<uuid_generator>
+				<Title>UUIDs generator</Title>
+				<Description>Generate random UUID v4 identifiers.</Description>
+				<Fields>
+					<count>Count</count>
+					<uppercase>Uppercase</uppercase>
+				</Fields>
+				<Outputs>
+					<result>UUIDs</result>
+				</Outputs>
+			</uuid_generator>
+			<basic_auth_generator>
+				<Title>Basic auth generator</Title>
+				<Description>Generate a Basic Authorization header from username and password.</Description>
+				<Fields>
+					<username>Username</username>
+					<password>Password</password>
+				</Fields>
+				<Outputs>
+					<result>Header</result>
+				</Outputs>
+			</basic_auth_generator>
+			<device_information>
+				<Title>Device information</Title>
+				<Description>Get information about the current desktop runtime and system.</Description>
+				<Outputs>
+					<result>Device information</result>
+				</Outputs>
+			</device_information>
+			<html_entities>
+				<Title>Escape HTML entities</Title>
+				<Description>Escape or unescape HTML entities.</Description>
+				<Fields>
+					<text>Input</text>
+					<mode>Mode</mode>
+				</Fields>
+				<Options>
+					<mode>
+						<Escape>Escape</Escape>
+						<Unescape>Unescape</Unescape>
+					</mode>
+				</Options>
+				<Outputs>
+					<result>Result</result>
+				</Outputs>
+			</html_entities>
+			<html_wysiwyg_editor>
+				<Title>HTML WYSIWYG editor</Title>
+				<Description>Generate HTML from rich-text style content blocks.</Description>
+				<Fields>
+					<content>Content</content>
+					<mode>Block type</mode>
+				</Fields>
+				<Options>
+					<mode>
+						<Paragraphs>Paragraphs</Paragraphs>
+						<Unordered_list>Unordered list</Unordered_list>
+						<Ordered_list>Ordered list</Ordered_list>
+						<Raw_HTML_preview>Raw HTML preview</Raw_HTML_preview>
+					</mode>
+				</Options>
+				<Outputs>
+					<result>HTML source</result>
+				</Outputs>
+			</html_wysiwyg_editor>
+			<http_status_codes>
+				<Title>HTTP status codes</Title>
+				<Description>List and search HTTP status codes.</Description>
+				<Fields>
+					<query>Search</query>
+				</Fields>
+				<Outputs>
+					<result>Status codes</result>
+				</Outputs>
+			</http_status_codes>
+			<jwt_parser>
+				<Title>JWT parser</Title>
+				<Description>Parse and decode JSON Web Tokens.</Description>
+				<Fields>
+					<jwt>JWT</jwt>
+				</Fields>
+				<Outputs>
+					<result>Decoded JWT</result>
+				</Outputs>
+			</jwt_parser>
+			<keycode_info>
+				<Title>Keycode info</Title>
+				<Description>Focus this view and press a key to inspect key information.</Description>
+				<Outputs>
+					<result>Result</result>
+				</Outputs>
+			</keycode_info>
+			<meta_tag_generator>
+				<Title>Open graph meta generator</Title>
+				<Description>Generate Open Graph and Twitter meta tags.</Description>
+				<Fields>
+					<title>Title</title>
+					<description>Description</description>
+					<url>URL</url>
+					<image>Image URL</image>
+					<site>Site name</site>
+					<type>Type</type>
+				</Fields>
+				<Options>
+					<type>
+						<website>website</website>
+						<article>article</article>
+						<profile>profile</profile>
+						<book>book</book>
+						<music_song>music.song</music_song>
+						<video_movie>video.movie</video_movie>
+					</type>
+				</Options>
+				<Outputs>
+					<result>Meta tags</result>
+				</Outputs>
+			</meta_tag_generator>
+			<mime_types>
+				<Title>MIME types</Title>
+				<Description>Convert MIME types to file extensions and vice versa.</Description>
+				<Fields>
+					<query>MIME type or extension</query>
+				</Fields>
+				<Outputs>
+					<result>Matches</result>
+				</Outputs>
+			</mime_types>
+			<otp_code_generator_and_validator>
+				<Title>OTP code generator</Title>
+				<Description>Generate and validate time-based one-time passwords.</Description>
+				<Fields>
+					<secret>Secret (Base32)</secret>
+					<digits>Digits</digits>
+					<period>Period seconds</period>
+					<code>Code to validate</code>
+				</Fields>
+				<Outputs>
+					<result>OTP</result>
+				</Outputs>
+			</otp_code_generator_and_validator>
+			<safelink_decoder>
+				<Title>Outlook Safelink decoder</Title>
+				<Description>Decode Outlook SafeLink URLs.</Description>
+				<Fields>
+					<url>SafeLink URL</url>
+				</Fields>
+				<Outputs>
+					<result>Decoded URL</result>
+				</Outputs>
+			</safelink_decoder>
+			<slugify_string>
+				<Title>Slugify string</Title>
+				<Description>Make a string URL, filename and id safe.</Description>
+				<Fields>
+					<text>Text</text>
+					<lower>Lowercase</lower>
+				</Fields>
+				<Outputs>
+					<result>Slug</result>
+				</Outputs>
+			</slugify_string>
+			<url_encoder>
+				<Title>Encode/decode URL-formatted strings</Title>
+				<Description>Encode text to percent-encoded format or decode from it.</Description>
+				<Fields>
+					<text>Input</text>
+					<mode>Mode</mode>
+				</Fields>
+				<Options>
+					<mode>
+						<Encode>Encode</Encode>
+						<Decode>Decode</Decode>
+					</mode>
+				</Options>
+				<Outputs>
+					<result>Result</result>
+				</Outputs>
+			</url_encoder>
+			<url_parser>
+				<Title>URL parser</Title>
+				<Description>Parse a URL into its constituent parts.</Description>
+				<Fields>
+					<url>URL</url>
+				</Fields>
+				<Outputs>
+					<result>URL parts</result>
+				</Outputs>
+			</url_parser>
+			<user_agent_parser>
+				<Title>User-agent parser</Title>
+				<Description>Parse browser, engine, OS, CPU and device data from a user-agent string.</Description>
+				<Fields>
+					<userAgent>User-agent</userAgent>
+				</Fields>
+				<Outputs>
+					<result>Parsed user-agent</result>
+				</Outputs>
+			</user_agent_parser>
+			<camera_recorder>
+				<Title>Camera recorder</Title>
+				<Description>Capture a still image or short video from a local camera.</Description>
+				<Fields>
+					<index>Camera index</index>
+					<mode>Mode</mode>
+					<seconds>Record seconds</seconds>
+					<save>Save video as</save>
+				</Fields>
+				<Options>
+					<mode>
+						<Snapshot>Snapshot</Snapshot>
+						<Record_AVI>Record AVI</Record_AVI>
+					</mode>
+				</Options>
+				<Outputs>
+					<image>Snapshot</image>
+					<result>Result</result>
+				</Outputs>
+			</camera_recorder>
+			<qr_code_generator>
+				<Title>QR Code generator</Title>
+				<Description>Generate a QR code for text or URL.</Description>
+				<Fields>
+					<text>Text</text>
+					<pixels>Pixels per module</pixels>
+				</Fields>
+				<Outputs>
+					<image>QR Code</image>
+					<result>Payload</result>
+				</Outputs>
+			</qr_code_generator>
+			<svg_placeholder_generator>
+				<Title>SVG placeholder generator</Title>
+				<Description>Generate SVG placeholder images.</Description>
+				<Fields>
+					<width>Width</width>
+					<height>Height</height>
+					<text>Text</text>
+					<bg>Background</bg>
+					<fg>Foreground</fg>
+				</Fields>
+				<Outputs>
+					<result>SVG</result>
+				</Outputs>
+			</svg_placeholder_generator>
+			<wifi_qr_code_generator>
+				<Title>WiFi QR Code generator</Title>
+				<Description>Generate QR codes for quick WiFi connections.</Description>
+				<Fields>
+					<ssid>SSID</ssid>
+					<password>Password</password>
+					<auth>Authentication</auth>
+					<hidden>Hidden SSID</hidden>
+				</Fields>
+				<Options>
+					<auth>
+						<WPA>WPA</WPA>
+						<WEP>WEP</WEP>
+						<nopass>nopass</nopass>
+					</auth>
+				</Options>
+				<Outputs>
+					<image>QR Code</image>
+					<result>WiFi payload</result>
+				</Outputs>
+			</wifi_qr_code_generator>
+			<ipv4_address_converter>
+				<Title>IPv4 address converter</Title>
+				<Description>Convert an IPv4 address into decimal, binary, hexadecimal and IPv6-mapped forms.</Description>
+				<Fields>
+					<ip>IPv4 address</ip>
+				</Fields>
+				<Outputs>
+					<result>Result</result>
+				</Outputs>
+			</ipv4_address_converter>
+			<ipv4_range_expander>
+				<Title>IPv4 range expander</Title>
+				<Description>Calculate CIDR blocks covering an IPv4 start/end range.</Description>
+				<Fields>
+					<start>Start IPv4</start>
+					<end>End IPv4</end>
+				</Fields>
+				<Outputs>
+					<result>CIDR ranges</result>
+				</Outputs>
+			</ipv4_range_expander>
+			<ipv4_subnet_calculator>
+				<Title>IPv4 subnet calculator</Title>
+				<Description>Parse IPv4 CIDR blocks and show subnet details.</Description>
+				<Fields>
+					<cidr>CIDR</cidr>
+				</Fields>
+				<Outputs>
+					<result>Subnet</result>
+				</Outputs>
+			</ipv4_subnet_calculator>
+			<ipv6_ula_generator>
+				<Title>IPv6 ULA generator</Title>
+				<Description>Generate local IPv6 ULA prefixes according to RFC 4193.</Description>
+				<Fields>
+					<count>Count</count>
+				</Fields>
+				<Outputs>
+					<result>ULA prefixes</result>
+				</Outputs>
+			</ipv6_ula_generator>
+			<mac_address_generator>
+				<Title>MAC address generator</Title>
+				<Description>Generate MAC addresses with an optional prefix.</Description>
+				<Fields>
+					<count>Count</count>
+					<prefix>Prefix</prefix>
+					<uppercase>Uppercase</uppercase>
+				</Fields>
+				<Outputs>
+					<result>MAC addresses</result>
+				</Outputs>
+			</mac_address_generator>
+			<mac_address_lookup>
+				<Title>MAC address lookup</Title>
+				<Description>Find the vendor/manufacturer of a device by MAC address prefix.</Description>
+				<Fields>
+					<mac>MAC address</mac>
+				</Fields>
+				<Outputs>
+					<result>Vendor</result>
+				</Outputs>
+			</mac_address_lookup>
+			<eta_calculator>
+				<Title>ETA calculator</Title>
+				<Description>Estimate end time and duration from progress and rate.</Description>
+				<Fields>
+					<done>Done</done>
+					<total>Total</total>
+					<rate>Units per second</rate>
+				</Fields>
+				<Outputs>
+					<result>ETA</result>
+				</Outputs>
+			</eta_calculator>
+			<math_evaluator>
+				<Title>Math evaluator</Title>
+				<Description>Evaluate mathematical expressions with common functions.</Description>
+				<Fields>
+					<expression>Expression</expression>
+				</Fields>
+				<Outputs>
+					<result>Result</result>
+				</Outputs>
+			</math_evaluator>
+			<percentage_calculator>
+				<Title>Percentage calculator</Title>
+				<Description>Calculate percentages and percentage changes.</Description>
+				<Fields>
+					<a>Value A</a>
+					<b>Value B</b>
+				</Fields>
+				<Outputs>
+					<result>Result</result>
+				</Outputs>
+			</percentage_calculator>
+			<benchmark_builder>
+				<Title>Benchmark builder</Title>
+				<Description>Run simple managed-code loop benchmarks.</Description>
+				<Fields>
+					<iterations>Iterations</iterations>
+					<task>Task</task>
+				</Fields>
+				<Options>
+					<task>
+						<String_concat>String concat</String_concat>
+						<StringBuilder>StringBuilder</StringBuilder>
+						<Random_numbers>Random numbers</Random_numbers>
+						<SHA256_hash>SHA256 hash</SHA256_hash>
+					</task>
+				</Options>
+				<Outputs>
+					<result>Benchmark</result>
+				</Outputs>
+			</benchmark_builder>
+			<chronometer>
+				<Title>Chronometer</Title>
+				<Description>Measure elapsed time between two timestamps.</Description>
+				<Fields>
+					<start>Start time</start>
+					<end>End time</end>
+				</Fields>
+				<Outputs>
+					<result>Duration</result>
+				</Outputs>
+			</chronometer>
+			<ascii_text_drawer>
+				<Title>ASCII Art Text Generator</Title>
+				<Description>Create ASCII art text with Figlet fonts.</Description>
+				<Fields>
+					<text>Text</text>
+					<font>Font</font>
+				</Fields>
+				<Options>
+					<font>
+						<Standard>Standard</Standard>
+						<Slant>Slant</Slant>
+						<Small>Small</Small>
+						<Big>Big</Big>
+					</font>
+				</Options>
+				<Outputs>
+					<result>ASCII art</result>
+				</Outputs>
+			</ascii_text_drawer>
+			<emoji_picker>
+				<Title>Emoji picker</Title>
+				<Description>Search emojis and inspect Unicode code points.</Description>
+				<Fields>
+					<query>Search</query>
+				</Fields>
+				<Outputs>
+					<result>Emojis</result>
+				</Outputs>
+			</emoji_picker>
+			<lorem_ipsum_generator>
+				<Title>Lorem ipsum generator</Title>
+				<Description>Generate placeholder text.</Description>
+				<Fields>
+					<paragraphs>Paragraphs</paragraphs>
+				</Fields>
+				<Outputs>
+					<result>Lorem ipsum</result>
+				</Outputs>
+			</lorem_ipsum_generator>
+			<numeronym_generator>
+				<Title>Numeronym generator</Title>
+				<Description>Generate numeronyms like i18n and a11y.</Description>
+				<Fields>
+					<text>Words</text>
+				</Fields>
+				<Outputs>
+					<result>Numeronyms</result>
+				</Outputs>
+			</numeronym_generator>
+			<string_obfuscator>
+				<Title>String obfuscator</Title>
+				<Description>Obfuscate a secret while keeping it identifiable.</Description>
+				<Fields>
+					<text>Text</text>
+					<keepStart>Keep start</keepStart>
+					<keepEnd>Keep end</keepEnd>
+					<mask>Mask</mask>
+				</Fields>
+				<Outputs>
+					<result>Obfuscated</result>
+				</Outputs>
+			</string_obfuscator>
+			<text_diff>
+				<Title>Text diff</Title>
+				<Description>Compare two texts and show line-level differences.</Description>
+				<Fields>
+					<left>Left text</left>
+					<right>Right text</right>
+				</Fields>
+				<Outputs>
+					<result>Diff</result>
+				</Outputs>
+			</text_diff>
+			<text_statistics>
+				<Title>Text statistics</Title>
+				<Description>Count characters, words, lines and bytes.</Description>
+				<Fields>
+					<text>Text</text>
+				</Fields>
+				<Outputs>
+					<result>Statistics</result>
+				</Outputs>
+			</text_statistics>
+			<iban_validator_and_parser>
+				<Title>IBAN validator and parser</Title>
+				<Description>Validate and parse IBAN numbers.</Description>
+				<Fields>
+					<iban>IBAN</iban>
+				</Fields>
+				<Outputs>
+					<result>IBAN</result>
+				</Outputs>
+			</iban_validator_and_parser>
+			<phone_parser_and_formatter>
+				<Title>Phone parser and formatter</Title>
+				<Description>Parse, validate and format phone numbers.</Description>
+				<Fields>
+					<phone>Phone number</phone>
+					<region>Default region</region>
+				</Fields>
+				<Outputs>
+					<result>Phone</result>
+				</Outputs>
+			</phone_parser_and_formatter>
+		</Tools>
+	</ToolboxTools>
+</Localization>

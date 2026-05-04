@@ -42,7 +42,7 @@
             Content="{i18n:I18n {x:Static language:JsonToYamlView.Clear}}"
             CornerRadius="5" />
 
-        <TextBlock
+        <SelectableTextBlock
             Grid.Row="3"
             Grid.Column="0"
             Foreground="Red"
