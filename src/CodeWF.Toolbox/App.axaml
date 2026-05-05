@@ -12,9 +12,9 @@
 		<semi:SemiTheme Locale="zh-CN" />
 		<semi:AvaloniaEditSemiTheme />
 		<semi:ProDataGridSemiTheme />
-        <u-Semi:SemiTheme Locale="zh-CN"/>
+        <semi:UrsaSemiTheme Locale="zh-CN"/>
         <StyleInclude Source="../Styles/Index.axaml" />
-        <codewf:CodeWFTheme />
+        <codewf:MarkdownThemes TypographyTheme="Simple" />
     </prism:PrismApplication.Styles>
     <TrayIcon.Icons>
         <TrayIcons>

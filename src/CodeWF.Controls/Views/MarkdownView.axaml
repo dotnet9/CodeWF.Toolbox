@@ -5,7 +5,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="using:CodeWF.Controls.Views"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:md="https://github.com/whistyun/Markdown.Avalonia"
+    xmlns:md="https://codewf.com"
     d:DesignHeight="450"
     d:DesignWidth="800"
     mc:Ignorable="d">
@@ -13,17 +13,12 @@
         Padding="18 14"
         Background="{DynamicResource SemiGrey0}"
         ClipToBounds="True">
-        <md:MarkdownScrollViewer
+        <ScrollViewer
             HorizontalAlignment="Stretch"
             VerticalAlignment="Stretch"
-            Markdown="{CompiledBinding $parent[local:MarkdownView].Markdown}"
-            MarkdownStyleName="GithubLike"
-            SaveScrollValueWhenContentUpdated="True"
-            ScrollViewer.HorizontalScrollBarVisibility="Disabled"
-            ScrollViewer.VerticalScrollBarVisibility="Auto">
-            <md:MarkdownScrollViewer.Styles>
-                <StyleInclude Source="avares://CodeWF.Controls/Styles/Markdown.axaml" />
-            </md:MarkdownScrollViewer.Styles>
-        </md:MarkdownScrollViewer>
+            HorizontalScrollBarVisibility="Disabled"
+            VerticalScrollBarVisibility="Auto">
+            <md:MarkdownViewer Markdown="{CompiledBinding $parent[local:MarkdownView].Markdown}" />
+        </ScrollViewer>
     </Border>
 </UserControl>
