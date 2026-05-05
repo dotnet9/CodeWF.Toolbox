@@ -17,10 +17,10 @@ for %%p in (%platforms%) do (
     set "tfm="
     set "pubxml="
 
-    if "%%p"=="linux-x64" set "tfm=net10.0" & set "pubxml=FolderProfile_linux-x64.pubxml"
-    if "%%p"=="linux-arm64" set "tfm=net10.0" & set "pubxml=FolderProfile_linux-arm64.pubxml"
-    if "%%p"=="win-x64" set "tfm=net10.0-windows" & set "pubxml=FolderProfile_win-x64.pubxml"
-    if "%%p"=="win-x86" set "tfm=net10.0-windows" & set "pubxml=FolderProfile_win-x86.pubxml"
+    if "%%p"=="linux-x64" set "tfm=net11.0" & set "pubxml=FolderProfile_linux-x64.pubxml"
+    if "%%p"=="linux-arm64" set "tfm=net11.0" & set "pubxml=FolderProfile_linux-arm64.pubxml"
+    if "%%p"=="win-x64" set "tfm=net11.0-windows" & set "pubxml=FolderProfile_win-x64.pubxml"
+    if "%%p"=="win-x86" set "tfm=net11.0-windows" & set "pubxml=FolderProfile_win-x86.pubxml"
 
     echo ========================================
     echo Building %%p...

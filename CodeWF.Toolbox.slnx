@@ -95,6 +95,7 @@
     <File Path="global.json" />
     <File Path="publish.bat" />
     <File Path="README.zh-CN.md" />
+    <File Path="publish_win-x64.bat" />
     <File Path="README.md" />
     <File Path="docs/README.zh-CN.md" />
     <File Path="docs/README.md" />
