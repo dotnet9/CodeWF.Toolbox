@@ -15,7 +15,7 @@
 		<PackageReference Include="Microsoft.Data.Sqlite" />
 		<PackageReference Include="Prism.DryIoc.Avalonia" />
 		<PackageReference Include="CodeWF.Tools" />
-		<PackageReference Include="CodeWF.AvaloniaControls" />
+		<PackageReference Include="CodeWF.AvaloniaControls.Themes" />
 		<PackageReference Include="CodeWF.EventBus" />
 		<PackageReference Include="Lang.Avalonia.Xml" />
 	</ItemGroup>

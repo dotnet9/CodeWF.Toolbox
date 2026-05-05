@@ -6,7 +6,6 @@
     xmlns:language="clr-namespace:Localization"
     xmlns:prism="http://prismlibrary.com/"
     xmlns:semi="https://irihi.tech/semi"
-    xmlns:u-Semi="https://irihi.tech/ursa/themes/semi"
     xmlns:codewf="https://codewf.com">
     <prism:PrismApplication.Styles>
 		<semi:SemiTheme Locale="zh-CN" />
@@ -14,6 +13,7 @@
 		<semi:ProDataGridSemiTheme />
         <semi:UrsaSemiTheme Locale="zh-CN"/>
         <StyleInclude Source="../Styles/Index.axaml" />
+		<codewf:CodeWFTheme />
         <codewf:MarkdownThemes TypographyTheme="Simple" />
     </prism:PrismApplication.Styles>
     <TrayIcon.Icons>
