@@ -9,6 +9,6 @@
 
 	<ItemGroup>
 		<PackageReference Include="Avalonia" />
-		<PackageReference Include="CodeWF.Markdown.Themes" />
+		<PackageReference Include="CodeWF.Markdown.Lite.Themes" />
 	</ItemGroup>
 </Project>
