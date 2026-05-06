@@ -7,7 +7,6 @@ using Figgle.Fonts;
 using Markdig;
 using NBitcoin;
 using NUlid;
-using OpenCvSharp;
 using Org.BouncyCastle.Crypto;
 using Org.BouncyCastle.Crypto.Digests;
 using Org.BouncyCastle.Crypto.Macs;
@@ -1102,95 +1101,6 @@ public static partial class ToolAlgorithms
             $"OS: {client.OS.Family} {client.OS.Major}.{client.OS.Minor}.{client.OS.Patch}",
             $"Device: {client.Device.Family} {client.Device.Brand} {client.Device.Model}"));
         return Task.CompletedTask;
-    }
-
-    public static Task CameraAsync(ToolRunContext context, CancellationToken token)
-    {
-        try
-        {
-            return CameraCoreAsync(context, token);
-        }
-        catch (DllNotFoundException ex)
-        {
-            context.SetText("result", $"OpenCV native runtime is not available on this platform: {ex.Message}");
-            return Task.CompletedTask;
-        }
-        catch (TypeInitializationException ex) when (ex.InnerException is DllNotFoundException or BadImageFormatException)
-        {
-            context.SetText("result", $"OpenCV native runtime is not available on this platform: {ex.InnerException.Message}");
-            return Task.CompletedTask;
-        }
-    }
-
-    private static Task CameraCoreAsync(ToolRunContext context, CancellationToken token)
-    {
-        using var capture = new VideoCapture(context.Int("index"));
-        if (!capture.IsOpened())
-        {
-            context.SetText("result", "Unable to open the camera. Check the camera index and system permissions.");
-            return Task.CompletedTask;
-        }
-
-        using var frame = new Mat();
-        capture.Read(frame);
-        if (frame.Empty())
-        {
-            context.SetText("result", "Camera opened but no frame was captured.");
-            return Task.CompletedTask;
-        }
-
-        if (context.Option("mode") == "Record AVI")
-        {
-            var savePath = context.Text("save");
-            if (string.IsNullOrWhiteSpace(savePath))
-            {
-                savePath = Path.Combine(GetDefaultVideoFolder(), $"codewf-camera-{DateTime.Now:yyyyMMdd-HHmmss}.avi");
-            }
-
-            var fps = capture.Fps;
-            if (fps <= 0 || double.IsNaN(fps))
-            {
-                fps = 30;
-            }
-
-            var seconds = Math.Clamp(context.Int("seconds"), 1, 300);
-            using var writer = new VideoWriter(savePath, FourCC.MJPG, fps, new OpenCvSharp.Size(frame.Width, frame.Height));
-            var frameCount = (int)Math.Round(fps * seconds);
-            for (var i = 0; i < frameCount && !token.IsCancellationRequested; i++)
-            {
-                if (frame.Empty())
-                {
-                    break;
-                }
-
-                writer.Write(frame);
-                capture.Read(frame);
-            }
-
-            context.SetText("result", $"Recorded {seconds} second(s) to {savePath}");
-            return Task.CompletedTask;
-        }
-
-        Cv2.ImEncode(".png", frame, out var bytes);
-        context.SetImage("image", BytesToBitmap(bytes));
-        context.SetText("result", $"Captured {frame.Width}x{frame.Height} snapshot from camera index {context.Int("index")}.");
-        return Task.CompletedTask;
-    }
-
-    private static string GetDefaultVideoFolder()
-    {
-        var folder = Environment.GetFolderPath(Environment.SpecialFolder.MyVideos);
-        if (string.IsNullOrWhiteSpace(folder))
-        {
-            folder = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-        }
-
-        if (string.IsNullOrWhiteSpace(folder))
-        {
-            folder = Path.GetTempPath();
-        }
-
-        return folder;
     }
 
     public static Task QrCodeAsync(ToolRunContext context, CancellationToken token)

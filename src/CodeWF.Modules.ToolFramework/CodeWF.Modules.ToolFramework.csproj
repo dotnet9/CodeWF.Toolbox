@@ -22,9 +22,6 @@
 		<PackageReference Include="Markdig" />
 		<PackageReference Include="NBitcoin" />
 		<PackageReference Include="NUlid" />
-		<PackageReference Include="OpenCvSharp4" />
-		<PackageReference Include="OpenCvSharp4.official.runtime.linux-x64" />
-		<PackageReference Include="OpenCvSharp4.runtime.win" />
 		<PackageReference Include="Otp.NET" />
 		<PackageReference Include="libphonenumber-csharp" />
 		<PackageReference Include="QRCoder" />
