@@ -1,11 +1,10 @@
-<u:UrsaWindow
+<codewf:CodeWFWindow
     x:Class="CodeWF.Toolbox.Views.SettingView"
     xmlns="https://github.com/avaloniaui"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:core="clr-namespace:CodeWF.Core;assembly=CodeWF.Core"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:u="https://irihi.tech/ursa"
     xmlns:prism="http://prismlibrary.com/"
     xmlns:codewf="https://codewf.com"
     xmlns:language="clr-namespace:Localization"
@@ -13,27 +12,27 @@
     prism:ViewModelLocator.AutoWireViewModel="True"
     Width="720" WindowStartupLocation="CenterOwner"
     Height="560"
+    Icon="/Assets/logo.ico"
+    Background="{DynamicResource SemiGrey0}"
+    TitleBarHeight="42"
+    TitleBarBackground="{DynamicResource SemiGrey0}"
+    TitleBarBorderBrush="{DynamicResource SemiGrey2}"
+    TitleBarForeground="{DynamicResource SemiGrey9}"
+    WindowCornerRadius="8"
     d:DesignHeight="600"
     d:DesignWidth="500"
-    mc:Ignorable="d" Padding="12"
+    mc:Ignorable="d"
     x:DataType="vm:SettingViewModel"
     Title="{codewf:I18n {x:Static language:SettingView.Title}}">
     <Design.DataContext>
         <vm:SettingViewModel />
     </Design.DataContext>
-    <u:UrsaWindow.LeftContent>
-        <Grid ColumnDefinitions="Auto">
-            <StackPanel x:Name="LogoAndTitle" Grid.Row="0" Grid.Column="0" IsHitTestVisible="False"
-                        VerticalAlignment="Center" Classes="h7" Margin="5 5"
-                        TextElement.FontWeight="SemiBold" Orientation="Horizontal" ClipToBounds="False">
-                <Viewbox Height="24" Width="24" IsHitTestVisible="False">
-                    <Image Source="\Assets\logo.ico" />
-                </Viewbox>
-                <TextBlock Margin="8 0 0 0" Text="{codewf:I18n {x:Static language:SettingView.Title}}" />
-            </StackPanel>
-        </Grid>
-    </u:UrsaWindow.LeftContent>
-    <Grid Margin="0 40 0 0" RowDefinitions="Auto,*" RowSpacing="12">
+	<codewf:CodeWFWindow.LeftContent>
+        <Viewbox Height="22" Width="22" IsHitTestVisible="False">
+            <Image Source="\Assets\logo.ico" />
+        </Viewbox>
+    </codewf:CodeWFWindow.LeftContent>
+    <Grid Margin="16" RowDefinitions="Auto,*" RowSpacing="12">
         <TextBlock
             Margin="4 0"
             HorizontalAlignment="Left"
@@ -57,4 +56,4 @@
             </TabControl.Styles>
         </TabControl>
     </Grid>
-</u:UrsaWindow>
+</codewf:CodeWFWindow>

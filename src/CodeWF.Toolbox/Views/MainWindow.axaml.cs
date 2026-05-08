@@ -2,6 +2,7 @@ using Avalonia.Controls;
 using Avalonia.Markup.Xaml;
 using Avalonia.Media;
 using Avalonia.Media.Imaging;
+using CodeWF.AvaloniaControls.Controls;
 using CodeWF.AvaloniaControls.Helpers;
 using CodeWF.Core.Helpers;
 using CodeWF.Core.IServices;
@@ -16,7 +17,7 @@ using Ursa.Controls;
 
 namespace CodeWF.Toolbox.Views;
 
-public partial class MainWindow : UrsaWindow
+public partial class MainWindow : CodeWFWindow
 {
     private readonly IApplicationService _applicationService;
     private readonly IFileChooserService _fileChooserService;
@@ -31,7 +32,6 @@ public partial class MainWindow : UrsaWindow
         InitializeComponent();
         Init();
         AdjustWindowSize();
-        this.EnableOSVersionAwareDecorations();
 
         RenderOptions.SetTextRenderingMode(this, TextRenderingMode.SubpixelAntialias);
         RenderOptions.SetBitmapInterpolationMode(this, BitmapInterpolationMode.HighQuality);
