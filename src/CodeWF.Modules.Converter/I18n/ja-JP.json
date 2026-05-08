@@ -1,0 +1,93 @@
+{
+  "language": "Japanese",
+  "description": "日語",
+  "cultureName": "ja-JP",
+  "Localization": {
+    "ConverterModule": {
+      "Title": "変換ツール"
+    },
+    "JsonToYamlView": {
+      "Title": "JSON から YAML",
+      "Description": "設定整理や移行のために JSON テキストを YAML に変換します。",
+      "RawJson": "JSON 入力",
+      "AfterYaml": "YAML 結果",
+      "Copy": "コピー",
+      "Clear": "クリア"
+    },
+    "YamlToJsonView": {
+      "Title": "YAML から JSON",
+      "Description": "API デバッグやデータ処理のために YAML テキストを JSON に変換します。",
+      "RawYaml": "YAML 入力",
+      "AfterJson": "JSON 結果",
+      "Copy": "コピー",
+      "Clear": "クリア"
+    },
+    "ImageToIconView": {
+      "Title": "画像をICOアイコンに変換",
+      "ChoiceSourceImageDescription": "画像ファイル（形式: png、jpg、jpeg、ico、webp）",
+      "ChoiceSourceImageDialogTitle": "変換する画像を選択してください",
+      "DestImageSize": "目標サイズ",
+      "MergeGenerateButtonContent": "ICOアイコンをマージ生成",
+      "SeparateGenerateButtonContent": "ICOアイコンを個別生成",
+      "MemoTitle": "説明",
+      "MemoContent1": "ICOファイルは一般的に、ウェブページのロゴやアプリケーションのロゴに使用されます。",
+      "MemoContent2": "ウェブページでICOファイルを使用する場合、通常は生成したICOファイルを「favicon.ico」と命名し、ウェブサイトのルートディレクトリに配置し、次のコードをページの<head>タグ内に追加します: <link rel=\"shortcut icon\" href=\"favicon.ico\" type=\"image/x-icon\" />"
+    },
+    "DateTimeConverterView": {
+      "Title": "タイムスタンプ変換",
+      "Description": "Unix タイムスタンプとローカル日時を相互変換します。",
+      "CurrentTimestampLabel": "現在の Unix タイムスタンプ",
+      "TimetampLabel": "Unix タイムスタンプ",
+      "SecondLabel": "秒",
+      "MillisecondsLabel": "ミリ秒",
+      "DateTimeFormatLabel": "日時 (年/月/日 時:分:秒)",
+      "ConvertToTimestampLabel": "Unixタイムスタンプに変換する",
+      "StartButtonContent": "開始",
+      "StopButtonContent": "停止",
+      "RefreshButtonContent": "更新",
+      "ConvertButtonContent": "変換"
+    },
+    "Base64CodecView": {
+      "Title": "Base64 エンコード / デコード",
+      "Description": "UTF-8 テキストを Base64 でエンコードまたはデコードします。",
+      "Encode": "エンコード",
+      "Decode": "デコード",
+      "Swap": "入れ替え",
+      "CopyResult": "結果をコピー",
+      "Clear": "クリア",
+      "InputText": "入力",
+      "OutputText": "結果",
+      "InvalidBase64Input": "有効な Base64 テキストを入力してください。"
+    },
+    "GuidGeneratorView": {
+      "Title": "GUID 生成",
+      "Description": "形式と大文字小文字を選択して GUID を一括生成します。",
+      "Count": "数量",
+      "Format": "形式",
+      "Uppercase": "大文字",
+      "Generate": "生成",
+      "Copy": "コピー",
+      "Clear": "クリア"
+    },
+    "NuoCheView": {
+      "Title": "車移動用QRコード生成ツール",
+      "Description": "車の移動用QRコードを生成するために使用します",
+      "InputPhoneNumber": "車移動通知用電話番号",
+      "EnableSubTitle": "小見出しを追加する",
+      "Show": "表示",
+      "DefaultInputTitle": "コードをスキャンし車移動",
+      "DefaultSubTitlePrefix": "コードをスキャンして車主に連絡するか、電話をかける",
+      "CreateButtonContent": "すぐに車移動用QRコードを生成する",
+      "NeedInputTip": "情報を入力してから生成ボタンをクリックしてください",
+      "CreateErrorMessage": "QRコードの生成に失敗しました",
+      "SaveNotificationTitle": "メッセージ",
+      "SaveNoQrCodeMessage": "まず車移動用QRコードを生成してください",
+      "SaveQrCodeFileTitle": "車移動用QRコード画像を保存する",
+      "PreviewNuoCheUrl": "車移動用QRコードのスキャンURLをプレビューする",
+      "SaveQrCodeFileFormat": "PNG画像",
+      "SaveQrCodeSuccessTitle": "成功",
+      "SaveQrCodeSuccessMessage": "車移動用QRコード画像が保存されました",
+      "SaveQrCodeErrorMessage": "車移動用QRコード画像の保存に失敗しました"
+    }
+  }
+}

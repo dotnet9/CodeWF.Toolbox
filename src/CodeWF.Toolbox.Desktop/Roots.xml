@@ -18,7 +18,7 @@
 	<assembly fullname="CodeWF.Modules.Web" preserve="All" />
 	<assembly fullname="CodeWF.Modules.XmlTranslatorManager" preserve="All" />
 	<assembly fullname="Lang.Avalonia" preserve="All" />
-	<assembly fullname="Lang.Avalonia.Xml" preserve="All" />
+	<assembly fullname="Lang.Avalonia.Json" preserve="All" />
 	<assembly fullname="Ursa.PrismExtension" preserve="All" />
 	<assembly fullname="Prism" preserve="All" />
 	<assembly fullname="DryIoc" preserve="All" />

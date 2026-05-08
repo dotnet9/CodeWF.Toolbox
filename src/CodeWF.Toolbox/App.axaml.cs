@@ -12,13 +12,14 @@ using CodeWF.Toolbox.ViewModels;
 using CodeWF.Toolbox.Views;
 using DryIoc;
 using Lang.Avalonia;
-using Lang.Avalonia.Xml;
+using Lang.Avalonia.Json;
 using Prism.DryIoc;
 using Prism.Ioc;
 using Prism.Modularity;
 using Prism.Regions;
 using System;
 using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Ursa.PrismExtension;
@@ -50,7 +51,11 @@ public partial class App : PrismApplication
     public override void Initialize()
     {
         AvaloniaXamlLoader.Load(this);
-        I18nManager.Instance.Register(new XmlLangPlugin(), new CultureInfo("zh-CN"), out _);
+        var langPlugin = new JsonLangPlugin
+        {
+            ResourceFolder = Path.Combine(AppContext.BaseDirectory, "I18n")
+        };
+        I18nManager.Instance.Register(langPlugin, new CultureInfo("zh-CN"), out _);
         base.Initialize(); // <-- Required
     }
 

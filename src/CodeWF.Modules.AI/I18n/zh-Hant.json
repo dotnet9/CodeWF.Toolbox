@@ -1,0 +1,27 @@
+{
+  "language": "Chinese (Traditional)",
+  "description": "中文繁體",
+  "cultureName": "zh-Hant",
+  "Localization": {
+    "AIModule": {
+      "Title": "AI"
+    },
+    "AskBotView": {
+      "Title": "AI 問答助手",
+      "Description": "基於配置的 AI 服務處理問題輸入，適合快速整理思路與取得參考答案。"
+    },
+    "PolyTranslateView": {
+      "Title": "AI 多語言翻譯",
+      "Description": "支援多語言批次翻譯，適合多語言文案和本地化資源處理。"
+    },
+    "Title2SlugView": {
+      "Title": "標題轉 URL Slug",
+      "Description": "將文章標題轉換為規範的英文 URL Slug，便於部落格、文檔和內容系統使用。"
+    },
+    "ChoiceLanguagesView": {
+      "LanguageKey": "語言",
+      "Selectable": "可選語言",
+      "Selected": "已選擇"
+    }
+  }
+}

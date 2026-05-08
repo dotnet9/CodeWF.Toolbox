@@ -1,0 +1,1130 @@
+{
+  "language": "日本語",
+  "description": "日本語",
+  "cultureName": "ja-JP",
+  "Localization": {
+    "ToolboxTools": {
+      "Common": {
+        "Run": "実行",
+        "Browse": "参照",
+        "Copy": "コピー",
+        "OpenFile": "ファイルを開く",
+        "SaveFile": "ファイルを保存",
+        "MissingToolId": "ツール ID がありません。",
+        "ToolNotRegistered": "ツール '{0}' は登録されていません。"
+      },
+      "Groups": {
+        "Security": "セキュリティ",
+        "Web": "Web",
+        "Media": "メディア",
+        "Network": "ネットワーク",
+        "Math": "数学",
+        "Measurement": "計測",
+        "Text": "テキスト",
+        "Data": "データ"
+      },
+      "Tools": {
+        "base64_file_converter": {
+          "Title": "Base64 file 変換",
+          "Description": "Base64 file 変換を処理するためのツールです。",
+          "Fields": {
+            "file": "入力ファイル",
+            "base64": "Base64 入力",
+            "save": "復号ファイルの保存先",
+            "mode": "モード"
+          },
+          "Options": {
+            "mode": {
+              "File_to_Base64": "ファイルから Base64",
+              "Base64_to_File": "Base64 からファイル"
+            }
+          },
+          "Outputs": {
+            "result": "結果"
+          }
+        },
+        "base64_string_converter": {
+          "Title": "Base64 文字列エンコード/デコード",
+          "Description": "Base64 文字列エンコード/デコードを処理するためのツールです。",
+          "Fields": {
+            "text": "入力",
+            "urlSafe": "URL セーフ",
+            "mode": "モード"
+          },
+          "Options": {
+            "mode": {
+              "Encode": "エンコード",
+              "Decode": "デコード"
+            }
+          },
+          "Outputs": {
+            "result": "結果"
+          }
+        },
+        "case_converter": {
+          "Title": "Case 変換",
+          "Description": "Case 変換を処理するためのツールです。",
+          "Fields": {
+            "text": "テキスト"
+          },
+          "Outputs": {
+            "result": "結果"
+          }
+        },
+        "color_converter": {
+          "Title": "Color 変換",
+          "Description": "Color 変換を処理するためのツールです。",
+          "Fields": {
+            "color": "色"
+          },
+          "Outputs": {
+            "result": "結果"
+          }
+        },
+        "date_time_converter": {
+          "Title": "Date-time 変換",
+          "Description": "Date-time 変換を処理するためのツールです。",
+          "Fields": {
+            "date": "日付",
+            "format": "入力形式"
+          },
+          "Placeholders": {
+            "date": "Leave empty for current time"
+          },
+          "Options": {
+            "format": {
+              "Auto": "自動",
+              "ISO_8601": "ISO 8601",
+              "Unix_timestamp": "Unix タイムスタンプ",
+              "Timestamp_milliseconds": "ミリ秒タイムスタンプ",
+              "RFC_1123_RFC_7231": "RFC 1123/RFC 7231",
+              "Mongo_ObjectId": "Mongo ObjectId",
+              "Excel_date_time": "Excel date/time"
+            }
+          },
+          "Outputs": {
+            "result": "Converted formats"
+          }
+        },
+        "integer_base_converter": {
+          "Title": "Integer base 変換",
+          "Description": "Integer base 変換を処理するためのツールです。",
+          "Fields": {
+            "number": "数値",
+            "fromBase": "入力基数",
+            "toBase": "出力基数"
+          },
+          "Outputs": {
+            "result": "結果"
+          }
+        },
+        "json_to_toml": {
+          "Title": "JSON to TOML",
+          "Description": "JSON to TOMLを処理するためのツールです。",
+          "Fields": {
+            "json": "JSON"
+          },
+          "Outputs": {
+            "result": "TOML"
+          }
+        },
+        "json_to_xml": {
+          "Title": "JSON to XML",
+          "Description": "JSON to XMLを処理するためのツールです。",
+          "Fields": {
+            "json": "JSON"
+          },
+          "Outputs": {
+            "result": "XML"
+          }
+        },
+        "json_to_yaml_converter": {
+          "Title": "JSON to YAML 変換",
+          "Description": "JSON to YAML 変換を処理するためのツールです。",
+          "Fields": {
+            "json": "JSON"
+          },
+          "Outputs": {
+            "result": "YAML"
+          }
+        },
+        "list_converter": {
+          "Title": "List 変換",
+          "Description": "List 変換を処理するためのツールです。",
+          "Fields": {
+            "list": "リスト",
+            "prefix": "接頭辞",
+            "suffix": "接尾辞",
+            "truncate": "切り詰め長",
+            "operation": "Operation"
+          },
+          "Options": {
+            "operation": {
+              "None": "なし",
+              "Sort": "並べ替え",
+              "Reverse": "反転",
+              "Lowercase": "小文字",
+              "Uppercase": "大文字",
+              "Transpose": "転置",
+              "Unique": "重複削除"
+            }
+          },
+          "Outputs": {
+            "result": "結果"
+          }
+        },
+        "markdown_to_html": {
+          "Title": "Markdown to HTML",
+          "Description": "Markdown to HTMLを処理するためのツールです。",
+          "Fields": {
+            "markdown": "Markdown"
+          },
+          "Outputs": {
+            "result": "HTML"
+          }
+        },
+        "roman_numeral_converter": {
+          "Title": "Roman numeral 変換",
+          "Description": "Roman numeral 変換を処理するためのツールです。",
+          "Fields": {
+            "value": "値",
+            "mode": "モード"
+          },
+          "Options": {
+            "mode": {
+              "Number_to_Roman": "数値からローマ数字",
+              "Roman_to_Number": "ローマ数字から数値"
+            }
+          },
+          "Outputs": {
+            "result": "結果"
+          }
+        },
+        "temperature_converter": {
+          "Title": "Temperature 変換",
+          "Description": "Temperature 変換を処理するためのツールです。",
+          "Fields": {
+            "value": "値",
+            "unit": "Unit"
+          },
+          "Options": {
+            "unit": {
+              "Celsius": "Celsius",
+              "Kelvin": "Kelvin",
+              "Fahrenheit": "Fahrenheit",
+              "Rankine": "Rankine",
+              "Delisle": "Delisle",
+              "Newton": "Newton",
+              "Reaumur": "Reaumur",
+              "Romer": "Romer"
+            }
+          },
+          "Outputs": {
+            "result": "結果"
+          }
+        },
+        "text_to_binary": {
+          "Title": "テキスト to ASCII binary",
+          "Description": "テキスト to ASCII binaryを処理するためのツールです。",
+          "Fields": {
+            "text": "入力",
+            "mode": "モード"
+          },
+          "Options": {
+            "mode": {
+              "Text_to_Binary": "テキストからバイナリ",
+              "Binary_to_Text": "バイナリからテキスト"
+            }
+          },
+          "Outputs": {
+            "result": "結果"
+          }
+        },
+        "text_to_nato_alphabet": {
+          "Title": "テキスト to NATO alphabet",
+          "Description": "テキスト to NATO alphabetを処理するためのツールです。",
+          "Fields": {
+            "text": "テキスト"
+          },
+          "Outputs": {
+            "result": "結果"
+          }
+        },
+        "text_to_unicode": {
+          "Title": "テキスト to Unicode",
+          "Description": "テキスト to Unicodeを処理するためのツールです。",
+          "Fields": {
+            "text": "入力",
+            "mode": "モード"
+          },
+          "Options": {
+            "mode": {
+              "Text_to_Unicode": "テキストから Unicode",
+              "Unicode_to_Text": "Unicode からテキスト"
+            }
+          },
+          "Outputs": {
+            "result": "結果"
+          }
+        },
+        "toml_to_json": {
+          "Title": "TOML to JSON",
+          "Description": "TOML to JSONを処理するためのツールです。",
+          "Fields": {
+            "toml": "TOML"
+          },
+          "Outputs": {
+            "result": "JSON"
+          }
+        },
+        "toml_to_yaml": {
+          "Title": "TOML to YAML",
+          "Description": "TOML to YAMLを処理するためのツールです。",
+          "Fields": {
+            "toml": "TOML"
+          },
+          "Outputs": {
+            "result": "YAML"
+          }
+        },
+        "xml_to_json": {
+          "Title": "XML to JSON",
+          "Description": "XML to JSONを処理するためのツールです。",
+          "Fields": {
+            "xml": "XML"
+          },
+          "Outputs": {
+            "result": "JSON"
+          }
+        },
+        "yaml_to_json_converter": {
+          "Title": "YAML to JSON 変換",
+          "Description": "YAML to JSON 変換を処理するためのツールです。",
+          "Fields": {
+            "yaml": "YAML"
+          },
+          "Outputs": {
+            "result": "JSON"
+          }
+        },
+        "yaml_to_toml": {
+          "Title": "YAML to TOML",
+          "Description": "YAML to TOMLを処理するためのツールです。",
+          "Fields": {
+            "yaml": "YAML"
+          },
+          "Outputs": {
+            "result": "TOML"
+          }
+        },
+        "chmod_calculator": {
+          "Title": "Chmod 計算",
+          "Description": "Chmod 計算を処理するためのツールです。",
+          "Fields": {
+            "ur": "所有者 読み取り",
+            "uw": "所有者 書き込み",
+            "ux": "所有者 実行",
+            "gr": "グループ 読み取り",
+            "gw": "グループ 書き込み",
+            "gx": "グループ 実行",
+            "or": "その他 読み取り",
+            "ow": "その他 書き込み",
+            "ox": "その他 実行"
+          },
+          "Outputs": {
+            "result": "結果"
+          }
+        },
+        "crontab_generator": {
+          "Title": "Crontab 生成",
+          "Description": "Crontab 生成を処理するためのツールです。",
+          "Fields": {
+            "cron": "Cron 式"
+          },
+          "Outputs": {
+            "result": "結果"
+          }
+        },
+        "docker_run_to_docker_compose_converter": {
+          "Title": "Docker run to Docker compose 変換",
+          "Description": "Docker run to Docker compose 変換を処理するためのツールです。",
+          "Fields": {
+            "command": "docker run コマンド"
+          },
+          "Outputs": {
+            "result": "docker-compose.yml"
+          }
+        },
+        "email_normalizer": {
+          "Title": "Email normalizer",
+          "Description": "Email normalizerを処理するためのツールです。",
+          "Fields": {
+            "emails": "メールアドレス"
+          },
+          "Outputs": {
+            "result": "Normalized"
+          }
+        },
+        "git_memo": {
+          "Title": "Git チートシート",
+          "Description": "Git チートシートを処理するためのツールです。",
+          "Outputs": {
+            "result": "チートシート"
+          }
+        },
+        "json_diff": {
+          "Title": "JSON 差分",
+          "Description": "JSON 差分を処理するためのツールです。",
+          "Fields": {
+            "left": "左 JSON",
+            "right": "右 JSON"
+          },
+          "Outputs": {
+            "result": "Diff"
+          }
+        },
+        "json_minify": {
+          "Title": "JSON minify",
+          "Description": "JSON minifyを処理するためのツールです。",
+          "Fields": {
+            "json": "JSON"
+          },
+          "Outputs": {
+            "result": "Minified JSON"
+          }
+        },
+        "json_to_csv": {
+          "Title": "JSON to CSV",
+          "Description": "JSON to CSVを処理するためのツールです。",
+          "Fields": {
+            "json": "JSON"
+          },
+          "Outputs": {
+            "result": "CSV"
+          }
+        },
+        "json_viewer": {
+          "Title": "JSON 整形",
+          "Description": "JSON 整形を処理するためのツールです。",
+          "Fields": {
+            "json": "JSON"
+          },
+          "Outputs": {
+            "result": "Formatted JSON"
+          }
+        },
+        "random_port_generator": {
+          "Title": "Random port 生成",
+          "Description": "Random port 生成を処理するためのツールです。",
+          "Fields": {
+            "count": "件数",
+            "min": "最小",
+            "max": "最大"
+          },
+          "Outputs": {
+            "result": "Ports"
+          }
+        },
+        "regex_memo": {
+          "Title": "Regex チートシート",
+          "Description": "Regex チートシートを処理するためのツールです。",
+          "Outputs": {
+            "result": "チートシート"
+          }
+        },
+        "regex_tester": {
+          "Title": "Regex Tester",
+          "Description": "Regex Testerを処理するためのツールです。",
+          "Fields": {
+            "pattern": "パターン",
+            "text": "サンプルテキスト",
+            "ignoreCase": "大文字小文字を無視",
+            "multiline": "複数行"
+          },
+          "Outputs": {
+            "result": "一致"
+          }
+        },
+        "sql_prettify": {
+          "Title": "SQL 整形",
+          "Description": "SQL 整形を処理するためのツールです。",
+          "Fields": {
+            "sql": "SQL"
+          },
+          "Outputs": {
+            "result": "Formatted SQL"
+          }
+        },
+        "xml_formatter": {
+          "Title": "XML 整形",
+          "Description": "XML 整形を処理するためのツールです。",
+          "Fields": {
+            "xml": "XML"
+          },
+          "Outputs": {
+            "result": "Formatted XML"
+          }
+        },
+        "yaml_viewer": {
+          "Title": "YAML 整形",
+          "Description": "YAML 整形を処理するためのツールです。",
+          "Fields": {
+            "yaml": "YAML"
+          },
+          "Outputs": {
+            "result": "Formatted YAML"
+          }
+        },
+        "bcrypt": {
+          "Title": "Bcrypt",
+          "Description": "Bcryptを処理するためのツールです。",
+          "Fields": {
+            "text": "テキスト",
+            "hash": "比較するハッシュ",
+            "rounds": "ラウンド",
+            "mode": "モード"
+          },
+          "Options": {
+            "mode": {
+              "Hash": "ハッシュ",
+              "Compare": "比較"
+            }
+          },
+          "Outputs": {
+            "result": "結果"
+          }
+        },
+        "bip39_generator": {
+          "Title": "BIP39 passphrase 生成",
+          "Description": "BIP39 passphrase 生成を処理するためのツールです。",
+          "Fields": {
+            "words": "単語数",
+            "passphrase": "パスフレーズ"
+          },
+          "Outputs": {
+            "result": "Mnemonic and seed"
+          }
+        },
+        "encryption": {
+          "Title": "テキスト暗号化/復号",
+          "Description": "テキスト暗号化/復号を処理するためのツールです。",
+          "Fields": {
+            "text": "入力",
+            "password": "パスワード",
+            "algorithm": "アルゴリズム",
+            "mode": "モード"
+          },
+          "Options": {
+            "algorithm": {
+              "AES": "AES",
+              "TripleDES": "TripleDES"
+            },
+            "mode": {
+              "Encrypt": "Encrypt",
+              "Decrypt": "Decrypt"
+            }
+          },
+          "Outputs": {
+            "result": "結果"
+          }
+        },
+        "hash_text": {
+          "Title": "Hash テキスト",
+          "Description": "Hash テキストを処理するためのツールです。",
+          "Fields": {
+            "text": "テキスト",
+            "algorithm": "アルゴリズム"
+          },
+          "Options": {
+            "algorithm": {
+              "MD5": "MD5",
+              "SHA1": "SHA1",
+              "SHA224": "SHA224",
+              "SHA256": "SHA256",
+              "SHA384": "SHA384",
+              "SHA512": "SHA512",
+              "SHA3_256": "SHA3-256",
+              "SHA3_512": "SHA3-512",
+              "RIPEMD160": "RIPEMD160"
+            }
+          },
+          "Outputs": {
+            "result": "Digest"
+          }
+        },
+        "hmac_generator": {
+          "Title": "Hmac 生成",
+          "Description": "Hmac 生成を処理するためのツールです。",
+          "Fields": {
+            "text": "メッセージ",
+            "key": "秘密鍵",
+            "algorithm": "アルゴリズム"
+          },
+          "Options": {
+            "algorithm": {
+              "MD5": "MD5",
+              "SHA1": "SHA1",
+              "SHA256": "SHA256",
+              "SHA384": "SHA384",
+              "SHA512": "SHA512",
+              "SHA3_256": "SHA3-256",
+              "RIPEMD160": "RIPEMD160"
+            }
+          },
+          "Outputs": {
+            "result": "HMAC"
+          }
+        },
+        "password_strength_analyser": {
+          "Title": "パスワード strength 分析",
+          "Description": "パスワード strength 分析を処理するためのツールです。",
+          "Fields": {
+            "password": "パスワード"
+          },
+          "Outputs": {
+            "result": "分析"
+          }
+        },
+        "pdf_signature_checker": {
+          "Title": "PDF signature チェック",
+          "Description": "PDF signature チェックを処理するためのツールです。",
+          "Fields": {
+            "file": "PDF ファイル"
+          },
+          "Outputs": {
+            "result": "Signature details"
+          }
+        },
+        "rsa_key_pair_generator": {
+          "Title": "RSA key pair 生成",
+          "Description": "RSA key pair 生成を処理するためのツールです。",
+          "Fields": {
+            "size": "鍵サイズ"
+          },
+          "Outputs": {
+            "result": "PEM keys"
+          }
+        },
+        "token_generator": {
+          "Title": "Token 生成",
+          "Description": "Token 生成を処理するためのツールです。",
+          "Fields": {
+            "length": "長さ",
+            "upper": "大文字",
+            "lower": "小文字",
+            "numbers": "数字",
+            "symbols": "記号"
+          },
+          "Outputs": {
+            "result": "Token"
+          }
+        },
+        "ulid_generator": {
+          "Title": "ULID 生成",
+          "Description": "ULID 生成を処理するためのツールです。",
+          "Fields": {
+            "count": "件数"
+          },
+          "Outputs": {
+            "result": "ULIDs"
+          }
+        },
+        "uuid_generator": {
+          "Title": "UUIDs 生成",
+          "Description": "UUIDs 生成を処理するためのツールです。",
+          "Fields": {
+            "count": "件数",
+            "uppercase": "大文字"
+          },
+          "Outputs": {
+            "result": "UUIDs"
+          }
+        },
+        "basic_auth_generator": {
+          "Title": "Basic auth 生成",
+          "Description": "Basic auth 生成を処理するためのツールです。",
+          "Fields": {
+            "username": "ユーザー名",
+            "password": "パスワード"
+          },
+          "Outputs": {
+            "result": "ヘッダー"
+          }
+        },
+        "device_information": {
+          "Title": "Device 情報",
+          "Description": "Device 情報を処理するためのツールです。",
+          "Outputs": {
+            "result": "デバイス情報"
+          }
+        },
+        "html_entities": {
+          "Title": "Escape HTML entities",
+          "Description": "Escape HTML entitiesを処理するためのツールです。",
+          "Fields": {
+            "text": "入力",
+            "mode": "モード"
+          },
+          "Options": {
+            "mode": {
+              "Escape": "エスケープ",
+              "Unescape": "アンエスケープ"
+            }
+          },
+          "Outputs": {
+            "result": "結果"
+          }
+        },
+        "html_wysiwyg_editor": {
+          "Title": "HTML WYSIWYG editor",
+          "Description": "HTML WYSIWYG editorを処理するためのツールです。",
+          "Fields": {
+            "content": "内容",
+            "mode": "ブロック種別"
+          },
+          "Options": {
+            "mode": {
+              "Paragraphs": "段落",
+              "Unordered_list": "箇条書き",
+              "Ordered_list": "番号付きリスト",
+              "Raw_HTML_preview": "生 HTML プレビュー"
+            }
+          },
+          "Outputs": {
+            "result": "HTML source"
+          }
+        },
+        "http_status_codes": {
+          "Title": "HTTP ステータスコード",
+          "Description": "HTTP ステータスコードを処理するためのツールです。",
+          "Fields": {
+            "query": "検索"
+          },
+          "Outputs": {
+            "result": "Status codes"
+          }
+        },
+        "jwt_parser": {
+          "Title": "JWT 解析",
+          "Description": "JWT 解析を処理するためのツールです。",
+          "Fields": {
+            "jwt": "JWT"
+          },
+          "Outputs": {
+            "result": "Decoded JWT"
+          }
+        },
+        "keycode_info": {
+          "Title": "Keycode info",
+          "Description": "Keycode infoを処理するためのツールです。",
+          "Outputs": {
+            "result": "結果"
+          }
+        },
+        "meta_tag_generator": {
+          "Title": "Open graph meta 生成",
+          "Description": "Open graph meta 生成を処理するためのツールです。",
+          "Fields": {
+            "title": "タイトル",
+            "description": "説明",
+            "url": "URL",
+            "image": "画像 URL",
+            "site": "サイト名",
+            "type": "種類"
+          },
+          "Options": {
+            "type": {
+              "website": "website",
+              "article": "article",
+              "profile": "profile",
+              "book": "book",
+              "music_song": "music.song",
+              "video_movie": "video.movie"
+            }
+          },
+          "Outputs": {
+            "result": "Meta tags"
+          }
+        },
+        "mime_types": {
+          "Title": "MIME types",
+          "Description": "MIME typesを処理するためのツールです。",
+          "Fields": {
+            "query": "MIME タイプまたは拡張子"
+          },
+          "Outputs": {
+            "result": "一致"
+          }
+        },
+        "otp_code_generator_and_validator": {
+          "Title": "OTP code 生成",
+          "Description": "OTP code 生成を処理するためのツールです。",
+          "Fields": {
+            "secret": "シークレット (Base32)",
+            "digits": "桁数",
+            "period": "周期秒",
+            "code": "検証コード"
+          },
+          "Outputs": {
+            "result": "OTP"
+          }
+        },
+        "safelink_decoder": {
+          "Title": "Outlook Safelink decoder",
+          "Description": "Outlook Safelink decoderを処理するためのツールです。",
+          "Fields": {
+            "url": "SafeLink URL"
+          },
+          "Outputs": {
+            "result": "Decoded URL"
+          }
+        },
+        "slugify_string": {
+          "Title": "Slugify 文字列",
+          "Description": "Slugify 文字列を処理するためのツールです。",
+          "Fields": {
+            "text": "テキスト",
+            "lower": "小文字"
+          },
+          "Outputs": {
+            "result": "Slug"
+          }
+        },
+        "url_encoder": {
+          "Title": "URL 形式文字列エンコード/デコード",
+          "Description": "URL 形式文字列エンコード/デコードを処理するためのツールです。",
+          "Fields": {
+            "text": "入力",
+            "mode": "モード"
+          },
+          "Options": {
+            "mode": {
+              "Encode": "エンコード",
+              "Decode": "デコード"
+            }
+          },
+          "Outputs": {
+            "result": "結果"
+          }
+        },
+        "url_parser": {
+          "Title": "URL 解析",
+          "Description": "URL 解析を処理するためのツールです。",
+          "Fields": {
+            "url": "URL"
+          },
+          "Outputs": {
+            "result": "URL parts"
+          }
+        },
+        "user_agent_parser": {
+          "Title": "User-agent 解析",
+          "Description": "User-agent 解析を処理するためのツールです。",
+          "Fields": {
+            "userAgent": "User-Agent"
+          },
+          "Outputs": {
+            "result": "Parsed user-agent"
+          }
+        },
+        "camera_recorder": {
+          "Title": "Camera 記録",
+          "Description": "Camera 記録を処理するためのツールです。",
+          "Fields": {
+            "index": "カメラ番号",
+            "mode": "モード",
+            "seconds": "録画秒数",
+            "save": "動画の保存先"
+          },
+          "Options": {
+            "mode": {
+              "Snapshot": "スナップショット",
+              "Record_AVI": "AVI 録画"
+            }
+          },
+          "Outputs": {
+            "image": "スナップショット",
+            "result": "結果"
+          }
+        },
+        "qr_code_generator": {
+          "Title": "QR Code 生成",
+          "Description": "QR Code 生成を処理するためのツールです。",
+          "Fields": {
+            "text": "テキスト",
+            "pixels": "モジュールあたりのピクセル"
+          },
+          "Outputs": {
+            "image": "QR コード",
+            "result": "ペイロード"
+          }
+        },
+        "svg_placeholder_generator": {
+          "Title": "SVG placeholder 生成",
+          "Description": "SVG placeholder 生成を処理するためのツールです。",
+          "Fields": {
+            "width": "幅",
+            "height": "高さ",
+            "text": "テキスト",
+            "bg": "背景",
+            "fg": "前景"
+          },
+          "Outputs": {
+            "result": "SVG"
+          }
+        },
+        "wifi_qr_code_generator": {
+          "Title": "WiFi QR Code 生成",
+          "Description": "WiFi QR Code 生成を処理するためのツールです。",
+          "Fields": {
+            "ssid": "SSID",
+            "password": "パスワード",
+            "auth": "認証方式",
+            "hidden": "SSID を隠す"
+          },
+          "Options": {
+            "auth": {
+              "WPA": "WPA",
+              "WEP": "WEP",
+              "nopass": "nopass"
+            }
+          },
+          "Outputs": {
+            "image": "QR コード",
+            "result": "WiFi payload"
+          }
+        },
+        "ipv4_address_converter": {
+          "Title": "IPv4 アドレス 変換",
+          "Description": "IPv4 アドレス 変換を処理するためのツールです。",
+          "Fields": {
+            "ip": "IPv4 アドレス"
+          },
+          "Outputs": {
+            "result": "結果"
+          }
+        },
+        "ipv4_range_expander": {
+          "Title": "IPv4 range expander",
+          "Description": "IPv4 range expanderを処理するためのツールです。",
+          "Fields": {
+            "start": "開始 IPv4",
+            "end": "終了 IPv4"
+          },
+          "Outputs": {
+            "result": "CIDR ranges"
+          }
+        },
+        "ipv4_subnet_calculator": {
+          "Title": "IPv4 subnet 計算",
+          "Description": "IPv4 subnet 計算を処理するためのツールです。",
+          "Fields": {
+            "cidr": "CIDR"
+          },
+          "Outputs": {
+            "result": "Subnet"
+          }
+        },
+        "ipv6_ula_generator": {
+          "Title": "IPv6 ULA 生成",
+          "Description": "IPv6 ULA 生成を処理するためのツールです。",
+          "Fields": {
+            "count": "件数"
+          },
+          "Outputs": {
+            "result": "ULA prefixes"
+          }
+        },
+        "mac_address_generator": {
+          "Title": "MAC アドレス 生成",
+          "Description": "MAC アドレス 生成を処理するためのツールです。",
+          "Fields": {
+            "count": "件数",
+            "prefix": "接頭辞",
+            "uppercase": "大文字"
+          },
+          "Outputs": {
+            "result": "MAC addresses"
+          }
+        },
+        "mac_address_lookup": {
+          "Title": "MAC アドレス 検索",
+          "Description": "MAC アドレス 検索を処理するためのツールです。",
+          "Fields": {
+            "mac": "MAC アドレス"
+          },
+          "Outputs": {
+            "result": "ベンダー"
+          }
+        },
+        "eta_calculator": {
+          "Title": "ETA 計算",
+          "Description": "ETA 計算を処理するためのツールです。",
+          "Fields": {
+            "done": "完了",
+            "total": "合計",
+            "rate": "毎秒単位"
+          },
+          "Outputs": {
+            "result": "ETA"
+          }
+        },
+        "math_evaluator": {
+          "Title": "Math evaluator",
+          "Description": "Math evaluatorを処理するためのツールです。",
+          "Fields": {
+            "expression": "式"
+          },
+          "Outputs": {
+            "result": "結果"
+          }
+        },
+        "percentage_calculator": {
+          "Title": "Percentage 計算",
+          "Description": "Percentage 計算を処理するためのツールです。",
+          "Fields": {
+            "a": "値 A",
+            "b": "値 B"
+          },
+          "Outputs": {
+            "result": "結果"
+          }
+        },
+        "benchmark_builder": {
+          "Title": "Benchmark builder",
+          "Description": "Benchmark builderを処理するためのツールです。",
+          "Fields": {
+            "iterations": "反復回数",
+            "task": "タスク"
+          },
+          "Options": {
+            "task": {
+              "String_concat": "String concat",
+              "StringBuilder": "StringBuilder",
+              "Random_numbers": "Random numbers",
+              "SHA256_hash": "SHA256 hash"
+            }
+          },
+          "Outputs": {
+            "result": "Benchmark"
+          }
+        },
+        "chronometer": {
+          "Title": "Chronometer",
+          "Description": "Chronometerを処理するためのツールです。",
+          "Fields": {
+            "start": "開始時刻",
+            "end": "終了時刻"
+          },
+          "Outputs": {
+            "result": "期間"
+          }
+        },
+        "ascii_text_drawer": {
+          "Title": "ASCII アートテキスト生成",
+          "Description": "ASCII アートテキスト生成を処理するためのツールです。",
+          "Fields": {
+            "text": "テキスト",
+            "font": "フォント"
+          },
+          "Options": {
+            "font": {
+              "Standard": "Standard",
+              "Slant": "Slant",
+              "Small": "Small",
+              "Big": "Big"
+            }
+          },
+          "Outputs": {
+            "result": "ASCII art"
+          }
+        },
+        "emoji_picker": {
+          "Title": "Emoji 選択",
+          "Description": "Emoji 選択を処理するためのツールです。",
+          "Fields": {
+            "query": "検索"
+          },
+          "Outputs": {
+            "result": "Emojis"
+          }
+        },
+        "lorem_ipsum_generator": {
+          "Title": "Lorem ipsum 生成",
+          "Description": "Lorem ipsum 生成を処理するためのツールです。",
+          "Fields": {
+            "paragraphs": "段落"
+          },
+          "Outputs": {
+            "result": "Lorem ipsum"
+          }
+        },
+        "numeronym_generator": {
+          "Title": "Numeronym 生成",
+          "Description": "Numeronym 生成を処理するためのツールです。",
+          "Fields": {
+            "text": "単語"
+          },
+          "Outputs": {
+            "result": "Numeronyms"
+          }
+        },
+        "string_obfuscator": {
+          "Title": "文字列 難読化",
+          "Description": "文字列 難読化を処理するためのツールです。",
+          "Fields": {
+            "text": "テキスト",
+            "keepStart": "先頭を保持",
+            "keepEnd": "末尾を保持",
+            "mask": "マスク"
+          },
+          "Outputs": {
+            "result": "Obfuscated"
+          }
+        },
+        "text_diff": {
+          "Title": "テキスト 差分",
+          "Description": "テキスト 差分を処理するためのツールです。",
+          "Fields": {
+            "left": "左テキスト",
+            "right": "右テキスト"
+          },
+          "Outputs": {
+            "result": "Diff"
+          }
+        },
+        "text_statistics": {
+          "Title": "テキスト 統計",
+          "Description": "テキスト 統計を処理するためのツールです。",
+          "Fields": {
+            "text": "テキスト"
+          },
+          "Outputs": {
+            "result": "統計"
+          }
+        },
+        "iban_validator_and_parser": {
+          "Title": "IBAN validator and 解析",
+          "Description": "IBAN validator and 解析を処理するためのツールです。",
+          "Fields": {
+            "iban": "IBAN"
+          },
+          "Outputs": {
+            "result": "IBAN"
+          }
+        },
+        "phone_parser_and_formatter": {
+          "Title": "Phone 解析 and 整形",
+          "Description": "Phone 解析 and 整形を処理するためのツールです。",
+          "Fields": {
+            "phone": "電話番号",
+            "region": "既定の地域"
+          },
+          "Outputs": {
+            "result": "Phone"
+          }
+        }
+      }
+    }
+  }
+}

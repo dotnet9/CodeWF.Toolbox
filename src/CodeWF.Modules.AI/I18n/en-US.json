@@ -1,0 +1,27 @@
+{
+  "language": "English",
+  "description": "English",
+  "cultureName": "en-US",
+  "Localization": {
+    "AIModule": {
+      "Title": "AI"
+    },
+    "AskBotView": {
+      "Title": "AI Q&A Assistant",
+      "Description": "Process prompts with the configured AI service for quick references and structured thinking."
+    },
+    "PolyTranslateView": {
+      "Title": "AI Multilingual Translation",
+      "Description": "Translate content across multiple languages for copywriting and localization workflows."
+    },
+    "Title2SlugView": {
+      "Title": "Title to URL Slug",
+      "Description": "Convert article titles into clean English URL slugs for blogs, documentation, and content systems."
+    },
+    "ChoiceLanguagesView": {
+      "LanguageKey": "Language",
+      "Selectable": "Selectable",
+      "Selected": "Selected"
+    }
+  }
+}

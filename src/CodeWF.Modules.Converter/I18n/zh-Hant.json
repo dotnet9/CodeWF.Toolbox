@@ -1,0 +1,94 @@
+{
+  "language": "Chinese (Traditional)",
+  "description": "中文繁體",
+  "cultureName": "zh-Hant",
+  "Localization": {
+    "ConverterModule": {
+      "Title": "轉換工具"
+    },
+    "JsonToYamlView": {
+      "Title": "JSON 轉 YAML",
+      "Description": "將 JSON 文字轉換為 YAML，適合設定整理與遷移。",
+      "RawJson": "JSON 輸入",
+      "AfterYaml": "YAML 結果",
+      "Copy": "複製",
+      "Clear": "清空"
+    },
+    "YamlToJsonView": {
+      "Title": "YAML 轉 JSON",
+      "Description": "將 YAML 文字轉換為 JSON，便於介面調試與資料處理。",
+      "RawYaml": "YAML 輸入",
+      "AfterJson": "JSON 結果",
+      "Copy": "複製",
+      "Clear": "清空"
+    },
+    "ImageToIconView": {
+      "Title": "圖片轉ico圖標",
+      "ChoiceSourceImageDescription": "圖片文件（格式：png、jpg、jpeg、ico、webp）",
+      "ChoiceSourceImageDialogTitle": "請選擇需要轉換的圖片",
+      "DestImageSize": "目標尺寸",
+      "MergeGenerateButtonContent": "合併生成ico圖標",
+      "SeparateGenerateButtonContent": "單獨生成ico圖標",
+      "MemoTitle": "說明",
+      "MemoContent1": "ico文件一般可以用在網頁的logo和應用程序的logo。",
+      "MemoContent2": "ico文件用在網頁，一般是把生成的ico文件，命名成favicon.ico，並放到網站的根目錄，然後在頁面的head標籤內加入以下代碼：<link rel=\"shortcut icon\" href=\"favicon.ico\" type=\"image/x-icon\" />"
+    },
+    "DateTimeConverterView": {
+      "Title": "時間戳轉換",
+      "Description": "Unix 時間戳與本機日期時間互轉。",
+      "CurrentTimestampLabel": "目前 Unix 時間戳",
+      "TimetampLabel": "Unix 時間戳",
+      "SecondLabel": "秒",
+      "MillisecondsLabel": "毫秒",
+      "DateTimeFormatLabel": "時間 (年/月/日 時:分:秒)",
+      "ConvertToTimestampLabel": "轉換成Unix時間戳",
+      "StartButtonContent": "開始",
+      "StopButtonContent": "停止",
+      "RefreshButtonContent": "刷新",
+      "ConvertButtonContent": "轉換"
+    },
+    "Base64CodecView": {
+      "Title": "Base64 編解碼",
+      "Description": "對 UTF-8 文字進行 Base64 編碼或解碼。",
+      "Encode": "編碼",
+      "Decode": "解碼",
+      "Swap": "交換",
+      "CopyResult": "複製結果",
+      "Clear": "清空",
+      "InputText": "輸入",
+      "OutputText": "結果",
+      "InvalidBase64Input": "請輸入有效的 Base64 文字。"
+    },
+    "GuidGeneratorView": {
+      "Title": "GUID 生成器",
+      "Description": "批次生成標準 GUID，可選擇格式和大小寫。",
+      "Count": "數量",
+      "Format": "格式",
+      "Uppercase": "大寫",
+      "Generate": "生成",
+      "Copy": "複製",
+      "Clear": "清空"
+    },
+    "NuoCheView": {
+      "Title": "挪車二維碼生成器",
+      "Description": "用於生成挪車二維碼",
+      "InputPhoneNumber": "挪車通知電話號碼",
+      "InputTitle": "挪車提示文字（儘量簡短）",
+      "EnableSubTitle": "添加小標題",
+      "Show": "顯示",
+      "DefaultInputTitle": "掃碼挪車",
+      "DefaultSubTitlePrefix": "掃碼聯繫車主或撥打電話",
+      "CreateButtonContent": "立即生成挪車二維碼",
+      "NeedInputTip": "請輸入資訊再點擊生成",
+      "CreateErrorMessage": "生成二維碼失敗",
+      "SaveNotificationTitle": "提示",
+      "SaveNoQrCodeMessage": "請先生成挪車二維碼",
+      "SaveQrCodeFileTitle": "保存挪車二維碼圖片",
+      "PreviewNuoCheUrl": "預覽挪車掃碼網址",
+      "SaveQrCodeFileFormat": "PNG圖片",
+      "SaveQrCodeSuccessTitle": "成功",
+      "SaveQrCodeSuccessMessage": "挪車二維碼圖片已保存",
+      "SaveQrCodeErrorMessage": "保存挪車二維碼圖片失敗"
+    }
+  }
+}

@@ -72,17 +72,9 @@
 	    <Generator>TextTemplatingFileGenerator</Generator>
 	    <LastGenOutput>Language.cs</LastGenOutput>
 	  </None>
-	  <None Update="I18n\MainModule.en-US.xml">
+	  <None Update="I18n\*.json">
 	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-	  </None>
-	  <None Update="I18n\MainModule.ja-JP.xml">
-	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-	  </None>
-	  <None Update="I18n\MainModule.zh-Hant.xml">
-	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-	  </None>
-	  <None Update="I18n\MainModule.zh-CN.xml">
-	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	    <TargetPath>I18n\$(AssemblyName)\%(Filename)%(Extension)</TargetPath>
 	  </None>
 	</ItemGroup>
 </Project>

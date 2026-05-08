@@ -1,0 +1,31 @@
+{
+  "language": "Chinese (Traditional)",
+  "description": "中文繁體",
+  "cultureName": "zh-Hant",
+  "Localization": {
+    "LogViewerModule": {
+      "Title": "日誌工具"
+    },
+    "LogViewerView": {
+      "Title": "日誌閱讀器",
+      "Description": "快速開啟大型日誌文件，支援虛擬捲動和即時 tail 追蹤。",
+      "OpenFile": "開啟日誌",
+      "Reload": "重新載入",
+      "FollowTail": "即時追蹤",
+      "JumpToTail": "跳到末尾",
+      "FilePath": "文件",
+      "FilePathWatermark": "選擇 .log、.txt 或任意文字日誌文件",
+      "OpenLogFileDialogTitle": "選擇日誌文件",
+      "ReadyStatus": "就緒",
+      "OpeningStatus": "正在開啟",
+      "IndexingStatus": "正在建立索引",
+      "MonitoringStatus": "正在監控",
+      "EmptyFileStatus": "文件為空",
+      "FileDeletedStatus": "文件已刪除或無法存取",
+      "LinesStatus": "已索引行數",
+      "SizeStatus": "文件大小",
+      "TailPreviewStatus": "尾部預覽",
+      "OpenHint": "開啟日誌文件後，這裡只渲染目前可見視窗的內容。"
+    }
+  }
+}

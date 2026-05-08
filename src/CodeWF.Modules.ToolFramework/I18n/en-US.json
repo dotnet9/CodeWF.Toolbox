@@ -1,0 +1,1130 @@
+{
+  "language": "English",
+  "description": "English",
+  "cultureName": "en-US",
+  "Localization": {
+    "ToolboxTools": {
+      "Common": {
+        "Run": "Run",
+        "Browse": "Browse",
+        "Copy": "Copy",
+        "OpenFile": "Open file",
+        "SaveFile": "Save file",
+        "MissingToolId": "Missing tool id.",
+        "ToolNotRegistered": "Tool '{0}' is not registered."
+      },
+      "Groups": {
+        "Security": "Security",
+        "Web": "Web",
+        "Media": "Media",
+        "Network": "Network",
+        "Math": "Math",
+        "Measurement": "Measurement",
+        "Text": "Text",
+        "Data": "Data"
+      },
+      "Tools": {
+        "base64_file_converter": {
+          "Title": "Base64 file converter",
+          "Description": "Convert a file to base64 or decode base64 into a file.",
+          "Fields": {
+            "file": "Input file",
+            "base64": "Base64 input",
+            "save": "Save decoded file as",
+            "mode": "Mode"
+          },
+          "Options": {
+            "mode": {
+              "File_to_Base64": "File to Base64",
+              "Base64_to_File": "Base64 to File"
+            }
+          },
+          "Outputs": {
+            "result": "Result"
+          }
+        },
+        "base64_string_converter": {
+          "Title": "Base64 string encoder/decoder",
+          "Description": "Encode and decode strings into base64, including URL-safe base64.",
+          "Fields": {
+            "text": "Input",
+            "urlSafe": "URL safe",
+            "mode": "Mode"
+          },
+          "Options": {
+            "mode": {
+              "Encode": "Encode",
+              "Decode": "Decode"
+            }
+          },
+          "Outputs": {
+            "result": "Result"
+          }
+        },
+        "case_converter": {
+          "Title": "Case converter",
+          "Description": "Transform text between common naming conventions.",
+          "Fields": {
+            "text": "Text"
+          },
+          "Outputs": {
+            "result": "Result"
+          }
+        },
+        "color_converter": {
+          "Title": "Color converter",
+          "Description": "Convert color between hex, RGB, HSL and known CSS names.",
+          "Fields": {
+            "color": "Color"
+          },
+          "Outputs": {
+            "result": "Result"
+          }
+        },
+        "date_time_converter": {
+          "Title": "Date-time converter",
+          "Description": "Convert date and time into ISO, RFC, timestamp, Mongo ObjectId and Excel formats.",
+          "Fields": {
+            "date": "Date",
+            "format": "Input format"
+          },
+          "Placeholders": {
+            "date": "Leave empty for current time"
+          },
+          "Options": {
+            "format": {
+              "Auto": "Auto",
+              "ISO_8601": "ISO 8601",
+              "Unix_timestamp": "Unix timestamp",
+              "Timestamp_milliseconds": "Timestamp milliseconds",
+              "RFC_1123_RFC_7231": "RFC 1123/RFC 7231",
+              "Mongo_ObjectId": "Mongo ObjectId",
+              "Excel_date_time": "Excel date/time"
+            }
+          },
+          "Outputs": {
+            "result": "Converted formats"
+          }
+        },
+        "integer_base_converter": {
+          "Title": "Integer base converter",
+          "Description": "Convert a number between decimal, hexadecimal, binary, octal and base64.",
+          "Fields": {
+            "number": "Number",
+            "fromBase": "Input base",
+            "toBase": "Output base"
+          },
+          "Outputs": {
+            "result": "Result"
+          }
+        },
+        "json_to_toml": {
+          "Title": "JSON to TOML",
+          "Description": "Parse and convert JSON to TOML.",
+          "Fields": {
+            "json": "JSON"
+          },
+          "Outputs": {
+            "result": "TOML"
+          }
+        },
+        "json_to_xml": {
+          "Title": "JSON to XML",
+          "Description": "Convert JSON to XML.",
+          "Fields": {
+            "json": "JSON"
+          },
+          "Outputs": {
+            "result": "XML"
+          }
+        },
+        "json_to_yaml_converter": {
+          "Title": "JSON to YAML converter",
+          "Description": "Convert JSON to YAML.",
+          "Fields": {
+            "json": "JSON"
+          },
+          "Outputs": {
+            "result": "YAML"
+          }
+        },
+        "list_converter": {
+          "Title": "List converter",
+          "Description": "Apply sorting, reversing, prefix/suffix, casing and transpose operations to line-based data.",
+          "Fields": {
+            "list": "List",
+            "prefix": "Prefix",
+            "suffix": "Suffix",
+            "truncate": "Truncate length",
+            "operation": "Operation"
+          },
+          "Options": {
+            "operation": {
+              "None": "None",
+              "Sort": "Sort",
+              "Reverse": "Reverse",
+              "Lowercase": "Lowercase",
+              "Uppercase": "Uppercase",
+              "Transpose": "Transpose",
+              "Unique": "Unique"
+            }
+          },
+          "Outputs": {
+            "result": "Result"
+          }
+        },
+        "markdown_to_html": {
+          "Title": "Markdown to HTML",
+          "Description": "Convert Markdown to HTML.",
+          "Fields": {
+            "markdown": "Markdown"
+          },
+          "Outputs": {
+            "result": "HTML"
+          }
+        },
+        "roman_numeral_converter": {
+          "Title": "Roman numeral converter",
+          "Description": "Convert Roman numerals to numbers and numbers to Roman numerals.",
+          "Fields": {
+            "value": "Value",
+            "mode": "Mode"
+          },
+          "Options": {
+            "mode": {
+              "Number_to_Roman": "Number to Roman",
+              "Roman_to_Number": "Roman to Number"
+            }
+          },
+          "Outputs": {
+            "result": "Result"
+          }
+        },
+        "temperature_converter": {
+          "Title": "Temperature converter",
+          "Description": "Convert Kelvin, Celsius, Fahrenheit, Rankine, Delisle, Newton, Reaumur and Romer.",
+          "Fields": {
+            "value": "Value",
+            "unit": "Unit"
+          },
+          "Options": {
+            "unit": {
+              "Celsius": "Celsius",
+              "Kelvin": "Kelvin",
+              "Fahrenheit": "Fahrenheit",
+              "Rankine": "Rankine",
+              "Delisle": "Delisle",
+              "Newton": "Newton",
+              "Reaumur": "Reaumur",
+              "Romer": "Romer"
+            }
+          },
+          "Outputs": {
+            "result": "Result"
+          }
+        },
+        "text_to_binary": {
+          "Title": "Text to ASCII binary",
+          "Description": "Convert text to its ASCII/UTF-8 binary representation and back.",
+          "Fields": {
+            "text": "Input",
+            "mode": "Mode"
+          },
+          "Options": {
+            "mode": {
+              "Text_to_Binary": "Text to Binary",
+              "Binary_to_Text": "Binary to Text"
+            }
+          },
+          "Outputs": {
+            "result": "Result"
+          }
+        },
+        "text_to_nato_alphabet": {
+          "Title": "Text to NATO alphabet",
+          "Description": "Transform text into the NATO phonetic alphabet.",
+          "Fields": {
+            "text": "Text"
+          },
+          "Outputs": {
+            "result": "Result"
+          }
+        },
+        "text_to_unicode": {
+          "Title": "Text to Unicode",
+          "Description": "Convert text to Unicode escape sequences and back.",
+          "Fields": {
+            "text": "Input",
+            "mode": "Mode"
+          },
+          "Options": {
+            "mode": {
+              "Text_to_Unicode": "Text to Unicode",
+              "Unicode_to_Text": "Unicode to Text"
+            }
+          },
+          "Outputs": {
+            "result": "Result"
+          }
+        },
+        "toml_to_json": {
+          "Title": "TOML to JSON",
+          "Description": "Parse and convert TOML to JSON.",
+          "Fields": {
+            "toml": "TOML"
+          },
+          "Outputs": {
+            "result": "JSON"
+          }
+        },
+        "toml_to_yaml": {
+          "Title": "TOML to YAML",
+          "Description": "Parse and convert TOML to YAML.",
+          "Fields": {
+            "toml": "TOML"
+          },
+          "Outputs": {
+            "result": "YAML"
+          }
+        },
+        "xml_to_json": {
+          "Title": "XML to JSON",
+          "Description": "Convert XML to JSON.",
+          "Fields": {
+            "xml": "XML"
+          },
+          "Outputs": {
+            "result": "JSON"
+          }
+        },
+        "yaml_to_json_converter": {
+          "Title": "YAML to JSON converter",
+          "Description": "Convert YAML to JSON.",
+          "Fields": {
+            "yaml": "YAML"
+          },
+          "Outputs": {
+            "result": "JSON"
+          }
+        },
+        "yaml_to_toml": {
+          "Title": "YAML to TOML",
+          "Description": "Parse and convert YAML to TOML.",
+          "Fields": {
+            "yaml": "YAML"
+          },
+          "Outputs": {
+            "result": "TOML"
+          }
+        },
+        "chmod_calculator": {
+          "Title": "Chmod calculator",
+          "Description": "Compute chmod permissions and commands.",
+          "Fields": {
+            "ur": "Owner read",
+            "uw": "Owner write",
+            "ux": "Owner execute",
+            "gr": "Group read",
+            "gw": "Group write",
+            "gx": "Group execute",
+            "or": "Others read",
+            "ow": "Others write",
+            "ox": "Others execute"
+          },
+          "Outputs": {
+            "result": "Result"
+          }
+        },
+        "crontab_generator": {
+          "Title": "Crontab generator",
+          "Description": "Validate crontab expressions and generate a human-readable description.",
+          "Fields": {
+            "cron": "Cron expression"
+          },
+          "Outputs": {
+            "result": "Result"
+          }
+        },
+        "docker_run_to_docker_compose_converter": {
+          "Title": "Docker run to Docker compose converter",
+          "Description": "Transform docker run commands into docker-compose YAML.",
+          "Fields": {
+            "command": "docker run command"
+          },
+          "Outputs": {
+            "result": "docker-compose.yml"
+          }
+        },
+        "email_normalizer": {
+          "Title": "Email normalizer",
+          "Description": "Normalize email addresses for easier comparison and deduplication.",
+          "Fields": {
+            "emails": "Email addresses"
+          },
+          "Outputs": {
+            "result": "Normalized"
+          }
+        },
+        "git_memo": {
+          "Title": "Git cheatsheet",
+          "Description": "Quick access to common git commands.",
+          "Outputs": {
+            "result": "Cheatsheet"
+          }
+        },
+        "json_diff": {
+          "Title": "JSON diff",
+          "Description": "Compare two JSON values and show line-level differences after formatting.",
+          "Fields": {
+            "left": "Left JSON",
+            "right": "Right JSON"
+          },
+          "Outputs": {
+            "result": "Diff"
+          }
+        },
+        "json_minify": {
+          "Title": "JSON minify",
+          "Description": "Minify JSON by removing unnecessary whitespace.",
+          "Fields": {
+            "json": "JSON"
+          },
+          "Outputs": {
+            "result": "Minified JSON"
+          }
+        },
+        "json_to_csv": {
+          "Title": "JSON to CSV",
+          "Description": "Convert JSON arrays or objects to CSV with automatic header detection.",
+          "Fields": {
+            "json": "JSON"
+          },
+          "Outputs": {
+            "result": "CSV"
+          }
+        },
+        "json_viewer": {
+          "Title": "JSON prettify and format",
+          "Description": "Prettify JSON into a readable format.",
+          "Fields": {
+            "json": "JSON"
+          },
+          "Outputs": {
+            "result": "Formatted JSON"
+          }
+        },
+        "random_port_generator": {
+          "Title": "Random port generator",
+          "Description": "Generate random ports outside the known-port range.",
+          "Fields": {
+            "count": "Count",
+            "min": "Min",
+            "max": "Max"
+          },
+          "Outputs": {
+            "result": "Ports"
+          }
+        },
+        "regex_memo": {
+          "Title": "Regex cheatsheet",
+          "Description": "Regular expression cheatsheet.",
+          "Outputs": {
+            "result": "Cheatsheet"
+          }
+        },
+        "regex_tester": {
+          "Title": "Regex Tester",
+          "Description": "Test regular expressions with sample text.",
+          "Fields": {
+            "pattern": "Pattern",
+            "text": "Sample text",
+            "ignoreCase": "Ignore case",
+            "multiline": "Multiline"
+          },
+          "Outputs": {
+            "result": "Matches"
+          }
+        },
+        "sql_prettify": {
+          "Title": "SQL prettify and format",
+          "Description": "Format and prettify SQL queries.",
+          "Fields": {
+            "sql": "SQL"
+          },
+          "Outputs": {
+            "result": "Formatted SQL"
+          }
+        },
+        "xml_formatter": {
+          "Title": "XML formatter",
+          "Description": "Prettify XML into a readable format.",
+          "Fields": {
+            "xml": "XML"
+          },
+          "Outputs": {
+            "result": "Formatted XML"
+          }
+        },
+        "yaml_viewer": {
+          "Title": "YAML prettify and format",
+          "Description": "Prettify YAML into a readable format.",
+          "Fields": {
+            "yaml": "YAML"
+          },
+          "Outputs": {
+            "result": "Formatted YAML"
+          }
+        },
+        "bcrypt": {
+          "Title": "Bcrypt",
+          "Description": "Hash and compare text using bcrypt.",
+          "Fields": {
+            "text": "Text",
+            "hash": "Hash to compare",
+            "rounds": "Rounds",
+            "mode": "Mode"
+          },
+          "Options": {
+            "mode": {
+              "Hash": "Hash",
+              "Compare": "Compare"
+            }
+          },
+          "Outputs": {
+            "result": "Result"
+          }
+        },
+        "bip39_generator": {
+          "Title": "BIP39 passphrase generator",
+          "Description": "Generate a BIP39 mnemonic and seed.",
+          "Fields": {
+            "words": "Word count",
+            "passphrase": "Passphrase"
+          },
+          "Outputs": {
+            "result": "Mnemonic and seed"
+          }
+        },
+        "encryption": {
+          "Title": "Encrypt / decrypt text",
+          "Description": "Encrypt clear text and decrypt ciphertext using AES or TripleDES.",
+          "Fields": {
+            "text": "Input",
+            "password": "Password",
+            "algorithm": "Algorithm",
+            "mode": "Mode"
+          },
+          "Options": {
+            "algorithm": {
+              "AES": "AES",
+              "TripleDES": "TripleDES"
+            },
+            "mode": {
+              "Encrypt": "Encrypt",
+              "Decrypt": "Decrypt"
+            }
+          },
+          "Outputs": {
+            "result": "Result"
+          }
+        },
+        "hash_text": {
+          "Title": "Hash text",
+          "Description": "Hash a text string using MD5, SHA1, SHA2, SHA3 or RIPEMD160.",
+          "Fields": {
+            "text": "Text",
+            "algorithm": "Algorithm"
+          },
+          "Options": {
+            "algorithm": {
+              "MD5": "MD5",
+              "SHA1": "SHA1",
+              "SHA224": "SHA224",
+              "SHA256": "SHA256",
+              "SHA384": "SHA384",
+              "SHA512": "SHA512",
+              "SHA3_256": "SHA3-256",
+              "SHA3_512": "SHA3-512",
+              "RIPEMD160": "RIPEMD160"
+            }
+          },
+          "Outputs": {
+            "result": "Digest"
+          }
+        },
+        "hmac_generator": {
+          "Title": "Hmac generator",
+          "Description": "Compute an HMAC with a secret key and selected hash function.",
+          "Fields": {
+            "text": "Message",
+            "key": "Secret key",
+            "algorithm": "Algorithm"
+          },
+          "Options": {
+            "algorithm": {
+              "MD5": "MD5",
+              "SHA1": "SHA1",
+              "SHA256": "SHA256",
+              "SHA384": "SHA384",
+              "SHA512": "SHA512",
+              "SHA3_256": "SHA3-256",
+              "RIPEMD160": "RIPEMD160"
+            }
+          },
+          "Outputs": {
+            "result": "HMAC"
+          }
+        },
+        "password_strength_analyser": {
+          "Title": "Password strength analyser",
+          "Description": "Estimate password strength, entropy and rough crack time.",
+          "Fields": {
+            "password": "Password"
+          },
+          "Outputs": {
+            "result": "Analysis"
+          }
+        },
+        "pdf_signature_checker": {
+          "Title": "PDF signature checker",
+          "Description": "Inspect and verify embedded PDF signature containers when possible.",
+          "Fields": {
+            "file": "PDF file"
+          },
+          "Outputs": {
+            "result": "Signature details"
+          }
+        },
+        "rsa_key_pair_generator": {
+          "Title": "RSA key pair generator",
+          "Description": "Generate RSA private and public PEM key pairs.",
+          "Fields": {
+            "size": "Key size"
+          },
+          "Outputs": {
+            "result": "PEM keys"
+          }
+        },
+        "token_generator": {
+          "Title": "Token generator",
+          "Description": "Generate random strings with chosen character sets.",
+          "Fields": {
+            "length": "Length",
+            "upper": "Uppercase",
+            "lower": "Lowercase",
+            "numbers": "Numbers",
+            "symbols": "Symbols"
+          },
+          "Outputs": {
+            "result": "Token"
+          }
+        },
+        "ulid_generator": {
+          "Title": "ULID generator",
+          "Description": "Generate Universally Unique Lexicographically Sortable Identifiers.",
+          "Fields": {
+            "count": "Count"
+          },
+          "Outputs": {
+            "result": "ULIDs"
+          }
+        },
+        "uuid_generator": {
+          "Title": "UUIDs generator",
+          "Description": "Generate random UUID v4 identifiers.",
+          "Fields": {
+            "count": "Count",
+            "uppercase": "Uppercase"
+          },
+          "Outputs": {
+            "result": "UUIDs"
+          }
+        },
+        "basic_auth_generator": {
+          "Title": "Basic auth generator",
+          "Description": "Generate a Basic Authorization header from username and password.",
+          "Fields": {
+            "username": "Username",
+            "password": "Password"
+          },
+          "Outputs": {
+            "result": "Header"
+          }
+        },
+        "device_information": {
+          "Title": "Device information",
+          "Description": "Get information about the current desktop runtime and system.",
+          "Outputs": {
+            "result": "Device information"
+          }
+        },
+        "html_entities": {
+          "Title": "Escape HTML entities",
+          "Description": "Escape or unescape HTML entities.",
+          "Fields": {
+            "text": "Input",
+            "mode": "Mode"
+          },
+          "Options": {
+            "mode": {
+              "Escape": "Escape",
+              "Unescape": "Unescape"
+            }
+          },
+          "Outputs": {
+            "result": "Result"
+          }
+        },
+        "html_wysiwyg_editor": {
+          "Title": "HTML WYSIWYG editor",
+          "Description": "Generate HTML from rich-text style content blocks.",
+          "Fields": {
+            "content": "Content",
+            "mode": "Block type"
+          },
+          "Options": {
+            "mode": {
+              "Paragraphs": "Paragraphs",
+              "Unordered_list": "Unordered list",
+              "Ordered_list": "Ordered list",
+              "Raw_HTML_preview": "Raw HTML preview"
+            }
+          },
+          "Outputs": {
+            "result": "HTML source"
+          }
+        },
+        "http_status_codes": {
+          "Title": "HTTP status codes",
+          "Description": "List and search HTTP status codes.",
+          "Fields": {
+            "query": "Search"
+          },
+          "Outputs": {
+            "result": "Status codes"
+          }
+        },
+        "jwt_parser": {
+          "Title": "JWT parser",
+          "Description": "Parse and decode JSON Web Tokens.",
+          "Fields": {
+            "jwt": "JWT"
+          },
+          "Outputs": {
+            "result": "Decoded JWT"
+          }
+        },
+        "keycode_info": {
+          "Title": "Keycode info",
+          "Description": "Focus this view and press a key to inspect key information.",
+          "Outputs": {
+            "result": "Result"
+          }
+        },
+        "meta_tag_generator": {
+          "Title": "Open graph meta generator",
+          "Description": "Generate Open Graph and Twitter meta tags.",
+          "Fields": {
+            "title": "Title",
+            "description": "Description",
+            "url": "URL",
+            "image": "Image URL",
+            "site": "Site name",
+            "type": "Type"
+          },
+          "Options": {
+            "type": {
+              "website": "website",
+              "article": "article",
+              "profile": "profile",
+              "book": "book",
+              "music_song": "music.song",
+              "video_movie": "video.movie"
+            }
+          },
+          "Outputs": {
+            "result": "Meta tags"
+          }
+        },
+        "mime_types": {
+          "Title": "MIME types",
+          "Description": "Convert MIME types to file extensions and vice versa.",
+          "Fields": {
+            "query": "MIME type or extension"
+          },
+          "Outputs": {
+            "result": "Matches"
+          }
+        },
+        "otp_code_generator_and_validator": {
+          "Title": "OTP code generator",
+          "Description": "Generate and validate time-based one-time passwords.",
+          "Fields": {
+            "secret": "Secret (Base32)",
+            "digits": "Digits",
+            "period": "Period seconds",
+            "code": "Code to validate"
+          },
+          "Outputs": {
+            "result": "OTP"
+          }
+        },
+        "safelink_decoder": {
+          "Title": "Outlook Safelink decoder",
+          "Description": "Decode Outlook SafeLink URLs.",
+          "Fields": {
+            "url": "SafeLink URL"
+          },
+          "Outputs": {
+            "result": "Decoded URL"
+          }
+        },
+        "slugify_string": {
+          "Title": "Slugify string",
+          "Description": "Make a string URL, filename and id safe.",
+          "Fields": {
+            "text": "Text",
+            "lower": "Lowercase"
+          },
+          "Outputs": {
+            "result": "Slug"
+          }
+        },
+        "url_encoder": {
+          "Title": "Encode/decode URL-formatted strings",
+          "Description": "Encode text to percent-encoded format or decode from it.",
+          "Fields": {
+            "text": "Input",
+            "mode": "Mode"
+          },
+          "Options": {
+            "mode": {
+              "Encode": "Encode",
+              "Decode": "Decode"
+            }
+          },
+          "Outputs": {
+            "result": "Result"
+          }
+        },
+        "url_parser": {
+          "Title": "URL parser",
+          "Description": "Parse a URL into its constituent parts.",
+          "Fields": {
+            "url": "URL"
+          },
+          "Outputs": {
+            "result": "URL parts"
+          }
+        },
+        "user_agent_parser": {
+          "Title": "User-agent parser",
+          "Description": "Parse browser, engine, OS, CPU and device data from a user-agent string.",
+          "Fields": {
+            "userAgent": "User-agent"
+          },
+          "Outputs": {
+            "result": "Parsed user-agent"
+          }
+        },
+        "camera_recorder": {
+          "Title": "Camera recorder",
+          "Description": "Capture a still image or short video from a local camera.",
+          "Fields": {
+            "index": "Camera index",
+            "mode": "Mode",
+            "seconds": "Record seconds",
+            "save": "Save video as"
+          },
+          "Options": {
+            "mode": {
+              "Snapshot": "Snapshot",
+              "Record_AVI": "Record AVI"
+            }
+          },
+          "Outputs": {
+            "image": "Snapshot",
+            "result": "Result"
+          }
+        },
+        "qr_code_generator": {
+          "Title": "QR Code generator",
+          "Description": "Generate a QR code for text or URL.",
+          "Fields": {
+            "text": "Text",
+            "pixels": "Pixels per module"
+          },
+          "Outputs": {
+            "image": "QR Code",
+            "result": "Payload"
+          }
+        },
+        "svg_placeholder_generator": {
+          "Title": "SVG placeholder generator",
+          "Description": "Generate SVG placeholder images.",
+          "Fields": {
+            "width": "Width",
+            "height": "Height",
+            "text": "Text",
+            "bg": "Background",
+            "fg": "Foreground"
+          },
+          "Outputs": {
+            "result": "SVG"
+          }
+        },
+        "wifi_qr_code_generator": {
+          "Title": "WiFi QR Code generator",
+          "Description": "Generate QR codes for quick WiFi connections.",
+          "Fields": {
+            "ssid": "SSID",
+            "password": "Password",
+            "auth": "Authentication",
+            "hidden": "Hidden SSID"
+          },
+          "Options": {
+            "auth": {
+              "WPA": "WPA",
+              "WEP": "WEP",
+              "nopass": "nopass"
+            }
+          },
+          "Outputs": {
+            "image": "QR Code",
+            "result": "WiFi payload"
+          }
+        },
+        "ipv4_address_converter": {
+          "Title": "IPv4 address converter",
+          "Description": "Convert an IPv4 address into decimal, binary, hexadecimal and IPv6-mapped forms.",
+          "Fields": {
+            "ip": "IPv4 address"
+          },
+          "Outputs": {
+            "result": "Result"
+          }
+        },
+        "ipv4_range_expander": {
+          "Title": "IPv4 range expander",
+          "Description": "Calculate CIDR blocks covering an IPv4 start/end range.",
+          "Fields": {
+            "start": "Start IPv4",
+            "end": "End IPv4"
+          },
+          "Outputs": {
+            "result": "CIDR ranges"
+          }
+        },
+        "ipv4_subnet_calculator": {
+          "Title": "IPv4 subnet calculator",
+          "Description": "Parse IPv4 CIDR blocks and show subnet details.",
+          "Fields": {
+            "cidr": "CIDR"
+          },
+          "Outputs": {
+            "result": "Subnet"
+          }
+        },
+        "ipv6_ula_generator": {
+          "Title": "IPv6 ULA generator",
+          "Description": "Generate local IPv6 ULA prefixes according to RFC 4193.",
+          "Fields": {
+            "count": "Count"
+          },
+          "Outputs": {
+            "result": "ULA prefixes"
+          }
+        },
+        "mac_address_generator": {
+          "Title": "MAC address generator",
+          "Description": "Generate MAC addresses with an optional prefix.",
+          "Fields": {
+            "count": "Count",
+            "prefix": "Prefix",
+            "uppercase": "Uppercase"
+          },
+          "Outputs": {
+            "result": "MAC addresses"
+          }
+        },
+        "mac_address_lookup": {
+          "Title": "MAC address lookup",
+          "Description": "Find the vendor/manufacturer of a device by MAC address prefix.",
+          "Fields": {
+            "mac": "MAC address"
+          },
+          "Outputs": {
+            "result": "Vendor"
+          }
+        },
+        "eta_calculator": {
+          "Title": "ETA calculator",
+          "Description": "Estimate end time and duration from progress and rate.",
+          "Fields": {
+            "done": "Done",
+            "total": "Total",
+            "rate": "Units per second"
+          },
+          "Outputs": {
+            "result": "ETA"
+          }
+        },
+        "math_evaluator": {
+          "Title": "Math evaluator",
+          "Description": "Evaluate mathematical expressions with common functions.",
+          "Fields": {
+            "expression": "Expression"
+          },
+          "Outputs": {
+            "result": "Result"
+          }
+        },
+        "percentage_calculator": {
+          "Title": "Percentage calculator",
+          "Description": "Calculate percentages and percentage changes.",
+          "Fields": {
+            "a": "Value A",
+            "b": "Value B"
+          },
+          "Outputs": {
+            "result": "Result"
+          }
+        },
+        "benchmark_builder": {
+          "Title": "Benchmark builder",
+          "Description": "Run simple managed-code loop benchmarks.",
+          "Fields": {
+            "iterations": "Iterations",
+            "task": "Task"
+          },
+          "Options": {
+            "task": {
+              "String_concat": "String concat",
+              "StringBuilder": "StringBuilder",
+              "Random_numbers": "Random numbers",
+              "SHA256_hash": "SHA256 hash"
+            }
+          },
+          "Outputs": {
+            "result": "Benchmark"
+          }
+        },
+        "chronometer": {
+          "Title": "Chronometer",
+          "Description": "Measure elapsed time between two timestamps.",
+          "Fields": {
+            "start": "Start time",
+            "end": "End time"
+          },
+          "Outputs": {
+            "result": "Duration"
+          }
+        },
+        "ascii_text_drawer": {
+          "Title": "ASCII Art Text Generator",
+          "Description": "Create ASCII art text with Figlet fonts.",
+          "Fields": {
+            "text": "Text",
+            "font": "Font"
+          },
+          "Options": {
+            "font": {
+              "Standard": "Standard",
+              "Slant": "Slant",
+              "Small": "Small",
+              "Big": "Big"
+            }
+          },
+          "Outputs": {
+            "result": "ASCII art"
+          }
+        },
+        "emoji_picker": {
+          "Title": "Emoji picker",
+          "Description": "Search emojis and inspect Unicode code points.",
+          "Fields": {
+            "query": "Search"
+          },
+          "Outputs": {
+            "result": "Emojis"
+          }
+        },
+        "lorem_ipsum_generator": {
+          "Title": "Lorem ipsum generator",
+          "Description": "Generate placeholder text.",
+          "Fields": {
+            "paragraphs": "Paragraphs"
+          },
+          "Outputs": {
+            "result": "Lorem ipsum"
+          }
+        },
+        "numeronym_generator": {
+          "Title": "Numeronym generator",
+          "Description": "Generate numeronyms like i18n and a11y.",
+          "Fields": {
+            "text": "Words"
+          },
+          "Outputs": {
+            "result": "Numeronyms"
+          }
+        },
+        "string_obfuscator": {
+          "Title": "String obfuscator",
+          "Description": "Obfuscate a secret while keeping it identifiable.",
+          "Fields": {
+            "text": "Text",
+            "keepStart": "Keep start",
+            "keepEnd": "Keep end",
+            "mask": "Mask"
+          },
+          "Outputs": {
+            "result": "Obfuscated"
+          }
+        },
+        "text_diff": {
+          "Title": "Text diff",
+          "Description": "Compare two texts and show line-level differences.",
+          "Fields": {
+            "left": "Left text",
+            "right": "Right text"
+          },
+          "Outputs": {
+            "result": "Diff"
+          }
+        },
+        "text_statistics": {
+          "Title": "Text statistics",
+          "Description": "Count characters, words, lines and bytes.",
+          "Fields": {
+            "text": "Text"
+          },
+          "Outputs": {
+            "result": "Statistics"
+          }
+        },
+        "iban_validator_and_parser": {
+          "Title": "IBAN validator and parser",
+          "Description": "Validate and parse IBAN numbers.",
+          "Fields": {
+            "iban": "IBAN"
+          },
+          "Outputs": {
+            "result": "IBAN"
+          }
+        },
+        "phone_parser_and_formatter": {
+          "Title": "Phone parser and formatter",
+          "Description": "Parse, validate and format phone numbers.",
+          "Fields": {
+            "phone": "Phone number",
+            "region": "Default region"
+          },
+          "Outputs": {
+            "result": "Phone"
+          }
+        }
+      }
+    }
+  }
+}

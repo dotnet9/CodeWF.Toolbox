@@ -1,0 +1,24 @@
+{
+  "language": "Japanese",
+  "description": "日語",
+  "cultureName": "ja-JP",
+  "Localization": {
+    "DevelopmentModule": {
+      "Title": "開発ツール"
+    },
+    "YamlPrettifyView": {
+      "Title": "YAML フォーマッター",
+      "Description": "YAML テキストを整形し、設定ファイルを読みやすくします。",
+      "RawYaml": "YAML 入力",
+      "PrettifiedVersionYAML": "整形結果"
+    },
+    "JsonPrettifyView": {
+      "Title": "JSON フォーマッター",
+      "Description": "キーの並び替えとインデントを指定して JSON テキストを整形します。",
+      "RawJson": "JSON 入力",
+      "PrettifiedVersionJSON": "整形結果",
+      "SortKey": "キーを並び替え",
+      "IndentSize": "インデント幅"
+    }
+  }
+}

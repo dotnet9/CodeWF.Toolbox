@@ -1,0 +1,31 @@
+{
+  "language": "English",
+  "description": "English",
+  "cultureName": "en-US",
+  "Localization": {
+    "LogViewerModule": {
+      "Title": "Log Tools"
+    },
+    "LogViewerView": {
+      "Title": "Log Viewer",
+      "Description": "Open large log files quickly with virtual scrolling and live tail tracking.",
+      "OpenFile": "Open log",
+      "Reload": "Reload",
+      "FollowTail": "Follow tail",
+      "JumpToTail": "Jump to tail",
+      "FilePath": "File",
+      "FilePathWatermark": "Select a .log, .txt, or any text log file",
+      "OpenLogFileDialogTitle": "Select log file",
+      "ReadyStatus": "Ready",
+      "OpeningStatus": "Opening",
+      "IndexingStatus": "Indexing",
+      "MonitoringStatus": "Monitoring",
+      "EmptyFileStatus": "Empty file",
+      "FileDeletedStatus": "File was deleted or is not accessible",
+      "LinesStatus": "Indexed lines",
+      "SizeStatus": "File size",
+      "TailPreviewStatus": "Tail preview",
+      "OpenHint": "After opening a log file, only the current visible window is rendered here."
+    }
+  }
+}

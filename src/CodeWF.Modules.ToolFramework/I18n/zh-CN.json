@@ -1,0 +1,1130 @@
+{
+  "language": "简体中文",
+  "description": "中文（简体）",
+  "cultureName": "zh-CN",
+  "Localization": {
+    "ToolboxTools": {
+      "Common": {
+        "Run": "运行",
+        "Browse": "浏览",
+        "Copy": "复制",
+        "OpenFile": "打开文件",
+        "SaveFile": "保存文件",
+        "MissingToolId": "缺少工具 ID。",
+        "ToolNotRegistered": "工具“{0}”未注册。"
+      },
+      "Groups": {
+        "Security": "安全",
+        "Web": "Web",
+        "Media": "媒体",
+        "Network": "网络",
+        "Math": "数学",
+        "Measurement": "测量",
+        "Text": "文本",
+        "Data": "数据"
+      },
+      "Tools": {
+        "base64_file_converter": {
+          "Title": "Base64 文件转换器",
+          "Description": "将字符串、文件或图像转换为其 Base64 表示形式。",
+          "Fields": {
+            "file": "输入文件",
+            "base64": "Base64 输入",
+            "save": "解码文件另存为",
+            "mode": "模式"
+          },
+          "Options": {
+            "mode": {
+              "File_to_Base64": "文件转 Base64",
+              "Base64_to_File": "Base64 转文件"
+            }
+          },
+          "Outputs": {
+            "result": "结果"
+          }
+        },
+        "base64_string_converter": {
+          "Title": "Base64 字符串编码/解码",
+          "Description": "将字符串编码和解码为其 Base64 格式表示形式即可。",
+          "Fields": {
+            "text": "输入",
+            "urlSafe": "URL 安全",
+            "mode": "模式"
+          },
+          "Options": {
+            "mode": {
+              "Encode": "编码",
+              "Decode": "解码"
+            }
+          },
+          "Outputs": {
+            "result": "结果"
+          }
+        },
+        "case_converter": {
+          "Title": "大小写转换",
+          "Description": "更改字符串的大小写并在不同格式之间进行选择",
+          "Fields": {
+            "text": "文本"
+          },
+          "Outputs": {
+            "result": "结果"
+          }
+        },
+        "color_converter": {
+          "Title": "Color 选择器",
+          "Description": "在不同格式（十六进制、rgb、hsl和css名称）之间转换颜色",
+          "Fields": {
+            "color": "颜色"
+          },
+          "Outputs": {
+            "result": "结果"
+          }
+        },
+        "date_time_converter": {
+          "Title": "日期时间转换器",
+          "Description": "将日期和时间转换为各种不同的格式",
+          "Fields": {
+            "date": "日期",
+            "format": "输入格式"
+          },
+          "Placeholders": {
+            "date": "Leave empty for current time"
+          },
+          "Options": {
+            "format": {
+              "Auto": "自动",
+              "ISO_8601": "ISO 8601",
+              "Unix_timestamp": "Unix 时间戳",
+              "Timestamp_milliseconds": "毫秒时间戳",
+              "RFC_1123_RFC_7231": "RFC 1123/RFC 7231",
+              "Mongo_ObjectId": "Mongo ObjectId",
+              "Excel_date_time": "Excel 日期时间"
+            }
+          },
+          "Outputs": {
+            "result": "转换格式"
+          }
+        },
+        "integer_base_converter": {
+          "Title": "整数进制转换器",
+          "Description": "在不同的基数（十进制、十六进制、二进制、八进制、base64…）之间转换数字",
+          "Fields": {
+            "number": "数字",
+            "fromBase": "输入进制",
+            "toBase": "输出进制"
+          },
+          "Outputs": {
+            "result": "结果"
+          }
+        },
+        "json_to_toml": {
+          "Title": "JSON 转 TOML",
+          "Description": "解析JSON并将其转换为TOML。",
+          "Fields": {
+            "json": "JSON"
+          },
+          "Outputs": {
+            "result": "TOML"
+          }
+        },
+        "json_to_xml": {
+          "Title": "JSON to XML",
+          "Description": "JSON to XML工具。",
+          "Fields": {
+            "json": "JSON"
+          },
+          "Outputs": {
+            "result": "XML"
+          }
+        },
+        "json_to_yaml_converter": {
+          "Title": "JSON到YAML转换器",
+          "Description": "在线转换将JSON转换为YAML。",
+          "Fields": {
+            "json": "JSON"
+          },
+          "Outputs": {
+            "result": "YAML"
+          }
+        },
+        "list_converter": {
+          "Title": "List 转换器",
+          "Description": "该工具可以处理基于数组的数据，并将各种更改（转置、添加前缀和后缀、反向列表、排序列表、小写值、截断值）应用于每一行。",
+          "Fields": {
+            "list": "列表",
+            "prefix": "前缀",
+            "suffix": "后缀",
+            "truncate": "截断长度",
+            "operation": "Operation"
+          },
+          "Options": {
+            "operation": {
+              "None": "无",
+              "Sort": "排序",
+              "Reverse": "反转",
+              "Lowercase": "小写",
+              "Uppercase": "大写",
+              "Transpose": "转置",
+              "Unique": "去重"
+            }
+          },
+          "Outputs": {
+            "result": "结果"
+          }
+        },
+        "markdown_to_html": {
+          "Title": "Markdown to HTML",
+          "Description": "Markdown to HTML工具。",
+          "Fields": {
+            "markdown": "Markdown"
+          },
+          "Outputs": {
+            "result": "HTML"
+          }
+        },
+        "roman_numeral_converter": {
+          "Title": "罗马数字转换器",
+          "Description": "将罗马数字转换为数字，并将数字转换为罗马数字。",
+          "Fields": {
+            "value": "数值",
+            "mode": "模式"
+          },
+          "Options": {
+            "mode": {
+              "Number_to_Roman": "数字转罗马数字",
+              "Roman_to_Number": "罗马数字转数字"
+            }
+          },
+          "Outputs": {
+            "result": "结果"
+          }
+        },
+        "temperature_converter": {
+          "Title": "温度转换器",
+          "Description": "开尔文、摄氏度、华氏度、兰金、德莱尔、牛顿、雷奥穆尔和罗默温度度数转换。",
+          "Fields": {
+            "value": "数值",
+            "unit": "Unit"
+          },
+          "Options": {
+            "unit": {
+              "Celsius": "Celsius",
+              "Kelvin": "Kelvin",
+              "Fahrenheit": "Fahrenheit",
+              "Rankine": "Rankine",
+              "Delisle": "Delisle",
+              "Newton": "Newton",
+              "Reaumur": "Reaumur",
+              "Romer": "Romer"
+            }
+          },
+          "Outputs": {
+            "result": "结果"
+          }
+        },
+        "text_to_binary": {
+          "Title": "文本到 ASCII 二进制",
+          "Description": "将文本转换为其 ASCII 二进制表示形式，反之亦然。",
+          "Fields": {
+            "text": "输入",
+            "mode": "模式"
+          },
+          "Options": {
+            "mode": {
+              "Text_to_Binary": "文本转二进制",
+              "Binary_to_Text": "二进制转文本"
+            }
+          },
+          "Outputs": {
+            "result": "结果"
+          }
+        },
+        "text_to_nato_alphabet": {
+          "Title": "文本转北约字母表",
+          "Description": "将文本转换为北约拼音字母以进行口头传播。",
+          "Fields": {
+            "text": "文本"
+          },
+          "Outputs": {
+            "result": "结果"
+          }
+        },
+        "text_to_unicode": {
+          "Title": "文本转 Unicode",
+          "Description": "解析文本并将其转换为 unicode，反之亦然",
+          "Fields": {
+            "text": "输入",
+            "mode": "模式"
+          },
+          "Options": {
+            "mode": {
+              "Text_to_Unicode": "文本转 Unicode",
+              "Unicode_to_Text": "Unicode 转文本"
+            }
+          },
+          "Outputs": {
+            "result": "结果"
+          }
+        },
+        "toml_to_json": {
+          "Title": "TOML 到 JSON",
+          "Description": "解析TOML并将其转换为JSON。",
+          "Fields": {
+            "toml": "TOML"
+          },
+          "Outputs": {
+            "result": "JSON"
+          }
+        },
+        "toml_to_yaml": {
+          "Title": "TOML 到 YAML",
+          "Description": "Parse and convert TOML to YAML.",
+          "Fields": {
+            "toml": "TOML"
+          },
+          "Outputs": {
+            "result": "YAML"
+          }
+        },
+        "xml_to_json": {
+          "Title": "XML to JSON",
+          "Description": "XML to JSON工具。",
+          "Fields": {
+            "xml": "XML"
+          },
+          "Outputs": {
+            "result": "JSON"
+          }
+        },
+        "yaml_to_json_converter": {
+          "Title": "YAML到JSON转换器",
+          "Description": "使用此在线转换器将YAML转换为JSON。",
+          "Fields": {
+            "yaml": "YAML"
+          },
+          "Outputs": {
+            "result": "JSON"
+          }
+        },
+        "yaml_to_toml": {
+          "Title": "YAML 到 TOML",
+          "Description": "解析YAML并将其转换为TOML。",
+          "Fields": {
+            "yaml": "YAML"
+          },
+          "Outputs": {
+            "result": "TOML"
+          }
+        },
+        "chmod_calculator": {
+          "Title": "Chmod 计算器",
+          "Description": "使用此在线的chmod计算器计算chmod权限和命令。",
+          "Fields": {
+            "ur": "所有者读取",
+            "uw": "所有者写入",
+            "ux": "所有者执行",
+            "gr": "组读取",
+            "gw": "组写入",
+            "gx": "组执行",
+            "or": "其他人读取",
+            "ow": "其他人写入",
+            "ox": "其他人执行"
+          },
+          "Outputs": {
+            "result": "结果"
+          }
+        },
+        "crontab_generator": {
+          "Title": "Crontab 表达式生成",
+          "Description": "验证并生成crontab，并获取cron调度的可读描述。",
+          "Fields": {
+            "cron": "Cron 表达式"
+          },
+          "Outputs": {
+            "result": "结果"
+          }
+        },
+        "docker_run_to_docker_compose_converter": {
+          "Title": "Docker Run 到 docker-compose 转换器",
+          "Description": "将 docker run 命令行转换为 docker-compose 文件!",
+          "Fields": {
+            "command": "docker run 命令"
+          },
+          "Outputs": {
+            "result": "docker-compose.yml"
+          }
+        },
+        "email_normalizer": {
+          "Title": "Email normalizer",
+          "Description": "Email normalizer工具。",
+          "Fields": {
+            "emails": "电子邮件地址"
+          },
+          "Outputs": {
+            "result": "Normalized"
+          }
+        },
+        "git_memo": {
+          "Title": "Git 备忘录",
+          "Description": "Git是一种去中心化的版本管理软件。使用此备忘单，您可以快速访问最常见的git命令.",
+          "Outputs": {
+            "result": "速查表"
+          }
+        },
+        "json_diff": {
+          "Title": "JSON 差异比较",
+          "Description": "比较两个JSON对象并获得它们之间的差异。",
+          "Fields": {
+            "left": "左侧 JSON",
+            "right": "右侧 JSON"
+          },
+          "Outputs": {
+            "result": "差异"
+          }
+        },
+        "json_minify": {
+          "Title": "JSON 压缩",
+          "Description": "通过删除不必要的空白来缩小和压缩JSON。",
+          "Fields": {
+            "json": "JSON"
+          },
+          "Outputs": {
+            "result": "压缩 JSON"
+          }
+        },
+        "json_to_csv": {
+          "Title": "JSON 转 CSV",
+          "Description": "使用自动标头检测将JSON转换为CSV。",
+          "Fields": {
+            "json": "JSON"
+          },
+          "Outputs": {
+            "result": "CSV"
+          }
+        },
+        "json_viewer": {
+          "Title": "JSON 美化和格式化",
+          "Description": "将JSON字符串修饰为友好的可读格式。",
+          "Fields": {
+            "json": "JSON"
+          },
+          "Outputs": {
+            "result": "格式化 JSON"
+          }
+        },
+        "random_port_generator": {
+          "Title": "随机端口生成",
+          "Description": "生成“已知”端口范围（0-1023）之外的随机端口号。",
+          "Fields": {
+            "count": "数量",
+            "min": "最小值",
+            "max": "最大值"
+          },
+          "Outputs": {
+            "result": "端口"
+          }
+        },
+        "regex_memo": {
+          "Title": "Regex cheatsheet",
+          "Description": "Regex cheatsheet工具。",
+          "Outputs": {
+            "result": "速查表"
+          }
+        },
+        "regex_tester": {
+          "Title": "Regex Tester",
+          "Description": "Regex Tester工具。",
+          "Fields": {
+            "pattern": "模式",
+            "text": "示例文本",
+            "ignoreCase": "忽略大小写",
+            "multiline": "多行"
+          },
+          "Outputs": {
+            "result": "匹配"
+          }
+        },
+        "sql_prettify": {
+          "Title": "SQL 美化和格式化",
+          "Description": "在线格式化和美化您的 SQL 查询（它支持各种 SQL 方言）。",
+          "Fields": {
+            "sql": "SQL"
+          },
+          "Outputs": {
+            "result": "Formatted SQL"
+          }
+        },
+        "xml_formatter": {
+          "Title": "XML 格式化",
+          "Description": "将XML字符串修饰为友好的可读格式。",
+          "Fields": {
+            "xml": "XML"
+          },
+          "Outputs": {
+            "result": "Formatted XML"
+          }
+        },
+        "yaml_viewer": {
+          "Title": "YAML 美化和格式化",
+          "Description": "将YAML字符串修饰为友好的可读格式。",
+          "Fields": {
+            "yaml": "YAML"
+          },
+          "Outputs": {
+            "result": "Formatted YAML"
+          }
+        },
+        "bcrypt": {
+          "Title": "加密",
+          "Description": "使用bcrypt对文本字符串进行哈希和比较。Bcrypt是一个基于Blowfish密码的密码哈希函数。",
+          "Fields": {
+            "text": "文本",
+            "hash": "要比较的哈希",
+            "rounds": "轮数",
+            "mode": "模式"
+          },
+          "Options": {
+            "mode": {
+              "Hash": "哈希",
+              "Compare": "比较"
+            }
+          },
+          "Outputs": {
+            "result": "结果"
+          }
+        },
+        "bip39_generator": {
+          "Title": "BIP39密码生成器",
+          "Description": "从现有或随机助记符生成BIP39密码短语，或从密码短语获取助记符。",
+          "Fields": {
+            "words": "单词数",
+            "passphrase": "密码短语"
+          },
+          "Outputs": {
+            "result": "Mnemonic and seed"
+          }
+        },
+        "encryption": {
+          "Title": "加密/解密文本",
+          "Description": "使用加密算法（如AES、TripleDES、Rabbit或RC4）加密和解密文本明文。",
+          "Fields": {
+            "text": "输入",
+            "password": "密码",
+            "algorithm": "算法",
+            "mode": "模式"
+          },
+          "Options": {
+            "algorithm": {
+              "AES": "AES",
+              "TripleDES": "TripleDES"
+            },
+            "mode": {
+              "Encrypt": "Encrypt",
+              "Decrypt": "Decrypt"
+            }
+          },
+          "Outputs": {
+            "result": "结果"
+          }
+        },
+        "hash_text": {
+          "Title": "Hash 文本",
+          "Description": "使用所需的函数哈希文本字符串：MD5、SHA1、SHA256、SHA224、SHA512、SHA384、SHA3或RIPEMD160",
+          "Fields": {
+            "text": "文本",
+            "algorithm": "算法"
+          },
+          "Options": {
+            "algorithm": {
+              "MD5": "MD5",
+              "SHA1": "SHA1",
+              "SHA224": "SHA224",
+              "SHA256": "SHA256",
+              "SHA384": "SHA384",
+              "SHA512": "SHA512",
+              "SHA3_256": "SHA3-256",
+              "SHA3_512": "SHA3-512",
+              "RIPEMD160": "RIPEMD160"
+            }
+          },
+          "Outputs": {
+            "result": "摘要"
+          }
+        },
+        "hmac_generator": {
+          "Title": "Hmac 生成器",
+          "Description": "使用密钥和您喜欢的哈希函数计算基于哈希的消息身份验证代码（HMAC）。",
+          "Fields": {
+            "text": "消息",
+            "key": "密钥",
+            "algorithm": "算法"
+          },
+          "Options": {
+            "algorithm": {
+              "MD5": "MD5",
+              "SHA1": "SHA1",
+              "SHA256": "SHA256",
+              "SHA384": "SHA384",
+              "SHA512": "SHA512",
+              "SHA3_256": "SHA3-256",
+              "RIPEMD160": "RIPEMD160"
+            }
+          },
+          "Outputs": {
+            "result": "HMAC"
+          }
+        },
+        "password_strength_analyser": {
+          "Title": "密码强度分析仪",
+          "Description": "使用此密码强度分析器和破解时间估计工具来发现密码的强度。",
+          "Fields": {
+            "password": "密码"
+          },
+          "Outputs": {
+            "result": "分析"
+          }
+        },
+        "pdf_signature_checker": {
+          "Title": "PDF签名检查器",
+          "Description": "验证PDF文件的签名。签名的PDF文件包含一个或多个签名，可用于确定文件的内容在签名后是否已被更改。",
+          "Fields": {
+            "file": "PDF 文件"
+          },
+          "Outputs": {
+            "result": "签名详情"
+          }
+        },
+        "rsa_key_pair_generator": {
+          "Title": "RSA密钥对生成器",
+          "Description": "生成新的随机RSA私钥和公钥pem证书。",
+          "Fields": {
+            "size": "密钥长度"
+          },
+          "Outputs": {
+            "result": "PEM 密钥"
+          }
+        },
+        "token_generator": {
+          "Title": "Token 生成器",
+          "Description": "使用您想要的字符、大写或小写字母、数字和/或符号生成随机字符串。",
+          "Fields": {
+            "length": "长度",
+            "upper": "大写",
+            "lower": "小写",
+            "numbers": "数字",
+            "symbols": "符号"
+          },
+          "Outputs": {
+            "result": "Token"
+          }
+        },
+        "ulid_generator": {
+          "Title": "ULID 生成器",
+          "Description": "生成随机的通用唯一词典可排序标识符（ULID）。",
+          "Fields": {
+            "count": "数量"
+          },
+          "Outputs": {
+            "result": "ULID"
+          }
+        },
+        "uuid_generator": {
+          "Title": "UUIDs 生成器",
+          "Description": "通用唯一标识符（UUID）是一个128位数字，用于标识计算机系统中的信息。可能的UUID数量为16^32，即2^128或约3.4x10^38（这是一个很大的数字！）。",
+          "Fields": {
+            "count": "数量",
+            "uppercase": "大写"
+          },
+          "Outputs": {
+            "result": "UUID"
+          }
+        },
+        "basic_auth_generator": {
+          "Title": "基本身份验证生成器",
+          "Description": "从用户名和密码生成 base64 基本身份验证标头。",
+          "Fields": {
+            "username": "用户名",
+            "password": "密码"
+          },
+          "Outputs": {
+            "result": "请求头"
+          }
+        },
+        "device_information": {
+          "Title": "设备信息",
+          "Description": "获取有关当前设备的信息（屏幕大小、像素比率、用户代理…）",
+          "Outputs": {
+            "result": "设备信息"
+          }
+        },
+        "html_entities": {
+          "Title": "转义html实体",
+          "Description": "转义或unescape html实体（将<、>、&、“和\\'替换为其html版本）",
+          "Fields": {
+            "text": "输入",
+            "mode": "模式"
+          },
+          "Options": {
+            "mode": {
+              "Escape": "转义",
+              "Unescape": "反转义"
+            }
+          },
+          "Outputs": {
+            "result": "结果"
+          }
+        },
+        "html_wysiwyg_editor": {
+          "Title": "HTML所见即所得编辑器",
+          "Description": "在线HTML编辑器具有功能丰富的所见即所得编辑器，立即获得内容的源代码。",
+          "Fields": {
+            "content": "内容",
+            "mode": "块类型"
+          },
+          "Options": {
+            "mode": {
+              "Paragraphs": "段落",
+              "Unordered_list": "无序列表",
+              "Ordered_list": "有序列表",
+              "Raw_HTML_preview": "原始 HTML 预览"
+            }
+          },
+          "Outputs": {
+            "result": "HTML 源码"
+          }
+        },
+        "http_status_codes": {
+          "Title": "HTTP 状态码",
+          "Description": "所有HTTP状态的列表对其名称和含义解释。",
+          "Fields": {
+            "query": "搜索"
+          },
+          "Outputs": {
+            "result": "状态码"
+          }
+        },
+        "jwt_parser": {
+          "Title": "JWT 解析器",
+          "Description": "解析和解码JSON Web Token（jwt）并显示其内容。",
+          "Fields": {
+            "jwt": "JWT"
+          },
+          "Outputs": {
+            "result": "解码 JWT"
+          }
+        },
+        "keycode_info": {
+          "Title": "Keycode 信息",
+          "Description": "查找任何按下的键的javascript键代码、代码、位置和修饰符。",
+          "Outputs": {
+            "result": "结果"
+          }
+        },
+        "meta_tag_generator": {
+          "Title": "开放图谱 Meta 生成器",
+          "Description": "为您的网站生成开放式图形和社交html元标记。",
+          "Fields": {
+            "title": "标题",
+            "description": "说明",
+            "url": "URL",
+            "image": "图片 URL",
+            "site": "站点名称",
+            "type": "类型"
+          },
+          "Options": {
+            "type": {
+              "website": "网站",
+              "article": "文章",
+              "profile": "个人资料",
+              "book": "图书",
+              "music_song": "音乐歌曲",
+              "video_movie": "视频电影"
+            }
+          },
+          "Outputs": {
+            "result": "Meta 标签"
+          }
+        },
+        "mime_types": {
+          "Title": "mime类型",
+          "Description": "将mime类型转换为扩展，反之亦然。",
+          "Fields": {
+            "query": "MIME 类型或扩展名"
+          },
+          "Outputs": {
+            "result": "匹配"
+          }
+        },
+        "otp_code_generator_and_validator": {
+          "Title": "OTP 代码生成器",
+          "Description": "为多因素身份验证生成和验证基于时间的OTP（一次性密码）。",
+          "Fields": {
+            "secret": "密钥 (Base32)",
+            "digits": "位数",
+            "period": "周期秒数",
+            "code": "要验证的代码"
+          },
+          "Outputs": {
+            "result": "OTP"
+          }
+        },
+        "safelink_decoder": {
+          "Title": "Outlook Safelink decoder",
+          "Description": "Outlook Safelink decoder工具。",
+          "Fields": {
+            "url": "SafeLink URL"
+          },
+          "Outputs": {
+            "result": "解码 URL"
+          }
+        },
+        "slugify_string": {
+          "Title": "打乱字符串",
+          "Description": "确保字符串 url、文件名和 id 安全。",
+          "Fields": {
+            "text": "文本",
+            "lower": "小写"
+          },
+          "Outputs": {
+            "result": "Slug"
+          }
+        },
+        "url_encoder": {
+          "Title": "编码/解码url格式的字符串",
+          "Description": "编码为url编码格式（也称为“百分比编码”）或从中解码。",
+          "Fields": {
+            "text": "输入",
+            "mode": "模式"
+          },
+          "Options": {
+            "mode": {
+              "Encode": "编码",
+              "Decode": "解码"
+            }
+          },
+          "Outputs": {
+            "result": "结果"
+          }
+        },
+        "url_parser": {
+          "Title": "Url分析器",
+          "Description": "解析url字符串以获取所有不同的部分（协议、来源、参数、端口、用户名密码…）",
+          "Fields": {
+            "url": "URL"
+          },
+          "Outputs": {
+            "result": "URL 组成"
+          }
+        },
+        "user_agent_parser": {
+          "Title": "用户代理分析器",
+          "Description": "从用户代理字符串中检测和分析浏览器、引擎、操作系统、CPU和设备类型/型号。",
+          "Fields": {
+            "userAgent": "User-Agent"
+          },
+          "Outputs": {
+            "result": "解析后的 User-Agent"
+          }
+        },
+        "camera_recorder": {
+          "Title": "摄像机记录器",
+          "Description": "从网络摄像头或照相机拍摄照片或录制视频。",
+          "Fields": {
+            "index": "摄像头索引",
+            "mode": "模式",
+            "seconds": "录制秒数",
+            "save": "视频另存为"
+          },
+          "Options": {
+            "mode": {
+              "Snapshot": "快照",
+              "Record_AVI": "录制 AVI"
+            }
+          },
+          "Outputs": {
+            "image": "快照",
+            "result": "结果"
+          }
+        },
+        "qr_code_generator": {
+          "Title": "二维码生成器",
+          "Description": "生成并下载url或文本的QR代码，并自定义背景和前景颜色。",
+          "Fields": {
+            "text": "文本",
+            "pixels": "每模块像素"
+          },
+          "Outputs": {
+            "image": "二维码",
+            "result": "载荷"
+          }
+        },
+        "svg_placeholder_generator": {
+          "Title": "SVG 占位符生成器",
+          "Description": "生成 svg 图像以用作应用程序中的占位符。",
+          "Fields": {
+            "width": "宽度",
+            "height": "高度",
+            "text": "文本",
+            "bg": "背景",
+            "fg": "前景"
+          },
+          "Outputs": {
+            "result": "SVG"
+          }
+        },
+        "wifi_qr_code_generator": {
+          "Title": "WiFi 二维码生成器",
+          "Description": "生成和下载QR码以快速连接到WiFi网络。",
+          "Fields": {
+            "ssid": "SSID",
+            "password": "密码",
+            "auth": "认证方式",
+            "hidden": "隐藏 SSID"
+          },
+          "Options": {
+            "auth": {
+              "WPA": "WPA",
+              "WEP": "WEP",
+              "nopass": "nopass"
+            }
+          },
+          "Outputs": {
+            "image": "二维码",
+            "result": "WiFi 载荷"
+          }
+        },
+        "ipv4_address_converter": {
+          "Title": "Ipv4地址转换器",
+          "Description": "在ipv6中，将ip地址转换为十进制、二进制、十六进制或事件",
+          "Fields": {
+            "ip": "IPv4 地址"
+          },
+          "Outputs": {
+            "result": "结果"
+          }
+        },
+        "ipv4_range_expander": {
+          "Title": "IPv4范围扩展器",
+          "Description": "给定起始和结束IPv4地址，此工具使用其CIDR表示法计算有效的IPv4网络。",
+          "Fields": {
+            "start": "起始 IPv4",
+            "end": "结束 IPv4"
+          },
+          "Outputs": {
+            "result": "CIDR 范围"
+          }
+        },
+        "ipv4_subnet_calculator": {
+          "Title": "IPv4子网计算器",
+          "Description": "解析IPv4 CIDR块，并获取有关子网络的所有所需信息。",
+          "Fields": {
+            "cidr": "CIDR"
+          },
+          "Outputs": {
+            "result": "子网"
+          }
+        },
+        "ipv6_ula_generator": {
+          "Title": "IPv6 ULA生成器",
+          "Description": "根据RFC4193在网络上生成您自己的本地不可路由IP地址。",
+          "Fields": {
+            "count": "数量"
+          },
+          "Outputs": {
+            "result": "ULA 前缀"
+          }
+        },
+        "mac_address_generator": {
+          "Title": "MAC 地址生成器",
+          "Description": "输入数量和前缀。MAC地址将以您选择的大小写（大写或小写）生成",
+          "Fields": {
+            "count": "数量",
+            "prefix": "前缀",
+            "uppercase": "大写"
+          },
+          "Outputs": {
+            "result": "MAC 地址"
+          }
+        },
+        "mac_address_lookup": {
+          "Title": "MAC地址查找",
+          "Description": "通过设备的MAC地址查找设备的供应商和制造商。",
+          "Fields": {
+            "mac": "MAC 地址"
+          },
+          "Outputs": {
+            "result": "厂商"
+          }
+        },
+        "eta_calculator": {
+          "Title": "ETA 计算器",
+          "Description": "ETA（估计到达时间）计算器，用于知道任务的近似结束时间，例如下载的结束时刻。",
+          "Fields": {
+            "done": "已完成",
+            "total": "总量",
+            "rate": "每秒单位数"
+          },
+          "Outputs": {
+            "result": "ETA"
+          }
+        },
+        "math_evaluator": {
+          "Title": "数学计算器",
+          "Description": "计算数学表达式的计算器。您可以使用sqrt、cos、sin、abs等函数。",
+          "Fields": {
+            "expression": "表达式"
+          },
+          "Outputs": {
+            "result": "结果"
+          }
+        },
+        "percentage_calculator": {
+          "Title": "百分比计算器",
+          "Description": "轻松计算从一个值到另一个值的百分比，或从百分比到值的百分比。",
+          "Fields": {
+            "a": "数值 A",
+            "b": "数值 B"
+          },
+          "Outputs": {
+            "result": "结果"
+          }
+        },
+        "benchmark_builder": {
+          "Title": "基准生成器",
+          "Description": "简单的在线基准构建器可以轻松比较任务的执行时间。",
+          "Fields": {
+            "iterations": "迭代次数",
+            "task": "任务"
+          },
+          "Options": {
+            "task": {
+              "String_concat": "String concat",
+              "StringBuilder": "StringBuilder",
+              "Random_numbers": "Random numbers",
+              "SHA256_hash": "SHA256 hash"
+            }
+          },
+          "Outputs": {
+            "result": "基准"
+          }
+        },
+        "chronometer": {
+          "Title": "计时器",
+          "Description": "监控事物的持续时间。基本上是一种具有简单计时器功能的计时器。",
+          "Fields": {
+            "start": "开始时间",
+            "end": "结束时间"
+          },
+          "Outputs": {
+            "result": "持续时间"
+          }
+        },
+        "ascii_text_drawer": {
+          "Title": "ASCII 艺术字生成器",
+          "Description": "ASCII 艺术字生成器工具。",
+          "Fields": {
+            "text": "文本",
+            "font": "字体"
+          },
+          "Options": {
+            "font": {
+              "Standard": "Standard",
+              "Slant": "Slant",
+              "Small": "Small",
+              "Big": "Big"
+            }
+          },
+          "Outputs": {
+            "result": "ASCII 艺术字"
+          }
+        },
+        "emoji_picker": {
+          "Title": "Emoji 选择器",
+          "Description": "轻松复制和粘贴Emoji表情符号，并获得每个表情符号的unicode和code points值.",
+          "Fields": {
+            "query": "搜索"
+          },
+          "Outputs": {
+            "result": "Emoji"
+          }
+        },
+        "lorem_ipsum_generator": {
+          "Title": "Lorem ipsum生成器",
+          "Description": "Lorem ipsum是一种占位符文本，通常用于演示文档或字体的视觉形式，而不依赖于有意义的内容",
+          "Fields": {
+            "paragraphs": "段落"
+          },
+          "Outputs": {
+            "result": "Lorem ipsum"
+          }
+        },
+        "numeronym_generator": {
+          "Title": "数字名称生成器",
+          "Description": "数字名是一个用数字构成缩写的词。例如，“i18n”是“国际化”的名词，其中18表示单词中第一个i和最后一个n之间的字母数。",
+          "Fields": {
+            "text": "单词"
+          },
+          "Outputs": {
+            "result": "数字缩写"
+          }
+        },
+        "string_obfuscator": {
+          "Title": "字符串混淆器",
+          "Description": "混淆字符串（如秘密、IBAN 或令牌），使其可共享和可识别，而不泄露其内容。",
+          "Fields": {
+            "text": "文本",
+            "keepStart": "保留开头",
+            "keepEnd": "保留结尾",
+            "mask": "遮罩"
+          },
+          "Outputs": {
+            "result": "混淆结果"
+          }
+        },
+        "text_diff": {
+          "Title": "文本比较",
+          "Description": "比较两个文本并查看它们之间的差异。",
+          "Fields": {
+            "left": "左侧文本",
+            "right": "右侧文本"
+          },
+          "Outputs": {
+            "result": "差异"
+          }
+        },
+        "text_statistics": {
+          "Title": "文本统计",
+          "Description": "获取有关文本、字符数、字数、大小等的信息",
+          "Fields": {
+            "text": "文本"
+          },
+          "Outputs": {
+            "result": "统计"
+          }
+        },
+        "iban_validator_and_parser": {
+          "Title": "IBAN验证器和解析器",
+          "Description": "验证和分析IBAN编号。检查IBAN是否有效，并获取国家BBAN，如果它是QR-IBAN和IBAN友好格式。",
+          "Fields": {
+            "iban": "IBAN"
+          },
+          "Outputs": {
+            "result": "IBAN"
+          }
+        },
+        "phone_parser_and_formatter": {
+          "Title": "电话分析器和格式化程序",
+          "Description": "解析、验证和格式化电话号码。获取有关电话号码的信息，如国家/地区代码、类型等。",
+          "Fields": {
+            "phone": "电话号码",
+            "region": "默认地区"
+          },
+          "Outputs": {
+            "result": "电话"
+          }
+        }
+      }
+    }
+  }
+}

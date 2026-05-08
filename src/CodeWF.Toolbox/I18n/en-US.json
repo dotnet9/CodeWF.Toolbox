@@ -1,0 +1,85 @@
+{
+  "language": "English",
+  "description": "English",
+  "cultureName": "en-US",
+  "Localization": {
+    "MainModule": {
+      "Title": "CodeWF Toolbox",
+      "ShowMainWindow": "Show main window",
+      "Exit": "Exit"
+    },
+    "MainWindow": {
+      "SearchToolTip": "Search tools, converters, or generators",
+      "NoMorePrompts": "Do not show again",
+      "SureExit": "Are you sure you want to exit?",
+      "FindInTrayIcon": "The app has been minimized to the system tray."
+    },
+    "DashboardView": {
+      "Title": "Home",
+      "DesiredAvailabilityNotification": "Focused developer and conversion tools, organized for everyday work.",
+      "ProjectIntro": "A modular desktop toolbox built with Avalonia and Prism, with clear boundaries between the shell, shared services, and feature modules.",
+      "ToolCountLabel": "Available tools",
+      "ModuleCountLabel": "Feature modules",
+      "PlatformLabel": "Current platform",
+      "CommunityTitle": "Follow and feedback",
+      "CommunityDescription": "Scan the QR codes for toolbox updates, Avalonia articles, module plans, and feedback to the author.",
+      "WeChat": "Contact author",
+      "WeChatPublic": "WeChat official account",
+      "AccessToolbox": "Open online toolbox",
+      "SourceCode": "Source repository",
+      "DeveloperGuide": "Developer guide"
+    },
+    "SettingView": {
+      "Title": "Settings"
+    },
+    "CommonSettingView": {
+      "Title": "Preferences",
+      "Description": "Adjust theme, language, and startup behavior.",
+      "Theme": "Theme",
+      "ThemePlaceholderText": "Choose a theme",
+      "Default": "Follow the system",
+      "Light": "Light",
+      "Dark": "Dark",
+      "Aquatic": "Aquatic",
+      "Desert": "Desert",
+      "Dusk": "Dusk",
+      "NightSky": "Night sky",
+      "LanguageKey": "Language",
+      "LanguagePlaceholderText": "Choose a language",
+      "AutoOpenToolboxAtStartup": "Open CodeWF Toolbox when the system starts",
+      "HideTrayIconOnClose": "Hide the tray icon when the window closes",
+      "DisplayPromptWhenClosing": "Show confirmation before closing the window",
+      "TurnOn": "Turn on",
+      "TurnOff": "Turn off"
+    },
+    "UpdateLogView": {
+      "Title": "Update Log",
+      "Description": "Version updates, improvements, and fixes."
+    },
+    "AboutView": {
+      "Title": "About",
+      "Description": "CodeWF Toolbox is a modular desktop toolkit for everyday developer productivity.",
+      "VersionLabel": "Version",
+      "PlatformLabel": "Platform",
+      "BuildTimeLabel": "Build time",
+      "CopyrightLabel": "Copyright"
+    },
+    "ExitOptionView": {
+      "Message": "Choose how to close the application:",
+      "HideTrayIcon": "Minimize to system tray",
+      "DirectToClose": "Exit application",
+      "RememberMyChoice": "Remember my choice"
+    },
+    "LoginWindow": {
+      "Title": "Login",
+      "UsernameWatermark": "Username",
+      "PasswordWatermark": "Password",
+      "LoginButton": "Login",
+      "GuestLoginButton": "Continue as guest",
+      "NotConnected": "Service unavailable",
+      "LoginSuccess": "Login successful",
+      "LoginFailed": "Invalid username or password",
+      "GuestLoginSuccess": "Guest mode enabled"
+    }
+  }
+}

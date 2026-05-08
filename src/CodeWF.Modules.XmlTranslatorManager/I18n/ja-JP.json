@@ -1,0 +1,29 @@
+{
+  "language": "Japanese",
+  "description": "日語",
+  "cultureName": "ja-JP",
+  "Localization": {
+    "XmlTranslatorManager": {
+      "Title": "XMLの国際化管理"
+    },
+    "MergeXmlFilesView": {
+      "Title": "XMLの複数モジュールファイルのマージ",
+      "Description": "XML言語ファイルを統合し、Prismを使用しているなどの複数モジュールのプログラムに適しています。マージ前にファイルのバックアップを行ってください。",
+      "SelectLanguageDirectory": "言語ディレクトリを選択する",
+      "InputMergedXmlFileName": "マージ後の言語XMLファイル名を入力してください",
+      "MergeFiles": "ファイルをマージする",
+      "NoLanguageFilesTitle": "言語ファイルがありません",
+      "NoLanguageFilesContent": "マージを実行する前に、まず言語ディレクトリを選択してください",
+      "WrongNewXmlFileNameTitle": "新しいXML言語ファイル名が間違っています",
+      "WrongNewXmlFileNameContent": "入力するファイル名はファイル名のフォーマットを満たす必要があります",
+      "MergeXmlFilesExceptionTitle": "XML言語ファイルのマージに異常が発生しました",
+      "MergeXmlFilesExceptionContent": "既存のXML言語ファイルの内容が正しいかどうかを確認してください: {0}",
+      "ReadXmlFilesExceptionTitle": "XML言語ファイルの読み取りに異常が発生しました",
+      "ReadXmlFilesExceptionContent": "XML言語ファイルの内容が正しいかどうかを確認してください: {0}"
+    },
+    "ManageXmlFilesView": {
+      "Title": "XMLの多言語管理",
+      "Description": "XMLの多言語データを集中的に管理およびメンテナンスします。"
+    }
+  }
+}

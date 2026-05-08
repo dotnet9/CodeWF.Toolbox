@@ -1,0 +1,85 @@
+{
+  "language": "Chinese (Simplified)",
+  "description": "中文简体",
+  "cultureName": "zh-CN",
+  "Localization": {
+    "MainModule": {
+      "Title": "CodeWF 工具箱",
+      "ShowMainWindow": "显示主窗口",
+      "Exit": "退出"
+    },
+    "MainWindow": {
+      "SearchToolTip": "搜索工具、转换器或生成器",
+      "NoMorePrompts": "不再显示",
+      "SureExit": "您确定要退出吗？",
+      "FindInTrayIcon": "应用已最小化到系统托盘。"
+    },
+    "DashboardView": {
+      "Title": "首页",
+      "DesiredAvailabilityNotification": "常用开发与转换工具，集中管理，高效使用。",
+      "ProjectIntro": "基于 Avalonia + Prism 的模块化桌面工具箱，主壳、公共服务与工具模块边界清晰，便于扩展、维护和二次开发。",
+      "ToolCountLabel": "可用工具",
+      "ModuleCountLabel": "功能模块",
+      "PlatformLabel": "当前平台",
+      "CommunityTitle": "关注与反馈",
+      "CommunityDescription": "扫码关注公众号，获取工具更新、Avalonia 实战文章和模块规划；也可以联系作者反馈建议。",
+      "WeChat": "联系作者",
+      "WeChatPublic": "微信公众号",
+      "AccessToolbox": "打开在线工具箱",
+      "SourceCode": "源代码仓库",
+      "DeveloperGuide": "开发文档"
+    },
+    "SettingView": {
+      "Title": "设置"
+    },
+    "CommonSettingView": {
+      "Title": "基础设置",
+      "Description": "调整主题、语言与启动行为。",
+      "Theme": "主题",
+      "ThemePlaceholderText": "选择一个主题",
+      "Default": "跟随系统",
+      "Light": "浅色模式",
+      "Dark": "深色模式",
+      "Aquatic": "水生",
+      "Desert": "沙漠",
+      "Dusk": "黄昏",
+      "NightSky": "夜空",
+      "LanguageKey": "语言",
+      "LanguagePlaceholderText": "选择一个语言",
+      "AutoOpenToolboxAtStartup": "系统启动时自动打开工具箱",
+      "HideTrayIconOnClose": "关闭窗口时隐藏托盘图标",
+      "DisplayPromptWhenClosing": "关闭窗口时显示确认提示",
+      "TurnOn": "开启",
+      "TurnOff": "关闭"
+    },
+    "UpdateLogView": {
+      "Title": "更新日志",
+      "Description": "记录版本更新、功能优化与问题修复。"
+    },
+    "AboutView": {
+      "Title": "关于",
+      "Description": "CodeWF Toolbox 是一个面向开发者日常效率场景的模块化桌面工具箱。",
+      "VersionLabel": "版本",
+      "PlatformLabel": "平台",
+      "BuildTimeLabel": "构建时间",
+      "CopyrightLabel": "版权"
+    },
+    "ExitOptionView": {
+      "Message": "请选择关闭方式：",
+      "HideTrayIcon": "最小化到系统托盘",
+      "DirectToClose": "退出应用",
+      "RememberMyChoice": "记住我的选择"
+    },
+    "LoginWindow": {
+      "Title": "登录",
+      "UsernameWatermark": "用户名",
+      "PasswordWatermark": "密码",
+      "LoginButton": "登录",
+      "GuestLoginButton": "以访客身份进入",
+      "NotConnected": "服务未连接",
+      "LoginSuccess": "登录成功",
+      "LoginFailed": "用户名或密码错误",
+      "GuestLoginSuccess": "已进入访客模式"
+    }
+  }
+}

@@ -40,17 +40,9 @@
 			<Generator>TextTemplatingFileGenerator</Generator>
 			<LastGenOutput>Language.cs</LastGenOutput>
 		</None>
-		<None Update="I18n\LogViewerModule.en-US.xml">
+		<None Update="I18n\*.json">
 			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-		</None>
-		<None Update="I18n\LogViewerModule.ja-JP.xml">
-			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-		</None>
-		<None Update="I18n\LogViewerModule.zh-CN.xml">
-			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-		</None>
-		<None Update="I18n\LogViewerModule.zh-Hant.xml">
-			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+			<TargetPath>I18n\$(AssemblyName)\%(Filename)%(Extension)</TargetPath>
 		</None>
 	</ItemGroup>
 

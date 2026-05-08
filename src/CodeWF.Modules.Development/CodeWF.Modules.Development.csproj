@@ -38,21 +38,13 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<None Update="I18n\DevelopmentModule.zh-Hant.xml">
-			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-		</None>
-		<None Update="I18n\DevelopmentModule.en-US.xml">
-			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-		</None>
-		<None Update="I18n\DevelopmentModule.ja-JP.xml">
-			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-		</None>
 		<None Update="I18n\Language.tt">
 			<Generator>TextTemplatingFileGenerator</Generator>
 			<LastGenOutput>Language.cs</LastGenOutput>
 		</None>
-		<None Update="I18n\DevelopmentModule.zh-CN.xml">
+		<None Update="I18n\*.json">
 			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+			<TargetPath>I18n\$(AssemblyName)\%(Filename)%(Extension)</TargetPath>
 		</None>
 	</ItemGroup>
 

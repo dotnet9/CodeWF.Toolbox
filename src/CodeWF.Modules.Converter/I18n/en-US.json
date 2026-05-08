@@ -1,0 +1,94 @@
+{
+  "language": "English",
+  "description": "English",
+  "cultureName": "en-US",
+  "Localization": {
+    "ConverterModule": {
+      "Title": "Converters"
+    },
+    "JsonToYamlView": {
+      "Title": "JSON to YAML",
+      "Description": "Convert JSON text to YAML for configuration cleanup and migration.",
+      "RawJson": "JSON input",
+      "AfterYaml": "YAML result",
+      "Copy": "Copy",
+      "Clear": "Clear"
+    },
+    "YamlToJsonView": {
+      "Title": "YAML to JSON",
+      "Description": "Convert YAML text to JSON for API debugging and data processing.",
+      "RawYaml": "YAML input",
+      "AfterJson": "JSON result",
+      "Copy": "Copy",
+      "Clear": "Clear"
+    },
+    "ImageToIconView": {
+      "Title": "Image to ICO",
+      "ChoiceSourceImageDescription": "Image files (png, jpg, jpeg, ico, webp)",
+      "ChoiceSourceImageDialogTitle": "Select an image to convert",
+      "DestImageSize": "Target size",
+      "MergeGenerateButtonContent": "Generate one ICO file",
+      "SeparateGenerateButtonContent": "Generate ICO files by size",
+      "MemoTitle": "Note",
+      "MemoContent1": "ICO files are generally used for web page logos and application logos.",
+      "MemoContent2": "When using an ICO file on a web page, usually name the generated ICO file as \"favicon.ico\", put it in the root directory of the website, and then add the following code to the <head> tag of the page: <link rel=\"shortcut icon\" href=\"favicon.ico\" type=\"image/x-icon\" />"
+    },
+    "DateTimeConverterView": {
+      "Title": "Timestamp Converter",
+      "Description": "Convert between Unix timestamps and local date time.",
+      "CurrentTimestampLabel": "Current Unix timestamp",
+      "TimetampLabel": "Unix timestamp",
+      "SecondLabel": "Seconds",
+      "MillisecondsLabel": "Milliseconds",
+      "DateTimeFormatLabel": "Date and Time (Year/Month/Day Hour:Minute:Second)",
+      "ConvertToTimestampLabel": "Convert to Unix Timestamp",
+      "StartButtonContent": "Start",
+      "StopButtonContent": "Stop",
+      "RefreshButtonContent": "Refresh",
+      "ConvertButtonContent": "Convert"
+    },
+    "Base64CodecView": {
+      "Title": "Base64 Codec",
+      "Description": "Encode or decode UTF-8 text with Base64.",
+      "Encode": "Encode",
+      "Decode": "Decode",
+      "Swap": "Swap",
+      "CopyResult": "Copy result",
+      "Clear": "Clear",
+      "InputText": "Input",
+      "OutputText": "Result",
+      "InvalidBase64Input": "Please enter valid Base64 text."
+    },
+    "GuidGeneratorView": {
+      "Title": "GUID Generator",
+      "Description": "Generate GUIDs in bulk with selectable format and casing.",
+      "Count": "Count",
+      "Format": "Format",
+      "Uppercase": "Uppercase",
+      "Generate": "Generate",
+      "Copy": "Copy",
+      "Clear": "Clear"
+    },
+    "NuoCheView": {
+      "Title": "Parking Contact QR Code",
+      "Description": "Generate a QR code that lets others contact the vehicle owner.",
+      "InputPhoneNumber": "Contact phone number",
+      "InputTitle": "Prompt text for car relocation (Keep it as short as possible)",
+      "EnableSubTitle": "Add Subtitle",
+      "Show": "Show",
+      "DefaultInputTitle": "Scan the Code to Move the Car",
+      "DefaultSubTitlePrefix": "Scan the Code to Contact the Car Owner or Make a Phone Call",
+      "CreateButtonContent": "Generate QR code",
+      "NeedInputTip": "Please complete the required information first.",
+      "CreateErrorMessage": "Failed to generate the QR code",
+      "SaveNotificationTitle": "Save QR code",
+      "SaveNoQrCodeMessage": "Please generate the car relocation QR code first",
+      "SaveQrCodeFileTitle": "Save the car relocation QR code image",
+      "PreviewNuoCheUrl": "Preview scan URL",
+      "SaveQrCodeFileFormat": "PNG image",
+      "SaveQrCodeSuccessTitle": "Success",
+      "SaveQrCodeSuccessMessage": "The car relocation QR code image has been saved",
+      "SaveQrCodeErrorMessage": "Failed to save the car relocation QR code image"
+    }
+  }
+}

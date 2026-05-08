@@ -1,0 +1,85 @@
+{
+  "language": "Japanese",
+  "description": "日語",
+  "cultureName": "ja-JP",
+  "Localization": {
+    "MainModule": {
+      "Title": "CodeWF Toolbox",
+      "ShowMainWindow": "メインウィンドウを表示する",
+      "Exit": "終了する"
+    },
+    "MainWindow": {
+      "SearchToolTip": "ツール、変換、生成機能を検索",
+      "NoMorePrompts": "今後表示しない",
+      "SureExit": "本当に終了しますか？",
+      "FindInTrayIcon": "アプリはシステムトレイに最小化されました。"
+    },
+    "DashboardView": {
+      "Title": "ホーム",
+      "DesiredAvailabilityNotification": "日常の開発と変換作業に使うツールを整理して提供します。",
+      "ProjectIntro": "Avalonia + Prism で構築したモジュール式デスクトップツールボックスです。",
+      "ToolCountLabel": "利用可能なツール",
+      "ModuleCountLabel": "機能モジュール",
+      "PlatformLabel": "現在のプラットフォーム",
+      "CommunityTitle": "フォローとフィードバック",
+      "CommunityDescription": "QR コードからツール更新、Avalonia 記事、モジュール計画を確認し、作者へフィードバックできます。",
+      "WeChat": "作者に連絡",
+      "WeChatPublic": "WeChat 公式アカウント",
+      "AccessToolbox": "オンラインツールボックスを開く",
+      "SourceCode": "ソースリポジトリ",
+      "DeveloperGuide": "開発ドキュメント"
+    },
+    "SettingView": {
+      "Title": "設定"
+    },
+    "CommonSettingView": {
+      "Title": "一般設定",
+      "Description": "テーマ、言語、起動動作を調整します。",
+      "Theme": "テーマ",
+      "ThemePlaceholderText": "テーマを選ぶ",
+      "Default": "システム設定に従う",
+      "Light": "ライトモード",
+      "Dark": "ダークモード",
+      "Aquatic": "水生（すいせい）",
+      "Desert": "砂漠（さばく）",
+      "Dusk": "夕暮れ（ゆうぐれ）",
+      "NightSky": "夜空（よぞら）",
+      "LanguageKey": "言語",
+      "LanguagePlaceholderText": "言語を選ぶ",
+      "AutoOpenToolboxAtStartup": "システム起動時に CodeWF Toolbox を開く",
+      "HideTrayIconOnClose": "ウィンドウを閉じるときにトレイアイコンを隠す",
+      "DisplayPromptWhenClosing": "ウィンドウを閉じる前に確認する",
+      "TurnOn": "オンにする",
+      "TurnOff": "オフにする"
+    },
+    "UpdateLogView": {
+      "Title": "アップデートログ",
+      "Description": "バージョン更新、改善、修正を記録します。"
+    },
+    "AboutView": {
+      "Title": "概要",
+      "Description": "CodeWF Toolbox は、開発者の日常作業向けのモジュール式デスクトップツールキットです。",
+      "VersionLabel": "バージョン",
+      "PlatformLabel": "プラットフォーム",
+      "BuildTimeLabel": "ビルド時刻",
+      "CopyrightLabel": "著作権"
+    },
+    "ExitOptionView": {
+      "Message": "終了方法を選択してください：",
+      "HideTrayIcon": "システムトレイに最小化",
+      "DirectToClose": "アプリケーションを終了",
+      "RememberMyChoice": "私の選択を覚えておく"
+    },
+    "LoginWindow": {
+      "Title": "ログイン",
+      "UsernameWatermark": "ユーザー名",
+      "PasswordWatermark": "パスワード",
+      "LoginButton": "ログイン",
+      "GuestLoginButton": "ゲストとして続行",
+      "NotConnected": "サービスに接続できません",
+      "LoginSuccess": "ログイン成功",
+      "LoginFailed": "ユーザー名またはパスワードが正しくありません",
+      "GuestLoginSuccess": "ゲストモードで開始しました"
+    }
+  }
+}

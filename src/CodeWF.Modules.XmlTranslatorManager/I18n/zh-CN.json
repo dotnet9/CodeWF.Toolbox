@@ -1,0 +1,29 @@
+{
+  "language": "Chinese (Simplified)",
+  "description": "中文简体",
+  "cultureName": "zh-CN",
+  "Localization": {
+    "XmlTranslatorManager": {
+      "Title": "XML 国际化管理"
+    },
+    "MergeXmlFilesView": {
+      "Title": "XML 语言文件合并",
+      "Description": "合并多个模块的 XML 语言资源，适合 Prism 等模块化应用；执行前请先备份文件。",
+      "SelectLanguageDirectory": "选择语言目录",
+      "InputMergedXmlFileName": "合并后的 XML 语言文件名",
+      "MergeFiles": "合并文件",
+      "NoLanguageFilesTitle": "没有语言文件",
+      "NoLanguageFilesContent": "请先选择语言目录。",
+      "WrongNewXmlFileNameTitle": "XML 语言文件名无效",
+      "WrongNewXmlFileNameContent": "请输入符合文件命名规则的 XML 文件名。",
+      "MergeXmlFilesExceptionTitle": "合并 XML 语言文件失败",
+      "MergeXmlFilesExceptionContent": "请检查现有 XML 语言文件内容是否合法：{0}",
+      "ReadXmlFilesExceptionTitle": "读取 XML 语言文件失败",
+      "ReadXmlFilesExceptionContent": "请检查 XML 语言文件内容是否合法：{0}"
+    },
+    "ManageXmlFilesView": {
+      "Title": "XML 多语言管理",
+      "Description": "集中维护 XML 多语言资源，便于对比、补齐和统一翻译字段。"
+    }
+  }
+}

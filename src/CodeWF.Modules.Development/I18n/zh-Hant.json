@@ -1,0 +1,24 @@
+{
+  "language": "Chinese (Traditional)",
+  "description": "中文繁體",
+  "cultureName": "zh-Hant",
+  "Localization": {
+    "DevelopmentModule": {
+      "Title": "開發工具"
+    },
+    "YamlPrettifyView": {
+      "Title": "YAML 格式化",
+      "Description": "整理 YAML 文字結構，提升設定檔可讀性。",
+      "RawYaml": "YAML 輸入",
+      "PrettifiedVersionYAML": "格式化結果"
+    },
+    "JsonPrettifyView": {
+      "Title": "JSON 格式化",
+      "Description": "格式化 JSON 文字，可按需排序鍵名與調整縮排。",
+      "RawJson": "JSON 輸入",
+      "PrettifiedVersionJSON": "格式化結果",
+      "SortKey": "鍵名排序",
+      "IndentSize": "縮排空格"
+    }
+  }
+}

@@ -36,7 +36,10 @@
 
 	<ItemGroup>
 		<EmbeddedResource Include="Resources\**" />
-		<None Include="I18n\*.xml" CopyToOutputDirectory="PreserveNewest" />
+		<None Update="I18n\*.json">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+			<TargetPath>I18n\$(AssemblyName)\%(Filename)%(Extension)</TargetPath>
+		</None>
 	</ItemGroup>
 
 </Project>

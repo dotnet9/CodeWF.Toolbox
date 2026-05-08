@@ -1,0 +1,29 @@
+{
+  "language": "English",
+  "description": "English",
+  "cultureName": "en-US",
+  "Localization": {
+    "XmlTranslatorManager": {
+      "Title": "XML Localization Manager"
+    },
+    "MergeXmlFilesView": {
+      "Title": "Merge XML Language Files",
+      "Description": "Merge XML language resources from multiple modules. Recommended for Prism-style modular applications; back up files before merging.",
+      "SelectLanguageDirectory": "Select language directory",
+      "InputMergedXmlFileName": "Merged XML language file name",
+      "MergeFiles": "Merge files",
+      "NoLanguageFilesTitle": "No language files",
+      "NoLanguageFilesContent": "Select a language directory first.",
+      "WrongNewXmlFileNameTitle": "Invalid XML language file name",
+      "WrongNewXmlFileNameContent": "Enter a valid XML file name.",
+      "MergeXmlFilesExceptionTitle": "Failed to merge XML language files",
+      "MergeXmlFilesExceptionContent": "Check whether the existing XML language files are valid: {0}",
+      "ReadXmlFilesExceptionTitle": "Failed to read XML language files",
+      "ReadXmlFilesExceptionContent": "Check whether the XML language files are valid: {0}"
+    },
+    "ManageXmlFilesView": {
+      "Title": "Manage XML Localization",
+      "Description": "Maintain XML localization resources in one place for comparison, completion, and translation consistency."
+    }
+  }
+}

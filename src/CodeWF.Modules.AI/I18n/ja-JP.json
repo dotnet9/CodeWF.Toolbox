@@ -1,0 +1,27 @@
+{
+  "language": "Japanese",
+  "description": "日語",
+  "cultureName": "ja-JP",
+  "Localization": {
+    "AIModule": {
+      "Title": "AI（人工知能）"
+    },
+    "AskBotView": {
+      "Title": "AI Q&A アシスタント",
+      "Description": "設定済みの AI サービスで入力内容を処理し、参考回答と整理された視点を得られます。"
+    },
+    "PolyTranslateView": {
+      "Title": "AI 多言語翻訳",
+      "Description": "多言語コンテンツやローカライズリソースの翻訳を支援します。"
+    },
+    "Title2SlugView": {
+      "Title": "タイトルから URL Slug へ",
+      "Description": "記事タイトルをブログ、ドキュメント、CMS で使いやすい英語 URL Slug に変換します。"
+    },
+    "ChoiceLanguagesView": {
+      "LanguageKey": "言語",
+      "Selectable": "選択可能な言語",
+      "Selected": "選択済み"
+    }
+  }
+}

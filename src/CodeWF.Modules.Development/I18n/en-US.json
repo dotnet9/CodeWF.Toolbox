@@ -1,0 +1,24 @@
+{
+  "language": "English",
+  "description": "English",
+  "cultureName": "en-US",
+  "Localization": {
+    "DevelopmentModule": {
+      "Title": "Developer Tools"
+    },
+    "YamlPrettifyView": {
+      "Title": "YAML Formatter",
+      "Description": "Format YAML text for cleaner, more readable configuration files.",
+      "RawYaml": "YAML input",
+      "PrettifiedVersionYAML": "Formatted result"
+    },
+    "JsonPrettifyView": {
+      "Title": "JSON Formatter",
+      "Description": "Format JSON text with optional key sorting and indentation control.",
+      "RawJson": "JSON input",
+      "PrettifiedVersionJSON": "Formatted result",
+      "SortKey": "Sort keys",
+      "IndentSize": "Indent spaces"
+    }
+  }
+}

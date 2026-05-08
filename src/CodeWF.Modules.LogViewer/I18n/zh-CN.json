@@ -1,0 +1,31 @@
+{
+  "language": "Chinese (Simplified)",
+  "description": "中文简体",
+  "cultureName": "zh-CN",
+  "Localization": {
+    "LogViewerModule": {
+      "Title": "日志工具"
+    },
+    "LogViewerView": {
+      "Title": "日志阅读器",
+      "Description": "快速打开大日志文件，支持虚拟滚动和实时尾部追踪。",
+      "OpenFile": "打开日志",
+      "Reload": "重新加载",
+      "FollowTail": "跟随尾部",
+      "JumpToTail": "跳到末尾",
+      "FilePath": "文件",
+      "FilePathWatermark": "选择 .log、.txt 或任意文本日志文件",
+      "OpenLogFileDialogTitle": "选择日志文件",
+      "ReadyStatus": "就绪",
+      "OpeningStatus": "正在打开",
+      "IndexingStatus": "正在建立索引",
+      "MonitoringStatus": "正在监控",
+      "EmptyFileStatus": "文件为空",
+      "FileDeletedStatus": "文件已删除或不可访问",
+      "LinesStatus": "已索引行数",
+      "SizeStatus": "文件大小",
+      "TailPreviewStatus": "尾部预览",
+      "OpenHint": "打开日志文件后，此处只渲染当前可见窗口的内容。"
+    }
+  }
+}

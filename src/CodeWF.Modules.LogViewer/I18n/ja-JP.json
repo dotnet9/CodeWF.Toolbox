@@ -1,0 +1,31 @@
+{
+  "language": "Japanese",
+  "description": "日語",
+  "cultureName": "ja-JP",
+  "Localization": {
+    "LogViewerModule": {
+      "Title": "ログツール"
+    },
+    "LogViewerView": {
+      "Title": "ログビューアー",
+      "Description": "大きなログファイルをすばやく開き、仮想スクロールとライブ tail 追跡を利用できます。",
+      "OpenFile": "ログを開く",
+      "Reload": "再読み込み",
+      "FollowTail": "tail を追跡",
+      "JumpToTail": "末尾へ移動",
+      "FilePath": "ファイル",
+      "FilePathWatermark": ".log、.txt、または任意のテキストログファイルを選択",
+      "OpenLogFileDialogTitle": "ログファイルを選択",
+      "ReadyStatus": "準備完了",
+      "OpeningStatus": "開いています",
+      "IndexingStatus": "インデックス作成中",
+      "MonitoringStatus": "監視中",
+      "EmptyFileStatus": "空のファイル",
+      "FileDeletedStatus": "ファイルが削除されたか、アクセスできません",
+      "LinesStatus": "インデックス済み行数",
+      "SizeStatus": "ファイルサイズ",
+      "TailPreviewStatus": "tail プレビュー",
+      "OpenHint": "ログファイルを開いた後、現在表示中の範囲だけをここに描画します。"
+    }
+  }
+}

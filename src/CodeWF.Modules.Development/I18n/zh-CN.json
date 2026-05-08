@@ -1,0 +1,24 @@
+{
+  "language": "Chinese (Simplified)",
+  "description": "中文简体",
+  "cultureName": "zh-CN",
+  "Localization": {
+    "DevelopmentModule": {
+      "Title": "开发工具"
+    },
+    "YamlPrettifyView": {
+      "Title": "YAML 格式化",
+      "Description": "整理 YAML 文本结构，提升配置文件可读性。",
+      "RawYaml": "YAML 输入",
+      "PrettifiedVersionYAML": "格式化结果"
+    },
+    "JsonPrettifyView": {
+      "Title": "JSON 格式化",
+      "Description": "格式化 JSON 文本，可按需排序键名与调整缩进。",
+      "RawJson": "JSON 输入",
+      "PrettifiedVersionJSON": "格式化结果",
+      "SortKey": "键名排序",
+      "IndentSize": "缩进空格"
+    }
+  }
+}
