@@ -139,7 +139,7 @@ public partial class App : PrismApplication
             throw;
         }
     }
-   
+
 
     protected override void RegisterTypes(IContainerRegistry containerRegistry)
     {
@@ -150,6 +150,7 @@ public partial class App : PrismApplication
         containerRegistry.RegisterSingleton<IFileChooserService, FileChooserService>();
         containerRegistry.RegisterSingleton<INotificationService, NotificationService>();
         containerRegistry.RegisterSingleton<ILoginService, LoginService>();
+        containerRegistry.RegisterSingleton<TitleBarSettingsViewModel>();
 
         containerRegistry.RegisterSingleton<LoginViewModel>();
         containerRegistry.Register<MainWindow>();

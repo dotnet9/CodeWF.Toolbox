@@ -1,14 +1,15 @@
 using Avalonia.Controls;
 using Avalonia.Controls.Notifications;
 using CodeWF.Core;
-using CodeWF.EventBus;
 using CodeWF.Core.Models;
+using CodeWF.EventBus;
 using CodeWF.Toolbox.Commands;
 using CodeWF.Toolbox.Views;
 using Lang.Avalonia;
 using Prism.Ioc;
 using Prism.Regions;
 using ReactiveUI;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
@@ -24,7 +25,14 @@ internal class MainMenuViewModel : ViewModelBase
 
     public ObservableCollection<ToolMenuItem> MenuItems { get; } = [];
     public ObservableCollection<ToolMenuItem> GroupItems { get; } = [];
-    public ObservableCollection<ToolMenuItem> ActiveMenuItems { get; } = [];
+
+    private ObservableCollection<ToolMenuItem> _activeMenuItems = [];
+
+    public ObservableCollection<ToolMenuItem> ActiveMenuItems
+    {
+        get => _activeMenuItems;
+        private set => this.RaiseAndSetIfChanged(ref _activeMenuItems, value);
+    }
 
     private ToolMenuItem? _selectedMenuItem;
 
@@ -33,6 +41,11 @@ internal class MainMenuViewModel : ViewModelBase
         get => _selectedMenuItem;
         set
         {
+            if (ReferenceEquals(_selectedMenuItem, value))
+            {
+                return;
+            }
+
             this.RaiseAndSetIfChanged(ref _selectedMenuItem, value);
             ChangeTool();
         }
@@ -95,7 +108,7 @@ internal class MainMenuViewModel : ViewModelBase
     {
         MenuItems.Clear();
         GroupItems.Clear();
-        ActiveMenuItems.Clear();
+        ActiveMenuItems = [];
 
         foreach (ToolMenuItem sourceItem in _toolMenuService.MenuItems)
         {
@@ -258,19 +271,18 @@ internal class MainMenuViewModel : ViewModelBase
 
     private void RefreshActiveMenuItems()
     {
-        ActiveMenuItems.Clear();
         if (SelectedGroupItem == null)
         {
+            ActiveMenuItems = [];
             return;
         }
 
-        var sourceItems = SelectedGroupItem.Children.Count > 0
+        IEnumerable<ToolMenuItem> sourceItems = SelectedGroupItem.Children.Count > 0
             ? SelectedGroupItem.Children
             : [SelectedGroupItem];
-        foreach (ToolMenuItem child in sourceItems.Where(item => !item.IsSeparator))
-        {
-            ActiveMenuItems.Add(child);
-        }
+
+        ActiveMenuItems = new ObservableCollection<ToolMenuItem>(
+            sourceItems.Where(item => !item.IsSeparator));
     }
 
     private void SelectFirstToolInGroup(ToolMenuItem? group)

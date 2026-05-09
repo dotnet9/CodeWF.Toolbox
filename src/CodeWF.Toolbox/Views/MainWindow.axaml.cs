@@ -10,10 +10,10 @@ using CodeWF.EventBus;
 using CodeWF.Toolbox.Commands;
 using CodeWF.Toolbox.Diagnostics;
 using CodeWF.Toolbox.ViewModels;
+using Lang.Avalonia;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
-using Lang.Avalonia;
 using Ursa.Controls;
 
 namespace CodeWF.Toolbox.Views;
@@ -25,7 +25,7 @@ public partial class MainWindow : CodeWFWindow
     private readonly INotificationService _notificationService;
 
     public MainWindow(IApplicationService applicationService, IFileChooserService fileChooserService,
-        INotificationService notificationService)
+        INotificationService notificationService, TitleBarSettingsViewModel titleBarSettingsViewModel)
     {
         try
         {
@@ -33,6 +33,7 @@ public partial class MainWindow : CodeWFWindow
             _applicationService = applicationService;
             _fileChooserService = fileChooserService;
             _notificationService = notificationService;
+            DataContext = titleBarSettingsViewModel;
             InitializeComponent();
             RunOptionalStartupStep("MainWindow.Init", Init);
             RunOptionalStartupStep("MainWindow.AdjustWindowSize", AdjustWindowSize);

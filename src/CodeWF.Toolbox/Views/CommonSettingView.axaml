@@ -19,40 +19,13 @@
             MaxWidth="620"
             HorizontalAlignment="Left"
             ColumnDefinitions="170, *"
-            RowDefinitions="Auto, Auto, Auto, Auto, Auto"
+            RowDefinitions="Auto, Auto, Auto"
             RowSpacing="14">
             <TextBlock
-                VerticalAlignment="Center"
-                Text="{i18n:I18n {x:Static language:CommonSettingView.Theme}}" />
-            <ComboBox
-                Grid.Column="1"
-                HorizontalAlignment="Stretch"
-                PlaceholderText="{i18n:I18n {x:Static language:CommonSettingView.ThemePlaceholderText}}"
-                DisplayMemberBinding="{i18n:I18n {Binding Name}}"
-                ItemsSource="{Binding Themes}"
-                SelectedItem="{Binding SelectedTheme}" />
-
-            <TextBlock
-                Grid.Row="1"
-                VerticalAlignment="Center"
-                Text="{i18n:I18n {x:Static language:CommonSettingView.LanguageKey}}"
-                TextWrapping="Wrap" />
-            <ComboBox
-                Grid.Row="1"
-                Grid.Column="1"
-                HorizontalAlignment="Stretch"
-                PlaceholderText="{i18n:I18n {x:Static language:CommonSettingView.LanguagePlaceholderText}}"
-                DisplayMemberBinding="{Binding Description}"
-                ItemsSource="{Binding Languages}"
-                SelectedItem="{Binding SelectedLanguage}" />
-
-            <TextBlock
-                Grid.Row="2"
                 VerticalAlignment="Center"
                 Text="{i18n:I18n {x:Static language:CommonSettingView.AutoOpenToolboxAtStartup}}"
                 TextWrapping="Wrap" />
             <ToggleSwitch
-                Grid.Row="2"
                 Grid.Column="1"
                 OffContent="{i18n:I18n {x:Static language:CommonSettingView.TurnOff}}"
                 OnContent="{i18n:I18n {x:Static language:CommonSettingView.TurnOn}}"
@@ -60,12 +33,12 @@
                 Command="{Binding ChangeAutoOpenToolboxAtStartupHandlerAsync}" />
 
             <TextBlock
-                Grid.Row="3"
+                Grid.Row="1"
                 VerticalAlignment="Center"
                 Text="{i18n:I18n {x:Static language:CommonSettingView.HideTrayIconOnClose}}"
                 TextWrapping="Wrap" />
             <ToggleSwitch
-                Grid.Row="3"
+                Grid.Row="1"
                 Grid.Column="1"
                 OffContent="{i18n:I18n {x:Static language:CommonSettingView.TurnOff}}"
                 OnContent="{i18n:I18n {x:Static language:CommonSettingView.TurnOn}}"
@@ -73,12 +46,12 @@
                 Command="{Binding ChangeHideTrayIconOnCloseHandlerAsync}" />
 
             <TextBlock
-                Grid.Row="4"
+                Grid.Row="2"
                 VerticalAlignment="Center"
                 Text="{i18n:I18n {x:Static language:CommonSettingView.DisplayPromptWhenClosing}}"
                 TextWrapping="Wrap" />
             <ToggleSwitch
-                Grid.Row="4"
+                Grid.Row="2"
                 Grid.Column="1"
                 OffContent="{i18n:I18n {x:Static language:CommonSettingView.TurnOff}}"
                 OnContent="{i18n:I18n {x:Static language:CommonSettingView.TurnOn}}"

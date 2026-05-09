@@ -27,8 +27,8 @@
   <text class="subtitle" x="48" y="82">Avalonia shell, Prism regions, shared services, and feature modules</text>
 
   <rect class="layer accent-blue" x="60" y="120" width="840" height="76" rx="12" />
-  <text class="layer-title" x="92" y="152">Desktop Host</text>
-  <text class="text" x="92" y="176">CodeWF.Toolbox.Desktop: AppBuilder, manifest, icon, platform publish profiles</text>
+  <text class="layer-title" x="92" y="152">Desktop App</text>
+  <text class="text" x="92" y="176">CodeWF.Toolbox: AppBuilder, manifest, icon, platform publish profiles</text>
 
   <rect class="layer accent-green" x="60" y="236" width="840" height="96" rx="12" />
   <text class="layer-title" x="92" y="268">Application Shell</text>

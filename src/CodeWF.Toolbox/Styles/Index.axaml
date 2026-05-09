@@ -2,8 +2,8 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:system="clr-namespace:System;assembly=System.Runtime">
     <Styles.Resources>
-        <system:Double x:Key="ControlContentThemeFontSize">12</system:Double>
-        <FontFamily x:Key="ContentControlThemeFontFamily">avares://CodeWF.Toolbox/Assets/Fonts#Source Han Sans CN</FontFamily>
+        <system:Double x:Key="ControlContentThemeFontSize">13</system:Double>
+        <FontFamily x:Key="ContentControlThemeFontFamily">Microsoft YaHei UI, Segoe UI, avares://codewf/Assets/Fonts#Noto Sans SC</FontFamily>
         <FontFamily x:Key="CodeEditorThemeFontFamily">Cascadia Code,Consolas,Menlo,Monospace</FontFamily>
     </Styles.Resources>
     <StyleInclude Source="avares://AvaloniaEdit/Themes/Fluent/AvaloniaEdit.xaml" />
@@ -21,5 +21,9 @@
     <Style Selector="SelectableTextBlock">
         <Setter Property="FontFamily" Value="{DynamicResource ContentControlThemeFontFamily}" />
         <Setter Property="FontSize" Value="{DynamicResource ControlContentThemeFontSize}" />
+    </Style>
+
+    <Style Selector="TextBlock.Tertiary">
+        <Setter Property="Foreground" Value="{DynamicResource SemiGrey7}" />
     </Style>
 </Styles>

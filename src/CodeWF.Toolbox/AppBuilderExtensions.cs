@@ -5,20 +5,23 @@ namespace CodeWF.Toolbox;
 
 public static class AppBuilderExtensions
 {
-    public const string SourceHanSansCnFontFamily =
-        "avares://CodeWF.Toolbox/Assets/Fonts#Source Han Sans CN";
+    private const string BundledAppFontFamily =
+        "avares://codewf/Assets/Fonts#Noto Sans SC";
 
-    public static AppBuilder WithBundledSourceHanSansCnFont(this AppBuilder appBuilder)
+    public const string AppFontFamily =
+        "Microsoft YaHei UI, Segoe UI, avares://codewf/Assets/Fonts#Noto Sans SC";
+
+    public static AppBuilder WithBundledAppFont(this AppBuilder appBuilder)
     {
-        // 字体打包在应用资源中，避免不同系统默认中文字体导致界面字重和行高不一致。
+        // Windows 优先使用系统 UI 字体保证清晰度，其他平台回退到随包字体。
         return appBuilder.With(new FontManagerOptions
         {
-            DefaultFamilyName = SourceHanSansCnFontFamily,
+            DefaultFamilyName = AppFontFamily,
             FontFallbacks =
             [
                 new FontFallback
                 {
-                    FontFamily = new FontFamily(SourceHanSansCnFontFamily)
+                    FontFamily = new FontFamily(BundledAppFontFamily)
                 }
             ]
         });

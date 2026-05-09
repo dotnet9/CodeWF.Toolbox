@@ -8,10 +8,9 @@
 
 ![架构设计](assets/architecture.svg)
 
-整体分为五层：
+整体分为四层：
 
-- `CodeWF.Toolbox.Desktop`：桌面启动入口，负责创建 Avalonia AppBuilder、应用图标、Manifest 和发布配置。
-- `CodeWF.Toolbox`：应用 Shell，包含主窗口、菜单、设置、主题、登录窗口和模块目录配置。
+- `CodeWF.Toolbox`：桌面启动入口与应用 Shell，包含 Avalonia AppBuilder、主窗口、菜单、设置、主题、登录窗口、应用图标、Manifest、发布配置和模块目录配置。
 - `CodeWF.Core`：公共基础层，提供服务接口、文件选择、通知、工具菜单、Region 名称与 TabControl 适配器。
 - `CodeWF.Modules.*`：业务模块层，每个模块只注册自己的菜单、View、ViewModel 和资源；当前包含 AI、转换工具、日志阅读、开发辅助和 XML 国际化管理等模块。
 - `docs`/`tests`/`publish`：文档、单元测试和发布脚本。

@@ -5,17 +5,19 @@
                      xmlns:codewf="https://codewf.com"
                      x:Class="CodeWF.Toolbox.Views.MainWindow"
                      xmlns:views="clr-namespace:CodeWF.Toolbox.Views"
+                     xmlns:vm="clr-namespace:CodeWF.Toolbox.ViewModels"
                      xmlns:i18n="https://codewf.com"
                      xmlns:language="clr-namespace:Localization"
+                     x:DataType="vm:TitleBarSettingsViewModel"
                      mc:Ignorable="d" WindowStartupLocation="CenterScreen"
                      Width="1200" Height="800"
                      d:DesignWidth="1200" d:DesignHeight="800"
                      Icon="/Assets/logo.ico"
                      Background="{DynamicResource SemiGrey0}"
                      TitleBarHeight="42"
-                     TitleBarBackground="#0F6FFF"
-                     TitleBarBorderBrush="#0F6FFF"
-                     TitleBarForeground="White"
+                     TitleBarBackground="{DynamicResource SemiGrey0}"
+                     TitleBarBorderBrush="{DynamicResource SemiGrey2}"
+                     TitleBarForeground="{DynamicResource SemiGrey9}"
                      WindowCornerRadius="6"
                      Title="{i18n:I18n {x:Static language:MainModule.Title}}">
 	<codewf:CodeWFWindow.LeftContent>
@@ -24,12 +26,53 @@
         </Viewbox>
     </codewf:CodeWFWindow.LeftContent>
     <codewf:CodeWFWindow.RightContent>
-        <TextBox x:Name="Search" Width="360" Height="32" Margin="0 0 12 0"
-                 Background="#EAF2FF"
-                 BorderBrush="#7DB7FF"
-                 Foreground="#102A43"
-                 TextChanged="Search_OnTextChanged"
-                 PlaceholderText="{i18n:I18n {x:Static language:MainWindow.SearchToolTip}}" />
+        <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="0 0 14 0" Spacing="8">
+            <TextBox x:Name="Search" Width="320" Height="32"
+                     Background="{DynamicResource SemiGrey1}"
+                     BorderBrush="{DynamicResource SemiGrey3}"
+                     CornerRadius="5"
+                     Foreground="{DynamicResource SemiGrey9}"
+                     HorizontalContentAlignment="Left"
+                     Padding="12 0"
+                     PlaceholderForeground="{DynamicResource SemiGrey5}"
+                     TextChanged="Search_OnTextChanged"
+                     VerticalContentAlignment="Center"
+                     PlaceholderText="{i18n:I18n {x:Static language:MainWindow.SearchToolTip}}" />
+
+            <ComboBox
+                Width="128"
+                Height="32"
+                Background="{DynamicResource SemiGrey1}"
+                BorderBrush="{DynamicResource SemiGrey3}"
+                CornerRadius="5"
+                DisplayMemberBinding="{i18n:I18n {Binding Name}}"
+                Foreground="{DynamicResource SemiGrey9}"
+                HorizontalContentAlignment="Left"
+                ItemsSource="{Binding Themes}"
+                Padding="12 0"
+                PlaceholderForeground="{DynamicResource SemiGrey5}"
+                PlaceholderText="{i18n:I18n {x:Static language:CommonSettingView.ThemePlaceholderText}}"
+                SelectedItem="{Binding SelectedTheme, Mode=TwoWay}"
+                ToolTip.Tip="{i18n:I18n {x:Static language:CommonSettingView.Theme}}"
+                VerticalContentAlignment="Center" />
+
+            <ComboBox
+                Width="138"
+                Height="32"
+                Background="{DynamicResource SemiGrey1}"
+                BorderBrush="{DynamicResource SemiGrey3}"
+                CornerRadius="5"
+                DisplayMemberBinding="{Binding Description}"
+                Foreground="{DynamicResource SemiGrey9}"
+                HorizontalContentAlignment="Left"
+                ItemsSource="{Binding Languages}"
+                Padding="12 0"
+                PlaceholderForeground="{DynamicResource SemiGrey5}"
+                PlaceholderText="{i18n:I18n {x:Static language:CommonSettingView.LanguagePlaceholderText}}"
+                SelectedItem="{Binding SelectedLanguage, Mode=TwoWay}"
+                ToolTip.Tip="{i18n:I18n {x:Static language:CommonSettingView.LanguageKey}}"
+                VerticalContentAlignment="Center" />
+        </StackPanel>
     </codewf:CodeWFWindow.RightContent>
     <views:MainView />
 </codewf:CodeWFWindow>

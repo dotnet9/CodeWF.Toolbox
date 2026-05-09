@@ -12,8 +12,8 @@
 		<semi:AvaloniaEditSemiTheme />
 		<semi:ProDataGridSemiTheme />
         <semi:UrsaSemiTheme Locale="zh-CN"/>
-        <StyleInclude Source="../Styles/Index.axaml" />
 		<codewf:CodeWFTheme />
+        <StyleInclude Source="../Styles/Index.axaml" />
         <codewf:MarkdownThemes TypographyTheme="Simple" />
     </prism:PrismApplication.Styles>
     <TrayIcon.Icons>

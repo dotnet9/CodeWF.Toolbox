@@ -1,7 +1,7 @@
 @echo off
 setlocal enabledelayedexpansion
 
-set "project_paths=src\CodeWF.Toolbox.Desktop"
-set "platforms=linux-x64 linux-arm64 win-x64 win-x86"
+set "project_paths=src\CodeWF.Toolbox"
+set "platforms=win-x64 linux-x64"
 
-call "%~dp0publish.bat" "%project_paths%" "%platforms%"
+call "%~dp0publishbase.bat" "%project_paths%" "%platforms%"

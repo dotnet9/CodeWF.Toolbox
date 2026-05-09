@@ -10,7 +10,7 @@ public static class LinuxStartupHelper
     {
         string pathToDir = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), ".config",
             "autostart");
-        string pathToDesktopFile = Path.Combine(pathToDir, "CodeWF.Toolbox.Desktop");
+        string pathToDesktopFile = Path.Combine(pathToDir, Constants.RegisterKey);
 
         IoHelpers.EnsureContainingDirectoryExists(pathToDesktopFile);
 

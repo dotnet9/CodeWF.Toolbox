@@ -1,6 +1,5 @@
 <linker>
 	<assembly fullname="codewf" preserve="All" />
-	<assembly fullname="CodeWF.Toolbox" preserve="All" />
 	<assembly fullname="CodeWF.Controls" preserve="All" />
 	<assembly fullname="CodeWF.Core" preserve="All" />
 	<assembly fullname="CodeWF.AvaloniaControls" preserve="All" />

@@ -34,15 +34,14 @@
 ```powershell
 dotnet restore CodeWF.Toolbox.slnx
 dotnet build CodeWF.Toolbox.slnx
-dotnet run --project src/CodeWF.Toolbox.Desktop/CodeWF.Toolbox.Desktop.csproj
+dotnet run --project src/CodeWF.Toolbox/CodeWF.Toolbox.csproj
 ```
 
 ## 目录结构
 
 ```text
 src/
-  CodeWF.Toolbox.Desktop/            桌面入口工程
-  CodeWF.Toolbox/                    主程序、主界面、设置与资源
+  CodeWF.Toolbox/                    桌面应用、主界面、设置与资源
   CodeWF.Core/                       公共抽象、服务与区域定义
   CodeWF.Controls/                   公共控件
   CodeWF.Modules.AI/                 AI 工具模块

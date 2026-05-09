@@ -34,15 +34,14 @@ Requirements:
 ```powershell
 dotnet restore CodeWF.Toolbox.slnx
 dotnet build CodeWF.Toolbox.slnx
-dotnet run --project src/CodeWF.Toolbox.Desktop/CodeWF.Toolbox.Desktop.csproj
+dotnet run --project src/CodeWF.Toolbox/CodeWF.Toolbox.csproj
 ```
 
 ## Solution Layout
 
 ```text
 src/
-  CodeWF.Toolbox.Desktop/            Desktop entry point
-  CodeWF.Toolbox/                    Shell, main views, settings, resources
+  CodeWF.Toolbox/                    Desktop app, shell, main views, settings, resources
   CodeWF.Core/                       Shared abstractions, services, regions
   CodeWF.Controls/                   Shared controls
   CodeWF.Modules.AI/                 AI utility module

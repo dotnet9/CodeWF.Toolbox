@@ -1,11 +1,24 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
-		<TargetFrameworks>net11.0</TargetFrameworks>
+		<OutputType>WinExe</OutputType>
+		<TargetFrameworks>net11.0;net11.0-windows</TargetFrameworks>
+		<ApplicationManifest>app.manifest</ApplicationManifest>
+		<ApplicationIcon>Assets\logo.ico</ApplicationIcon>
 		<Nullable>enable</Nullable>
 		<LangVersion>latest</LangVersion>
 		<AvaloniaUseCompiledBindingsByDefault>true</AvaloniaUseCompiledBindingsByDefault>
-		<!-- 禁用自动生成程序集属性 -->
+		<BuiltInComInteropSupport>true</BuiltInComInteropSupport>
+		<IncludeNativeLibrariesForSelfExtract>true</IncludeNativeLibrariesForSelfExtract>
+		<AssemblyName>codewf</AssemblyName>
 		<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+		<WindowsSupportedOSPlatformVersion>6.1</WindowsSupportedOSPlatformVersion>
+		<TargetPlatformMinVersion>6.1</TargetPlatformMinVersion>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="$([MSBuild]::IsTargetFrameworkCompatible('$(TargetFramework)', 'net11.0-windows'))">
+		<IsTrimmable>true</IsTrimmable>
+		<PublishTrimmed>true</PublishTrimmed>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -14,6 +27,10 @@
 
 	<ItemGroup>
 	  <Compile Include="..\..\GlobalAssemblies\GlobalAssembly.cs" Link="GlobalAssembly.cs" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<TrimmerRootDescriptor Include="Roots.xml" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -26,6 +43,7 @@
 
 	<ItemGroup>
 		<PackageReference Include="Avalonia" />
+		<PackageReference Include="Avalonia.Desktop" />
 		<!--Condition below keeps diagnostics support out of Release output.-->
 		<PackageReference Condition="'$(Configuration)' == 'Debug'" Include="AvaloniaUI.DiagnosticsSupport" />
 		<PackageReference Include="Semi.Avalonia" />
@@ -35,6 +53,8 @@
 		<PackageReference Include="Prism.DryIoc.Avalonia" />
 		<PackageReference Include="ReactiveUI.Avalonia" />
 		<PackageReference Include="Semi.Avalonia.AvaloniaEdit" />
+		<PackageReference Include="VC-LTL" />
+		<PackageReference Include="YY-Thunks" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -60,6 +80,12 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<None Include="..\..\UpdateLog.md" Pack="true" PackagePath="">
+		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+	</ItemGroup>
+
+	<ItemGroup>
 	  <Compile Update="I18n\Language.cs">
 	    <DesignTime>True</DesignTime>
 	    <AutoGen>True</AutoGen>
@@ -75,6 +101,10 @@
 	  <None Update="I18n\*.json">
 	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 	    <TargetPath>I18n\$(AssemblyName)\%(Filename)%(Extension)</TargetPath>
+	  </None>
+	  <None Update="Assets\Fonts\NotoSansSC-OFL.txt">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	    <TargetPath>Licenses\NotoSansSC-OFL.txt</TargetPath>
 	  </None>
 	</ItemGroup>
 </Project>

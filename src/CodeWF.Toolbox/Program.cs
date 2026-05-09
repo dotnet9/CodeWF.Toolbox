@@ -1,11 +1,10 @@
-﻿using Avalonia;
-using CodeWF.Toolbox;
+using Avalonia;
 using CodeWF.Toolbox.Diagnostics;
 using ReactiveUI.Avalonia;
 using System;
 using System.Threading.Tasks;
 
-namespace CodeWF.Toolbox.Desktop;
+namespace CodeWF.Toolbox;
 
 internal sealed class Program
 {
@@ -45,7 +44,12 @@ internal sealed class Program
             .UsePlatformDetect()
             .With(new Win32PlatformOptions
             {
-                RenderingMode = [Win32RenderingMode.Software],
+                RenderingMode =
+                [
+                    Win32RenderingMode.AngleEgl,
+                    Win32RenderingMode.Wgl,
+                    Win32RenderingMode.Software
+                ],
                 OverlayPopups = true,
             })
             .With(new X11PlatformOptions
@@ -56,7 +60,7 @@ internal sealed class Program
             {
                 OverlayPopups = true
             })
-            .WithBundledSourceHanSansCnFont()
+            .WithBundledAppFont()
             .UseReactiveUI(_ => { })
             .LogToTrace();
 }

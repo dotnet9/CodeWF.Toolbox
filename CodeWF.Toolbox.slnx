@@ -4,16 +4,6 @@
     <Platform Name="x64" />
     <Platform Name="x86" />
   </Configurations>
-  <Folder Name="/Applications/">
-    <Project Path="src/CodeWF.Toolbox.Desktop/CodeWF.Toolbox.Desktop.csproj">
-      <Platform Solution="*|x64" Project="x64" />
-      <Platform Solution="*|x86" Project="x86" />
-    </Project>
-    <Project Path="src/CodeWF.Toolbox/CodeWF.Toolbox.csproj">
-      <Platform Solution="*|x64" Project="x64" />
-      <Platform Solution="*|x86" Project="x86" />
-    </Project>
-  </Folder>
   <Folder Name="/Infrastructures/">
     <Project Path="src/CodeWF.Controls/CodeWF.Controls.csproj">
       <Platform Solution="*|x64" Project="x64" />
@@ -37,23 +27,15 @@
       <Platform Solution="*|x64" Project="x64" />
       <Platform Solution="*|x86" Project="x86" />
     </Project>
+    <Project Path="src/CodeWF.Modules.Data/CodeWF.Modules.Data.csproj">
+      <Platform Solution="*|x64" Project="x64" />
+      <Platform Solution="*|x86" Project="x86" />
+    </Project>
     <Project Path="src/CodeWF.Modules.Development/CodeWF.Modules.Development.csproj">
       <Platform Solution="*|x64" Project="x64" />
       <Platform Solution="*|x86" Project="x86" />
     </Project>
-    <Project Path="src/CodeWF.Modules.Security/CodeWF.Modules.Security.csproj">
-      <Platform Solution="*|x64" Project="x64" />
-      <Platform Solution="*|x86" Project="x86" />
-    </Project>
-    <Project Path="src/CodeWF.Modules.Web/CodeWF.Modules.Web.csproj">
-      <Platform Solution="*|x64" Project="x64" />
-      <Platform Solution="*|x86" Project="x86" />
-    </Project>
-    <Project Path="src/CodeWF.Modules.Media/CodeWF.Modules.Media.csproj">
-      <Platform Solution="*|x64" Project="x64" />
-      <Platform Solution="*|x86" Project="x86" />
-    </Project>
-    <Project Path="src/CodeWF.Modules.Network/CodeWF.Modules.Network.csproj">
+    <Project Path="src/CodeWF.Modules.LogViewer/CodeWF.Modules.LogViewer.csproj">
       <Platform Solution="*|x64" Project="x64" />
       <Platform Solution="*|x86" Project="x86" />
     </Project>
@@ -65,15 +47,23 @@
       <Platform Solution="*|x64" Project="x64" />
       <Platform Solution="*|x86" Project="x86" />
     </Project>
+    <Project Path="src/CodeWF.Modules.Media/CodeWF.Modules.Media.csproj">
+      <Platform Solution="*|x64" Project="x64" />
+      <Platform Solution="*|x86" Project="x86" />
+    </Project>
+    <Project Path="src/CodeWF.Modules.Network/CodeWF.Modules.Network.csproj">
+      <Platform Solution="*|x64" Project="x64" />
+      <Platform Solution="*|x86" Project="x86" />
+    </Project>
+    <Project Path="src/CodeWF.Modules.Security/CodeWF.Modules.Security.csproj">
+      <Platform Solution="*|x64" Project="x64" />
+      <Platform Solution="*|x86" Project="x86" />
+    </Project>
     <Project Path="src/CodeWF.Modules.Text/CodeWF.Modules.Text.csproj">
       <Platform Solution="*|x64" Project="x64" />
       <Platform Solution="*|x86" Project="x86" />
     </Project>
-    <Project Path="src/CodeWF.Modules.Data/CodeWF.Modules.Data.csproj">
-      <Platform Solution="*|x64" Project="x64" />
-      <Platform Solution="*|x86" Project="x86" />
-    </Project>
-    <Project Path="src/CodeWF.Modules.LogViewer/CodeWF.Modules.LogViewer.csproj">
+    <Project Path="src/CodeWF.Modules.Web/CodeWF.Modules.Web.csproj">
       <Platform Solution="*|x64" Project="x64" />
       <Platform Solution="*|x86" Project="x86" />
     </Project>
@@ -93,8 +83,10 @@
     <File Path="Directory.Build.props" />
     <File Path="Directory.Packages.props" />
     <File Path="global.json" />
-    <File Path="publish.bat" />
     <File Path="README.zh-CN.md" />
+    <File Path="publish.bat" />
+    <File Path="Publish.Common.pubxml" />
+    <File Path="publishbase.bat" />
     <File Path="publish_win-x64.bat" />
     <File Path="README.md" />
     <File Path="docs/README.zh-CN.md" />
@@ -104,4 +96,8 @@
     <File Path="UpdateAssemblyVersion.ps1" />
     <File Path="UpdateLog.md" />
   </Folder>
+  <Project Path="src/CodeWF.Toolbox/CodeWF.Toolbox.csproj">
+    <Platform Solution="*|x64" Project="x64" />
+    <Platform Solution="*|x86" Project="x86" />
+  </Project>
 </Solution>
