@@ -65,10 +65,14 @@
       "CopyrightLabel": "Copyright"
     },
     "ExitOptionView": {
-      "Message": "Choose how to close the application:",
+      "Message": "Close CodeWF Toolbox",
+      "Description": "Exit the app, or keep the toolbox available from the system tray.",
       "HideTrayIcon": "Minimize to system tray",
+      "HideTrayIconDescription": "Keep the app running so it can be restored quickly from the tray.",
       "DirectToClose": "Exit application",
-      "RememberMyChoice": "Remember my choice"
+      "DirectToCloseDescription": "Stop the current process and remove the tray icon.",
+      "RememberMyChoice": "Remember my choice",
+      "RememberMyChoiceDescription": "Apply the selected action directly the next time the window closes."
     },
     "LoginWindow": {
       "Title": "Login",

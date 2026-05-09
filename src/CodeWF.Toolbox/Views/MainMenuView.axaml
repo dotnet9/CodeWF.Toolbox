@@ -39,11 +39,26 @@
             <Setter Property="Foreground" Value="{DynamicResource SemiBlue5}" />
         </Style>
         <Style Selector="Button.RailButton">
+            <Setter Property="Width" Value="40" />
+            <Setter Property="Height" Value="40" />
             <Setter Property="MinHeight" Value="40" />
-            <Setter Property="Margin" Value="8" />
+            <Setter Property="Margin" Value="8 8 8 10" />
             <Setter Property="Padding" Value="0" />
+            <Setter Property="Background" Value="{DynamicResource SemiGrey0}" />
+            <Setter Property="BorderBrush" Value="{DynamicResource SemiGrey2}" />
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="CornerRadius" Value="10" />
+            <Setter Property="Foreground" Value="{DynamicResource SemiBlue5}" />
             <Setter Property="HorizontalContentAlignment" Value="Center" />
             <Setter Property="VerticalContentAlignment" Value="Center" />
+        </Style>
+        <Style Selector="Button.RailButton:pointerover">
+            <Setter Property="Background" Value="{DynamicResource SemiBlue0}" />
+            <Setter Property="BorderBrush" Value="{DynamicResource SemiBlue2}" />
+        </Style>
+        <Style Selector="Button.RailButton:pressed">
+            <Setter Property="Background" Value="{DynamicResource SemiBlue1}" />
+            <Setter Property="BorderBrush" Value="{DynamicResource SemiBlue3}" />
         </Style>
     </UserControl.Styles>
     <Border Padding="0" Background="{DynamicResource SemiGrey0}" BorderBrush="{DynamicResource SemiGrey2}" BorderThickness="0 0 1 0">
@@ -75,7 +90,11 @@
                         Classes="RailButton"
                         Command="{Binding RaiseOpenSettingHandlerAsync}"
                         ToolTip.Tip="{i18n:I18n {x:Static language:SettingView.Title}}">
-                        <PathIcon Width="18" Height="18" Data="{StaticResource SettingIconGlyph}" />
+                        <PathIcon
+                            Width="18"
+                            Height="18"
+                            Data="{StaticResource SettingIconGlyph}"
+                            Foreground="{DynamicResource SemiBlue5}" />
                     </Button>
                 </Grid>
             </Border>

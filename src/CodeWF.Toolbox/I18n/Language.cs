@@ -92,9 +92,13 @@ namespace Localization
     public static class ExitOptionView
     {
         public static readonly string Message = "Localization.ExitOptionView.Message";
+        public static readonly string Description = "Localization.ExitOptionView.Description";
         public static readonly string HideTrayIcon = "Localization.ExitOptionView.HideTrayIcon";
+        public static readonly string HideTrayIconDescription = "Localization.ExitOptionView.HideTrayIconDescription";
         public static readonly string DirectToClose = "Localization.ExitOptionView.DirectToClose";
+        public static readonly string DirectToCloseDescription = "Localization.ExitOptionView.DirectToCloseDescription";
         public static readonly string RememberMyChoice = "Localization.ExitOptionView.RememberMyChoice";
+        public static readonly string RememberMyChoiceDescription = "Localization.ExitOptionView.RememberMyChoiceDescription";
     }
 
 

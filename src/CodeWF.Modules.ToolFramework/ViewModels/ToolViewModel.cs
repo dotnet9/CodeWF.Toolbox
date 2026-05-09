@@ -1,6 +1,6 @@
 ﻿using Avalonia.Controls;
-using Avalonia.Threading;
 using Avalonia.Platform.Storage;
+using Avalonia.Threading;
 using CodeWF.Core.Helpers;
 using CodeWF.Core.IServices;
 using CodeWF.Modules.ToolFramework.Models;
@@ -140,7 +140,10 @@ public sealed class ToolViewModel : ReactiveObject, INavigationAware, IDisposabl
             Command = RunCommand
         });
 
-        _ = RunAsync();
+        if (_currentTool.AutoRun)
+        {
+            _ = RunAsync();
+        }
     }
 
     private async Task RunAsync()
@@ -230,4 +233,3 @@ public sealed class ToolViewModel : ReactiveObject, INavigationAware, IDisposabl
         _subscriptions.Dispose();
     }
 }
-

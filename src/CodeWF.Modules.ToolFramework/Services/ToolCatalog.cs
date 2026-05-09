@@ -245,7 +245,7 @@ public static class ToolCatalog
             Category = category,
             Name = ToolLocalization.ToolTitle(id),
             Description = ToolLocalization.ToolDescription(id),
-            Icon = IconForCategory(category),
+            Icon = IconForTool(id, category),
             RunAsync = LazyRun(runFactory),
             AutoRun = autoRun
         };
@@ -383,13 +383,19 @@ public static class ToolCatalog
             ToolCategories.Security => Icons.Crypto,
             ToolCategories.Converter => Icons.Converter,
             ToolCategories.Development => Icons.Development,
+            ToolCategories.Web => Icons.Web,
             ToolCategories.Network => Icons.Network,
             ToolCategories.Media => Icons.Media,
             ToolCategories.Math => Icons.Math,
+            ToolCategories.Measurement => Icons.Measurement,
             ToolCategories.Text => Icons.Text,
+            ToolCategories.Data => Icons.Data,
             _ => Icons.Tool
         };
     }
+
+    private static string IconForTool(string id, string category)
+    {
+        return Icons.WithToolBadge(IconForCategory(category), id);
+    }
 }
-
-
