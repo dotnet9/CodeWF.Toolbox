@@ -11,10 +11,10 @@
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="CodeWF.Toolbox.Views.MainContentView"
              x:DataType="vm:MainContentViewModel">
-    <Border Padding="20 18" Background="{DynamicResource SemiGrey0}">
+    <Border Padding="16 14" Background="{DynamicResource SemiGrey0}">
         <Grid RowDefinitions="Auto, *">
             <Border
-                Padding="0 0 0 14"
+                Padding="0 0 0 12"
                 Background="{DynamicResource SemiGrey0}"
                 BorderBrush="{DynamicResource SemiGrey2}"
                 BorderThickness="0 0 0 1">
@@ -33,7 +33,7 @@
             </Border>
             <ContentControl
                 Grid.Row="1"
-                Margin="0 16 0 0"
+                Margin="0 12 0 0"
                 prism:RegionManager.RegionName="{x:Static core:RegionNames.ContentRegion}" />
         </Grid>
     </Border>

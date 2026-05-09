@@ -14,7 +14,7 @@
     <PackageVersion Include="AvaloniaUI.DiagnosticsSupport" Version="2.2.1" />
     <PackageVersion Include="BCrypt.Net-Next" Version="4.1.0" />
     <PackageVersion Include="BouncyCastle.Cryptography" Version="2.7.0-beta.98" />
-    <PackageVersion Include="CodeWF.AvaloniaControls.Themes" Version="12.0.2.4" />
+    <PackageVersion Include="CodeWF.AvaloniaControls.Themes" Version="12.0.2.8" />
     <PackageVersion Include="CodeWF.AvaloniaControls.ProDataGrid" Version="12.0.2.1" />
     <PackageVersion Include="CodeWF.EventBus" Version="3.4.5.1" />
     <PackageVersion Include="CodeWF.Log.Core" Version="12.0.2.1" />

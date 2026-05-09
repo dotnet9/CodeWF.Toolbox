@@ -8,6 +8,7 @@ using CodeWF.Core.Helpers;
 using CodeWF.Core.IServices;
 using CodeWF.EventBus;
 using CodeWF.Toolbox.Commands;
+using CodeWF.Toolbox.Diagnostics;
 using CodeWF.Toolbox.ViewModels;
 using System;
 using System.Linq;
@@ -26,13 +27,27 @@ public partial class MainWindow : CodeWFWindow
     public MainWindow(IApplicationService applicationService, IFileChooserService fileChooserService,
         INotificationService notificationService)
     {
-        _applicationService = applicationService;
-        _fileChooserService = fileChooserService;
-        _notificationService = notificationService;
-        InitializeComponent();
-        Init();
-        AdjustWindowSize();
+        try
+        {
+            StartupDiagnostics.Log("MainWindow.ctor: started.");
+            _applicationService = applicationService;
+            _fileChooserService = fileChooserService;
+            _notificationService = notificationService;
+            InitializeComponent();
+            RunOptionalStartupStep("MainWindow.Init", Init);
+            RunOptionalStartupStep("MainWindow.AdjustWindowSize", AdjustWindowSize);
+            RunOptionalStartupStep("MainWindow.ApplyRenderOptions", ApplyRenderOptions);
+            StartupDiagnostics.Log("MainWindow.ctor: completed.");
+        }
+        catch (Exception exception)
+        {
+            StartupDiagnostics.LogException("MainWindow.ctor", exception);
+            throw;
+        }
+    }
 
+    private void ApplyRenderOptions()
+    {
         RenderOptions.SetTextRenderingMode(this, TextRenderingMode.SubpixelAntialias);
         RenderOptions.SetBitmapInterpolationMode(this, BitmapInterpolationMode.HighQuality);
         RenderOptions.SetEdgeMode(this, EdgeMode.Antialias);
@@ -40,9 +55,11 @@ public partial class MainWindow : CodeWFWindow
 
     private void InitializeComponent()
     {
+        StartupDiagnostics.Log("MainWindow.InitializeComponent: loading XAML.");
         AvaloniaXamlLoader.Load(this);
-        _fileChooserService?.SetHostWindow(this);
-        _notificationService?.SetHostWindow(this);
+        StartupDiagnostics.Log("MainWindow.InitializeComponent: XAML loaded.");
+        RunOptionalStartupStep("MainWindow.SetFileChooserHost", () => _fileChooserService.SetHostWindow(this));
+        RunOptionalStartupStep("MainWindow.SetNotificationHost", () => _notificationService.SetHostWindow(this));
     }
 
     private void Init()
@@ -59,13 +76,20 @@ public partial class MainWindow : CodeWFWindow
     [EventHandler]
     private void ChangeApplicationStatus(ChangeApplicationStatusCommand command)
     {
-        var icon = TrayIcon.GetIcons(App.Instance)?.FirstOrDefault();
-        if (icon == null)
+        try
         {
-            return;
-        }
+            var icon = TrayIcon.GetIcons(App.Instance)?.FirstOrDefault();
+            if (icon == null)
+            {
+                return;
+            }
 
-        icon.IsVisible = _applicationService.HideTrayIconOnClose;
+            icon.IsVisible = _applicationService.HideTrayIconOnClose;
+        }
+        catch (Exception exception)
+        {
+            StartupDiagnostics.LogException("MainWindow.ChangeApplicationStatus", exception);
+        }
     }
 
     protected override async void OnClosing(WindowClosingEventArgs e)
@@ -131,5 +155,17 @@ public partial class MainWindow : CodeWFWindow
         var targetHeight = isSmaller ? 810 : 1080;
         MinWidth = Width = Math.Min(targetWidth, screen.WorkingArea.Width);
         MinHeight = Height = Math.Min(targetHeight, screen.WorkingArea.Height);
+    }
+
+    private static void RunOptionalStartupStep(string stage, Action action)
+    {
+        try
+        {
+            action();
+        }
+        catch (Exception exception)
+        {
+            StartupDiagnostics.LogException(stage, exception);
+        }
     }
 }

@@ -7,6 +7,7 @@ using CodeWF.Core.IServices;
 using CodeWF.Core.RegionAdapters;
 using CodeWF.Core.Services;
 using CodeWF.Modules.XmlTranslatorManager;
+using CodeWF.Toolbox.Diagnostics;
 using CodeWF.Toolbox.Services;
 using CodeWF.Toolbox.ViewModels;
 using CodeWF.Toolbox.Views;
@@ -50,13 +51,24 @@ public partial class App : PrismApplication
 
     public override void Initialize()
     {
-        AvaloniaXamlLoader.Load(this);
-        var langPlugin = new JsonLangPlugin
+        try
         {
-            ResourceFolder = Path.Combine(AppContext.BaseDirectory, "I18n")
-        };
-        I18nManager.Instance.Register(langPlugin, new CultureInfo("zh-CN"), out _);
-        base.Initialize(); // <-- Required
+            StartupDiagnostics.Log("App.Initialize: loading application XAML.");
+            AvaloniaXamlLoader.Load(this);
+            var langPlugin = new JsonLangPlugin
+            {
+                ResourceFolder = Path.Combine(AppContext.BaseDirectory, "I18n")
+            };
+            I18nManager.Instance.Register(langPlugin, new CultureInfo("zh-CN"), out _);
+            StartupDiagnostics.Log("App.Initialize: calling Prism base initialization.");
+            base.Initialize(); // <-- Required
+            StartupDiagnostics.Log("App.Initialize: completed.");
+        }
+        catch (Exception exception)
+        {
+            StartupDiagnostics.LogException("App.Initialize", exception);
+            throw;
+        }
     }
 
     protected override void ConfigureModuleCatalog(IModuleCatalog moduleCatalog)
@@ -87,25 +99,45 @@ public partial class App : PrismApplication
 
     protected override AvaloniaObject CreateShell()
     {
-        Instance = this;
+        try
+        {
+            Instance = this;
 
-        var mainWindow = Container.Resolve<MainWindow>();
-        return mainWindow;
+            StartupDiagnostics.Log("App.CreateShell: resolving MainWindow.");
+            var mainWindow = Container.Resolve<MainWindow>();
+            StartupDiagnostics.Log("App.CreateShell: MainWindow resolved.");
+            return mainWindow;
+        }
+        catch (Exception exception)
+        {
+            StartupDiagnostics.LogException("App.CreateShell", exception);
+            throw;
+        }
     }
 
     protected override async void OnInitialized()
     {
-        base.OnInitialized();
-
-        // Prism Shell 创建完成后再弹出登录窗口，避免登录窗口找不到 Owner。
-        var loginWindow = Container.Resolve<LoginWindow>();
-        if (MainWindow is Window owner)
+        try
         {
-            await loginWindow.ShowDialog(owner);
-            return;
-        }
+            base.OnInitialized();
 
-        loginWindow.Show();
+            // Prism Shell 创建完成后再弹出登录窗口，避免登录窗口找不到 Owner。
+            StartupDiagnostics.Log("App.OnInitialized: resolving LoginWindow.");
+            var loginWindow = Container.Resolve<LoginWindow>();
+            StartupDiagnostics.Log("App.OnInitialized: LoginWindow resolved.");
+            if (MainWindow is Window owner)
+            {
+                await loginWindow.ShowDialog(owner);
+                return;
+            }
+
+            loginWindow.Show();
+        }
+        catch (Exception exception)
+        {
+            StartupDiagnostics.LogException("App.OnInitialized", exception);
+            throw;
+        }
     }
    
 

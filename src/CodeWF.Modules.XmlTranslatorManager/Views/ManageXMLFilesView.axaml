@@ -45,14 +45,7 @@
                       ItemsSource="{Binding SelectedClassItem.Properties}"
                       CanUserReorderColumns="True"
                       CanUserResizeColumns="True"
-                      CanUserSortColumns="True">
-                <Interaction.Behaviors>
-                    <EventTriggerBehavior EventName="Loaded" SourceObject="LanguageDataGrid">
-                        <InvokeCommandAction Command="{Binding RaiseDataGridLoadHandlerAsync}"
-                                             CommandParameter="{Binding ElementName=LanguageDataGrid}" />
-                    </EventTriggerBehavior>
-                </Interaction.Behaviors>
-            </DataGrid>
+                      CanUserSortColumns="True" />
         </Grid>
     </Grid>
 </UserControl>

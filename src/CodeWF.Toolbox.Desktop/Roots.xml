@@ -1,8 +1,11 @@
 <linker>
-	<assembly fullname="CodeWF.Toolbox.Desktop" preserve="All" />
+	<assembly fullname="codewf" preserve="All" />
 	<assembly fullname="CodeWF.Toolbox" preserve="All" />
 	<assembly fullname="CodeWF.Controls" preserve="All" />
 	<assembly fullname="CodeWF.Core" preserve="All" />
+	<assembly fullname="CodeWF.AvaloniaControls" preserve="All" />
+	<assembly fullname="CodeWF.AvaloniaControls.Themes" preserve="All" />
+	<assembly fullname="CodeWF.AvaloniaControls.ProDataGrid" preserve="All" />
 	<assembly fullname="CodeWF.Modules.ToolFramework" preserve="All" />
 	<assembly fullname="CodeWF.Modules.AI" preserve="All" />
 	<assembly fullname="CodeWF.Modules.Converter" preserve="All" />
@@ -19,12 +22,18 @@
 	<assembly fullname="CodeWF.Modules.XmlTranslatorManager" preserve="All" />
 	<assembly fullname="Lang.Avalonia" preserve="All" />
 	<assembly fullname="Lang.Avalonia.Json" preserve="All" />
+	<assembly fullname="Semi.Avalonia" preserve="All" />
+	<assembly fullname="Semi.Avalonia.AvaloniaEdit" preserve="All" />
+	<assembly fullname="Semi.Avalonia.ProDataGrid" preserve="All" />
+	<assembly fullname="Ursa" preserve="All" />
+	<assembly fullname="Ursa.Themes.Semi" preserve="All" />
 	<assembly fullname="Ursa.PrismExtension" preserve="All" />
+	<assembly fullname="Irihi.Avalonia.Shared" preserve="All" />
+	<assembly fullname="Irihi.Avalonia.Shared.Contracts" preserve="All" />
 	<assembly fullname="Prism" preserve="All" />
 	<assembly fullname="DryIoc" preserve="All" />
 	<assembly fullname="Prism.Avalonia" preserve="All" />
 	<assembly fullname="Prism.DryIoc.Avalonia" preserve="All" />
-	<assembly fullname="Prism.Container.Abstractions" preserve="All" />
 	<assembly fullname="Dapper" preserve="All" />
 	<assembly fullname="Dapper.AOT" preserve="All" />
 	<assembly fullname="System.Net.Http" preserve="All" />

@@ -12,66 +12,117 @@
              xmlns:language="clr-namespace:Localization"
              prism:ViewModelLocator.AutoWireViewModel="True"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Name="Root"
              x:Class="CodeWF.Toolbox.Views.MainMenuView"
              x:DataType="vm:MainMenuViewModel">
     <UserControl.Resources>
         <ResourceDictionary>
             <converters:IconConverter x:Key="IconConverter" />
-            <StreamGeometry x:Key="NavigationMenuExpandIconGlyph">M5 2H19C20.6569 2 22 3.34315 22 5V19C22 20.6569 20.6569 22 19 22H5C3.34315 22 2 20.6569 2 19V5C2 3.34315 3.34315 2 5 2ZM6 4C5.44772 4 5 4.44772 5 5V19C5 19.5523 5.44772 20 6 20H9C9.55229 20 10 19.5523 10 19V5C10 4.44772 9.55229 4 9 4H6Z</StreamGeometry>
+            <StreamGeometry x:Key="SettingIconGlyph">M19.43 12.98c.04-.32.07-.65.07-.98s-.02-.66-.07-.98l2.11-1.65c.19-.15.24-.42.12-.64l-2-3.46c-.12-.22-.37-.31-.6-.22l-2.49 1c-.52-.4-1.08-.73-1.69-.98L14.5 2.42C14.47 2.18 14.25 2 14 2h-4c-.25 0-.46.18-.5.42L9.12 5.07c-.61.25-1.18.59-1.69.98l-2.49-1c-.23-.08-.48 0-.6.22l-2 3.46c-.13.22-.07.49.12.64l2.11 1.65c-.04.32-.08.65-.08.98s.03.66.08.98l-2.11 1.65c-.19.15-.24.42-.12.64l2 3.46c.12.22.37.31.6.22l2.49-1c.52.4 1.08.73 1.69.98l.38 2.65c.04.24.25.42.5.42h4c.25 0 .47-.18.5-.42l.38-2.65c.61-.25 1.18-.59 1.69-.98l2.49 1c.23.08.48 0 .6-.22l2-3.46c.12-.22.07-.49-.12-.64l-2.11-1.65zM12 15.5A3.5 3.5 0 1 1 12 8a3.5 3.5 0 0 1 0 7.5z</StreamGeometry>
         </ResourceDictionary>
     </UserControl.Resources>
+    <UserControl.Styles>
+        <Style Selector="ListBox.IconRail">
+            <Setter Property="Background" Value="{DynamicResource SemiGrey0}" />
+            <Setter Property="BorderThickness" Value="0" />
+        </Style>
+        <Style Selector="ListBox.IconRail ListBoxItem">
+            <Setter Property="MinHeight" Value="44" />
+            <Setter Property="Margin" Value="6 2" />
+            <Setter Property="Padding" Value="0" />
+            <Setter Property="HorizontalContentAlignment" Value="Center" />
+            <Setter Property="VerticalContentAlignment" Value="Center" />
+            <Setter Property="CornerRadius" Value="6" />
+        </Style>
+        <Style Selector="ListBox.IconRail ListBoxItem:selected">
+            <Setter Property="Background" Value="#E8F3FF" />
+            <Setter Property="Foreground" Value="{DynamicResource SemiBlue5}" />
+        </Style>
+        <Style Selector="Button.RailButton">
+            <Setter Property="MinHeight" Value="40" />
+            <Setter Property="Margin" Value="8" />
+            <Setter Property="Padding" Value="0" />
+            <Setter Property="HorizontalContentAlignment" Value="Center" />
+            <Setter Property="VerticalContentAlignment" Value="Center" />
+        </Style>
+    </UserControl.Styles>
     <Border Padding="0" Background="{DynamicResource SemiGrey0}" BorderBrush="{DynamicResource SemiGrey2}" BorderThickness="0 0 1 0">
-        <Grid RowDefinitions="* Auto">
-            <u:NavMenu
-                ExpandWidth="{Binding $parent[views:MainMenuView].Width}"
-                HeaderBinding="{i18n:I18n {Binding Name}}"
-                IconBinding="{Binding Icon}"
-                IsHorizontalCollapsed="{Binding #Collapse.IsChecked, Mode=OneWay}"
-                ItemsSource="{Binding MenuItems}"
-                SelectedItem="{Binding SelectedMenuItem}"
-                SubMenuBinding="{Binding Children}"
-                HorizontalAlignment="Stretch">
-                <u:NavMenu.Styles>
-                    <Style x:DataType="core:ToolMenuItem" Selector="u|NavMenuItem">
-                        <Setter Property="IsSeparator" Value="{Binding IsSeparator}" />
-                    </Style>
-                </u:NavMenu.Styles>
-                <u:NavMenu.IconTemplate>
-                    <DataTemplate DataType="{x:Type x:String}">
-                        <u:TwoTonePathIcon
-                            Width="16"
-                            Height="16"
-                            ActiveForeground="{DynamicResource SemiBlue5}"
-                            ActiveStrokeBrush="{DynamicResource SemiBlue5}"
-                            Data="{Binding Converter={StaticResource IconConverter}}"
-                            Foreground="{DynamicResource SemiGrey5}"
-                            IsActive="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=u:NavMenuItem}, Path=IsHighlighted, Mode=TwoWay}"
-                            StrokeBrush="{DynamicResource SemiGrey5}" />
-                    </DataTemplate>
-                </u:NavMenu.IconTemplate>
-            </u:NavMenu>
-            <StackPanel Grid.Row="1" Margin="8" Spacing="8">
-                <u:Divider Margin="-8 0" />
-                <ToggleSwitch Name="Collapse"
-                              Theme="{DynamicResource ButtonToggleSwitch}"
-                              HorizontalAlignment="Left">
-                    <ToggleSwitch.OnContent>
-                        <PathIcon
-                            Width="16"
-                            Height="16"
-                            Data="{StaticResource NavigationMenuExpandIconGlyph}" />
-                    </ToggleSwitch.OnContent>
-                    <ToggleSwitch.OffContent>
-                        <PathIcon
-                            Width="16"
-                            Height="16"
-                            Data="{StaticResource NavigationMenuExpandIconGlyph}" />
-                    </ToggleSwitch.OffContent>
-                </ToggleSwitch>
-                <Button Content="{i18n:I18n {x:Static language:SettingView.Title}}"
-                        Command="{Binding RaiseOpenSettingHandlerAsync}" HorizontalAlignment="Stretch"
-                        MinHeight="32" />
-            </StackPanel>
+        <Grid ColumnDefinitions="56,*">
+            <Border Grid.Column="0"
+                    Background="{DynamicResource SemiGrey0}"
+                    BorderBrush="{DynamicResource SemiGrey2}"
+                    BorderThickness="0 0 1 0">
+                <Grid RowDefinitions="*,Auto">
+                    <ListBox
+                        Classes="IconRail"
+                        ItemsSource="{Binding GroupItems}"
+                        SelectedItem="{Binding SelectedGroupItem, Mode=TwoWay}">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate x:DataType="core:ToolMenuItem">
+                                <Grid Width="40" Height="40" ToolTip.Tip="{i18n:I18n {Binding Name}}">
+                                    <PathIcon
+                                        Width="18"
+                                        Height="18"
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Center"
+                                        Data="{Binding Icon, Converter={StaticResource IconConverter}}" />
+                                </Grid>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                    <Button
+                        Grid.Row="1"
+                        Classes="RailButton"
+                        Command="{Binding RaiseOpenSettingHandlerAsync}"
+                        ToolTip.Tip="{i18n:I18n {x:Static language:SettingView.Title}}">
+                        <PathIcon Width="18" Height="18" Data="{StaticResource SettingIconGlyph}" />
+                    </Button>
+                </Grid>
+            </Border>
+
+            <Grid Grid.Column="1" RowDefinitions="Auto,*">
+                <Border
+                    Padding="14 12 12 10"
+                    Background="{DynamicResource SemiGrey0}"
+                    BorderBrush="{DynamicResource SemiGrey2}"
+                    BorderThickness="0 0 0 1">
+                    <TextBlock
+                        FontSize="12"
+                        FontWeight="SemiBold"
+                        Foreground="{DynamicResource SemiGrey6}"
+                        Text="{i18n:I18n {Binding SelectedGroupItem.Name}}"
+                        TextWrapping="NoWrap" />
+                </Border>
+
+                <u:NavMenu
+                    Grid.Row="1"
+                    ExpandWidth="244"
+                    HeaderBinding="{i18n:I18n {Binding Name}}"
+                    IconBinding="{Binding Icon}"
+                    ItemsSource="{Binding ActiveMenuItems}"
+                    SelectedItem="{Binding SelectedMenuItem}"
+                    SubMenuBinding="{Binding Children}"
+                    HorizontalAlignment="Stretch">
+                    <u:NavMenu.Styles>
+                        <Style x:DataType="core:ToolMenuItem" Selector="u|NavMenuItem">
+                            <Setter Property="IsSeparator" Value="{Binding IsSeparator}" />
+                        </Style>
+                    </u:NavMenu.Styles>
+                    <u:NavMenu.IconTemplate>
+                        <DataTemplate DataType="{x:Type x:String}">
+                            <u:TwoTonePathIcon
+                                Width="16"
+                                Height="16"
+                                ActiveForeground="{DynamicResource SemiBlue5}"
+                                ActiveStrokeBrush="{DynamicResource SemiBlue5}"
+                                Data="{Binding Converter={StaticResource IconConverter}}"
+                                Foreground="{DynamicResource SemiGrey5}"
+                                IsActive="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=u:NavMenuItem}, Path=IsHighlighted, Mode=TwoWay}"
+                                StrokeBrush="{DynamicResource SemiGrey5}" />
+                        </DataTemplate>
+                    </u:NavMenu.IconTemplate>
+                </u:NavMenu>
+            </Grid>
         </Grid>
     </Border>
 </UserControl>

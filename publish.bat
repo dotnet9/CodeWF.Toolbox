@@ -60,13 +60,13 @@ if exist "%~dp0publish" (
     for /r "%~dp0publish" %%f in (*.pdb) do del /q "%%f" 2>nul
     echo *.pdb files removed.
 )
-explorer "%~dp0publish"
-pause
+if not "%CODEX_NO_EXPLORER%"=="1" explorer "%~dp0publish"
+if not "%CODEX_NO_PAUSE%"=="1" pause
 goto :eof
 
 :error
 echo ========================================
 echo Build failed! Please check the errors above.
 echo ========================================
-pause
+if not "%CODEX_NO_PAUSE%"=="1" pause
 exit /b 1

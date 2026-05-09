@@ -17,61 +17,77 @@
     <Design.DataContext>
         <vm:JsonToYamlViewModel />
     </Design.DataContext>
-    <Grid ColumnDefinitions="* 5 *" RowDefinitions="Auto * Auto Auto">
-        <TextBlock
-            Grid.Row="0"
+    <Grid ColumnDefinitions="*,12,*" RowDefinitions="*,Auto">
+        <Border
             Grid.Column="0"
-            Text="{i18n:I18n {x:Static language:JsonToYamlView.RawJson}}" />
+            Background="{DynamicResource SemiGrey0}"
+            BorderBrush="{DynamicResource SemiGrey2}"
+            BorderThickness="1"
+            CornerRadius="6">
+            <Grid RowDefinitions="Auto,*">
+                <Border Padding="10 8" BorderBrush="{DynamicResource SemiGrey2}" BorderThickness="0 0 0 1">
+                    <Grid ColumnDefinitions="*,Auto">
+                        <TextBlock
+                            VerticalAlignment="Center"
+                            FontWeight="SemiBold"
+                            Text="{i18n:I18n {x:Static language:JsonToYamlView.RawJson}}" />
+                        <Button
+                            Grid.Column="1"
+                            MinHeight="28"
+                            Classes="Success"
+                            Command="{Binding RaiseClearCommand}"
+                            Content="{i18n:I18n {x:Static language:JsonToYamlView.Clear}}"
+                            CornerRadius="5" />
+                    </Grid>
+                </Border>
 
-        <AvaloniaEdit:TextEditor
-            x:Name="JsonEditor"
-            Grid.Row="1"
-            Grid.Column="0"
-            FontFamily="{StaticResource CodeEditorThemeFontFamily}"
-            ShowLineNumbers="True"
-            SyntaxHighlighting="JSON" />
+                <AvaloniaEdit:TextEditor
+                    x:Name="JsonEditor"
+                    Grid.Row="1"
+                    FontFamily="{StaticResource CodeEditorThemeFontFamily}"
+                    ShowLineNumbers="True"
+                    SyntaxHighlighting="JSON" />
+            </Grid>
+        </Border>
 
-        <Button
-            Grid.Row="2"
-            Grid.Column="0"
-            Height="40"
-            HorizontalAlignment="Right"
-            VerticalAlignment="Center"
-            Classes="Success"
-            Command="{Binding RaiseClearCommand}"
-            Content="{i18n:I18n {x:Static language:JsonToYamlView.Clear}}"
-            CornerRadius="5" />
+        <Border
+            Grid.Column="2"
+            Background="{DynamicResource SemiGrey0}"
+            BorderBrush="{DynamicResource SemiGrey2}"
+            BorderThickness="1"
+            CornerRadius="6">
+            <Grid RowDefinitions="Auto,*">
+                <Border Padding="10 8" BorderBrush="{DynamicResource SemiGrey2}" BorderThickness="0 0 0 1">
+                    <Grid ColumnDefinitions="*,Auto">
+                        <TextBlock
+                            VerticalAlignment="Center"
+                            FontWeight="SemiBold"
+                            Text="{i18n:I18n {x:Static language:JsonToYamlView.AfterYaml}}" />
+                        <Button
+                            Grid.Column="1"
+                            MinHeight="28"
+                            Classes="Success"
+                            Command="{Binding RaiseCopyCommand}"
+                            Content="{i18n:I18n {x:Static language:JsonToYamlView.Copy}}"
+                            CornerRadius="5" />
+                    </Grid>
+                </Border>
+
+                <AvaloniaEdit:TextEditor
+                    x:Name="YamlEditor"
+                    Grid.Row="1"
+                    FontFamily="{StaticResource CodeEditorThemeFontFamily}"
+                    ShowLineNumbers="True"
+                    SyntaxHighlighting="YAML" />
+            </Grid>
+        </Border>
 
         <SelectableTextBlock
-            Grid.Row="3"
-            Grid.Column="0"
+            Grid.Row="1"
+            Grid.ColumnSpan="3"
+            Margin="0 10 0 0"
             Foreground="Red"
             Text="{Binding ErrorMessage}"
             TextWrapping="Wrap" />
-
-        <TextBlock
-            Grid.Row="0"
-            Grid.Column="2"
-            Text="{i18n:I18n {x:Static language:JsonToYamlView.AfterYaml}}" />
-
-        <AvaloniaEdit:TextEditor
-            x:Name="YamlEditor"
-            Grid.Row="1"
-            Grid.Column="2"
-            FontFamily="{StaticResource CodeEditorThemeFontFamily}"
-            ShowLineNumbers="True"
-            SyntaxHighlighting="YAML" />
-
-        <Button
-            Grid.Row="2"
-            Grid.Column="2"
-            Height="40"
-            HorizontalAlignment="Right"
-            VerticalAlignment="Center"
-            Classes="Success"
-            Command="{Binding RaiseCopyCommand}"
-            Content="{i18n:I18n {x:Static language:JsonToYamlView.Copy}}"
-            CornerRadius="5"
-            Theme="{DynamicResource BorderlessButton}" />
     </Grid>
 </UserControl>

@@ -19,9 +19,12 @@ internal class MainMenuViewModel : ViewModelBase
 {
     private readonly IRegionManager _regionManager;
     private readonly IToolMenuService _toolMenuService;
+    private bool _isSyncingGroupSelection;
     private string _searchKeyword = string.Empty;
 
     public ObservableCollection<ToolMenuItem> MenuItems { get; } = [];
+    public ObservableCollection<ToolMenuItem> GroupItems { get; } = [];
+    public ObservableCollection<ToolMenuItem> ActiveMenuItems { get; } = [];
 
     private ToolMenuItem? _selectedMenuItem;
 
@@ -32,6 +35,28 @@ internal class MainMenuViewModel : ViewModelBase
         {
             this.RaiseAndSetIfChanged(ref _selectedMenuItem, value);
             ChangeTool();
+        }
+    }
+
+    private ToolMenuItem? _selectedGroupItem;
+
+    public ToolMenuItem? SelectedGroupItem
+    {
+        get => _selectedGroupItem;
+        set
+        {
+            if (ReferenceEquals(_selectedGroupItem, value))
+            {
+                return;
+            }
+
+            this.RaiseAndSetIfChanged(ref _selectedGroupItem, value);
+            RefreshActiveMenuItems();
+
+            if (!_isSyncingGroupSelection)
+            {
+                SelectFirstToolInGroup(value);
+            }
         }
     }
 
@@ -69,6 +94,8 @@ internal class MainMenuViewModel : ViewModelBase
     private void ApplyMenuFilter(string? preferredName = null, string? preferredViewName = null)
     {
         MenuItems.Clear();
+        GroupItems.Clear();
+        ActiveMenuItems.Clear();
 
         foreach (ToolMenuItem sourceItem in _toolMenuService.MenuItems)
         {
@@ -82,9 +109,17 @@ internal class MainMenuViewModel : ViewModelBase
             }
         }
 
-        SelectedMenuItem =
+        foreach (ToolMenuItem item in MenuItems.Where(item => !item.IsSeparator))
+        {
+            GroupItems.Add(item);
+        }
+
+        var preferredItem =
             FindMenuItem(MenuItems, preferredName, preferredViewName)
+            ?? FindFirstNavigableItem(MenuItems, skipDashboard: string.IsNullOrWhiteSpace(_searchKeyword))
             ?? FindFirstNavigableItem(MenuItems);
+        SetSelectedGroupFromMenu(preferredItem);
+        SelectedMenuItem = preferredItem;
     }
 
     private static ToolMenuItem? FilterMenuItem(ToolMenuItem item, string keyword)
@@ -200,16 +235,18 @@ internal class MainMenuViewModel : ViewModelBase
         return null;
     }
 
-    private static ToolMenuItem? FindFirstNavigableItem(ObservableCollection<ToolMenuItem> items)
+    private static ToolMenuItem? FindFirstNavigableItem(ObservableCollection<ToolMenuItem> items, bool skipDashboard = false)
     {
         foreach (ToolMenuItem item in items)
         {
-            if (!item.IsSeparator && !string.IsNullOrWhiteSpace(item.ViewName))
+            if (!item.IsSeparator
+                && !string.IsNullOrWhiteSpace(item.ViewName)
+                && (!skipDashboard || item.ViewName != nameof(DashboardView)))
             {
                 return item;
             }
 
-            var child = FindFirstNavigableItem(item.Children);
+            var child = FindFirstNavigableItem(item.Children, skipDashboard);
             if (child != null)
             {
                 return child;
@@ -217,6 +254,85 @@ internal class MainMenuViewModel : ViewModelBase
         }
 
         return null;
+    }
+
+    private void RefreshActiveMenuItems()
+    {
+        ActiveMenuItems.Clear();
+        if (SelectedGroupItem == null)
+        {
+            return;
+        }
+
+        var sourceItems = SelectedGroupItem.Children.Count > 0
+            ? SelectedGroupItem.Children
+            : [SelectedGroupItem];
+        foreach (ToolMenuItem child in sourceItems.Where(item => !item.IsSeparator))
+        {
+            ActiveMenuItems.Add(child);
+        }
+    }
+
+    private void SelectFirstToolInGroup(ToolMenuItem? group)
+    {
+        if (group == null)
+        {
+            return;
+        }
+
+        // 点击左侧类别图标时，自动进入该类别下第一个可用工具，让内容区保持聚焦。
+        var target = !string.IsNullOrWhiteSpace(group.ViewName)
+            ? group
+            : FindFirstNavigableItem(group.Children);
+        if (target != null)
+        {
+            SelectedMenuItem = target;
+        }
+    }
+
+    private void SetSelectedGroupFromMenu(ToolMenuItem? item)
+    {
+        var group = FindOwningTopLevel(MenuItems, item) ?? GroupItems.FirstOrDefault();
+        _isSyncingGroupSelection = true;
+        try
+        {
+            SelectedGroupItem = group;
+        }
+        finally
+        {
+            _isSyncingGroupSelection = false;
+        }
+    }
+
+    private static ToolMenuItem? FindOwningTopLevel(ObservableCollection<ToolMenuItem> groups, ToolMenuItem? item)
+    {
+        if (item == null)
+        {
+            return null;
+        }
+
+        foreach (ToolMenuItem group in groups)
+        {
+            if (ReferenceEquals(group, item) || ContainsMenuItem(group.Children, item))
+            {
+                return group;
+            }
+        }
+
+        return null;
+    }
+
+    private static bool ContainsMenuItem(ObservableCollection<ToolMenuItem> items, ToolMenuItem item)
+    {
+        foreach (ToolMenuItem current in items)
+        {
+            if (ReferenceEquals(current, item) || ContainsMenuItem(current.Children, item))
+            {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     private void ChangeTool()
@@ -229,6 +345,7 @@ internal class MainMenuViewModel : ViewModelBase
         }
 
         // 只有真正的工具菜单项才触发区域导航，分组与分隔符只承担结构展示职责。
+        SetSelectedGroupFromMenu(_selectedMenuItem);
         _regionManager.RequestNavigate(RegionNames.ContentRegion, _selectedMenuItem.ViewName);
         SelectedMenuStatus = _selectedMenuItem.Status switch
         {

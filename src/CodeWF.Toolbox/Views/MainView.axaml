@@ -17,10 +17,9 @@
         <vm:MainViewModel />
     </Design.DataContext>
     <Grid>
-        <Grid ColumnDefinitions="248, 1, *">
+        <Grid ColumnDefinitions="300, *">
             <views:MainMenuView Grid.Column="0" />
-            <GridSplitter Grid.Row="0" Grid.Column="1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" />
-            <views:MainContentView Grid.Row="0" Grid.Column="2" />
+            <views:MainContentView Grid.Row="0" Grid.Column="1" />
         </Grid>
         <u:OverlayDialogHost HostId="{x:Static core:HostIds.Main}" />
     </Grid>

@@ -1,7 +1,9 @@
 ﻿using Avalonia;
 using CodeWF.Toolbox;
+using CodeWF.Toolbox.Diagnostics;
 using ReactiveUI.Avalonia;
 using System;
+using System.Threading.Tasks;
 
 namespace CodeWF.Toolbox.Desktop;
 
@@ -10,8 +12,32 @@ internal sealed class Program
     [STAThread]
     public static void Main(string[] args)
     {
-        BuildAvaloniaApp()
-            .StartWithClassicDesktopLifetime(args);
+        StartupDiagnostics.LogStartupEnvironment();
+        AppDomain.CurrentDomain.UnhandledException += (_, e) =>
+        {
+            if (e.ExceptionObject is Exception exception)
+            {
+                StartupDiagnostics.LogException("AppDomain.UnhandledException", exception);
+                return;
+            }
+
+            StartupDiagnostics.Log($"AppDomain.UnhandledException: {e.ExceptionObject}");
+        };
+        TaskScheduler.UnobservedTaskException += (_, e) =>
+        {
+            StartupDiagnostics.LogException("TaskScheduler.UnobservedTaskException", e.Exception);
+        };
+
+        try
+        {
+            BuildAvaloniaApp()
+                .StartWithClassicDesktopLifetime(args);
+        }
+        catch (Exception exception)
+        {
+            StartupDiagnostics.LogException("Program.Main", exception);
+            throw;
+        }
     }
 
     public static AppBuilder BuildAvaloniaApp()
