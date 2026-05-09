@@ -9,9 +9,9 @@ param(
 	[string]$Platform
 )
 
-# 检查文件是否存在
+# Validate the input file path.
 if (-not (Test-Path $AssemblyInfoFile)) {
-    throw "错误：文件 $AssemblyInfoFile 不存在"
+    throw "Error: file '$AssemblyInfoFile' does not exist."
 }
 
 Write-Output "AssemblyInfoFile: $AssemblyInfoFile"
@@ -20,31 +20,31 @@ Write-Output "Platform: $Platform"
 
 
 
-#获取当前日期时间，并生成格式化的时间戳
+# Get the current date and time for the build stamp.
 $currentDateTime =Get-Date
-#获取当前分支，签出标签创建时间[基准时间]
+# Read the latest tag timestamp as the baseline time.
 $strBranchCreateTime =git log -1 --format=%ai $latest_tag
 $dateBranchCreateTime=[DateTime]::Parse($strBranchCreateTime)
-#时间差的总分数
+# Calculate the elapsed minutes since the baseline.
 $timeDifMinutes =[math]::Round(($currentDateTime-$dateBranchcreateTime).TotalMinutes)
-#版本号格式处理成x.x.65535.65535
+# Split the version into x.x.65535.65535 style components.
 $yy=[math]::Floor($timeDifMinutes/65535)
 $thirdInfo=$timeDifMinutes-$yy*65535
-#读取文件内容
+# Read the AssemblyInfo content.
 $content = Get-Content -Path $AssemblyInfoFile -Encoding Unicode
-#使用正则表达式获职 AssemblyProduct 的值
+# Extract the AssemblyProduct value.
 $productPattern='^\[assembly: AssemblyProduct\("([^"]+)"\)\]'
 $product = ""
-#查找包含 AssemblyProduct 的行，并匹配正则表达式
+# Find the AssemblyProduct line and stop after the first match.
 foreach($line in $content){
 	if($line -match $productPattern){
 		$product= $matches[1]
-		break #找到匹配后退出循环
+		break
 	}
 }
 $items=$product -split '_'
 $product=$items[0]
-#当前最近标签、checkout hash值
+# Get the current tag description and checkout hash.
 $currentCommitHash=git describe --always --tag --long
 $items=$currentCommitHash.Split('-')
 $hashInfo=$items[$items.Length-1]
@@ -84,7 +84,7 @@ switch ($Platform) {
 	}
 }
 
-#定义新的 AssemblyProduct和 AssemblyFileversion
+# Build the new AssemblyProduct and AssemblyFileVersion values.
 $strDayInfo= $currentDateTime.Tostring("yyyyMMddHHmm")
 $newAssemblyProduct = "$product"+"_"+"$platformInfo"+"_"+"$hashInfo"+"_"+"$strDayInfo"
 if($secondFileVersion -eq "000")
@@ -93,14 +93,14 @@ if($secondFileVersion -eq "000")
 }
 $newAssemblyFileVersion = "$firstFileVersion"+"."+"$secondFileVersion"+"."+"$thirdInfo"
 
-# 更新 AssemblyProduct
+# Update AssemblyProduct.
 $content = $content -replace '^\[assembly: AssemblyProduct\(".*"\)\]', "[assembly: AssemblyProduct(`"$newAssemblyProduct`")]"
 
-# 更新AssemblyVersion
+# Update AssemblyVersion.
 $content = $content -replace '^\[assembly: AssemblyVersion\(".*"\)\]', "[assembly: AssemblyVersion(`"$newAssemblyFileVersion`")]"
 
-# 更新AssemblyFileVersion
+# Update AssemblyFileVersion.
 $content = $content -replace '^\[assembly: AssemblyFileVersion\(".*"\)\]', "[assembly: AssemblyFileVersion(`"$newAssemblyFileVersion`")]"
 
-# 将更新后的内容写入 AssemblyInfo.cs 文件
+# Write the updated content back to AssemblyInfo.cs.
 Set-Content -Path $AssemblyInfoFile -Value $content -Encoding Unicode

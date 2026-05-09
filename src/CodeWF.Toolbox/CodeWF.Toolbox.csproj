@@ -30,10 +30,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<TrimmerRootDescriptor Include="Roots.xml" />
-	</ItemGroup>
-
-	<ItemGroup>
 	  <None Include="I18n\Language.cs">
 	    <DesignTime>True</DesignTime>
 	    <AutoGen>True</AutoGen>

@@ -14,13 +14,13 @@
     <PackageVersion Include="AvaloniaUI.DiagnosticsSupport" Version="2.2.1" />
     <PackageVersion Include="BCrypt.Net-Next" Version="4.1.0" />
     <PackageVersion Include="BouncyCastle.Cryptography" Version="2.7.0-beta.98" />
-    <PackageVersion Include="CodeWF.AvaloniaControls.Themes" Version="12.0.2.8" />
+    <PackageVersion Include="CodeWF.AvaloniaControls.Themes" Version="12.0.2.9" />
     <PackageVersion Include="CodeWF.AvaloniaControls.ProDataGrid" Version="12.0.2.1" />
     <PackageVersion Include="CodeWF.EventBus" Version="3.4.5.1" />
     <PackageVersion Include="CodeWF.Log.Core" Version="12.0.2.1" />
-    <PackageVersion Include="CodeWF.Tools" Version="1.3.12.3" />
-    <PackageVersion Include="CodeWF.Tools.Files" Version="1.3.12.3" />
-    <PackageVersion Include="CodeWF.Tools.Image" Version="1.3.12.3" />
+    <PackageVersion Include="CodeWF.Tools" Version="1.3.13.0" />
+    <PackageVersion Include="CodeWF.Tools.Files" Version="1.3.13.0" />
+    <PackageVersion Include="CodeWF.Tools.Image" Version="1.3.13.0" />
     <PackageVersion Include="coverlet.collector" Version="10.0.0" />
     <PackageVersion Include="CronExpressionDescriptor" Version="2.45.0" />
     <PackageVersion Include="Dapper" Version="2.1.72" />

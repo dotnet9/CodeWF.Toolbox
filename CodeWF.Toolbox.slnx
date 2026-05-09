@@ -87,7 +87,6 @@
     <File Path="publish.bat" />
     <File Path="Publish.Common.pubxml" />
     <File Path="publishbase.bat" />
-    <File Path="publish_win-x64.bat" />
     <File Path="README.md" />
     <File Path="docs/README.zh-CN.md" />
     <File Path="docs/README.md" />
