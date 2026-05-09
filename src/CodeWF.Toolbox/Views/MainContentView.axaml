@@ -7,10 +7,14 @@
              xmlns:core="clr-namespace:CodeWF.Core;assembly=CodeWF.Core"
              xmlns:u="https://irihi.tech/ursa"
              xmlns:vm="clr-namespace:CodeWF.Toolbox.ViewModels"
+             xmlns:converters="clr-namespace:CodeWF.Toolbox.Converters"
              xmlns:markup="https://codewf.com"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="CodeWF.Toolbox.Views.MainContentView"
              x:DataType="vm:MainContentViewModel">
+    <UserControl.Resources>
+        <converters:IconConverter x:Key="IconConverter" />
+    </UserControl.Resources>
     <Border Padding="16 14" Background="{DynamicResource SemiGrey0}">
         <Grid RowDefinitions="Auto, *">
             <Border
@@ -18,18 +22,36 @@
                 Background="{DynamicResource SemiGrey0}"
                 BorderBrush="{DynamicResource SemiGrey2}"
                 BorderThickness="0 0 0 1">
-                <StackPanel Spacing="4">
-                    <TextBlock
-                        Classes="H5"
-                        FontWeight="SemiBold"
-                        Text="{markup:I18n {Binding SelectedMenuItem.Name}}"
-                        TextWrapping="Wrap" />
-                    <TextBlock
-                        Classes="Tertiary"
-                        FontSize="12"
-                        Text="{markup:I18n {Binding SelectedMenuItem.Description}}"
-                        TextWrapping="Wrap" />
-                </StackPanel>
+                <Grid ColumnDefinitions="Auto,*" ColumnSpacing="12">
+                    <Border
+                        Width="44"
+                        Height="44"
+                        VerticalAlignment="Top"
+                        Background="{DynamicResource SemiBlue0}"
+                        BorderBrush="{DynamicResource SemiBlue2}"
+                        BorderThickness="1"
+                        CornerRadius="8">
+                        <PathIcon
+                            Width="30"
+                            Height="30"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            Data="{Binding SelectedMenuItem.Icon, Converter={StaticResource IconConverter}}"
+                            Foreground="{DynamicResource SemiBlue5}" />
+                    </Border>
+                    <StackPanel Grid.Column="1" Spacing="5" VerticalAlignment="Center">
+                        <TextBlock
+                            Classes="H5"
+                            FontWeight="SemiBold"
+                            Text="{markup:I18n {Binding SelectedMenuItem.Name}}"
+                            TextWrapping="Wrap" />
+                        <TextBlock
+                            Classes="Tertiary"
+                            FontSize="12"
+                            Text="{markup:I18n {Binding SelectedMenuItem.Description}}"
+                            TextWrapping="Wrap" />
+                    </StackPanel>
+                </Grid>
             </Border>
             <ContentControl
                 Grid.Row="1"

@@ -394,8 +394,8 @@ public static class ToolCatalog
         };
     }
 
-    private static string IconForTool(string id, string category)
+    private static string IconForTool(string id, string _)
     {
-        return Icons.WithToolBadge(IconForCategory(category), id);
+        return Icons.ToolGlyph(id);
     }
 }

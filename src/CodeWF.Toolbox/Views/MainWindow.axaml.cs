@@ -100,7 +100,7 @@ public partial class MainWindow : CodeWFWindow
         var dialogResult = DialogResult.OK;
         if (_applicationService.NeedExitDialogOnClose)
         {
-            dialogResult = await ShowOptionDialogAsync(DialogMode.Info, DialogButton.OKCancel);
+            dialogResult = await ShowOptionDialogAsync(DialogMode.None, DialogButton.OKCancel);
         }
 
         if (dialogResult != DialogResult.OK)
@@ -121,7 +121,7 @@ public partial class MainWindow : CodeWFWindow
     {
         var options = new DialogOptions()
         {
-            Title = I18nManager.Instance.GetResource(Localization.MainModule.Exit),
+            Title = I18nManager.Instance.GetResource(Localization.ExitOptionView.Message),
             Mode = mode,
             Button = button,
             ShowInTaskBar = false,

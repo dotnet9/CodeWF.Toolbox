@@ -65,14 +65,14 @@
       "CopyrightLabel": "著作権"
     },
     "ExitOptionView": {
-      "Message": "CodeWF Toolbox を閉じる",
-      "Description": "アプリを終了するか、システムトレイに残してすぐ戻れるようにします。",
-      "HideTrayIcon": "システムトレイに最小化",
-      "HideTrayIconDescription": "ウィンドウを閉じてもアプリを実行し、トレイからすばやく復元できます。",
-      "DirectToClose": "アプリケーションを終了",
-      "DirectToCloseDescription": "現在のプロセスを終了し、トレイアイコンも閉じます。",
-      "RememberMyChoice": "私の選択を覚えておく",
-      "RememberMyChoiceDescription": "次回から選択した動作をそのまま実行します。"
+      "Message": "CodeWF Toolbox を終了しますか？",
+      "Description": "ウィンドウを閉じた後の動作を選択します",
+      "HideTrayIcon": "トレイにしまう",
+      "HideTrayIconDescription": "ウィンドウだけ閉じ、アプリは待機します",
+      "DirectToClose": "アプリを終了",
+      "DirectToCloseDescription": "プロセスを終了し、トレイアイコンも閉じます",
+      "RememberMyChoice": "選択を記憶",
+      "RememberMyChoiceDescription": "次回からこの動作を直接実行します"
     },
     "LoginWindow": {
       "Title": "ログイン",
