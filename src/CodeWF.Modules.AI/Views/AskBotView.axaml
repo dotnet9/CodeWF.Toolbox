@@ -9,14 +9,27 @@
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="CodeWF.Modules.AI.Views.AskBotView" x:CompileBindings="True"
              x:DataType="vm:AskBotViewModel">
-    <Grid ColumnDefinitions="* 100" RowDefinitions="40 *" VerticalAlignment="Top">
+    <Grid RowDefinitions="Auto,*" RowSpacing="12">
+        <Grid ColumnDefinitions="*,96" ColumnSpacing="10">
+            <TextBox
+                Grid.Column="0"
+                Classes="AppInput"
+                Text="{Binding AskContent}"
+                TextWrapping="Wrap" />
 
-        <TextBox Text="{Binding AskContent}" Grid.Row="0" Grid.Column="0" TextWrapping="Wrap" />
+            <Button
+                Grid.Column="1"
+                Classes="AppPrimary"
+                Command="{Binding RaiseAskAICommand}"
+                Content="AI"
+                HorizontalAlignment="Stretch" />
+        </Grid>
 
-        <Button Grid.Row="0" Grid.Column="1" Content="AI" Command="{Binding RaiseAskAICommand}"
-                HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="10 0 0 0" />
-
-        <Border Classes="Hover" Theme="{StaticResource CardBorder}" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2">
+        <Border
+            Grid.Row="1"
+            Classes="SurfacePanel"
+            Padding="0"
+            MinHeight="260">
             <ScrollViewer>
                 <md:MarkdownView Markdown="{Binding ResponseContent}" />
             </ScrollViewer>

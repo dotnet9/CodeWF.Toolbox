@@ -155,6 +155,7 @@ public partial class App : PrismApplication
         containerRegistry.RegisterSingleton<LoginViewModel>();
         containerRegistry.Register<MainWindow>();
         containerRegistry.Register<LoginWindow>();
+        containerRegistry.Register<SettingView>();
     }
 
     private void OpenMainWindow_OnClicked(object? sender, EventArgs e)

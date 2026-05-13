@@ -30,6 +30,8 @@
             <Setter Property="MinHeight" Value="46" />
             <Setter Property="Margin" Value="8 4" />
             <Setter Property="Padding" Value="0" />
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="Foreground" Value="{DynamicResource AppMutedTextBrush}" />
             <Setter Property="HorizontalContentAlignment" Value="Center" />
             <Setter Property="VerticalContentAlignment" Value="Center" />
             <Setter Property="CornerRadius" Value="8" />
@@ -93,7 +95,7 @@
                     <Button
                         Grid.Row="1"
                         Classes="RailButton"
-                        Command="{Binding RaiseOpenSettingHandlerAsync}"
+                        Command="{Binding OpenSettingCommand}"
                         ToolTip.Tip="{i18n:I18n {x:Static language:SettingView.Title}}">
                         <PathIcon
                             Width="18"

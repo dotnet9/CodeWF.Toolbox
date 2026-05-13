@@ -1,26 +1,141 @@
 <Styles xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:system="clr-namespace:System;assembly=System.Runtime">
+        xmlns:system="clr-namespace:System;assembly=System.Runtime"
+        xmlns:semi="https://irihi.tech/semi">
     <Styles.Resources>
-        <system:Double x:Key="ControlContentThemeFontSize">13</system:Double>
-        <FontFamily x:Key="ContentControlThemeFontFamily">Microsoft YaHei UI, Segoe UI, avares://codewf/Assets/Fonts#Noto Sans SC</FontFamily>
-        <FontFamily x:Key="CodeEditorThemeFontFamily">Cascadia Code,Consolas,Menlo,Monospace</FontFamily>
-        <SolidColorBrush x:Key="AppSurfaceBrush" Color="#F3F7FB" />
-        <SolidColorBrush x:Key="AppChromeBrush" Color="#FAFCFF" />
-        <SolidColorBrush x:Key="AppPanelBrush" Color="#FFFFFF" />
-        <SolidColorBrush x:Key="AppPanelAltBrush" Color="#F8FBFF" />
-        <SolidColorBrush x:Key="AppLineBrush" Color="#DDE7F2" />
-        <SolidColorBrush x:Key="AppTextBrush" Color="#182235" />
-        <SolidColorBrush x:Key="AppMutedTextBrush" Color="#657188" />
-        <SolidColorBrush x:Key="AppAccentBrush" Color="#3B7CF6" />
-        <SolidColorBrush x:Key="AppAccentHoverBrush" Color="#2F6DE0" />
-        <SolidColorBrush x:Key="AppAccentSoftBrush" Color="#EAF2FF" />
-        <SolidColorBrush x:Key="AppMintBrush" Color="#0B9B7B" />
-        <SolidColorBrush x:Key="AppMintSoftBrush" Color="#E9F9F3" />
-        <SolidColorBrush x:Key="AppRoseBrush" Color="#E95480" />
-        <SolidColorBrush x:Key="AppRoseSoftBrush" Color="#FFF1F5" />
-        <SolidColorBrush x:Key="AppAmberBrush" Color="#B7791F" />
-        <SolidColorBrush x:Key="AppAmberSoftBrush" Color="#FFF7E3" />
+        <ResourceDictionary>
+            <ResourceDictionary.ThemeDictionaries>
+                <ResourceDictionary x:Key="Default">
+                    <SolidColorBrush x:Key="AppSurfaceBrush" Color="#F4F8FC" />
+                    <SolidColorBrush x:Key="AppChromeBrush" Color="#FBFDFF" />
+                    <SolidColorBrush x:Key="AppPanelBrush" Color="#FFFFFF" />
+                    <SolidColorBrush x:Key="AppPanelAltBrush" Color="#F7FAFD" />
+                    <SolidColorBrush x:Key="AppLineBrush" Color="#DCE7F0" />
+                    <SolidColorBrush x:Key="AppTextBrush" Color="#182235" />
+                    <SolidColorBrush x:Key="AppMutedTextBrush" Color="#657188" />
+                    <SolidColorBrush x:Key="AppAccentBrush" Color="#3B7CF6" />
+                    <SolidColorBrush x:Key="AppAccentHoverBrush" Color="#2563EB" />
+                    <SolidColorBrush x:Key="AppAccentSoftBrush" Color="#EAF3FF" />
+                    <SolidColorBrush x:Key="AppMintBrush" Color="#0B9B7B" />
+                    <SolidColorBrush x:Key="AppMintSoftBrush" Color="#E9F9F3" />
+                    <SolidColorBrush x:Key="AppRoseBrush" Color="#E95480" />
+                    <SolidColorBrush x:Key="AppRoseSoftBrush" Color="#FFF1F5" />
+                    <SolidColorBrush x:Key="AppAmberBrush" Color="#B7791F" />
+                    <SolidColorBrush x:Key="AppAmberSoftBrush" Color="#FFF7E3" />
+                </ResourceDictionary>
+                <ResourceDictionary x:Key="Light">
+                    <SolidColorBrush x:Key="AppSurfaceBrush" Color="#F4F8FC" />
+                    <SolidColorBrush x:Key="AppChromeBrush" Color="#FBFDFF" />
+                    <SolidColorBrush x:Key="AppPanelBrush" Color="#FFFFFF" />
+                    <SolidColorBrush x:Key="AppPanelAltBrush" Color="#F7FAFD" />
+                    <SolidColorBrush x:Key="AppLineBrush" Color="#DCE7F0" />
+                    <SolidColorBrush x:Key="AppTextBrush" Color="#182235" />
+                    <SolidColorBrush x:Key="AppMutedTextBrush" Color="#657188" />
+                    <SolidColorBrush x:Key="AppAccentBrush" Color="#3B7CF6" />
+                    <SolidColorBrush x:Key="AppAccentHoverBrush" Color="#2563EB" />
+                    <SolidColorBrush x:Key="AppAccentSoftBrush" Color="#EAF3FF" />
+                    <SolidColorBrush x:Key="AppMintBrush" Color="#0B9B7B" />
+                    <SolidColorBrush x:Key="AppMintSoftBrush" Color="#E9F9F3" />
+                    <SolidColorBrush x:Key="AppRoseBrush" Color="#E95480" />
+                    <SolidColorBrush x:Key="AppRoseSoftBrush" Color="#FFF1F5" />
+                    <SolidColorBrush x:Key="AppAmberBrush" Color="#B7791F" />
+                    <SolidColorBrush x:Key="AppAmberSoftBrush" Color="#FFF7E3" />
+                </ResourceDictionary>
+                <ResourceDictionary x:Key="Dark">
+                    <SolidColorBrush x:Key="AppSurfaceBrush" Color="#10151D" />
+                    <SolidColorBrush x:Key="AppChromeBrush" Color="#141B25" />
+                    <SolidColorBrush x:Key="AppPanelBrush" Color="#18212D" />
+                    <SolidColorBrush x:Key="AppPanelAltBrush" Color="#202A37" />
+                    <SolidColorBrush x:Key="AppLineBrush" Color="#2B3746" />
+                    <SolidColorBrush x:Key="AppTextBrush" Color="#E8EEF7" />
+                    <SolidColorBrush x:Key="AppMutedTextBrush" Color="#9CA9BA" />
+                    <SolidColorBrush x:Key="AppAccentBrush" Color="#72A7FF" />
+                    <SolidColorBrush x:Key="AppAccentHoverBrush" Color="#8CB8FF" />
+                    <SolidColorBrush x:Key="AppAccentSoftBrush" Color="#1F334D" />
+                    <SolidColorBrush x:Key="AppMintBrush" Color="#5ED3B2" />
+                    <SolidColorBrush x:Key="AppMintSoftBrush" Color="#17362E" />
+                    <SolidColorBrush x:Key="AppRoseBrush" Color="#FF8AA0" />
+                    <SolidColorBrush x:Key="AppRoseSoftBrush" Color="#3A202B" />
+                    <SolidColorBrush x:Key="AppAmberBrush" Color="#F1C46B" />
+                    <SolidColorBrush x:Key="AppAmberSoftBrush" Color="#3A301B" />
+                </ResourceDictionary>
+                <ResourceDictionary x:Key="{x:Static semi:SemiTheme.Aquatic}">
+                    <SolidColorBrush x:Key="AppSurfaceBrush" Color="#F0FAFD" />
+                    <SolidColorBrush x:Key="AppChromeBrush" Color="#F7FCFE" />
+                    <SolidColorBrush x:Key="AppPanelBrush" Color="#FFFFFF" />
+                    <SolidColorBrush x:Key="AppPanelAltBrush" Color="#EFF8FA" />
+                    <SolidColorBrush x:Key="AppLineBrush" Color="#CDE9EF" />
+                    <SolidColorBrush x:Key="AppTextBrush" Color="#16323A" />
+                    <SolidColorBrush x:Key="AppMutedTextBrush" Color="#5C7880" />
+                    <SolidColorBrush x:Key="AppAccentBrush" Color="#0EA5B7" />
+                    <SolidColorBrush x:Key="AppAccentHoverBrush" Color="#07879A" />
+                    <SolidColorBrush x:Key="AppAccentSoftBrush" Color="#DFF7FA" />
+                    <SolidColorBrush x:Key="AppMintBrush" Color="#0D9276" />
+                    <SolidColorBrush x:Key="AppMintSoftBrush" Color="#E3F7F0" />
+                    <SolidColorBrush x:Key="AppRoseBrush" Color="#E45F7B" />
+                    <SolidColorBrush x:Key="AppRoseSoftBrush" Color="#FFF0F4" />
+                    <SolidColorBrush x:Key="AppAmberBrush" Color="#B57B18" />
+                    <SolidColorBrush x:Key="AppAmberSoftBrush" Color="#FFF7DF" />
+                </ResourceDictionary>
+                <ResourceDictionary x:Key="{x:Static semi:SemiTheme.Desert}">
+                    <SolidColorBrush x:Key="AppSurfaceBrush" Color="#FCF7F0" />
+                    <SolidColorBrush x:Key="AppChromeBrush" Color="#FFFBF5" />
+                    <SolidColorBrush x:Key="AppPanelBrush" Color="#FFFFFF" />
+                    <SolidColorBrush x:Key="AppPanelAltBrush" Color="#FFF5E8" />
+                    <SolidColorBrush x:Key="AppLineBrush" Color="#E8D9C2" />
+                    <SolidColorBrush x:Key="AppTextBrush" Color="#32261B" />
+                    <SolidColorBrush x:Key="AppMutedTextBrush" Color="#7A6752" />
+                    <SolidColorBrush x:Key="AppAccentBrush" Color="#C77B2A" />
+                    <SolidColorBrush x:Key="AppAccentHoverBrush" Color="#A9631C" />
+                    <SolidColorBrush x:Key="AppAccentSoftBrush" Color="#FFF0D9" />
+                    <SolidColorBrush x:Key="AppMintBrush" Color="#168A73" />
+                    <SolidColorBrush x:Key="AppMintSoftBrush" Color="#EAF7EF" />
+                    <SolidColorBrush x:Key="AppRoseBrush" Color="#D85B72" />
+                    <SolidColorBrush x:Key="AppRoseSoftBrush" Color="#FFF0F3" />
+                    <SolidColorBrush x:Key="AppAmberBrush" Color="#B7791F" />
+                    <SolidColorBrush x:Key="AppAmberSoftBrush" Color="#FFF6D8" />
+                </ResourceDictionary>
+                <ResourceDictionary x:Key="{x:Static semi:SemiTheme.Dusk}">
+                    <SolidColorBrush x:Key="AppSurfaceBrush" Color="#F5F7FB" />
+                    <SolidColorBrush x:Key="AppChromeBrush" Color="#FBFCFF" />
+                    <SolidColorBrush x:Key="AppPanelBrush" Color="#FFFFFF" />
+                    <SolidColorBrush x:Key="AppPanelAltBrush" Color="#F3F1FA" />
+                    <SolidColorBrush x:Key="AppLineBrush" Color="#DDD7EA" />
+                    <SolidColorBrush x:Key="AppTextBrush" Color="#2C2237" />
+                    <SolidColorBrush x:Key="AppMutedTextBrush" Color="#72637F" />
+                    <SolidColorBrush x:Key="AppAccentBrush" Color="#8A63D2" />
+                    <SolidColorBrush x:Key="AppAccentHoverBrush" Color="#744CBC" />
+                    <SolidColorBrush x:Key="AppAccentSoftBrush" Color="#F0E9FF" />
+                    <SolidColorBrush x:Key="AppMintBrush" Color="#138C7A" />
+                    <SolidColorBrush x:Key="AppMintSoftBrush" Color="#EAF8F3" />
+                    <SolidColorBrush x:Key="AppRoseBrush" Color="#D95A80" />
+                    <SolidColorBrush x:Key="AppRoseSoftBrush" Color="#FFF0F5" />
+                    <SolidColorBrush x:Key="AppAmberBrush" Color="#A66F18" />
+                    <SolidColorBrush x:Key="AppAmberSoftBrush" Color="#FFF5DC" />
+                </ResourceDictionary>
+                <ResourceDictionary x:Key="{x:Static semi:SemiTheme.NightSky}">
+                    <SolidColorBrush x:Key="AppSurfaceBrush" Color="#0D1320" />
+                    <SolidColorBrush x:Key="AppChromeBrush" Color="#111827" />
+                    <SolidColorBrush x:Key="AppPanelBrush" Color="#172033" />
+                    <SolidColorBrush x:Key="AppPanelAltBrush" Color="#1E2A3F" />
+                    <SolidColorBrush x:Key="AppLineBrush" Color="#2D3A52" />
+                    <SolidColorBrush x:Key="AppTextBrush" Color="#EBF2FF" />
+                    <SolidColorBrush x:Key="AppMutedTextBrush" Color="#AAB6C8" />
+                    <SolidColorBrush x:Key="AppAccentBrush" Color="#7AA2FF" />
+                    <SolidColorBrush x:Key="AppAccentHoverBrush" Color="#9BB9FF" />
+                    <SolidColorBrush x:Key="AppAccentSoftBrush" Color="#1E335A" />
+                    <SolidColorBrush x:Key="AppMintBrush" Color="#5ED3C0" />
+                    <SolidColorBrush x:Key="AppMintSoftBrush" Color="#163A38" />
+                    <SolidColorBrush x:Key="AppRoseBrush" Color="#FF8BA0" />
+                    <SolidColorBrush x:Key="AppRoseSoftBrush" Color="#3A2230" />
+                    <SolidColorBrush x:Key="AppAmberBrush" Color="#F3C56B" />
+                    <SolidColorBrush x:Key="AppAmberSoftBrush" Color="#3C311D" />
+                </ResourceDictionary>
+            </ResourceDictionary.ThemeDictionaries>
+            <system:Double x:Key="ControlContentThemeFontSize">13</system:Double>
+            <FontFamily x:Key="ContentControlThemeFontFamily">Microsoft YaHei UI, Segoe UI, avares://codewf/Assets/Fonts#Noto Sans SC</FontFamily>
+            <FontFamily x:Key="CodeEditorThemeFontFamily">Cascadia Code,Consolas,Menlo,Monospace</FontFamily>
+        </ResourceDictionary>
     </Styles.Resources>
     <StyleInclude Source="avares://AvaloniaEdit/Themes/Fluent/AvaloniaEdit.xaml" />
 
@@ -67,6 +182,7 @@
 
     <Style Selector="ComboBox.AppSelect">
         <Setter Property="Height" Value="36" />
+        <Setter Property="MinHeight" Value="36" />
         <Setter Property="Padding" Value="12 0" />
         <Setter Property="CornerRadius" Value="8" />
         <Setter Property="Background" Value="{DynamicResource AppPanelBrush}" />
@@ -74,6 +190,7 @@
         <Setter Property="BorderThickness" Value="1" />
         <Setter Property="Foreground" Value="{DynamicResource AppTextBrush}" />
         <Setter Property="PlaceholderForeground" Value="{DynamicResource AppMutedTextBrush}" />
+        <Setter Property="HorizontalContentAlignment" Value="Left" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
     </Style>
 

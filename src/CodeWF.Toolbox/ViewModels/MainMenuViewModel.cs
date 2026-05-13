@@ -12,6 +12,7 @@ using ReactiveUI;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Reactive;
 using System.Threading.Tasks;
 
 namespace CodeWF.Toolbox.ViewModels;
@@ -25,6 +26,7 @@ internal class MainMenuViewModel : ViewModelBase
 
     public ObservableCollection<ToolMenuItem> MenuItems { get; } = [];
     public ObservableCollection<ToolMenuItem> GroupItems { get; } = [];
+    public ReactiveCommand<Unit, Unit> OpenSettingCommand { get; }
 
     private ObservableCollection<ToolMenuItem> _activeMenuItems = [];
 
@@ -88,6 +90,7 @@ internal class MainMenuViewModel : ViewModelBase
 
         _toolMenuService.ToolMenuChanged += MenuChangedHandler;
         EventBus.EventBus.Default.Subscribe(this);
+        OpenSettingCommand = ReactiveCommand.CreateFromTask(RaiseOpenSettingHandlerAsync);
 
         ApplyMenuFilter();
     }

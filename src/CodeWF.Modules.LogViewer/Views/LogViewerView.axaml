@@ -17,15 +17,17 @@
     <Grid RowDefinitions="Auto, Auto, *" RowSpacing="10">
         <Grid ColumnDefinitions="Auto, Auto, Auto, *, Auto" ColumnSpacing="8">
             <Button
-                Classes="Success"
+                Classes="AppPrimary"
                 Command="{Binding OpenFileCommand}"
                 Content="{i18n:I18n {x:Static language:LogViewerView.OpenFile}}" />
             <Button
                 Grid.Column="1"
+                Classes="AppGhost"
                 Command="{Binding ReloadCommand}"
                 Content="{i18n:I18n {x:Static language:LogViewerView.Reload}}" />
             <Button
                 Grid.Column="2"
+                Classes="AppGhost"
                 Command="{Binding JumpToTailCommand}"
                 Content="{i18n:I18n {x:Static language:LogViewerView.JumpToTail}}" />
             <CheckBox
@@ -42,10 +44,11 @@
                 Text="{i18n:I18n {x:Static language:LogViewerView.FilePath}}" />
             <TextBox
                 Grid.Column="1"
+                Classes="AppInput"
                 IsReadOnly="True"
                 Text="{Binding FilePath}"
                 TextWrapping="NoWrap"
-                Watermark="{i18n:I18n {x:Static language:LogViewerView.FilePathWatermark}}" />
+                PlaceholderText="{i18n:I18n {x:Static language:LogViewerView.FilePathWatermark}}" />
             <TextBlock
                 Grid.Column="2"
                 VerticalAlignment="Center"
@@ -55,8 +58,8 @@
 
         <Grid Grid.Row="2" ColumnDefinitions="*, Auto">
             <Border
-                Background="{DynamicResource SemiGrey0}"
-                BorderBrush="{DynamicResource SemiGrey2}"
+                Background="{DynamicResource AppPanelBrush}"
+                BorderBrush="{DynamicResource AppLineBrush}"
                 BorderThickness="1"
                 CornerRadius="8">
                 <Grid>
@@ -70,7 +73,7 @@
                         TextWrapping="Wrap" />
                     <avaloniaEdit:TextEditor
                         x:Name="LogEditor"
-                        Background="{DynamicResource SemiGrey0}"
+                        Background="{DynamicResource AppPanelBrush}"
                         BorderThickness="0"
                         FontFamily="{StaticResource CodeEditorThemeFontFamily}"
                         FontSize="12"
