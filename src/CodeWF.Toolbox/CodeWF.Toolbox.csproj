@@ -9,7 +9,6 @@
 		<AvaloniaUseCompiledBindingsByDefault>true</AvaloniaUseCompiledBindingsByDefault>
 		<BuiltInComInteropSupport>true</BuiltInComInteropSupport>
 		<IncludeNativeLibrariesForSelfExtract>true</IncludeNativeLibrariesForSelfExtract>
-		<AssemblyName>codewf</AssemblyName>
 		<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
 		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
 		<WindowsSupportedOSPlatformVersion>6.1</WindowsSupportedOSPlatformVersion>
