@@ -5,6 +5,22 @@
         <system:Double x:Key="ControlContentThemeFontSize">13</system:Double>
         <FontFamily x:Key="ContentControlThemeFontFamily">Microsoft YaHei UI, Segoe UI, avares://codewf/Assets/Fonts#Noto Sans SC</FontFamily>
         <FontFamily x:Key="CodeEditorThemeFontFamily">Cascadia Code,Consolas,Menlo,Monospace</FontFamily>
+        <SolidColorBrush x:Key="AppSurfaceBrush" Color="#F3F7FB" />
+        <SolidColorBrush x:Key="AppChromeBrush" Color="#FAFCFF" />
+        <SolidColorBrush x:Key="AppPanelBrush" Color="#FFFFFF" />
+        <SolidColorBrush x:Key="AppPanelAltBrush" Color="#F8FBFF" />
+        <SolidColorBrush x:Key="AppLineBrush" Color="#DDE7F2" />
+        <SolidColorBrush x:Key="AppTextBrush" Color="#182235" />
+        <SolidColorBrush x:Key="AppMutedTextBrush" Color="#657188" />
+        <SolidColorBrush x:Key="AppAccentBrush" Color="#3B7CF6" />
+        <SolidColorBrush x:Key="AppAccentHoverBrush" Color="#2F6DE0" />
+        <SolidColorBrush x:Key="AppAccentSoftBrush" Color="#EAF2FF" />
+        <SolidColorBrush x:Key="AppMintBrush" Color="#0B9B7B" />
+        <SolidColorBrush x:Key="AppMintSoftBrush" Color="#E9F9F3" />
+        <SolidColorBrush x:Key="AppRoseBrush" Color="#E95480" />
+        <SolidColorBrush x:Key="AppRoseSoftBrush" Color="#FFF1F5" />
+        <SolidColorBrush x:Key="AppAmberBrush" Color="#B7791F" />
+        <SolidColorBrush x:Key="AppAmberSoftBrush" Color="#FFF7E3" />
     </Styles.Resources>
     <StyleInclude Source="avares://AvaloniaEdit/Themes/Fluent/AvaloniaEdit.xaml" />
 
@@ -16,14 +32,92 @@
     <Style Selector="TextBlock">
         <Setter Property="FontFamily" Value="{DynamicResource ContentControlThemeFontFamily}" />
         <Setter Property="FontSize" Value="{DynamicResource ControlContentThemeFontSize}" />
+        <Setter Property="Foreground" Value="{DynamicResource AppTextBrush}" />
     </Style>
 
     <Style Selector="SelectableTextBlock">
         <Setter Property="FontFamily" Value="{DynamicResource ContentControlThemeFontFamily}" />
         <Setter Property="FontSize" Value="{DynamicResource ControlContentThemeFontSize}" />
+        <Setter Property="Foreground" Value="{DynamicResource AppTextBrush}" />
     </Style>
 
     <Style Selector="TextBlock.Tertiary">
-        <Setter Property="Foreground" Value="{DynamicResource SemiGrey7}" />
+        <Setter Property="Foreground" Value="{DynamicResource AppMutedTextBrush}" />
+    </Style>
+
+    <Style Selector="TextBox.AppInput">
+        <Setter Property="Height" Value="36" />
+        <Setter Property="Padding" Value="14 0" />
+        <Setter Property="CornerRadius" Value="8" />
+        <Setter Property="Background" Value="{DynamicResource AppPanelBrush}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource AppLineBrush}" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="Foreground" Value="{DynamicResource AppTextBrush}" />
+        <Setter Property="PlaceholderForeground" Value="{DynamicResource AppMutedTextBrush}" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+    </Style>
+
+    <Style Selector="TextBox.AppInput:pointerover">
+        <Setter Property="BorderBrush" Value="{DynamicResource AppAccentBrush}" />
+    </Style>
+
+    <Style Selector="TextBox.AppInput:focus">
+        <Setter Property="BorderBrush" Value="{DynamicResource AppAccentBrush}" />
+    </Style>
+
+    <Style Selector="ComboBox.AppSelect">
+        <Setter Property="Height" Value="36" />
+        <Setter Property="Padding" Value="12 0" />
+        <Setter Property="CornerRadius" Value="8" />
+        <Setter Property="Background" Value="{DynamicResource AppPanelBrush}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource AppLineBrush}" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="Foreground" Value="{DynamicResource AppTextBrush}" />
+        <Setter Property="PlaceholderForeground" Value="{DynamicResource AppMutedTextBrush}" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+    </Style>
+
+    <Style Selector="Button.AppPrimary">
+        <Setter Property="Height" Value="36" />
+        <Setter Property="MinWidth" Value="104" />
+        <Setter Property="Padding" Value="18 0" />
+        <Setter Property="CornerRadius" Value="8" />
+        <Setter Property="Background" Value="{DynamicResource AppAccentBrush}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource AppAccentBrush}" />
+        <Setter Property="Foreground" Value="White" />
+        <Setter Property="FontWeight" Value="SemiBold" />
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+    </Style>
+
+    <Style Selector="Button.AppPrimary:pointerover">
+        <Setter Property="Background" Value="{DynamicResource AppAccentHoverBrush}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource AppAccentHoverBrush}" />
+    </Style>
+
+    <Style Selector="Button.AppGhost">
+        <Setter Property="Height" Value="36" />
+        <Setter Property="MinWidth" Value="104" />
+        <Setter Property="Padding" Value="18 0" />
+        <Setter Property="CornerRadius" Value="8" />
+        <Setter Property="Background" Value="{DynamicResource AppAccentSoftBrush}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource AppLineBrush}" />
+        <Setter Property="Foreground" Value="{DynamicResource AppAccentBrush}" />
+        <Setter Property="FontWeight" Value="SemiBold" />
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+    </Style>
+
+    <Style Selector="Button.AppGhost:pointerover">
+        <Setter Property="Background" Value="{DynamicResource AppPanelBrush}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource AppAccentBrush}" />
+    </Style>
+
+    <Style Selector="Border.SurfacePanel">
+        <Setter Property="Background" Value="{DynamicResource AppPanelBrush}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource AppLineBrush}" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="CornerRadius" Value="8" />
+        <Setter Property="BoxShadow" Value="0 12 28 0 #120B1430" />
     </Style>
 </Styles>

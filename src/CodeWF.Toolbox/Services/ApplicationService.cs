@@ -24,7 +24,7 @@ internal class ApplicationService : IApplicationService
     private const string HideTrayIconOnCloseKey = "HideTrayIconOnClose";
     private const string NeedExitDialogOnCloseKey = "NeedExitDialogOnClose";
 
-    private const string DefaultTheme = "Dark";
+    private const string DefaultTheme = "Light";
     private const string DefaultLanguage = "zh-CN";
 
     public bool AutoOpenToolboxAtStartup

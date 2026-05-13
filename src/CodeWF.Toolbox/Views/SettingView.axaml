@@ -13,11 +13,11 @@
     Width="720" WindowStartupLocation="CenterOwner"
     Height="560"
     Icon="/Assets/logo.ico"
-    Background="{DynamicResource SemiGrey0}"
-    TitleBarHeight="42"
-    TitleBarBackground="{DynamicResource SemiGrey0}"
-    TitleBarBorderBrush="{DynamicResource SemiGrey2}"
-    TitleBarForeground="{DynamicResource SemiGrey9}"
+    Background="{DynamicResource AppSurfaceBrush}"
+    TitleBarHeight="48"
+    TitleBarBackground="{DynamicResource AppChromeBrush}"
+    TitleBarBorderBrush="{DynamicResource AppLineBrush}"
+    TitleBarForeground="{DynamicResource AppTextBrush}"
     WindowCornerRadius="8"
     d:DesignHeight="600"
     d:DesignWidth="500"
@@ -28,11 +28,18 @@
         <vm:SettingViewModel />
     </Design.DataContext>
 	<codewf:CodeWFWindow.LeftContent>
-        <Viewbox Height="22" Width="22" IsHitTestVisible="False">
-            <Image Source="\Assets\logo.ico" />
-        </Viewbox>
+        <Border
+            Width="30"
+            Height="30"
+            Background="{DynamicResource AppAccentSoftBrush}"
+            BorderBrush="{DynamicResource AppLineBrush}"
+            BorderThickness="1"
+            CornerRadius="8"
+            IsHitTestVisible="False">
+            <Image Width="20" Height="20" Source="\Assets\logo.ico" />
+        </Border>
     </codewf:CodeWFWindow.LeftContent>
-    <Grid Margin="16" RowDefinitions="Auto,*" RowSpacing="12">
+    <Grid Margin="22" RowDefinitions="Auto,*" RowSpacing="14">
         <TextBlock
             Margin="4 0"
             HorizontalAlignment="Left"
@@ -40,20 +47,21 @@
             Classes="Tertiary H6" TextTrimming="CharacterEllipsis"
             Text="{codewf:I18n {Binding #MyTab.Tag}}"
             Theme="{StaticResource TitleTextBlock}" />
-        <TabControl
-            Grid.Row="1"
-            HorizontalAlignment="Stretch"
-            VerticalAlignment="Stretch"
-            TabStripPlacement="Top"
-            prism:RegionManager.RegionName="{x:Static core:RegionNames.SettingRegion}"
-            Name="MyTab">
-            <TabControl.Styles>
-                <Style Selector="TabItem">
-                    <Setter Property="CornerRadius" Value="6" />
-                    <Setter Property="Padding" Value="12 8" />
-                    <Setter Property="MinHeight" Value="35" />
-                </Style>
-            </TabControl.Styles>
-        </TabControl>
+        <Border Grid.Row="1" Classes="SurfacePanel" Padding="14">
+            <TabControl
+                HorizontalAlignment="Stretch"
+                VerticalAlignment="Stretch"
+                TabStripPlacement="Top"
+                prism:RegionManager.RegionName="{x:Static core:RegionNames.SettingRegion}"
+                Name="MyTab">
+                <TabControl.Styles>
+                    <Style Selector="TabItem">
+                        <Setter Property="CornerRadius" Value="8" />
+                        <Setter Property="Padding" Value="14 8" />
+                        <Setter Property="MinHeight" Value="36" />
+                    </Style>
+                </TabControl.Styles>
+            </TabControl>
+        </Border>
     </Grid>
 </codewf:CodeWFWindow>

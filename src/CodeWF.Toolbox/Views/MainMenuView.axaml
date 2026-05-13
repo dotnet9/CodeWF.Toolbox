@@ -23,49 +23,54 @@
     </UserControl.Resources>
     <UserControl.Styles>
         <Style Selector="ListBox.IconRail">
-            <Setter Property="Background" Value="{DynamicResource SemiGrey1}" />
+            <Setter Property="Background" Value="Transparent" />
             <Setter Property="BorderThickness" Value="0" />
         </Style>
         <Style Selector="ListBox.IconRail ListBoxItem">
-            <Setter Property="MinHeight" Value="44" />
-            <Setter Property="Margin" Value="6 2" />
+            <Setter Property="MinHeight" Value="46" />
+            <Setter Property="Margin" Value="8 4" />
             <Setter Property="Padding" Value="0" />
             <Setter Property="HorizontalContentAlignment" Value="Center" />
             <Setter Property="VerticalContentAlignment" Value="Center" />
-            <Setter Property="CornerRadius" Value="6" />
+            <Setter Property="CornerRadius" Value="8" />
+        </Style>
+        <Style Selector="ListBox.IconRail ListBoxItem:pointerover">
+            <Setter Property="Background" Value="{DynamicResource AppAccentSoftBrush}" />
+            <Setter Property="Foreground" Value="{DynamicResource AppAccentBrush}" />
         </Style>
         <Style Selector="ListBox.IconRail ListBoxItem:selected">
-            <Setter Property="Background" Value="{DynamicResource SemiBlue1}" />
-            <Setter Property="Foreground" Value="{DynamicResource SemiBlue5}" />
+            <Setter Property="Background" Value="{DynamicResource AppAccentBrush}" />
+            <Setter Property="Foreground" Value="White" />
         </Style>
         <Style Selector="Button.RailButton">
-            <Setter Property="Width" Value="40" />
-            <Setter Property="Height" Value="40" />
-            <Setter Property="MinHeight" Value="40" />
-            <Setter Property="Margin" Value="8 8 8 10" />
+            <Setter Property="Width" Value="44" />
+            <Setter Property="Height" Value="44" />
+            <Setter Property="MinHeight" Value="44" />
+            <Setter Property="Margin" Value="10 8 10 12" />
             <Setter Property="Padding" Value="0" />
-            <Setter Property="Background" Value="{DynamicResource SemiGrey0}" />
-            <Setter Property="BorderBrush" Value="{DynamicResource SemiGrey2}" />
+            <Setter Property="Background" Value="{DynamicResource AppPanelBrush}" />
+            <Setter Property="BorderBrush" Value="{DynamicResource AppLineBrush}" />
             <Setter Property="BorderThickness" Value="1" />
-            <Setter Property="CornerRadius" Value="10" />
-            <Setter Property="Foreground" Value="{DynamicResource SemiBlue5}" />
+            <Setter Property="CornerRadius" Value="8" />
+            <Setter Property="Foreground" Value="{DynamicResource AppAccentBrush}" />
             <Setter Property="HorizontalContentAlignment" Value="Center" />
             <Setter Property="VerticalContentAlignment" Value="Center" />
         </Style>
         <Style Selector="Button.RailButton:pointerover">
-            <Setter Property="Background" Value="{DynamicResource SemiBlue0}" />
-            <Setter Property="BorderBrush" Value="{DynamicResource SemiBlue2}" />
+            <Setter Property="Background" Value="{DynamicResource AppAccentSoftBrush}" />
+            <Setter Property="BorderBrush" Value="{DynamicResource AppAccentBrush}" />
         </Style>
         <Style Selector="Button.RailButton:pressed">
-            <Setter Property="Background" Value="{DynamicResource SemiBlue1}" />
-            <Setter Property="BorderBrush" Value="{DynamicResource SemiBlue3}" />
+            <Setter Property="Background" Value="{DynamicResource AppAccentBrush}" />
+            <Setter Property="BorderBrush" Value="{DynamicResource AppAccentBrush}" />
+            <Setter Property="Foreground" Value="White" />
         </Style>
     </UserControl.Styles>
-    <Border Padding="0" Background="{DynamicResource SemiGrey0}" BorderBrush="{DynamicResource SemiGrey2}" BorderThickness="0 0 1 0">
-        <Grid ColumnDefinitions="56,*">
+    <Border Padding="0" Background="{DynamicResource AppChromeBrush}" BorderBrush="{DynamicResource AppLineBrush}" BorderThickness="0 0 1 0">
+        <Grid ColumnDefinitions="64,*">
             <Border Grid.Column="0"
-                    Background="{DynamicResource SemiGrey1}"
-                    BorderBrush="{DynamicResource SemiGrey2}"
+                    Background="{DynamicResource AppPanelBrush}"
+                    BorderBrush="{DynamicResource AppLineBrush}"
                     BorderThickness="0 0 1 0">
                 <Grid RowDefinitions="*,Auto">
                     <ListBox
@@ -74,10 +79,10 @@
                         SelectedItem="{Binding SelectedGroupItem, Mode=TwoWay}">
                         <ListBox.ItemTemplate>
                             <DataTemplate x:DataType="core:ToolMenuItem">
-                                <Grid Width="40" Height="40" ToolTip.Tip="{i18n:I18n {Binding Name}}">
+                                <Grid Width="42" Height="42" ToolTip.Tip="{i18n:I18n {Binding Name}}">
                                     <PathIcon
-                                        Width="18"
-                                        Height="18"
+                                        Width="19"
+                                        Height="19"
                                         HorizontalAlignment="Center"
                                         VerticalAlignment="Center"
                                         Data="{Binding Icon, Converter={StaticResource IconConverter}}" />
@@ -94,28 +99,30 @@
                             Width="18"
                             Height="18"
                             Data="{StaticResource SettingIconGlyph}"
-                            Foreground="{DynamicResource SemiBlue5}" />
+                            Foreground="{DynamicResource AppAccentBrush}" />
                     </Button>
                 </Grid>
             </Border>
 
             <Grid Grid.Column="1" RowDefinitions="Auto,*">
                 <Border
-                    Padding="14 12 12 10"
-                    Background="{DynamicResource SemiGrey0}"
-                    BorderBrush="{DynamicResource SemiGrey2}"
+                    Padding="16 14 14 12"
+                    Background="{DynamicResource AppChromeBrush}"
+                    BorderBrush="{DynamicResource AppLineBrush}"
                     BorderThickness="0 0 0 1">
                     <TextBlock
                         FontSize="12"
                         FontWeight="SemiBold"
-                        Foreground="{DynamicResource SemiGrey7}"
+                        Foreground="{DynamicResource AppMutedTextBrush}"
                         Text="{i18n:I18n {Binding SelectedGroupItem.Name}}"
                         TextWrapping="NoWrap" />
                 </Border>
 
                 <u:NavMenu
                     Grid.Row="1"
-                    ExpandWidth="244"
+                    Background="{DynamicResource AppChromeBrush}"
+                    Foreground="{DynamicResource AppTextBrush}"
+                    ExpandWidth="240"
                     HeaderBinding="{i18n:I18n {Binding Name}}"
                     IconBinding="{Binding Icon}"
                     ItemsSource="{Binding ActiveMenuItems}"
@@ -132,12 +139,12 @@
                             <u:TwoTonePathIcon
                                 Width="16"
                                 Height="16"
-                                ActiveForeground="{DynamicResource SemiBlue5}"
-                                ActiveStrokeBrush="{DynamicResource SemiBlue5}"
+                                ActiveForeground="{DynamicResource AppAccentBrush}"
+                                ActiveStrokeBrush="{DynamicResource AppAccentBrush}"
                                 Data="{Binding Converter={StaticResource IconConverter}}"
-                                Foreground="{DynamicResource SemiGrey5}"
+                                Foreground="{DynamicResource AppMutedTextBrush}"
                                 IsActive="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=u:NavMenuItem}, Path=IsHighlighted, Mode=TwoWay}"
-                                StrokeBrush="{DynamicResource SemiGrey5}" />
+                                StrokeBrush="{DynamicResource AppMutedTextBrush}" />
                         </DataTemplate>
                     </u:NavMenu.IconTemplate>
                 </u:NavMenu>

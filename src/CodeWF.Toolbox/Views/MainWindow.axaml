@@ -10,68 +10,63 @@
                      xmlns:language="clr-namespace:Localization"
                      x:DataType="vm:TitleBarSettingsViewModel"
                      mc:Ignorable="d" WindowStartupLocation="CenterScreen"
-                     Width="1200" Height="800"
+                     Width="1280" Height="840"
+                     MinWidth="1040" MinHeight="680"
                      d:DesignWidth="1200" d:DesignHeight="800"
                      Icon="/Assets/logo.ico"
-                     Background="{DynamicResource SemiGrey0}"
-                     TitleBarHeight="42"
-                     TitleBarBackground="{DynamicResource SemiGrey0}"
-                     TitleBarBorderBrush="{DynamicResource SemiGrey2}"
-                     TitleBarForeground="{DynamicResource SemiGrey9}"
-                     WindowCornerRadius="6"
+                     Background="{DynamicResource AppSurfaceBrush}"
+                     TitleBarHeight="50"
+                     TitleBarBackground="{DynamicResource AppChromeBrush}"
+                     TitleBarBorderBrush="{DynamicResource AppLineBrush}"
+                     TitleBarForeground="{DynamicResource AppTextBrush}"
+                     WindowCornerRadius="8"
                      Title="{i18n:I18n {x:Static language:MainModule.Title}}">
 	<codewf:CodeWFWindow.LeftContent>
-        <Viewbox Height="24" Width="24" IsHitTestVisible="False">
-            <Image Source="\Assets\logo.ico" />
-        </Viewbox>
+        <Grid ColumnDefinitions="Auto,Auto" ColumnSpacing="10" IsHitTestVisible="False">
+            <Border
+                Width="32"
+                Height="32"
+                Background="{DynamicResource AppAccentSoftBrush}"
+                BorderBrush="{DynamicResource AppLineBrush}"
+                BorderThickness="1"
+                CornerRadius="8">
+                <Image Width="22" Height="22" Source="\Assets\logo.ico" />
+            </Border>
+            <TextBlock
+                Grid.Column="1"
+                VerticalAlignment="Center"
+                FontSize="14"
+                FontWeight="SemiBold"
+                Text="{i18n:I18n {x:Static language:MainModule.Title}}" />
+        </Grid>
     </codewf:CodeWFWindow.LeftContent>
     <codewf:CodeWFWindow.RightContent>
-        <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="0 0 14 0" Spacing="8">
-            <TextBox x:Name="Search" Width="320" Height="32"
-                     Background="{DynamicResource SemiGrey1}"
-                     BorderBrush="{DynamicResource SemiGrey3}"
-                     CornerRadius="5"
-                     Foreground="{DynamicResource SemiGrey9}"
+        <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="0 0 16 0" Spacing="10">
+            <TextBox x:Name="Search" Width="360"
+                     Classes="AppInput"
                      HorizontalContentAlignment="Left"
-                     Padding="12 0"
-                     PlaceholderForeground="{DynamicResource SemiGrey5}"
                      TextChanged="Search_OnTextChanged"
-                     VerticalContentAlignment="Center"
                      PlaceholderText="{i18n:I18n {x:Static language:MainWindow.SearchToolTip}}" />
 
             <ComboBox
-                Width="128"
-                Height="32"
-                Background="{DynamicResource SemiGrey1}"
-                BorderBrush="{DynamicResource SemiGrey3}"
-                CornerRadius="5"
+                Width="136"
+                Classes="AppSelect"
                 DisplayMemberBinding="{i18n:I18n {Binding Name}}"
-                Foreground="{DynamicResource SemiGrey9}"
                 HorizontalContentAlignment="Left"
                 ItemsSource="{Binding Themes}"
-                Padding="12 0"
-                PlaceholderForeground="{DynamicResource SemiGrey5}"
                 PlaceholderText="{i18n:I18n {x:Static language:CommonSettingView.ThemePlaceholderText}}"
                 SelectedItem="{Binding SelectedTheme, Mode=TwoWay}"
-                ToolTip.Tip="{i18n:I18n {x:Static language:CommonSettingView.Theme}}"
-                VerticalContentAlignment="Center" />
+                ToolTip.Tip="{i18n:I18n {x:Static language:CommonSettingView.Theme}}" />
 
             <ComboBox
-                Width="138"
-                Height="32"
-                Background="{DynamicResource SemiGrey1}"
-                BorderBrush="{DynamicResource SemiGrey3}"
-                CornerRadius="5"
+                Width="150"
+                Classes="AppSelect"
                 DisplayMemberBinding="{Binding Description}"
-                Foreground="{DynamicResource SemiGrey9}"
                 HorizontalContentAlignment="Left"
                 ItemsSource="{Binding Languages}"
-                Padding="12 0"
-                PlaceholderForeground="{DynamicResource SemiGrey5}"
                 PlaceholderText="{i18n:I18n {x:Static language:CommonSettingView.LanguagePlaceholderText}}"
                 SelectedItem="{Binding SelectedLanguage, Mode=TwoWay}"
-                ToolTip.Tip="{i18n:I18n {x:Static language:CommonSettingView.LanguageKey}}"
-                VerticalContentAlignment="Center" />
+                ToolTip.Tip="{i18n:I18n {x:Static language:CommonSettingView.LanguageKey}}" />
         </StackPanel>
     </codewf:CodeWFWindow.RightContent>
     <views:MainView />

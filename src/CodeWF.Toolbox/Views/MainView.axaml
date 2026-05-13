@@ -16,8 +16,8 @@
          to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
         <vm:MainViewModel />
     </Design.DataContext>
-    <Grid>
-        <Grid ColumnDefinitions="300, *">
+    <Grid Background="{DynamicResource AppSurfaceBrush}">
+        <Grid ColumnDefinitions="304, *">
             <views:MainMenuView Grid.Column="0" />
             <views:MainContentView Grid.Row="0" Grid.Column="1" />
         </Grid>

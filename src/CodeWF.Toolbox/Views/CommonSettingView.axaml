@@ -14,49 +14,55 @@
         <vm:CommonSettingViewModel />
     </Design.DataContext>
 
-    <Border Padding="24 18">
-        <Grid
-            MaxWidth="620"
-            HorizontalAlignment="Left"
-            ColumnDefinitions="170, *"
-            RowDefinitions="Auto, Auto, Auto"
-            RowSpacing="14">
-            <TextBlock
-                VerticalAlignment="Center"
-                Text="{i18n:I18n {x:Static language:CommonSettingView.AutoOpenToolboxAtStartup}}"
-                TextWrapping="Wrap" />
-            <ToggleSwitch
-                Grid.Column="1"
-                OffContent="{i18n:I18n {x:Static language:CommonSettingView.TurnOff}}"
-                OnContent="{i18n:I18n {x:Static language:CommonSettingView.TurnOn}}"
-                IsChecked="{Binding AutoOpenToolboxAtStartup}"
-                Command="{Binding ChangeAutoOpenToolboxAtStartupHandlerAsync}" />
+    <Border Padding="6">
+        <StackPanel MaxWidth="660" HorizontalAlignment="Left" Spacing="12">
+            <Border Background="{DynamicResource AppPanelAltBrush}" BorderBrush="{DynamicResource AppLineBrush}" BorderThickness="1" CornerRadius="8" Padding="16 14">
+                <Grid ColumnDefinitions="*, Auto" ColumnSpacing="24">
+                    <TextBlock
+                        VerticalAlignment="Center"
+                        FontWeight="SemiBold"
+                        Text="{i18n:I18n {x:Static language:CommonSettingView.AutoOpenToolboxAtStartup}}"
+                        TextWrapping="Wrap" />
+                    <ToggleSwitch
+                        Grid.Column="1"
+                        OffContent="{i18n:I18n {x:Static language:CommonSettingView.TurnOff}}"
+                        OnContent="{i18n:I18n {x:Static language:CommonSettingView.TurnOn}}"
+                        IsChecked="{Binding AutoOpenToolboxAtStartup}"
+                        Command="{Binding ChangeAutoOpenToolboxAtStartupHandlerAsync}" />
+                </Grid>
+            </Border>
 
-            <TextBlock
-                Grid.Row="1"
-                VerticalAlignment="Center"
-                Text="{i18n:I18n {x:Static language:CommonSettingView.HideTrayIconOnClose}}"
-                TextWrapping="Wrap" />
-            <ToggleSwitch
-                Grid.Row="1"
-                Grid.Column="1"
-                OffContent="{i18n:I18n {x:Static language:CommonSettingView.TurnOff}}"
-                OnContent="{i18n:I18n {x:Static language:CommonSettingView.TurnOn}}"
-                IsChecked="{Binding HideTrayIconOnClose}"
-                Command="{Binding ChangeHideTrayIconOnCloseHandlerAsync}" />
+            <Border Background="{DynamicResource AppPanelAltBrush}" BorderBrush="{DynamicResource AppLineBrush}" BorderThickness="1" CornerRadius="8" Padding="16 14">
+                <Grid ColumnDefinitions="*, Auto" ColumnSpacing="24">
+                    <TextBlock
+                        VerticalAlignment="Center"
+                        FontWeight="SemiBold"
+                        Text="{i18n:I18n {x:Static language:CommonSettingView.HideTrayIconOnClose}}"
+                        TextWrapping="Wrap" />
+                    <ToggleSwitch
+                        Grid.Column="1"
+                        OffContent="{i18n:I18n {x:Static language:CommonSettingView.TurnOff}}"
+                        OnContent="{i18n:I18n {x:Static language:CommonSettingView.TurnOn}}"
+                        IsChecked="{Binding HideTrayIconOnClose}"
+                        Command="{Binding ChangeHideTrayIconOnCloseHandlerAsync}" />
+                </Grid>
+            </Border>
 
-            <TextBlock
-                Grid.Row="2"
-                VerticalAlignment="Center"
-                Text="{i18n:I18n {x:Static language:CommonSettingView.DisplayPromptWhenClosing}}"
-                TextWrapping="Wrap" />
-            <ToggleSwitch
-                Grid.Row="2"
-                Grid.Column="1"
-                OffContent="{i18n:I18n {x:Static language:CommonSettingView.TurnOff}}"
-                OnContent="{i18n:I18n {x:Static language:CommonSettingView.TurnOn}}"
-                IsChecked="{Binding NeedExitDialogOnClose}"
-                Command="{Binding ChangeDisplayPromptWhenClosingHandlerAsync}" />
-        </Grid>
+            <Border Background="{DynamicResource AppPanelAltBrush}" BorderBrush="{DynamicResource AppLineBrush}" BorderThickness="1" CornerRadius="8" Padding="16 14">
+                <Grid ColumnDefinitions="*, Auto" ColumnSpacing="24">
+                    <TextBlock
+                        VerticalAlignment="Center"
+                        FontWeight="SemiBold"
+                        Text="{i18n:I18n {x:Static language:CommonSettingView.DisplayPromptWhenClosing}}"
+                        TextWrapping="Wrap" />
+                    <ToggleSwitch
+                        Grid.Column="1"
+                        OffContent="{i18n:I18n {x:Static language:CommonSettingView.TurnOff}}"
+                        OnContent="{i18n:I18n {x:Static language:CommonSettingView.TurnOn}}"
+                        IsChecked="{Binding NeedExitDialogOnClose}"
+                        Command="{Binding ChangeDisplayPromptWhenClosingHandlerAsync}" />
+                </Grid>
+            </Border>
+        </StackPanel>
     </Border>
 </UserControl>

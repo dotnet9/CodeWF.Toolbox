@@ -12,14 +12,14 @@
               x:DataType="vm:LoginViewModel"
               x:Name="loginWindow"
               mc:Ignorable="d"
-              Width="340"
-              Height="286"
+              Width="420"
+              Height="410"
               Icon="/Assets/logo.ico"
-              Background="{DynamicResource SemiGrey0}"
-              TitleBarHeight="42"
-              TitleBarBackground="{DynamicResource SemiGrey0}"
-              TitleBarBorderBrush="{DynamicResource SemiGrey2}"
-              TitleBarForeground="{DynamicResource SemiGrey9}"
+              Background="{DynamicResource AppSurfaceBrush}"
+              TitleBarHeight="48"
+              TitleBarBackground="{DynamicResource AppChromeBrush}"
+              TitleBarBorderBrush="{DynamicResource AppLineBrush}"
+              TitleBarForeground="{DynamicResource AppTextBrush}"
               WindowCornerRadius="8"
               IsMinimizeButtonVisible="False"
               IsRestoreButtonVisible="False"
@@ -34,64 +34,97 @@
         <Style Selector="TextBox.Right">
             <Setter Property="VerticalAlignment" Value="Center" />
             <Setter Property="HorizontalAlignment" Value="Stretch" />
-            <Setter Property="Height" Value="32" />
-            <Setter Property="Padding" Value="12 0" />
-            <Setter Property="VerticalContentAlignment" Value="Center" />
-        </Style>
-        <Style Selector="Button.Common">
-            <Setter Property="Height" Value="32" />
-            <Setter Property="MinWidth" Value="96" />
-            <Setter Property="Padding" Value="16 0" />
-            <Setter Property="HorizontalContentAlignment" Value="Center" />
         </Style>
         <Style Selector="TextBlock.StatusMessage">
             <Setter Property="MinHeight" Value="24" />
             <Setter Property="FontSize" Value="12" />
             <Setter Property="FontWeight" Value="SemiBold" />
-            <Setter Property="Foreground" Value="{DynamicResource SemiRed5}" />
+            <Setter Property="Foreground" Value="{DynamicResource AppRoseBrush}" />
             <Setter Property="HorizontalAlignment" Value="Center" />
             <Setter Property="VerticalAlignment" Value="Center" />
             <Setter Property="TextTrimming" Value="CharacterEllipsis" />
         </Style>
     </codewf:CodeWFWindow.Styles>
     <codewf:CodeWFWindow.LeftContent>
-        <Viewbox Width="22" Height="22" IsHitTestVisible="False">
-            <Image Source="\Assets\logo.ico" />
-        </Viewbox>
+        <Grid ColumnDefinitions="Auto,Auto" ColumnSpacing="9" IsHitTestVisible="False">
+            <Border
+                Width="30"
+                Height="30"
+                Background="{DynamicResource AppAccentSoftBrush}"
+                BorderBrush="{DynamicResource AppLineBrush}"
+                BorderThickness="1"
+                CornerRadius="8">
+                <Image Width="20" Height="20" Source="\Assets\logo.ico" />
+            </Border>
+            <TextBlock
+                Grid.Column="1"
+                VerticalAlignment="Center"
+                FontWeight="SemiBold"
+                Text="{i18n:I18n {x:Static language:LoginWindow.Title}}" />
+        </Grid>
 	</codewf:CodeWFWindow.LeftContent>
     <Interaction.Behaviors>
                     <EventTriggerBehavior EventName="Closing">
                         <InvokeCommandAction Command="{Binding RaiseClosingHandlerAsync}" />
                     </EventTriggerBehavior>
                 </Interaction.Behaviors>
-    <Grid Width="260" HorizontalAlignment="Center" Margin="0 22 0 24" RowDefinitions="44 44 28 40" RowSpacing="10">
-        <TextBox Grid.Row="0" Text="{Binding Username}" PlaceholderText="{i18n:I18n {x:Static language:LoginWindow.UsernameWatermark}}" Classes="Right" />
-        
-        <TextBox Grid.Row="1" Text="{Binding Password}" PlaceholderText="{i18n:I18n {x:Static language:LoginWindow.PasswordWatermark}}" Classes="revealPasswordButton Right" />
-        
-        <!-- 状态信息 -->
-        <TextBlock 
-            Grid.Row="2" 
-            Text="{i18n:I18n {Binding StatusMessage}}" 
-            Classes="StatusMessage"
-        />
-        
-        <!-- 按钮区域 -->
-        <Grid Grid.Row="3" ColumnDefinitions="*,*" ColumnSpacing="12" Margin="0 2 0 0">
-            <Button
-                Grid.Column="0"
-                Classes="Common"
-                Content="{i18n:I18n {x:Static language:LoginWindow.LoginButton}}" 
-                Command="{Binding LoginAsync}" 
-                CommandParameter="{Binding ElementName=loginWindow}" 
-                HorizontalAlignment="Stretch" />
-            <Button
-                Grid.Column="1"
-                Classes="Common"
-                Content="{i18n:I18n {x:Static language:LoginWindow.GuestLoginButton}}" 
-                Command="{Binding GuestLoginAsync}" 
-                CommandParameter="{Binding ElementName=loginWindow}" 
-                HorizontalAlignment="Stretch" />
+    <Border
+        Classes="SurfacePanel"
+        Width="328"
+        HorizontalAlignment="Center"
+        VerticalAlignment="Center"
+        Padding="26 24">
+        <Grid RowDefinitions="Auto,44,44,28,40" RowSpacing="12">
+            <StackPanel HorizontalAlignment="Center" Spacing="10" Margin="0 0 0 4">
+                <Border
+                    Width="58"
+                    Height="58"
+                    Background="{DynamicResource AppRoseSoftBrush}"
+                    BorderBrush="{DynamicResource AppLineBrush}"
+                    BorderThickness="1"
+                    CornerRadius="8">
+                    <Image Width="38" Height="38" Source="\Assets\logo.ico" />
+                </Border>
+                <TextBlock
+                    Classes="H5"
+                    FontWeight="SemiBold"
+                    HorizontalAlignment="Center"
+                    Text="{i18n:I18n {x:Static language:LoginWindow.Title}}" />
+            </StackPanel>
+
+            <TextBox
+                Grid.Row="1"
+                Text="{Binding Username}"
+                PlaceholderText="{i18n:I18n {x:Static language:LoginWindow.UsernameWatermark}}"
+                Classes="AppInput Right" />
+
+            <TextBox
+                Grid.Row="2"
+                Text="{Binding Password}"
+                PlaceholderText="{i18n:I18n {x:Static language:LoginWindow.PasswordWatermark}}"
+                Classes="AppInput revealPasswordButton Right" />
+
+            <TextBlock
+                Grid.Row="3"
+                Text="{i18n:I18n {Binding StatusMessage}}"
+                Classes="StatusMessage" />
+
+            <Grid Grid.Row="4" ColumnDefinitions="*,*" ColumnSpacing="12" Margin="0 2 0 0">
+                <Button
+                    Grid.Column="0"
+                    Classes="AppPrimary"
+                    Content="{i18n:I18n {x:Static language:LoginWindow.LoginButton}}"
+                    Command="{Binding LoginAsync}"
+                    CommandParameter="{Binding ElementName=loginWindow}"
+                    HorizontalAlignment="Stretch" />
+                <Button
+                    Grid.Column="1"
+                    Classes="AppGhost"
+                    Content="{i18n:I18n {x:Static language:LoginWindow.GuestLoginButton}}"
+                    Command="{Binding GuestLoginAsync}"
+                    CommandParameter="{Binding ElementName=loginWindow}"
+                    HorizontalAlignment="Stretch" />
+            </Grid>
         </Grid>
-    </Grid>
+    </Border>
 </codewf:CodeWFWindow>

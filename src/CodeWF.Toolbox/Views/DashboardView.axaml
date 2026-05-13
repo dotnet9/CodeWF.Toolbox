@@ -12,26 +12,68 @@
              x:Class="CodeWF.Toolbox.Views.DashboardView"
              x:DataType="vm:DashboardViewModel">
     <UserControl.Styles>
-        <Style Selector="Border.MetricItem">
-            <Setter Property="Padding" Value="18 14" />
+        <Style Selector="Border.HeroPanel">
+            <Setter Property="Padding" Value="28" />
             <Setter Property="CornerRadius" Value="8" />
-            <Setter Property="Background" Value="{DynamicResource SemiGrey1}" />
-            <Setter Property="BorderBrush" Value="{DynamicResource SemiGrey2}" />
+            <Setter Property="Background" Value="{DynamicResource AppPanelBrush}" />
+            <Setter Property="BorderBrush" Value="{DynamicResource AppLineBrush}" />
             <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="BoxShadow" Value="0 14 34 0 #120B1430" />
+        </Style>
+        <Style Selector="Border.MetricItem">
+            <Setter Property="Padding" Value="20 16" />
+            <Setter Property="CornerRadius" Value="8" />
+            <Setter Property="Background" Value="{DynamicResource AppPanelBrush}" />
+            <Setter Property="BorderBrush" Value="{DynamicResource AppLineBrush}" />
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="BoxShadow" Value="0 10 24 0 #0E0B1430" />
+        </Style>
+        <Style Selector="Border.MetricItem.Blue">
+            <Setter Property="Background" Value="{DynamicResource AppAccentSoftBrush}" />
+        </Style>
+        <Style Selector="Border.MetricItem.Mint">
+            <Setter Property="Background" Value="{DynamicResource AppMintSoftBrush}" />
+        </Style>
+        <Style Selector="Border.MetricItem.Amber">
+            <Setter Property="Background" Value="{DynamicResource AppAmberSoftBrush}" />
         </Style>
         <Style Selector="TextBlock.MetricValue">
-            <Setter Property="FontSize" Value="26" />
+            <Setter Property="FontSize" Value="28" />
             <Setter Property="FontWeight" Value="SemiBold" />
         </Style>
+        <Style Selector="TextBlock.MetricValue.Blue">
+            <Setter Property="Foreground" Value="{DynamicResource AppAccentBrush}" />
+        </Style>
+        <Style Selector="TextBlock.MetricValue.Mint">
+            <Setter Property="Foreground" Value="{DynamicResource AppMintBrush}" />
+        </Style>
+        <Style Selector="TextBlock.MetricValue.Amber">
+            <Setter Property="Foreground" Value="{DynamicResource AppAmberBrush}" />
+        </Style>
         <Style Selector="TextBlock.MetricLabel">
-            <Setter Property="Foreground" Value="{DynamicResource SemiGrey6}" />
+            <Setter Property="Foreground" Value="{DynamicResource AppMutedTextBrush}" />
             <Setter Property="Margin" Value="0 6 0 0" />
         </Style>
-        <Style Selector="Border.CommunityItem">
-            <Setter Property="Padding" Value="10" />
+        <Style Selector="Border.LinkPanel">
+            <Setter Property="Padding" Value="18 14" />
             <Setter Property="CornerRadius" Value="8" />
-            <Setter Property="Background" Value="{DynamicResource SemiGrey0}" />
-            <Setter Property="BorderBrush" Value="{DynamicResource SemiGrey2}" />
+            <Setter Property="Background" Value="{DynamicResource AppPanelBrush}" />
+            <Setter Property="BorderBrush" Value="{DynamicResource AppLineBrush}" />
+            <Setter Property="BorderThickness" Value="1" />
+        </Style>
+        <Style Selector="Border.CommunityPanel">
+            <Setter Property="Padding" Value="22" />
+            <Setter Property="CornerRadius" Value="8" />
+            <Setter Property="Background" Value="{DynamicResource AppPanelBrush}" />
+            <Setter Property="BorderBrush" Value="{DynamicResource AppLineBrush}" />
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="BoxShadow" Value="0 12 28 0 #100B1430" />
+        </Style>
+        <Style Selector="Border.CommunityItem">
+            <Setter Property="Padding" Value="12" />
+            <Setter Property="CornerRadius" Value="8" />
+            <Setter Property="Background" Value="{DynamicResource AppPanelAltBrush}" />
+            <Setter Property="BorderBrush" Value="{DynamicResource AppLineBrush}" />
             <Setter Property="BorderThickness" Value="1" />
         </Style>
         <Style Selector="Image.CommunityQrCode">
@@ -41,58 +83,71 @@
         </Style>
     </UserControl.Styles>
 
-    <Grid
-        MaxWidth="860"
-        Margin="32"
-        HorizontalAlignment="Stretch"
-        RowDefinitions="Auto, Auto, Auto, Auto, *"
-        RowSpacing="20">
-        <StackPanel Spacing="8">
-            <TextBlock
-                Classes="H3"
-                FontWeight="SemiBold"
-                Text="{i18n:I18n {x:Static language:MainModule.Title}}"
-                TextWrapping="Wrap" />
-            <TextBlock
-                Classes="Tertiary H6"
-                MaxWidth="720"
-                Text="{i18n:I18n {x:Static language:DashboardView.DesiredAvailabilityNotification}}"
-                TextWrapping="Wrap" />
-        </StackPanel>
+    <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
+        <Grid
+            MaxWidth="980"
+            Margin="28"
+            HorizontalAlignment="Stretch"
+            RowDefinitions="Auto, Auto, Auto, Auto"
+            RowSpacing="18">
+            <Border Classes="HeroPanel">
+                <Grid ColumnDefinitions="*, Auto" ColumnSpacing="26">
+                    <StackPanel Spacing="10" VerticalAlignment="Center">
+                        <TextBlock
+                            Classes="H3"
+                            FontWeight="SemiBold"
+                            Text="{i18n:I18n {x:Static language:MainModule.Title}}"
+                            TextWrapping="Wrap" />
+                        <TextBlock
+                            Classes="Tertiary H6"
+                            MaxWidth="720"
+                            Text="{i18n:I18n {x:Static language:DashboardView.DesiredAvailabilityNotification}}"
+                            TextWrapping="Wrap" />
+                        <TextBlock
+                            Classes="Tertiary"
+                            MaxWidth="760"
+                            Text="{i18n:I18n {x:Static language:DashboardView.ProjectIntro}}"
+                            TextWrapping="Wrap" />
+                    </StackPanel>
 
-        <TextBlock
-            Grid.Row="1"
-            Classes="Tertiary"
-            MaxWidth="760"
-            Text="{i18n:I18n {x:Static language:DashboardView.ProjectIntro}}"
-            TextWrapping="Wrap" />
+                    <Border
+                        Grid.Column="1"
+                        Width="104"
+                        Height="104"
+                        Background="{DynamicResource AppAccentSoftBrush}"
+                        BorderBrush="{DynamicResource AppLineBrush}"
+                        BorderThickness="1"
+                        CornerRadius="8"
+                        VerticalAlignment="Center">
+                        <Image Width="70" Height="70" Source="/Assets/logo.ico" />
+                    </Border>
+                </Grid>
+            </Border>
 
-        <Grid Grid.Row="2" ColumnDefinitions="*, *, *" ColumnSpacing="12">
-            <Border Classes="MetricItem">
+            <Grid Grid.Row="1" ColumnDefinitions="*, *, *" ColumnSpacing="14">
+                <Border Classes="MetricItem Blue">
                 <StackPanel>
-                    <TextBlock Classes="MetricValue" Text="{Binding ToolCount}" />
+                    <TextBlock Classes="MetricValue Blue" Text="{Binding ToolCount}" />
                     <TextBlock Classes="MetricLabel" Text="{i18n:I18n {x:Static language:DashboardView.ToolCountLabel}}" />
                 </StackPanel>
             </Border>
-            <Border Grid.Column="1" Classes="MetricItem">
+                <Border Grid.Column="1" Classes="MetricItem Mint">
                 <StackPanel>
-                    <TextBlock Classes="MetricValue" Text="{Binding ModuleCount}" />
+                    <TextBlock Classes="MetricValue Mint" Text="{Binding ModuleCount}" />
                     <TextBlock Classes="MetricLabel" Text="{i18n:I18n {x:Static language:DashboardView.ModuleCountLabel}}" />
                 </StackPanel>
             </Border>
-            <Border Grid.Column="2" Classes="MetricItem">
+                <Border Grid.Column="2" Classes="MetricItem Amber">
                 <StackPanel>
-                    <TextBlock Classes="MetricValue" Text="{Binding OSInfo}" />
+                    <TextBlock Classes="MetricValue Amber" Text="{Binding OSInfo}" />
                     <TextBlock Classes="MetricLabel" Text="{i18n:I18n {x:Static language:DashboardView.PlatformLabel}}" />
                 </StackPanel>
             </Border>
         </Grid>
 
         <Border
-            Grid.Row="3"
-            Padding="0 18 0 0"
-            BorderBrush="{DynamicResource SemiGrey2}"
-            BorderThickness="0 1 0 0">
+            Grid.Row="2"
+            Classes="LinkPanel">
             <StackPanel Orientation="Horizontal" Spacing="18">
                 <HyperlinkButton
                     Classes="WithIcon Underline"
@@ -113,12 +168,8 @@
         </Border>
 
         <Border
-            Grid.Row="4"
-            Padding="18"
-            Background="{DynamicResource SemiGrey1}"
-            BorderBrush="{DynamicResource SemiGrey2}"
-            BorderThickness="1"
-            CornerRadius="8">
+            Grid.Row="3"
+            Classes="CommunityPanel">
             <Grid ColumnDefinitions="*, Auto" ColumnSpacing="24">
                 <StackPanel Spacing="8" VerticalAlignment="Center">
                     <TextBlock
@@ -155,5 +206,6 @@
                 </StackPanel>
             </Grid>
         </Border>
-    </Grid>
+        </Grid>
+    </ScrollViewer>
 </UserControl>

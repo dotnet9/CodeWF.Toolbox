@@ -15,23 +15,32 @@
         <vm:AboutViewModel />
     </Design.DataContext>
 
-    <Grid
-        MaxWidth="680"
-        Margin="32"
-        HorizontalAlignment="Stretch"
-        RowDefinitions="Auto, Auto, Auto, Auto"
-        RowSpacing="18">
-        <StackPanel Spacing="8">
-            <TextBlock
-                Classes="H4"
-                FontWeight="SemiBold"
-                Text="{i18n:I18n {x:Static language:MainModule.Title}}"
-                TextWrapping="Wrap" />
-            <TextBlock
-                Classes="Tertiary"
-                Text="{i18n:I18n {x:Static language:AboutView.Description}}"
-                TextWrapping="Wrap" />
-        </StackPanel>
+    <Border Classes="SurfacePanel" MaxWidth="720" Margin="28" Padding="24" HorizontalAlignment="Stretch">
+        <Grid
+            RowDefinitions="Auto, Auto, Auto, Auto"
+            RowSpacing="18">
+            <Grid ColumnDefinitions="Auto,*" ColumnSpacing="16">
+                <Border
+                    Width="58"
+                    Height="58"
+                    Background="{DynamicResource AppAccentSoftBrush}"
+                    BorderBrush="{DynamicResource AppLineBrush}"
+                    BorderThickness="1"
+                    CornerRadius="8">
+                    <Image Width="38" Height="38" Source="/Assets/logo.ico" />
+                </Border>
+                <StackPanel Grid.Column="1" Spacing="8" VerticalAlignment="Center">
+                    <TextBlock
+                        Classes="H4"
+                        FontWeight="SemiBold"
+                        Text="{i18n:I18n {x:Static language:MainModule.Title}}"
+                        TextWrapping="Wrap" />
+                    <TextBlock
+                        Classes="Tertiary"
+                        Text="{i18n:I18n {x:Static language:AboutView.Description}}"
+                        TextWrapping="Wrap" />
+                </StackPanel>
+            </Grid>
 
         <Grid
             Grid.Row="1"
@@ -53,7 +62,7 @@
 
         <Border
             Grid.Row="2"
-            BorderBrush="{DynamicResource SemiGrey2}"
+            BorderBrush="{DynamicResource AppLineBrush}"
             BorderThickness="0 1 0 0" />
 
         <StackPanel Grid.Row="3" Orientation="Horizontal" Spacing="18">
@@ -73,5 +82,6 @@
                 NavigateUri="{x:Static models:AppLinks.OnlineToolUrl}"
                 Content="{i18n:I18n {x:Static language:DashboardView.AccessToolbox}}" />
         </StackPanel>
-    </Grid>
+        </Grid>
+    </Border>
 </UserControl>
