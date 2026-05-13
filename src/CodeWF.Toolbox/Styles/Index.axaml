@@ -1,5 +1,6 @@
 <Styles xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:avaloniaEdit="clr-namespace:AvaloniaEdit;assembly=AvaloniaEdit"
         xmlns:system="clr-namespace:System;assembly=System.Runtime"
         xmlns:semi="https://irihi.tech/semi">
     <Styles.Resources>
@@ -133,8 +134,8 @@
                 </ResourceDictionary>
             </ResourceDictionary.ThemeDictionaries>
             <system:Double x:Key="ControlContentThemeFontSize">13</system:Double>
-            <FontFamily x:Key="ContentControlThemeFontFamily">Microsoft YaHei UI, Segoe UI, avares://codewf/Assets/Fonts#Noto Sans SC</FontFamily>
-            <FontFamily x:Key="CodeEditorThemeFontFamily">Cascadia Code,Consolas,Menlo,Monospace</FontFamily>
+            <FontFamily x:Key="ContentControlThemeFontFamily">Microsoft YaHei UI, Segoe UI, avares://CodeWF.Toolbox/Assets/Fonts#Noto Sans SC</FontFamily>
+            <FontFamily x:Key="CodeEditorThemeFontFamily">Cascadia Code, Consolas, Menlo, Monospace, avares://CodeWF.Toolbox/Assets/Fonts#Noto Sans SC</FontFamily>
         </ResourceDictionary>
     </Styles.Resources>
     <StyleInclude Source="avares://AvaloniaEdit/Themes/Fluent/AvaloniaEdit.xaml" />
@@ -154,6 +155,10 @@
         <Setter Property="FontFamily" Value="{DynamicResource ContentControlThemeFontFamily}" />
         <Setter Property="FontSize" Value="{DynamicResource ControlContentThemeFontSize}" />
         <Setter Property="Foreground" Value="{DynamicResource AppTextBrush}" />
+    </Style>
+
+    <Style Selector="avaloniaEdit|TextEditor">
+        <Setter Property="FontFamily" Value="{DynamicResource CodeEditorThemeFontFamily}" />
     </Style>
 
     <Style Selector="TextBlock.Tertiary">
