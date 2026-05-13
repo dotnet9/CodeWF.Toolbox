@@ -72,7 +72,9 @@
       "DirectToClose": "アプリを終了",
       "DirectToCloseDescription": "プロセスを終了し、トレイアイコンも閉じます",
       "RememberMyChoice": "選択を記憶",
-      "RememberMyChoiceDescription": "次回からこの動作を直接実行します"
+      "RememberMyChoiceDescription": "次回からこの動作を直接実行します",
+      "Cancel": "キャンセル",
+      "Confirm": "確定"
     },
     "LoginWindow": {
       "Title": "ログイン",

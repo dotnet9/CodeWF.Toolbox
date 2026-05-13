@@ -72,7 +72,9 @@
       "DirectToClose": "Exit application",
       "DirectToCloseDescription": "Stop the app and remove the tray icon",
       "RememberMyChoice": "Remember choice",
-      "RememberMyChoiceDescription": "Apply this action directly next time"
+      "RememberMyChoiceDescription": "Apply this action directly next time",
+      "Cancel": "Cancel",
+      "Confirm": "Confirm"
     },
     "LoginWindow": {
       "Title": "Login",

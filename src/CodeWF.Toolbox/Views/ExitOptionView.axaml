@@ -10,13 +10,14 @@
              x:Class="CodeWF.Toolbox.Views.ExitOptionView">
     <UserControl.Styles>
         <Style Selector="RadioButton.ExitChoice">
-            <Setter Property="MinHeight" Value="62" />
-            <Setter Property="Padding" Value="14 10" />
-            <Setter Property="Background" Value="{DynamicResource SemiGrey0}" />
-            <Setter Property="BorderBrush" Value="{DynamicResource SemiGrey2}" />
+            <Setter Property="MinHeight" Value="76" />
+            <Setter Property="Padding" Value="14 12" />
+            <Setter Property="Background" Value="{DynamicResource AppPanelBrush}" />
+            <Setter Property="BorderBrush" Value="{DynamicResource AppLineBrush}" />
             <Setter Property="BorderThickness" Value="1" />
-            <Setter Property="CornerRadius" Value="6" />
-            <Setter Property="Foreground" Value="{DynamicResource SemiGrey9}" />
+            <Setter Property="CornerRadius" Value="8" />
+            <Setter Property="Foreground" Value="{DynamicResource AppTextBrush}" />
+            <Setter Property="HorizontalAlignment" Value="Stretch" />
             <Setter Property="HorizontalContentAlignment" Value="Stretch" />
             <Setter Property="Template">
                 <ControlTemplate>
@@ -25,41 +26,136 @@
                         BorderBrush="{TemplateBinding BorderBrush}"
                         BorderThickness="{TemplateBinding BorderThickness}"
                         CornerRadius="{TemplateBinding CornerRadius}">
-                        <ContentPresenter
+                        <Grid
                             Margin="{TemplateBinding Padding}"
-                            Content="{TemplateBinding Content}"
-                            ContentTemplate="{TemplateBinding ContentTemplate}"
-                            HorizontalAlignment="Stretch"
-                            VerticalAlignment="Center" />
+                            ColumnDefinitions="Auto,*"
+                            ColumnSpacing="12">
+                            <Border
+                                Name="ChoiceBullet"
+                                Width="22"
+                                Height="22"
+                                VerticalAlignment="Center"
+                                Background="{DynamicResource AppPanelAltBrush}"
+                                BorderBrush="{DynamicResource AppLineBrush}"
+                                BorderThickness="1"
+                                CornerRadius="11">
+                                <PathIcon
+                                    Name="ChoiceCheck"
+                                    Width="13"
+                                    Height="13"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    Data="M9,16.2 L4.8,12 L3.4,13.4 L9,19 L21,7 L19.6,5.6 Z"
+                                    Foreground="{DynamicResource AppPanelBrush}"
+                                    IsVisible="{TemplateBinding IsChecked}" />
+                            </Border>
+                            <ContentPresenter
+                                Grid.Column="1"
+                                Content="{TemplateBinding Content}"
+                                ContentTemplate="{TemplateBinding ContentTemplate}"
+                                HorizontalAlignment="Stretch"
+                                VerticalAlignment="Center" />
+                        </Grid>
                     </Border>
                 </ControlTemplate>
             </Setter>
         </Style>
         <Style Selector="RadioButton.ExitChoice:pointerover">
-            <Setter Property="Background" Value="{DynamicResource SemiGrey1}" />
-            <Setter Property="BorderBrush" Value="{DynamicResource SemiGrey3}" />
+            <Setter Property="Background" Value="{DynamicResource AppAccentSoftBrush}" />
+            <Setter Property="BorderBrush" Value="{DynamicResource AppAccentBrush}" />
         </Style>
         <Style Selector="RadioButton.ExitChoice:checked">
-            <Setter Property="Background" Value="{DynamicResource SemiBlue0}" />
-            <Setter Property="BorderBrush" Value="{DynamicResource SemiBlue4}" />
-            <Setter Property="Foreground" Value="{DynamicResource SemiBlue5}" />
+            <Setter Property="Background" Value="{DynamicResource AppAccentSoftBrush}" />
+            <Setter Property="BorderBrush" Value="{DynamicResource AppAccentBrush}" />
+            <Setter Property="Foreground" Value="{DynamicResource AppAccentBrush}" />
+        </Style>
+        <Style Selector="RadioButton.ExitChoice:checked /template/ Border#ChoiceBullet">
+            <Setter Property="Background" Value="{DynamicResource AppAccentBrush}" />
+            <Setter Property="BorderBrush" Value="{DynamicResource AppAccentBrush}" />
+        </Style>
+        <Style Selector="RadioButton.ExitChoice TextBlock">
+            <Setter Property="Foreground" Value="{DynamicResource AppTextBrush}" />
+        </Style>
+        <Style Selector="RadioButton.ExitChoice:checked TextBlock.ExitTitle">
+            <Setter Property="Foreground" Value="{DynamicResource AppAccentBrush}" />
+        </Style>
+        <Style Selector="RadioButton.ExitChoice TextBlock.ExitDescription">
+            <Setter Property="Foreground" Value="{DynamicResource AppMutedTextBrush}" />
         </Style>
         <Style Selector="CheckBox.RememberChoice">
-            <Setter Property="MinHeight" Value="42" />
-            <Setter Property="Padding" Value="0" />
+            <Setter Property="MinHeight" Value="66" />
+            <Setter Property="Padding" Value="12" />
+            <Setter Property="Background" Value="{DynamicResource AppPanelAltBrush}" />
+            <Setter Property="BorderBrush" Value="{DynamicResource AppLineBrush}" />
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="CornerRadius" Value="8" />
+            <Setter Property="Foreground" Value="{DynamicResource AppTextBrush}" />
+            <Setter Property="HorizontalAlignment" Value="Stretch" />
+            <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+            <Setter Property="Template">
+                <ControlTemplate>
+                    <Border
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        CornerRadius="{TemplateBinding CornerRadius}">
+                        <Grid
+                            Margin="{TemplateBinding Padding}"
+                            ColumnDefinitions="Auto,*"
+                            ColumnSpacing="12">
+                            <Border
+                                Name="RememberBox"
+                                Width="20"
+                                Height="20"
+                                VerticalAlignment="Center"
+                                Background="{DynamicResource AppPanelBrush}"
+                                BorderBrush="{DynamicResource AppLineBrush}"
+                                BorderThickness="1"
+                                CornerRadius="6">
+                                <PathIcon
+                                    Width="12"
+                                    Height="12"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    Data="M9,16.2 L4.8,12 L3.4,13.4 L9,19 L21,7 L19.6,5.6 Z"
+                                    Foreground="{DynamicResource AppPanelBrush}"
+                                    IsVisible="{TemplateBinding IsChecked}" />
+                            </Border>
+                            <ContentPresenter
+                                Grid.Column="1"
+                                Content="{TemplateBinding Content}"
+                                ContentTemplate="{TemplateBinding ContentTemplate}"
+                                HorizontalAlignment="Stretch"
+                                VerticalAlignment="Center" />
+                        </Grid>
+                    </Border>
+                </ControlTemplate>
+            </Setter>
+        </Style>
+        <Style Selector="CheckBox.RememberChoice:pointerover">
+            <Setter Property="Background" Value="{DynamicResource AppAccentSoftBrush}" />
+            <Setter Property="BorderBrush" Value="{DynamicResource AppAccentBrush}" />
+        </Style>
+        <Style Selector="CheckBox.RememberChoice:checked">
+            <Setter Property="Background" Value="{DynamicResource AppAccentSoftBrush}" />
+            <Setter Property="BorderBrush" Value="{DynamicResource AppAccentBrush}" />
+        </Style>
+        <Style Selector="CheckBox.RememberChoice:checked /template/ Border#RememberBox">
+            <Setter Property="Background" Value="{DynamicResource AppAccentBrush}" />
+            <Setter Property="BorderBrush" Value="{DynamicResource AppAccentBrush}" />
         </Style>
     </UserControl.Styles>
 
-    <Grid Width="360" RowDefinitions="Auto,Auto,Auto" RowSpacing="12">
-        <StackPanel Spacing="8">
+    <Grid HorizontalAlignment="Stretch" RowDefinitions="Auto,Auto" RowSpacing="12">
+        <StackPanel Spacing="10">
             <RadioButton
                 Classes="ExitChoice"
                 GroupName="ExitBehavior"
                 IsChecked="{Binding HideTrayIconOnClose}">
                 <StackPanel Spacing="3">
-                    <TextBlock FontWeight="SemiBold" Text="{i18n:I18n {x:Static language:ExitOptionView.HideTrayIcon}}" />
+                    <TextBlock Classes="ExitTitle" FontWeight="SemiBold" Text="{i18n:I18n {x:Static language:ExitOptionView.HideTrayIcon}}" />
                     <TextBlock
-                        Classes="Tertiary"
+                        Classes="ExitDescription"
                         FontSize="12"
                         Text="{i18n:I18n {x:Static language:ExitOptionView.HideTrayIconDescription}}"
                         TextWrapping="Wrap" />
@@ -71,9 +167,9 @@
                 GroupName="ExitBehavior"
                 IsChecked="{Binding DirectToClose}">
                 <StackPanel Spacing="3">
-                    <TextBlock FontWeight="SemiBold" Text="{i18n:I18n {x:Static language:ExitOptionView.DirectToClose}}" />
+                    <TextBlock Classes="ExitTitle" FontWeight="SemiBold" Text="{i18n:I18n {x:Static language:ExitOptionView.DirectToClose}}" />
                     <TextBlock
-                        Classes="Tertiary"
+                        Classes="ExitDescription"
                         FontSize="12"
                         Text="{i18n:I18n {x:Static language:ExitOptionView.DirectToCloseDescription}}"
                         TextWrapping="Wrap" />
@@ -83,19 +179,16 @@
 
         <CheckBox
             Grid.Row="1"
-            Margin="2 2 0 0"
             Classes="RememberChoice"
             IsChecked="{Binding RememberMyChoice}">
             <StackPanel Spacing="2">
-                <TextBlock Text="{i18n:I18n {x:Static language:ExitOptionView.RememberMyChoice}}" />
+                <TextBlock FontWeight="SemiBold" Text="{i18n:I18n {x:Static language:ExitOptionView.RememberMyChoice}}" />
                 <TextBlock
-                    Classes="Tertiary"
+                    Foreground="{DynamicResource AppMutedTextBrush}"
                     FontSize="12"
                     Text="{i18n:I18n {x:Static language:ExitOptionView.RememberMyChoiceDescription}}"
                     TextWrapping="Wrap" />
             </StackPanel>
         </CheckBox>
-
-        <Button Content="Test Close" Grid.Row="2" Command="{Binding RaiseCloseHandlerAsync}" IsVisible="False" />
     </Grid>
 </UserControl>

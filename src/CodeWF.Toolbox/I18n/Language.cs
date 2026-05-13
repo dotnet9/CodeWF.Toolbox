@@ -99,6 +99,8 @@ namespace Localization
         public static readonly string DirectToCloseDescription = "Localization.ExitOptionView.DirectToCloseDescription";
         public static readonly string RememberMyChoice = "Localization.ExitOptionView.RememberMyChoice";
         public static readonly string RememberMyChoiceDescription = "Localization.ExitOptionView.RememberMyChoiceDescription";
+        public static readonly string Cancel = "Localization.ExitOptionView.Cancel";
+        public static readonly string Confirm = "Localization.ExitOptionView.Confirm";
     }
 
 

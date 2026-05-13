@@ -14,7 +14,6 @@ using Lang.Avalonia;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
-using Ursa.Controls;
 
 namespace CodeWF.Toolbox.Views;
 
@@ -97,13 +96,13 @@ public partial class MainWindow : CodeWFWindow
     {
         e.Cancel = true;
 
-        var dialogResult = DialogResult.OK;
+        var shouldClose = true;
         if (_applicationService.NeedExitDialogOnClose)
         {
-            dialogResult = await ShowOptionDialogAsync(DialogMode.None, DialogButton.OKCancel);
+            shouldClose = await ShowOptionDialogAsync();
         }
 
-        if (dialogResult != DialogResult.OK)
+        if (!shouldClose)
         {
             return;
         }
@@ -117,30 +116,28 @@ public partial class MainWindow : CodeWFWindow
         Environment.Exit(0);
     }
 
-    private async Task<DialogResult> ShowOptionDialogAsync(DialogMode mode, DialogButton button)
+    private async Task<bool> ShowOptionDialogAsync()
     {
-        var options = new DialogOptions()
-        {
-            Title = I18nManager.Instance.GetResource(Localization.ExitOptionView.Message),
-            Mode = mode,
-            Button = button,
-            ShowInTaskBar = false,
-            IsCloseButtonVisible = true,
-            StartupLocation = WindowStartupLocation.CenterOwner,
-            CanDragMove = false,
-            CanResize = false,
-            StyleClass = default,
-        };
         var vm = new ExitOptionViewModel()
         {
             HideTrayIconOnClose = _applicationService.HideTrayIconOnClose,
             NeedExitDialogOnClose = _applicationService.NeedExitDialogOnClose
         };
-        var result = await Dialog.ShowModal<ExitOptionView, ExitOptionViewModel>(vm, options: options);
+
+        var dialog = new ExitOptionWindow
+        {
+            DataContext = vm
+        };
+        var result = await dialog.ShowDialog<bool>(this);
+        if (!result)
+        {
+            return false;
+        }
+
         _applicationService.HideTrayIconOnClose = vm.HideTrayIconOnClose;
         _applicationService.NeedExitDialogOnClose = vm.NeedExitDialogOnClose;
 
-        return result;
+        return true;
     }
 
     private void AdjustWindowSize()

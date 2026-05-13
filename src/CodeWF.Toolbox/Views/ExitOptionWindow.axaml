@@ -1,0 +1,101 @@
+<codewf:CodeWFWindow
+    x:Class="CodeWF.Toolbox.Views.ExitOptionWindow"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:codewf="https://codewf.com"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:i18n="https://codewf.com"
+    xmlns:language="clr-namespace:Localization"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:views="clr-namespace:CodeWF.Toolbox.Views"
+    xmlns:vm="clr-namespace:CodeWF.Toolbox.ViewModels"
+    Width="520"
+    Height="500"
+    CanResize="False"
+    ShowInTaskbar="False"
+    WindowStartupLocation="CenterOwner"
+    Background="{DynamicResource AppSurfaceBrush}"
+    Icon="/Assets/logo.ico"
+    TitleBarHeight="48"
+    TitleBarBackground="{DynamicResource AppChromeBrush}"
+    TitleBarBorderBrush="{DynamicResource AppLineBrush}"
+    TitleBarForeground="{DynamicResource AppTextBrush}"
+    WindowCornerRadius="8"
+    d:DesignHeight="500"
+    d:DesignWidth="520"
+    x:DataType="vm:ExitOptionViewModel"
+    mc:Ignorable="d"
+    Title="{i18n:I18n {x:Static language:ExitOptionView.Message}}">
+    <Design.DataContext>
+        <vm:ExitOptionViewModel />
+    </Design.DataContext>
+
+    <codewf:CodeWFWindow.LeftContent>
+        <Border
+            Width="30"
+            Height="30"
+            Background="{DynamicResource AppAccentSoftBrush}"
+            BorderBrush="{DynamicResource AppLineBrush}"
+            BorderThickness="1"
+            CornerRadius="8"
+            IsHitTestVisible="False">
+            <Image Width="20" Height="20" Source="/Assets/logo.ico" />
+        </Border>
+    </codewf:CodeWFWindow.LeftContent>
+
+    <Grid Margin="22" RowDefinitions="Auto,*,Auto" RowSpacing="16">
+        <Border
+            Padding="16"
+            Background="{DynamicResource AppPanelBrush}"
+            BorderBrush="{DynamicResource AppLineBrush}"
+            BorderThickness="1"
+            CornerRadius="8">
+            <Grid ColumnDefinitions="Auto,*" ColumnSpacing="14">
+                <Border
+                    Width="48"
+                    Height="48"
+                    Background="{DynamicResource AppAccentSoftBrush}"
+                    BorderBrush="{DynamicResource AppLineBrush}"
+                    BorderThickness="1"
+                    CornerRadius="8">
+                    <PathIcon
+                        Width="24"
+                        Height="24"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        Data="M12,2 A10,10 0,1 0,22 12 A10,10 0,0 0,12 2 M11,6 H13 V13 H11 V6 M11,15 H13 V17 H11 V15"
+                        Foreground="{DynamicResource AppAccentBrush}" />
+                </Border>
+
+                <StackPanel Grid.Column="1" VerticalAlignment="Center" Spacing="4">
+                    <TextBlock
+                        FontSize="16"
+                        FontWeight="SemiBold"
+                        Foreground="{DynamicResource AppTextBrush}"
+                        Text="{i18n:I18n {x:Static language:ExitOptionView.Message}}"
+                        TextWrapping="Wrap" />
+                    <TextBlock
+                        FontSize="12"
+                        Foreground="{DynamicResource AppMutedTextBrush}"
+                        Text="{i18n:I18n {x:Static language:ExitOptionView.Description}}"
+                        TextWrapping="Wrap" />
+                </StackPanel>
+            </Grid>
+        </Border>
+
+        <views:ExitOptionView Grid.Row="1" HorizontalAlignment="Stretch" />
+
+        <Grid Grid.Row="2" ColumnDefinitions="*,Auto,Auto" ColumnSpacing="10">
+            <Button
+                Grid.Column="1"
+                Classes="AppGhost"
+                Click="CancelButton_OnClick"
+                Content="{i18n:I18n {x:Static language:ExitOptionView.Cancel}}" />
+            <Button
+                Grid.Column="2"
+                Classes="AppPrimary"
+                Click="ConfirmButton_OnClick"
+                Content="{i18n:I18n {x:Static language:ExitOptionView.Confirm}}" />
+        </Grid>
+    </Grid>
+</codewf:CodeWFWindow>
