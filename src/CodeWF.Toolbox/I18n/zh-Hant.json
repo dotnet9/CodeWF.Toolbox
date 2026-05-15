@@ -65,13 +65,13 @@
       "CopyrightLabel": "版權"
     },
     "ExitOptionView": {
-      "Message": "您要退出 CodeWF 工具箱嗎？",
+      "Message": "請選擇關閉視窗操作:",
       "Description": "選擇關閉視窗後的處理方式",
-      "HideTrayIcon": "收起到托盤",
+      "HideTrayIcon": "隱藏到托盤圖示",
       "HideTrayIconDescription": "關閉視窗，應用程式繼續在背景待命",
-      "DirectToClose": "退出應用程式",
+      "DirectToClose": "直接關閉應用程式",
       "DirectToCloseDescription": "結束程序並移除系統托盤圖示",
-      "RememberMyChoice": "記住選擇",
+      "RememberMyChoice": "不再提示",
       "RememberMyChoiceDescription": "下次關閉視窗時直接執行該操作",
       "Cancel": "取消",
       "Confirm": "確定"

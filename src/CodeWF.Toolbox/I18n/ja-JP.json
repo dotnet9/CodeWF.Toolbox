@@ -65,13 +65,13 @@
       "CopyrightLabel": "著作権"
     },
     "ExitOptionView": {
-      "Message": "CodeWF Toolbox を終了しますか？",
+      "Message": "閉じる操作を選択:",
       "Description": "ウィンドウを閉じた後の動作を選択します",
       "HideTrayIcon": "トレイにしまう",
       "HideTrayIconDescription": "ウィンドウだけ閉じ、アプリは待機します",
       "DirectToClose": "アプリを終了",
       "DirectToCloseDescription": "プロセスを終了し、トレイアイコンも閉じます",
-      "RememberMyChoice": "選択を記憶",
+      "RememberMyChoice": "今後表示しない",
       "RememberMyChoiceDescription": "次回からこの動作を直接実行します",
       "Cancel": "キャンセル",
       "Confirm": "確定"

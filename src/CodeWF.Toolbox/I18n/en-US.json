@@ -65,13 +65,13 @@
       "CopyrightLabel": "Copyright"
     },
     "ExitOptionView": {
-      "Message": "Do you want to exit CodeWF Toolbox?",
+      "Message": "Choose a close action:",
       "Description": "Choose what happens after the window closes",
       "HideTrayIcon": "Minimize to system tray",
       "HideTrayIconDescription": "Close the window and keep the app running",
       "DirectToClose": "Exit application",
       "DirectToCloseDescription": "Stop the app and remove the tray icon",
-      "RememberMyChoice": "Remember choice",
+      "RememberMyChoice": "Do not show again",
       "RememberMyChoiceDescription": "Apply this action directly next time",
       "Cancel": "Cancel",
       "Confirm": "Confirm"
