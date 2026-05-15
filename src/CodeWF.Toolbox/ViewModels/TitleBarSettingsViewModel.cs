@@ -1,5 +1,6 @@
 using CodeWF.Core.IServices;
 using CodeWF.Toolbox.Models;
+using CodeWF.Toolbox.Commands;
 using CodeWF.Toolbox.Services;
 using Lang.Avalonia;
 using ReactiveUI;
@@ -12,15 +13,22 @@ public class TitleBarSettingsViewModel : ViewModelBase
 {
     private readonly IApplicationService _applicationService;
     private readonly ILoginService _loginService;
+    private readonly IUserProfileService _userProfileService;
 
-    public TitleBarSettingsViewModel(IApplicationService applicationService, ILoginService loginService)
+    public TitleBarSettingsViewModel(
+        IApplicationService applicationService,
+        ILoginService loginService,
+        IUserProfileService userProfileService)
     {
         _applicationService = applicationService;
         _loginService = loginService;
+        _userProfileService = userProfileService;
         _loginService.LoginStateChanged += (_, _) => RefreshUser();
+        _userProfileService.ProfileChanged += (_, _) => RefreshSearchHistory();
         InitTheme();
         InitLanguage();
         RefreshUser();
+        RefreshSearchHistory();
     }
 
     public ObservableCollection<ThemeItem> Themes { get; private set; } = [];
@@ -46,6 +54,20 @@ public class TitleBarSettingsViewModel : ViewModelBase
     }
 
     public ObservableCollection<LocalizationLanguage> Languages { get; private set; } = [];
+
+    public ObservableCollection<string> SearchHistory { get; } = [];
+
+    private string _searchText = string.Empty;
+
+    public string SearchText
+    {
+        get => _searchText;
+        set
+        {
+            this.RaiseAndSetIfChanged(ref _searchText, value ?? string.Empty);
+            EventBus.EventBus.Default.Publish(new SearchToolMenuCommand(_searchText));
+        }
+    }
 
     private LocalizationLanguage? _selectedLanguage;
 
@@ -84,6 +106,11 @@ public class TitleBarSettingsViewModel : ViewModelBase
             ? "?"
             : CurrentUsername.Trim()[0].ToString().ToUpperInvariant();
 
+    public void CommitSearchText()
+    {
+        _userProfileService.RecordSearch(SearchText);
+    }
+
     private void InitTheme()
     {
         var themes = ((ApplicationService)_applicationService).Themes;
@@ -107,5 +134,14 @@ public class TitleBarSettingsViewModel : ViewModelBase
         CurrentUsername = _loginService.CurrentUsername
                           ?? _loginService.ConfiguredUsername
                           ?? string.Empty;
+    }
+
+    private void RefreshSearchHistory()
+    {
+        SearchHistory.Clear();
+        foreach (var keyword in _userProfileService.SearchHistory)
+        {
+            SearchHistory.Add(keyword);
+        }
     }
 }

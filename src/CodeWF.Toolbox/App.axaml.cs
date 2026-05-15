@@ -147,6 +147,7 @@ public partial class App : PrismApplication
         containerRegistry.RegisterSingleton<IToolMenuService, ToolMenuService>();
         containerRegistry.RegisterSingleton<IFileChooserService, FileChooserService>();
         containerRegistry.RegisterSingleton<INotificationService, NotificationService>();
+        containerRegistry.RegisterSingleton<IUserProfileService, UserProfileService>();
         containerRegistry.RegisterSingleton<ILoginService, LoginService>();
         containerRegistry.RegisterSingleton<TitleBarSettingsViewModel>();
 

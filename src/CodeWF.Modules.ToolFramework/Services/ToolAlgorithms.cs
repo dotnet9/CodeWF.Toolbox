@@ -24,6 +24,7 @@ using System.Reflection;
 using System.Security.Cryptography;
 using System.Text;
 using System.Text.Json;
+using System.Text.Json.Serialization.Metadata;
 using System.Text.RegularExpressions;
 using System.Xml;
 using System.Xml.Linq;
@@ -36,19 +37,28 @@ namespace CodeWF.Modules.ToolFramework.Services;
 
 public static partial class ToolAlgorithms
 {
-    private static readonly JsonSerializerOptions PrettyJsonOptions = new() { WriteIndented = true };
-    private static readonly JsonSerializerOptions CompactJsonOptions = new() { WriteIndented = false };
+    private static readonly DefaultJsonTypeInfoResolver JsonTypeInfoResolver = new();
+    private static readonly JsonSerializerOptions PrettyJsonOptions = new()
+    {
+        WriteIndented = true,
+        TypeInfoResolver = JsonTypeInfoResolver
+    };
+    private static readonly JsonSerializerOptions CompactJsonOptions = new()
+    {
+        WriteIndented = false,
+        TypeInfoResolver = JsonTypeInfoResolver
+    };
     private static readonly Regex WhitespaceRegex = new(@"\s+", RegexOptions.Compiled);
     private static readonly Regex SlugUnsafeRegex = new(@"[^a-zA-Z0-9\-_\s]", RegexOptions.Compiled);
 
     private static readonly Lazy<Dictionary<string, string>> OuiData = new(() =>
-        JsonSerializer.Deserialize<Dictionary<string, string>>(ReadResource("oui-data.json")) ?? []);
+        JsonSerializer.Deserialize<Dictionary<string, string>>(ReadResource("oui-data.json"), CompactJsonOptions) ?? []);
 
     private static readonly Lazy<Dictionary<string, MimeDbEntry>> MimeDb = new(() =>
-        JsonSerializer.Deserialize<Dictionary<string, MimeDbEntry>>(ReadResource("mime-db.json")) ?? []);
+        JsonSerializer.Deserialize<Dictionary<string, MimeDbEntry>>(ReadResource("mime-db.json"), CompactJsonOptions) ?? []);
 
     private static readonly Lazy<Dictionary<string, EmojiInfo>> EmojiData = new(() =>
-        JsonSerializer.Deserialize<Dictionary<string, EmojiInfo>>(ReadResource("emoji-data.json")) ?? []);
+        JsonSerializer.Deserialize<Dictionary<string, EmojiInfo>>(ReadResource("emoji-data.json"), CompactJsonOptions) ?? []);
 
     private static readonly Dictionary<string, string> CssColors = new(StringComparer.OrdinalIgnoreCase)
     {
@@ -1013,7 +1023,9 @@ public static partial class ToolAlgorithms
         var escape = context.Option("mode") == "Escape";
         var result = context.Option("format") switch
         {
-            "JSON" => escape ? JsonSerializer.Serialize(text) : JsonSerializer.Deserialize<string>(text) ?? string.Empty,
+            "JSON" => escape
+                ? JsonSerializer.Serialize(text, CompactJsonOptions)
+                : JsonSerializer.Deserialize<string>(text, CompactJsonOptions) ?? string.Empty,
             "C#" => escape ? EscapeCSharpString(text) : UnescapeCStyle(text),
             "HTML" => escape ? WebUtility.HtmlEncode(text) : WebUtility.HtmlDecode(text),
             "URL" => escape ? WebUtility.UrlEncode(text) : WebUtility.UrlDecode(text),

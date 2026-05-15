@@ -80,11 +80,18 @@
     </codewf:CodeWFWindow.LeftContent>
     <codewf:CodeWFWindow.RightContent>
         <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="0 0 16 0" Spacing="8">
-            <TextBox x:Name="Search" Width="360"
-                     Classes="AppInput"
-                     HorizontalContentAlignment="Left"
-                     TextChanged="Search_OnTextChanged"
-                     PlaceholderText="{i18n:I18n {x:Static language:MainWindow.SearchToolTip}}" />
+            <ComboBox
+                x:Name="Search"
+                Width="360"
+                Classes="AppSelect"
+                HorizontalContentAlignment="Left"
+                IsEditable="True"
+                ItemsSource="{Binding SearchHistory}"
+                KeyDown="Search_OnKeyDown"
+                LostFocus="Search_OnLostFocus"
+                PlaceholderText="{i18n:I18n {x:Static language:MainWindow.SearchToolTip}}"
+                SelectionChanged="Search_OnSelectionChanged"
+                Text="{Binding SearchText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
 
             <ComboBox
                 Width="136"

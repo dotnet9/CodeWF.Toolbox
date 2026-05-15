@@ -1,4 +1,5 @@
 using Avalonia.Controls;
+using Avalonia.Input;
 using Avalonia.Markup.Xaml;
 using Avalonia.Media;
 using Avalonia.Media.Imaging;
@@ -69,15 +70,36 @@ public partial class MainWindow : CodeWFWindow
         ChangeApplicationStatus(new ChangeApplicationStatusCommand());
     }
 
-    private void Search_OnTextChanged(object? sender, TextChangedEventArgs e)
-    {
-        EventBus.EventBus.Default.Publish(new SearchToolMenuCommand((sender as TextBox)?.Text));
-    }
-
     private async void OpenSettingButton_OnClick(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
     {
         var settingView = ContainerLocator.Container.Resolve<SettingView>();
         await settingView.ShowDialog(this);
+    }
+
+    private void Search_OnKeyDown(object? sender, KeyEventArgs e)
+    {
+        if (e.Key == Key.Enter && DataContext is TitleBarSettingsViewModel viewModel)
+        {
+            viewModel.CommitSearchText();
+        }
+    }
+
+    private void Search_OnLostFocus(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
+    {
+        if (DataContext is TitleBarSettingsViewModel viewModel)
+        {
+            viewModel.CommitSearchText();
+        }
+    }
+
+    private void Search_OnSelectionChanged(object? sender, SelectionChangedEventArgs e)
+    {
+        if (sender is ComboBox { SelectedItem: string keyword }
+            && DataContext is TitleBarSettingsViewModel viewModel)
+        {
+            viewModel.SearchText = keyword;
+            viewModel.CommitSearchText();
+        }
     }
 
     [EventHandler]

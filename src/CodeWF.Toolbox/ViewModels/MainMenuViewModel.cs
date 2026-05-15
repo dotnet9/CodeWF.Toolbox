@@ -1,6 +1,7 @@
 using Avalonia.Controls;
 using Avalonia.Controls.Notifications;
 using CodeWF.Core;
+using CodeWF.Core.IServices;
 using CodeWF.Core.Models;
 using CodeWF.EventBus;
 using CodeWF.Toolbox.Commands;
@@ -21,6 +22,7 @@ internal class MainMenuViewModel : ViewModelBase
 {
     private readonly IRegionManager _regionManager;
     private readonly IToolMenuService _toolMenuService;
+    private readonly IUserProfileService _userProfileService;
     private bool _isSyncingGroupSelection;
     private string _searchKeyword = string.Empty;
 
@@ -83,10 +85,14 @@ internal class MainMenuViewModel : ViewModelBase
         set => this.RaiseAndSetIfChanged(ref _selectedMenuStatus, value);
     }
 
-    internal MainMenuViewModel(IRegionManager regionManager, IToolMenuService toolMenuService)
+    internal MainMenuViewModel(
+        IRegionManager regionManager,
+        IToolMenuService toolMenuService,
+        IUserProfileService userProfileService)
     {
         _regionManager = regionManager;
         _toolMenuService = toolMenuService;
+        _userProfileService = userProfileService;
 
         _toolMenuService.ToolMenuChanged += MenuChangedHandler;
         EventBus.EventBus.Default.Subscribe(this);
@@ -105,6 +111,16 @@ internal class MainMenuViewModel : ViewModelBase
     {
         _searchKeyword = command.Keyword.Trim();
         ApplyMenuFilter(SelectedMenuItem?.Name, SelectedMenuItem?.ViewName);
+    }
+
+    [EventHandler]
+    private void OpenToolMenuHandler(OpenToolMenuCommand command)
+    {
+        var target = FindMenuItemByViewName(MenuItems, command.ViewName);
+        if (target != null)
+        {
+            SelectedMenuItem = target;
+        }
     }
 
     private void ApplyMenuFilter(string? preferredName = null, string? preferredViewName = null)
@@ -251,6 +267,25 @@ internal class MainMenuViewModel : ViewModelBase
         return null;
     }
 
+    private static ToolMenuItem? FindMenuItemByViewName(ObservableCollection<ToolMenuItem> items, string viewName)
+    {
+        foreach (ToolMenuItem item in items)
+        {
+            if (string.Equals(item.ViewName, viewName, System.StringComparison.OrdinalIgnoreCase))
+            {
+                return item;
+            }
+
+            var child = FindMenuItemByViewName(item.Children, viewName);
+            if (child != null)
+            {
+                return child;
+            }
+        }
+
+        return null;
+    }
+
     private static ToolMenuItem? FindFirstNavigableItem(ObservableCollection<ToolMenuItem> items, bool skipDashboard = false)
     {
         foreach (ToolMenuItem item in items)
@@ -362,6 +397,7 @@ internal class MainMenuViewModel : ViewModelBase
         // 只有真正的工具菜单项才触发区域导航，分组与分隔符只承担结构展示职责。
         SetSelectedGroupFromMenu(_selectedMenuItem);
         _regionManager.RequestNavigate(RegionNames.ContentRegion, _selectedMenuItem.ViewName);
+        _userProfileService.RecordToolUsage(_selectedMenuItem);
         SelectedMenuStatus = _selectedMenuItem.Status switch
         {
             ToolStatus.Planned => NotificationType.Warning,

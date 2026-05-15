@@ -8,6 +8,7 @@ using CodeWF.Modules.ToolFramework.Services;
 using Lang.Avalonia;
 using Prism.Regions;
 using ReactiveUI;
+using System.Globalization;
 using System.Collections.ObjectModel;
 using System.Reactive;
 using System.Reactive.Disposables;
@@ -19,15 +20,20 @@ public sealed class ToolViewModel : ReactiveObject, INavigationAware, IDisposabl
 {
     private readonly ToolRegistry _registry;
     private readonly IFileChooserService _fileChooserService;
+    private readonly IUserProfileService _userProfileService;
     private readonly CompositeDisposable _subscriptions = new();
     private CancellationTokenSource? _runCts;
     private ToolSpec? _currentTool;
     private string _errorMessage = string.Empty;
 
-    public ToolViewModel(ToolRegistry registry, IFileChooserService fileChooserService)
+    public ToolViewModel(
+        ToolRegistry registry,
+        IFileChooserService fileChooserService,
+        IUserProfileService userProfileService)
     {
         _registry = registry;
         _fileChooserService = fileChooserService;
+        _userProfileService = userProfileService;
         RunCommand = ReactiveCommand.CreateFromTask(RunAsync);
         BrowsePathCommand = ReactiveCommand.CreateFromTask<ToolField>(BrowsePathAsync);
         CopyOutputCommand = ReactiveCommand.CreateFromTask<ToolOutput>(CopyOutputAsync);
@@ -103,28 +109,21 @@ public sealed class ToolViewModel : ReactiveObject, INavigationAware, IDisposabl
             return;
         }
 
+        var savedFieldValues = _userProfileService.GetToolFieldValues(_currentTool.Id);
         foreach (var field in _currentTool.Fields)
         {
+            RestoreFieldValue(field, savedFieldValues);
             Fields.Add(field);
+
+            AddFieldCacheSubscriptions(field);
 
             if (!_currentTool.AutoRun)
             {
                 continue;
             }
 
-            _subscriptions.Add(field.WhenAnyValue(x => x.Text)
-                .Skip(1)
+            _subscriptions.Add(CreateFieldChangeSignal(field)
                 .Throttle(TimeSpan.FromMilliseconds(300))
-                .Subscribe(_ => Dispatcher.UIThread.Post(async () => await RunAsync())));
-            _subscriptions.Add(field.WhenAnyValue(x => x.Number)
-                .Skip(1)
-                .Throttle(TimeSpan.FromMilliseconds(300))
-                .Subscribe(_ => Dispatcher.UIThread.Post(async () => await RunAsync())));
-            _subscriptions.Add(field.WhenAnyValue(x => x.Boolean)
-                .Skip(1)
-                .Subscribe(_ => Dispatcher.UIThread.Post(async () => await RunAsync())));
-            _subscriptions.Add(field.WhenAnyValue(x => x.SelectedOption)
-                .Skip(1)
                 .Subscribe(_ => Dispatcher.UIThread.Post(async () => await RunAsync())));
         }
 
@@ -165,6 +164,7 @@ public sealed class ToolViewModel : ReactiveObject, INavigationAware, IDisposabl
             ErrorMessage = string.Empty;
             this.RaisePropertyChanged(nameof(HasError));
             await _currentTool.RunAsync(context, token);
+            SaveCurrentFieldValues();
         }
         catch (OperationCanceledException)
         {
@@ -219,6 +219,82 @@ public sealed class ToolViewModel : ReactiveObject, INavigationAware, IDisposabl
             Fields.ToDictionary(field => field.Id, StringComparer.OrdinalIgnoreCase),
             Outputs.ToDictionary(output => output.Id, StringComparer.OrdinalIgnoreCase));
         context.SetText("result", $"Key: {key}{Environment.NewLine}Physical key: {physicalKey}{Environment.NewLine}Modifiers: {modifiers}");
+    }
+
+    private void AddFieldCacheSubscriptions(ToolField field)
+    {
+        _subscriptions.Add(CreateFieldChangeSignal(field)
+            .Throttle(TimeSpan.FromMilliseconds(400))
+            .Subscribe(_ => SaveCurrentFieldValues()));
+    }
+
+    private static IObservable<Unit> CreateFieldChangeSignal(ToolField field)
+    {
+        return Observable.Merge(
+            field.WhenAnyValue(x => x.Text).Skip(1).Select(_ => Unit.Default),
+            field.WhenAnyValue(x => x.Number).Skip(1).Select(_ => Unit.Default),
+            field.WhenAnyValue(x => x.Boolean).Skip(1).Select(_ => Unit.Default),
+            field.WhenAnyValue(x => x.SelectedOption).Skip(1).Select(_ => Unit.Default));
+    }
+
+    private static void RestoreFieldValue(ToolField field, IReadOnlyDictionary<string, string> savedFieldValues)
+    {
+        if (!savedFieldValues.TryGetValue(field.Id, out var value))
+        {
+            return;
+        }
+
+        switch (field.Kind)
+        {
+            case ToolFieldKind.Text:
+            case ToolFieldKind.MultiLine:
+            case ToolFieldKind.File:
+            case ToolFieldKind.SaveFile:
+                field.Text = value;
+                break;
+            case ToolFieldKind.Number:
+                if (decimal.TryParse(value, NumberStyles.Number, CultureInfo.InvariantCulture, out var number))
+                {
+                    field.Number = number;
+                }
+                break;
+            case ToolFieldKind.Boolean:
+                if (bool.TryParse(value, out var boolean))
+                {
+                    field.Boolean = boolean;
+                }
+                break;
+            case ToolFieldKind.Select:
+                field.SelectedOption = field.Options.FirstOrDefault(option =>
+                    string.Equals(option.Value, value, StringComparison.OrdinalIgnoreCase));
+                break;
+        }
+    }
+
+    private void SaveCurrentFieldValues()
+    {
+        if (_currentTool == null || Fields.Count == 0)
+        {
+            return;
+        }
+
+        var values = Fields.ToDictionary(
+            field => field.Id,
+            GetFieldValue,
+            StringComparer.OrdinalIgnoreCase);
+        _userProfileService.SaveToolFieldValues(_currentTool.Id, values);
+    }
+
+    private static string GetFieldValue(ToolField field)
+    {
+        return field.Kind switch
+        {
+            ToolFieldKind.Text or ToolFieldKind.MultiLine or ToolFieldKind.File or ToolFieldKind.SaveFile => field.Text,
+            ToolFieldKind.Number => field.Number.ToString(CultureInfo.InvariantCulture),
+            ToolFieldKind.Boolean => field.Boolean.ToString(),
+            ToolFieldKind.Select => field.SelectedOption?.Value ?? string.Empty,
+            _ => string.Empty
+        };
     }
 
     private static string Translate(string key)

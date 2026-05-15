@@ -13,7 +13,7 @@
               x:Name="loginWindow"
               mc:Ignorable="d"
               Width="460"
-              Height="410"
+              Height="456"
               Icon="/Assets/logo.ico"
               Background="{DynamicResource AppSurfaceBrush}"
               TitleBarHeight="48"
@@ -24,7 +24,7 @@
               IsMinimizeButtonVisible="False"
               IsRestoreButtonVisible="False"
               IsFullScreenButtonVisible="False"
-              Title="{i18n:I18n {x:Static language:LoginWindow.Title}}"
+              Title="{i18n:I18n {Binding ModeTitleText}}"
               WindowStartupLocation="CenterScreen"
               CanResize="False">
 	<codewf:CodeWFWindow.Styles>
@@ -60,7 +60,7 @@
                 Grid.Column="1"
                 VerticalAlignment="Center"
                 FontWeight="SemiBold"
-                Text="{i18n:I18n {x:Static language:LoginWindow.Title}}" />
+                Text="{i18n:I18n {Binding ModeTitleText}}" />
         </Grid>
 	</codewf:CodeWFWindow.LeftContent>
     <Interaction.Behaviors>
@@ -74,7 +74,7 @@
         HorizontalAlignment="Center"
         VerticalAlignment="Center"
         Padding="26 24">
-        <Grid RowDefinitions="Auto,44,44,28,40" RowSpacing="12">
+        <Grid RowDefinitions="Auto,44,44,Auto,32,40" RowSpacing="12">
             <StackPanel HorizontalAlignment="Center" Spacing="10" Margin="0 0 0 4">
                 <Border
                     Width="58"
@@ -89,7 +89,7 @@
                     Classes="H5"
                     FontWeight="SemiBold"
                     HorizontalAlignment="Center"
-                    Text="{i18n:I18n {x:Static language:LoginWindow.Title}}" />
+                    Text="{i18n:I18n {Binding ModeTitleText}}" />
             </StackPanel>
 
             <TextBox
@@ -104,19 +104,33 @@
                 PlaceholderText="{i18n:I18n {x:Static language:LoginWindow.PasswordWatermark}}"
                 Classes="AppInput revealPasswordButton Right" />
 
-            <TextBlock
+            <TextBox
                 Grid.Row="3"
+                Text="{Binding ConfirmPassword}"
+                IsVisible="{Binding IsRegisterMode}"
+                PlaceholderText="{i18n:I18n {x:Static language:LoginWindow.ConfirmPasswordWatermark}}"
+                Classes="AppInput revealPasswordButton Right" />
+
+            <TextBlock
+                Grid.Row="4"
                 Text="{i18n:I18n {Binding StatusMessage}}"
                 Classes="StatusMessage" />
 
-            <Button
-                Grid.Row="4"
-                Classes="AppPrimary"
-                Content="{i18n:I18n {x:Static language:LoginWindow.LoginButton}}"
-                Command="{Binding LoginAsync}"
-                CommandParameter="{Binding ElementName=loginWindow}"
-                HorizontalAlignment="Stretch"
-                Margin="0 2 0 0" />
+            <Grid Grid.Row="5" ColumnDefinitions="*,*" ColumnSpacing="12" Margin="0 2 0 0">
+                <Button
+                    Grid.Column="0"
+                    Classes="AppPrimary"
+                    Content="{i18n:I18n {Binding PrimaryActionText}}"
+                    Command="{Binding PrimaryActionAsync}"
+                    CommandParameter="{Binding ElementName=loginWindow}"
+                    HorizontalAlignment="Stretch" />
+                <Button
+                    Grid.Column="1"
+                    Classes="AppGhost"
+                    Content="{i18n:I18n {Binding SecondaryActionText}}"
+                    Command="{Binding ToggleRegisterMode}"
+                    HorizontalAlignment="Stretch" />
+            </Grid>
         </Grid>
     </Border>
 </codewf:CodeWFWindow>

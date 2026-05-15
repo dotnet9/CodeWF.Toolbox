@@ -24,6 +24,13 @@ public class LoginViewModel : ViewModelBase
         get;
         set => this.RaiseAndSetIfChanged(ref field, value);
     } = string.Empty;
+
+    public string ConfirmPassword
+    {
+        get;
+        set => this.RaiseAndSetIfChanged(ref field, value);
+    } = string.Empty;
+
     public string StatusMessage
     {
         get;
@@ -34,6 +41,27 @@ public class LoginViewModel : ViewModelBase
         get;
         set => this.RaiseAndSetIfChanged(ref field, value);
     }
+
+    public bool IsRegisterMode
+    {
+        get;
+        set
+        {
+            this.RaiseAndSetIfChanged(ref field, value);
+            this.RaisePropertyChanged(nameof(PrimaryActionText));
+            this.RaisePropertyChanged(nameof(SecondaryActionText));
+            this.RaisePropertyChanged(nameof(ModeTitleText));
+        }
+    }
+
+    public string ModeTitleText =>
+        IsRegisterMode ? Localization.LoginWindow.RegisterButton : Localization.LoginWindow.LoginButton;
+
+    public string PrimaryActionText =>
+        IsRegisterMode ? Localization.LoginWindow.RegisterButton : Localization.LoginWindow.LoginButton;
+
+    public string SecondaryActionText =>
+        IsRegisterMode ? Localization.LoginWindow.SwitchToLogin : Localization.LoginWindow.SwitchToRegister;
 
     public LoginViewModel(ILoginService loginService)
     {
@@ -48,6 +76,11 @@ public class LoginViewModel : ViewModelBase
     /// <summary>
     /// 登录方法
     /// </summary>
+    public async Task<bool> PrimaryActionAsync(Window owner)
+    {
+        return IsRegisterMode ? await RegisterAsync(owner) : await LoginAsync(owner);
+    }
+
     public async Task<bool> LoginAsync(Window owner)
     {
         if (!_loginService.HasConfiguredCredentials)
@@ -56,9 +89,9 @@ public class LoginViewModel : ViewModelBase
             return false;
         }
 
-        bool isValid = _loginService.Login(Username ?? string.Empty, Password);
+        bool isValid = _loginService.Login(Username ?? string.Empty, Password, out var statusMessage);
         IsConnected = isValid;
-        StatusMessage = isValid ? Localization.LoginWindow.LoginSuccess : Localization.LoginWindow.LoginFailed;
+        StatusMessage = statusMessage;
         
         if (isValid)
         {
@@ -70,6 +103,35 @@ public class LoginViewModel : ViewModelBase
         }
         
         return isValid;
+    }
+
+    public async Task<bool> RegisterAsync(Window owner)
+    {
+        if (!string.Equals(Password, ConfirmPassword, StringComparison.Ordinal))
+        {
+            StatusMessage = Localization.LoginWindow.PasswordMismatch;
+            return false;
+        }
+
+        var isRegistered = _loginService.Register(Username ?? string.Empty, Password, out var statusMessage);
+        StatusMessage = statusMessage;
+        if (!isRegistered)
+        {
+            return false;
+        }
+
+        await Task.Delay(200);
+        return await LoginAsync(owner);
+    }
+
+    public void ToggleRegisterMode()
+    {
+        IsRegisterMode = !IsRegisterMode;
+        StatusMessage = IsRegisterMode
+            ? Localization.LoginWindow.RegisterHint
+            : (_loginService.HasConfiguredCredentials
+                ? Localization.LoginWindow.LocalLoginReady
+                : Localization.LoginWindow.MissingCredentials);
     }
 
     public async Task RaiseClosingHandlerAsync()

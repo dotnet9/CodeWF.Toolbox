@@ -45,7 +45,12 @@ public interface ILoginService
     /// <param name="username">用户名</param>
     /// <param name="password">密码</param>
     /// <returns>登录是否成功</returns>
-    bool Login(string username, string password);
+    bool Login(string username, string password, out string statusMessageKey);
+
+    /// <summary>
+    /// 注册本地账号。
+    /// </summary>
+    bool Register(string username, string password, out string statusMessageKey);
 
     /// <summary>
     /// 执行登出操作

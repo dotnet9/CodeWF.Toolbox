@@ -32,6 +32,7 @@ namespace Localization
         public static readonly string ToolCountLabel = "Localization.DashboardView.ToolCountLabel";
         public static readonly string ModuleCountLabel = "Localization.DashboardView.ModuleCountLabel";
         public static readonly string PlatformLabel = "Localization.DashboardView.PlatformLabel";
+        public static readonly string FrequentToolsTitle = "Localization.DashboardView.FrequentToolsTitle";
         public static readonly string CommunityTitle = "Localization.DashboardView.CommunityTitle";
         public static readonly string CommunityDescription = "Localization.DashboardView.CommunityDescription";
         public static readonly string WeChat = "Localization.DashboardView.WeChat";
@@ -109,9 +110,19 @@ namespace Localization
         public static readonly string Title = "Localization.LoginWindow.Title";
         public static readonly string UsernameWatermark = "Localization.LoginWindow.UsernameWatermark";
         public static readonly string PasswordWatermark = "Localization.LoginWindow.PasswordWatermark";
+        public static readonly string ConfirmPasswordWatermark = "Localization.LoginWindow.ConfirmPasswordWatermark";
         public static readonly string LoginButton = "Localization.LoginWindow.LoginButton";
+        public static readonly string RegisterButton = "Localization.LoginWindow.RegisterButton";
+        public static readonly string SwitchToRegister = "Localization.LoginWindow.SwitchToRegister";
+        public static readonly string SwitchToLogin = "Localization.LoginWindow.SwitchToLogin";
         public static readonly string LocalLoginReady = "Localization.LoginWindow.LocalLoginReady";
         public static readonly string MissingCredentials = "Localization.LoginWindow.MissingCredentials";
+        public static readonly string RegisterHint = "Localization.LoginWindow.RegisterHint";
+        public static readonly string RegisterSuccess = "Localization.LoginWindow.RegisterSuccess";
+        public static readonly string UserAlreadyExists = "Localization.LoginWindow.UserAlreadyExists";
+        public static readonly string InvalidRegistration = "Localization.LoginWindow.InvalidRegistration";
+        public static readonly string PasswordMismatch = "Localization.LoginWindow.PasswordMismatch";
+        public static readonly string AccountAlreadyRunning = "Localization.LoginWindow.AccountAlreadyRunning";
         public static readonly string LoginSuccess = "Localization.LoginWindow.LoginSuccess";
         public static readonly string LoginFailed = "Localization.LoginWindow.LoginFailed";
     }
