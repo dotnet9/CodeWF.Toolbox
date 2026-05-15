@@ -345,6 +345,267 @@
             "result": "結果"
           }
         },
+        "csv_to_json": {
+          "Title": "CSV から JSON",
+          "Description": "CSV、TSV、区切りテキストを JSON に変換します。",
+          "Fields": {
+            "csv": "CSV",
+            "delimiter": "区切り文字",
+            "header": "先頭行をヘッダーにする"
+          },
+          "Options": {
+            "delimiter": {
+              "Auto": "自動",
+              "Comma": "カンマ",
+              "Semicolon": "セミコロン",
+              "Tab": "タブ",
+              "Pipe": "パイプ"
+            }
+          },
+          "Outputs": {
+            "result": "JSON"
+          }
+        },
+        "csv_to_markdown_table": {
+          "Title": "CSV から Markdown 表",
+          "Description": "CSV、TSV、区切りテキストを Markdown 表に変換します。",
+          "Fields": {
+            "csv": "CSV",
+            "delimiter": "区切り文字"
+          },
+          "Options": {
+            "delimiter": {
+              "Auto": "自動",
+              "Comma": "カンマ",
+              "Semicolon": "セミコロン",
+              "Tab": "タブ",
+              "Pipe": "パイプ"
+            }
+          },
+          "Outputs": {
+            "result": "Markdown"
+          }
+        },
+        "data_url_parser": {
+          "Title": "Data URL パーサー",
+          "Description": "data: URL を解析し、デコードしたペイロードをプレビューします。",
+          "Fields": {
+            "dataUrl": "Data URL"
+          },
+          "Outputs": {
+            "result": "Data URL 解析結果"
+          }
+        },
+        "docker_image_tag_parser": {
+          "Title": "Docker イメージタグ パーサー",
+          "Description": "Docker イメージ参照を registry、リポジトリ、タグ、ダイジェストに分解します。",
+          "Fields": {
+            "image": "イメージ参照"
+          },
+          "Outputs": {
+            "result": "イメージ情報"
+          }
+        },
+        "env_to_json": {
+          "Title": ".env から JSON",
+          "Description": ".env ファイルの内容を JSON オブジェクトに解析します。",
+          "Fields": {
+            "env": ".env 内容"
+          },
+          "Outputs": {
+            "result": "JSON"
+          }
+        },
+        "hex_dump_viewer": {
+          "Title": "Hex dump ビューアー",
+          "Description": "テキストまたは 16 進バイト列をクラシックな hex dump として表示します。",
+          "Fields": {
+            "input": "入力",
+            "mode": "モード",
+            "bytesPerLine": "1 行あたりのバイト数"
+          },
+          "Options": {
+            "mode": {
+              "Text": "テキスト",
+              "Hex": "16 進"
+            }
+          },
+          "Outputs": {
+            "result": "Hex dump"
+          }
+        },
+        "http_header_parser": {
+          "Title": "HTTP ヘッダー パーサー",
+          "Description": "生の HTTP ヘッダーを構造化 JSON に解析します。",
+          "Fields": {
+            "headers": "生ヘッダー"
+          },
+          "Outputs": {
+            "result": "ヘッダー"
+          }
+        },
+        "ini_to_json": {
+          "Title": "INI から JSON",
+          "Description": "INI 設定テキストを JSON に解析します。",
+          "Fields": {
+            "ini": "INI 内容"
+          },
+          "Outputs": {
+            "result": "JSON"
+          }
+        },
+        "json_path_extractor": {
+          "Title": "JSON パス抽出",
+          "Description": "シンプルなドット表記とインデックスで JSON の値を抽出します。",
+          "Fields": {
+            "json": "JSON",
+            "path": "パス"
+          },
+          "Outputs": {
+            "result": "一致した値"
+          }
+        },
+        "markdown_table_generator": {
+          "Title": "Markdown 表ジェネレーター",
+          "Description": "ヘッダーと行データから Markdown 表を作成します。",
+          "Fields": {
+            "headers": "ヘッダー",
+            "rows": "行",
+            "alignment": "配置",
+            "delimiter": "区切り文字"
+          },
+          "Options": {
+            "alignment": {
+              "None": "なし",
+              "Left": "左寄せ",
+              "Center": "中央",
+              "Right": "右寄せ"
+            },
+            "delimiter": {
+              "Comma": "カンマ",
+              "Semicolon": "セミコロン",
+              "Tab": "タブ",
+              "Pipe": "パイプ"
+            }
+          },
+          "Outputs": {
+            "result": "Markdown"
+          }
+        },
+        "nanoid_generator": {
+          "Title": "NanoID ジェネレーター",
+          "Description": "URL に使いやすい短いランダム ID を生成します。",
+          "Fields": {
+            "length": "長さ",
+            "count": "数",
+            "alphabet": "文字セット"
+          },
+          "Outputs": {
+            "result": "ID"
+          }
+        },
+        "query_string_builder": {
+          "Title": "クエリ文字列ビルダー",
+          "Description": "キー値行からエンコード済みのクエリ文字列を作成します。",
+          "Fields": {
+            "pairs": "パラメーター",
+            "includeQuestionMark": "先頭の ? を含める"
+          },
+          "Outputs": {
+            "result": "クエリ文字列"
+          }
+        },
+        "query_string_parser": {
+          "Title": "クエリ文字列パーサー",
+          "Description": "クエリ文字列または URL を構造化パラメーターにデコードします。",
+          "Fields": {
+            "query": "クエリ文字列または URL"
+          },
+          "Outputs": {
+            "result": "パラメーター"
+          }
+        },
+        "regex_replacer": {
+          "Title": "正規表現置換",
+          "Description": "サンプルテキストに対する正規表現置換をプレビューします。",
+          "Fields": {
+            "pattern": "パターン",
+            "replacement": "置換文字列",
+            "text": "サンプルテキスト",
+            "ignoreCase": "大文字小文字を無視",
+            "multiline": "複数行"
+          },
+          "Outputs": {
+            "result": "結果"
+          }
+        },
+        "semver_comparator": {
+          "Title": "SemVer 比較",
+          "Description": "SemVer の優先順位ルールで 2 つの semantic version を比較します。",
+          "Fields": {
+            "left": "左のバージョン",
+            "right": "右のバージョン"
+          },
+          "Outputs": {
+            "result": "比較結果"
+          }
+        },
+        "semver_inspector": {
+          "Title": "SemVer インスペクター",
+          "Description": "semantic version を解析し、よく使う更新候補を表示します。",
+          "Fields": {
+            "version": "バージョン"
+          },
+          "Outputs": {
+            "result": "バージョン詳細"
+          }
+        },
+        "string_escape_unescape": {
+          "Title": "文字列エスケープ/解除",
+          "Description": "JSON、C#、HTML、URL 向けに文字列をエスケープまたは解除します。",
+          "Fields": {
+            "text": "入力",
+            "format": "形式",
+            "mode": "モード"
+          },
+          "Options": {
+            "format": {
+              "JSON": "JSON",
+              "C": "C#",
+              "HTML": "HTML",
+              "URL": "URL"
+            },
+            "mode": {
+              "Escape": "エスケープ",
+              "Unescape": "解除"
+            }
+          },
+          "Outputs": {
+            "result": "結果"
+          }
+        },
+        "uuid_v5_generator": {
+          "Title": "UUID v5 ジェネレーター",
+          "Description": "名前空間と名前から決定的な UUID v5 を生成します。",
+          "Fields": {
+            "namespace": "名前空間 UUID",
+            "name": "名前"
+          },
+          "Outputs": {
+            "result": "UUID"
+          }
+        },
+        "xml_xpath_tester": {
+          "Title": "XML XPath テスター",
+          "Description": "XML テキストに対して XPath 式を評価します。",
+          "Fields": {
+            "xml": "XML",
+            "xpath": "XPath"
+          },
+          "Outputs": {
+            "result": "一致結果"
+          }
+        },
         "docker_run_to_docker_compose_converter": {
           "Title": "Docker run to Docker compose 変換",
           "Description": "Docker run to Docker compose 変換を処理するためのツールです。",

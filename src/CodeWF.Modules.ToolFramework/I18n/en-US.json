@@ -345,6 +345,267 @@
             "result": "Result"
           }
         },
+        "csv_to_json": {
+          "Title": "CSV to JSON",
+          "Description": "Convert CSV, TSV or delimited text into JSON.",
+          "Fields": {
+            "csv": "CSV",
+            "delimiter": "Delimiter",
+            "header": "First row is header"
+          },
+          "Options": {
+            "delimiter": {
+              "Auto": "Auto",
+              "Comma": "Comma",
+              "Semicolon": "Semicolon",
+              "Tab": "Tab",
+              "Pipe": "Pipe"
+            }
+          },
+          "Outputs": {
+            "result": "JSON"
+          }
+        },
+        "csv_to_markdown_table": {
+          "Title": "CSV to Markdown table",
+          "Description": "Convert CSV, TSV or delimited text into a Markdown table.",
+          "Fields": {
+            "csv": "CSV",
+            "delimiter": "Delimiter"
+          },
+          "Options": {
+            "delimiter": {
+              "Auto": "Auto",
+              "Comma": "Comma",
+              "Semicolon": "Semicolon",
+              "Tab": "Tab",
+              "Pipe": "Pipe"
+            }
+          },
+          "Outputs": {
+            "result": "Markdown"
+          }
+        },
+        "data_url_parser": {
+          "Title": "Data URL parser",
+          "Description": "Inspect data: URLs and preview decoded payloads.",
+          "Fields": {
+            "dataUrl": "Data URL"
+          },
+          "Outputs": {
+            "result": "Parsed data URL"
+          }
+        },
+        "docker_image_tag_parser": {
+          "Title": "Docker image tag parser",
+          "Description": "Parse Docker image references into registry, repository, tag and digest.",
+          "Fields": {
+            "image": "Image reference"
+          },
+          "Outputs": {
+            "result": "Image parts"
+          }
+        },
+        "env_to_json": {
+          "Title": ".env to JSON",
+          "Description": "Parse .env files into JSON objects.",
+          "Fields": {
+            "env": ".env content"
+          },
+          "Outputs": {
+            "result": "JSON"
+          }
+        },
+        "hex_dump_viewer": {
+          "Title": "Hex dump viewer",
+          "Description": "Render text or hexadecimal bytes as a classic hex dump.",
+          "Fields": {
+            "input": "Input",
+            "mode": "Mode",
+            "bytesPerLine": "Bytes per line"
+          },
+          "Options": {
+            "mode": {
+              "Text": "Text",
+              "Hex": "Hex"
+            }
+          },
+          "Outputs": {
+            "result": "Hex dump"
+          }
+        },
+        "http_header_parser": {
+          "Title": "HTTP header parser",
+          "Description": "Parse raw HTTP headers into structured JSON.",
+          "Fields": {
+            "headers": "Raw headers"
+          },
+          "Outputs": {
+            "result": "Headers"
+          }
+        },
+        "ini_to_json": {
+          "Title": "INI to JSON",
+          "Description": "Parse INI configuration text into JSON.",
+          "Fields": {
+            "ini": "INI content"
+          },
+          "Outputs": {
+            "result": "JSON"
+          }
+        },
+        "json_path_extractor": {
+          "Title": "JSON path extractor",
+          "Description": "Extract a value using a simple dot and index path.",
+          "Fields": {
+            "json": "JSON",
+            "path": "Path"
+          },
+          "Outputs": {
+            "result": "Matched value"
+          }
+        },
+        "markdown_table_generator": {
+          "Title": "Markdown table generator",
+          "Description": "Build a Markdown table from headers and rows.",
+          "Fields": {
+            "headers": "Headers",
+            "rows": "Rows",
+            "alignment": "Alignment",
+            "delimiter": "Delimiter"
+          },
+          "Options": {
+            "alignment": {
+              "None": "None",
+              "Left": "Left",
+              "Center": "Center",
+              "Right": "Right"
+            },
+            "delimiter": {
+              "Comma": "Comma",
+              "Semicolon": "Semicolon",
+              "Tab": "Tab",
+              "Pipe": "Pipe"
+            }
+          },
+          "Outputs": {
+            "result": "Markdown"
+          }
+        },
+        "nanoid_generator": {
+          "Title": "NanoID generator",
+          "Description": "Generate compact URL-friendly random IDs.",
+          "Fields": {
+            "length": "Length",
+            "count": "Count",
+            "alphabet": "Alphabet"
+          },
+          "Outputs": {
+            "result": "IDs"
+          }
+        },
+        "query_string_builder": {
+          "Title": "Query string builder",
+          "Description": "Build an encoded query string from key-value lines.",
+          "Fields": {
+            "pairs": "Parameters",
+            "includeQuestionMark": "Include leading ?"
+          },
+          "Outputs": {
+            "result": "Query string"
+          }
+        },
+        "query_string_parser": {
+          "Title": "Query string parser",
+          "Description": "Decode query strings or URLs into structured parameters.",
+          "Fields": {
+            "query": "Query string or URL"
+          },
+          "Outputs": {
+            "result": "Parameters"
+          }
+        },
+        "regex_replacer": {
+          "Title": "Regex replacer",
+          "Description": "Preview regular-expression replacements against sample text.",
+          "Fields": {
+            "pattern": "Pattern",
+            "replacement": "Replacement",
+            "text": "Sample text",
+            "ignoreCase": "Ignore case",
+            "multiline": "Multiline"
+          },
+          "Outputs": {
+            "result": "Result"
+          }
+        },
+        "semver_comparator": {
+          "Title": "SemVer comparator",
+          "Description": "Compare two semantic versions using SemVer precedence rules.",
+          "Fields": {
+            "left": "Left version",
+            "right": "Right version"
+          },
+          "Outputs": {
+            "result": "Comparison"
+          }
+        },
+        "semver_inspector": {
+          "Title": "SemVer inspector",
+          "Description": "Parse a semantic version and show common bump targets.",
+          "Fields": {
+            "version": "Version"
+          },
+          "Outputs": {
+            "result": "Version details"
+          }
+        },
+        "string_escape_unescape": {
+          "Title": "String escape/unescape",
+          "Description": "Escape or unescape text for JSON, C#, HTML and URLs.",
+          "Fields": {
+            "text": "Input",
+            "format": "Format",
+            "mode": "Mode"
+          },
+          "Options": {
+            "format": {
+              "JSON": "JSON",
+              "C": "C#",
+              "HTML": "HTML",
+              "URL": "URL"
+            },
+            "mode": {
+              "Escape": "Escape",
+              "Unescape": "Unescape"
+            }
+          },
+          "Outputs": {
+            "result": "Result"
+          }
+        },
+        "uuid_v5_generator": {
+          "Title": "UUID v5 generator",
+          "Description": "Generate deterministic namespace/name UUID v5 identifiers.",
+          "Fields": {
+            "namespace": "Namespace UUID",
+            "name": "Name"
+          },
+          "Outputs": {
+            "result": "UUID"
+          }
+        },
+        "xml_xpath_tester": {
+          "Title": "XML XPath tester",
+          "Description": "Evaluate XPath expressions against XML text.",
+          "Fields": {
+            "xml": "XML",
+            "xpath": "XPath"
+          },
+          "Outputs": {
+            "result": "Matches"
+          }
+        },
         "docker_run_to_docker_compose_converter": {
           "Title": "Docker run to Docker compose converter",
           "Description": "Transform docker run commands into docker-compose YAML.",

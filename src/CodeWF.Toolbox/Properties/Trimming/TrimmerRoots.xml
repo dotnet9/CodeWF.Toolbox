@@ -6,7 +6,6 @@
 	<assembly fullname="CodeWF.AvaloniaControls.Themes" preserve="All" />
 	<assembly fullname="CodeWF.AvaloniaControls.ProDataGrid" preserve="All" />
 	<assembly fullname="CodeWF.Modules.ToolFramework" preserve="All" />
-	<assembly fullname="CodeWF.Modules.AI" preserve="All" />
 	<assembly fullname="CodeWF.Modules.Converter" preserve="All" />
 	<assembly fullname="CodeWF.Modules.Data" preserve="All" />
 	<assembly fullname="CodeWF.Modules.Development" preserve="All" />

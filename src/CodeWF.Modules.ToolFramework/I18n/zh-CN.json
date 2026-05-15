@@ -345,6 +345,267 @@
             "result": "结果"
           }
         },
+        "csv_to_json": {
+          "Title": "CSV 转 JSON",
+          "Description": "将 CSV、TSV 或分隔文本转换为 JSON。",
+          "Fields": {
+            "csv": "CSV",
+            "delimiter": "分隔符",
+            "header": "首行为表头"
+          },
+          "Options": {
+            "delimiter": {
+              "Auto": "自动",
+              "Comma": "逗号",
+              "Semicolon": "分号",
+              "Tab": "制表符",
+              "Pipe": "竖线"
+            }
+          },
+          "Outputs": {
+            "result": "JSON"
+          }
+        },
+        "csv_to_markdown_table": {
+          "Title": "CSV 转 Markdown 表格",
+          "Description": "将 CSV、TSV 或分隔文本转换为 Markdown 表格。",
+          "Fields": {
+            "csv": "CSV",
+            "delimiter": "分隔符"
+          },
+          "Options": {
+            "delimiter": {
+              "Auto": "自动",
+              "Comma": "逗号",
+              "Semicolon": "分号",
+              "Tab": "制表符",
+              "Pipe": "竖线"
+            }
+          },
+          "Outputs": {
+            "result": "Markdown"
+          }
+        },
+        "data_url_parser": {
+          "Title": "Data URL 解析器",
+          "Description": "检查 data: URL 并预览解码后的载荷。",
+          "Fields": {
+            "dataUrl": "Data URL"
+          },
+          "Outputs": {
+            "result": "Data URL 解析结果"
+          }
+        },
+        "docker_image_tag_parser": {
+          "Title": "Docker 镜像标签解析",
+          "Description": "将 Docker 镜像引用拆分为 registry、仓库、标签和摘要。",
+          "Fields": {
+            "image": "镜像引用"
+          },
+          "Outputs": {
+            "result": "镜像信息"
+          }
+        },
+        "env_to_json": {
+          "Title": ".env 转 JSON",
+          "Description": "将 .env 文件内容解析为 JSON 对象。",
+          "Fields": {
+            "env": ".env 内容"
+          },
+          "Outputs": {
+            "result": "JSON"
+          }
+        },
+        "hex_dump_viewer": {
+          "Title": "十六进制转储查看器",
+          "Description": "将文本或十六进制字节渲染为经典 hex dump。",
+          "Fields": {
+            "input": "输入",
+            "mode": "模式",
+            "bytesPerLine": "每行字节数"
+          },
+          "Options": {
+            "mode": {
+              "Text": "文本",
+              "Hex": "十六进制"
+            }
+          },
+          "Outputs": {
+            "result": "Hex dump"
+          }
+        },
+        "http_header_parser": {
+          "Title": "HTTP 头解析器",
+          "Description": "将原始 HTTP 头解析为结构化 JSON。",
+          "Fields": {
+            "headers": "原始头信息"
+          },
+          "Outputs": {
+            "result": "HTTP 头"
+          }
+        },
+        "ini_to_json": {
+          "Title": "INI 转 JSON",
+          "Description": "将 INI 配置文本解析为 JSON。",
+          "Fields": {
+            "ini": "INI 内容"
+          },
+          "Outputs": {
+            "result": "JSON"
+          }
+        },
+        "json_path_extractor": {
+          "Title": "JSON 路径提取器",
+          "Description": "使用简单点号与索引路径提取 JSON 值。",
+          "Fields": {
+            "json": "JSON",
+            "path": "路径"
+          },
+          "Outputs": {
+            "result": "匹配值"
+          }
+        },
+        "markdown_table_generator": {
+          "Title": "Markdown 表格生成器",
+          "Description": "根据表头和行数据生成 Markdown 表格。",
+          "Fields": {
+            "headers": "表头",
+            "rows": "行",
+            "alignment": "对齐",
+            "delimiter": "分隔符"
+          },
+          "Options": {
+            "alignment": {
+              "None": "无",
+              "Left": "左对齐",
+              "Center": "居中",
+              "Right": "右对齐"
+            },
+            "delimiter": {
+              "Comma": "逗号",
+              "Semicolon": "分号",
+              "Tab": "制表符",
+              "Pipe": "竖线"
+            }
+          },
+          "Outputs": {
+            "result": "Markdown"
+          }
+        },
+        "nanoid_generator": {
+          "Title": "NanoID 生成器",
+          "Description": "生成紧凑且适合 URL 的随机 ID。",
+          "Fields": {
+            "length": "长度",
+            "count": "数量",
+            "alphabet": "字符集"
+          },
+          "Outputs": {
+            "result": "ID"
+          }
+        },
+        "query_string_builder": {
+          "Title": "查询字符串构建器",
+          "Description": "根据键值行构建编码后的查询字符串。",
+          "Fields": {
+            "pairs": "参数",
+            "includeQuestionMark": "包含开头 ?"
+          },
+          "Outputs": {
+            "result": "查询字符串"
+          }
+        },
+        "query_string_parser": {
+          "Title": "查询字符串解析器",
+          "Description": "将查询字符串或 URL 解码为结构化参数。",
+          "Fields": {
+            "query": "查询字符串或 URL"
+          },
+          "Outputs": {
+            "result": "参数"
+          }
+        },
+        "regex_replacer": {
+          "Title": "正则替换器",
+          "Description": "预览正则表达式替换结果。",
+          "Fields": {
+            "pattern": "模式",
+            "replacement": "替换为",
+            "text": "示例文本",
+            "ignoreCase": "忽略大小写",
+            "multiline": "多行"
+          },
+          "Outputs": {
+            "result": "结果"
+          }
+        },
+        "semver_comparator": {
+          "Title": "SemVer 比较器",
+          "Description": "按 SemVer 优先级规则比较两个语义版本。",
+          "Fields": {
+            "left": "左侧版本",
+            "right": "右侧版本"
+          },
+          "Outputs": {
+            "result": "比较结果"
+          }
+        },
+        "semver_inspector": {
+          "Title": "SemVer 检查器",
+          "Description": "解析语义版本并显示常见递增目标。",
+          "Fields": {
+            "version": "版本"
+          },
+          "Outputs": {
+            "result": "版本详情"
+          }
+        },
+        "string_escape_unescape": {
+          "Title": "字符串转义/反转义",
+          "Description": "对 JSON、C#、HTML 和 URL 文本进行转义或反转义。",
+          "Fields": {
+            "text": "输入",
+            "format": "格式",
+            "mode": "模式"
+          },
+          "Options": {
+            "format": {
+              "JSON": "JSON",
+              "C": "C#",
+              "HTML": "HTML",
+              "URL": "URL"
+            },
+            "mode": {
+              "Escape": "转义",
+              "Unescape": "反转义"
+            }
+          },
+          "Outputs": {
+            "result": "结果"
+          }
+        },
+        "uuid_v5_generator": {
+          "Title": "UUID v5 生成器",
+          "Description": "根据命名空间和名称生成确定性的 UUID v5。",
+          "Fields": {
+            "namespace": "命名空间 UUID",
+            "name": "名称"
+          },
+          "Outputs": {
+            "result": "UUID"
+          }
+        },
+        "xml_xpath_tester": {
+          "Title": "XML XPath 测试器",
+          "Description": "对 XML 文本执行 XPath 表达式。",
+          "Fields": {
+            "xml": "XML",
+            "xpath": "XPath"
+          },
+          "Outputs": {
+            "result": "匹配结果"
+          }
+        },
         "docker_run_to_docker_compose_converter": {
           "Title": "Docker Run 到 docker-compose 转换器",
           "Description": "将 docker run 命令行转换为 docker-compose 文件!",

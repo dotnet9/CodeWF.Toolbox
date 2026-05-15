@@ -81,11 +81,10 @@
       "UsernameWatermark": "使用者名稱",
       "PasswordWatermark": "密碼",
       "LoginButton": "登錄",
-      "GuestLoginButton": "以訪客身份進入",
-      "NotConnected": "服務未連接",
+      "LocalLoginReady": "本地帳號已就緒",
+      "MissingCredentials": "請先在 App.config 配置登錄用戶名和密碼哈希",
       "LoginSuccess": "登錄成功",
-      "LoginFailed": "用戶名或密碼錯誤",
-      "GuestLoginSuccess": "已進入訪客模式"
+      "LoginFailed": "用戶名或密碼錯誤"
     }
   }
 }

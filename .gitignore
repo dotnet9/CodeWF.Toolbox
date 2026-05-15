@@ -8,7 +8,9 @@
 *.suo
 *.user
 *.userosscache
+*.lscache
 *.sln.docstates
+CodeWF.Toolbox.db
 
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs

@@ -11,6 +11,7 @@ using CodeWF.Toolbox.Commands;
 using CodeWF.Toolbox.Diagnostics;
 using CodeWF.Toolbox.ViewModels;
 using Lang.Avalonia;
+using Prism.Ioc;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
@@ -71,6 +72,12 @@ public partial class MainWindow : CodeWFWindow
     private void Search_OnTextChanged(object? sender, TextChangedEventArgs e)
     {
         EventBus.EventBus.Default.Publish(new SearchToolMenuCommand((sender as TextBox)?.Text));
+    }
+
+    private async void OpenSettingButton_OnClick(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
+    {
+        var settingView = ContainerLocator.Container.Resolve<SettingView>();
+        await settingView.ShowDialog(this);
     }
 
     [EventHandler]

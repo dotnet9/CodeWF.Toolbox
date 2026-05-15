@@ -77,31 +77,84 @@ public static class ToolCatalog
             [Output("result", "Result")], () => ToolAlgorithms.ChmodAsync);
         yield return () => Spec("crontab-generator", "Development", "Crontab generator", "Validate crontab expressions and generate a human-readable description.",
             [Text("cron", "Cron expression", "*/5 * * * *")], [Output("result", "Result")], () => ToolAlgorithms.CrontabAsync);
+        yield return () => Spec("csv-to-json", "Development", "CSV to JSON", "Convert CSV, TSV or delimited text into JSON.",
+            [Multi("csv", "CSV"), Select("delimiter", "Delimiter", ["Auto", "Comma", "Semicolon", "Tab", "Pipe"]), Bool("header", "First row is header", true)],
+            [Output("result", "JSON")], () => ToolAlgorithms.CsvToJsonAsync);
+        yield return () => Spec("csv-to-markdown-table", "Development", "CSV to Markdown table", "Convert CSV, TSV or delimited text into a Markdown table.",
+            [Multi("csv", "CSV"), Select("delimiter", "Delimiter", ["Auto", "Comma", "Semicolon", "Tab", "Pipe"])],
+            [Output("result", "Markdown")], () => ToolAlgorithms.CsvToMarkdownAsync);
+        yield return () => Spec("data-url-parser", "Development", "Data URL parser", "Inspect data: URLs and preview decoded payloads.",
+            [Multi("dataUrl", "Data URL")], [Output("result", "Parsed data URL")], () => ToolAlgorithms.DataUrlParserAsync);
         yield return () => Spec("docker-run-to-docker-compose-converter", "Development", "Docker run to Docker compose converter", "Transform docker run commands into docker-compose YAML.",
             [Multi("command", "docker run command", "docker run -d --name app -p 8080:80 nginx")],
             [Output("result", "docker-compose.yml")], () => ToolAlgorithms.DockerComposeAsync);
+        yield return () => Spec("docker-image-tag-parser", "Development", "Docker image tag parser", "Parse Docker image references into registry, repository, tag and digest.",
+            [Text("image", "Image reference", "ghcr.io/dotnet9/codewf-toolbox:latest")],
+            [Output("result", "Image parts")], () => ToolAlgorithms.DockerImageTagParserAsync);
         yield return () => Spec("email-normalizer", "Development", "Email normalizer", "Normalize email addresses for easier comparison and deduplication.",
             [Multi("emails", "Email addresses")], [Output("result", "Normalized")], () => ToolAlgorithms.EmailNormalizerAsync);
+        yield return () => Spec("env-to-json", "Development", ".env to JSON", "Parse .env files into JSON objects.",
+            [Multi("env", ".env content")], [Output("result", "JSON")], () => ToolAlgorithms.EnvToJsonAsync);
         yield return () => Spec("git-memo", "Development", "Git cheatsheet", "Quick access to common git commands.",
             [], [Output("result", "Cheatsheet")], () => ToolAlgorithms.GitMemoAsync);
+        yield return () => Spec("hex-dump-viewer", "Development", "Hex dump viewer", "Render text or hexadecimal bytes as a classic hex dump.",
+            [Multi("input", "Input"), Select("mode", "Mode", ["Text", "Hex"]), Number("bytesPerLine", "Bytes per line", 16)],
+            [Output("result", "Hex dump")], () => ToolAlgorithms.HexDumpAsync, autoRun: false);
+        yield return () => Spec("http-header-parser", "Development", "HTTP header parser", "Parse raw HTTP headers into structured JSON.",
+            [Multi("headers", "Raw headers", "Content-Type: application/json\nX-Request-Id: abc")],
+            [Output("result", "Headers")], () => ToolAlgorithms.HttpHeaderParserAsync);
+        yield return () => Spec("ini-to-json", "Development", "INI to JSON", "Parse INI configuration text into JSON.",
+            [Multi("ini", "INI content")], [Output("result", "JSON")], () => ToolAlgorithms.IniToJsonAsync);
         yield return () => Spec("json-diff", "Web", "JSON diff", "Compare two JSON values and show line-level differences after formatting.",
             [Multi("left", "Left JSON"), Multi("right", "Right JSON")], [Output("result", "Diff")], () => ToolAlgorithms.JsonDiffAsync);
         yield return () => Spec("json-minify", "Development", "JSON minify", "Minify JSON by removing unnecessary whitespace.",
             [Multi("json", "JSON")], [Output("result", "Minified JSON")], () => ToolAlgorithms.JsonMinifyAsync);
+        yield return () => Spec("json-path-extractor", "Development", "JSON path extractor", "Extract a value using a simple dot and index path.",
+            [Multi("json", "JSON"), Text("path", "Path", "$.items[0].name")],
+            [Output("result", "Matched value")], () => ToolAlgorithms.JsonPathExtractorAsync);
         yield return () => Spec("json-to-csv", "Development", "JSON to CSV", "Convert JSON arrays or objects to CSV with automatic header detection.",
             [Multi("json", "JSON")], [Output("result", "CSV")], () => ToolAlgorithms.JsonToCsvAsync);
         yield return () => Spec("json-viewer", "Development", "JSON prettify and format", "Prettify JSON into a readable format.",
             [Multi("json", "JSON")], [Output("result", "Formatted JSON")], () => ToolAlgorithms.JsonViewerAsync);
+        yield return () => Spec("markdown-table-generator", "Development", "Markdown table generator", "Build a Markdown table from headers and rows.",
+            [Text("headers", "Headers", "Name,Value"), Multi("rows", "Rows", "CodeWF,Toolbox\nAvalonia,Prism"), Select("alignment", "Alignment", ["None", "Left", "Center", "Right"]), Select("delimiter", "Delimiter", ["Comma", "Semicolon", "Tab", "Pipe"])],
+            [Output("result", "Markdown")], () => ToolAlgorithms.MarkdownTableGeneratorAsync);
+        yield return () => Spec("nanoid-generator", "Development", "NanoID generator", "Generate compact URL-friendly random IDs.",
+            [Number("length", "Length", 21), Number("count", "Count", 5), Text("alphabet", "Alphabet", "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ_abcdefghijklmnopqrstuvwxyz-")],
+            [Output("result", "IDs")], () => ToolAlgorithms.NanoidAsync, autoRun: false);
+        yield return () => Spec("query-string-builder", "Development", "Query string builder", "Build an encoded query string from key-value lines.",
+            [Multi("pairs", "Parameters", "page=1\nq=CodeWF"), Bool("includeQuestionMark", "Include leading ?", true)],
+            [Output("result", "Query string")], () => ToolAlgorithms.QueryStringBuilderAsync);
+        yield return () => Spec("query-string-parser", "Development", "Query string parser", "Decode query strings or URLs into structured parameters.",
+            [Multi("query", "Query string or URL")], [Output("result", "Parameters")], () => ToolAlgorithms.QueryStringParserAsync);
         yield return () => Spec("random-port-generator", "Development", "Random port generator", "Generate random ports outside the known-port range.",
             [Number("count", "Count", 5), Number("min", "Min", 1024), Number("max", "Max", 65535)],
             [Output("result", "Ports")], () => ToolAlgorithms.RandomPortAsync, autoRun: false);
         yield return () => Spec("regex-memo", "Development", "Regex cheatsheet", "Regular expression cheatsheet.",
             [], [Output("result", "Cheatsheet")], () => ToolAlgorithms.RegexMemoAsync);
+        yield return () => Spec("regex-replacer", "Development", "Regex replacer", "Preview regular-expression replacements against sample text.",
+            [Text("pattern", "Pattern"), Text("replacement", "Replacement"), Multi("text", "Sample text"), Bool("ignoreCase", "Ignore case"), Bool("multiline", "Multiline")],
+            [Output("result", "Result")], () => ToolAlgorithms.RegexReplacerAsync);
         yield return () => Spec("regex-tester", "Development", "Regex Tester", "Test regular expressions with sample text.",
             [Text("pattern", "Pattern"), Multi("text", "Sample text"), Bool("ignoreCase", "Ignore case"), Bool("multiline", "Multiline")],
             [Output("result", "Matches")], () => ToolAlgorithms.RegexTesterAsync);
+        yield return () => Spec("semver-comparator", "Development", "SemVer comparator", "Compare two semantic versions using SemVer precedence rules.",
+            [Text("left", "Left version", "1.2.3"), Text("right", "Right version", "1.2.4-beta.1")],
+            [Output("result", "Comparison")], () => ToolAlgorithms.SemVerComparatorAsync);
+        yield return () => Spec("semver-inspector", "Development", "SemVer inspector", "Parse a semantic version and show common bump targets.",
+            [Text("version", "Version", "1.2.3-beta.1+build.5")],
+            [Output("result", "Version details")], () => ToolAlgorithms.SemVerInspectorAsync);
         yield return () => Spec("sql-prettify", "Development", "SQL prettify and format", "Format and prettify SQL queries.",
             [Multi("sql", "SQL")], [Output("result", "Formatted SQL")], () => ToolAlgorithms.SqlPrettifyAsync);
+        yield return () => Spec("string-escape-unescape", "Development", "String escape/unescape", "Escape or unescape text for JSON, C#, HTML and URLs.",
+            [Multi("text", "Input"), Select("format", "Format", ["JSON", "C#", "HTML", "URL"]), Select("mode", "Mode", ["Escape", "Unescape"])],
+            [Output("result", "Result")], () => ToolAlgorithms.StringEscapeAsync);
+        yield return () => Spec("uuid-v5-generator", "Development", "UUID v5 generator", "Generate deterministic namespace/name UUID v5 identifiers.",
+            [Text("namespace", "Namespace UUID", "6ba7b810-9dad-11d1-80b4-00c04fd430c8"), Text("name", "Name", "codewf.com")],
+            [Output("result", "UUID")], () => ToolAlgorithms.UuidV5Async);
+        yield return () => Spec("xml-xpath-tester", "Development", "XML XPath tester", "Evaluate XPath expressions against XML text.",
+            [Multi("xml", "XML"), Text("xpath", "XPath", "//item")],
+            [Output("result", "Matches")], () => ToolAlgorithms.XmlXPathTesterAsync);
         yield return () => Spec("xml-formatter", "Development", "XML formatter", "Prettify XML into a readable format.",
             [Multi("xml", "XML")], [Output("result", "Formatted XML")], () => ToolAlgorithms.XmlFormatterAsync);
         yield return () => Spec("yaml-viewer", "Development", "YAML prettify and format", "Prettify YAML into a readable format.",

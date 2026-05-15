@@ -12,7 +12,7 @@ The solution is organized into four areas:
 
 - `CodeWF.Toolbox`: desktop entry point, AppBuilder setup, application shell, main window, menu, settings, themes, login window, icon, manifest, publish profiles, and Prism module catalog.
 - `CodeWF.Core`: shared abstractions, file chooser, notifications, tool menu service, region names, and TabControl region adapter.
-- `CodeWF.Modules.*`: feature modules. Each module owns its menu entries, views, view models, and resources. Current modules include AI helpers, converters, log viewing, development tools, and XML localization management.
+- `CodeWF.Modules.*`: feature modules. Each module owns its menu entries, views, view models, and resources. Current modules include converters, log viewing, development tools, web helpers, security tools, and XML localization management.
 - `docs`/`tests`/`publish`: documentation, unit tests, and publishing scripts.
 
 ## Module Lifecycle

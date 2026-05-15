@@ -502,6 +502,45 @@ public static partial class ToolAlgorithms
         return Task.CompletedTask;
     }
 
+    public static Task DockerImageTagParserAsync(ToolRunContext context, CancellationToken token)
+    {
+        var reference = context.Text("image").Trim();
+        if (string.IsNullOrWhiteSpace(reference))
+        {
+            context.SetText("result", "Enter a Docker image reference.");
+            return Task.CompletedTask;
+        }
+
+        var digest = string.Empty;
+        var digestIndex = reference.IndexOf('@', StringComparison.Ordinal);
+        if (digestIndex >= 0)
+        {
+            digest = reference[(digestIndex + 1)..];
+            reference = reference[..digestIndex];
+        }
+
+        var lastSlash = reference.LastIndexOf('/');
+        var lastColon = reference.LastIndexOf(':');
+        var tag = lastColon > lastSlash ? reference[(lastColon + 1)..] : "latest";
+        var path = lastColon > lastSlash ? reference[..lastColon] : reference;
+        var parts = path.Split('/', StringSplitOptions.RemoveEmptyEntries);
+        var registry = parts.Length > 1 && (parts[0].Contains('.') || parts[0].Contains(':') || parts[0].Equals("localhost", StringComparison.OrdinalIgnoreCase))
+            ? parts[0]
+            : "docker.io";
+        var repositoryParts = registry == "docker.io" ? parts : parts.Skip(1).ToArray();
+        var repository = repositoryParts.Length == 1 && registry == "docker.io"
+            ? $"library/{repositoryParts[0]}"
+            : string.Join('/', repositoryParts);
+
+        context.SetText("result", string.Join(Environment.NewLine,
+            $"Registry: {registry}",
+            $"Repository: {repository}",
+            $"Image name: {repositoryParts.LastOrDefault() ?? string.Empty}",
+            $"Tag: {tag}",
+            $"Digest: {(string.IsNullOrWhiteSpace(digest) ? "(none)" : digest)}"));
+        return Task.CompletedTask;
+    }
+
     public static Task EmailNormalizerAsync(ToolRunContext context, CancellationToken token)
     {
         var results = SplitLines(context.Text("emails"))
@@ -570,6 +609,285 @@ public static partial class ToolAlgorithms
         return Task.CompletedTask;
     }
 
+    public static Task CsvToJsonAsync(ToolRunContext context, CancellationToken token)
+    {
+        var rows = ParseDelimitedRows(context.Text("csv"), DelimiterFromOption(context.Option("delimiter")));
+        if (rows.Count == 0)
+        {
+            context.SetText("result", "[]");
+            return Task.CompletedTask;
+        }
+
+        if (context.Bool("header"))
+        {
+            var headers = MakeUniqueHeaders(rows[0]
+                .Select((header, index) => string.IsNullOrWhiteSpace(header) ? $"column{index + 1}" : header.Trim())
+                .ToList());
+            var objects = rows.Skip(1)
+                .Where(row => row.Any(cell => !string.IsNullOrWhiteSpace(cell)))
+                .Select(row => headers.ToDictionary(
+                    header => header,
+                    header => row.ElementAtOrDefault(headers.IndexOf(header)) ?? string.Empty,
+                    StringComparer.Ordinal));
+            context.SetText("result", JsonSerializer.Serialize(objects, PrettyJsonOptions));
+            return Task.CompletedTask;
+        }
+
+        context.SetText("result", JsonSerializer.Serialize(rows, PrettyJsonOptions));
+        return Task.CompletedTask;
+    }
+
+    public static Task CsvToMarkdownAsync(ToolRunContext context, CancellationToken token)
+    {
+        var rows = ParseDelimitedRows(context.Text("csv"), DelimiterFromOption(context.Option("delimiter")));
+        context.SetText("result", FormatMarkdownTable(rows, null));
+        return Task.CompletedTask;
+    }
+
+    public static Task DataUrlParserAsync(ToolRunContext context, CancellationToken token)
+    {
+        var value = context.Text("dataUrl").Trim();
+        if (!value.StartsWith("data:", StringComparison.OrdinalIgnoreCase))
+        {
+            context.SetText("result", "Input must start with data:.");
+            return Task.CompletedTask;
+        }
+
+        var comma = value.IndexOf(',');
+        if (comma < 0)
+        {
+            context.SetText("result", "Data URL is missing the comma separator.");
+            return Task.CompletedTask;
+        }
+
+        var metadata = value[5..comma];
+        var payload = value[(comma + 1)..];
+        var metadataParts = metadata.Split(';', StringSplitOptions.RemoveEmptyEntries);
+        var mediaType = metadataParts.FirstOrDefault(part => part.Contains('/')) ?? "text/plain";
+        var isBase64 = metadataParts.Any(part => part.Equals("base64", StringComparison.OrdinalIgnoreCase));
+        var charset = metadataParts.FirstOrDefault(part => part.StartsWith("charset=", StringComparison.OrdinalIgnoreCase)) ?? "(not specified)";
+        var bytes = isBase64
+            ? Convert.FromBase64String(PadBase64(payload.Trim()))
+            : Encoding.UTF8.GetBytes(WebUtility.UrlDecode(payload));
+        var preview = LooksTextual(mediaType)
+            ? Encoding.UTF8.GetString(bytes.Take(4096).ToArray())
+            : Convert.ToHexString(bytes.Take(256).ToArray()).ToLowerInvariant();
+
+        context.SetText("result", string.Join(Environment.NewLine,
+            $"Media type: {mediaType}",
+            $"Charset: {charset}",
+            $"Base64: {isBase64}",
+            $"Payload bytes: {bytes.Length:N0}",
+            "Preview:",
+            preview));
+        return Task.CompletedTask;
+    }
+
+    public static Task EnvToJsonAsync(ToolRunContext context, CancellationToken token)
+    {
+        var values = new Dictionary<string, string>(StringComparer.Ordinal);
+        foreach (var rawLine in SplitLines(context.Text("env")))
+        {
+            var line = rawLine.Trim();
+            if (line.Length == 0 || line.StartsWith('#'))
+            {
+                continue;
+            }
+
+            if (line.StartsWith("export ", StringComparison.Ordinal))
+            {
+                line = line[7..].TrimStart();
+            }
+
+            var equals = line.IndexOf('=');
+            if (equals <= 0)
+            {
+                continue;
+            }
+
+            var key = line[..equals].Trim();
+            var value = StripOptionalQuotes(line[(equals + 1)..].Trim());
+            values[key] = value;
+        }
+
+        context.SetText("result", JsonSerializer.Serialize(values, PrettyJsonOptions));
+        return Task.CompletedTask;
+    }
+
+    public static Task HexDumpAsync(ToolRunContext context, CancellationToken token)
+    {
+        var bytes = context.Option("mode") == "Hex"
+            ? ParseHexBytes(context.Text("input"))
+            : Encoding.UTF8.GetBytes(context.Text("input"));
+        var bytesPerLine = Math.Clamp(context.Int("bytesPerLine"), 4, 64);
+        context.SetText("result", FormatHexDump(bytes, bytesPerLine));
+        return Task.CompletedTask;
+    }
+
+    public static Task HttpHeaderParserAsync(ToolRunContext context, CancellationToken token)
+    {
+        var headers = new Dictionary<string, List<string>>(StringComparer.OrdinalIgnoreCase);
+        var startLine = string.Empty;
+        foreach (var line in SplitLines(context.Text("headers")))
+        {
+            if (string.IsNullOrWhiteSpace(line))
+            {
+                continue;
+            }
+
+            var colon = line.IndexOf(':');
+            if (colon <= 0)
+            {
+                startLine = string.IsNullOrWhiteSpace(startLine) ? line.Trim() : startLine;
+                continue;
+            }
+
+            var name = line[..colon].Trim();
+            var value = line[(colon + 1)..].Trim();
+            if (!headers.TryGetValue(name, out var values))
+            {
+                values = [];
+                headers[name] = values;
+            }
+
+            values.Add(value);
+        }
+
+        var payload = new
+        {
+            StartLine = startLine,
+            Headers = headers.ToDictionary(
+                pair => pair.Key,
+                pair => pair.Value.Count == 1 ? (object)pair.Value[0] : pair.Value,
+                StringComparer.OrdinalIgnoreCase)
+        };
+        context.SetText("result", JsonSerializer.Serialize(payload, PrettyJsonOptions));
+        return Task.CompletedTask;
+    }
+
+    public static Task IniToJsonAsync(ToolRunContext context, CancellationToken token)
+    {
+        var result = new Dictionary<string, Dictionary<string, string>>(StringComparer.OrdinalIgnoreCase);
+        var currentSection = "default";
+        result[currentSection] = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
+        foreach (var rawLine in SplitLines(context.Text("ini")))
+        {
+            var line = rawLine.Trim();
+            if (line.Length == 0 || line.StartsWith(';') || line.StartsWith('#'))
+            {
+                continue;
+            }
+
+            if (line.StartsWith('[') && line.EndsWith(']'))
+            {
+                currentSection = line[1..^1].Trim();
+                result.TryAdd(currentSection, new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase));
+                continue;
+            }
+
+            var separator = line.IndexOf('=');
+            if (separator < 0)
+            {
+                separator = line.IndexOf(':');
+            }
+
+            if (separator <= 0)
+            {
+                continue;
+            }
+
+            result[currentSection][line[..separator].Trim()] = StripOptionalQuotes(line[(separator + 1)..].Trim());
+        }
+
+        if (result["default"].Count == 0)
+        {
+            result.Remove("default");
+        }
+
+        context.SetText("result", JsonSerializer.Serialize(result, PrettyJsonOptions));
+        return Task.CompletedTask;
+    }
+
+    public static Task JsonPathExtractorAsync(ToolRunContext context, CancellationToken token)
+    {
+        using var doc = JsonDocument.Parse(context.Text("json"));
+        var element = ResolveJsonPath(doc.RootElement, context.Text("path"));
+        context.SetText("result", JsonSerializer.Serialize(element, PrettyJsonOptions));
+        return Task.CompletedTask;
+    }
+
+    public static Task MarkdownTableGeneratorAsync(ToolRunContext context, CancellationToken token)
+    {
+        var delimiter = DelimiterFromOption(context.Option("delimiter"));
+        var headers = ParseDelimitedRows(context.Text("headers"), delimiter).FirstOrDefault() ?? [];
+        var rows = ParseDelimitedRows(context.Text("rows"), delimiter);
+        if (headers.Count == 0)
+        {
+            headers = rows.FirstOrDefault() ?? [];
+            rows = rows.Skip(1).ToList();
+        }
+
+        var allRows = new List<List<string>> { headers };
+        allRows.AddRange(rows);
+        context.SetText("result", FormatMarkdownTable(allRows, context.Option("alignment")));
+        return Task.CompletedTask;
+    }
+
+    public static Task NanoidAsync(ToolRunContext context, CancellationToken token)
+    {
+        var alphabet = context.Text("alphabet");
+        if (string.IsNullOrEmpty(alphabet))
+        {
+            alphabet = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ_abcdefghijklmnopqrstuvwxyz-";
+        }
+
+        var length = Math.Clamp(context.Int("length"), 1, 256);
+        var count = Math.Clamp(context.Int("count"), 1, 1000);
+        context.SetText("result", string.Join(Environment.NewLine, Enumerable.Range(0, count).Select(_ => RandomString(alphabet, length))));
+        return Task.CompletedTask;
+    }
+
+    public static Task QueryStringBuilderAsync(ToolRunContext context, CancellationToken token)
+    {
+        var pairs = ParseKeyValueLines(context.Text("pairs"))
+            .Select(pair => $"{WebUtility.UrlEncode(pair.Key)}={WebUtility.UrlEncode(pair.Value)}");
+        var query = string.Join('&', pairs);
+        if (context.Bool("includeQuestionMark") && query.Length > 0)
+        {
+            query = "?" + query;
+        }
+
+        context.SetText("result", query);
+        return Task.CompletedTask;
+    }
+
+    public static Task QueryStringParserAsync(ToolRunContext context, CancellationToken token)
+    {
+        var input = context.Text("query").Trim();
+        var query = Uri.TryCreate(input, UriKind.Absolute, out var uri) ? uri.Query : input;
+        var values = new Dictionary<string, List<string>>(StringComparer.OrdinalIgnoreCase);
+        foreach (var part in query.TrimStart('?').Split('&', StringSplitOptions.RemoveEmptyEntries))
+        {
+            var pieces = part.Split('=', 2);
+            var key = WebUtility.UrlDecode(pieces[0]) ?? string.Empty;
+            var value = pieces.Length > 1 ? WebUtility.UrlDecode(pieces[1]) ?? string.Empty : string.Empty;
+            if (!values.TryGetValue(key, out var list))
+            {
+                list = [];
+                values[key] = list;
+            }
+
+            list.Add(value);
+        }
+
+        var payload = values.ToDictionary(
+            pair => pair.Key,
+            pair => pair.Value.Count == 1 ? (object)pair.Value[0] : pair.Value,
+            StringComparer.OrdinalIgnoreCase);
+        context.SetText("result", JsonSerializer.Serialize(payload, PrettyJsonOptions));
+        return Task.CompletedTask;
+    }
+
     public static Task JsonViewerAsync(ToolRunContext context, CancellationToken token)
     {
         context.SetText("result", PrettyJson(context.Text("json")));
@@ -594,6 +912,27 @@ public static partial class ToolAlgorithms
     public static Task RegexMemoAsync(ToolRunContext context, CancellationToken token)
     {
         context.SetText("result", ReadResource("regex-memo.content.md"));
+        return Task.CompletedTask;
+    }
+
+    public static Task RegexReplacerAsync(ToolRunContext context, CancellationToken token)
+    {
+        var options = RegexOptions.None;
+        if (context.Bool("ignoreCase"))
+        {
+            options |= RegexOptions.IgnoreCase;
+        }
+        if (context.Bool("multiline"))
+        {
+            options |= RegexOptions.Multiline;
+        }
+
+        var regex = new Regex(context.Text("pattern"), options);
+        var input = context.Text("text");
+        var count = regex.Matches(input).Count;
+        context.SetText("result", string.Join(Environment.NewLine,
+            $"Replacements: {count}",
+            regex.Replace(input, context.Text("replacement"))));
         return Task.CompletedTask;
     }
 
@@ -626,6 +965,31 @@ public static partial class ToolAlgorithms
         return Task.CompletedTask;
     }
 
+    public static Task SemVerComparatorAsync(ToolRunContext context, CancellationToken token)
+    {
+        var left = ParseSemVersion(context.Text("left"));
+        var right = ParseSemVersion(context.Text("right"));
+        var comparison = CompareSemVersions(left, right);
+        var symbol = comparison < 0 ? "<" : comparison > 0 ? ">" : "=";
+        context.SetText("result", $"{left.Original} {symbol} {right.Original}");
+        return Task.CompletedTask;
+    }
+
+    public static Task SemVerInspectorAsync(ToolRunContext context, CancellationToken token)
+    {
+        var version = ParseSemVersion(context.Text("version"));
+        context.SetText("result", string.Join(Environment.NewLine,
+            $"Major: {version.Major}",
+            $"Minor: {version.Minor}",
+            $"Patch: {version.Patch}",
+            $"Pre-release: {(string.IsNullOrWhiteSpace(version.PreRelease) ? "(none)" : version.PreRelease)}",
+            $"Build metadata: {(string.IsNullOrWhiteSpace(version.Build) ? "(none)" : version.Build)}",
+            $"Next patch: {version.Major}.{version.Minor}.{version.Patch + 1}",
+            $"Next minor: {version.Major}.{version.Minor + 1}.0",
+            $"Next major: {version.Major + 1}.0.0"));
+        return Task.CompletedTask;
+    }
+
     public static Task SqlPrettifyAsync(ToolRunContext context, CancellationToken token)
     {
         var sql = context.Text("sql");
@@ -643,10 +1007,60 @@ public static partial class ToolAlgorithms
         return Task.CompletedTask;
     }
 
+    public static Task StringEscapeAsync(ToolRunContext context, CancellationToken token)
+    {
+        var text = context.Text("text");
+        var escape = context.Option("mode") == "Escape";
+        var result = context.Option("format") switch
+        {
+            "JSON" => escape ? JsonSerializer.Serialize(text) : JsonSerializer.Deserialize<string>(text) ?? string.Empty,
+            "C#" => escape ? EscapeCSharpString(text) : UnescapeCStyle(text),
+            "HTML" => escape ? WebUtility.HtmlEncode(text) : WebUtility.HtmlDecode(text),
+            "URL" => escape ? WebUtility.UrlEncode(text) : WebUtility.UrlDecode(text),
+            _ => text
+        };
+        context.SetText("result", result ?? string.Empty);
+        return Task.CompletedTask;
+    }
+
+    public static Task UuidV5Async(ToolRunContext context, CancellationToken token)
+    {
+        var namespaceBytes = GuidToNetworkBytes(Guid.Parse(context.Text("namespace")));
+        var nameBytes = Encoding.UTF8.GetBytes(context.Text("name"));
+        var input = new byte[namespaceBytes.Length + nameBytes.Length];
+        Buffer.BlockCopy(namespaceBytes, 0, input, 0, namespaceBytes.Length);
+        Buffer.BlockCopy(nameBytes, 0, input, namespaceBytes.Length, nameBytes.Length);
+        var hash = SHA1.HashData(input);
+        var uuidBytes = hash.Take(16).ToArray();
+        uuidBytes[6] = (byte)((uuidBytes[6] & 0x0f) | 0x50);
+        uuidBytes[8] = (byte)((uuidBytes[8] & 0x3f) | 0x80);
+        context.SetText("result", NetworkBytesToGuid(uuidBytes).ToString());
+        return Task.CompletedTask;
+    }
+
     public static Task XmlFormatterAsync(ToolRunContext context, CancellationToken token)
     {
         var doc = XDocument.Parse(context.Text("xml"), LoadOptions.PreserveWhitespace);
         context.SetText("result", doc.ToString());
+        return Task.CompletedTask;
+    }
+
+    public static Task XmlXPathTesterAsync(ToolRunContext context, CancellationToken token)
+    {
+        var doc = new XmlDocument();
+        doc.LoadXml(context.Text("xml"));
+        var nodes = doc.SelectNodes(context.Text("xpath"));
+        var sb = new StringBuilder();
+        sb.AppendLine($"Matches: {nodes?.Count ?? 0}");
+        if (nodes != null)
+        {
+            foreach (XmlNode node in nodes.Cast<XmlNode>().Take(200))
+            {
+                sb.AppendLine(node is XmlAttribute ? $"{node.Name}=\"{node.Value}\"" : node.OuterXml);
+            }
+        }
+
+        context.SetText("result", sb.ToString());
         return Task.CompletedTask;
     }
 
@@ -1861,6 +2275,420 @@ public static partial class ToolAlgorithms
         };
     }
 
+    private static char? DelimiterFromOption(string option)
+    {
+        return option switch
+        {
+            "Comma" => ',',
+            "Semicolon" => ';',
+            "Tab" => '\t',
+            "Pipe" => '|',
+            _ => null
+        };
+    }
+
+    private static List<List<string>> ParseDelimitedRows(string text, char? delimiter)
+    {
+        if (string.IsNullOrEmpty(text))
+        {
+            return [];
+        }
+
+        var actualDelimiter = delimiter ?? DetectDelimiter(text);
+        var rows = new List<List<string>>();
+        var row = new List<string>();
+        var cell = new StringBuilder();
+        var quoted = false;
+
+        void AddCell()
+        {
+            row.Add(cell.ToString());
+            cell.Clear();
+        }
+
+        void AddRow()
+        {
+            AddCell();
+            rows.Add(row);
+            row = [];
+        }
+
+        for (var i = 0; i < text.Length; i++)
+        {
+            var ch = text[i];
+            if (quoted)
+            {
+                if (ch == '"' && i + 1 < text.Length && text[i + 1] == '"')
+                {
+                    cell.Append('"');
+                    i++;
+                }
+                else if (ch == '"')
+                {
+                    quoted = false;
+                }
+                else
+                {
+                    cell.Append(ch);
+                }
+
+                continue;
+            }
+
+            if (ch == '"')
+            {
+                quoted = true;
+            }
+            else if (ch == actualDelimiter)
+            {
+                AddCell();
+            }
+            else if (ch is '\r' or '\n')
+            {
+                if (ch == '\r' && i + 1 < text.Length && text[i + 1] == '\n')
+                {
+                    i++;
+                }
+
+                AddRow();
+            }
+            else
+            {
+                cell.Append(ch);
+            }
+        }
+
+        if (cell.Length > 0 || row.Count > 0 || !text.EndsWith('\n'))
+        {
+            AddRow();
+        }
+
+        return rows
+            .Where(r => r.Any(cellValue => !string.IsNullOrEmpty(cellValue)))
+            .ToList();
+    }
+
+    private static char DetectDelimiter(string text)
+    {
+        var line = SplitLines(text).FirstOrDefault(line => !string.IsNullOrWhiteSpace(line)) ?? string.Empty;
+        return new[] { ',', ';', '\t', '|' }
+            .OrderByDescending(candidate => line.Count(ch => ch == candidate))
+            .First();
+    }
+
+    private static List<string> MakeUniqueHeaders(IReadOnlyList<string> headers)
+    {
+        var counts = new Dictionary<string, int>(StringComparer.Ordinal);
+        var result = new List<string>(headers.Count);
+        foreach (var header in headers)
+        {
+            var name = string.IsNullOrWhiteSpace(header) ? $"column{result.Count + 1}" : header;
+            if (!counts.TryAdd(name, 1))
+            {
+                counts[name]++;
+                name = $"{name}_{counts[name]}";
+            }
+
+            result.Add(name);
+        }
+
+        return result;
+    }
+
+    private static string FormatMarkdownTable(IReadOnlyList<List<string>> rows, string? alignment)
+    {
+        if (rows.Count == 0)
+        {
+            return string.Empty;
+        }
+
+        var width = rows.Max(row => row.Count);
+        var normalized = rows
+            .Select(row => Enumerable.Range(0, width).Select(i => i < row.Count ? row[i] : string.Empty).ToList())
+            .ToList();
+        var separator = alignment switch
+        {
+            "Left" => Enumerable.Repeat(":---", width),
+            "Center" => Enumerable.Repeat(":---:", width),
+            "Right" => Enumerable.Repeat("---:", width),
+            _ => Enumerable.Repeat("---", width)
+        };
+        var sb = new StringBuilder();
+        sb.AppendLine("| " + string.Join(" | ", normalized[0].Select(EscapeMarkdownCell)) + " |");
+        sb.AppendLine("| " + string.Join(" | ", separator) + " |");
+        foreach (var row in normalized.Skip(1))
+        {
+            sb.AppendLine("| " + string.Join(" | ", row.Select(EscapeMarkdownCell)) + " |");
+        }
+
+        return sb.ToString();
+    }
+
+    private static string EscapeMarkdownCell(string value)
+    {
+        return value.Replace("\\", "\\\\").Replace("|", "\\|").Replace("\r", " ").Replace("\n", " ");
+    }
+
+    private static IEnumerable<KeyValuePair<string, string>> ParseKeyValueLines(string text)
+    {
+        foreach (var rawLine in SplitLines(text))
+        {
+            var line = rawLine.Trim();
+            if (line.Length == 0 || line.StartsWith('#'))
+            {
+                continue;
+            }
+
+            var separator = line.IndexOf('=');
+            if (separator < 0)
+            {
+                separator = line.IndexOf(':');
+            }
+
+            if (separator <= 0)
+            {
+                continue;
+            }
+
+            yield return new KeyValuePair<string, string>(
+                line[..separator].Trim(),
+                StripOptionalQuotes(line[(separator + 1)..].Trim()));
+        }
+    }
+
+    private static string StripOptionalQuotes(string value)
+    {
+        return value.Length >= 2 && ((value[0] == '"' && value[^1] == '"') || (value[0] == '\'' && value[^1] == '\''))
+            ? value[1..^1]
+            : value;
+    }
+
+    private static JsonElement ResolveJsonPath(JsonElement root, string path)
+    {
+        var current = root;
+        var text = path.Trim();
+        var index = text.StartsWith('$') ? 1 : 0;
+        while (index < text.Length)
+        {
+            if (text[index] == '.')
+            {
+                index++;
+            }
+
+            if (index >= text.Length)
+            {
+                break;
+            }
+
+            if (text[index] == '[')
+            {
+                var end = text.IndexOf(']', index);
+                if (end < 0)
+                {
+                    throw new FormatException("JSON path is missing a closing bracket.");
+                }
+
+                var token = text[(index + 1)..end].Trim().Trim('\'', '"');
+                current = int.TryParse(token, NumberStyles.Integer, CultureInfo.InvariantCulture, out var arrayIndex)
+                    ? current.EnumerateArray().ElementAt(arrayIndex)
+                    : current.GetProperty(token);
+                index = end + 1;
+                continue;
+            }
+
+            var start = index;
+            while (index < text.Length && text[index] != '.' && text[index] != '[')
+            {
+                index++;
+            }
+
+            var property = text[start..index];
+            current = current.GetProperty(property);
+        }
+
+        return current;
+    }
+
+    private static byte[] ParseHexBytes(string text)
+    {
+        var hex = Regex.Replace(text, "[^0-9a-fA-F]", "");
+        if (hex.Length % 2 != 0)
+        {
+            throw new FormatException("Hex input must contain an even number of digits.");
+        }
+
+        return Enumerable.Range(0, hex.Length / 2)
+            .Select(i => Convert.ToByte(hex.Substring(i * 2, 2), 16))
+            .ToArray();
+    }
+
+    private static string FormatHexDump(byte[] bytes, int bytesPerLine)
+    {
+        var limit = Math.Min(bytes.Length, 65536);
+        var sb = new StringBuilder();
+        for (var offset = 0; offset < limit; offset += bytesPerLine)
+        {
+            var line = bytes.Skip(offset).Take(Math.Min(bytesPerLine, limit - offset)).ToArray();
+            var hex = string.Join(' ', line.Select(value => value.ToString("X2", CultureInfo.InvariantCulture))).PadRight(bytesPerLine * 3 - 1);
+            var ascii = new string(line.Select(value => value is >= 32 and <= 126 ? (char)value : '.').ToArray());
+            sb.AppendLine($"{offset:X8}  {hex}  {ascii}");
+        }
+
+        if (bytes.Length > limit)
+        {
+            sb.AppendLine($"... truncated {bytes.Length - limit:N0} bytes");
+        }
+
+        return sb.ToString();
+    }
+
+    private static bool LooksTextual(string mediaType)
+    {
+        return mediaType.StartsWith("text/", StringComparison.OrdinalIgnoreCase)
+               || mediaType.Contains("json", StringComparison.OrdinalIgnoreCase)
+               || mediaType.Contains("xml", StringComparison.OrdinalIgnoreCase)
+               || mediaType.Contains("svg", StringComparison.OrdinalIgnoreCase);
+    }
+
+    private static string EscapeCSharpString(string value)
+    {
+        var sb = new StringBuilder(value.Length);
+        foreach (var ch in value)
+        {
+            sb.Append(ch switch
+            {
+                '\\' => "\\\\",
+                '"' => "\\\"",
+                '\0' => "\\0",
+                '\a' => "\\a",
+                '\b' => "\\b",
+                '\f' => "\\f",
+                '\n' => "\\n",
+                '\r' => "\\r",
+                '\t' => "\\t",
+                '\v' => "\\v",
+                _ when char.IsControl(ch) => $"\\u{(int)ch:x4}",
+                _ => ch
+            });
+        }
+
+        return sb.ToString();
+    }
+
+    private static string UnescapeCStyle(string value)
+    {
+        var sb = new StringBuilder(value.Length);
+        for (var i = 0; i < value.Length; i++)
+        {
+            var ch = value[i];
+            if (ch != '\\' || i + 1 >= value.Length)
+            {
+                sb.Append(ch);
+                continue;
+            }
+
+            var next = value[++i];
+            sb.Append(next switch
+            {
+                '0' => '\0',
+                'a' => '\a',
+                'b' => '\b',
+                'f' => '\f',
+                'n' => '\n',
+                'r' => '\r',
+                't' => '\t',
+                'v' => '\v',
+                '\\' => '\\',
+                '"' => '"',
+                '\'' => '\'',
+                'u' when i + 4 < value.Length && int.TryParse(value.Substring(i + 1, 4), NumberStyles.HexNumber, CultureInfo.InvariantCulture, out var code) => ReadUnicodeEscape(value, ref i, code),
+                _ => next
+            });
+        }
+
+        return sb.ToString();
+    }
+
+    private static char ReadUnicodeEscape(string value, ref int index, int code)
+    {
+        index += 4;
+        return (char)code;
+    }
+
+    private static byte[] GuidToNetworkBytes(Guid guid)
+    {
+        var bytes = guid.ToByteArray();
+        return
+        [
+            bytes[3], bytes[2], bytes[1], bytes[0],
+            bytes[5], bytes[4],
+            bytes[7], bytes[6],
+            bytes[8], bytes[9], bytes[10], bytes[11], bytes[12], bytes[13], bytes[14], bytes[15]
+        ];
+    }
+
+    private static Guid NetworkBytesToGuid(byte[] bytes)
+    {
+        return new Guid([
+            bytes[3], bytes[2], bytes[1], bytes[0],
+            bytes[5], bytes[4],
+            bytes[7], bytes[6],
+            bytes[8], bytes[9], bytes[10], bytes[11], bytes[12], bytes[13], bytes[14], bytes[15]
+        ]);
+    }
+
+    private static SemVersion ParseSemVersion(string value)
+    {
+        var match = Regex.Match(value.Trim(), @"^(?<major>0|[1-9]\d*)\.(?<minor>0|[1-9]\d*)\.(?<patch>0|[1-9]\d*)(?:-(?<pre>[0-9A-Za-z-]+(?:\.[0-9A-Za-z-]+)*))?(?:\+(?<build>[0-9A-Za-z-]+(?:\.[0-9A-Za-z-]+)*))?$");
+        if (!match.Success)
+        {
+            throw new FormatException("Version must follow SemVer, for example 1.2.3-beta.1+build.5.");
+        }
+
+        return new SemVersion(
+            int.Parse(match.Groups["major"].Value, CultureInfo.InvariantCulture),
+            int.Parse(match.Groups["minor"].Value, CultureInfo.InvariantCulture),
+            int.Parse(match.Groups["patch"].Value, CultureInfo.InvariantCulture),
+            match.Groups["pre"].Value,
+            match.Groups["build"].Value,
+            value.Trim());
+    }
+
+    private static int CompareSemVersions(SemVersion left, SemVersion right)
+    {
+        var core = left.Major.CompareTo(right.Major);
+        if (core != 0) return core;
+        core = left.Minor.CompareTo(right.Minor);
+        if (core != 0) return core;
+        core = left.Patch.CompareTo(right.Patch);
+        if (core != 0) return core;
+        if (left.PreRelease.Length == 0 && right.PreRelease.Length == 0) return 0;
+        if (left.PreRelease.Length == 0) return 1;
+        if (right.PreRelease.Length == 0) return -1;
+        var leftParts = left.PreRelease.Split('.');
+        var rightParts = right.PreRelease.Split('.');
+        for (var i = 0; i < Math.Min(leftParts.Length, rightParts.Length); i++)
+        {
+            var part = CompareSemVerIdentifier(leftParts[i], rightParts[i]);
+            if (part != 0) return part;
+        }
+
+        return leftParts.Length.CompareTo(rightParts.Length);
+    }
+
+    private static int CompareSemVerIdentifier(string left, string right)
+    {
+        var leftNumeric = int.TryParse(left, NumberStyles.None, CultureInfo.InvariantCulture, out var leftNumber);
+        var rightNumeric = int.TryParse(right, NumberStyles.None, CultureInfo.InvariantCulture, out var rightNumber);
+        return (leftNumeric, rightNumeric) switch
+        {
+            (true, true) => leftNumber.CompareTo(rightNumber),
+            (true, false) => -1,
+            (false, true) => 1,
+            _ => string.CompareOrdinal(left, right)
+        };
+    }
+
     private static byte[] ComputeDigest(string algorithm, byte[] bytes)
     {
         return algorithm switch
@@ -2091,6 +2919,8 @@ public static partial class ToolAlgorithms
     }
 
     private sealed record HttpStatusInfo(int Code, string Name, string Description);
+
+    private sealed record SemVersion(int Major, int Minor, int Patch, string PreRelease, string Build, string Original);
 
     private sealed class ExpressionParser
     {

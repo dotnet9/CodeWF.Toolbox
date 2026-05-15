@@ -47,18 +47,40 @@
             Classes="Tertiary H6" TextTrimming="CharacterEllipsis"
             Text="{codewf:I18n {Binding #MyTab.Tag}}"
             Theme="{StaticResource TitleTextBlock}" />
-        <Border Grid.Row="1" Classes="SurfacePanel" Padding="14">
+        <Border Grid.Row="1" Classes="SurfacePanel" Padding="16">
             <TabControl
+                Classes="SettingTabs"
                 HorizontalAlignment="Stretch"
                 VerticalAlignment="Stretch"
                 TabStripPlacement="Top"
                 prism:RegionManager.RegionName="{x:Static core:RegionNames.SettingRegion}"
                 Name="MyTab">
                 <TabControl.Styles>
+                    <Style Selector="TabControl.SettingTabs">
+                        <Setter Property="Background" Value="Transparent" />
+                        <Setter Property="Padding" Value="0" />
+                    </Style>
                     <Style Selector="TabItem">
-                        <Setter Property="CornerRadius" Value="8" />
-                        <Setter Property="Padding" Value="14 8" />
+                        <Setter Property="Margin" Value="0 0 8 0" />
+                        <Setter Property="Padding" Value="16 0" />
                         <Setter Property="MinHeight" Value="36" />
+                        <Setter Property="CornerRadius" Value="8" />
+                        <Setter Property="Background" Value="Transparent" />
+                        <Setter Property="BorderBrush" Value="Transparent" />
+                        <Setter Property="BorderThickness" Value="1" />
+                        <Setter Property="Foreground" Value="{DynamicResource AppMutedTextBrush}" />
+                        <Setter Property="FontWeight" Value="SemiBold" />
+                        <Setter Property="HorizontalContentAlignment" Value="Center" />
+                        <Setter Property="VerticalContentAlignment" Value="Center" />
+                    </Style>
+                    <Style Selector="TabItem:pointerover">
+                        <Setter Property="Background" Value="{DynamicResource AppAccentSoftBrush}" />
+                        <Setter Property="Foreground" Value="{DynamicResource AppAccentBrush}" />
+                    </Style>
+                    <Style Selector="TabItem:selected">
+                        <Setter Property="Background" Value="{DynamicResource AppAccentSoftBrush}" />
+                        <Setter Property="BorderBrush" Value="{DynamicResource AppAccentBrush}" />
+                        <Setter Property="Foreground" Value="{DynamicResource AppAccentBrush}" />
                     </Style>
                 </TabControl.Styles>
             </TabControl>

@@ -95,7 +95,7 @@
                     <Button
                         Grid.Row="1"
                         Classes="RailButton"
-                        Command="{Binding OpenSettingCommand}"
+                        Click="OpenSettingButton_OnClick"
                         ToolTip.Tip="{i18n:I18n {x:Static language:SettingView.Title}}">
                         <PathIcon
                             Width="18"

@@ -38,52 +38,38 @@ public class LoginViewModel : ViewModelBase
     public LoginViewModel(ILoginService loginService)
     {
         _loginService = loginService;
-        // 初始化状态信息
-        StatusMessage = Localization.LoginWindow.NotConnected;
+        Username = _loginService.ConfiguredUsername;
+        Password = _loginService.IsUsingDefaultCredentials ? _loginService.DefaultPassword : string.Empty;
+        StatusMessage = _loginService.HasConfiguredCredentials
+            ? Localization.LoginWindow.LocalLoginReady
+            : Localization.LoginWindow.MissingCredentials;
     }
 
     /// <summary>
     /// 登录方法
     /// </summary>
     public async Task<bool> LoginAsync(Window owner)
-    {        
-        // 使用登录服务进行验证
+    {
+        if (!_loginService.HasConfiguredCredentials)
+        {
+            StatusMessage = Localization.LoginWindow.MissingCredentials;
+            return false;
+        }
+
         bool isValid = _loginService.Login(Username ?? string.Empty, Password);
         IsConnected = isValid;
         StatusMessage = isValid ? Localization.LoginWindow.LoginSuccess : Localization.LoginWindow.LoginFailed;
         
         if (isValid)
         {
-            // 触发登录成功事件
             _isSuccess = true;
             
-            // 登录成功，准备关闭窗口
-            await Task.Delay(500); // 给用户一点时间看到成功消息
+            await Task.Delay(250);
             ShowMainWindow();
             owner.Close(); 
         }
         
         return isValid;
-    }
-
-    /// <summary>
-    /// 游客登录方法
-    /// </summary>
-    public async Task GuestLoginAsync(Window owner)
-    {        
-        // 使用登录服务进行游客登录
-        _loginService.GuestLogin();
-        Username = "guest";
-        IsConnected = true;
-        StatusMessage = Localization.LoginWindow.GuestLoginSuccess;
-
-        // 触发登录成功事件
-        _isSuccess = true;
-        
-        // 登录成功，准备关闭窗口
-        await Task.Delay(500); // 给用户一点时间看到成功消息
-        ShowMainWindow();
-        owner.Close();
     }
 
     public async Task RaiseClosingHandlerAsync()

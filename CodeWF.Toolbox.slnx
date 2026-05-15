@@ -19,10 +19,6 @@
     </Project>
   </Folder>
   <Folder Name="/Modules/">
-    <Project Path="src/CodeWF.Modules.AI/CodeWF.Modules.AI.csproj">
-      <Platform Solution="*|x64" Project="x64" />
-      <Platform Solution="*|x86" Project="x86" />
-    </Project>
     <Project Path="src/CodeWF.Modules.Converter/CodeWF.Modules.Converter.csproj">
       <Platform Solution="*|x64" Project="x64" />
       <Platform Solution="*|x86" Project="x86" />

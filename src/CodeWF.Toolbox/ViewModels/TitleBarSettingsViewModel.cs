@@ -11,12 +11,16 @@ namespace CodeWF.Toolbox.ViewModels;
 public class TitleBarSettingsViewModel : ViewModelBase
 {
     private readonly IApplicationService _applicationService;
+    private readonly ILoginService _loginService;
 
-    public TitleBarSettingsViewModel(IApplicationService applicationService)
+    public TitleBarSettingsViewModel(IApplicationService applicationService, ILoginService loginService)
     {
         _applicationService = applicationService;
+        _loginService = loginService;
+        _loginService.LoginStateChanged += (_, _) => RefreshUser();
         InitTheme();
         InitLanguage();
+        RefreshUser();
     }
 
     public ObservableCollection<ThemeItem> Themes { get; private set; } = [];
@@ -63,6 +67,23 @@ public class TitleBarSettingsViewModel : ViewModelBase
         }
     }
 
+    private string _currentUsername = string.Empty;
+
+    public string CurrentUsername
+    {
+        get => _currentUsername;
+        private set
+        {
+            this.RaiseAndSetIfChanged(ref _currentUsername, value);
+            this.RaisePropertyChanged(nameof(UserInitial));
+        }
+    }
+
+    public string UserInitial =>
+        string.IsNullOrWhiteSpace(CurrentUsername)
+            ? "?"
+            : CurrentUsername.Trim()[0].ToString().ToUpperInvariant();
+
     private void InitTheme()
     {
         var themes = ((ApplicationService)_applicationService).Themes;
@@ -79,5 +100,12 @@ public class TitleBarSettingsViewModel : ViewModelBase
 
         var language = _applicationService.GetCulture();
         _selectedLanguage = Languages.FirstOrDefault(l => l.CultureName == language);
+    }
+
+    private void RefreshUser()
+    {
+        CurrentUsername = _loginService.CurrentUsername
+                          ?? _loginService.ConfiguredUsername
+                          ?? string.Empty;
     }
 }

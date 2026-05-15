@@ -11,7 +11,7 @@
 - 基于 Avalonia UI 与 Semi/Ursa 控件构建跨平台桌面界面。
 - 使用 Prism 模块目录、依赖注入与 Region 导航组织工具页面。
 - 采用 XML 资源做国际化，已包含简体中文、繁体中文、英文和日文。
-- 内置 AI、格式转换、日志查看、开发辅助、XML 翻译管理等模块。
+- 内置格式转换、日志查看、开发辅助、Web 辅助、安全工具、XML 翻译管理等模块。
 - 保留面向 Native AOT 发布的脚本与平台常量配置。
 - 已完善菜单注册、工具搜索和区域导航边界处理。
 
@@ -44,8 +44,8 @@ src/
   CodeWF.Toolbox/                    桌面应用、主界面、设置与资源
   CodeWF.Core/                       公共抽象、服务与区域定义
   CodeWF.Controls/                   公共控件
-  CodeWF.Modules.AI/                 AI 工具模块
   CodeWF.Modules.Converter/          转换工具模块
+  CodeWF.Modules.ToolFramework/      本地工具运行框架与工具目录
   CodeWF.Modules.Development/        开发辅助模块
   CodeWF.Modules.LogViewer/          大文件日志查看模块
   CodeWF.Modules.XmlTranslatorManager/ XML 国际化管理模块
@@ -69,5 +69,5 @@ docs/
 
 - 日志查看：快速打开大日志文件，只渲染当前可见区域，并支持文件持续追加时的 tail 跟随。
 - 格式转换：提供 JSON/YAML、Base64、GUID、日期时间与图片转图标等工具。
-- 开发辅助：提供 JSON/YAML 格式化等日常开发小工具。
+- 开发辅助：提供 JSON/YAML 格式化、Shell 与数据处理等日常开发小工具。
 - XML 翻译管理：用于比对、合并和维护 XML 国际化资源。

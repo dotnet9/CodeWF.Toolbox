@@ -24,7 +24,6 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Ursa.PrismExtension;
-using AIModule = CodeWF.Modules.AI.AIModule;
 using ConverterModule = CodeWF.Modules.Converter.ConverterModule;
 using DataModule = CodeWF.Modules.Data.DataModule;
 using DevelopmentModule = CodeWF.Modules.Development.DevelopmentModule;
@@ -75,7 +74,6 @@ public partial class App : PrismApplication
     {
         moduleCatalog.AddModule<MainModule>();
         moduleCatalog.AddModule<ToolFrameworkModule>();
-        moduleCatalog.AddModule<AIModule>();
         moduleCatalog.AddModule<ConverterModule>();
         moduleCatalog.AddModule<DevelopmentModule>();
         moduleCatalog.AddModule<SecurityModule>();

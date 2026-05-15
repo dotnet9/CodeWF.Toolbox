@@ -81,11 +81,10 @@
       "UsernameWatermark": "Username",
       "PasswordWatermark": "Password",
       "LoginButton": "Login",
-      "GuestLoginButton": "Continue as guest",
-      "NotConnected": "Service unavailable",
+      "LocalLoginReady": "Local account is ready",
+      "MissingCredentials": "Set the App.config username and password hash first",
       "LoginSuccess": "Login successful",
-      "LoginFailed": "Invalid username or password",
-      "GuestLoginSuccess": "Guest mode enabled"
+      "LoginFailed": "Invalid username or password"
     }
   }
 }

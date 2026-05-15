@@ -12,7 +12,7 @@
               x:DataType="vm:LoginViewModel"
               x:Name="loginWindow"
               mc:Ignorable="d"
-              Width="420"
+              Width="460"
               Height="410"
               Icon="/Assets/logo.ico"
               Background="{DynamicResource AppSurfaceBrush}"
@@ -39,10 +39,10 @@
             <Setter Property="MinHeight" Value="24" />
             <Setter Property="FontSize" Value="12" />
             <Setter Property="FontWeight" Value="SemiBold" />
-            <Setter Property="Foreground" Value="{DynamicResource AppRoseBrush}" />
+            <Setter Property="Foreground" Value="{DynamicResource AppMutedTextBrush}" />
             <Setter Property="HorizontalAlignment" Value="Center" />
             <Setter Property="VerticalAlignment" Value="Center" />
-            <Setter Property="TextTrimming" Value="CharacterEllipsis" />
+            <Setter Property="TextWrapping" Value="Wrap" />
         </Style>
     </codewf:CodeWFWindow.Styles>
     <codewf:CodeWFWindow.LeftContent>
@@ -70,7 +70,7 @@
                 </Interaction.Behaviors>
     <Border
         Classes="SurfacePanel"
-        Width="328"
+        Width="372"
         HorizontalAlignment="Center"
         VerticalAlignment="Center"
         Padding="26 24">
@@ -109,22 +109,14 @@
                 Text="{i18n:I18n {Binding StatusMessage}}"
                 Classes="StatusMessage" />
 
-            <Grid Grid.Row="4" ColumnDefinitions="*,*" ColumnSpacing="12" Margin="0 2 0 0">
-                <Button
-                    Grid.Column="0"
-                    Classes="AppPrimary"
-                    Content="{i18n:I18n {x:Static language:LoginWindow.LoginButton}}"
-                    Command="{Binding LoginAsync}"
-                    CommandParameter="{Binding ElementName=loginWindow}"
-                    HorizontalAlignment="Stretch" />
-                <Button
-                    Grid.Column="1"
-                    Classes="AppGhost"
-                    Content="{i18n:I18n {x:Static language:LoginWindow.GuestLoginButton}}"
-                    Command="{Binding GuestLoginAsync}"
-                    CommandParameter="{Binding ElementName=loginWindow}"
-                    HorizontalAlignment="Stretch" />
-            </Grid>
+            <Button
+                Grid.Row="4"
+                Classes="AppPrimary"
+                Content="{i18n:I18n {x:Static language:LoginWindow.LoginButton}}"
+                Command="{Binding LoginAsync}"
+                CommandParameter="{Binding ElementName=loginWindow}"
+                HorizontalAlignment="Stretch"
+                Margin="0 2 0 0" />
         </Grid>
     </Border>
 </codewf:CodeWFWindow>

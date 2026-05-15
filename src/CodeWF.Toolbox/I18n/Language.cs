@@ -110,11 +110,10 @@ namespace Localization
         public static readonly string UsernameWatermark = "Localization.LoginWindow.UsernameWatermark";
         public static readonly string PasswordWatermark = "Localization.LoginWindow.PasswordWatermark";
         public static readonly string LoginButton = "Localization.LoginWindow.LoginButton";
-        public static readonly string GuestLoginButton = "Localization.LoginWindow.GuestLoginButton";
-        public static readonly string NotConnected = "Localization.LoginWindow.NotConnected";
+        public static readonly string LocalLoginReady = "Localization.LoginWindow.LocalLoginReady";
+        public static readonly string MissingCredentials = "Localization.LoginWindow.MissingCredentials";
         public static readonly string LoginSuccess = "Localization.LoginWindow.LoginSuccess";
         public static readonly string LoginFailed = "Localization.LoginWindow.LoginFailed";
-        public static readonly string GuestLoginSuccess = "Localization.LoginWindow.GuestLoginSuccess";
     }
 
 }

@@ -81,11 +81,10 @@
       "UsernameWatermark": "ユーザー名",
       "PasswordWatermark": "パスワード",
       "LoginButton": "ログイン",
-      "GuestLoginButton": "ゲストとして続行",
-      "NotConnected": "サービスに接続できません",
+      "LocalLoginReady": "ローカルアカウントを使用できます",
+      "MissingCredentials": "先に App.config でユーザー名とパスワードハッシュを設定してください",
       "LoginSuccess": "ログイン成功",
-      "LoginFailed": "ユーザー名またはパスワードが正しくありません",
-      "GuestLoginSuccess": "ゲストモードで開始しました"
+      "LoginFailed": "ユーザー名またはパスワードが正しくありません"
     }
   }
 }
