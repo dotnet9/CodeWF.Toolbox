@@ -22,6 +22,8 @@
       "ModuleCountLabel": "機能モジュール",
       "PlatformLabel": "現在のプラットフォーム",
       "FrequentToolsTitle": "よく使うツール",
+      "RecommendedToolsTitle": "おすすめツール",
+      "QuickToolsTitle": "よく使うツールとおすすめツール",
       "CommunityTitle": "フォローとフィードバック",
       "CommunityDescription": "QR コードからツール更新、Avalonia 記事、モジュール計画を確認し、作者へフィードバックできます。",
       "WeChat": "作者に連絡",

@@ -22,6 +22,8 @@
       "ModuleCountLabel": "功能模块",
       "PlatformLabel": "当前平台",
       "FrequentToolsTitle": "常用工具",
+      "RecommendedToolsTitle": "推荐工具",
+      "QuickToolsTitle": "常用与推荐工具",
       "CommunityTitle": "关注与反馈",
       "CommunityDescription": "扫码关注公众号，获取工具更新、Avalonia 实战文章和模块规划；也可以联系作者反馈建议。",
       "WeChat": "联系作者",

@@ -15,7 +15,7 @@
     <UserControl.Resources>
         <converters:IconConverter x:Key="IconConverter" />
     </UserControl.Resources>
-    <Border Padding="22 20" Background="{DynamicResource AppSurfaceBrush}">
+    <Border Padding="18 16" Background="{DynamicResource AppSurfaceBrush}">
         <Grid RowDefinitions="Auto, *">
             <Border
                 Classes="SurfacePanel"
@@ -53,7 +53,7 @@
             </Border>
             <ContentControl
                 Grid.Row="1"
-                Margin="0 16 0 0"
+                Margin="0 14 0 0"
                 prism:RegionManager.RegionName="{x:Static core:RegionNames.ContentRegion}" />
         </Grid>
     </Border>

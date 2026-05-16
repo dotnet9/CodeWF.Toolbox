@@ -14,7 +14,8 @@
         <semi:UrsaSemiTheme Locale="zh-CN"/>
 		<codewf:CodeWFTheme />
         <StyleInclude Source="../Styles/Index.axaml" />
-        <codewf:MarkdownThemes TypographyTheme="Simple" />
+        <codewf:MarkdownThemes TypographyTheme="Simple"
+                               TypographySize="Small" />
     </prism:PrismApplication.Styles>
     <TrayIcon.Icons>
         <TrayIcons>

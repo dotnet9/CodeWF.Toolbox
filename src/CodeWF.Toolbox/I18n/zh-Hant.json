@@ -22,6 +22,8 @@
       "ModuleCountLabel": "功能模組",
       "PlatformLabel": "目前平台",
       "FrequentToolsTitle": "常用工具",
+      "RecommendedToolsTitle": "推薦工具",
+      "QuickToolsTitle": "常用與推薦工具",
       "CommunityTitle": "關注與反饋",
       "CommunityDescription": "掃碼關注公眾號，獲取工具更新、Avalonia 實戰文章和模組規劃；也可以聯繫作者反饋建議。",
       "WeChat": "聯繫作者",

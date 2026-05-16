@@ -22,6 +22,8 @@
       "ModuleCountLabel": "Feature modules",
       "PlatformLabel": "Current platform",
       "FrequentToolsTitle": "Frequent tools",
+      "RecommendedToolsTitle": "Recommended tools",
+      "QuickToolsTitle": "Frequent and recommended tools",
       "CommunityTitle": "Follow and feedback",
       "CommunityDescription": "Scan the QR codes for toolbox updates, Avalonia articles, module plans, and feedback to the author.",
       "WeChat": "Contact author",

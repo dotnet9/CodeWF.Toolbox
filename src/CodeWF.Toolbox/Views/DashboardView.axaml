@@ -8,14 +8,13 @@
              xmlns:language="clr-namespace:Localization"
              xmlns:vm="clr-namespace:CodeWF.Toolbox.ViewModels"
              xmlns:models="clr-namespace:CodeWF.Toolbox.Models"
-             xmlns:coreModels="clr-namespace:CodeWF.Core.Models;assembly=CodeWF.Core"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="CodeWF.Toolbox.Views.DashboardView"
              x:Name="Root"
              x:DataType="vm:DashboardViewModel">
     <UserControl.Styles>
         <Style Selector="Border.HeroPanel">
-            <Setter Property="Padding" Value="28" />
+            <Setter Property="Padding" Value="24" />
             <Setter Property="CornerRadius" Value="8" />
             <Setter Property="Background" Value="{DynamicResource AppPanelBrush}" />
             <Setter Property="BorderBrush" Value="{DynamicResource AppLineBrush}" />
@@ -23,7 +22,7 @@
             <Setter Property="BoxShadow" Value="0 14 34 0 #120B1430" />
         </Style>
         <Style Selector="Border.MetricItem">
-            <Setter Property="Padding" Value="20 16" />
+            <Setter Property="Padding" Value="18 14" />
             <Setter Property="CornerRadius" Value="8" />
             <Setter Property="Background" Value="{DynamicResource AppPanelBrush}" />
             <Setter Property="BorderBrush" Value="{DynamicResource AppLineBrush}" />
@@ -40,7 +39,7 @@
             <Setter Property="Background" Value="{DynamicResource AppAmberSoftBrush}" />
         </Style>
         <Style Selector="TextBlock.MetricValue">
-            <Setter Property="FontSize" Value="28" />
+            <Setter Property="FontSize" Value="26" />
             <Setter Property="FontWeight" Value="SemiBold" />
         </Style>
         <Style Selector="TextBlock.MetricValue.Blue">
@@ -91,8 +90,8 @@
             <Setter Property="BorderThickness" Value="1" />
         </Style>
         <Style Selector="Button.FrequentTool">
-            <Setter Property="Height" Value="72" />
-            <Setter Property="Padding" Value="12" />
+            <Setter Property="Height" Value="68" />
+            <Setter Property="Padding" Value="10" />
             <Setter Property="CornerRadius" Value="8" />
             <Setter Property="Background" Value="{DynamicResource AppPanelAltBrush}" />
             <Setter Property="BorderBrush" Value="{DynamicResource AppLineBrush}" />
@@ -108,13 +107,13 @@
 
     <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
         <Grid
-            MaxWidth="980"
-            Margin="28"
+            MaxWidth="900"
+            Margin="24"
             HorizontalAlignment="Stretch"
             RowDefinitions="Auto, Auto, Auto, Auto, Auto"
-            RowSpacing="18">
+            RowSpacing="16">
             <Border Classes="HeroPanel">
-                <Grid ColumnDefinitions="*, Auto" ColumnSpacing="26">
+                <Grid ColumnDefinitions="*, Auto" ColumnSpacing="22">
                     <StackPanel Spacing="10" VerticalAlignment="Center">
                         <TextBlock
                             Classes="H3"
@@ -135,14 +134,14 @@
 
                     <Border
                         Grid.Column="1"
-                        Width="104"
-                        Height="104"
+                        Width="96"
+                        Height="96"
                         Background="{DynamicResource AppAccentSoftBrush}"
                         BorderBrush="{DynamicResource AppLineBrush}"
                         BorderThickness="1"
                         CornerRadius="8"
                         VerticalAlignment="Center">
-                        <Image Width="70" Height="70" Source="/Assets/logo.ico" />
+                        <Image Width="64" Height="64" Source="/Assets/logo.ico" />
                     </Border>
                 </Grid>
             </Border>
@@ -193,33 +192,33 @@
         <Border
             Grid.Row="3"
             Classes="FrequentPanel"
-            IsVisible="{Binding HasFrequentTools}">
+            IsVisible="{Binding HasDashboardTools}">
             <StackPanel Spacing="12">
                 <TextBlock
                     FontWeight="SemiBold"
-                    Text="{i18n:I18n {x:Static language:DashboardView.FrequentToolsTitle}}" />
-                <ItemsControl ItemsSource="{Binding FrequentTools}">
+                    Text="{i18n:I18n {Binding DashboardToolsTitleKey}}" />
+                <ItemsControl ItemsSource="{Binding DashboardTools}">
                     <ItemsControl.ItemsPanel>
                         <ItemsPanelTemplate>
                             <WrapPanel Orientation="Horizontal" />
                         </ItemsPanelTemplate>
                     </ItemsControl.ItemsPanel>
                     <ItemsControl.ItemTemplate>
-                        <DataTemplate x:DataType="coreModels:UserToolUsage">
+                        <DataTemplate x:DataType="vm:DashboardToolItem">
                             <Button
-                                Width="292"
-                                Margin="0 0 12 12"
+                                Width="180"
+                                Margin="0 0 10 10"
                                 Classes="FrequentTool"
-                                Command="{Binding #Root.DataContext.OpenFrequentToolCommand}"
+                                Command="{Binding #Root.DataContext.OpenDashboardToolCommand}"
                                 CommandParameter="{Binding}">
-                                <Grid ColumnDefinitions="Auto,*" ColumnSpacing="12">
+                                <Grid ColumnDefinitions="Auto,*" ColumnSpacing="8">
                                     <TextBlock
-                                        Width="22"
+                                        Width="20"
                                         VerticalAlignment="Center"
                                         FontWeight="SemiBold"
                                         Foreground="{DynamicResource AppAccentBrush}"
-                                        Text="{Binding Count}" />
-                                    <StackPanel Grid.Column="1" Spacing="4" VerticalAlignment="Center">
+                                        Text="{Binding Badge}" />
+                                    <StackPanel Grid.Column="1" Spacing="3" VerticalAlignment="Center">
                                         <TextBlock
                                             FontWeight="SemiBold"
                                             Text="{i18n:I18n {Binding Name}}"

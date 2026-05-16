@@ -10,9 +10,9 @@
                      xmlns:language="clr-namespace:Localization"
                      x:DataType="vm:TitleBarSettingsViewModel"
                      mc:Ignorable="d" WindowStartupLocation="CenterScreen"
-                     Width="1280" Height="840"
-                     MinWidth="1040" MinHeight="680"
-                     d:DesignWidth="1200" d:DesignHeight="800"
+                     Width="1180" Height="760"
+                     MinWidth="1024" MinHeight="640"
+                     d:DesignWidth="1180" d:DesignHeight="760"
                      Icon="/Assets/logo.ico"
                      Background="{DynamicResource AppSurfaceBrush}"
                      TitleBarHeight="50"
@@ -79,10 +79,10 @@
         </Grid>
     </codewf:CodeWFWindow.LeftContent>
     <codewf:CodeWFWindow.RightContent>
-        <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="0 0 16 0" Spacing="8">
+        <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="0 0 12 0" Spacing="8">
             <ComboBox
                 x:Name="Search"
-                Width="360"
+                Width="280"
                 Classes="AppSelect"
                 HorizontalContentAlignment="Left"
                 IsEditable="True"
@@ -94,7 +94,7 @@
                 Text="{Binding SearchText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
 
             <ComboBox
-                Width="136"
+                Width="124"
                 Classes="AppSelect"
                 DisplayMemberBinding="{i18n:I18n {Binding Name}}"
                 HorizontalContentAlignment="Left"
@@ -104,7 +104,7 @@
                 ToolTip.Tip="{i18n:I18n {x:Static language:CommonSettingView.Theme}}" />
 
             <ComboBox
-                Width="150"
+                Width="138"
                 Classes="AppSelect"
                 DisplayMemberBinding="{Binding Description}"
                 HorizontalContentAlignment="Left"
@@ -137,7 +137,7 @@
                     </Border>
                     <TextBlock
                         Grid.Column="1"
-                        MaxWidth="110"
+                        MaxWidth="92"
                         VerticalAlignment="Center"
                         FontWeight="SemiBold"
                         Foreground="{DynamicResource AppTextBrush}"

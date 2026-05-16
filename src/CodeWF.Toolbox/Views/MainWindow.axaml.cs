@@ -176,12 +176,19 @@ public partial class MainWindow : CodeWFWindow
             return;
         }
 
-        const double resolutionThreshold = 1920 + 50;
-        var isSmaller = screen.WorkingArea.Width < resolutionThreshold;
-        var targetWidth = isSmaller ? 1440 : 1920;
-        var targetHeight = isSmaller ? 810 : 1080;
-        MinWidth = Width = Math.Min(targetWidth, screen.WorkingArea.Width);
-        MinHeight = Height = Math.Min(targetHeight, screen.WorkingArea.Height);
+        const double preferredWidth = 1180;
+        const double preferredHeight = 760;
+        const double minimumWidth = 1024;
+        const double minimumHeight = 640;
+        const double screenMargin = 80;
+
+        var availableWidth = Math.Max(800, screen.WorkingArea.Width - screenMargin);
+        var availableHeight = Math.Max(560, screen.WorkingArea.Height - screenMargin);
+
+        Width = Math.Min(preferredWidth, availableWidth);
+        Height = Math.Min(preferredHeight, availableHeight);
+        MinWidth = Math.Min(minimumWidth, Width);
+        MinHeight = Math.Min(minimumHeight, Height);
     }
 
     private static void RunOptionalStartupStep(string stage, Action action)

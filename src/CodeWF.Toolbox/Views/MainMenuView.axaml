@@ -69,7 +69,7 @@
         </Style>
     </UserControl.Styles>
     <Border Padding="0" Background="{DynamicResource AppChromeBrush}" BorderBrush="{DynamicResource AppLineBrush}" BorderThickness="0 0 1 0">
-        <Grid ColumnDefinitions="64,*">
+        <Grid ColumnDefinitions="60,*">
             <Border Grid.Column="0"
                     Background="{DynamicResource AppPanelBrush}"
                     BorderBrush="{DynamicResource AppLineBrush}"
@@ -108,7 +108,7 @@
 
             <Grid Grid.Column="1" RowDefinitions="Auto,*">
                 <Border
-                    Padding="16 14 14 12"
+                    Padding="14 12"
                     Background="{DynamicResource AppChromeBrush}"
                     BorderBrush="{DynamicResource AppLineBrush}"
                     BorderThickness="0 0 0 1">
@@ -124,7 +124,7 @@
                     Grid.Row="1"
                     Background="{DynamicResource AppChromeBrush}"
                     Foreground="{DynamicResource AppTextBrush}"
-                    ExpandWidth="240"
+                    ExpandWidth="220"
                     HeaderBinding="{i18n:I18n {Binding Name}}"
                     IconBinding="{Binding Icon}"
                     ItemsSource="{Binding ActiveMenuItems}"
