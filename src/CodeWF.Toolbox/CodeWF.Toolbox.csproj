@@ -39,15 +39,13 @@
 	<ItemGroup>
 		<PackageReference Include="Avalonia" />
 		<PackageReference Include="Avalonia.Desktop" />
-		<!--Condition below keeps diagnostics support out of Release output.-->
-		<PackageReference Condition="'$(Configuration)' == 'Debug'" Include="AvaloniaUI.DiagnosticsSupport" />
+		<PackageReference Include="CodeWF.AvaloniaControls.ProDataGrid.Themes" />
 		<PackageReference Include="Semi.Avalonia" />
 		<PackageReference Include="Irihi.Ursa.PrismExtension" />
 		<PackageReference Include="Irihi.Ursa.Themes.Semi" />
 		<PackageReference Include="Prism.Avalonia" />
 		<PackageReference Include="Prism.DryIoc.Avalonia" />
 		<PackageReference Include="ReactiveUI.Avalonia" />
-		<PackageReference Include="Semi.Avalonia.AvaloniaEdit" />
 		<PackageReference Include="VC-LTL" />
 		<PackageReference Include="YY-Thunks" />
 	</ItemGroup>

@@ -9,8 +9,7 @@
     xmlns:codewf="https://codewf.com">
     <prism:PrismApplication.Styles>
 		<semi:SemiTheme Locale="zh-CN" />
-		<semi:AvaloniaEditSemiTheme />
-		<semi:ProDataGridSemiTheme />
+		<codewf:CodeWFProDataGridTheme />
         <semi:UrsaSemiTheme Locale="zh-CN"/>
 		<codewf:CodeWFTheme />
         <StyleInclude Source="../Styles/Index.axaml" />

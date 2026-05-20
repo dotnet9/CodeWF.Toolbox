@@ -71,3 +71,35 @@ docs/
 - 格式转换：提供 JSON/YAML、Base64、GUID、日期时间与图片转图标等工具。
 - 开发辅助：提供 JSON/YAML 格式化、Shell 与数据处理等日常开发小工具。
 - XML 翻译管理：用于比对、合并和维护 XML 国际化资源。
+
+## 第三方开源组件审计（2026-05-20）
+
+检查方式：`dotnet restore CodeWF.Toolbox.slnx --configfile <local-nuget-config>`、`dotnet list package --include-transitive`、NuGet `.nuspec`、NuGet.org 与源码仓库信息。优先接受 MIT / Apache-2.0 / BSD；其它开源协议在源码与传递依赖均可追溯时单独标注。
+
+整改：
+
+- 移除了 `AvaloniaUI.DiagnosticsSupport` 和 `Semi.Avalonia.AvaloniaEdit`；AvaloniaEdit 改为 `Avalonia.AvaloniaEdit` + 官方 Fluent 样式。
+- `CodeWF.AvaloniaControls.ProDataGrid` / `CodeWF.AvaloniaControls.ProDataGrid.Themes` 升到 `12.0.3.2`，避开 `Semi.Avalonia.ProDataGrid` 黑盒链。
+- 自研 NuGet 依赖更新到本次修复包：`CodeWF.AvaloniaControls.Themes 12.0.3.3`、`CodeWF.EventBus 3.4.5.5`、`CodeWF.Log.Core 12.0.3.1`、`CodeWF.Tools* 1.3.13.2`、`Lang.Avalonia.Json 12.0.3.1`。
+- 稳定开源包更新：`Dapper 2.1.79`、`Dapper.AOT 1.0.52`、`Xaml.Behaviors 12.0.0.1`、`coverlet.collector 10.0.1`。
+- `BouncyCastle.Cryptography` 从 `2.7.0-beta.98` 改为稳定 `2.6.2`。
+- `Microsoft.Data.Sqlite` 从 `11.0.0-preview.4` 改为稳定 `10.0.8`。
+- `xunit.runner.visualstudio` 从 `4.0.0-pre.4` 改为稳定 `3.1.5`。
+- 按要求保留 `Prism.Avalonia` / `Prism.DryIoc.Avalonia` `8.1.97.11073` 和 `Irihi.Ursa.PrismExtension` `2.0.0`；Prism 9 是收费版本，不升级。
+
+| 包 | 使用范围 | 协议 | 源码/项目地址 | 结论 |
+| --- | --- | --- | --- | --- |
+| `Avalonia` / `Avalonia.Desktop` / `Avalonia.AvaloniaEdit` / `AvaloniaEdit.TextMate` | UI 与编辑器 | MIT | https://github.com/AvaloniaUI/Avalonia / https://github.com/AvaloniaUI/AvaloniaEdit | 通过 |
+| `Semi.Avalonia` | UI 主题 | MIT | https://github.com/irihitech/Semi.Avalonia | 通过，仅保留开源主体包 |
+| `Irihi.Ursa.PrismExtension` / `Irihi.Ursa.Themes.Semi` | 对话框、主题与 Prism 扩展 | MIT | https://github.com/irihitech/Ursa.Avalonia | 通过，保留兼容 Prism 8 的版本线 |
+| `Prism.Avalonia` / `Prism.DryIoc.Avalonia` `8.1.97.11073` | 模块化、DI、Region | MIT | https://github.com/AvaloniaCommunity/Prism.Avalonia | 通过，未使用 Prism 9 |
+| `ReactiveUI.Avalonia` / `Xaml.Behaviors` | MVVM / 行为 | MIT | https://github.com/reactiveui/reactiveui / https://github.com/wieslawsoltes/Xaml.Behaviors | 通过 |
+| `CodeWF.*` / `Lang.Avalonia.Json` | 自研组件 | MIT | https://github.com/dotnet9 | 自研开源包，通过；ProDataGrid 主题改用 `CodeWF.AvaloniaControls.ProDataGrid.Themes` |
+| `BCrypt.Net-Next` / `BouncyCastle.Cryptography` / `NBitcoin` / `Otp.NET` | 安全与编码工具 | MIT | https://github.com/BcryptNet/bcrypt.net / https://github.com/bcgit/bc-csharp / https://github.com/MetacoSA/NBitcoin / https://github.com/kspearrin/Otp.NET | 通过 |
+| `Dapper` / `Dapper.AOT` / `Microsoft.Data.Sqlite` | 数据访问 | Apache-2.0 / MIT | https://github.com/DapperLib/Dapper / https://github.com/dotnet/efcore | 通过 |
+| `CronExpressionDescriptor` / `DiffPlex` / `Figgle` / `Figgle.Fonts` / `Hashids.net` / `IbanNet` / `libphonenumber-csharp` / `Markdig` / `NUlid` / `QRCoder` / `TextMateSharp.Grammars` / `Tomlyn` / `UAParser` / `YamlDotNet` | 工具模块 | MIT / BSD / Apache-2.0 | 各 NuGet 包均提供公开 repository/projectUrl | 通过 |
+| `VC-LTL` | Windows 兼容 | EPL-2.0 | https://github.com/Chuyu-Team/VC-LTL5 | 源码开放，按“非优先但可追溯”通过 |
+| `YY-Thunks` | Windows 兼容 | MIT | https://github.com/Chuyu-Team/YY-Thunks | 源码开放，通过 |
+| `Microsoft.NET.Test.Sdk` / `coverlet.collector` / `xunit` / `xunit.runner.visualstudio` | 测试 | MIT / Apache-2.0 | https://github.com/microsoft/vstest / https://github.com/coverlet-coverage/coverlet / https://github.com/xunit/xunit | 通过 |
+
+传递依赖检查结论：有效依赖链未发现 `Semi.Avalonia.Dock`、`Semi.Avalonia.ProDataGrid`、`Semi.Avalonia.AvaloniaEdit`、`AvaloniaUI.DiagnosticsSupport`、Prism 9 包、`System.Drawing.Common 4.7.0` 或其它黑盒组件。`Magick.NET-Q16-AnyCPU` 通过 `CodeWF.Tools.Image 1.3.13.2` 使用，源码与许可证可追溯。

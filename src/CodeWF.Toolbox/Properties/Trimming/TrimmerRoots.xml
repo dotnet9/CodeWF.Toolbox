@@ -21,8 +21,6 @@
 	<assembly fullname="Lang.Avalonia" preserve="All" />
 	<assembly fullname="Lang.Avalonia.Json" preserve="All" />
 	<assembly fullname="Semi.Avalonia" preserve="All" />
-	<assembly fullname="Semi.Avalonia.AvaloniaEdit" preserve="All" />
-	<assembly fullname="Semi.Avalonia.ProDataGrid" preserve="All" />
 	<assembly fullname="Ursa" preserve="All" />
 	<assembly fullname="Ursa.Themes.Semi" preserve="All" />
 	<assembly fullname="Ursa.PrismExtension" preserve="All" />
