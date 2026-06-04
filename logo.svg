@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="CodeWF Toolbox logo">
+  <defs>
+    <linearGradient id="toolbox-bg" x1="96" y1="64" x2="416" y2="448" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#0FBAA4"/>
+      <stop offset="1" stop-color="#2563EB"/>
+    </linearGradient>
+  </defs>
+  <rect x="48" y="48" width="416" height="416" rx="108" fill="url(#toolbox-bg)"/>
+  <rect x="160" y="86" width="192" height="62" rx="26" fill="#F6B13D"/>
+  <path d="M196 160L322 256L196 352" fill="none" stroke="#FFFFFF" stroke-width="64" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

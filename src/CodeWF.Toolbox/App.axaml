@@ -20,7 +20,7 @@
         <TrayIcons>
             <TrayIcon
                 Clicked="OpenMainWindow_OnClicked"
-                Icon="/Assets/logo.ico"
+                Icon="/logo.ico"
                 ToolTipText="{i18N:I18n {x:Static language:MainModule.Title}}">
                 <TrayIcon.Menu>
                     <NativeMenu>

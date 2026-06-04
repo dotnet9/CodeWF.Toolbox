@@ -3,7 +3,7 @@
 		<OutputType>WinExe</OutputType>
 		<TargetFrameworks>net11.0;net11.0-windows</TargetFrameworks>
 		<ApplicationManifest>app.manifest</ApplicationManifest>
-		<ApplicationIcon>Assets\logo.ico</ApplicationIcon>
+		<ApplicationIcon>..\..\logo.ico</ApplicationIcon>
 		<Nullable>enable</Nullable>
 		<LangVersion>latest</LangVersion>
 		<AvaloniaUseCompiledBindingsByDefault>true</AvaloniaUseCompiledBindingsByDefault>
@@ -22,6 +22,9 @@
 
 	<ItemGroup>
 		<AvaloniaResource Include="Assets\**" />
+		<AvaloniaResource Include="..\..\logo.svg" Link="logo.svg" />
+		<AvaloniaResource Include="..\..\logo.png" Link="logo.png" />
+		<AvaloniaResource Include="..\..\logo.ico" Link="logo.ico" />
 	</ItemGroup>
 
 	<ItemGroup>

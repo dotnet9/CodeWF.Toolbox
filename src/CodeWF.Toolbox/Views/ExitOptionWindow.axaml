@@ -20,7 +20,7 @@
     ShowInTaskbar="False"
     WindowStartupLocation="CenterOwner"
     Background="{DynamicResource AppPanelBrush}"
-    Icon="/Assets/logo.ico"
+    Icon="/logo.ico"
     TitleBarHeight="34"
     TitleBarBackground="{DynamicResource AppPanelBrush}"
     TitleBarBorderBrush="{DynamicResource AppLineBrush}"

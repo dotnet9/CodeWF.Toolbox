@@ -13,7 +13,7 @@
                      Width="1180" Height="760"
                      MinWidth="1024" MinHeight="640"
                      d:DesignWidth="1180" d:DesignHeight="760"
-                     Icon="/Assets/logo.ico"
+                     Icon="/logo.ico"
                      Background="{DynamicResource AppSurfaceBrush}"
                      TitleBarHeight="50"
                      TitleBarBackground="{DynamicResource AppChromeBrush}"
@@ -68,7 +68,7 @@
                 BorderBrush="{DynamicResource AppLineBrush}"
                 BorderThickness="1"
                 CornerRadius="8">
-                <Image Width="22" Height="22" Source="\Assets\logo.ico" />
+                <Image Width="22" Height="22" Source="/logo.ico" />
             </Border>
             <TextBlock
                 Grid.Column="1"

@@ -27,7 +27,7 @@
                     BorderBrush="{DynamicResource AppLineBrush}"
                     BorderThickness="1"
                     CornerRadius="8">
-                    <Image Width="38" Height="38" Source="/Assets/logo.ico" />
+                    <Image Width="38" Height="38" Source="/logo.ico" />
                 </Border>
                 <StackPanel Grid.Column="1" Spacing="8" VerticalAlignment="Center">
                     <TextBlock

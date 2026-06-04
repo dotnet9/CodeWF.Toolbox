@@ -14,7 +14,7 @@
               mc:Ignorable="d"
               Width="460"
               Height="456"
-              Icon="/Assets/logo.ico"
+              Icon="/logo.ico"
               Background="{DynamicResource AppSurfaceBrush}"
               TitleBarHeight="48"
               TitleBarBackground="{DynamicResource AppChromeBrush}"
@@ -54,7 +54,7 @@
                 BorderBrush="{DynamicResource AppLineBrush}"
                 BorderThickness="1"
                 CornerRadius="8">
-                <Image Width="20" Height="20" Source="\Assets\logo.ico" />
+                <Image Width="20" Height="20" Source="/logo.ico" />
             </Border>
             <TextBlock
                 Grid.Column="1"
@@ -83,7 +83,7 @@
                     BorderBrush="{DynamicResource AppLineBrush}"
                     BorderThickness="1"
                     CornerRadius="8">
-                    <Image Width="38" Height="38" Source="\Assets\logo.ico" />
+                    <Image Width="38" Height="38" Source="/logo.ico" />
                 </Border>
                 <TextBlock
                     Classes="H5"
