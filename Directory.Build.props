@@ -1,18 +1,15 @@
-﻿<Project>
+<Project>
     <PropertyGroup>
-        <ApplicationVersion>12.0.3.1</ApplicationVersion>
-        <Version>$(ApplicationVersion)</Version>
-        <AssemblyVersion>$(ApplicationVersion)</AssemblyVersion>
-        <FileVersion>$(ApplicationVersion)</FileVersion>
-        <InformationalVersion>$(ApplicationVersion)</InformationalVersion>
-        <PackageVersion>$(ApplicationVersion)</PackageVersion>
+        <Version>12.0.3.3</Version>
         <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
         <CentralPackageTransitivePinningEnabled>true</CentralPackageTransitivePinningEnabled>
+        <Title>码坊工具箱客户端</Title>
+        <Description>使用 .NET 11、Avalonia UI 和 Prism 开发的工具客户端，支持 AOT 发布。</Description>
+        <Company>dotnet9.com</Company>
+        <Product>CodeWF.Toolbox</Product>
+        <Copyright>Copyright © 2026 dotnet9.com. All rights reserved.</Copyright>
         <DefineConstants>$(DefineConstants);PLATFORM_WIN_X64</DefineConstants>
     </PropertyGroup>
 </Project>
-
-
-
 
 

@@ -12,7 +12,7 @@
     prism:ViewModelLocator.AutoWireViewModel="True"
     Width="720" WindowStartupLocation="CenterOwner"
     Height="560"
-    Icon="/logo.ico"
+    Icon="/Assets/logo.ico"
     Background="{DynamicResource AppSurfaceBrush}"
     TitleBarHeight="48"
     TitleBarBackground="{DynamicResource AppChromeBrush}"
@@ -36,7 +36,7 @@
             BorderThickness="1"
             CornerRadius="8"
             IsHitTestVisible="False">
-            <Image Width="20" Height="20" Source="/logo.ico" />
+            <Image Width="20" Height="20" Source="/Assets/logo.ico" />
         </Border>
     </codewf:CodeWFWindow.LeftContent>
     <Grid Margin="22" RowDefinitions="Auto,*" RowSpacing="14">

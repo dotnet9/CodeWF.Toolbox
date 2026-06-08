@@ -141,7 +141,7 @@
                         BorderThickness="1"
                         CornerRadius="8"
                         VerticalAlignment="Center">
-                        <Image Width="64" Height="64" Source="/logo.ico" />
+                        <Image Width="64" Height="64" Source="/Assets/logo.ico" />
                     </Border>
                 </Grid>
             </Border>

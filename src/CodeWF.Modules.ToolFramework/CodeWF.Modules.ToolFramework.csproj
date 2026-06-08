@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
 		<TargetFrameworks>net11.0</TargetFrameworks>
@@ -43,4 +43,3 @@
 	</ItemGroup>
 
 </Project>
-

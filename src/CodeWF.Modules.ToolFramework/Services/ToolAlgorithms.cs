@@ -456,7 +456,7 @@ public static partial class ToolAlgorithms
                     {
                         volumes.Add(tokenValue[2..]);
                     }
-                    else if (image.Length == 0 && !tokenValue.StartsWith('-', StringComparison.Ordinal))
+                    else if (image.Length == 0 && !tokenValue.StartsWith("-", StringComparison.Ordinal))
                     {
                         image = tokenValue;
                     }

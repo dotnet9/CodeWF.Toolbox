@@ -9,9 +9,9 @@
     xmlns:codewf="https://codewf.com">
     <prism:PrismApplication.Styles>
 		<semi:SemiTheme Locale="zh-CN" />
-		<codewf:CodeWFProDataGridTheme />
+		<codewf:DataGridSemiTheme />
         <semi:UrsaSemiTheme Locale="zh-CN"/>
-		<codewf:CodeWFTheme />
+		<codewf:ACSemiTheme />
         <StyleInclude Source="../Styles/Index.axaml" />
         <codewf:MarkdownThemes TypographyTheme="Simple"
                                TypographySize="Small" />
@@ -20,7 +20,7 @@
         <TrayIcons>
             <TrayIcon
                 Clicked="OpenMainWindow_OnClicked"
-                Icon="/logo.ico"
+                Icon="/Assets/logo.ico"
                 ToolTipText="{i18N:I18n {x:Static language:MainModule.Title}}">
                 <TrayIcon.Menu>
                     <NativeMenu>

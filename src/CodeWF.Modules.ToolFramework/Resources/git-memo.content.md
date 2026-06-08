@@ -1,78 +1,77 @@
-﻿## Configuration
+## 配置
 
-Set the global config
+设置全局用户信息：
 
 ```shell
 git config --global user.name "[name]"
 git config --global user.email "[email]"
 ```
 
-## Get started
+## 开始使用
 
-Create a git repository
+创建 Git 仓库：
 
 ```shell
 git init
 ```
 
-Clone an existing git repository
+克隆已有仓库：
 
 ```shell
 git clone [url]
 ```
 
-## Commit
+## 提交
 
-Commit all tracked changes
+提交所有已跟踪文件的修改：
 
 ```shell
 git commit -am "[commit message]"
 ```
 
-Add new modifications to the last commit
+把新修改追加到上一次提交：
 
 ```shell
 git commit --amend --no-edit
 ```
 
-## I’ve made a mistake
+## 常见回退
 
-Change last commit message
+修改上一次提交信息：
 
 ```shell
 git commit --amend
 ```
 
-Undo most recent commit and keep changes
+撤销最近一次提交并保留修改：
 
 ```shell
 git reset HEAD~1
 ```
 
-Undo the `N` most recent commit and keep changes
+撤销最近 N 次提交并保留修改：
 
 ```shell
 git reset HEAD~N
 ```
 
-Undo most recent commit and get rid of changes
+撤销最近一次提交并丢弃修改：
 
 ```shell
 git reset HEAD~1 --hard
 ```
 
-Reset branch to remote state
+把本地分支重置到远端状态：
 
 ```shell
 git fetch origin
 git reset --hard origin/[branch-name]
 ```
 
-## Miscellaneous
+## 其他
 
-Renaming the local master branch to main
+将本地 master 分支改名为 main：
 
 ```shell
 git branch -m master main
 ```
-
