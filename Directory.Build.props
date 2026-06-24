@@ -1,6 +1,6 @@
 <Project>
   <PropertyGroup>
-    <Version>12.0.5.1</Version>
+    <Version>12.0.5.2</Version>
     <Title>码坊工具箱客户端</Title>
     <Description>使用 .NET 11、Avalonia UI 和 Prism 开发的工具客户端，支持 AOT 发布。</Description>
     <Company>dotnet9.com</Company>

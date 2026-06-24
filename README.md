@@ -107,3 +107,6 @@ docs/
 | `Microsoft.NET.Test.Sdk` / `coverlet.collector` / `xunit` / `xunit.runner.visualstudio` | 测试 | MIT / Apache-2.0 | https://github.com/microsoft/vstest / https://github.com/coverlet-coverage/coverlet / https://github.com/xunit/xunit | 通过 |
 
 传递依赖检查结论：有效依赖链未发现 `Semi.Avalonia.Dock`、`Semi.Avalonia.ProDataGrid`、`Semi.Avalonia.AvaloniaEdit`、`AvaloniaUI.DiagnosticsSupport`、Prism 9 包、`System.Drawing.Common 4.7.0` 或其它黑盒组件。`Magick.NET-Q16-AnyCPU` 通过 `CodeWF.Tools.Image 1.3.13.2` 使用，源码与许可证可追溯。
+## Package Versioning Convention
+
+Keep NuGet package versions and Central Package Management settings in `Directory.Packages.props`, including shared version properties such as `AvaloniaVersion`. Keep `Directory.Build.props` focused on build, compiler, and NuGet package metadata. When referenced, `VC-LTL` and `YY-Thunks` should use their latest prerelease versions for OS platform compatibility.
