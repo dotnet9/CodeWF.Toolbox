@@ -22,7 +22,7 @@
 
 ## 文档
 
-- [开发文档](docs/Development.md)
+- [开发文档](docs/开发文档.md)
 - [架构 SVG](docs/assets/architecture.svg)
 - [模块生命周期 SVG](docs/assets/module-lifecycle.svg)
 
@@ -67,7 +67,7 @@ docs/
 5. 在 `App.ConfigureModuleCatalog` 中加入模块。
 6. 补齐本模块的 XML 多语言资源和生成的语言键。
 
-详细约定请参考 [开发文档](docs/Development.md)。
+详细约定请参考 [开发文档](docs/开发文档.md)。
 
 ## 内置工具
 
@@ -107,6 +107,6 @@ docs/
 | `Microsoft.NET.Test.Sdk` / `coverlet.collector` / `xunit` / `xunit.runner.visualstudio` | 测试 | MIT / Apache-2.0 | https://github.com/microsoft/vstest / https://github.com/coverlet-coverage/coverlet / https://github.com/xunit/xunit | 通过 |
 
 传递依赖检查结论：有效依赖链未发现 `Semi.Avalonia.Dock`、`Semi.Avalonia.ProDataGrid`、`Semi.Avalonia.AvaloniaEdit`、`AvaloniaUI.DiagnosticsSupport`、Prism 9 包、`System.Drawing.Common 4.7.0` 或其它黑盒组件。`Magick.NET-Q16-AnyCPU` 通过 `CodeWF.Tools.Image 1.3.13.2` 使用，源码与许可证可追溯。
-## Package Versioning Convention
+## 包版本维护约定
 
-Keep NuGet package versions and Central Package Management settings in `Directory.Packages.props`, including shared version properties such as `AvaloniaVersion`. Keep `Directory.Build.props` focused on build, compiler, and NuGet package metadata. When referenced, `VC-LTL` and `YY-Thunks` should use their latest prerelease versions for OS platform compatibility.
+XML 文件统一使用两个空格缩进。`Directory.Packages.props` 统一承载 NuGet 中央包管理开关和包版本变量，包括 `AvaloniaVersion` 等共享版本属性；`Directory.Build.props` 仅保留项目构建、编译选项和 NuGet 元数据。仓库如引用 `VC-LTL`、`YY-Thunks`，这两个兼容旧版操作系统的特殊包必须使用最新预览版。

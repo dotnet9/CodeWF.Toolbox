@@ -82,8 +82,8 @@
     <File Path="publish.bat" />
     <File Path="Publish.Common.pubxml" />
     <File Path="publishbase.bat" />
-    <File Path="docs/Development.md" />
-    <File Path="docs/XmlTranslatorManager.md" />
+    <File Path="docs/开发文档.md" />
+    <File Path="docs/XML翻译管理器.md" />
     <File Path="docs/assets/architecture.svg" />
     <File Path="docs/assets/module-lifecycle.svg" />
     <File Path="UpdateAssemblyVersion.ps1" />
