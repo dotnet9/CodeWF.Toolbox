@@ -110,3 +110,7 @@ docs/
 ## 包版本维护约定
 
 XML 文件统一使用两个空格缩进。`Directory.Packages.props` 统一承载 NuGet 中央包管理开关和包版本变量，包括 `AvaloniaVersion` 等共享版本属性；`Directory.Build.props` 仅保留项目构建、编译选项和 NuGet 元数据。仓库如引用 `VC-LTL`、`YY-Thunks`，这两个兼容旧版操作系统的特殊包必须使用最新预览版。
+
+## 发布
+
+标准发布流程与发布说明规范见 [docs/RELEASE.md](docs/RELEASE.md)。

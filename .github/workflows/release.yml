@@ -165,6 +165,7 @@ jobs:
         shell: pwsh
         env:
           VERSION: ${{ steps.version.outputs.version }}
+          TAG_NAME: ${{ steps.version.outputs.tag_name }}
         run: |
           $curated = ".github/release-notes/v$env:VERSION.md"
           $bodyPath = "artifacts/release-body.md"
@@ -173,7 +174,15 @@ jobs:
             Copy-Item -LiteralPath $curated -Destination $bodyPath -Force
             Write-Host "Using curated release notes: $curated"
           }
-          else {
+                    # 附注 tag 的说明就是发布说明（Release 页直接可读，不点开 tag 也能看到）
+                    git fetch -f origin "refs/tags/$env:TAG_NAME" 2>$null | Out-Null
+                    $tagMessage = git tag -l "$env:TAG_NAME" --format='%(contents)'
+                    if (-not [string]::IsNullOrWhiteSpace($tagMessage)) {
+                      $tagMessage | Set-Content -LiteralPath $bodyPath -Encoding utf8
+                      Write-Host "使用附注 tag 说明作为发布说明。"
+                    }
+                    else {
+        
             "CodeWF.Toolbox v$env:VERSION" | Set-Content -LiteralPath $bodyPath -Encoding utf8
             Write-Host "No curated notes found; generated notes only."
           }
