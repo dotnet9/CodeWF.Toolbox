@@ -95,14 +95,13 @@ jobs:
         run: |
           $out = "artifacts/release"
           New-Item -ItemType Directory -Path $out -Force | Out-Null
-          $source = "publish/${{ matrix.rid }}/CodeWF.Toolbox"
-          if ('${{ matrix.os }}' -like 'macos*') { $source = "artifacts/publish/${{ matrix.rid }}/CodeWF.Toolbox" }
-          if (-not (Test-Path -LiteralPath $source)) {
-            throw "Publish output was not produced: $source"
-          }
           if ('${{ matrix.os }}' -ne 'Windows') {
             # Linux/macOS 走安装包（deb/dmg），由专用步骤处理
             exit 0
+          }
+          $source = "publish/${{ matrix.rid }}/CodeWF.Toolbox"
+          if (-not (Test-Path -LiteralPath $source)) {
+            throw "Publish output was not produced: $source"
           }
           Get-ChildItem -LiteralPath $source -Filter *.pdb -Recurse | Remove-Item -Force
           $name = "CodeWF.Toolbox-v$env:APP_VERSION-${{ matrix.rid }}"
