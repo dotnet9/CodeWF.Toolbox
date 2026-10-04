@@ -1,5 +1,11 @@
 # 更新日志
 
+## 12.0.6 (2026-10-04)
+
+### 更新检查
+
+- 「关于」页新增检查更新：版本号经 GitHub 网页端点（`releases/latest` 302 落点 + `expanded_assets/{tag}`）获取，不碰 api.github.com 的每小时配额；发现新版本弹出通知并打开发布页。四语言文案同步。
+
 ## 12.0.3.3 (2026-06-08)
 
 - 🔨[优化]-补齐根目录 logo.svg、logo.png、logo.ico 三件套，子工程通过 MSBuild Link 引用根 logo，避免维护多份图标副本。
