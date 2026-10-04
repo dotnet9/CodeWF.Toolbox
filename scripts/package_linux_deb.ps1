@@ -18,7 +18,7 @@ $scriptRoot = (Resolve-Path -LiteralPath $PSScriptRoot).Path
 $repositoryRoot = (Resolve-Path -LiteralPath (Join-Path $scriptRoot "..")).Path
 
 if ([string]::IsNullOrWhiteSpace($SourceDirectory)) {
-    $SourceDirectory = Join-Path $repositoryRoot "artifacts/publish/$RuntimeIdentifier/CodeWF.Toolbox"
+    $SourceDirectory = Join-Path $repositoryRoot "publish/$RuntimeIdentifier/CodeWF.Toolbox"
 }
 if ([string]::IsNullOrWhiteSpace($OutputDirectory)) {
     $OutputDirectory = Join-Path $repositoryRoot "artifacts/release"
