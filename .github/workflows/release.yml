@@ -95,7 +95,7 @@ jobs:
         run: |
           $out = "artifacts/release"
           New-Item -ItemType Directory -Path $out -Force | Out-Null
-          if ('${{ matrix.os }}' -ne 'Windows') {
+          if ($env:RUNNER_OS -ne 'Windows') {
             # Linux/macOS 走安装包（deb/dmg），由专用步骤处理
             exit 0
           }
