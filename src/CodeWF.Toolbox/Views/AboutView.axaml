@@ -66,6 +66,14 @@
             BorderThickness="0 1 0 0" />
 
         <StackPanel Grid.Row="3" Orientation="Horizontal" Spacing="18">
+            <Button
+                Classes="WithIcon"
+                Height="24"
+                Padding="0"
+                Background="Transparent"
+                BorderThickness="0"
+                Command="{Binding CheckUpdateCommand}"
+                Content="{i18n:I18n {x:Static language:AboutView.CheckUpdate}}" />
             <HyperlinkButton
                 Classes="WithIcon Underline"
                 Height="24"

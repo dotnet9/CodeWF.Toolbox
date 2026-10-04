@@ -1,103 +1,107 @@
 {
-  "language": "Japanese",
-  "description": "日語",
-  "cultureName": "ja-JP",
-  "Localization": {
-    "MainModule": {
-      "Title": "CodeWF Toolbox",
-      "ShowMainWindow": "メインウィンドウを表示する",
-      "Exit": "終了する"
-    },
-    "MainWindow": {
-      "SearchToolTip": "ツール、変換、生成機能を検索",
-      "NoMorePrompts": "今後表示しない",
-      "SureExit": "本当に終了しますか？",
-      "FindInTrayIcon": "アプリはシステムトレイに最小化されました。"
-    },
-    "DashboardView": {
-      "Title": "ホーム",
-      "DesiredAvailabilityNotification": "日常の開発と変換作業に使うツールを整理して提供します。",
-      "ProjectIntro": "Avalonia + Prism で構築したモジュール式デスクトップツールボックスです。",
-      "ToolCountLabel": "利用可能なツール",
-      "ModuleCountLabel": "機能モジュール",
-      "PlatformLabel": "現在のプラットフォーム",
-      "FrequentToolsTitle": "よく使うツール",
-      "RecommendedToolsTitle": "おすすめツール",
-      "QuickToolsTitle": "よく使うツールとおすすめツール",
-      "CommunityTitle": "フォローとフィードバック",
-      "CommunityDescription": "QR コードからツール更新、Avalonia 記事、モジュール計画を確認し、作者へフィードバックできます。",
-      "WeChat": "作者に連絡",
-      "WeChatPublic": "WeChat 公式アカウント",
-      "AccessToolbox": "オンラインツールボックスを開く",
-      "SourceCode": "ソースリポジトリ",
-      "DeveloperGuide": "開発ドキュメント"
-    },
-    "SettingView": {
-      "Title": "設定"
-    },
-    "CommonSettingView": {
-      "Title": "一般設定",
-      "Description": "テーマ、言語、起動動作を調整します。",
-      "Theme": "テーマ",
-      "ThemePlaceholderText": "テーマを選ぶ",
-      "Default": "システム設定に従う",
-      "Light": "ライトモード",
-      "Dark": "ダークモード",
-      "Aquatic": "水生（すいせい）",
-      "Desert": "砂漠（さばく）",
-      "Dusk": "夕暮れ（ゆうぐれ）",
-      "NightSky": "夜空（よぞら）",
-      "LanguageKey": "言語",
-      "LanguagePlaceholderText": "言語を選ぶ",
-      "AutoOpenToolboxAtStartup": "システム起動時に CodeWF Toolbox を開く",
-      "HideTrayIconOnClose": "ウィンドウを閉じるときにトレイアイコンを隠す",
-      "DisplayPromptWhenClosing": "ウィンドウを閉じる前に確認する",
-      "TurnOn": "オンにする",
-      "TurnOff": "オフにする"
-    },
-    "UpdateLogView": {
-      "Title": "アップデートログ",
-      "Description": "バージョン更新、改善、修正を記録します。"
-    },
-    "AboutView": {
-      "Title": "概要",
-      "Description": "CodeWF Toolbox は、開発者の日常作業向けのモジュール式デスクトップツールキットです。",
-      "VersionLabel": "バージョン",
-      "PlatformLabel": "プラットフォーム",
-      "BuildTimeLabel": "ビルド時刻",
-      "CopyrightLabel": "著作権"
-    },
-    "ExitOptionView": {
-      "Message": "閉じる操作を選択:",
-      "Description": "ウィンドウを閉じた後の動作を選択します",
-      "HideTrayIcon": "トレイにしまう",
-      "HideTrayIconDescription": "ウィンドウだけ閉じ、アプリは待機します",
-      "DirectToClose": "アプリを終了",
-      "DirectToCloseDescription": "プロセスを終了し、トレイアイコンも閉じます",
-      "RememberMyChoice": "今後表示しない",
-      "RememberMyChoiceDescription": "次回からこの動作を直接実行します",
-      "Cancel": "キャンセル",
-      "Confirm": "確定"
-    },
-    "LoginWindow": {
-      "Title": "ログイン",
-      "UsernameWatermark": "ユーザー名",
-      "PasswordWatermark": "パスワード",
-      "ConfirmPasswordWatermark": "パスワード確認",
-      "LoginButton": "ログイン",
-      "RegisterButton": "登録",
-      "SwitchToRegister": "アカウント作成",
-      "SwitchToLogin": "ログインへ戻る",
-      "LocalLoginReady": "ローカルアカウントを使用できます",
-      "MissingCredentials": "先に App.config でユーザー名とパスワードハッシュを設定してください",
-      "RegisterHint": "このツールボックス用のローカルアカウントを作成します",
-      "RegisterSuccess": "アカウントを作成しました",
-      "UserAlreadyExists": "このアカウントは既に存在します",
-      "InvalidRegistration": "ユーザー名は 2-64 文字の英数字、ドット、ハイフン、下線、@ が使えます",
-      "PasswordMismatch": "パスワードが一致しません",
-      "AccountAlreadyRunning": "このアカウントは別のインスタンスで実行中です",
-      "LoginSuccess": "ログイン成功",
-      "LoginFailed": "ユーザー名またはパスワードが正しくありません"
+    "language": "Japanese",
+    "description": "日語",
+    "cultureName": "ja-JP",
+    "Localization": {
+        "MainModule": {
+            "Title": "CodeWF Toolbox",
+            "ShowMainWindow": "メインウィンドウを表示する",
+            "Exit": "終了する"
+        },
+        "MainWindow": {
+            "SearchToolTip": "ツール、変換、生成機能を検索",
+            "NoMorePrompts": "今後表示しない",
+            "SureExit": "本当に終了しますか？",
+            "FindInTrayIcon": "アプリはシステムトレイに最小化されました。"
+        },
+        "DashboardView": {
+            "Title": "ホーム",
+            "DesiredAvailabilityNotification": "日常の開発と変換作業に使うツールを整理して提供します。",
+            "ProjectIntro": "Avalonia + Prism で構築したモジュール式デスクトップツールボックスです。",
+            "ToolCountLabel": "利用可能なツール",
+            "ModuleCountLabel": "機能モジュール",
+            "PlatformLabel": "現在のプラットフォーム",
+            "FrequentToolsTitle": "よく使うツール",
+            "RecommendedToolsTitle": "おすすめツール",
+            "QuickToolsTitle": "よく使うツールとおすすめツール",
+            "CommunityTitle": "フォローとフィードバック",
+            "CommunityDescription": "QR コードからツール更新、Avalonia 記事、モジュール計画を確認し、作者へフィードバックできます。",
+            "WeChat": "作者に連絡",
+            "WeChatPublic": "WeChat 公式アカウント",
+            "AccessToolbox": "オンラインツールボックスを開く",
+            "SourceCode": "ソースリポジトリ",
+            "DeveloperGuide": "開発ドキュメント"
+        },
+        "SettingView": {
+            "Title": "設定"
+        },
+        "CommonSettingView": {
+            "Title": "一般設定",
+            "Description": "テーマ、言語、起動動作を調整します。",
+            "Theme": "テーマ",
+            "ThemePlaceholderText": "テーマを選ぶ",
+            "Default": "システム設定に従う",
+            "Light": "ライトモード",
+            "Dark": "ダークモード",
+            "Aquatic": "水生（すいせい）",
+            "Desert": "砂漠（さばく）",
+            "Dusk": "夕暮れ（ゆうぐれ）",
+            "NightSky": "夜空（よぞら）",
+            "LanguageKey": "言語",
+            "LanguagePlaceholderText": "言語を選ぶ",
+            "AutoOpenToolboxAtStartup": "システム起動時に CodeWF Toolbox を開く",
+            "HideTrayIconOnClose": "ウィンドウを閉じるときにトレイアイコンを隠す",
+            "DisplayPromptWhenClosing": "ウィンドウを閉じる前に確認する",
+            "TurnOn": "オンにする",
+            "TurnOff": "オフにする"
+        },
+        "UpdateLogView": {
+            "Title": "アップデートログ",
+            "Description": "バージョン更新、改善、修正を記録します。"
+        },
+        "AboutView": {
+            "Title": "概要",
+            "Description": "CodeWF Toolbox は、開発者の日常作業向けのモジュール式デスクトップツールキットです。",
+            "VersionLabel": "バージョン",
+            "PlatformLabel": "プラットフォーム",
+            "BuildTimeLabel": "ビルド時刻",
+            "CopyrightLabel": "著作権",
+            "CheckUpdate": "更新を確認",
+            "UpdateAvailable": "新しいバージョンが見つかりました: ",
+            "UpToDate": "すでに最新版です",
+            "UpdateCheckFailed": "更新の確認に失敗しました: "
+        },
+        "ExitOptionView": {
+            "Message": "閉じる操作を選択:",
+            "Description": "ウィンドウを閉じた後の動作を選択します",
+            "HideTrayIcon": "トレイにしまう",
+            "HideTrayIconDescription": "ウィンドウだけ閉じ、アプリは待機します",
+            "DirectToClose": "アプリを終了",
+            "DirectToCloseDescription": "プロセスを終了し、トレイアイコンも閉じます",
+            "RememberMyChoice": "今後表示しない",
+            "RememberMyChoiceDescription": "次回からこの動作を直接実行します",
+            "Cancel": "キャンセル",
+            "Confirm": "確定"
+        },
+        "LoginWindow": {
+            "Title": "ログイン",
+            "UsernameWatermark": "ユーザー名",
+            "PasswordWatermark": "パスワード",
+            "ConfirmPasswordWatermark": "パスワード確認",
+            "LoginButton": "ログイン",
+            "RegisterButton": "登録",
+            "SwitchToRegister": "アカウント作成",
+            "SwitchToLogin": "ログインへ戻る",
+            "LocalLoginReady": "ローカルアカウントを使用できます",
+            "MissingCredentials": "先に App.config でユーザー名とパスワードハッシュを設定してください",
+            "RegisterHint": "このツールボックス用のローカルアカウントを作成します",
+            "RegisterSuccess": "アカウントを作成しました",
+            "UserAlreadyExists": "このアカウントは既に存在します",
+            "InvalidRegistration": "ユーザー名は 2-64 文字の英数字、ドット、ハイフン、下線、@ が使えます",
+            "PasswordMismatch": "パスワードが一致しません",
+            "AccountAlreadyRunning": "このアカウントは別のインスタンスで実行中です",
+            "LoginSuccess": "ログイン成功",
+            "LoginFailed": "ユーザー名またはパスワードが正しくありません"
+        }
     }
-  }
 }

@@ -1,103 +1,107 @@
 {
-  "language": "Chinese (Simplified)",
-  "description": "中文简体",
-  "cultureName": "zh-CN",
-  "Localization": {
-    "MainModule": {
-      "Title": "CodeWF 工具箱",
-      "ShowMainWindow": "显示主窗口",
-      "Exit": "退出"
-    },
-    "MainWindow": {
-      "SearchToolTip": "搜索工具、转换器或生成器",
-      "NoMorePrompts": "不再显示",
-      "SureExit": "您确定要退出吗？",
-      "FindInTrayIcon": "应用已最小化到系统托盘。"
-    },
-    "DashboardView": {
-      "Title": "首页",
-      "DesiredAvailabilityNotification": "常用开发与转换工具，集中管理，高效使用。",
-      "ProjectIntro": "基于 Avalonia + Prism 的模块化桌面工具箱，主壳、公共服务与工具模块边界清晰，便于扩展、维护和二次开发。",
-      "ToolCountLabel": "可用工具",
-      "ModuleCountLabel": "功能模块",
-      "PlatformLabel": "当前平台",
-      "FrequentToolsTitle": "常用工具",
-      "RecommendedToolsTitle": "推荐工具",
-      "QuickToolsTitle": "常用与推荐工具",
-      "CommunityTitle": "关注与反馈",
-      "CommunityDescription": "扫码关注公众号，获取工具更新、Avalonia 实战文章和模块规划；也可以联系作者反馈建议。",
-      "WeChat": "联系作者",
-      "WeChatPublic": "微信公众号",
-      "AccessToolbox": "打开在线工具箱",
-      "SourceCode": "源代码仓库",
-      "DeveloperGuide": "开发文档"
-    },
-    "SettingView": {
-      "Title": "设置"
-    },
-    "CommonSettingView": {
-      "Title": "基础设置",
-      "Description": "调整主题、语言与启动行为。",
-      "Theme": "主题",
-      "ThemePlaceholderText": "选择一个主题",
-      "Default": "跟随系统",
-      "Light": "浅色模式",
-      "Dark": "深色模式",
-      "Aquatic": "水生",
-      "Desert": "沙漠",
-      "Dusk": "黄昏",
-      "NightSky": "夜空",
-      "LanguageKey": "语言",
-      "LanguagePlaceholderText": "选择一个语言",
-      "AutoOpenToolboxAtStartup": "系统启动时自动打开工具箱",
-      "HideTrayIconOnClose": "关闭窗口时隐藏托盘图标",
-      "DisplayPromptWhenClosing": "关闭窗口时显示确认提示",
-      "TurnOn": "开启",
-      "TurnOff": "关闭"
-    },
-    "UpdateLogView": {
-      "Title": "更新日志",
-      "Description": "记录版本更新、功能优化与问题修复。"
-    },
-    "AboutView": {
-      "Title": "关于",
-      "Description": "CodeWF Toolbox 是一个面向开发者日常效率场景的模块化桌面工具箱。",
-      "VersionLabel": "版本",
-      "PlatformLabel": "平台",
-      "BuildTimeLabel": "构建时间",
-      "CopyrightLabel": "版权"
-    },
-    "ExitOptionView": {
-      "Message": "请选择关闭窗体操作:",
-      "Description": "选择关闭窗口后的处理方式",
-      "HideTrayIcon": "隐藏到托盘图标",
-      "HideTrayIconDescription": "关闭窗口，应用继续在后台待命",
-      "DirectToClose": "直接关闭应用",
-      "DirectToCloseDescription": "结束进程并移除系统托盘图标",
-      "RememberMyChoice": "不再提示",
-      "RememberMyChoiceDescription": "下次关闭窗口时直接执行该操作",
-      "Cancel": "取消",
-      "Confirm": "确定"
-    },
-    "LoginWindow": {
-      "Title": "登录",
-      "UsernameWatermark": "用户名",
-      "PasswordWatermark": "密码",
-      "ConfirmPasswordWatermark": "确认密码",
-      "LoginButton": "登录",
-      "RegisterButton": "注册",
-      "SwitchToRegister": "创建账号",
-      "SwitchToLogin": "返回登录",
-      "LocalLoginReady": "本地账号已就绪",
-      "MissingCredentials": "请先在 App.config 配置登录用户名和密码哈希",
-      "RegisterHint": "创建一个本地工具箱账号",
-      "RegisterSuccess": "账号创建成功",
-      "UserAlreadyExists": "该账号已存在",
-      "InvalidRegistration": "用户名支持 2-64 位字母、数字、点、横线、下划线或 @",
-      "PasswordMismatch": "两次输入的密码不一致",
-      "AccountAlreadyRunning": "该账号已在另一个实例中运行",
-      "LoginSuccess": "登录成功",
-      "LoginFailed": "用户名或密码错误"
+    "language": "Chinese (Simplified)",
+    "description": "中文简体",
+    "cultureName": "zh-CN",
+    "Localization": {
+        "MainModule": {
+            "Title": "CodeWF 工具箱",
+            "ShowMainWindow": "显示主窗口",
+            "Exit": "退出"
+        },
+        "MainWindow": {
+            "SearchToolTip": "搜索工具、转换器或生成器",
+            "NoMorePrompts": "不再显示",
+            "SureExit": "您确定要退出吗？",
+            "FindInTrayIcon": "应用已最小化到系统托盘。"
+        },
+        "DashboardView": {
+            "Title": "首页",
+            "DesiredAvailabilityNotification": "常用开发与转换工具，集中管理，高效使用。",
+            "ProjectIntro": "基于 Avalonia + Prism 的模块化桌面工具箱，主壳、公共服务与工具模块边界清晰，便于扩展、维护和二次开发。",
+            "ToolCountLabel": "可用工具",
+            "ModuleCountLabel": "功能模块",
+            "PlatformLabel": "当前平台",
+            "FrequentToolsTitle": "常用工具",
+            "RecommendedToolsTitle": "推荐工具",
+            "QuickToolsTitle": "常用与推荐工具",
+            "CommunityTitle": "关注与反馈",
+            "CommunityDescription": "扫码关注公众号，获取工具更新、Avalonia 实战文章和模块规划；也可以联系作者反馈建议。",
+            "WeChat": "联系作者",
+            "WeChatPublic": "微信公众号",
+            "AccessToolbox": "打开在线工具箱",
+            "SourceCode": "源代码仓库",
+            "DeveloperGuide": "开发文档"
+        },
+        "SettingView": {
+            "Title": "设置"
+        },
+        "CommonSettingView": {
+            "Title": "基础设置",
+            "Description": "调整主题、语言与启动行为。",
+            "Theme": "主题",
+            "ThemePlaceholderText": "选择一个主题",
+            "Default": "跟随系统",
+            "Light": "浅色模式",
+            "Dark": "深色模式",
+            "Aquatic": "水生",
+            "Desert": "沙漠",
+            "Dusk": "黄昏",
+            "NightSky": "夜空",
+            "LanguageKey": "语言",
+            "LanguagePlaceholderText": "选择一个语言",
+            "AutoOpenToolboxAtStartup": "系统启动时自动打开工具箱",
+            "HideTrayIconOnClose": "关闭窗口时隐藏托盘图标",
+            "DisplayPromptWhenClosing": "关闭窗口时显示确认提示",
+            "TurnOn": "开启",
+            "TurnOff": "关闭"
+        },
+        "UpdateLogView": {
+            "Title": "更新日志",
+            "Description": "记录版本更新、功能优化与问题修复。"
+        },
+        "AboutView": {
+            "Title": "关于",
+            "Description": "CodeWF Toolbox 是一个面向开发者日常效率场景的模块化桌面工具箱。",
+            "VersionLabel": "版本",
+            "PlatformLabel": "平台",
+            "BuildTimeLabel": "构建时间",
+            "CopyrightLabel": "版权",
+            "CheckUpdate": "检查更新",
+            "UpdateAvailable": "发现新版本：",
+            "UpToDate": "当前已是最新版本",
+            "UpdateCheckFailed": "检查更新失败："
+        },
+        "ExitOptionView": {
+            "Message": "请选择关闭窗体操作:",
+            "Description": "选择关闭窗口后的处理方式",
+            "HideTrayIcon": "隐藏到托盘图标",
+            "HideTrayIconDescription": "关闭窗口，应用继续在后台待命",
+            "DirectToClose": "直接关闭应用",
+            "DirectToCloseDescription": "结束进程并移除系统托盘图标",
+            "RememberMyChoice": "不再提示",
+            "RememberMyChoiceDescription": "下次关闭窗口时直接执行该操作",
+            "Cancel": "取消",
+            "Confirm": "确定"
+        },
+        "LoginWindow": {
+            "Title": "登录",
+            "UsernameWatermark": "用户名",
+            "PasswordWatermark": "密码",
+            "ConfirmPasswordWatermark": "确认密码",
+            "LoginButton": "登录",
+            "RegisterButton": "注册",
+            "SwitchToRegister": "创建账号",
+            "SwitchToLogin": "返回登录",
+            "LocalLoginReady": "本地账号已就绪",
+            "MissingCredentials": "请先在 App.config 配置登录用户名和密码哈希",
+            "RegisterHint": "创建一个本地工具箱账号",
+            "RegisterSuccess": "账号创建成功",
+            "UserAlreadyExists": "该账号已存在",
+            "InvalidRegistration": "用户名支持 2-64 位字母、数字、点、横线、下划线或 @",
+            "PasswordMismatch": "两次输入的密码不一致",
+            "AccountAlreadyRunning": "该账号已在另一个实例中运行",
+            "LoginSuccess": "登录成功",
+            "LoginFailed": "用户名或密码错误"
+        }
     }
-  }
 }

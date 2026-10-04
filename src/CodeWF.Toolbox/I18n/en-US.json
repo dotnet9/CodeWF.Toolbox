@@ -1,103 +1,107 @@
 {
-  "language": "English",
-  "description": "English",
-  "cultureName": "en-US",
-  "Localization": {
-    "MainModule": {
-      "Title": "CodeWF Toolbox",
-      "ShowMainWindow": "Show main window",
-      "Exit": "Exit"
-    },
-    "MainWindow": {
-      "SearchToolTip": "Search tools, converters, or generators",
-      "NoMorePrompts": "Do not show again",
-      "SureExit": "Are you sure you want to exit?",
-      "FindInTrayIcon": "The app has been minimized to the system tray."
-    },
-    "DashboardView": {
-      "Title": "Home",
-      "DesiredAvailabilityNotification": "Focused developer and conversion tools, organized for everyday work.",
-      "ProjectIntro": "A modular desktop toolbox built with Avalonia and Prism, with clear boundaries between the shell, shared services, and feature modules.",
-      "ToolCountLabel": "Available tools",
-      "ModuleCountLabel": "Feature modules",
-      "PlatformLabel": "Current platform",
-      "FrequentToolsTitle": "Frequent tools",
-      "RecommendedToolsTitle": "Recommended tools",
-      "QuickToolsTitle": "Frequent and recommended tools",
-      "CommunityTitle": "Follow and feedback",
-      "CommunityDescription": "Scan the QR codes for toolbox updates, Avalonia articles, module plans, and feedback to the author.",
-      "WeChat": "Contact author",
-      "WeChatPublic": "WeChat official account",
-      "AccessToolbox": "Open online toolbox",
-      "SourceCode": "Source repository",
-      "DeveloperGuide": "Developer guide"
-    },
-    "SettingView": {
-      "Title": "Settings"
-    },
-    "CommonSettingView": {
-      "Title": "Preferences",
-      "Description": "Adjust theme, language, and startup behavior.",
-      "Theme": "Theme",
-      "ThemePlaceholderText": "Choose a theme",
-      "Default": "Follow the system",
-      "Light": "Light",
-      "Dark": "Dark",
-      "Aquatic": "Aquatic",
-      "Desert": "Desert",
-      "Dusk": "Dusk",
-      "NightSky": "Night sky",
-      "LanguageKey": "Language",
-      "LanguagePlaceholderText": "Choose a language",
-      "AutoOpenToolboxAtStartup": "Open CodeWF Toolbox when the system starts",
-      "HideTrayIconOnClose": "Hide the tray icon when the window closes",
-      "DisplayPromptWhenClosing": "Show confirmation before closing the window",
-      "TurnOn": "Turn on",
-      "TurnOff": "Turn off"
-    },
-    "UpdateLogView": {
-      "Title": "Update Log",
-      "Description": "Version updates, improvements, and fixes."
-    },
-    "AboutView": {
-      "Title": "About",
-      "Description": "CodeWF Toolbox is a modular desktop toolkit for everyday developer productivity.",
-      "VersionLabel": "Version",
-      "PlatformLabel": "Platform",
-      "BuildTimeLabel": "Build time",
-      "CopyrightLabel": "Copyright"
-    },
-    "ExitOptionView": {
-      "Message": "Choose a close action:",
-      "Description": "Choose what happens after the window closes",
-      "HideTrayIcon": "Minimize to system tray",
-      "HideTrayIconDescription": "Close the window and keep the app running",
-      "DirectToClose": "Exit application",
-      "DirectToCloseDescription": "Stop the app and remove the tray icon",
-      "RememberMyChoice": "Do not show again",
-      "RememberMyChoiceDescription": "Apply this action directly next time",
-      "Cancel": "Cancel",
-      "Confirm": "Confirm"
-    },
-    "LoginWindow": {
-      "Title": "Login",
-      "UsernameWatermark": "Username",
-      "PasswordWatermark": "Password",
-      "ConfirmPasswordWatermark": "Confirm password",
-      "LoginButton": "Login",
-      "RegisterButton": "Register",
-      "SwitchToRegister": "Create account",
-      "SwitchToLogin": "Back to login",
-      "LocalLoginReady": "Local account is ready",
-      "MissingCredentials": "Set the App.config username and password hash first",
-      "RegisterHint": "Create a local account for this toolbox",
-      "RegisterSuccess": "Account created",
-      "UserAlreadyExists": "This account already exists",
-      "InvalidRegistration": "Use 2-64 letters, digits, dots, dashes, underscores or @",
-      "PasswordMismatch": "Passwords do not match",
-      "AccountAlreadyRunning": "This account is already running in another instance",
-      "LoginSuccess": "Login successful",
-      "LoginFailed": "Invalid username or password"
+    "language": "English",
+    "description": "English",
+    "cultureName": "en-US",
+    "Localization": {
+        "MainModule": {
+            "Title": "CodeWF Toolbox",
+            "ShowMainWindow": "Show main window",
+            "Exit": "Exit"
+        },
+        "MainWindow": {
+            "SearchToolTip": "Search tools, converters, or generators",
+            "NoMorePrompts": "Do not show again",
+            "SureExit": "Are you sure you want to exit?",
+            "FindInTrayIcon": "The app has been minimized to the system tray."
+        },
+        "DashboardView": {
+            "Title": "Home",
+            "DesiredAvailabilityNotification": "Focused developer and conversion tools, organized for everyday work.",
+            "ProjectIntro": "A modular desktop toolbox built with Avalonia and Prism, with clear boundaries between the shell, shared services, and feature modules.",
+            "ToolCountLabel": "Available tools",
+            "ModuleCountLabel": "Feature modules",
+            "PlatformLabel": "Current platform",
+            "FrequentToolsTitle": "Frequent tools",
+            "RecommendedToolsTitle": "Recommended tools",
+            "QuickToolsTitle": "Frequent and recommended tools",
+            "CommunityTitle": "Follow and feedback",
+            "CommunityDescription": "Scan the QR codes for toolbox updates, Avalonia articles, module plans, and feedback to the author.",
+            "WeChat": "Contact author",
+            "WeChatPublic": "WeChat official account",
+            "AccessToolbox": "Open online toolbox",
+            "SourceCode": "Source repository",
+            "DeveloperGuide": "Developer guide"
+        },
+        "SettingView": {
+            "Title": "Settings"
+        },
+        "CommonSettingView": {
+            "Title": "Preferences",
+            "Description": "Adjust theme, language, and startup behavior.",
+            "Theme": "Theme",
+            "ThemePlaceholderText": "Choose a theme",
+            "Default": "Follow the system",
+            "Light": "Light",
+            "Dark": "Dark",
+            "Aquatic": "Aquatic",
+            "Desert": "Desert",
+            "Dusk": "Dusk",
+            "NightSky": "Night sky",
+            "LanguageKey": "Language",
+            "LanguagePlaceholderText": "Choose a language",
+            "AutoOpenToolboxAtStartup": "Open CodeWF Toolbox when the system starts",
+            "HideTrayIconOnClose": "Hide the tray icon when the window closes",
+            "DisplayPromptWhenClosing": "Show confirmation before closing the window",
+            "TurnOn": "Turn on",
+            "TurnOff": "Turn off"
+        },
+        "UpdateLogView": {
+            "Title": "Update Log",
+            "Description": "Version updates, improvements, and fixes."
+        },
+        "AboutView": {
+            "Title": "About",
+            "Description": "CodeWF Toolbox is a modular desktop toolkit for everyday developer productivity.",
+            "VersionLabel": "Version",
+            "PlatformLabel": "Platform",
+            "BuildTimeLabel": "Build time",
+            "CopyrightLabel": "Copyright",
+            "CheckUpdate": "Check for updates",
+            "UpdateAvailable": "New version found: ",
+            "UpToDate": "You are already on the latest version",
+            "UpdateCheckFailed": "Update check failed: "
+        },
+        "ExitOptionView": {
+            "Message": "Choose a close action:",
+            "Description": "Choose what happens after the window closes",
+            "HideTrayIcon": "Minimize to system tray",
+            "HideTrayIconDescription": "Close the window and keep the app running",
+            "DirectToClose": "Exit application",
+            "DirectToCloseDescription": "Stop the app and remove the tray icon",
+            "RememberMyChoice": "Do not show again",
+            "RememberMyChoiceDescription": "Apply this action directly next time",
+            "Cancel": "Cancel",
+            "Confirm": "Confirm"
+        },
+        "LoginWindow": {
+            "Title": "Login",
+            "UsernameWatermark": "Username",
+            "PasswordWatermark": "Password",
+            "ConfirmPasswordWatermark": "Confirm password",
+            "LoginButton": "Login",
+            "RegisterButton": "Register",
+            "SwitchToRegister": "Create account",
+            "SwitchToLogin": "Back to login",
+            "LocalLoginReady": "Local account is ready",
+            "MissingCredentials": "Set the App.config username and password hash first",
+            "RegisterHint": "Create a local account for this toolbox",
+            "RegisterSuccess": "Account created",
+            "UserAlreadyExists": "This account already exists",
+            "InvalidRegistration": "Use 2-64 letters, digits, dots, dashes, underscores or @",
+            "PasswordMismatch": "Passwords do not match",
+            "AccountAlreadyRunning": "This account is already running in another instance",
+            "LoginSuccess": "Login successful",
+            "LoginFailed": "Invalid username or password"
+        }
     }
-  }
 }

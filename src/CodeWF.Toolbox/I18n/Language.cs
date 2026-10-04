@@ -89,6 +89,10 @@ namespace Localization
         public static readonly string PlatformLabel = "Localization.AboutView.PlatformLabel";
         public static readonly string BuildTimeLabel = "Localization.AboutView.BuildTimeLabel";
         public static readonly string CopyrightLabel = "Localization.AboutView.CopyrightLabel";
+        public static readonly string CheckUpdate = "Localization.AboutView.CheckUpdate";
+        public static readonly string UpdateAvailable = "Localization.AboutView.UpdateAvailable";
+        public static readonly string UpToDate = "Localization.AboutView.UpToDate";
+        public static readonly string UpdateCheckFailed = "Localization.AboutView.UpdateCheckFailed";
     }
 
 
