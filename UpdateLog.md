@@ -1,5 +1,11 @@
 # 更新日志
 
+## 12.0.7 (2026-10-04)
+
+### 数据目录规范化
+
+- 用户数据统一迁移到系统标准应用数据目录：Windows `%LOCALAPPDATA%`、Linux `~/.local/share`、macOS `~/Library/Application Support`（`Environment.SpecialFolder.LocalApplicationData`）；旧版 Roaming（`%APPDATA%`）位置的数据在首次启动时自动迁移，旧目录原样保留作备份。
+- 统一发布脚本入口 `scripts/publish.ps1`（`-RuntimeIdentifier`/`-Version`，输出 `artifacts/publish/<rid>/`），本地发布与 CI 同一套逻辑。
 ## 12.0.6 (2026-10-04)
 
 ### 更新检查
