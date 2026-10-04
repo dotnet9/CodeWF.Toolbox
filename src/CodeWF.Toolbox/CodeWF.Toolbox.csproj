@@ -1,7 +1,7 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
 		<OutputType>WinExe</OutputType>
-		<TargetFrameworks>net11.0;net11.0-windows</TargetFrameworks>
+		<TargetFrameworks>net10.0;net10.0-windows</TargetFrameworks>
 		<ApplicationManifest>app.manifest</ApplicationManifest>
 		<ApplicationIcon>..\..\logo.ico</ApplicationIcon>
 		<Nullable>enable</Nullable>
@@ -14,7 +14,7 @@
 		<TargetPlatformMinVersion>6.1</TargetPlatformMinVersion>
 	</PropertyGroup>
 
-	<PropertyGroup Condition="$([MSBuild]::IsTargetFrameworkCompatible('$(TargetFramework)', 'net11.0-windows'))">
+	<PropertyGroup Condition="$([MSBuild]::IsTargetFrameworkCompatible('$(TargetFramework)', 'net10.0-windows'))">
 		<IsTrimmable>true</IsTrimmable>
 		<PublishTrimmed>true</PublishTrimmed>
 	</PropertyGroup>

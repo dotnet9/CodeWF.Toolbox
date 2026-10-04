@@ -1,5 +1,13 @@
 # 更新日志
 
+## 12.0.9 (2026-10-04)
+
+### 全平台 NativeAOT + 安装包
+
+- 发布矩阵补齐为 5 平台：win-x64、linux-x64、linux-arm64、osx-x64（Intel）、osx-arm64（Apple Silicon），全部 NativeAOT（完整反射元数据保全，单线程 ILC）；目标框架统一下调到 .NET 10（10 正式版工具链在 macOS 上的 AOT 链接稳定，替代 .NET 11 preview 的 swift auto-link 缺陷）。
+- 非 Windows 平台改用真正的安装包：Linux 产出 `.deb`（amd64/arm64），macOS 产出 `.dmg`（Intel/Apple Silicon），Windows 维持既有安装器/分发形态。
+- 平台相关功能尚未适配时，应用内给出友好提示（如「当前平台功能正在开发中」），不阻塞启动与其余功能。
+
 ## 12.0.8 (2026-10-04)
 
 ### 全平台 NativeAOT 发布
