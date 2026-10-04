@@ -71,14 +71,24 @@ jobs:
       # macOS 无 profile：显式 -o 输出到同一发布目录约定，并保留符号（ld_classic 不支持压缩调试段）
       - name: Publish (NativeAOT with full reflection metadata)
         shell: pwsh
-        run: >
-          dotnet publish src/CodeWF.Toolbox/CodeWF.Toolbox.csproj -c Release
-          -f ${{ matrix.tfm }} -r ${{ matrix.rid }}
-          ${{ matrix.os != 'macos-14' && '-p:PublishProfile=FolderProfile_${{ matrix.rid }}' || '-o artifacts/publish/${{ matrix.rid }}/CodeWF.Toolbox' }}
-          -p:PublishAot=true -p:PublishTrimmed=true -p:PublishSingleFile=false
-          -p:IlcGenerateCompleteTypeMetadata=true -p:IlcTrimMetadata=false -p:IlcSingleThreaded=true
-          ${{ matrix.os == 'macos-14' && '-p:StripSymbols=false' || '' }}
-          -p:Version=$env:APP_VERSION
+        env:
+          PUBLISH_RID: ${{ matrix.rid }}
+          IS_MACOS: ${{ matrix.os == 'macos-14' }}
+        run: |
+          $profileArgs = @()
+          if ($env:IS_MACOS -ne 'true') {
+            $profileArgs += "-p:PublishProfile=FolderProfile_$env:PUBLISH_RID"
+          } else {
+            $profileArgs += "-o"
+            $profileArgs += "artifacts/publish/$env:PUBLISH_RID/CodeWF.Toolbox"
+            $profileArgs += "-p:StripSymbols=false"
+          }
+          dotnet publish src/CodeWF.Toolbox/CodeWF.Toolbox.csproj -c Release `
+            -f net10.0 -r $env:PUBLISH_RID @profileArgs `
+            -p:PublishAot=true -p:PublishTrimmed=true -p:PublishSingleFile=false `
+            -p:IlcGenerateCompleteTypeMetadata=true -p:IlcTrimMetadata=false -p:IlcSingleThreaded=true `
+            -p:Version=$env:APP_VERSION
+          if ($LASTEXITCODE -ne 0) { throw "publish failed for $env:PUBLISH_RID" }
 
       - name: Package (zip + SHA-256)
         shell: pwsh
@@ -109,7 +119,7 @@ jobs:
         run: pwsh scripts/package_linux_deb.ps1 -RuntimeIdentifier '${{ matrix.rid }}' -Version $env:APP_VERSION -Force
 
       - name: 打包 macOS dmg 安装镜像
-        if: runner.os == 'MacOSX'
+        if: runner.os == 'macOS'
         shell: bash
         run: chmod +x scripts/package_macos_dmg.sh && ./scripts/package_macos_dmg.sh '${{ matrix.rid }}' "$APP_VERSION"
 
