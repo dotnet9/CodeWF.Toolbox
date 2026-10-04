@@ -1,5 +1,13 @@
 # 更新日志
 
+## 12.0.8 (2026-10-04)
+
+### 全平台 NativeAOT 发布
+
+- 所有发布平台（Windows / Linux / macOS）统一走 NativeAOT：完整反射元数据保全（`IlcGenerateCompleteTypeMetadata` + `IlcTrimMetadata=false`，Prism/DryIoc 反射兼容），单线程 ILC；启动速度与内存占用进一步优化，发布件为原生单可执行文件。
+- CI 矩阵按目标系统分发 runner（Linux 任务安装 clang/zlib1g-dev，linux-arm64 使用 arm64 runner），win-x86 不受 NativeAOT 支持保持自包含单文件（如适用）。
+- `scripts/publish.ps1` 与 CI 使用同一套发布参数。
+
 ## 12.0.7 (2026-10-04)
 
 ### 数据目录规范化

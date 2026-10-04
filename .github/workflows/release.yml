@@ -1,4 +1,4 @@
-name: release
+﻿name: release
 
 # Pushing a v* (or bare numeric) tag publishes: a NativeAOT self-contained
 # win-x64 build and a self-contained linux-x64 build, zipped with SHA-256
@@ -27,12 +27,18 @@ jobs:
         include:
           - rid: win-x64
             tfm: net11.0-windows
+            os: windows-latest
           - rid: linux-x64
             tfm: net11.0
-    runs-on: windows-latest
+            os: ubuntu-latest
+    runs-on: ${{ matrix.os }}
 
     steps:
       - uses: actions/checkout@v4
+
+      - name: Install NativeAOT prerequisites (Linux)
+        if: runner.os == 'Linux'
+        run: sudo apt-get update && sudo apt-get install -y clang zlib1g-dev
 
       - name: Setup .NET SDK
         uses: actions/setup-dotnet@v4
@@ -53,12 +59,14 @@ jobs:
           "APP_VERSION=$version" | Out-File -FilePath $env:GITHUB_ENV -Append -Encoding utf8
           Write-Host "Version: $version"
 
-      - name: Publish
+      - name: Publish (NativeAOT with full reflection metadata)
         shell: pwsh
         run: >
           dotnet publish src/CodeWF.Toolbox/CodeWF.Toolbox.csproj -c Release
           -f ${{ matrix.tfm }} -r ${{ matrix.rid }}
           -p:PublishProfile=FolderProfile_${{ matrix.rid }}
+          -p:PublishAot=true -p:PublishTrimmed=true -p:PublishSingleFile=false
+          -p:IlcGenerateCompleteTypeMetadata=true -p:IlcTrimMetadata=false -p:IlcSingleThreaded=true
           -p:Version=$env:APP_VERSION
 
       - name: Package (zip + SHA-256)
