@@ -15,8 +15,8 @@
 
 ## 仓库规范
 
-- 当前版本：`12.0.8`，版本号统一维护在根目录 `Directory.Build.props` 的 `<Version>` 节点。
-- NuGet 包项目统一支持 `net8.0;net10.0`；Demo、App、测试与内部应用项目统一使用 `net10.0` / `net10.0-windows`。
+- 当前版本：`12.0.9`，版本号统一维护在根目录 `Directory.Build.props` 的 `<Version>` 节点。
+- 项目统一使用 `net10.0`（桌面 App 另加 `net10.0-windows`）。
 - 根目录 `logo.svg`、`logo.png`、`logo.ico` 是唯一图标源，子工程只通过 MSBuild `Link` 引用，不维护图标副本。
 - 运行时帮助、Markdown 示例、内置备忘录、设计说明等业务文档按功能保留；仓库级入口文档使用根目录 `README.md` 和 `UpdateLog.md`。
 
@@ -24,7 +24,7 @@
 
 - 基于 Avalonia UI 与 Semi/Ursa 控件构建跨平台桌面界面。
 - 使用 Prism 模块目录、依赖注入与 Region 导航组织工具页面。
-- 采用 XML 资源做国际化，已包含简体中文、繁体中文、英文和日文。
+- 采用 JSON 资源做国际化（T4 生成强类型 `Language.cs`），已包含简体中文、繁体中文、英文和日文。
 - 内置格式转换、日志查看、开发辅助、Web 辅助、安全工具、XML 翻译管理等模块。
 - 保留面向 Native AOT 发布的脚本与平台常量配置。
 - 已完善菜单注册、工具搜索和区域导航边界处理。
@@ -61,7 +61,15 @@ src/
   CodeWF.Modules.ToolFramework/      本地工具运行框架与工具目录
   CodeWF.Modules.Development/        开发辅助模块
   CodeWF.Modules.LogViewer/          大文件日志查看模块
-  CodeWF.Modules.XmlTranslatorManager/ XML 国际化管理模块
+  CodeWF.Modules.XmlTranslatorManager/ XML 翻译管理模块
+  CodeWF.Modules.Security/           安全工具模块
+  CodeWF.Modules.Web/                Web 辅助模块
+  CodeWF.Modules.Network/            网络工具模块
+  CodeWF.Modules.Math/               数学计算模块
+  CodeWF.Modules.Measurement/        单位换算模块
+  CodeWF.Modules.Text/               文本处理模块
+  CodeWF.Modules.Data/               数据处理模块
+  CodeWF.Modules.Media/              媒体工具模块
   CodeWF.Toolbox.Tests/              单元测试工程
 docs/
   assets/                            独立 SVG 图示
@@ -84,6 +92,18 @@ docs/
 - 格式转换：提供 JSON/YAML、Base64、GUID、日期时间与图片转图标等工具。
 - 开发辅助：提供 JSON/YAML 格式化、Shell 与数据处理等日常开发小工具。
 - XML 翻译管理：用于比对、合并和维护 XML 国际化资源。
+- 安全/Web/网络/数学/测量/文本/数据/媒体等模块：共 12 个功能模块，覆盖开发与日常常用小工具。
+
+## 登录与用户数据
+
+- 本地账号库与用户 Profile 目录位于 `%LocalAppData%\CodeWF.Toolbox\Users\`（不写入安装目录）。
+- 登录框预填演示账号 `CodeWF` / `codewf.com`，可直接体验后创建自己的账号。
+- 安全/Web/网络/数学/测量/文本/数据/媒体等模块：共 12 个功能模块，覆盖开发与日常常用小工具。
+
+## 登录与用户数据
+
+- 本地账号库与用户 Profile 目录位于 `%LocalAppData%\CodeWF.Toolbox\Users\`（不写入安装目录）。
+- 登录框预填演示账号 `CodeWF` / `codewf.com`，可直接体验后创建自己的账号。
 
 ## 第三方开源组件审计（2026-05-20）
 
