@@ -44,8 +44,11 @@ to_macos_version() {
 create_icon() {
   # logo.png -> iconset -> .icns。Info.plist 缺 CFBundleIconFile 时启动台只会显示通用占位图标。
   local resources_dir="$1"
-  local iconset_dir
-  iconset_dir="$(mktemp -d "${TMPDIR:-/tmp}/iconset-XXXXXX")"
+  local iconset_base iconset_dir
+  iconset_base="$(mktemp -d "${TMPDIR:-/tmp}/iconset-XXXXXX")"
+  # iconutil 要求目录以 .iconset 结尾，否则报 Invalid Iconset。
+  iconset_dir="${iconset_base}.iconset"
+  mv "$iconset_base" "$iconset_dir"
 
   sips -z 16 16 "$ICON_SOURCE" --out "$iconset_dir/icon_16x16.png" >/dev/null
   sips -z 32 32 "$ICON_SOURCE" --out "$iconset_dir/icon_16x16@2x.png" >/dev/null
