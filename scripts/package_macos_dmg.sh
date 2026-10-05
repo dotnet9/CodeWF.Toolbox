@@ -130,12 +130,25 @@ write_info_plist "$CONTENTS_DIR/Info.plist" "$MACOS_VERSION"
 # 老式 bundle 标识，缺了部分系统工具识别不了这是应用包。
 printf 'APPL????' >"$CONTENTS_DIR/PkgInfo"
 
-if [[ -n "$CODESIGN_IDENTITY" ]]; then
-  codesign --force --deep --options runtime --timestamp --sign "$CODESIGN_IDENTITY" "$APP_DIR"
-else
-  # ad-hoc 签名：让系统认它是个完整应用包，避免未签名 bundle 被 Gatekeeper 拦。
-  codesign --force --deep --sign - --timestamp=none "$APP_DIR"
-fi
+# ad-hoc 签名让系统认它是个完整应用包；但 Contents/MacOS 下若存在非 Mach-O
+# 资源（I18n、示例目录等），整体 --deep 签名会报 bundle format unrecognized——
+# 数据文件必须留在 MacOS 旁（应用按相对路径探测），因此此时降级为只签主可执行文件。
+sign_bundle() {
+  local app_dir="$1"
+  local exec_name="$2"
+  local sign_args=(--force --deep --sign - --timestamp=none)
+  if [[ -n "$CODESIGN_IDENTITY" ]]; then
+    sign_args=(--force --deep --options runtime --timestamp --sign "$CODESIGN_IDENTITY")
+  fi
+  if codesign "${sign_args[@]}" "$app_dir" 2>/dev/null; then
+    return 0
+  fi
+  echo "WARN: deep signing failed (non-Mach-O files under MacOS?); signing the main executable only." >&2
+  codesign --force --sign - "$app_dir/Contents/MacOS/$exec_name" 2>/dev/null ||
+    echo "WARN: signing failed entirely; shipping an unsigned bundle." >&2
+}
+
+sign_bundle "$APP_DIR" "$EXECUTABLE_NAME"
 
 DMG_STAGE="$STAGE_ROOT/dmg"
 mkdir -p "$DMG_STAGE"
