@@ -90,6 +90,17 @@ jobs:
             -p:Version=$env:APP_VERSION
           if ($LASTEXITCODE -ne 0) { throw "publish failed for $env:PUBLISH_RID" }
 
+      - name: Build Windows installer (Inno Setup)
+        if: runner.os == 'Windows' && matrix.rid == 'win-x64'
+        uses: Minionguyjpro/Inno-Setup-Action@v1.2.2
+        with:
+          path: scripts/CodeWF.Toolbox.iss
+          options: >-
+            /DAppVersion=${{ env.APP_VERSION }}
+            /DSourceDir=${{ github.workspace }}\publish\win-x64\CodeWF.Toolbox
+            /DOutputDir=${{ github.workspace }}rtifacts
+elease
+
       - name: Package (zip + SHA-256)
         shell: pwsh
         run: |
