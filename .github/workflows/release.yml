@@ -98,8 +98,7 @@ jobs:
           options: >-
             /DAppVersion=${{ env.APP_VERSION }}
             /DSourceDir=${{ github.workspace }}\publish\win-x64\CodeWF.Toolbox
-            /DOutputDir=${{ github.workspace }}rtifacts
-elease
+            /DOutputDir=${{ github.workspace }}\artifacts\release
 
       - name: Package (zip + SHA-256)
         shell: pwsh
@@ -206,6 +205,7 @@ elease
           body_path: artifacts/release-body.md
           generate_release_notes: true
           files: |
+            artifacts/release/*.exe
             artifacts/release/*.zip
             artifacts/release/*.deb
             artifacts/release/*.dmg
