@@ -100,27 +100,17 @@ jobs:
             /DSourceDir=${{ github.workspace }}\publish\win-x64\CodeWF.Toolbox
             /DOutputDir=${{ github.workspace }}\artifacts\release
 
-      - name: Package (zip + SHA-256)
+      - name: Compute installer SHA-256 (Windows)
+        if: runner.os == 'Windows' && matrix.rid == 'win-x64'
         shell: pwsh
         run: |
-          $out = "artifacts/release"
-          New-Item -ItemType Directory -Path $out -Force | Out-Null
-          if ($env:RUNNER_OS -ne 'Windows') {
-            # Linux/macOS 走安装包（deb/dmg），由专用步骤处理
-            exit 0
+          $installerName = "CodeWF.Toolbox-v$env:APP_VERSION-win-x64-setup.exe"
+          $installerPath = Join-Path "artifacts/release" $installerName
+          if (-not (Test-Path -LiteralPath $installerPath -PathType Leaf)) {
+            throw "Installer was not produced: $installerPath"
           }
-          $source = "publish/${{ matrix.rid }}/CodeWF.Toolbox"
-          if (-not (Test-Path -LiteralPath $source)) {
-            throw "Publish output was not produced: $source"
-          }
-          Get-ChildItem -LiteralPath $source -Filter *.pdb -Recurse | Remove-Item -Force
-          $name = "CodeWF.Toolbox-v$env:APP_VERSION-${{ matrix.rid }}"
-          Compress-Archive -Path "$source/*" -DestinationPath "$out/$name.zip" -Force
-          if (-not (Test-Path -LiteralPath "$out/$name.zip" -PathType Leaf)) {
-            throw "Archive was not produced: $name.zip"
-          }
-          $sha = (Get-FileHash -LiteralPath "$out/$name.zip" -Algorithm SHA256).Hash.ToLowerInvariant()
-          "$sha  $name.zip" | Set-Content -LiteralPath "$out/$name.zip.sha256" -Encoding ASCII
+          $sha = (Get-FileHash -LiteralPath $installerPath -Algorithm SHA256).Hash.ToLowerInvariant()
+          "$sha  $installerName" | Set-Content -LiteralPath "$installerPath.sha256" -Encoding ASCII
 
       - name: 打包 Linux deb 安装包
         if: runner.os == 'Linux'
@@ -206,7 +196,6 @@ jobs:
           generate_release_notes: true
           files: |
             artifacts/release/*.exe
-            artifacts/release/*.zip
             artifacts/release/*.deb
             artifacts/release/*.dmg
             artifacts/release/*.sha256
