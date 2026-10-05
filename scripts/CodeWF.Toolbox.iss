@@ -14,7 +14,7 @@
 #endif
 
 [Setup]
-AppId={{{A3B4C5D6-E7F8-4A9B-8C7D-6E5F4A3B2C1D}}
+AppId={{A3B4C5D6-E7F8-4A9B-8C7D-6E5F4A3B2C1D}}
 AppName=CodeWF.Toolbox
 AppVersion={#AppVersion}
 AppPublisher=Dotnet9
