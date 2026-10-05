@@ -4,6 +4,15 @@
 
 ![应用截图](screen.png)
 
+## 下载安装
+
+从 [GitHub Releases](https://github.com/dotnet9/CodeWF.Toolbox/releases/latest) 下载最新安装包（附 `.sha256` 校验）：
+
+
+- Windows x64：`CodeWF.Toolbox-v*-win-x64-setup.exe`
+- Linux x64 / arm64：`CodeWF.Toolbox-*-linux-x64.deb`、`CodeWF.Toolbox-*-linux-arm64.deb`
+- macOS x64 / arm64：`CodeWF.Toolbox-*-osx-x64.dmg`、`CodeWF.Toolbox-*-osx-arm64.dmg`
+
 ## 仓库规范
 
 - 当前版本：`12.0.8`，版本号统一维护在根目录 `Directory.Build.props` 的 `<Version>` 节点。
