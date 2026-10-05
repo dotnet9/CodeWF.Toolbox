@@ -34,7 +34,9 @@ internal sealed partial class UserProfileService : IUserProfileService
 
     public string EnsureProfileDirectory(string username)
     {
-        var root = Path.Combine(AppContext.BaseDirectory, "Users");
+        var root = Path.Combine(
+            Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
+            "CodeWF.Toolbox", "Users");
         Directory.CreateDirectory(root);
 
         var folderName = SanitizeFolderName(username);
