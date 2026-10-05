@@ -23,7 +23,7 @@ Write-Host "发布 $RuntimeIdentifier (Version=$Version)"
 $project = Join-Path $repositoryRoot "src/CodeWF.Toolbox/CodeWF.Toolbox.csproj"
 $pubxml = Join-Path $repositoryRoot "src/CodeWF.Toolbox/Properties/PublishProfiles/FolderProfile_$RuntimeIdentifier.pubxml"
 $tfmNode = Select-String -LiteralPath $pubxml -Pattern '<TargetFramework>([^<]+)</TargetFramework>' | Select-Object -First 1
-$tfm = if ($tfmNode) { $tfmNode.Matches[0].Groups[1].Value } else { "net11.0-windows" }
+$tfm = if ($tfmNode) { $tfmNode.Matches[0].Groups[1].Value } else { "net10.0-windows" }
 # 全平台 NativeAOT：完整反射元数据保全（Prism/DryIoc），单线程 ILC 更稳
 $ilcArgs = @("-p:PublishAot=true", "-p:PublishTrimmed=true", "-p:PublishSingleFile=false",
     "-p:IlcGenerateCompleteTypeMetadata=true", "-p:IlcTrimMetadata=false", "-p:IlcSingleThreaded=true")
