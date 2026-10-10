@@ -1,6 +1,6 @@
-﻿using Avalonia.Controls;
-using Avalonia.Data;
-using Lang.Avalonia.MarkupExtensions;
+﻿using global::Avalonia.Controls;
+using global::Avalonia.Data;
+using CodeWF.Avalonia.Lang.MarkupExtensions;
 using Prism.Regions;
 using System.Collections.Specialized;
 

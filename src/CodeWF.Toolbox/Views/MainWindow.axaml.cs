@@ -1,17 +1,17 @@
-using Avalonia.Controls;
-using Avalonia.Input;
-using Avalonia.Markup.Xaml;
-using Avalonia.Media;
-using Avalonia.Media.Imaging;
-using CodeWF.AvaloniaControls.Controls;
-using CodeWF.AvaloniaControls.Helpers;
+using global::Avalonia.Controls;
+using global::Avalonia.Input;
+using global::Avalonia.Markup.Xaml;
+using global::Avalonia.Media;
+using global::Avalonia.Media.Imaging;
+using CodeWF.Avalonia.Controls.Controls;
+using CodeWF.Avalonia.Controls.Helpers;
 using CodeWF.Core.Helpers;
 using CodeWF.Core.IServices;
-using CodeWF.EventBus;
+using CodeWF.Toolkit.EventBus;
 using CodeWF.Toolbox.Commands;
 using CodeWF.Toolbox.Diagnostics;
 using CodeWF.Toolbox.ViewModels;
-using Lang.Avalonia;
+using CodeWF.Avalonia.Lang;
 using Prism.Ioc;
 using System;
 using System.Linq;
@@ -66,11 +66,11 @@ public partial class MainWindow : CodeWFWindow
 
     private void Init()
     {
-        EventBus.EventBus.Default.Subscribe(this);
+        EventBus.Default.Subscribe(this);
         ChangeApplicationStatus(new ChangeApplicationStatusCommand());
     }
 
-    private async void OpenSettingButton_OnClick(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
+    private async void OpenSettingButton_OnClick(object? sender, global::Avalonia.Interactivity.RoutedEventArgs e)
     {
         var settingView = ContainerLocator.Container.Resolve<SettingView>();
         await settingView.ShowDialog(this);
@@ -84,7 +84,7 @@ public partial class MainWindow : CodeWFWindow
         }
     }
 
-    private void Search_OnLostFocus(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
+    private void Search_OnLostFocus(object? sender, global::Avalonia.Interactivity.RoutedEventArgs e)
     {
         if (DataContext is TitleBarSettingsViewModel viewModel)
         {

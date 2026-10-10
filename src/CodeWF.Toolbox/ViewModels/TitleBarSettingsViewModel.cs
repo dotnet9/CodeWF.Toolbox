@@ -1,8 +1,9 @@
+using CodeWF.Toolkit.EventBus;
 using CodeWF.Core.IServices;
 using CodeWF.Toolbox.Models;
 using CodeWF.Toolbox.Commands;
 using CodeWF.Toolbox.Services;
-using Lang.Avalonia;
+using CodeWF.Avalonia.Lang;
 using ReactiveUI;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -65,7 +66,7 @@ public class TitleBarSettingsViewModel : ViewModelBase
         set
         {
             this.RaiseAndSetIfChanged(ref _searchText, value ?? string.Empty);
-            EventBus.EventBus.Default.Publish(new SearchToolMenuCommand(_searchText));
+            EventBus.Default.Publish(new SearchToolMenuCommand(_searchText));
         }
     }
 

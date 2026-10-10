@@ -1,6 +1,6 @@
-﻿using Avalonia.Controls.Notifications;
+﻿using global::Avalonia.Controls.Notifications;
 using CodeWF.Core.Models;
-using CodeWF.EventBus;
+using CodeWF.Toolkit.EventBus;
 using CodeWF.Toolbox.Commands;
 using ReactiveUI;
 using System.Threading.Tasks;
@@ -35,7 +35,7 @@ internal class MainContentViewModel : ViewModelBase
 
     public MainContentViewModel()
     {
-        EventBus.EventBus.Default.Subscribe(this);
+        EventBus.Default.Subscribe(this);
     }
 
     [EventHandler]

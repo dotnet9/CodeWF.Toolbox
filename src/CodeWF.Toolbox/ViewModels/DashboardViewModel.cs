@@ -1,3 +1,4 @@
+using CodeWF.Toolkit.EventBus;
 using CodeWF.Core;
 using CodeWF.Core.IServices;
 using CodeWF.Core.Models;
@@ -80,7 +81,7 @@ public class DashboardViewModel : ViewModelBase
     {
         if (!string.IsNullOrWhiteSpace(tool.ViewName))
         {
-            EventBus.EventBus.Default.Publish(new OpenToolMenuCommand(tool.ViewName));
+            EventBus.Default.Publish(new OpenToolMenuCommand(tool.ViewName));
         }
     }
 

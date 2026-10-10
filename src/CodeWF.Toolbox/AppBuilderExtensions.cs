@@ -1,5 +1,5 @@
 using Avalonia;
-using Avalonia.Media;
+using global::Avalonia.Media;
 
 namespace CodeWF.Toolbox;
 

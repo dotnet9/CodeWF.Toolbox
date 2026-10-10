@@ -1,4 +1,5 @@
-﻿using CodeWF.Tools.Extensions;
+﻿using CodeWF.Toolkit.Files.Extensions;
+using CodeWF.Toolkit.Core.Extensions;
 using ReactiveUI;
 using System.Globalization;
 using System.Reactive.Disposables;

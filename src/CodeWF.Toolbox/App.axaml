@@ -10,9 +10,8 @@
     <prism:PrismApplication.Styles>
 		<semi:SemiTheme Locale="zh-CN" />
 		<semi:AvaloniaEditSemiTheme />
-		<semi:ProDataGridSemiTheme />
         <semi:UrsaSemiTheme Locale="zh-CN"/>
-		<codewf:CodeWFTheme />
+		<codewf:ACSemiTheme />
         <StyleInclude Source="../Styles/Index.axaml" />
         <codewf:MarkdownThemes TypographyTheme="Simple" />
     </prism:PrismApplication.Styles>

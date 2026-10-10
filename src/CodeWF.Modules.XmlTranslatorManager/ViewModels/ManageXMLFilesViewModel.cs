@@ -1,12 +1,12 @@
-using Avalonia.Controls;
-using Avalonia.Controls.Templates;
-using Avalonia.Platform.Storage;
-using CodeWF.AvaloniaControls.Extensions;
+using global::Avalonia.Controls;
+using global::Avalonia.Controls.Templates;
+using global::Avalonia.Platform.Storage;
+using CodeWF.Avalonia.Controls.Extensions;
 using CodeWF.Core.IServices;
 using CodeWF.Modules.XmlTranslatorManager.Models;
-using CodeWF.Tools.Exports;
-using CodeWF.Tools.FileExtensions;
-using Lang.Avalonia;
+using CodeWF.Toolkit.Files.Exports;
+using CodeWF.Toolkit.Core.FileExtensions;
+using CodeWF.Avalonia.Lang;
 using ReactiveUI;
 using System.Data;
 using System.Text;
@@ -242,9 +242,9 @@ public class ManageXmlFilesViewModel : ReactiveObject
     {
         return new FuncDataTemplate<LanguageProperty>((property, _) => new TextBlock
         {
-            Margin = new Avalonia.Thickness(8, 4),
+            Margin = new global::Avalonia.Thickness(8, 4),
             Text = property?.Key ?? string.Empty,
-            VerticalAlignment = Avalonia.Layout.VerticalAlignment.Center
+            VerticalAlignment = global::Avalonia.Layout.VerticalAlignment.Center
         });
     }
 
@@ -254,10 +254,10 @@ public class ManageXmlFilesViewModel : ReactiveObject
         {
             var textBox = new TextBox
             {
-                BorderThickness = new Avalonia.Thickness(0),
+                BorderThickness = new global::Avalonia.Thickness(0),
                 Text = property?[cultureName] ?? string.Empty,
-                VerticalAlignment = Avalonia.Layout.VerticalAlignment.Stretch,
-                VerticalContentAlignment = Avalonia.Layout.VerticalAlignment.Center
+                VerticalAlignment = global::Avalonia.Layout.VerticalAlignment.Stretch,
+                VerticalContentAlignment = global::Avalonia.Layout.VerticalAlignment.Center
             };
 
             // 动态语言列使用代码模板读写字典，避免 ReflectionBinding 在 NativeAOT 下产生动态代码警告。

@@ -1,11 +1,11 @@
-﻿using Avalonia.Controls;
-using Avalonia.Platform.Storage;
-using Avalonia.Threading;
+﻿using global::Avalonia.Controls;
+using global::Avalonia.Platform.Storage;
+using global::Avalonia.Threading;
 using CodeWF.Core.Helpers;
 using CodeWF.Core.IServices;
 using CodeWF.Modules.ToolFramework.Models;
 using CodeWF.Modules.ToolFramework.Services;
-using Lang.Avalonia;
+using CodeWF.Avalonia.Lang;
 using Prism.Regions;
 using ReactiveUI;
 using System.Globalization;
