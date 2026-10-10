@@ -1,6 +1,6 @@
 ﻿using Avalonia;
-using Avalonia.Data.Converters;
-using Avalonia.Media;
+using global::Avalonia.Data.Converters;
+using global::Avalonia.Media;
 using System;
 using System.Collections.Concurrent;
 using System.Globalization;

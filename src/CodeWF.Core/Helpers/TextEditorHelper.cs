@@ -1,4 +1,4 @@
-using Avalonia.Media;
+using global::Avalonia.Media;
 using AvaloniaEdit;
 
 namespace CodeWF.Core.Helpers;

@@ -1,8 +1,8 @@
 using Avalonia.Controls.Notifications;
 using CodeWF.Core.IServices;
 using CodeWF.Core.RegionAdapters;
-using CodeWF.Tools.Extensions;
-using Lang.Avalonia;
+using CodeWF.Avalonia.Lang;
+using CodeWF.Toolkit.Core.Extensions;
 using ReactiveUI;
 using System;
 using System.Diagnostics;

@@ -1,12 +1,12 @@
-using Avalonia.Controls;
-using Avalonia.Controls.Notifications;
+using global::Avalonia.Controls;
+using global::Avalonia.Controls.Notifications;
 using CodeWF.Core;
 using CodeWF.Core.IServices;
 using CodeWF.Core.Models;
-using CodeWF.EventBus;
+using CodeWF.Toolkit.EventBus;
 using CodeWF.Toolbox.Commands;
 using CodeWF.Toolbox.Views;
-using Lang.Avalonia;
+using CodeWF.Avalonia.Lang;
 using Prism.Ioc;
 using Prism.Regions;
 using ReactiveUI;
@@ -95,7 +95,7 @@ internal class MainMenuViewModel : ViewModelBase
         _userProfileService = userProfileService;
 
         _toolMenuService.ToolMenuChanged += MenuChangedHandler;
-        EventBus.EventBus.Default.Subscribe(this);
+        EventBus.Default.Subscribe(this);
         OpenSettingCommand = ReactiveCommand.CreateFromTask(RaiseOpenSettingHandlerAsync);
 
         ApplyMenuFilter();
@@ -405,7 +405,7 @@ internal class MainMenuViewModel : ViewModelBase
             ToolStatus.Complete => NotificationType.Success,
             _ => NotificationType.Information
         };
-        EventBus.EventBus.Default.Publish(new ChangeToolMenuCommand(_selectedMenuItem));
+        EventBus.Default.Publish(new ChangeToolMenuCommand(_selectedMenuItem));
     }
 
     public async Task RaiseOpenSettingHandlerAsync()

@@ -1,5 +1,5 @@
-using Avalonia.Controls;
-using Avalonia.Markup.Xaml;
+using global::Avalonia.Controls;
+using global::Avalonia.Markup.Xaml;
 using AvaloniaEdit;
 using AvaloniaEdit.TextMate;
 using CodeWF.Core.Helpers;

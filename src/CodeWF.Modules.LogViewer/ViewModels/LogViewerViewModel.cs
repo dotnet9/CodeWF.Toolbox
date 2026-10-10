@@ -1,11 +1,11 @@
 using Avalonia;
-using Avalonia.Controls;
-using Avalonia.Platform.Storage;
-using Avalonia.Threading;
-using Avalonia.VisualTree;
+using global::Avalonia.Controls;
+using global::Avalonia.Platform.Storage;
+using global::Avalonia.Threading;
+using global::Avalonia.VisualTree;
 using AvaloniaEdit;
 using CodeWF.Core.IServices;
-using Lang.Avalonia;
+using CodeWF.Avalonia.Lang;
 using ReactiveUI;
 using System.Reactive;
 using System.Text;

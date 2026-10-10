@@ -1,4 +1,4 @@
-﻿using Avalonia.Media.Imaging;
+﻿using global::Avalonia.Media.Imaging;
 using CodeWF.Modules.ToolFramework.Models;
 using CronExpressionDescriptor;
 using DiffPlex;

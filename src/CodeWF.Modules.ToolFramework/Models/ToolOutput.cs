@@ -1,4 +1,4 @@
-﻿using Avalonia.Media.Imaging;
+﻿using global::Avalonia.Media.Imaging;
 using ReactiveUI;
 
 namespace CodeWF.Modules.ToolFramework.Models;

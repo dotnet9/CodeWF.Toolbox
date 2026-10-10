@@ -1,5 +1,5 @@
-using Avalonia.Controls;
-using Avalonia.Controls.ApplicationLifetimes;
+using global::Avalonia.Controls;
+using global::Avalonia.Controls.ApplicationLifetimes;
 using CodeWF.Toolbox.Services;
 using ReactiveUI;
 using System;

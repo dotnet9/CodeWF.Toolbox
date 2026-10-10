@@ -16,8 +16,8 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="CodeWF.Tools.Image" />
-		<PackageReference Include="CodeWF.Log.Core" />
+		<PackageReference Include="CodeWF.Toolkit.Image" />
+		<PackageReference Include="CodeWF.Toolkit.Logging" />
 		<PackageReference Include="Hashids.net" />
 		<PackageReference Include="Prism.DryIoc.Avalonia" />
 		<PackageReference Include="Irihi.Ursa.Themes.Semi" />

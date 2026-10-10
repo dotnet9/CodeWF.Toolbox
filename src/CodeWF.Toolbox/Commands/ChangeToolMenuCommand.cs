@@ -1,5 +1,5 @@
 ﻿using CodeWF.Core.Models;
-using CodeWF.EventBus;
+using CodeWF.Toolkit.EventBus;
 
 namespace CodeWF.Toolbox.Commands;
 

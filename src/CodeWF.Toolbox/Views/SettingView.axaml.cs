@@ -1,8 +1,8 @@
-using Avalonia.Controls;
-using Avalonia.Markup.Xaml;
-using CodeWF.AvaloniaControls.Controls;
+using global::Avalonia.Controls;
+using global::Avalonia.Markup.Xaml;
+using CodeWF.Avalonia.Controls.Controls;
 using CodeWF.Core.Events;
-using CodeWF.EventBus;
+using CodeWF.Toolkit.EventBus;
 
 namespace CodeWF.Toolbox.Views;
 
@@ -13,7 +13,7 @@ public partial class SettingView : CodeWFWindow
     {
         InitializeComponent();
         _tabControl = this.FindControl<TabControl>(nameof(MyTab));
-        EventBus.EventBus.Default.Subscribe(this);
+        EventBus.Default.Subscribe(this);
     }
 
     private void InitializeComponent()

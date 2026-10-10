@@ -1,3 +1,4 @@
+using CodeWF.Toolkit.EventBus;
 using CodeWF.Core.IServices;
 using CodeWF.Core.RegionAdapters;
 using CodeWF.Toolbox.Commands;
@@ -51,14 +52,14 @@ public class CommonSettingViewModel : ViewModelBase, ITabItemBase
     public Task ChangeAutoOpenToolboxAtStartupHandlerAsync()
     {
         _applicationService.AutoOpenToolboxAtStartup = AutoOpenToolboxAtStartup;
-        EventBus.EventBus.Default.Publish(new ChangeApplicationStatusCommand());
+        EventBus.Default.Publish(new ChangeApplicationStatusCommand());
         return Task.CompletedTask;
     }
 
     public Task ChangeHideTrayIconOnCloseHandlerAsync()
     {
         _applicationService.HideTrayIconOnClose = HideTrayIconOnClose;
-        EventBus.EventBus.Default.Publish(new ChangeApplicationStatusCommand());
+        EventBus.Default.Publish(new ChangeApplicationStatusCommand());
         return Task.CompletedTask;
     }
 

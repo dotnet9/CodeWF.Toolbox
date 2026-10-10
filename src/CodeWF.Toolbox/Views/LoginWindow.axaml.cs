@@ -1,5 +1,5 @@
-using Avalonia.Markup.Xaml;
-using CodeWF.AvaloniaControls.Controls;
+using global::Avalonia.Markup.Xaml;
+using CodeWF.Avalonia.Controls.Controls;
 using CodeWF.Core.IServices;
 using CodeWF.Toolbox.Services;
 using CodeWF.Toolbox.ViewModels;

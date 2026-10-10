@@ -37,7 +37,7 @@
 	<ItemGroup>
 		<PackageReference Include="Avalonia" />
 		<PackageReference Include="Avalonia.Desktop" />
-		<PackageReference Include="CodeWF.AvaloniaControls.ProDataGrid.Themes" />
+		<PackageReference Include="CodeWF.Avalonia.DataGrid" />
 		<PackageReference Include="Semi.Avalonia" />
 		<PackageReference Include="Irihi.Ursa.PrismExtension" />
 		<PackageReference Include="Irihi.Ursa.Themes.Semi" />

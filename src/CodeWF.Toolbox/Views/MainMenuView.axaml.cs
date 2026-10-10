@@ -1,5 +1,5 @@
-using Avalonia.Controls;
-using Avalonia.Interactivity;
+using global::Avalonia.Controls;
+using global::Avalonia.Interactivity;
 using CodeWF.Toolbox.ViewModels;
 using Prism.Ioc;
 

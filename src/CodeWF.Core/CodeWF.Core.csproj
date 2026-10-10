@@ -14,10 +14,12 @@
 		<PackageReference Include="Dapper.AOT" />
 		<PackageReference Include="Microsoft.Data.Sqlite" />
 		<PackageReference Include="Prism.DryIoc.Avalonia" />
-		<PackageReference Include="CodeWF.Tools" />
-		<PackageReference Include="CodeWF.AvaloniaControls.Themes" />
-		<PackageReference Include="CodeWF.EventBus" />
-		<PackageReference Include="Lang.Avalonia.Json" />
+		<PackageReference Include="CodeWF.Toolkit.Core" />
+    <PackageReference Include="CodeWF.Toolkit.Files" />
+    <PackageReference Include="CodeWF.Toolkit.Image" />
+		<PackageReference Include="CodeWF.Avalonia.Controls" />
+		<PackageReference Include="CodeWF.Toolkit.EventBus" />
+		<PackageReference Include="CodeWF.Avalonia.Lang" />
 	</ItemGroup>
 
 </Project>

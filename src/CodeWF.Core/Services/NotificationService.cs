@@ -1,5 +1,5 @@
-﻿using Avalonia.Controls;
-using Avalonia.Controls.Notifications;
+﻿using global::Avalonia.Controls;
+using global::Avalonia.Controls.Notifications;
 using CodeWF.Core.IServices;
 
 namespace CodeWF.Core.Services;
@@ -12,7 +12,7 @@ public class NotificationService : INotificationService
     {
         _notificationManager = new WindowNotificationManager(level)
         {
-            Position = NotificationPosition.BottomRight, MaxItems = 4, Margin = new Avalonia.Thickness(0, 0, 15, 40)
+            Position = NotificationPosition.BottomRight, MaxItems = 4, Margin = new global::Avalonia.Thickness(0, 0, 15, 40)
         };
     }
 

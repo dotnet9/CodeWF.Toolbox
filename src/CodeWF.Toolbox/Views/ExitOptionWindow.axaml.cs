@@ -1,6 +1,6 @@
-using Avalonia.Interactivity;
-using Avalonia.Markup.Xaml;
-using CodeWF.AvaloniaControls.Controls;
+using global::Avalonia.Interactivity;
+using global::Avalonia.Markup.Xaml;
+using CodeWF.Avalonia.Controls.Controls;
 
 namespace CodeWF.Toolbox.Views;
 

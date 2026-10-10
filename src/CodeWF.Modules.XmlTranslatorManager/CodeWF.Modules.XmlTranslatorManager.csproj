@@ -20,7 +20,7 @@
 		<PackageReference Include="Prism.DryIoc.Avalonia" />
 		<PackageReference Include="ReactiveUI.Avalonia" />
 		<PackageReference Include="AvaloniaEdit.TextMate" />
-		<PackageReference Include="CodeWF.AvaloniaControls.ProDataGrid" />
+		<PackageReference Include="CodeWF.Avalonia.DataGrid" />
 		<PackageReference Include="Irihi.Ursa.Themes.Semi" />
 		<PackageReference Include="TextMateSharp.Grammars" />
 	</ItemGroup>

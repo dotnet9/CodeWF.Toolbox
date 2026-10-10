@@ -1,17 +1,18 @@
-﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿using Avalonia.Controls;
-using Avalonia.Styling;
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿using global::Avalonia.Controls;
+using global::Avalonia.Styling;
 using CodeWF.Core.Events;
 using CodeWF.Core.Helpers;
 using CodeWF.Core.IServices;
 using CodeWF.Toolbox.Models;
-using CodeWF.Tools.Helpers;
+using CodeWF.Toolkit.Files.Helpers;
+using CodeWF.Toolkit.EventBus;
 using Semi.Avalonia;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Threading;
-using Lang.Avalonia;
+using CodeWF.Avalonia.Lang;
 using Ursa.Controls;
 
 namespace CodeWF.Toolbox.Services;
@@ -117,7 +118,7 @@ internal class ApplicationService : IApplicationService
         {
             AppConfigHelper.Set(ThemeKey, theme);
             ChangeTheme(theme);
-            EventBus.EventBus.Default.Publish(new ThemeChangedCommand());
+            EventBus.Default.Publish(new ThemeChangedCommand());
         }
         catch
         {
