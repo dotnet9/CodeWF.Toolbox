@@ -13,13 +13,13 @@
     <PackageVersion Include="AvaloniaUI.DiagnosticsSupport" Version="2.2.1" />
     <PackageVersion Include="BCrypt.Net-Next" Version="4.2.0" />
     <PackageVersion Include="BouncyCastle.Cryptography" Version="2.7.0-beta.98" />
-    <PackageVersion Include="CodeWF.Avalonia.Controls" Version="12.1.4.0-preview.2" />
-    <PackageVersion Include="CodeWF.Avalonia.DataGrid" Version="12.1.4.0-preview.2" />
-    <PackageVersion Include="CodeWF.Toolkit.EventBus" Version="1.0.0.0-preview.1" />
-    <PackageVersion Include="CodeWF.Toolkit.Logging" Version="1.0.0.0-preview.1" />
-    <PackageVersion Include="CodeWF.Toolkit.Core" Version="1.0.0.0-preview.1" />
-    <PackageVersion Include="CodeWF.Toolkit.Files" Version="1.0.0.0-preview.1" />
-    <PackageVersion Include="CodeWF.Toolkit.Image" Version="1.0.0.0-preview.1" />
+    <PackageVersion Include="CodeWF.Avalonia.Controls" Version="12.1.4.1" />
+    <PackageVersion Include="CodeWF.Avalonia.DataGrid" Version="12.1.4.1" />
+    <PackageVersion Include="CodeWF.Toolkit.EventBus" Version="1.0.0.1" />
+    <PackageVersion Include="CodeWF.Toolkit.Logging" Version="1.0.0.1" />
+    <PackageVersion Include="CodeWF.Toolkit.Core" Version="1.0.0.1" />
+    <PackageVersion Include="CodeWF.Toolkit.Files" Version="1.0.0.1" />
+    <PackageVersion Include="CodeWF.Toolkit.Image" Version="1.0.0.1" />
     <PackageVersion Include="coverlet.collector" Version="10.0.0" />
     <PackageVersion Include="CronExpressionDescriptor" Version="2.45.0" />
     <PackageVersion Include="Dapper" Version="2.1.72" />
@@ -31,10 +31,10 @@
     <PackageVersion Include="IbanNet" Version="6.1.0" />
     <PackageVersion Include="Irihi.Ursa.PrismExtension" Version="2.0.0" />
     <PackageVersion Include="Irihi.Ursa.Themes.Semi" Version="2.0.0" />
-    <PackageVersion Include="CodeWF.Avalonia.Lang" Version="12.1.4.0-preview.2" />
+    <PackageVersion Include="CodeWF.Avalonia.Lang" Version="12.1.4.1" />
     <PackageVersion Include="libphonenumber-csharp" Version="9.0.30" />
     <PackageVersion Include="Markdig" Version="1.4.0" />
-    <PackageVersion Include="CodeWF.Avalonia.Markdown.Lite" Version="12.1.4.0-preview.2" />
+    <PackageVersion Include="CodeWF.Avalonia.Markdown.Lite" Version="12.1.4.1" />
     <PackageVersion Include="Microsoft.Data.Sqlite" Version="11.0.0-preview.4.26230.115" />
     <PackageVersion Include="Microsoft.NET.Test.Sdk" Version="18.5.1" />
     <PackageVersion Include="NBitcoin" Version="10.0.4" />
