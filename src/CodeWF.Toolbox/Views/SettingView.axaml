@@ -36,7 +36,7 @@
             BorderThickness="1"
             CornerRadius="8"
             IsHitTestVisible="False">
-            <Image Width="20" Height="20" Source="\Assets\logo.ico" />
+            <Image Width="20" Height="20" Source="/Assets/logo.ico" />
         </Border>
     </codewf:CodeWFWindow.LeftContent>
     <Grid Margin="22" RowDefinitions="Auto,*" RowSpacing="14">

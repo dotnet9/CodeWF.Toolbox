@@ -1,4 +1,53 @@
+# 更新日志
+
+## 12.0.9 (2026-10-04)
+
+### 全平台 NativeAOT + 安装包
+
+- 发布矩阵补齐为 5 平台：win-x64、linux-x64、linux-arm64、osx-x64（Intel）、osx-arm64（Apple Silicon），全部 NativeAOT（完整反射元数据保全，单线程 ILC）；目标框架统一下调到 .NET 10（10 正式版工具链在 macOS 上的 AOT 链接稳定，替代 .NET 11 preview 的 swift auto-link 缺陷）。
+- 非 Windows 平台改用真正的安装包：Linux 产出 `.deb`（amd64/arm64），macOS 产出 `.dmg`（Intel/Apple Silicon），Windows 维持既有安装器/分发形态。
+- 平台相关功能尚未适配时，应用内给出友好提示（如「当前平台功能正在开发中」），不阻塞启动与其余功能。
+
+## 12.0.8 (2026-10-04)
+
+### 全平台 NativeAOT 发布
+
+- 所有发布平台（Windows / Linux / macOS）统一走 NativeAOT：完整反射元数据保全（`IlcGenerateCompleteTypeMetadata` + `IlcTrimMetadata=false`，Prism/DryIoc 反射兼容），单线程 ILC；启动速度与内存占用进一步优化，发布件为原生单可执行文件。
+- CI 矩阵按目标系统分发 runner（Linux 任务安装 clang/zlib1g-dev，linux-arm64 使用 arm64 runner），win-x86 不受 NativeAOT 支持保持自包含单文件（如适用）。
+- `scripts/publish.ps1` 与 CI 使用同一套发布参数。
+
+## 12.0.7 (2026-10-04)
+
+### 数据目录规范化
+
+- 用户数据统一迁移到系统标准应用数据目录：Windows `%LOCALAPPDATA%`、Linux `~/.local/share`、macOS `~/Library/Application Support`（`Environment.SpecialFolder.LocalApplicationData`）；旧版 Roaming（`%APPDATA%`）位置的数据在首次启动时自动迁移，旧目录原样保留作备份。
+- 统一发布脚本入口 `scripts/publish.ps1`（`-RuntimeIdentifier`/`-Version`，输出 `artifacts/publish/<rid>/`），本地发布与 CI 同一套逻辑。
+## 12.0.6 (2026-10-04)
+
+### 更新检查
+
+- 「关于」页新增检查更新：版本号经 GitHub 网页端点（`releases/latest` 302 落点 + `expanded_assets/{tag}`）获取，不碰 api.github.com 的每小时配额；发现新版本弹出通知并打开发布页。四语言文案同步。
+
+## 12.0.3.3 (2026-06-08)
+
+- 🔨[优化]-补齐根目录 logo.svg、logo.png、logo.ico 三件套，子工程通过 MSBuild Link 引用根 logo，避免维护多份图标副本。
+- 🔨[优化]-统一目标框架：NuGet 包项目支持 `net8.0;net10.0`，Demo、App、测试与内部应用项目升级到 `net11.0` / `net11.0-windows`。
+- 🔨[优化]-保留运行时帮助、Markdown 示例、内置备忘录和业务设计文档，仅收敛仓库级重复文档入口。
 ## 更新日志
+
+## 12.0.3.2 (2026-06-08)
+
+- 统一版本号维护入口，只在仓库根目录 `Directory.Build.props` 中定义 `<Version>`。
+- 清理英文/双语文档入口，后续仅维护简体中文文档。
+- 完善 NuGet 发布配置，补充 Source Link、符号包和标签格式规范。
+
+
+### V12.0.3.1（2026-05-16）
+- 🔨[优化]-升级应用版本号到 12.0.3.1，并同步更新 CodeWF 控件主题、ProDataGrid、Markdown 主题和 YY-Thunks 依赖版本。
+- 🎨[优化]-收紧主窗口默认尺寸、最小尺寸、标题栏搜索框、主题语言下拉框和左侧菜单宽度，让桌面窗口在日常分辨率下更紧凑。
+- 😄[新增]-首页新增推荐工具补位逻辑，常用工具不足 8 个时自动展示时间、Base64、GUID、JSON、JWT、二维码、Hash 等高频入口。
+- 🎨[优化]-调整首页卡片、指标区、快捷工具入口和内容区间距，并为首页“常用工具”“推荐工具”“常用与推荐工具”补齐多语言资源。
+- 🔨[优化]-将 Markdown 渲染字号调整为 Small，提升更新日志等长文本页面在新窗口尺寸下的可读性。
 
 ### V12.0.2.6（2026-05-15）
 - 😄[新增]-新增本地账号注册能力，支持多实例运行，同时对同一账号启用会话互斥，避免同账号配置被多个进程同时写入。
@@ -74,3 +123,9 @@
 - 😄[新增]-添加更新日志。
 - 🔨[优化]-导出 Excel 默认覆盖已有文件。
 - 🐛[修复]-只能导出渲染表格数据的问题。
+## 2026-06-08 仓库规范整理
+
+- 统一文档维护入口：每个仓库只保留根目录 `README.md` 和根目录 `UpdateLog.md`，清理重复日志、英文文档和语言切换入口。
+- 统一版本维护入口：包版本只在仓库根目录 `Directory.Build.props` 的 `<Version>` 节点维护，移除散落的程序集版本配置。
+- 不再维护 `global.json`，SDK 选择交给本机或 CI 环境；NuGet 包和应用的目标框架在项目文件中明确声明。
+- 统一 NuGet 包文档入口：包 README 统一引用仓库根 `README.md`，更新日志统一引用仓库根 `UpdateLog.md`。

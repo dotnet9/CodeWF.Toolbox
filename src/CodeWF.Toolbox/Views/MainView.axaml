@@ -17,7 +17,7 @@
         <vm:MainViewModel />
     </Design.DataContext>
     <Grid Background="{DynamicResource AppSurfaceBrush}">
-        <Grid ColumnDefinitions="304, *">
+        <Grid ColumnDefinitions="280, *">
             <views:MainMenuView Grid.Column="0" />
             <views:MainContentView Grid.Row="0" Grid.Column="1" />
         </Grid>

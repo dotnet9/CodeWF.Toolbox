@@ -3,13 +3,12 @@
 		<OutputType>WinExe</OutputType>
 		<TargetFrameworks>net10.0;net10.0-windows</TargetFrameworks>
 		<ApplicationManifest>app.manifest</ApplicationManifest>
-		<ApplicationIcon>Assets\logo.ico</ApplicationIcon>
+		<ApplicationIcon>..\..\logo.ico</ApplicationIcon>
 		<Nullable>enable</Nullable>
 		<LangVersion>latest</LangVersion>
 		<AvaloniaUseCompiledBindingsByDefault>true</AvaloniaUseCompiledBindingsByDefault>
 		<BuiltInComInteropSupport>true</BuiltInComInteropSupport>
 		<IncludeNativeLibrariesForSelfExtract>true</IncludeNativeLibrariesForSelfExtract>
-		<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
 		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
 		<WindowsSupportedOSPlatformVersion>6.1</WindowsSupportedOSPlatformVersion>
 		<TargetPlatformMinVersion>6.1</TargetPlatformMinVersion>
@@ -22,10 +21,9 @@
 
 	<ItemGroup>
 		<AvaloniaResource Include="Assets\**" />
-	</ItemGroup>
-
-	<ItemGroup>
-	  <Compile Include="..\..\GlobalAssemblies\GlobalAssembly.cs" Link="GlobalAssembly.cs" />
+    <AvaloniaResource Include="..\..\logo.ico" Link="Assets\logo.ico" />
+    <AvaloniaResource Include="..\..\logo.png" Link="Assets\logo.png" />
+    <AvaloniaResource Include="..\..\logo.svg" Link="Assets\logo.svg" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -39,15 +37,13 @@
 	<ItemGroup>
 		<PackageReference Include="Avalonia" />
 		<PackageReference Include="Avalonia.Desktop" />
-		<!--Condition below keeps diagnostics support out of Release output.-->
-		<PackageReference Condition="'$(Configuration)' == 'Debug'" Include="AvaloniaUI.DiagnosticsSupport" />
+		<PackageReference Include="CodeWF.Avalonia.DataGrid" />
 		<PackageReference Include="Semi.Avalonia" />
 		<PackageReference Include="Irihi.Ursa.PrismExtension" />
 		<PackageReference Include="Irihi.Ursa.Themes.Semi" />
 		<PackageReference Include="Prism.Avalonia" />
 		<PackageReference Include="Prism.DryIoc.Avalonia" />
 		<PackageReference Include="ReactiveUI.Avalonia" />
-		<PackageReference Include="Semi.Avalonia.AvaloniaEdit" />
 		<PackageReference Include="VC-LTL" />
 		<PackageReference Include="YY-Thunks" />
 	</ItemGroup>

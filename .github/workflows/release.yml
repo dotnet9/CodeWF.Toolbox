@@ -1,0 +1,201 @@
+﻿name: release
+
+# Pushing a v* (or bare numeric) tag publishes: a NativeAOT self-contained
+# win-x64 build and a self-contained linux-x64 build, zipped with SHA-256
+# checksums, followed by a GitHub Release.
+on:
+  push:
+    tags:
+      - 'v*'
+      - '[0-9]*'
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Version without the v prefix, for example 12.0.6'
+        required: true
+        type: string
+
+permissions:
+  contents: write
+
+jobs:
+  publish:
+    name: Publish ${{ matrix.rid }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - rid: win-x64
+            tfm: net10.0-windows
+            os: windows-latest
+          - rid: linux-x64
+            tfm: net10.0
+            os: ubuntu-latest
+          - rid: linux-arm64
+            tfm: net10.0
+            os: ubuntu-24.04-arm
+          - rid: osx-x64
+            tfm: net10.0
+            os: macos-14
+          - rid: osx-arm64
+            tfm: net10.0
+            os: macos-14
+    runs-on: ${{ matrix.os }}
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install NativeAOT prerequisites (Linux)
+        if: runner.os == 'Linux'
+        run: sudo apt-get update && sudo apt-get install -y clang zlib1g-dev
+
+      - name: Setup .NET SDK
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '10.0.x'
+
+      - name: Compute version
+        shell: pwsh
+        run: |
+          if ('${{ github.event_name }}' -eq 'workflow_dispatch') {
+            $version = '${{ inputs.version }}'.TrimStart('v', 'V')
+          } else {
+            $version = '${{ github.ref_name }}'.TrimStart('v', 'V')
+          }
+          if ($version -notmatch '^\d+(\.\d+){1,3}$') {
+            throw "Tag must be a numeric version (for example v12.0.6 or 12.0.6): $version"
+          }
+          "APP_VERSION=$version" | Out-File -FilePath $env:GITHUB_ENV -Append -Encoding utf8
+          Write-Host "Version: $version"
+
+      # macOS 无 profile：显式 -o 输出到同一发布目录约定，并保留符号（ld_classic 不支持压缩调试段）
+      - name: Publish (NativeAOT with full reflection metadata)
+        shell: pwsh
+        env:
+          PUBLISH_RID: ${{ matrix.rid }}
+          IS_MACOS: ${{ matrix.os == 'macos-14' }}
+        run: |
+          $profileArgs = @()
+          if ($env:IS_MACOS -ne 'true') {
+            $profileArgs += "-p:PublishProfile=FolderProfile_$env:PUBLISH_RID"
+          } else {
+            $profileArgs += "-o"
+            $profileArgs += "artifacts/publish/$env:PUBLISH_RID/CodeWF.Toolbox"
+            $profileArgs += "-p:StripSymbols=false"
+          }
+          dotnet publish src/CodeWF.Toolbox/CodeWF.Toolbox.csproj -c Release `
+            -f net10.0 -r $env:PUBLISH_RID @profileArgs `
+            -p:PublishAot=true -p:PublishTrimmed=true -p:PublishSingleFile=false `
+            -p:IlcGenerateCompleteTypeMetadata=true -p:IlcTrimMetadata=false -p:IlcSingleThreaded=true `
+            -p:Version=$env:APP_VERSION
+          if ($LASTEXITCODE -ne 0) { throw "publish failed for $env:PUBLISH_RID" }
+
+      - name: Build Windows installer (Inno Setup)
+        if: runner.os == 'Windows' && matrix.rid == 'win-x64'
+        uses: Minionguyjpro/Inno-Setup-Action@v1.2.2
+        with:
+          path: scripts/CodeWF.Toolbox.iss
+          options: >-
+            /DAppVersion=${{ env.APP_VERSION }}
+            /DSourceDir=${{ github.workspace }}\publish\win-x64\CodeWF.Toolbox
+            /DOutputDir=${{ github.workspace }}\artifacts\release
+
+      - name: Compute installer SHA-256 (Windows)
+        if: runner.os == 'Windows' && matrix.rid == 'win-x64'
+        shell: pwsh
+        run: |
+          $installerName = "CodeWF.Toolbox-v$env:APP_VERSION-win-x64-setup.exe"
+          $installerPath = Join-Path "artifacts/release" $installerName
+          if (-not (Test-Path -LiteralPath $installerPath -PathType Leaf)) {
+            throw "Installer was not produced: $installerPath"
+          }
+          $sha = (Get-FileHash -LiteralPath $installerPath -Algorithm SHA256).Hash.ToLowerInvariant()
+          "$sha  $installerName" | Set-Content -LiteralPath "$installerPath.sha256" -Encoding ASCII
+
+      - name: 打包 Linux deb 安装包
+        if: runner.os == 'Linux'
+        shell: pwsh
+        run: pwsh scripts/package_linux_deb.ps1 -RuntimeIdentifier '${{ matrix.rid }}' -Version $env:APP_VERSION -Force
+
+      - name: 打包 macOS dmg 安装镜像
+        if: runner.os == 'macOS'
+        shell: bash
+        run: chmod +x scripts/package_macos_dmg.sh && ./scripts/package_macos_dmg.sh '${{ matrix.rid }}' "$APP_VERSION"
+
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: CodeWF.Toolbox-${{ matrix.rid }}
+          path: artifacts/release/*
+          if-no-files-found: error
+
+  release:
+    name: Create GitHub Release
+    needs: publish
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Download build artifacts
+        uses: actions/download-artifact@v4
+        with:
+          pattern: CodeWF.Toolbox-*
+          path: artifacts/release
+          merge-multiple: true
+
+      - name: Compute version
+        id: version
+        shell: pwsh
+        run: |
+          if ('${{ github.event_name }}' -eq 'workflow_dispatch') {
+            $version = '${{ inputs.version }}'.TrimStart('v', 'V')
+            $tagName = "v$version"
+          } else {
+            # Keep the pushed tag as-is (v12.0.6 or 12.0.6) instead of creating a new one.
+            $tagName = '${{ github.ref_name }}'
+            $version = $tagName.TrimStart('v', 'V')
+          }
+          if ($version -notmatch '^\d+(\.\d+){1,3}$') {
+            throw "Tag must be a numeric version (for example v12.0.6 or 12.0.6): $version"
+          }
+          "version=$version" | Out-File -FilePath $env:GITHUB_OUTPUT -Append -Encoding utf8
+          "tag_name=$tagName" | Out-File -FilePath $env:GITHUB_OUTPUT -Append -Encoding utf8
+
+      - name: Prepare release notes
+        shell: pwsh
+        env:
+          VERSION: ${{ steps.version.outputs.version }}
+          TAG_NAME: ${{ steps.version.outputs.tag_name }}
+        run: |
+          $curated = ".github/release-notes/v$env:VERSION.md"
+          $bodyPath = "artifacts/release-body.md"
+          New-Item -ItemType Directory -Path (Split-Path -Parent $bodyPath) -Force | Out-Null
+          if (Test-Path -LiteralPath $curated -PathType Leaf) {
+            Copy-Item -LiteralPath $curated -Destination $bodyPath -Force
+            Write-Host "Using curated release notes: $curated"
+          }
+                    # 附注 tag 的说明就是发布说明（Release 页直接可读，不点开 tag 也能看到）
+                    git fetch --quiet --tags origin 2>$null
+                    $tagMessage = git tag -l "$env:TAG_NAME" --format='%(contents)'
+                    if (-not [string]::IsNullOrWhiteSpace($tagMessage)) {
+                      $tagMessage | Set-Content -LiteralPath $bodyPath -Encoding utf8
+                      Write-Host "使用附注 tag 说明作为发布说明。"
+                    }
+                    else {
+        
+            "CodeWF.Toolbox v$env:VERSION" | Set-Content -LiteralPath $bodyPath -Encoding utf8
+            Write-Host "No curated notes found; generated notes only."
+          }
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ steps.version.outputs.tag_name }}
+          name: CodeWF.Toolbox v${{ steps.version.outputs.version }}
+          body_path: artifacts/release-body.md
+          generate_release_notes: true
+          files: |
+            artifacts/release/*.exe
+            artifacts/release/*.deb
+            artifacts/release/*.dmg
+            artifacts/release/*.sha256

@@ -3,7 +3,6 @@ using CodeWF.Core.Models;
 using CodeWF.Toolkit.EventBus;
 using CodeWF.Toolbox.Commands;
 using ReactiveUI;
-using System.Threading.Tasks;
 
 namespace CodeWF.Toolbox.ViewModels;
 
@@ -39,14 +38,12 @@ internal class MainContentViewModel : ViewModelBase
     }
 
     [EventHandler]
-    private Task ChangeToolMenuHandlerAsync(ChangeToolMenuCommand command)
+    private void ChangeToolMenuHandler(ChangeToolMenuCommand command)
     {
         SelectedMenuItem = command.ToolMenuItem;
         Bordered = SelectedMenuItem.Status == ToolStatus.Developing;
         SelectedType = SelectedMenuItem.Status == ToolStatus.Complete
             ? NotificationType.Success
             : NotificationType.Warning;
-
-        return Task.CompletedTask;
     }
 }

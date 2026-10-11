@@ -147,6 +147,7 @@ public partial class App : PrismApplication
         containerRegistry.RegisterSingleton<IToolMenuService, ToolMenuService>();
         containerRegistry.RegisterSingleton<IFileChooserService, FileChooserService>();
         containerRegistry.RegisterSingleton<INotificationService, NotificationService>();
+        containerRegistry.RegisterInstance<IUpdateChecker>(new UpdateChecker("dotnet9", "CodeWF.Toolbox"));
         containerRegistry.RegisterSingleton<IUserProfileService, UserProfileService>();
         containerRegistry.RegisterSingleton<ILoginService, LoginService>();
         containerRegistry.RegisterSingleton<TitleBarSettingsViewModel>();

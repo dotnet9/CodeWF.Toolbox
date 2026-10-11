@@ -3,7 +3,7 @@
 	<assembly fullname="CodeWF.Controls" preserve="All" />
 	<assembly fullname="CodeWF.Core" preserve="All" />
 	<assembly fullname="CodeWF.Avalonia.Controls" preserve="All" />
-	<assembly fullname="CodeWF.Avalonia.Controls.ProDataGrid" preserve="All" />
+	<assembly fullname="CodeWF.Avalonia.DataGrid" preserve="All" />
 	<assembly fullname="CodeWF.Modules.ToolFramework" preserve="All" />
 	<assembly fullname="CodeWF.Modules.Converter" preserve="All" />
 	<assembly fullname="CodeWF.Modules.Data" preserve="All" />
@@ -19,8 +19,6 @@
 	<assembly fullname="CodeWF.Modules.XmlTranslatorManager" preserve="All" />
 	<assembly fullname="CodeWF.Avalonia.Lang" preserve="All" />
 	<assembly fullname="Semi.Avalonia" preserve="All" />
-	<assembly fullname="Semi.Avalonia.AvaloniaEdit" preserve="All" />
-	<assembly fullname="Semi.Avalonia.ProDataGrid" preserve="All" />
 	<assembly fullname="Ursa" preserve="All" />
 	<assembly fullname="Ursa.Themes.Semi" preserve="All" />
 	<assembly fullname="Ursa.PrismExtension" preserve="All" />

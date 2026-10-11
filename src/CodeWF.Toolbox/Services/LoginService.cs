@@ -251,7 +251,10 @@ public partial class LoginService : ILoginService
 
     private static string GetAccountStorePath()
     {
-        return Path.Combine(AppContext.BaseDirectory, "Users", "accounts.json");
+        // 账号库属于用户数据，跟随安装目录会在签名 .app 内写入（破坏签名）或因安装目录无写权限失败。
+        return Path.Combine(
+            Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
+            "CodeWF.Toolbox", "Users", "accounts.json");
     }
 
     private static string? GetConfigValue(string key)

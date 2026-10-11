@@ -33,6 +33,8 @@ namespace Localization
         public static readonly string ModuleCountLabel = "Localization.DashboardView.ModuleCountLabel";
         public static readonly string PlatformLabel = "Localization.DashboardView.PlatformLabel";
         public static readonly string FrequentToolsTitle = "Localization.DashboardView.FrequentToolsTitle";
+        public static readonly string RecommendedToolsTitle = "Localization.DashboardView.RecommendedToolsTitle";
+        public static readonly string QuickToolsTitle = "Localization.DashboardView.QuickToolsTitle";
         public static readonly string CommunityTitle = "Localization.DashboardView.CommunityTitle";
         public static readonly string CommunityDescription = "Localization.DashboardView.CommunityDescription";
         public static readonly string WeChat = "Localization.DashboardView.WeChat";
@@ -87,6 +89,10 @@ namespace Localization
         public static readonly string PlatformLabel = "Localization.AboutView.PlatformLabel";
         public static readonly string BuildTimeLabel = "Localization.AboutView.BuildTimeLabel";
         public static readonly string CopyrightLabel = "Localization.AboutView.CopyrightLabel";
+        public static readonly string CheckUpdate = "Localization.AboutView.CheckUpdate";
+        public static readonly string UpdateAvailable = "Localization.AboutView.UpdateAvailable";
+        public static readonly string UpToDate = "Localization.AboutView.UpToDate";
+        public static readonly string UpdateCheckFailed = "Localization.AboutView.UpdateCheckFailed";
     }
 
 

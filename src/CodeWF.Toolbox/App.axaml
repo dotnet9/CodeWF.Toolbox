@@ -9,11 +9,12 @@
     xmlns:codewf="https://codewf.com">
     <prism:PrismApplication.Styles>
 		<semi:SemiTheme Locale="zh-CN" />
-		<semi:AvaloniaEditSemiTheme />
+		<codewf:DataGridSemiTheme />
         <semi:UrsaSemiTheme Locale="zh-CN"/>
 		<codewf:ACSemiTheme />
         <StyleInclude Source="../Styles/Index.axaml" />
-        <codewf:MarkdownThemes TypographyTheme="Simple" />
+        <codewf:MarkdownThemes TypographyTheme="Simple"
+                               TypographySize="Small" />
     </prism:PrismApplication.Styles>
     <TrayIcon.Icons>
         <TrayIcons>

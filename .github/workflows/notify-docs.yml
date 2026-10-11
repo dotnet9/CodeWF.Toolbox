@@ -1,0 +1,24 @@
+name: 通知文档站同步
+
+on:
+  push:
+    paths: ['docs/**', 'doc/**', 'UpdateLog.md', 'RELEASES.md', 'CHANGELOG.md', 'README.md']
+  workflow_dispatch:
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 向 dotnet9/Doc 发送 repository_dispatch
+        env:
+          DOC_SITE_PAT: ${{ secrets.DOC_SITE_PAT }}
+        run: |
+          if [ -z "$DOC_SITE_PAT" ]; then
+            echo "未配置 DOC_SITE_PAT，跳过实时通知（文档站每日定时兜底同步）"
+            exit 0
+          fi
+          curl -fsSL -X POST \
+            -H "Authorization: Bearer $DOC_SITE_PAT" \
+            -H "Accept: application/vnd.github+json" \
+            https://api.github.com/repos/dotnet9/Doc/dispatches \
+            -d '{"event_type":"source-updated"}'
