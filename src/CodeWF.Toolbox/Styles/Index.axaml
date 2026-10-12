@@ -136,9 +136,13 @@
             <system:Double x:Key="ControlContentThemeFontSize">13</system:Double>
             <FontFamily x:Key="ContentControlThemeFontFamily">Microsoft YaHei UI, Segoe UI, avares://CodeWF.Toolbox/Assets/Fonts#Noto Sans SC</FontFamily>
             <FontFamily x:Key="CodeEditorThemeFontFamily">Cascadia Code, Consolas, Menlo, Monospace, avares://CodeWF.Toolbox/Assets/Fonts#Noto Sans SC</FontFamily>
+            <!--  AvaloniaEdit 的 Simple 主题要求宿主提供这几个字体令牌（Fluent 主题过去自带）  -->
+            <FontFamily x:Key="FontFamilyNormal">Microsoft YaHei UI, Segoe UI, avares://CodeWF.Toolbox/Assets/Fonts#Noto Sans SC</FontFamily>
+            <system:Double x:Key="FontSizeNormal">13</system:Double>
+            <FontWeight x:Key="FontWeightNormal">Normal</FontWeight>
         </ResourceDictionary>
     </Styles.Resources>
-    <StyleInclude Source="avares://AvaloniaEdit/Themes/Fluent/AvaloniaEdit.xaml" />
+    <StyleInclude Source="avares://AvaloniaEdit/Themes/Simple/AvaloniaEdit.xaml" />
 
     <Style Selector="Control">
         <Setter Property="TextElement.FontFamily" Value="{DynamicResource ContentControlThemeFontFamily}" />
