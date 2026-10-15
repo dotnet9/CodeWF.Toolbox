@@ -22,4 +22,6 @@ NativeAOT 发布验证器时使用与正式应用相同的完整反射元数据�
 
 2026-10-15 最终验证使用 CodeWF.Avalonia 12.1.4.22、CodeWF.Toolkit 1.0.0.19：托管与 NativeAOT UI 验证均通过 279 项断言；正式产品 12.0.12.0 的 `--verify-runtime` 实际运行通过，验证发布 I18n 与 Unicode Base64 往返。
 
-同一正式产品目录通过 Inno Setup 编译生成 `CodeWF.Toolbox-v12.0.12-win-x64-setup.exe`，60,587,248 字节，SHA256 为 `363936df146d99e0aa858a1c6a6b1ad13f0bec41a04d1a903179a38da195d32e`。仅编译并检查安装器，未执行安装；其他系统发布结果以对应 CI 为准。
+最终构建将 Prism 传递引入的 XAML Loader 固定为 12.1.4，与 Avalonia 一致；正式产品与验证器均检查此解析版本，避免原生发布混入 11.0.7。
+
+同一正式产品目录通过 Inno Setup 编译生成 `CodeWF.Toolbox-v12.0.12-win-x64-setup.exe`，60,658,898 字节，SHA256 为 `16df6c99f8873e28666ea447eab366818825fb19294fd9daed745855e301b5cc`。仅编译并检查安装器，未执行安装；其他系统发布结果以对应 CI 为准。
