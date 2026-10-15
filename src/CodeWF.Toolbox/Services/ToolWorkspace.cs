@@ -54,11 +54,14 @@ public sealed class ToolWorkspace
                 recycling.Remove(document);
             (document.Context as ToolDocumentView)?.Dispose();
         };
-        I18nManager.Instance.CultureChanged += (_, _) =>
-        {
-            foreach (var document in _documents.Values)
-                if (document.Context is ToolDocumentView view) document.Title = Translate(view.Item.Name);
-        };
+        I18nManager.Instance.CultureChanged += OnCultureChanged;
+    }
+
+    private void OnCultureChanged(object? sender, EventArgs args)
+    {
+        if (!Dispatcher.UIThread.CheckAccess()) { Dispatcher.UIThread.Post(() => OnCultureChanged(sender, args)); return; }
+        foreach (var document in _documents.Values)
+            if (document.Context is ToolDocumentView view) document.Title = Translate(view.Item.Name);
     }
 
     public void Open(ToolMenuItem item)

@@ -147,7 +147,16 @@ public sealed class UpdateViewModel : BindableBase, IDisposable
         catch (Exception error) { _error = error.Message; SetState(UpdateState.Failed); }
     }
     private void SetState(UpdateState state) { _state = state; Refresh(); }
-    private void OnCultureChanged(object? sender, EventArgs args) => Refresh();
+    private void OnCultureChanged(object? sender, EventArgs args)
+    {
+        if (_disposed) return;
+        if (!global::Avalonia.Threading.Dispatcher.UIThread.CheckAccess())
+        {
+            global::Avalonia.Threading.Dispatcher.UIThread.Post(() => OnCultureChanged(sender, args));
+            return;
+        }
+        Refresh();
+    }
     private void Refresh()
     {
         foreach (var name in new[] { nameof(State), nameof(IsBusy), nameof(IsDownloading), nameof(CanRecheck), nameof(IsIndeterminate),

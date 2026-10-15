@@ -52,6 +52,8 @@ public partial class ToolDocumentView : UserControl, IDisposable
 
     private void OnCultureChanged(object? sender, EventArgs args)
     {
+        if (_disposed) return;
+        if (!Dispatcher.UIThread.CheckAccess()) { Dispatcher.UIThread.Post(() => OnCultureChanged(sender, args)); return; }
         ToolName.Text = ToolWorkspace.Translate(Item.Name);
         ToolDescription.Text = ToolWorkspace.Translate(Item.Description);
     }

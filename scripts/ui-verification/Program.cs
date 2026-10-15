@@ -90,6 +90,15 @@ second.Fields.Single(field => field.Id == "text").Text = "case value";
 workspace.Open(base64); Pump();
 Check(workspace.OpenDocuments.Count == 2 && (firstDocument.Owner as Dock.Model.Core.IDock)?.ActiveDockable == firstDocument, "Reopening activates the existing document");
 Check(!ReferenceEquals(first, second) && first.Fields.Single(field => field.Id == "text").Text == "Independent 中文 😀" && second.Fields[0].Text == "case value", "Independent documents preserve input and output when switching");
+foreach (var culture in new[] { "en-US", "zh-Hant", "ja-JP", "zh-CN" })
+{
+    SetBackgroundCulture(culture);
+    Check(firstDocument.Title == ToolWorkspace.Translate(base64.Name) && secondDocument.Title == ToolWorkspace.Translate(secondItem.Name) &&
+          firstView.FindControl<TextBlock>("ToolName")!.Text == ToolWorkspace.Translate(base64.Name),
+        "Background culture updates active and inactive real document titles: " + culture);
+    Check(first.Fields.Single(field => field.Id == "text").Text == "Independent 中文 😀" && second.Fields[0].Text == "case value",
+        "Background culture preserves both document drafts: " + culture);
+}
 var splitter = firstView.GetVisualDescendants().OfType<GridSplitter>().First(control => control.IsVisible && control.Bounds.Height > 0);
 var location = splitter.TranslatePoint(new Point(splitter.Bounds.Width / 2, splitter.Bounds.Height / 2), window)!.Value;
 var grid = (Grid)splitter.Parent!;
@@ -148,6 +157,7 @@ foreach (var item in tools.Where(item => !item.ViewName!.Contains("?tool=")))
     workspace.Open(item); Pump();
     var document = workspace.OpenDocuments.Single();
     Check(((ToolDocumentView)document.Context!).ToolModel is not null, "Original custom module navigates: " + item.ViewName);
+    SetBackgroundCulture("en-US"); SetBackgroundCulture("zh-CN");
     workspace.CloseAll(); Pump();
 }
 workspace.Open(base64); Pump();
@@ -170,6 +180,12 @@ using var metadata = new AboutViewModel(fake);
 var aboutView = new AboutView { DataContext = metadata };
 var about = new Window { Width = 760, Height = 680, Content = aboutView };
 about.Show(); Pump(); Capture(about, "about-en-US.png"); CheckLocalized(about);
+foreach (var culture in new[] { "en-US", "zh-Hant", "ja-JP", "zh-CN" })
+{
+    SetBackgroundCulture(culture);
+    CheckLocalized(about);
+    Check(settings.SelectedLanguage?.CultureName == culture, "Background culture follows the live About and document views: " + culture);
+}
 Check(metadata.Author == "沙漠尽头的狼" && metadata.Version == typeof(App).Assembly.GetName().Version!.ToString(), "About reads author and actual application version");
 Check(!string.IsNullOrWhiteSpace(metadata.CompileTime) && metadata.Platform.Contains("Avalonia"), "Published About build and platform metadata resolve");
 Complete(updates.CheckAsync()); Check(updates.State == UpdateState.Current, "Current version state");
@@ -301,17 +317,18 @@ void VerifyControlCulture(Window owner, string[] cultures, Action<string> select
     var menu = editor.ContextFlyout as MenuFlyout ?? throw new InvalidOperationException("Semi editor menu is missing.");
     var semiTheme = Application.Current!.Styles.OfType<Semi.Avalonia.SemiTheme>().Single();
     var ursaTheme = Application.Current.Styles.OfType<Ursa.Themes.Semi.UrsaSemiTheme>().Single();
-    foreach (var direct in new[] { false, true })
+    foreach (var source in new[] { "title selector", "direct manager", "background manager" })
     foreach (var culture in cultures)
     {
         var previousLanguage = settings.SelectedLanguage;
-        if (direct) I18nManager.Instance.Culture = System.Globalization.CultureInfo.GetCultureInfo(culture);
+        if (source == "background manager") SetBackgroundCulture(culture);
+        else if (source == "direct manager") I18nManager.Instance.Culture = System.Globalization.CultureInfo.GetCultureInfo(culture);
         else selectTitleBar(culture);
         Pump();
         Check(settings.SelectedLanguage?.CultureName == culture &&
               (window.FindControl<ComboBox>("TitleBarLanguageSelector")!.SelectedItem as LocalizationLanguage)?.CultureName == culture,
-            "Actual title language selection follows " + (direct ? "direct manager" : "title selector") + ": " + culture);
-        if (direct && previousLanguage is not null && previousLanguage.CultureName != culture)
+            "Actual title language selection follows " + source + ": " + culture);
+        if (source != "title selector" && previousLanguage is not null && previousLanguage.CultureName != culture)
         {
             selectTitleBar(previousLanguage.CultureName); Pump();
             Check(I18nManager.Instance.Culture.Name == previousLanguage.CultureName,
@@ -335,11 +352,11 @@ void VerifyControlCulture(Window owner, string[] cultures, Action<string> select
         Check(((MenuItem)menu.Items[1]!).Header?.ToString() == semiText["STRING_MENU_COPY"]?.ToString() &&
               ((MenuItem)menu.Items[2]!).Header?.ToString() == semiText["STRING_MENU_PASTE"]?.ToString() &&
               editor.Text == "Locale 中文 😀" && semiTheme.Locale?.Name == (culture == "zh-Hant" ? "zh-TW" : culture),
-            "Existing Semi editor copy/paste follows " + (direct ? "direct manager" : "title selector") + ": " + culture);
+            "Existing Semi editor copy/paste follows " + source + ": " + culture);
         menu.Hide();
         Check(ursaTheme.Resources["STRING_MENU_DIALOG_CANCEL"]?.ToString() == ursaText["STRING_MENU_DIALOG_CANCEL"]?.ToString() &&
               ursaTheme.Locale?.Name == (culture == "zh-Hant" ? "zh-CN" : culture == "ja-JP" ? "en-US" : culture),
-            "Actual Ursa locale follows " + (direct ? "direct manager" : "title selector") + ": " + culture);
+            "Actual Ursa locale follows " + source + ": " + culture);
     }
     Application.Current.Resources["STRING_MENU_COPY"] = "宿主复制";
     Application.Current.Resources["STRING_MENU_DIALOG_CANCEL"] = "宿主取消";
@@ -369,6 +386,12 @@ void VerifyCultureSubscriptionLifetime()
     Check(!scopedWindow.IsVisible && changes == 0 && scopedSettings.SelectedLanguage?.CultureName == "zh-CN",
         "Closed real host unsubscribes from global culture changes");
     I18nManager.Instance.Culture = originalCulture; Pump();
+}
+void SetBackgroundCulture(string culture)
+{
+    Task.Run(() => I18nManager.Instance.Culture = CultureInfo.GetCultureInfo(culture)).GetAwaiter().GetResult();
+    Pump();
+    Check(I18nManager.Instance.Culture.Name == culture, "Background language change completes with live views: " + culture);
 }
 void Pump()
 {
