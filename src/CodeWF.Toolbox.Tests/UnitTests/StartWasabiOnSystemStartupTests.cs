@@ -5,7 +5,7 @@ namespace CodeWF.Toolbox.Tests.UnitTests;
 
 public class StartWasabiOnSystemStartupTests
 {
-    [Fact]
+    [Fact(Skip = "该用例会更改当前用户开机启动配置，仅允许在一次性测试系统中手动验收。")]
     [Trait("Category", "SystemIntegration")]
     public async Task ModifyStartupOnDifferentSystemsTestAsync()
     {
