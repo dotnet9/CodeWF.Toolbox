@@ -24,6 +24,7 @@ public partial class MainWindow : CodeWFWindow
     private readonly IApplicationService _applicationService;
     private readonly IFileChooserService _fileChooserService;
     private readonly INotificationService _notificationService;
+    private bool _isClosed;
 
     public MainWindow(IApplicationService applicationService, IFileChooserService fileChooserService,
         INotificationService notificationService, TitleBarSettingsViewModel titleBarSettingsViewModel)
@@ -39,6 +40,13 @@ public partial class MainWindow : CodeWFWindow
             RunOptionalStartupStep("MainWindow.Init", Init);
             RunOptionalStartupStep("MainWindow.AdjustWindowSize", AdjustWindowSize);
             RunOptionalStartupStep("MainWindow.ApplyRenderOptions", ApplyRenderOptions);
+            I18nManager.Instance.CultureChanged += HandleHostCultureChanged;
+            Closed += (_, _) =>
+            {
+                _isClosed = true;
+                I18nManager.Instance.CultureChanged -= HandleHostCultureChanged;
+            };
+            RefreshLanguageFromHost();
             StartupDiagnostics.Log("MainWindow.ctor: completed.");
         }
         catch (Exception exception)
@@ -46,6 +54,22 @@ public partial class MainWindow : CodeWFWindow
             StartupDiagnostics.LogException("MainWindow.ctor", exception);
             throw;
         }
+    }
+
+    private void HandleHostCultureChanged(object? sender, EventArgs args)
+    {
+        if (!global::Avalonia.Threading.Dispatcher.UIThread.CheckAccess())
+        {
+            global::Avalonia.Threading.Dispatcher.UIThread.Post(RefreshLanguageFromHost);
+            return;
+        }
+        RefreshLanguageFromHost();
+    }
+
+    private void RefreshLanguageFromHost()
+    {
+        // 排队的切语通知可能晚于窗口关闭，避免继续更新已释放的宿主。
+        if (!_isClosed && DataContext is TitleBarSettingsViewModel viewModel) viewModel.RefreshLanguageFromHost();
     }
 
     private void ApplyRenderOptions()

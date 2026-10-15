@@ -190,6 +190,7 @@ Check(updates.IsBusy && !updates.UpdateCommand.CanExecute(null), "Busy commands 
 updates.Cancel(); Complete(pending); Check(updates.State == UpdateState.Canceled, "Cancel returns to usable state");
 using var closing = new UpdateViewModel(fake, _ => { }, () => { }); pending = closing.CheckAsync(); closing.Dispose(); Complete(pending);
 Check(!closing.UpdateCommand.CanExecute(null), "Disposed update model cancels operation and disables commands");
+VerifyCultureSubscriptionLifetime();
 about.Close(); workspace.CloseAll(); window.Hide();
 File.WriteAllLines(Path.Combine(output, "assertions.txt"), assertions);
 Console.WriteLine($"Toolbox verification passed: {assertions.Count} assertions; NativeAOT={!RuntimeFeature.IsDynamicCodeSupported}; {output}");
@@ -303,9 +304,20 @@ void VerifyControlCulture(Window owner, string[] cultures, Action<string> select
     foreach (var direct in new[] { false, true })
     foreach (var culture in cultures)
     {
+        var previousLanguage = settings.SelectedLanguage;
         if (direct) I18nManager.Instance.Culture = System.Globalization.CultureInfo.GetCultureInfo(culture);
         else selectTitleBar(culture);
         Pump();
+        Check(settings.SelectedLanguage?.CultureName == culture &&
+              (window.FindControl<ComboBox>("TitleBarLanguageSelector")!.SelectedItem as LocalizationLanguage)?.CultureName == culture,
+            "Actual title language selection follows " + (direct ? "direct manager" : "title selector") + ": " + culture);
+        if (direct && previousLanguage is not null && previousLanguage.CultureName != culture)
+        {
+            selectTitleBar(previousLanguage.CultureName); Pump();
+            Check(I18nManager.Instance.Culture.Name == previousLanguage.CultureName,
+                "Previous title language can be selected after a direct manager change: " + previousLanguage.CultureName);
+            I18nManager.Instance.Culture = System.Globalization.CultureInfo.GetCultureInfo(culture); Pump();
+        }
         ResourceDictionary semiText = culture switch
         {
             "en-US" => new Semi.Avalonia.Locale.en_us(),
@@ -342,6 +354,22 @@ void VerifyControlCulture(Window owner, string[] cultures, Action<string> select
     I18nManager.Instance.Culture = originalCulture; Pump();
     host.Close();
 }
+void VerifyCultureSubscriptionLifetime()
+{
+    var originalCulture = I18nManager.Instance.Culture;
+    var scopedSettings = new TitleBarSettingsViewModel(container.Resolve<IApplicationService>(), container.Resolve<ILoginService>(), container.Resolve<IUserProfileService>());
+    var scopedWindow = new VerificationMainWindow(container.Resolve<IApplicationService>(), container.Resolve<IFileChooserService>(), container.Resolve<INotificationService>(), scopedSettings);
+    scopedWindow.Show(); Pump();
+    I18nManager.Instance.Culture = CultureInfo.GetCultureInfo("zh-CN"); Pump();
+    Check(scopedSettings.SelectedLanguage?.CultureName == "zh-CN", "A second real host observes global culture changes");
+    scopedWindow.Close(); Pump();
+    var changes = 0;
+    scopedSettings.PropertyChanged += (_, args) => { if (args.PropertyName == nameof(TitleBarSettingsViewModel.SelectedLanguage)) changes++; };
+    I18nManager.Instance.Culture = CultureInfo.GetCultureInfo("en-US"); Pump();
+    Check(!scopedWindow.IsVisible && changes == 0 && scopedSettings.SelectedLanguage?.CultureName == "zh-CN",
+        "Closed real host unsubscribes from global culture changes");
+    I18nManager.Instance.Culture = originalCulture; Pump();
+}
 void Pump()
 {
     var timer = Stopwatch.StartNew();
@@ -367,6 +395,12 @@ IEnumerable<ToolMenuItem> Flatten(IEnumerable<ToolMenuItem> items)
 UpdateInfo NewUpdate() => new(new Version(99, 0), "v99.0", "CodeWF.Toolbox", "Release notes", "https://example.test/release", "https://example.test/setup.exe", "setup.exe", "https://example.test/setup.exe.sha256");
 
 internal sealed record PrototypeOption(string Label, string Value);
+// 仅跳过产品的托盘/退出交互，仍使用真实 MainWindow 的窗口关闭与 Closed 生命周期。
+internal sealed class VerificationMainWindow(IApplicationService application, IFileChooserService files, INotificationService notifications, TitleBarSettingsViewModel settings)
+    : MainWindow(application, files, notifications, settings)
+{
+    protected override void OnClosing(WindowClosingEventArgs args) { }
+}
 internal sealed record PrototypeField(string Id, string Kind, string Label, string Default, PrototypeOption[] Options);
 internal sealed record PrototypeTool(string Id, string Group, string Title, string Description, PrototypeField[] Fields);
 [System.Text.Json.Serialization.JsonSerializable(typeof(PrototypeTool[]))]

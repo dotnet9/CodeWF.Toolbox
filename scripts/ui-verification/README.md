@@ -8,7 +8,7 @@ dotnet <temporary-build>/bin/UiVerification/release/UiVerification.dll <temporar
 dotnet test src/CodeWF.Toolbox.Tests/CodeWF.Toolbox.Tests.csproj -c Release --filter 'Category!=SystemIntegration'
 ```
 
-覆盖 314 项断言：117 入口元数据、13 自定义页面、真实 Unicode Base64、独立输入/输出、GridSplitter 指针拖动、Dock 分屏和关闭/重开、关闭区域清理、八配色×浅/深、系统模式、偏好重载、明确请求英文不回滚、关于元数据，以及更新检查/下载/校验/安装失败、重试、缺少资产回退、取消与释放。标题栏验证真实 Ursa 三态点击、Studio 配色保留、八色直接选择、完整四语言列表、内部模式提示动态切语及 1120/1280 布局边界。文档迁移检查拆分后移除原标签、真实浮动与重新停靠时的视觉宿主、同一视图及输入结果、用户拖动后的属性宽度和外部 Ribbon 几何；重新停靠直接使用标准 Dock API，无额外激活操作。更新通过 IUpdateService 假对象验证，不运行安装器。
+覆盖 328 项断言：117 入口元数据、13 自定义页面、真实 Unicode Base64、独立输入/输出、GridSplitter 指针拖动、Dock 分屏和关闭/重开、关闭区域清理、八配色×浅/深、系统模式、偏好重载、明确请求英文不回滚、关于元数据，以及更新检查/下载/校验/安装失败、重试、缺少资产回退、取消与释放。标题栏验证真实 Ursa 三态点击、Studio 配色保留、八色直接选择、完整四语言列表、内部模式提示动态切语及 1120/1280 布局边界。全局管理器直接切语时，验证真实 ComboBox 反向同步与原选项重选；通过真实 MainWindow 的关闭生命周期验证全局事件解绑，仅跳过托盘/退出交互。文档迁移检查拆分后移除原标签、真实浮动与重新停靠时的视觉宿主、同一视图及输入结果、用户拖动后的属性宽度和外部 Ribbon 几何；重新停靠直接使用标准 Dock API，无额外激活操作。更新通过 IUpdateService 假对象验证，不运行安装器。
 
 原有自启动测试标记为 SystemIntegration：它会修改操作系统自启动设置，只能在可丢弃测试机显式运行。
 

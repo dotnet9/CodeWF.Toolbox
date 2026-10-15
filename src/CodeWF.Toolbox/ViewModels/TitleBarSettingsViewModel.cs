@@ -115,6 +115,12 @@ public class TitleBarSettingsViewModel : ViewModelBase
         }
     }
 
+    public void RefreshLanguageFromHost()
+    {
+        var language = Languages.FirstOrDefault(item => item.CultureName == I18nManager.Instance.Culture?.Name);
+        this.RaiseAndSetIfChanged(ref _selectedLanguage, language, nameof(SelectedLanguage));
+    }
+
     private string _currentUsername = string.Empty;
 
     public string CurrentUsername
