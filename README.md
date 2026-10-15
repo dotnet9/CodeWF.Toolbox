@@ -15,13 +15,17 @@
 
 ## 仓库规范
 
-- 当前版本：`12.0.9`，版本号统一维护在根目录 `Directory.Build.props` 的 `<Version>` 节点。
+- 当前版本：`12.0.10.0`，版本号统一维护在根目录 `Directory.Build.props` 的 `<Version>` 节点。
 - 项目统一使用 `net10.0`（桌面 App 另加 `net10.0-windows`）。
 - 根目录 `logo.svg`、`logo.png`、`logo.ico` 是唯一图标源，子工程只通过 MSBuild `Link` 引用，不维护图标副本。
 - 运行时帮助、Markdown 示例、内置备忘录、设计说明等业务文档按功能保留；仓库级入口文档使用根目录 `README.md` 和 `UpdateLog.md`。
 
 ## 特性
 
+- Ribbon 按 13 个分类组织 117 个入口，每个工具使用独立 Dock Document；切换保留输入和结果，支持并排、拖动与关闭。
+- 文档内部使用 Grid/GridSplitter，内容、输出与属性随同一个文档移动。
+- 三种主题模式与八套共享配色独立保存，所有窗口同步更新。
+- 关于窗口显示真实版本、构建、平台和作者，更新流程由 Toolkit 负责检查、下载、SHA-256 校验与安装，支持取消、重试和缺少资产时打开发布页。
 - 基于 Avalonia UI 与 Semi/Ursa 控件构建跨平台桌面界面。
 - 使用 Prism 模块目录、依赖注入与 Region 导航组织工具页面。
 - 采用 JSON 资源做国际化（T4 生成强类型 `Language.cs`），已包含简体中文、繁体中文、英文和日文。
@@ -31,6 +35,9 @@
 
 ## 文档
 
+- [离线交互原型](design/index.html)（复制一个 HTML 即可运行）
+- [真实 UI 验证](scripts/ui-verification/README.md)
+- [设计对照与限制](design/FIDELITY.md)
 - [开发文档](docs/开发文档.md)
 - [架构 SVG](docs/assets/architecture.svg)
 - [模块生命周期 SVG](docs/assets/module-lifecycle.svg)
@@ -47,7 +54,7 @@
 ```powershell
 dotnet restore CodeWF.Toolbox.slnx
 dotnet build CodeWF.Toolbox.slnx
-dotnet run --project src/CodeWF.Toolbox/CodeWF.Toolbox.csproj
+dotnet run --project src/CodeWF.Toolbox/CodeWF.Toolbox.csproj -f net10.0
 ```
 
 ## 目录结构
@@ -80,7 +87,7 @@ docs/
 1. 在 `src/CodeWF.Modules.*` 下创建模块工程。
 2. 实现 `IModule`。
 3. 通过 `IToolMenuService` 注册分组与工具菜单。
-4. 将页面注册到 `RegionNames.ContentRegion`。
+4. 使用 `RegisterForNavigation<TView>()` 注册页面，ToolWorkspace 会为每个文档创建独立 Region。
 5. 在 `App.ConfigureModuleCatalog` 中加入模块。
 6. 补齐本模块的 XML 多语言资源和生成的语言键。
 
@@ -92,12 +99,6 @@ docs/
 - 格式转换：提供 JSON/YAML、Base64、GUID、日期时间与图片转图标等工具。
 - 开发辅助：提供 JSON/YAML 格式化、Shell 与数据处理等日常开发小工具。
 - XML 翻译管理：用于比对、合并和维护 XML 国际化资源。
-- 安全/Web/网络/数学/测量/文本/数据/媒体等模块：共 12 个功能模块，覆盖开发与日常常用小工具。
-
-## 登录与用户数据
-
-- 本地账号库与用户 Profile 目录位于 `%LocalAppData%\CodeWF.Toolbox\Users\`（不写入安装目录）。
-- 登录框预填演示账号 `CodeWF` / `codewf.com`，可直接体验后创建自己的账号。
 - 安全/Web/网络/数学/测量/文本/数据/媒体等模块：共 12 个功能模块，覆盖开发与日常常用小工具。
 
 ## 登录与用户数据

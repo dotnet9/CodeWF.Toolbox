@@ -1,0 +1,2879 @@
+[
+  {
+    "id": "DashboardView",
+    "group": "Home",
+    "title": "Localization.DashboardView.Title",
+    "description": "",
+    "fields": [
+      {
+        "id": "input",
+        "kind": "Multi",
+        "label": "Localization.Workspace.Properties",
+        "default": "",
+        "options": []
+      }
+    ]
+  },
+  {
+    "id": "DateTimeConverterView",
+    "group": "Converter",
+    "title": "Localization.DateTimeConverterView.Title",
+    "description": "Localization.DateTimeConverterView.Description",
+    "fields": [
+      {
+        "id": "input",
+        "kind": "Multi",
+        "label": "Localization.Workspace.Properties",
+        "default": "",
+        "options": []
+      }
+    ]
+  },
+  {
+    "id": "Base64CodecView",
+    "group": "Converter",
+    "title": "Localization.Base64CodecView.Title",
+    "description": "Localization.Base64CodecView.Description",
+    "fields": [
+      {
+        "id": "input",
+        "kind": "Multi",
+        "label": "Localization.Workspace.Properties",
+        "default": "",
+        "options": []
+      }
+    ]
+  },
+  {
+    "id": "GuidGeneratorView",
+    "group": "Converter",
+    "title": "Localization.GuidGeneratorView.Title",
+    "description": "Localization.GuidGeneratorView.Description",
+    "fields": [
+      {
+        "id": "input",
+        "kind": "Multi",
+        "label": "Localization.Workspace.Properties",
+        "default": "",
+        "options": []
+      }
+    ]
+  },
+  {
+    "id": "YamlToJsonView",
+    "group": "Converter",
+    "title": "Localization.YamlToJsonView.Title",
+    "description": "Localization.YamlToJsonView.Description",
+    "fields": [
+      {
+        "id": "input",
+        "kind": "Multi",
+        "label": "Localization.Workspace.Properties",
+        "default": "",
+        "options": []
+      }
+    ]
+  },
+  {
+    "id": "JsonToYamlView",
+    "group": "Converter",
+    "title": "Localization.JsonToYamlView.Title",
+    "description": "Localization.JsonToYamlView.Description",
+    "fields": [
+      {
+        "id": "input",
+        "kind": "Multi",
+        "label": "Localization.Workspace.Properties",
+        "default": "",
+        "options": []
+      }
+    ]
+  },
+  {
+    "id": "ImageToIconView",
+    "group": "Converter",
+    "title": "Localization.ImageToIconView.Title",
+    "description": "Localization.ImageToIconView.MemoContent1",
+    "fields": [
+      {
+        "id": "input",
+        "kind": "Multi",
+        "label": "Localization.Workspace.Properties",
+        "default": "",
+        "options": []
+      }
+    ]
+  },
+  {
+    "id": "NuoCheView",
+    "group": "Converter",
+    "title": "Localization.NuoCheView.Title",
+    "description": "Localization.NuoCheView.Description",
+    "fields": [
+      {
+        "id": "input",
+        "kind": "Multi",
+        "label": "Localization.Workspace.Properties",
+        "default": "",
+        "options": []
+      }
+    ]
+  },
+  {
+    "id": "base64-file-converter",
+    "group": "Converter",
+    "title": "Localization.ToolboxTools.Tools.base64_file_converter.Title",
+    "description": "Localization.ToolboxTools.Tools.base64_file_converter.Description",
+    "fields": [
+      {
+        "id": "file",
+        "kind": "File",
+        "label": "Localization.ToolboxTools.Tools.base64_file_converter.Fields.file",
+        "default": "",
+        "options": []
+      },
+      {
+        "id": "base64",
+        "kind": "Multi",
+        "label": "Localization.ToolboxTools.Tools.base64_file_converter.Fields.base64",
+        "default": "",
+        "options": []
+      },
+      {
+        "id": "save",
+        "kind": "File",
+        "label": "Localization.ToolboxTools.Tools.base64_file_converter.Fields.save",
+        "default": "",
+        "options": []
+      },
+      {
+        "id": "mode",
+        "kind": "Select",
+        "label": "Localization.ToolboxTools.Tools.base64_file_converter.Fields.mode",
+        "default": "File to Base64",
+        "options": [
+          {
+            "label": "Localization.ToolboxTools.Tools.base64_file_converter.Options.mode.File_to_Base64",
+            "value": "File to Base64"
+          },
+          {
+            "label": "Localization.ToolboxTools.Tools.base64_file_converter.Options.mode.Base64_to_File",
+            "value": "Base64 to File"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "base64-string-converter",
+    "group": "Converter",
+    "title": "Localization.ToolboxTools.Tools.base64_string_converter.Title",
+    "description": "Localization.ToolboxTools.Tools.base64_string_converter.Description",
+    "fields": [
+      {
+        "id": "text",
+        "kind": "Multi",
+        "label": "Localization.ToolboxTools.Tools.base64_string_converter.Fields.text",
+        "default": "",
+        "options": []
+      },
+      {
+        "id": "urlSafe",
+        "kind": "Bool",
+        "label": "Localization.ToolboxTools.Tools.base64_string_converter.Fields.urlSafe",
+        "default": "False",
+        "options": []
+      },
+      {
+        "id": "mode",
+        "kind": "Select",
+        "label": "Localization.ToolboxTools.Tools.base64_string_converter.Fields.mode",
+        "default": "Encode",
+        "options": [
+          {
+            "label": "Localization.ToolboxTools.Tools.base64_string_converter.Options.mode.Encode",
+            "value": "Encode"
+          },
+          {
+            "label": "Localization.ToolboxTools.Tools.base64_string_converter.Options.mode.Decode",
+            "value": "Decode"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "case-converter",
+    "group": "Converter",
+    "title": "Localization.ToolboxTools.Tools.case_converter.Title",
+    "description": "Localization.ToolboxTools.Tools.case_converter.Description",
+    "fields": [
+      {
+        "id": "text",
+        "kind": "Multi",
+        "label": "Localization.ToolboxTools.Tools.case_converter.Fields.text",
+        "default": "",
+        "options": []
+      }
+    ]
+  },
+  {
+    "id": "color-converter",
+    "group": "Converter",
+    "title": "Localization.ToolboxTools.Tools.color_converter.Title",
+    "description": "Localization.ToolboxTools.Tools.color_converter.Description",
+    "fields": [
+      {
+        "id": "color",
+        "kind": "Text",
+        "label": "Localization.ToolboxTools.Tools.color_converter.Fields.color",
+        "default": "#3498db",
+        "options": []
+      }
+    ]
+  },
+  {
+    "id": "date-time-converter",
+    "group": "Converter",
+    "title": "Localization.ToolboxTools.Tools.date_time_converter.Title",
+    "description": "Localization.ToolboxTools.Tools.date_time_converter.Description",
+    "fields": [
+      {
+        "id": "date",
+        "kind": "Text",
+        "label": "Localization.ToolboxTools.Tools.date_time_converter.Fields.date",
+        "default": "",
+        "options": []
+      },
+      {
+        "id": "format",
+        "kind": "Select",
+        "label": "Localization.ToolboxTools.Tools.date_time_converter.Fields.format",
+        "default": "Auto",
+        "options": [
+          {
+            "label": "Localization.ToolboxTools.Tools.date_time_converter.Options.format.Auto",
+            "value": "Auto"
+          },
+          {
+            "label": "Localization.ToolboxTools.Tools.date_time_converter.Options.format.ISO_8601",
+            "value": "ISO 8601"
+          },
+          {
+            "label": "Localization.ToolboxTools.Tools.date_time_converter.Options.format.Unix_timestamp",
+            "value": "Unix timestamp"
+          },
+          {
+            "label": "Localization.ToolboxTools.Tools.date_time_converter.Options.format.Timestamp_milliseconds",
+            "value": "Timestamp milliseconds"
+          },
+          {
+            "label": "Localization.ToolboxTools.Tools.date_time_converter.Options.format.RFC_1123_RFC_7231",
+            "value": "RFC 1123/RFC 7231"
+          },
+          {
+            "label": "Localization.ToolboxTools.Tools.date_time_converter.Options.format.Mongo_ObjectId",
+            "value": "Mongo ObjectId"
+          },
+          {
+            "label": "Localization.ToolboxTools.Tools.date_time_converter.Options.format.Excel_date_time",
+            "value": "Excel date/time"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "integer-base-converter",
+    "group": "Converter",
+    "title": "Localization.ToolboxTools.Tools.integer_base_converter.Title",
+    "description": "Localization.ToolboxTools.Tools.integer_base_converter.Description",
+    "fields": [
+      {
+        "id": "number",
+        "kind": "Text",
+        "label": "Localization.ToolboxTools.Tools.integer_base_converter.Fields.number",
+        "default": "42",
+        "options": []
+      },
+      {
+        "id": "fromBase",
+        "kind": "Number",
+        "label": "Localization.ToolboxTools.Tools.integer_base_converter.Fields.fromBase",
+        "default": "10",
+        "options": []
+      },
+      {
+        "id": "toBase",
+        "kind": "Number",
+        "label": "Localization.ToolboxTools.Tools.integer_base_converter.Fields.toBase",
+        "default": "16",
+        "options": []
+      }
+    ]
+  },
+  {
+    "id": "json-to-toml",
+    "group": "Converter",
+    "title": "Localization.ToolboxTools.Tools.json_to_toml.Title",
+    "description": "Localization.ToolboxTools.Tools.json_to_toml.Description",
+    "fields": [
+      {
+        "id": "json",
+        "kind": "Multi",
+        "label": "Localization.ToolboxTools.Tools.json_to_toml.Fields.json",
+        "default": "",
+        "options": []
+      }
+    ]
+  },
+  {
+    "id": "json-to-xml",
+    "group": "Converter",
+    "title": "Localization.ToolboxTools.Tools.json_to_xml.Title",
+    "description": "Localization.ToolboxTools.Tools.json_to_xml.Description",
+    "fields": [
+      {
+        "id": "json",
+        "kind": "Multi",
+        "label": "Localization.ToolboxTools.Tools.json_to_xml.Fields.json",
+        "default": "",
+        "options": []
+      }
+    ]
+  },
+  {
+    "id": "json-to-yaml-converter",
+    "group": "Converter",
+    "title": "Localization.ToolboxTools.Tools.json_to_yaml_converter.Title",
+    "description": "Localization.ToolboxTools.Tools.json_to_yaml_converter.Description",
+    "fields": [
+      {
+        "id": "json",
+        "kind": "Multi",
+        "label": "Localization.ToolboxTools.Tools.json_to_yaml_converter.Fields.json",
+        "default": "",
+        "options": []
+      }
+    ]
+  },
+  {
+    "id": "list-converter",
+    "group": "Converter",
+    "title": "Localization.ToolboxTools.Tools.list_converter.Title",
+    "description": "Localization.ToolboxTools.Tools.list_converter.Description",
+    "fields": [
+      {
+        "id": "list",
+        "kind": "Multi",
+        "label": "Localization.ToolboxTools.Tools.list_converter.Fields.list",
+        "default": "",
+        "options": []
+      },
+      {
+        "id": "prefix",
+        "kind": "Text",
+        "label": "Localization.ToolboxTools.Tools.list_converter.Fields.prefix",
+        "default": "",
+        "options": []
+      },
+      {
+        "id": "suffix",
+        "kind": "Text",
+        "label": "Localization.ToolboxTools.Tools.list_converter.Fields.suffix",
+        "default": "",
+        "options": []
+      },
+      {
+        "id": "truncate",
+        "kind": "Number",
+        "label": "Localization.ToolboxTools.Tools.list_converter.Fields.truncate",
+        "default": "0",
+        "options": []
+      },
+      {
+        "id": "operation",
+        "kind": "Select",
+        "label": "Localization.ToolboxTools.Tools.list_converter.Fields.operation",
+        "default": "None",
+        "options": [
+          {
+            "label": "Localization.ToolboxTools.Tools.list_converter.Options.operation.None",
+            "value": "None"
+          },
+          {
+            "label": "Localization.ToolboxTools.Tools.list_converter.Options.operation.Sort",
+            "value": "Sort"
+          },
+          {
+            "label": "Localization.ToolboxTools.Tools.list_converter.Options.operation.Reverse",
+            "value": "Reverse"
+          },
+          {
+            "label": "Localization.ToolboxTools.Tools.list_converter.Options.operation.Lowercase",
+            "value": "Lowercase"
+          },
+          {
+            "label": "Localization.ToolboxTools.Tools.list_converter.Options.operation.Uppercase",
+            "value": "Uppercase"
+          },
+          {
+            "label": "Localization.ToolboxTools.Tools.list_converter.Options.operation.Transpose",
+            "value": "Transpose"
+          },
+          {
+            "label": "Localization.ToolboxTools.Tools.list_converter.Options.operation.Unique",
+            "value": "Unique"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "markdown-to-html",
+    "group": "Converter",
+    "title": "Localization.ToolboxTools.Tools.markdown_to_html.Title",
+    "description": "Localization.ToolboxTools.Tools.markdown_to_html.Description",
+    "fields": [
+      {
+        "id": "markdown",
+        "kind": "Multi",
+        "label": "Localization.ToolboxTools.Tools.markdown_to_html.Fields.markdown",
+        "default": "",
+        "options": []
+      }
+    ]
+  },
+  {
+    "id": "roman-numeral-converter",
+    "group": "Converter",
+    "title": "Localization.ToolboxTools.Tools.roman_numeral_converter.Title",
+    "description": "Localization.ToolboxTools.Tools.roman_numeral_converter.Description",
+    "fields": [
+      {
+        "id": "value",
+        "kind": "Text",
+        "label": "Localization.ToolboxTools.Tools.roman_numeral_converter.Fields.value",
+        "default": "2026",
+        "options": []
+      },
+      {
+        "id": "mode",
+        "kind": "Select",
+        "label": "Localization.ToolboxTools.Tools.roman_numeral_converter.Fields.mode",
+        "default": "Number to Roman",
+        "options": [
+          {
+            "label": "Localization.ToolboxTools.Tools.roman_numeral_converter.Options.mode.Number_to_Roman",
+            "value": "Number to Roman"
+          },
+          {
+            "label": "Localization.ToolboxTools.Tools.roman_numeral_converter.Options.mode.Roman_to_Number",
+            "value": "Roman to Number"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "text-to-binary",
+    "group": "Converter",
+    "title": "Localization.ToolboxTools.Tools.text_to_binary.Title",
+    "description": "Localization.ToolboxTools.Tools.text_to_binary.Description",
+    "fields": [
+      {
+        "id": "text",
+        "kind": "Multi",
+        "label": "Localization.ToolboxTools.Tools.text_to_binary.Fields.text",
+        "default": "",
+        "options": []
+      },
+      {
+        "id": "mode",
+        "kind": "Select",
+        "label": "Localization.ToolboxTools.Tools.text_to_binary.Fields.mode",
+        "default": "Text to Binary",
+        "options": [
+          {
+            "label": "Localization.ToolboxTools.Tools.text_to_binary.Options.mode.Text_to_Binary",
+            "value": "Text to Binary"
+          },
+          {
+            "label": "Localization.ToolboxTools.Tools.text_to_binary.Options.mode.Binary_to_Text",
+            "value": "Binary to Text"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "text-to-nato-alphabet",
+    "group": "Converter",
+    "title": "Localization.ToolboxTools.Tools.text_to_nato_alphabet.Title",
+    "description": "Localization.ToolboxTools.Tools.text_to_nato_alphabet.Description",
+    "fields": [
+      {
+        "id": "text",
+        "kind": "Multi",
+        "label": "Localization.ToolboxTools.Tools.text_to_nato_alphabet.Fields.text",
+        "default": "",
+        "options": []
+      }
+    ]
+  },
+  {
+    "id": "text-to-unicode",
+    "group": "Converter",
+    "title": "Localization.ToolboxTools.Tools.text_to_unicode.Title",
+    "description": "Localization.ToolboxTools.Tools.text_to_unicode.Description",
+    "fields": [
+      {
+        "id": "text",
+        "kind": "Multi",
+        "label": "Localization.ToolboxTools.Tools.text_to_unicode.Fields.text",
+        "default": "",
+        "options": []
+      },
+      {
+        "id": "mode",
+        "kind": "Select",
+        "label": "Localization.ToolboxTools.Tools.text_to_unicode.Fields.mode",
+        "default": "Text to Unicode",
+        "options": [
+          {
+            "label": "Localization.ToolboxTools.Tools.text_to_unicode.Options.mode.Text_to_Unicode",
+            "value": "Text to Unicode"
+          },
+          {
+            "label": "Localization.ToolboxTools.Tools.text_to_unicode.Options.mode.Unicode_to_Text",
+            "value": "Unicode to Text"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "toml-to-json",
+    "group": "Converter",
+    "title": "Localization.ToolboxTools.Tools.toml_to_json.Title",
+    "description": "Localization.ToolboxTools.Tools.toml_to_json.Description",
+    "fields": [
+      {
+        "id": "toml",
+        "kind": "Multi",
+        "label": "Localization.ToolboxTools.Tools.toml_to_json.Fields.toml",
+        "default": "",
+        "options": []
+      }
+    ]
+  },
+  {
+    "id": "toml-to-yaml",
+    "group": "Converter",
+    "title": "Localization.ToolboxTools.Tools.toml_to_yaml.Title",
+    "description": "Localization.ToolboxTools.Tools.toml_to_yaml.Description",
+    "fields": [
+      {
+        "id": "toml",
+        "kind": "Multi",
+        "label": "Localization.ToolboxTools.Tools.toml_to_yaml.Fields.toml",
+        "default": "",
+        "options": []
+      }
+    ]
+  },
+  {
+    "id": "xml-to-json",
+    "group": "Converter",
+    "title": "Localization.ToolboxTools.Tools.xml_to_json.Title",
+    "description": "Localization.ToolboxTools.Tools.xml_to_json.Description",
+    "fields": [
+      {
+        "id": "xml",
+        "kind": "Multi",
+        "label": "Localization.ToolboxTools.Tools.xml_to_json.Fields.xml",
+        "default": "",
+        "options": []
+      }
+    ]
+  },
+  {
+    "id": "yaml-to-json-converter",
+    "group": "Converter",
+    "title": "Localization.ToolboxTools.Tools.yaml_to_json_converter.Title",
+    "description": "Localization.ToolboxTools.Tools.yaml_to_json_converter.Description",
+    "fields": [
+      {
+        "id": "yaml",
+        "kind": "Multi",
+        "label": "Localization.ToolboxTools.Tools.yaml_to_json_converter.Fields.yaml",
+        "default": "",
+        "options": []
+      }
+    ]
+  },
+  {
+    "id": "yaml-to-toml",
+    "group": "Converter",
+    "title": "Localization.ToolboxTools.Tools.yaml_to_toml.Title",
+    "description": "Localization.ToolboxTools.Tools.yaml_to_toml.Description",
+    "fields": [
+      {
+        "id": "yaml",
+        "kind": "Multi",
+        "label": "Localization.ToolboxTools.Tools.yaml_to_toml.Fields.yaml",
+        "default": "",
+        "options": []
+      }
+    ]
+  },
+  {
+    "id": "YamlPrettifyView",
+    "group": "Development",
+    "title": "Localization.YamlPrettifyView.Title",
+    "description": "Localization.YamlPrettifyView.Description",
+    "fields": [
+      {
+        "id": "input",
+        "kind": "Multi",
+        "label": "Localization.Workspace.Properties",
+        "default": "",
+        "options": []
+      }
+    ]
+  },
+  {
+    "id": "JsonPrettifyView",
+    "group": "Development",
+    "title": "Localization.JsonPrettifyView.Title",
+    "description": "Localization.JsonPrettifyView.Description",
+    "fields": [
+      {
+        "id": "input",
+        "kind": "Multi",
+        "label": "Localization.Workspace.Properties",
+        "default": "",
+        "options": []
+      }
+    ]
+  },
+  {
+    "id": "chmod-calculator",
+    "group": "Development",
+    "title": "Localization.ToolboxTools.Tools.chmod_calculator.Title",
+    "description": "Localization.ToolboxTools.Tools.chmod_calculator.Description",
+    "fields": [
+      {
+        "id": "ur",
+        "kind": "Bool",
+        "label": "Localization.ToolboxTools.Tools.chmod_calculator.Fields.ur",
+        "default": "False",
+        "options": []
+      },
+      {
+        "id": "uw",
+        "kind": "Bool",
+        "label": "Localization.ToolboxTools.Tools.chmod_calculator.Fields.uw",
+        "default": "False",
+        "options": []
+      },
+      {
+        "id": "ux",
+        "kind": "Bool",
+        "label": "Localization.ToolboxTools.Tools.chmod_calculator.Fields.ux",
+        "default": "False",
+        "options": []
+      },
+      {
+        "id": "gr",
+        "kind": "Bool",
+        "label": "Localization.ToolboxTools.Tools.chmod_calculator.Fields.gr",
+        "default": "False",
+        "options": []
+      },
+      {
+        "id": "gw",
+        "kind": "Bool",
+        "label": "Localization.ToolboxTools.Tools.chmod_calculator.Fields.gw",
+        "default": "False",
+        "options": []
+      },
+      {
+        "id": "gx",
+        "kind": "Bool",
+        "label": "Localization.ToolboxTools.Tools.chmod_calculator.Fields.gx",
+        "default": "False",
+        "options": []
+      },
+      {
+        "id": "or",
+        "kind": "Bool",
+        "label": "Localization.ToolboxTools.Tools.chmod_calculator.Fields.or",
+        "default": "False",
+        "options": []
+      },
+      {
+        "id": "ow",
+        "kind": "Bool",
+        "label": "Localization.ToolboxTools.Tools.chmod_calculator.Fields.ow",
+        "default": "False",
+        "options": []
+      },
+      {
+        "id": "ox",
+        "kind": "Bool",
+        "label": "Localization.ToolboxTools.Tools.chmod_calculator.Fields.ox",
+        "default": "False",
+        "options": []
+      }
+    ]
+  },
+  {
+    "id": "crontab-generator",
+    "group": "Development",
+    "title": "Localization.ToolboxTools.Tools.crontab_generator.Title",
+    "description": "Localization.ToolboxTools.Tools.crontab_generator.Description",
+    "fields": [
+      {
+        "id": "cron",
+        "kind": "Text",
+        "label": "Localization.ToolboxTools.Tools.crontab_generator.Fields.cron",
+        "default": "*/5 * * * *",
+        "options": []
+      }
+    ]
+  },
+  {
+    "id": "csv-to-json",
+    "group": "Development",
+    "title": "Localization.ToolboxTools.Tools.csv_to_json.Title",
+    "description": "Localization.ToolboxTools.Tools.csv_to_json.Description",
+    "fields": [
+      {
+        "id": "csv",
+        "kind": "Multi",
+        "label": "Localization.ToolboxTools.Tools.csv_to_json.Fields.csv",
+        "default": "",
+        "options": []
+      },
+      {
+        "id": "delimiter",
+        "kind": "Select",
+        "label": "Localization.ToolboxTools.Tools.csv_to_json.Fields.delimiter",
+        "default": "Auto",
+        "options": [
+          {
+            "label": "Localization.ToolboxTools.Tools.csv_to_json.Options.delimiter.Auto",
+            "value": "Auto"
+          },
+          {
+            "label": "Localization.ToolboxTools.Tools.csv_to_json.Options.delimiter.Comma",
+            "value": "Comma"
+          },
+          {
+            "label": "Localization.ToolboxTools.Tools.csv_to_json.Options.delimiter.Semicolon",
+            "value": "Semicolon"
+          },
+          {
+            "label": "Localization.ToolboxTools.Tools.csv_to_json.Options.delimiter.Tab",
+            "value": "Tab"
+          },
+          {
+            "label": "Localization.ToolboxTools.Tools.csv_to_json.Options.delimiter.Pipe",
+            "value": "Pipe"
+          }
+        ]
+      },
+      {
+        "id": "header",
+        "kind": "Bool",
+        "label": "Localization.ToolboxTools.Tools.csv_to_json.Fields.header",
+        "default": "True",
+        "options": []
+      }
+    ]
+  },
+  {
+    "id": "csv-to-markdown-table",
+    "group": "Development",
+    "title": "Localization.ToolboxTools.Tools.csv_to_markdown_table.Title",
+    "description": "Localization.ToolboxTools.Tools.csv_to_markdown_table.Description",
+    "fields": [
+      {
+        "id": "csv",
+        "kind": "Multi",
+        "label": "Localization.ToolboxTools.Tools.csv_to_markdown_table.Fields.csv",
+        "default": "",
+        "options": []
+      },
+      {
+        "id": "delimiter",
+        "kind": "Select",
+        "label": "Localization.ToolboxTools.Tools.csv_to_markdown_table.Fields.delimiter",
+        "default": "Auto",
+        "options": [
+          {
+            "label": "Localization.ToolboxTools.Tools.csv_to_markdown_table.Options.delimiter.Auto",
+            "value": "Auto"
+          },
+          {
+            "label": "Localization.ToolboxTools.Tools.csv_to_markdown_table.Options.delimiter.Comma",
+            "value": "Comma"
+          },
+          {
+            "label": "Localization.ToolboxTools.Tools.csv_to_markdown_table.Options.delimiter.Semicolon",
+            "value": "Semicolon"
+          },
+          {
+            "label": "Localization.ToolboxTools.Tools.csv_to_markdown_table.Options.delimiter.Tab",
+            "value": "Tab"
+          },
+          {
+            "label": "Localization.ToolboxTools.Tools.csv_to_markdown_table.Options.delimiter.Pipe",
+            "value": "Pipe"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "data-url-parser",
+    "group": "Development",
+    "title": "Localization.ToolboxTools.Tools.data_url_parser.Title",
+    "description": "Localization.ToolboxTools.Tools.data_url_parser.Description",
+    "fields": [
+      {
+        "id": "dataUrl",
+        "kind": "Multi",
+        "label": "Localization.ToolboxTools.Tools.data_url_parser.Fields.dataUrl",
+        "default": "",
+        "options": []
+      }
+    ]
+  },
+  {
+    "id": "docker-image-tag-parser",
+    "group": "Development",
+    "title": "Localization.ToolboxTools.Tools.docker_image_tag_parser.Title",
+    "description": "Localization.ToolboxTools.Tools.docker_image_tag_parser.Description",
+    "fields": [
+      {
+        "id": "image",
+        "kind": "Text",
+        "label": "Localization.ToolboxTools.Tools.docker_image_tag_parser.Fields.image",
+        "default": "ghcr.io/dotnet9/codewf-toolbox:latest",
+        "options": []
+      }
+    ]
+  },
+  {
+    "id": "docker-run-to-docker-compose-converter",
+    "group": "Development",
+    "title": "Localization.ToolboxTools.Tools.docker_run_to_docker_compose_converter.Title",
+    "description": "Localization.ToolboxTools.Tools.docker_run_to_docker_compose_converter.Description",
+    "fields": [
+      {
+        "id": "command",
+        "kind": "Multi",
+        "label": "Localization.ToolboxTools.Tools.docker_run_to_docker_compose_converter.Fields.command",
+        "default": "docker run -d --name app -p 8080:80 nginx",
+        "options": []
+      }
+    ]
+  },
+  {
+    "id": "email-normalizer",
+    "group": "Development",
+    "title": "Localization.ToolboxTools.Tools.email_normalizer.Title",
+    "description": "Localization.ToolboxTools.Tools.email_normalizer.Description",
+    "fields": [
+      {
+        "id": "emails",
+        "kind": "Multi",
+        "label": "Localization.ToolboxTools.Tools.email_normalizer.Fields.emails",
+        "default": "",
+        "options": []
+      }
+    ]
+  },
+  {
+    "id": "env-to-json",
+    "group": "Development",
+    "title": "Localization.ToolboxTools.Tools.env_to_json.Title",
+    "description": "Localization.ToolboxTools.Tools.env_to_json.Description",
+    "fields": [
+      {
+        "id": "env",
+        "kind": "Multi",
+        "label": "Localization.ToolboxTools.Tools.env_to_json.Fields.env",
+        "default": "",
+        "options": []
+      }
+    ]
+  },
+  {
+    "id": "git-memo",
+    "group": "Development",
+    "title": "Localization.ToolboxTools.Tools.git_memo.Title",
+    "description": "Localization.ToolboxTools.Tools.git_memo.Description",
+    "fields": []
+  },
+  {
+    "id": "hex-dump-viewer",
+    "group": "Development",
+    "title": "Localization.ToolboxTools.Tools.hex_dump_viewer.Title",
+    "description": "Localization.ToolboxTools.Tools.hex_dump_viewer.Description",
+    "fields": [
+      {
+        "id": "input",
+        "kind": "Multi",
+        "label": "Localization.ToolboxTools.Tools.hex_dump_viewer.Fields.input",
+        "default": "",
+        "options": []
+      },
+      {
+        "id": "mode",
+        "kind": "Select",
+        "label": "Localization.ToolboxTools.Tools.hex_dump_viewer.Fields.mode",
+        "default": "Text",
+        "options": [
+          {
+            "label": "Localization.ToolboxTools.Tools.hex_dump_viewer.Options.mode.Text",
+            "value": "Text"
+          },
+          {
+            "label": "Localization.ToolboxTools.Tools.hex_dump_viewer.Options.mode.Hex",
+            "value": "Hex"
+          }
+        ]
+      },
+      {
+        "id": "bytesPerLine",
+        "kind": "Number",
+        "label": "Localization.ToolboxTools.Tools.hex_dump_viewer.Fields.bytesPerLine",
+        "default": "16",
+        "options": []
+      }
+    ]
+  },
+  {
+    "id": "http-header-parser",
+    "group": "Development",
+    "title": "Localization.ToolboxTools.Tools.http_header_parser.Title",
+    "description": "Localization.ToolboxTools.Tools.http_header_parser.Description",
+    "fields": [
+      {
+        "id": "headers",
+        "kind": "Multi",
+        "label": "Localization.ToolboxTools.Tools.http_header_parser.Fields.headers",
+        "default": "Content-Type: application/json\nX-Request-Id: abc",
+        "options": []
+      }
+    ]
+  },
+  {
+    "id": "ini-to-json",
+    "group": "Development",
+    "title": "Localization.ToolboxTools.Tools.ini_to_json.Title",
+    "description": "Localization.ToolboxTools.Tools.ini_to_json.Description",
+    "fields": [
+      {
+        "id": "ini",
+        "kind": "Multi",
+        "label": "Localization.ToolboxTools.Tools.ini_to_json.Fields.ini",
+        "default": "",
+        "options": []
+      }
+    ]
+  },
+  {
+    "id": "json-minify",
+    "group": "Development",
+    "title": "Localization.ToolboxTools.Tools.json_minify.Title",
+    "description": "Localization.ToolboxTools.Tools.json_minify.Description",
+    "fields": [
+      {
+        "id": "json",
+        "kind": "Multi",
+        "label": "Localization.ToolboxTools.Tools.json_minify.Fields.json",
+        "default": "",
+        "options": []
+      }
+    ]
+  },
+  {
+    "id": "json-path-extractor",
+    "group": "Development",
+    "title": "Localization.ToolboxTools.Tools.json_path_extractor.Title",
+    "description": "Localization.ToolboxTools.Tools.json_path_extractor.Description",
+    "fields": [
+      {
+        "id": "json",
+        "kind": "Multi",
+        "label": "Localization.ToolboxTools.Tools.json_path_extractor.Fields.json",
+        "default": "",
+        "options": []
+      },
+      {
+        "id": "path",
+        "kind": "Text",
+        "label": "Localization.ToolboxTools.Tools.json_path_extractor.Fields.path",
+        "default": "$.items[0].name",
+        "options": []
+      }
+    ]
+  },
+  {
+    "id": "json-to-csv",
+    "group": "Development",
+    "title": "Localization.ToolboxTools.Tools.json_to_csv.Title",
+    "description": "Localization.ToolboxTools.Tools.json_to_csv.Description",
+    "fields": [
+      {
+        "id": "json",
+        "kind": "Multi",
+        "label": "Localization.ToolboxTools.Tools.json_to_csv.Fields.json",
+        "default": "",
+        "options": []
+      }
+    ]
+  },
+  {
+    "id": "json-viewer",
+    "group": "Development",
+    "title": "Localization.ToolboxTools.Tools.json_viewer.Title",
+    "description": "Localization.ToolboxTools.Tools.json_viewer.Description",
+    "fields": [
+      {
+        "id": "json",
+        "kind": "Multi",
+        "label": "Localization.ToolboxTools.Tools.json_viewer.Fields.json",
+        "default": "",
+        "options": []
+      }
+    ]
+  },
+  {
+    "id": "markdown-table-generator",
+    "group": "Development",
+    "title": "Localization.ToolboxTools.Tools.markdown_table_generator.Title",
+    "description": "Localization.ToolboxTools.Tools.markdown_table_generator.Description",
+    "fields": [
+      {
+        "id": "headers",
+        "kind": "Text",
+        "label": "Localization.ToolboxTools.Tools.markdown_table_generator.Fields.headers",
+        "default": "Name,Value",
+        "options": []
+      },
+      {
+        "id": "rows",
+        "kind": "Multi",
+        "label": "Localization.ToolboxTools.Tools.markdown_table_generator.Fields.rows",
+        "default": "CodeWF,Toolbox\nAvalonia,Prism",
+        "options": []
+      },
+      {
+        "id": "alignment",
+        "kind": "Select",
+        "label": "Localization.ToolboxTools.Tools.markdown_table_generator.Fields.alignment",
+        "default": "None",
+        "options": [
+          {
+            "label": "Localization.ToolboxTools.Tools.markdown_table_generator.Options.alignment.None",
+            "value": "None"
+          },
+          {
+            "label": "Localization.ToolboxTools.Tools.markdown_table_generator.Options.alignment.Left",
+            "value": "Left"
+          },
+          {
+            "label": "Localization.ToolboxTools.Tools.markdown_table_generator.Options.alignment.Center",
+            "value": "Center"
+          },
+          {
+            "label": "Localization.ToolboxTools.Tools.markdown_table_generator.Options.alignment.Right",
+            "value": "Right"
+          }
+        ]
+      },
+      {
+        "id": "delimiter",
+        "kind": "Select",
+        "label": "Localization.ToolboxTools.Tools.markdown_table_generator.Fields.delimiter",
+        "default": "Comma",
+        "options": [
+          {
+            "label": "Localization.ToolboxTools.Tools.markdown_table_generator.Options.delimiter.Comma",
+            "value": "Comma"
+          },
+          {
+            "label": "Localization.ToolboxTools.Tools.markdown_table_generator.Options.delimiter.Semicolon",
+            "value": "Semicolon"
+          },
+          {
+            "label": "Localization.ToolboxTools.Tools.markdown_table_generator.Options.delimiter.Tab",
+            "value": "Tab"
+          },
+          {
+            "label": "Localization.ToolboxTools.Tools.markdown_table_generator.Options.delimiter.Pipe",
+            "value": "Pipe"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "nanoid-generator",
+    "group": "Development",
+    "title": "Localization.ToolboxTools.Tools.nanoid_generator.Title",
+    "description": "Localization.ToolboxTools.Tools.nanoid_generator.Description",
+    "fields": [
+      {
+        "id": "length",
+        "kind": "Number",
+        "label": "Localization.ToolboxTools.Tools.nanoid_generator.Fields.length",
+        "default": "21",
+        "options": []
+      },
+      {
+        "id": "count",
+        "kind": "Number",
+        "label": "Localization.ToolboxTools.Tools.nanoid_generator.Fields.count",
+        "default": "5",
+        "options": []
+      },
+      {
+        "id": "alphabet",
+        "kind": "Text",
+        "label": "Localization.ToolboxTools.Tools.nanoid_generator.Fields.alphabet",
+        "default": "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ_abcdefghijklmnopqrstuvwxyz-",
+        "options": []
+      }
+    ]
+  },
+  {
+    "id": "query-string-builder",
+    "group": "Development",
+    "title": "Localization.ToolboxTools.Tools.query_string_builder.Title",
+    "description": "Localization.ToolboxTools.Tools.query_string_builder.Description",
+    "fields": [
+      {
+        "id": "pairs",
+        "kind": "Multi",
+        "label": "Localization.ToolboxTools.Tools.query_string_builder.Fields.pairs",
+        "default": "page=1\nq=CodeWF",
+        "options": []
+      },
+      {
+        "id": "includeQuestionMark",
+        "kind": "Bool",
+        "label": "Localization.ToolboxTools.Tools.query_string_builder.Fields.includeQuestionMark",
+        "default": "True",
+        "options": []
+      }
+    ]
+  },
+  {
+    "id": "query-string-parser",
+    "group": "Development",
+    "title": "Localization.ToolboxTools.Tools.query_string_parser.Title",
+    "description": "Localization.ToolboxTools.Tools.query_string_parser.Description",
+    "fields": [
+      {
+        "id": "query",
+        "kind": "Multi",
+        "label": "Localization.ToolboxTools.Tools.query_string_parser.Fields.query",
+        "default": "",
+        "options": []
+      }
+    ]
+  },
+  {
+    "id": "random-port-generator",
+    "group": "Development",
+    "title": "Localization.ToolboxTools.Tools.random_port_generator.Title",
+    "description": "Localization.ToolboxTools.Tools.random_port_generator.Description",
+    "fields": [
+      {
+        "id": "count",
+        "kind": "Number",
+        "label": "Localization.ToolboxTools.Tools.random_port_generator.Fields.count",
+        "default": "5",
+        "options": []
+      },
+      {
+        "id": "min",
+        "kind": "Number",
+        "label": "Localization.ToolboxTools.Tools.random_port_generator.Fields.min",
+        "default": "1024",
+        "options": []
+      },
+      {
+        "id": "max",
+        "kind": "Number",
+        "label": "Localization.ToolboxTools.Tools.random_port_generator.Fields.max",
+        "default": "65535",
+        "options": []
+      }
+    ]
+  },
+  {
+    "id": "regex-memo",
+    "group": "Development",
+    "title": "Localization.ToolboxTools.Tools.regex_memo.Title",
+    "description": "Localization.ToolboxTools.Tools.regex_memo.Description",
+    "fields": []
+  },
+  {
+    "id": "regex-replacer",
+    "group": "Development",
+    "title": "Localization.ToolboxTools.Tools.regex_replacer.Title",
+    "description": "Localization.ToolboxTools.Tools.regex_replacer.Description",
+    "fields": [
+      {
+        "id": "pattern",
+        "kind": "Text",
+        "label": "Localization.ToolboxTools.Tools.regex_replacer.Fields.pattern",
+        "default": "",
+        "options": []
+      },
+      {
+        "id": "replacement",
+        "kind": "Text",
+        "label": "Localization.ToolboxTools.Tools.regex_replacer.Fields.replacement",
+        "default": "",
+        "options": []
+      },
+      {
+        "id": "text",
+        "kind": "Multi",
+        "label": "Localization.ToolboxTools.Tools.regex_replacer.Fields.text",
+        "default": "",
+        "options": []
+      },
+      {
+        "id": "ignoreCase",
+        "kind": "Bool",
+        "label": "Localization.ToolboxTools.Tools.regex_replacer.Fields.ignoreCase",
+        "default": "False",
+        "options": []
+      },
+      {
+        "id": "multiline",
+        "kind": "Bool",
+        "label": "Localization.ToolboxTools.Tools.regex_replacer.Fields.multiline",
+        "default": "False",
+        "options": []
+      }
+    ]
+  },
+  {
+    "id": "regex-tester",
+    "group": "Development",
+    "title": "Localization.ToolboxTools.Tools.regex_tester.Title",
+    "description": "Localization.ToolboxTools.Tools.regex_tester.Description",
+    "fields": [
+      {
+        "id": "pattern",
+        "kind": "Text",
+        "label": "Localization.ToolboxTools.Tools.regex_tester.Fields.pattern",
+        "default": "",
+        "options": []
+      },
+      {
+        "id": "text",
+        "kind": "Multi",
+        "label": "Localization.ToolboxTools.Tools.regex_tester.Fields.text",
+        "default": "",
+        "options": []
+      },
+      {
+        "id": "ignoreCase",
+        "kind": "Bool",
+        "label": "Localization.ToolboxTools.Tools.regex_tester.Fields.ignoreCase",
+        "default": "False",
+        "options": []
+      },
+      {
+        "id": "multiline",
+        "kind": "Bool",
+        "label": "Localization.ToolboxTools.Tools.regex_tester.Fields.multiline",
+        "default": "False",
+        "options": []
+      }
+    ]
+  },
+  {
+    "id": "semver-comparator",
+    "group": "Development",
+    "title": "Localization.ToolboxTools.Tools.semver_comparator.Title",
+    "description": "Localization.ToolboxTools.Tools.semver_comparator.Description",
+    "fields": [
+      {
+        "id": "left",
+        "kind": "Text",
+        "label": "Localization.ToolboxTools.Tools.semver_comparator.Fields.left",
+        "default": "1.2.3",
+        "options": []
+      },
+      {
+        "id": "right",
+        "kind": "Text",
+        "label": "Localization.ToolboxTools.Tools.semver_comparator.Fields.right",
+        "default": "1.2.4-beta.1",
+        "options": []
+      }
+    ]
+  },
+  {
+    "id": "semver-inspector",
+    "group": "Development",
+    "title": "Localization.ToolboxTools.Tools.semver_inspector.Title",
+    "description": "Localization.ToolboxTools.Tools.semver_inspector.Description",
+    "fields": [
+      {
+        "id": "version",
+        "kind": "Text",
+        "label": "Localization.ToolboxTools.Tools.semver_inspector.Fields.version",
+        "default": "1.2.3-beta.1\u002Bbuild.5",
+        "options": []
+      }
+    ]
+  },
+  {
+    "id": "sql-prettify",
+    "group": "Development",
+    "title": "Localization.ToolboxTools.Tools.sql_prettify.Title",
+    "description": "Localization.ToolboxTools.Tools.sql_prettify.Description",
+    "fields": [
+      {
+        "id": "sql",
+        "kind": "Multi",
+        "label": "Localization.ToolboxTools.Tools.sql_prettify.Fields.sql",
+        "default": "",
+        "options": []
+      }
+    ]
+  },
+  {
+    "id": "string-escape-unescape",
+    "group": "Development",
+    "title": "Localization.ToolboxTools.Tools.string_escape_unescape.Title",
+    "description": "Localization.ToolboxTools.Tools.string_escape_unescape.Description",
+    "fields": [
+      {
+        "id": "text",
+        "kind": "Multi",
+        "label": "Localization.ToolboxTools.Tools.string_escape_unescape.Fields.text",
+        "default": "",
+        "options": []
+      },
+      {
+        "id": "format",
+        "kind": "Select",
+        "label": "Localization.ToolboxTools.Tools.string_escape_unescape.Fields.format",
+        "default": "JSON",
+        "options": [
+          {
+            "label": "Localization.ToolboxTools.Tools.string_escape_unescape.Options.format.JSON",
+            "value": "JSON"
+          },
+          {
+            "label": "Localization.ToolboxTools.Tools.string_escape_unescape.Options.format.C",
+            "value": "C#"
+          },
+          {
+            "label": "Localization.ToolboxTools.Tools.string_escape_unescape.Options.format.HTML",
+            "value": "HTML"
+          },
+          {
+            "label": "Localization.ToolboxTools.Tools.string_escape_unescape.Options.format.URL",
+            "value": "URL"
+          }
+        ]
+      },
+      {
+        "id": "mode",
+        "kind": "Select",
+        "label": "Localization.ToolboxTools.Tools.string_escape_unescape.Fields.mode",
+        "default": "Escape",
+        "options": [
+          {
+            "label": "Localization.ToolboxTools.Tools.string_escape_unescape.Options.mode.Escape",
+            "value": "Escape"
+          },
+          {
+            "label": "Localization.ToolboxTools.Tools.string_escape_unescape.Options.mode.Unescape",
+            "value": "Unescape"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "uuid-v5-generator",
+    "group": "Development",
+    "title": "Localization.ToolboxTools.Tools.uuid_v5_generator.Title",
+    "description": "Localization.ToolboxTools.Tools.uuid_v5_generator.Description",
+    "fields": [
+      {
+        "id": "namespace",
+        "kind": "Text",
+        "label": "Localization.ToolboxTools.Tools.uuid_v5_generator.Fields.namespace",
+        "default": "6ba7b810-9dad-11d1-80b4-00c04fd430c8",
+        "options": []
+      },
+      {
+        "id": "name",
+        "kind": "Text",
+        "label": "Localization.ToolboxTools.Tools.uuid_v5_generator.Fields.name",
+        "default": "codewf.com",
+        "options": []
+      }
+    ]
+  },
+  {
+    "id": "xml-formatter",
+    "group": "Development",
+    "title": "Localization.ToolboxTools.Tools.xml_formatter.Title",
+    "description": "Localization.ToolboxTools.Tools.xml_formatter.Description",
+    "fields": [
+      {
+        "id": "xml",
+        "kind": "Multi",
+        "label": "Localization.ToolboxTools.Tools.xml_formatter.Fields.xml",
+        "default": "",
+        "options": []
+      }
+    ]
+  },
+  {
+    "id": "xml-xpath-tester",
+    "group": "Development",
+    "title": "Localization.ToolboxTools.Tools.xml_xpath_tester.Title",
+    "description": "Localization.ToolboxTools.Tools.xml_xpath_tester.Description",
+    "fields": [
+      {
+        "id": "xml",
+        "kind": "Multi",
+        "label": "Localization.ToolboxTools.Tools.xml_xpath_tester.Fields.xml",
+        "default": "",
+        "options": []
+      },
+      {
+        "id": "xpath",
+        "kind": "Text",
+        "label": "Localization.ToolboxTools.Tools.xml_xpath_tester.Fields.xpath",
+        "default": "//item",
+        "options": []
+      }
+    ]
+  },
+  {
+    "id": "yaml-viewer",
+    "group": "Development",
+    "title": "Localization.ToolboxTools.Tools.yaml_viewer.Title",
+    "description": "Localization.ToolboxTools.Tools.yaml_viewer.Description",
+    "fields": [
+      {
+        "id": "yaml",
+        "kind": "Multi",
+        "label": "Localization.ToolboxTools.Tools.yaml_viewer.Fields.yaml",
+        "default": "",
+        "options": []
+      }
+    ]
+  },
+  {
+    "id": "bcrypt",
+    "group": "Security",
+    "title": "Localization.ToolboxTools.Tools.bcrypt.Title",
+    "description": "Localization.ToolboxTools.Tools.bcrypt.Description",
+    "fields": [
+      {
+        "id": "text",
+        "kind": "Text",
+        "label": "Localization.ToolboxTools.Tools.bcrypt.Fields.text",
+        "default": "",
+        "options": []
+      },
+      {
+        "id": "hash",
+        "kind": "Text",
+        "label": "Localization.ToolboxTools.Tools.bcrypt.Fields.hash",
+        "default": "",
+        "options": []
+      },
+      {
+        "id": "rounds",
+        "kind": "Number",
+        "label": "Localization.ToolboxTools.Tools.bcrypt.Fields.rounds",
+        "default": "10",
+        "options": []
+      },
+      {
+        "id": "mode",
+        "kind": "Select",
+        "label": "Localization.ToolboxTools.Tools.bcrypt.Fields.mode",
+        "default": "Hash",
+        "options": [
+          {
+            "label": "Localization.ToolboxTools.Tools.bcrypt.Options.mode.Hash",
+            "value": "Hash"
+          },
+          {
+            "label": "Localization.ToolboxTools.Tools.bcrypt.Options.mode.Compare",
+            "value": "Compare"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "bip39-generator",
+    "group": "Security",
+    "title": "Localization.ToolboxTools.Tools.bip39_generator.Title",
+    "description": "Localization.ToolboxTools.Tools.bip39_generator.Description",
+    "fields": [
+      {
+        "id": "words",
+        "kind": "Number",
+        "label": "Localization.ToolboxTools.Tools.bip39_generator.Fields.words",
+        "default": "12",
+        "options": []
+      },
+      {
+        "id": "passphrase",
+        "kind": "Text",
+        "label": "Localization.ToolboxTools.Tools.bip39_generator.Fields.passphrase",
+        "default": "",
+        "options": []
+      }
+    ]
+  },
+  {
+    "id": "encryption",
+    "group": "Security",
+    "title": "Localization.ToolboxTools.Tools.encryption.Title",
+    "description": "Localization.ToolboxTools.Tools.encryption.Description",
+    "fields": [
+      {
+        "id": "text",
+        "kind": "Multi",
+        "label": "Localization.ToolboxTools.Tools.encryption.Fields.text",
+        "default": "",
+        "options": []
+      },
+      {
+        "id": "password",
+        "kind": "Text",
+        "label": "Localization.ToolboxTools.Tools.encryption.Fields.password",
+        "default": "",
+        "options": []
+      },
+      {
+        "id": "algorithm",
+        "kind": "Select",
+        "label": "Localization.ToolboxTools.Tools.encryption.Fields.algorithm",
+        "default": "AES",
+        "options": [
+          {
+            "label": "Localization.ToolboxTools.Tools.encryption.Options.algorithm.AES",
+            "value": "AES"
+          },
+          {
+            "label": "Localization.ToolboxTools.Tools.encryption.Options.algorithm.TripleDES",
+            "value": "TripleDES"
+          }
+        ]
+      },
+      {
+        "id": "mode",
+        "kind": "Select",
+        "label": "Localization.ToolboxTools.Tools.encryption.Fields.mode",
+        "default": "Encrypt",
+        "options": [
+          {
+            "label": "Localization.ToolboxTools.Tools.encryption.Options.mode.Encrypt",
+            "value": "Encrypt"
+          },
+          {
+            "label": "Localization.ToolboxTools.Tools.encryption.Options.mode.Decrypt",
+            "value": "Decrypt"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "hash-text",
+    "group": "Security",
+    "title": "Localization.ToolboxTools.Tools.hash_text.Title",
+    "description": "Localization.ToolboxTools.Tools.hash_text.Description",
+    "fields": [
+      {
+        "id": "text",
+        "kind": "Multi",
+        "label": "Localization.ToolboxTools.Tools.hash_text.Fields.text",
+        "default": "",
+        "options": []
+      },
+      {
+        "id": "algorithm",
+        "kind": "Select",
+        "label": "Localization.ToolboxTools.Tools.hash_text.Fields.algorithm",
+        "default": "MD5",
+        "options": [
+          {
+            "label": "Localization.ToolboxTools.Tools.hash_text.Options.algorithm.MD5",
+            "value": "MD5"
+          },
+          {
+            "label": "Localization.ToolboxTools.Tools.hash_text.Options.algorithm.SHA1",
+            "value": "SHA1"
+          },
+          {
+            "label": "Localization.ToolboxTools.Tools.hash_text.Options.algorithm.SHA224",
+            "value": "SHA224"
+          },
+          {
+            "label": "Localization.ToolboxTools.Tools.hash_text.Options.algorithm.SHA256",
+            "value": "SHA256"
+          },
+          {
+            "label": "Localization.ToolboxTools.Tools.hash_text.Options.algorithm.SHA384",
+            "value": "SHA384"
+          },
+          {
+            "label": "Localization.ToolboxTools.Tools.hash_text.Options.algorithm.SHA512",
+            "value": "SHA512"
+          },
+          {
+            "label": "Localization.ToolboxTools.Tools.hash_text.Options.algorithm.SHA3_256",
+            "value": "SHA3-256"
+          },
+          {
+            "label": "Localization.ToolboxTools.Tools.hash_text.Options.algorithm.SHA3_512",
+            "value": "SHA3-512"
+          },
+          {
+            "label": "Localization.ToolboxTools.Tools.hash_text.Options.algorithm.RIPEMD160",
+            "value": "RIPEMD160"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "hmac-generator",
+    "group": "Security",
+    "title": "Localization.ToolboxTools.Tools.hmac_generator.Title",
+    "description": "Localization.ToolboxTools.Tools.hmac_generator.Description",
+    "fields": [
+      {
+        "id": "text",
+        "kind": "Multi",
+        "label": "Localization.ToolboxTools.Tools.hmac_generator.Fields.text",
+        "default": "",
+        "options": []
+      },
+      {
+        "id": "key",
+        "kind": "Text",
+        "label": "Localization.ToolboxTools.Tools.hmac_generator.Fields.key",
+        "default": "",
+        "options": []
+      },
+      {
+        "id": "algorithm",
+        "kind": "Select",
+        "label": "Localization.ToolboxTools.Tools.hmac_generator.Fields.algorithm",
+        "default": "MD5",
+        "options": [
+          {
+            "label": "Localization.ToolboxTools.Tools.hmac_generator.Options.algorithm.MD5",
+            "value": "MD5"
+          },
+          {
+            "label": "Localization.ToolboxTools.Tools.hmac_generator.Options.algorithm.SHA1",
+            "value": "SHA1"
+          },
+          {
+            "label": "Localization.ToolboxTools.Tools.hmac_generator.Options.algorithm.SHA256",
+            "value": "SHA256"
+          },
+          {
+            "label": "Localization.ToolboxTools.Tools.hmac_generator.Options.algorithm.SHA384",
+            "value": "SHA384"
+          },
+          {
+            "label": "Localization.ToolboxTools.Tools.hmac_generator.Options.algorithm.SHA512",
+            "value": "SHA512"
+          },
+          {
+            "label": "Localization.ToolboxTools.Tools.hmac_generator.Options.algorithm.SHA3_256",
+            "value": "SHA3-256"
+          },
+          {
+            "label": "Localization.ToolboxTools.Tools.hmac_generator.Options.algorithm.RIPEMD160",
+            "value": "RIPEMD160"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "password-strength-analyser",
+    "group": "Security",
+    "title": "Localization.ToolboxTools.Tools.password_strength_analyser.Title",
+    "description": "Localization.ToolboxTools.Tools.password_strength_analyser.Description",
+    "fields": [
+      {
+        "id": "password",
+        "kind": "Text",
+        "label": "Localization.ToolboxTools.Tools.password_strength_analyser.Fields.password",
+        "default": "",
+        "options": []
+      }
+    ]
+  },
+  {
+    "id": "pdf-signature-checker",
+    "group": "Security",
+    "title": "Localization.ToolboxTools.Tools.pdf_signature_checker.Title",
+    "description": "Localization.ToolboxTools.Tools.pdf_signature_checker.Description",
+    "fields": [
+      {
+        "id": "file",
+        "kind": "File",
+        "label": "Localization.ToolboxTools.Tools.pdf_signature_checker.Fields.file",
+        "default": "",
+        "options": []
+      }
+    ]
+  },
+  {
+    "id": "rsa-key-pair-generator",
+    "group": "Security",
+    "title": "Localization.ToolboxTools.Tools.rsa_key_pair_generator.Title",
+    "description": "Localization.ToolboxTools.Tools.rsa_key_pair_generator.Description",
+    "fields": [
+      {
+        "id": "size",
+        "kind": "Number",
+        "label": "Localization.ToolboxTools.Tools.rsa_key_pair_generator.Fields.size",
+        "default": "2048",
+        "options": []
+      }
+    ]
+  },
+  {
+    "id": "token-generator",
+    "group": "Security",
+    "title": "Localization.ToolboxTools.Tools.token_generator.Title",
+    "description": "Localization.ToolboxTools.Tools.token_generator.Description",
+    "fields": [
+      {
+        "id": "length",
+        "kind": "Number",
+        "label": "Localization.ToolboxTools.Tools.token_generator.Fields.length",
+        "default": "32",
+        "options": []
+      },
+      {
+        "id": "upper",
+        "kind": "Bool",
+        "label": "Localization.ToolboxTools.Tools.token_generator.Fields.upper",
+        "default": "False",
+        "options": []
+      },
+      {
+        "id": "lower",
+        "kind": "Bool",
+        "label": "Localization.ToolboxTools.Tools.token_generator.Fields.lower",
+        "default": "False",
+        "options": []
+      },
+      {
+        "id": "numbers",
+        "kind": "Bool",
+        "label": "Localization.ToolboxTools.Tools.token_generator.Fields.numbers",
+        "default": "False",
+        "options": []
+      },
+      {
+        "id": "symbols",
+        "kind": "Bool",
+        "label": "Localization.ToolboxTools.Tools.token_generator.Fields.symbols",
+        "default": "False",
+        "options": []
+      }
+    ]
+  },
+  {
+    "id": "ulid-generator",
+    "group": "Security",
+    "title": "Localization.ToolboxTools.Tools.ulid_generator.Title",
+    "description": "Localization.ToolboxTools.Tools.ulid_generator.Description",
+    "fields": [
+      {
+        "id": "count",
+        "kind": "Number",
+        "label": "Localization.ToolboxTools.Tools.ulid_generator.Fields.count",
+        "default": "5",
+        "options": []
+      }
+    ]
+  },
+  {
+    "id": "uuid-generator",
+    "group": "Security",
+    "title": "Localization.ToolboxTools.Tools.uuid_generator.Title",
+    "description": "Localization.ToolboxTools.Tools.uuid_generator.Description",
+    "fields": [
+      {
+        "id": "count",
+        "kind": "Number",
+        "label": "Localization.ToolboxTools.Tools.uuid_generator.Fields.count",
+        "default": "5",
+        "options": []
+      },
+      {
+        "id": "uppercase",
+        "kind": "Bool",
+        "label": "Localization.ToolboxTools.Tools.uuid_generator.Fields.uppercase",
+        "default": "False",
+        "options": []
+      }
+    ]
+  },
+  {
+    "id": "basic-auth-generator",
+    "group": "Web",
+    "title": "Localization.ToolboxTools.Tools.basic_auth_generator.Title",
+    "description": "Localization.ToolboxTools.Tools.basic_auth_generator.Description",
+    "fields": [
+      {
+        "id": "username",
+        "kind": "Text",
+        "label": "Localization.ToolboxTools.Tools.basic_auth_generator.Fields.username",
+        "default": "",
+        "options": []
+      },
+      {
+        "id": "password",
+        "kind": "Text",
+        "label": "Localization.ToolboxTools.Tools.basic_auth_generator.Fields.password",
+        "default": "",
+        "options": []
+      }
+    ]
+  },
+  {
+    "id": "device-information",
+    "group": "Web",
+    "title": "Localization.ToolboxTools.Tools.device_information.Title",
+    "description": "Localization.ToolboxTools.Tools.device_information.Description",
+    "fields": []
+  },
+  {
+    "id": "html-entities",
+    "group": "Web",
+    "title": "Localization.ToolboxTools.Tools.html_entities.Title",
+    "description": "Localization.ToolboxTools.Tools.html_entities.Description",
+    "fields": [
+      {
+        "id": "text",
+        "kind": "Multi",
+        "label": "Localization.ToolboxTools.Tools.html_entities.Fields.text",
+        "default": "",
+        "options": []
+      },
+      {
+        "id": "mode",
+        "kind": "Select",
+        "label": "Localization.ToolboxTools.Tools.html_entities.Fields.mode",
+        "default": "Escape",
+        "options": [
+          {
+            "label": "Localization.ToolboxTools.Tools.html_entities.Options.mode.Escape",
+            "value": "Escape"
+          },
+          {
+            "label": "Localization.ToolboxTools.Tools.html_entities.Options.mode.Unescape",
+            "value": "Unescape"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "html-wysiwyg-editor",
+    "group": "Web",
+    "title": "Localization.ToolboxTools.Tools.html_wysiwyg_editor.Title",
+    "description": "Localization.ToolboxTools.Tools.html_wysiwyg_editor.Description",
+    "fields": [
+      {
+        "id": "content",
+        "kind": "Multi",
+        "label": "Localization.ToolboxTools.Tools.html_wysiwyg_editor.Fields.content",
+        "default": "",
+        "options": []
+      },
+      {
+        "id": "mode",
+        "kind": "Select",
+        "label": "Localization.ToolboxTools.Tools.html_wysiwyg_editor.Fields.mode",
+        "default": "Paragraphs",
+        "options": [
+          {
+            "label": "Localization.ToolboxTools.Tools.html_wysiwyg_editor.Options.mode.Paragraphs",
+            "value": "Paragraphs"
+          },
+          {
+            "label": "Localization.ToolboxTools.Tools.html_wysiwyg_editor.Options.mode.Unordered_list",
+            "value": "Unordered list"
+          },
+          {
+            "label": "Localization.ToolboxTools.Tools.html_wysiwyg_editor.Options.mode.Ordered_list",
+            "value": "Ordered list"
+          },
+          {
+            "label": "Localization.ToolboxTools.Tools.html_wysiwyg_editor.Options.mode.Raw_HTML_preview",
+            "value": "Raw HTML preview"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "http-status-codes",
+    "group": "Web",
+    "title": "Localization.ToolboxTools.Tools.http_status_codes.Title",
+    "description": "Localization.ToolboxTools.Tools.http_status_codes.Description",
+    "fields": [
+      {
+        "id": "query",
+        "kind": "Text",
+        "label": "Localization.ToolboxTools.Tools.http_status_codes.Fields.query",
+        "default": "",
+        "options": []
+      }
+    ]
+  },
+  {
+    "id": "json-diff",
+    "group": "Web",
+    "title": "Localization.ToolboxTools.Tools.json_diff.Title",
+    "description": "Localization.ToolboxTools.Tools.json_diff.Description",
+    "fields": [
+      {
+        "id": "left",
+        "kind": "Multi",
+        "label": "Localization.ToolboxTools.Tools.json_diff.Fields.left",
+        "default": "",
+        "options": []
+      },
+      {
+        "id": "right",
+        "kind": "Multi",
+        "label": "Localization.ToolboxTools.Tools.json_diff.Fields.right",
+        "default": "",
+        "options": []
+      }
+    ]
+  },
+  {
+    "id": "jwt-parser",
+    "group": "Web",
+    "title": "Localization.ToolboxTools.Tools.jwt_parser.Title",
+    "description": "Localization.ToolboxTools.Tools.jwt_parser.Description",
+    "fields": [
+      {
+        "id": "jwt",
+        "kind": "Multi",
+        "label": "Localization.ToolboxTools.Tools.jwt_parser.Fields.jwt",
+        "default": "",
+        "options": []
+      }
+    ]
+  },
+  {
+    "id": "keycode-info",
+    "group": "Web",
+    "title": "Localization.ToolboxTools.Tools.keycode_info.Title",
+    "description": "Localization.ToolboxTools.Tools.keycode_info.Description",
+    "fields": []
+  },
+  {
+    "id": "meta-tag-generator",
+    "group": "Web",
+    "title": "Localization.ToolboxTools.Tools.meta_tag_generator.Title",
+    "description": "Localization.ToolboxTools.Tools.meta_tag_generator.Description",
+    "fields": [
+      {
+        "id": "title",
+        "kind": "Text",
+        "label": "Localization.ToolboxTools.Tools.meta_tag_generator.Fields.title",
+        "default": "",
+        "options": []
+      },
+      {
+        "id": "description",
+        "kind": "Text",
+        "label": "Localization.ToolboxTools.Tools.meta_tag_generator.Fields.description",
+        "default": "",
+        "options": []
+      },
+      {
+        "id": "url",
+        "kind": "Text",
+        "label": "Localization.ToolboxTools.Tools.meta_tag_generator.Fields.url",
+        "default": "",
+        "options": []
+      },
+      {
+        "id": "image",
+        "kind": "Text",
+        "label": "Localization.ToolboxTools.Tools.meta_tag_generator.Fields.image",
+        "default": "",
+        "options": []
+      },
+      {
+        "id": "site",
+        "kind": "Text",
+        "label": "Localization.ToolboxTools.Tools.meta_tag_generator.Fields.site",
+        "default": "",
+        "options": []
+      },
+      {
+        "id": "type",
+        "kind": "Select",
+        "label": "Localization.ToolboxTools.Tools.meta_tag_generator.Fields.type",
+        "default": "website",
+        "options": [
+          {
+            "label": "Localization.ToolboxTools.Tools.meta_tag_generator.Options.type.website",
+            "value": "website"
+          },
+          {
+            "label": "Localization.ToolboxTools.Tools.meta_tag_generator.Options.type.article",
+            "value": "article"
+          },
+          {
+            "label": "Localization.ToolboxTools.Tools.meta_tag_generator.Options.type.profile",
+            "value": "profile"
+          },
+          {
+            "label": "Localization.ToolboxTools.Tools.meta_tag_generator.Options.type.book",
+            "value": "book"
+          },
+          {
+            "label": "Localization.ToolboxTools.Tools.meta_tag_generator.Options.type.music_song",
+            "value": "music.song"
+          },
+          {
+            "label": "Localization.ToolboxTools.Tools.meta_tag_generator.Options.type.video_movie",
+            "value": "video.movie"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "mime-types",
+    "group": "Web",
+    "title": "Localization.ToolboxTools.Tools.mime_types.Title",
+    "description": "Localization.ToolboxTools.Tools.mime_types.Description",
+    "fields": [
+      {
+        "id": "query",
+        "kind": "Text",
+        "label": "Localization.ToolboxTools.Tools.mime_types.Fields.query",
+        "default": "",
+        "options": []
+      }
+    ]
+  },
+  {
+    "id": "otp-code-generator-and-validator",
+    "group": "Web",
+    "title": "Localization.ToolboxTools.Tools.otp_code_generator_and_validator.Title",
+    "description": "Localization.ToolboxTools.Tools.otp_code_generator_and_validator.Description",
+    "fields": [
+      {
+        "id": "secret",
+        "kind": "Text",
+        "label": "Localization.ToolboxTools.Tools.otp_code_generator_and_validator.Fields.secret",
+        "default": "",
+        "options": []
+      },
+      {
+        "id": "digits",
+        "kind": "Number",
+        "label": "Localization.ToolboxTools.Tools.otp_code_generator_and_validator.Fields.digits",
+        "default": "6",
+        "options": []
+      },
+      {
+        "id": "period",
+        "kind": "Number",
+        "label": "Localization.ToolboxTools.Tools.otp_code_generator_and_validator.Fields.period",
+        "default": "30",
+        "options": []
+      },
+      {
+        "id": "code",
+        "kind": "Text",
+        "label": "Localization.ToolboxTools.Tools.otp_code_generator_and_validator.Fields.code",
+        "default": "",
+        "options": []
+      }
+    ]
+  },
+  {
+    "id": "safelink-decoder",
+    "group": "Web",
+    "title": "Localization.ToolboxTools.Tools.safelink_decoder.Title",
+    "description": "Localization.ToolboxTools.Tools.safelink_decoder.Description",
+    "fields": [
+      {
+        "id": "url",
+        "kind": "Multi",
+        "label": "Localization.ToolboxTools.Tools.safelink_decoder.Fields.url",
+        "default": "",
+        "options": []
+      }
+    ]
+  },
+  {
+    "id": "slugify-string",
+    "group": "Web",
+    "title": "Localization.ToolboxTools.Tools.slugify_string.Title",
+    "description": "Localization.ToolboxTools.Tools.slugify_string.Description",
+    "fields": [
+      {
+        "id": "text",
+        "kind": "Text",
+        "label": "Localization.ToolboxTools.Tools.slugify_string.Fields.text",
+        "default": "",
+        "options": []
+      },
+      {
+        "id": "lower",
+        "kind": "Bool",
+        "label": "Localization.ToolboxTools.Tools.slugify_string.Fields.lower",
+        "default": "False",
+        "options": []
+      }
+    ]
+  },
+  {
+    "id": "url-encoder",
+    "group": "Web",
+    "title": "Localization.ToolboxTools.Tools.url_encoder.Title",
+    "description": "Localization.ToolboxTools.Tools.url_encoder.Description",
+    "fields": [
+      {
+        "id": "text",
+        "kind": "Multi",
+        "label": "Localization.ToolboxTools.Tools.url_encoder.Fields.text",
+        "default": "",
+        "options": []
+      },
+      {
+        "id": "mode",
+        "kind": "Select",
+        "label": "Localization.ToolboxTools.Tools.url_encoder.Fields.mode",
+        "default": "Encode",
+        "options": [
+          {
+            "label": "Localization.ToolboxTools.Tools.url_encoder.Options.mode.Encode",
+            "value": "Encode"
+          },
+          {
+            "label": "Localization.ToolboxTools.Tools.url_encoder.Options.mode.Decode",
+            "value": "Decode"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "url-parser",
+    "group": "Web",
+    "title": "Localization.ToolboxTools.Tools.url_parser.Title",
+    "description": "Localization.ToolboxTools.Tools.url_parser.Description",
+    "fields": [
+      {
+        "id": "url",
+        "kind": "Text",
+        "label": "Localization.ToolboxTools.Tools.url_parser.Fields.url",
+        "default": "",
+        "options": []
+      }
+    ]
+  },
+  {
+    "id": "user-agent-parser",
+    "group": "Web",
+    "title": "Localization.ToolboxTools.Tools.user_agent_parser.Title",
+    "description": "Localization.ToolboxTools.Tools.user_agent_parser.Description",
+    "fields": [
+      {
+        "id": "userAgent",
+        "kind": "Multi",
+        "label": "Localization.ToolboxTools.Tools.user_agent_parser.Fields.userAgent",
+        "default": "",
+        "options": []
+      }
+    ]
+  },
+  {
+    "id": "qr-code-generator",
+    "group": "Media",
+    "title": "Localization.ToolboxTools.Tools.qr_code_generator.Title",
+    "description": "Localization.ToolboxTools.Tools.qr_code_generator.Description",
+    "fields": [
+      {
+        "id": "text",
+        "kind": "Multi",
+        "label": "Localization.ToolboxTools.Tools.qr_code_generator.Fields.text",
+        "default": "",
+        "options": []
+      },
+      {
+        "id": "pixels",
+        "kind": "Number",
+        "label": "Localization.ToolboxTools.Tools.qr_code_generator.Fields.pixels",
+        "default": "10",
+        "options": []
+      }
+    ]
+  },
+  {
+    "id": "svg-placeholder-generator",
+    "group": "Media",
+    "title": "Localization.ToolboxTools.Tools.svg_placeholder_generator.Title",
+    "description": "Localization.ToolboxTools.Tools.svg_placeholder_generator.Description",
+    "fields": [
+      {
+        "id": "width",
+        "kind": "Number",
+        "label": "Localization.ToolboxTools.Tools.svg_placeholder_generator.Fields.width",
+        "default": "800",
+        "options": []
+      },
+      {
+        "id": "height",
+        "kind": "Number",
+        "label": "Localization.ToolboxTools.Tools.svg_placeholder_generator.Fields.height",
+        "default": "400",
+        "options": []
+      },
+      {
+        "id": "text",
+        "kind": "Text",
+        "label": "Localization.ToolboxTools.Tools.svg_placeholder_generator.Fields.text",
+        "default": "800 x 400",
+        "options": []
+      },
+      {
+        "id": "bg",
+        "kind": "Text",
+        "label": "Localization.ToolboxTools.Tools.svg_placeholder_generator.Fields.bg",
+        "default": "#dddddd",
+        "options": []
+      },
+      {
+        "id": "fg",
+        "kind": "Text",
+        "label": "Localization.ToolboxTools.Tools.svg_placeholder_generator.Fields.fg",
+        "default": "#555555",
+        "options": []
+      }
+    ]
+  },
+  {
+    "id": "wifi-qr-code-generator",
+    "group": "Media",
+    "title": "Localization.ToolboxTools.Tools.wifi_qr_code_generator.Title",
+    "description": "Localization.ToolboxTools.Tools.wifi_qr_code_generator.Description",
+    "fields": [
+      {
+        "id": "ssid",
+        "kind": "Text",
+        "label": "Localization.ToolboxTools.Tools.wifi_qr_code_generator.Fields.ssid",
+        "default": "",
+        "options": []
+      },
+      {
+        "id": "password",
+        "kind": "Text",
+        "label": "Localization.ToolboxTools.Tools.wifi_qr_code_generator.Fields.password",
+        "default": "",
+        "options": []
+      },
+      {
+        "id": "auth",
+        "kind": "Select",
+        "label": "Localization.ToolboxTools.Tools.wifi_qr_code_generator.Fields.auth",
+        "default": "WPA",
+        "options": [
+          {
+            "label": "Localization.ToolboxTools.Tools.wifi_qr_code_generator.Options.auth.WPA",
+            "value": "WPA"
+          },
+          {
+            "label": "Localization.ToolboxTools.Tools.wifi_qr_code_generator.Options.auth.WEP",
+            "value": "WEP"
+          },
+          {
+            "label": "Localization.ToolboxTools.Tools.wifi_qr_code_generator.Options.auth.nopass",
+            "value": "nopass"
+          }
+        ]
+      },
+      {
+        "id": "hidden",
+        "kind": "Bool",
+        "label": "Localization.ToolboxTools.Tools.wifi_qr_code_generator.Fields.hidden",
+        "default": "False",
+        "options": []
+      }
+    ]
+  },
+  {
+    "id": "ipv4-address-converter",
+    "group": "Network",
+    "title": "Localization.ToolboxTools.Tools.ipv4_address_converter.Title",
+    "description": "Localization.ToolboxTools.Tools.ipv4_address_converter.Description",
+    "fields": [
+      {
+        "id": "ip",
+        "kind": "Text",
+        "label": "Localization.ToolboxTools.Tools.ipv4_address_converter.Fields.ip",
+        "default": "192.168.1.1",
+        "options": []
+      }
+    ]
+  },
+  {
+    "id": "ipv4-range-expander",
+    "group": "Network",
+    "title": "Localization.ToolboxTools.Tools.ipv4_range_expander.Title",
+    "description": "Localization.ToolboxTools.Tools.ipv4_range_expander.Description",
+    "fields": [
+      {
+        "id": "start",
+        "kind": "Text",
+        "label": "Localization.ToolboxTools.Tools.ipv4_range_expander.Fields.start",
+        "default": "192.168.1.0",
+        "options": []
+      },
+      {
+        "id": "end",
+        "kind": "Text",
+        "label": "Localization.ToolboxTools.Tools.ipv4_range_expander.Fields.end",
+        "default": "192.168.1.255",
+        "options": []
+      }
+    ]
+  },
+  {
+    "id": "ipv4-subnet-calculator",
+    "group": "Network",
+    "title": "Localization.ToolboxTools.Tools.ipv4_subnet_calculator.Title",
+    "description": "Localization.ToolboxTools.Tools.ipv4_subnet_calculator.Description",
+    "fields": [
+      {
+        "id": "cidr",
+        "kind": "Text",
+        "label": "Localization.ToolboxTools.Tools.ipv4_subnet_calculator.Fields.cidr",
+        "default": "192.168.1.0/24",
+        "options": []
+      }
+    ]
+  },
+  {
+    "id": "ipv6-ula-generator",
+    "group": "Network",
+    "title": "Localization.ToolboxTools.Tools.ipv6_ula_generator.Title",
+    "description": "Localization.ToolboxTools.Tools.ipv6_ula_generator.Description",
+    "fields": [
+      {
+        "id": "count",
+        "kind": "Number",
+        "label": "Localization.ToolboxTools.Tools.ipv6_ula_generator.Fields.count",
+        "default": "3",
+        "options": []
+      }
+    ]
+  },
+  {
+    "id": "mac-address-generator",
+    "group": "Network",
+    "title": "Localization.ToolboxTools.Tools.mac_address_generator.Title",
+    "description": "Localization.ToolboxTools.Tools.mac_address_generator.Description",
+    "fields": [
+      {
+        "id": "count",
+        "kind": "Number",
+        "label": "Localization.ToolboxTools.Tools.mac_address_generator.Fields.count",
+        "default": "5",
+        "options": []
+      },
+      {
+        "id": "prefix",
+        "kind": "Text",
+        "label": "Localization.ToolboxTools.Tools.mac_address_generator.Fields.prefix",
+        "default": "",
+        "options": []
+      },
+      {
+        "id": "uppercase",
+        "kind": "Bool",
+        "label": "Localization.ToolboxTools.Tools.mac_address_generator.Fields.uppercase",
+        "default": "False",
+        "options": []
+      }
+    ]
+  },
+  {
+    "id": "mac-address-lookup",
+    "group": "Network",
+    "title": "Localization.ToolboxTools.Tools.mac_address_lookup.Title",
+    "description": "Localization.ToolboxTools.Tools.mac_address_lookup.Description",
+    "fields": [
+      {
+        "id": "mac",
+        "kind": "Text",
+        "label": "Localization.ToolboxTools.Tools.mac_address_lookup.Fields.mac",
+        "default": "",
+        "options": []
+      }
+    ]
+  },
+  {
+    "id": "eta-calculator",
+    "group": "Math",
+    "title": "Localization.ToolboxTools.Tools.eta_calculator.Title",
+    "description": "Localization.ToolboxTools.Tools.eta_calculator.Description",
+    "fields": [
+      {
+        "id": "done",
+        "kind": "Number",
+        "label": "Localization.ToolboxTools.Tools.eta_calculator.Fields.done",
+        "default": "50",
+        "options": []
+      },
+      {
+        "id": "total",
+        "kind": "Number",
+        "label": "Localization.ToolboxTools.Tools.eta_calculator.Fields.total",
+        "default": "100",
+        "options": []
+      },
+      {
+        "id": "rate",
+        "kind": "Number",
+        "label": "Localization.ToolboxTools.Tools.eta_calculator.Fields.rate",
+        "default": "1",
+        "options": []
+      }
+    ]
+  },
+  {
+    "id": "math-evaluator",
+    "group": "Math",
+    "title": "Localization.ToolboxTools.Tools.math_evaluator.Title",
+    "description": "Localization.ToolboxTools.Tools.math_evaluator.Description",
+    "fields": [
+      {
+        "id": "expression",
+        "kind": "Text",
+        "label": "Localization.ToolboxTools.Tools.math_evaluator.Fields.expression",
+        "default": "sqrt(16)\u002Bcos(0)",
+        "options": []
+      }
+    ]
+  },
+  {
+    "id": "percentage-calculator",
+    "group": "Math",
+    "title": "Localization.ToolboxTools.Tools.percentage_calculator.Title",
+    "description": "Localization.ToolboxTools.Tools.percentage_calculator.Description",
+    "fields": [
+      {
+        "id": "a",
+        "kind": "Number",
+        "label": "Localization.ToolboxTools.Tools.percentage_calculator.Fields.a",
+        "default": "20",
+        "options": []
+      },
+      {
+        "id": "b",
+        "kind": "Number",
+        "label": "Localization.ToolboxTools.Tools.percentage_calculator.Fields.b",
+        "default": "100",
+        "options": []
+      }
+    ]
+  },
+  {
+    "id": "benchmark-builder",
+    "group": "Measurement",
+    "title": "Localization.ToolboxTools.Tools.benchmark_builder.Title",
+    "description": "Localization.ToolboxTools.Tools.benchmark_builder.Description",
+    "fields": [
+      {
+        "id": "iterations",
+        "kind": "Number",
+        "label": "Localization.ToolboxTools.Tools.benchmark_builder.Fields.iterations",
+        "default": "1000000",
+        "options": []
+      },
+      {
+        "id": "task",
+        "kind": "Select",
+        "label": "Localization.ToolboxTools.Tools.benchmark_builder.Fields.task",
+        "default": "String concat",
+        "options": [
+          {
+            "label": "Localization.ToolboxTools.Tools.benchmark_builder.Options.task.String_concat",
+            "value": "String concat"
+          },
+          {
+            "label": "Localization.ToolboxTools.Tools.benchmark_builder.Options.task.StringBuilder",
+            "value": "StringBuilder"
+          },
+          {
+            "label": "Localization.ToolboxTools.Tools.benchmark_builder.Options.task.Random_numbers",
+            "value": "Random numbers"
+          },
+          {
+            "label": "Localization.ToolboxTools.Tools.benchmark_builder.Options.task.SHA256_hash",
+            "value": "SHA256 hash"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "chronometer",
+    "group": "Measurement",
+    "title": "Localization.ToolboxTools.Tools.chronometer.Title",
+    "description": "Localization.ToolboxTools.Tools.chronometer.Description",
+    "fields": [
+      {
+        "id": "start",
+        "kind": "Text",
+        "label": "Localization.ToolboxTools.Tools.chronometer.Fields.start",
+        "default": "",
+        "options": []
+      },
+      {
+        "id": "end",
+        "kind": "Text",
+        "label": "Localization.ToolboxTools.Tools.chronometer.Fields.end",
+        "default": "",
+        "options": []
+      }
+    ]
+  },
+  {
+    "id": "temperature-converter",
+    "group": "Measurement",
+    "title": "Localization.ToolboxTools.Tools.temperature_converter.Title",
+    "description": "Localization.ToolboxTools.Tools.temperature_converter.Description",
+    "fields": [
+      {
+        "id": "value",
+        "kind": "Number",
+        "label": "Localization.ToolboxTools.Tools.temperature_converter.Fields.value",
+        "default": "0",
+        "options": []
+      },
+      {
+        "id": "unit",
+        "kind": "Select",
+        "label": "Localization.ToolboxTools.Tools.temperature_converter.Fields.unit",
+        "default": "Celsius",
+        "options": [
+          {
+            "label": "Localization.ToolboxTools.Tools.temperature_converter.Options.unit.Celsius",
+            "value": "Celsius"
+          },
+          {
+            "label": "Localization.ToolboxTools.Tools.temperature_converter.Options.unit.Kelvin",
+            "value": "Kelvin"
+          },
+          {
+            "label": "Localization.ToolboxTools.Tools.temperature_converter.Options.unit.Fahrenheit",
+            "value": "Fahrenheit"
+          },
+          {
+            "label": "Localization.ToolboxTools.Tools.temperature_converter.Options.unit.Rankine",
+            "value": "Rankine"
+          },
+          {
+            "label": "Localization.ToolboxTools.Tools.temperature_converter.Options.unit.Delisle",
+            "value": "Delisle"
+          },
+          {
+            "label": "Localization.ToolboxTools.Tools.temperature_converter.Options.unit.Newton",
+            "value": "Newton"
+          },
+          {
+            "label": "Localization.ToolboxTools.Tools.temperature_converter.Options.unit.Reaumur",
+            "value": "Reaumur"
+          },
+          {
+            "label": "Localization.ToolboxTools.Tools.temperature_converter.Options.unit.Romer",
+            "value": "Romer"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ascii-text-drawer",
+    "group": "Text",
+    "title": "Localization.ToolboxTools.Tools.ascii_text_drawer.Title",
+    "description": "Localization.ToolboxTools.Tools.ascii_text_drawer.Description",
+    "fields": [
+      {
+        "id": "text",
+        "kind": "Text",
+        "label": "Localization.ToolboxTools.Tools.ascii_text_drawer.Fields.text",
+        "default": "CodeWF",
+        "options": []
+      },
+      {
+        "id": "font",
+        "kind": "Select",
+        "label": "Localization.ToolboxTools.Tools.ascii_text_drawer.Fields.font",
+        "default": "Standard",
+        "options": [
+          {
+            "label": "Localization.ToolboxTools.Tools.ascii_text_drawer.Options.font.Standard",
+            "value": "Standard"
+          },
+          {
+            "label": "Localization.ToolboxTools.Tools.ascii_text_drawer.Options.font.Slant",
+            "value": "Slant"
+          },
+          {
+            "label": "Localization.ToolboxTools.Tools.ascii_text_drawer.Options.font.Small",
+            "value": "Small"
+          },
+          {
+            "label": "Localization.ToolboxTools.Tools.ascii_text_drawer.Options.font.Big",
+            "value": "Big"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "emoji-picker",
+    "group": "Text",
+    "title": "Localization.ToolboxTools.Tools.emoji_picker.Title",
+    "description": "Localization.ToolboxTools.Tools.emoji_picker.Description",
+    "fields": [
+      {
+        "id": "query",
+        "kind": "Text",
+        "label": "Localization.ToolboxTools.Tools.emoji_picker.Fields.query",
+        "default": "",
+        "options": []
+      }
+    ]
+  },
+  {
+    "id": "lorem-ipsum-generator",
+    "group": "Text",
+    "title": "Localization.ToolboxTools.Tools.lorem_ipsum_generator.Title",
+    "description": "Localization.ToolboxTools.Tools.lorem_ipsum_generator.Description",
+    "fields": [
+      {
+        "id": "paragraphs",
+        "kind": "Number",
+        "label": "Localization.ToolboxTools.Tools.lorem_ipsum_generator.Fields.paragraphs",
+        "default": "3",
+        "options": []
+      }
+    ]
+  },
+  {
+    "id": "numeronym-generator",
+    "group": "Text",
+    "title": "Localization.ToolboxTools.Tools.numeronym_generator.Title",
+    "description": "Localization.ToolboxTools.Tools.numeronym_generator.Description",
+    "fields": [
+      {
+        "id": "text",
+        "kind": "Multi",
+        "label": "Localization.ToolboxTools.Tools.numeronym_generator.Fields.text",
+        "default": "",
+        "options": []
+      }
+    ]
+  },
+  {
+    "id": "string-obfuscator",
+    "group": "Text",
+    "title": "Localization.ToolboxTools.Tools.string_obfuscator.Title",
+    "description": "Localization.ToolboxTools.Tools.string_obfuscator.Description",
+    "fields": [
+      {
+        "id": "text",
+        "kind": "Text",
+        "label": "Localization.ToolboxTools.Tools.string_obfuscator.Fields.text",
+        "default": "",
+        "options": []
+      },
+      {
+        "id": "keepStart",
+        "kind": "Number",
+        "label": "Localization.ToolboxTools.Tools.string_obfuscator.Fields.keepStart",
+        "default": "3",
+        "options": []
+      },
+      {
+        "id": "keepEnd",
+        "kind": "Number",
+        "label": "Localization.ToolboxTools.Tools.string_obfuscator.Fields.keepEnd",
+        "default": "3",
+        "options": []
+      },
+      {
+        "id": "mask",
+        "kind": "Text",
+        "label": "Localization.ToolboxTools.Tools.string_obfuscator.Fields.mask",
+        "default": "*",
+        "options": []
+      }
+    ]
+  },
+  {
+    "id": "text-diff",
+    "group": "Text",
+    "title": "Localization.ToolboxTools.Tools.text_diff.Title",
+    "description": "Localization.ToolboxTools.Tools.text_diff.Description",
+    "fields": [
+      {
+        "id": "left",
+        "kind": "Multi",
+        "label": "Localization.ToolboxTools.Tools.text_diff.Fields.left",
+        "default": "",
+        "options": []
+      },
+      {
+        "id": "right",
+        "kind": "Multi",
+        "label": "Localization.ToolboxTools.Tools.text_diff.Fields.right",
+        "default": "",
+        "options": []
+      }
+    ]
+  },
+  {
+    "id": "text-statistics",
+    "group": "Text",
+    "title": "Localization.ToolboxTools.Tools.text_statistics.Title",
+    "description": "Localization.ToolboxTools.Tools.text_statistics.Description",
+    "fields": [
+      {
+        "id": "text",
+        "kind": "Multi",
+        "label": "Localization.ToolboxTools.Tools.text_statistics.Fields.text",
+        "default": "",
+        "options": []
+      }
+    ]
+  },
+  {
+    "id": "iban-validator-and-parser",
+    "group": "Data",
+    "title": "Localization.ToolboxTools.Tools.iban_validator_and_parser.Title",
+    "description": "Localization.ToolboxTools.Tools.iban_validator_and_parser.Description",
+    "fields": [
+      {
+        "id": "iban",
+        "kind": "Text",
+        "label": "Localization.ToolboxTools.Tools.iban_validator_and_parser.Fields.iban",
+        "default": "",
+        "options": []
+      }
+    ]
+  },
+  {
+    "id": "phone-parser-and-formatter",
+    "group": "Data",
+    "title": "Localization.ToolboxTools.Tools.phone_parser_and_formatter.Title",
+    "description": "Localization.ToolboxTools.Tools.phone_parser_and_formatter.Description",
+    "fields": [
+      {
+        "id": "phone",
+        "kind": "Text",
+        "label": "Localization.ToolboxTools.Tools.phone_parser_and_formatter.Fields.phone",
+        "default": "",
+        "options": []
+      },
+      {
+        "id": "region",
+        "kind": "Text",
+        "label": "Localization.ToolboxTools.Tools.phone_parser_and_formatter.Fields.region",
+        "default": "US",
+        "options": []
+      }
+    ]
+  },
+  {
+    "id": "LogViewerView",
+    "group": "Logs",
+    "title": "Localization.LogViewerView.Title",
+    "description": "Localization.LogViewerView.Description",
+    "fields": [
+      {
+        "id": "input",
+        "kind": "Multi",
+        "label": "Localization.Workspace.Properties",
+        "default": "",
+        "options": []
+      }
+    ]
+  },
+  {
+    "id": "MergeXmlFilesView",
+    "group": "XML",
+    "title": "Localization.MergeXmlFilesView.Title",
+    "description": "Localization.MergeXmlFilesView.Description",
+    "fields": [
+      {
+        "id": "input",
+        "kind": "Multi",
+        "label": "Localization.Workspace.Properties",
+        "default": "",
+        "options": []
+      }
+    ]
+  },
+  {
+    "id": "ManageXmlFilesView",
+    "group": "XML",
+    "title": "Localization.ManageXmlFilesView.Title",
+    "description": "Localization.ManageXmlFilesView.Description",
+    "fields": [
+      {
+        "id": "input",
+        "kind": "Multi",
+        "label": "Localization.Workspace.Properties",
+        "default": "",
+        "options": []
+      }
+    ]
+  }
+]

@@ -1,0 +1,146 @@
+{
+  "DotNetLight": {
+    "bg": "#FFFFFF",
+    "surface": "#F7F6FC",
+    "raised": "#EFEDF7",
+    "line": "#DDD8EC",
+    "text": "#242036",
+    "muted": "#6E6684",
+    "accent": "#512BD4"
+  },
+  "DotNetDark": {
+    "bg": "#12111C",
+    "surface": "#191724",
+    "raised": "#211E30",
+    "line": "#343044",
+    "text": "#F3F0FC",
+    "muted": "#AAA5C0",
+    "accent": "#A78BFA"
+  },
+  "AuroraLight": {
+    "bg": "#FFFFFF",
+    "surface": "#F7F6FC",
+    "raised": "#EFEDF7",
+    "line": "#DDD8EC",
+    "text": "#242036",
+    "muted": "#6E6684",
+    "accent": "#6745D6"
+  },
+  "AuroraDark": {
+    "bg": "#101820",
+    "surface": "#16212A",
+    "raised": "#20303A",
+    "line": "#2C3B48",
+    "text": "#F3F0FC",
+    "muted": "#AAA5C0",
+    "accent": "#AE96FF"
+  },
+  "EmberLight": {
+    "bg": "#FFFFFF",
+    "surface": "#FCF7F3",
+    "raised": "#F4ECE5",
+    "line": "#DDCABC",
+    "text": "#242036",
+    "muted": "#6E6684",
+    "accent": "#A94F36"
+  },
+  "EmberDark": {
+    "bg": "#1B1616",
+    "surface": "#241D1B",
+    "raised": "#302522",
+    "line": "#443631",
+    "text": "#F3F0FC",
+    "muted": "#AAA5C0",
+    "accent": "#E6A58F"
+  },
+  "DefaultLight": {
+    "bg": "#FFFFFF",
+    "surface": "#F8F9FB",
+    "raised": "#EEF1F6",
+    "line": "#DDE2EB",
+    "text": "#202736",
+    "muted": "#68758B",
+    "accent": "#0064FA"
+  },
+  "DefaultDark": {
+    "bg": "#13161C",
+    "surface": "#1A1E26",
+    "raised": "#242A35",
+    "line": "#354051",
+    "text": "#EDF1F8",
+    "muted": "#A6B2C6",
+    "accent": "#6AA8FF"
+  },
+  "AquaticLight": {
+    "bg": "#F4FCFC",
+    "surface": "#EBF7F8",
+    "raised": "#DCEFF1",
+    "line": "#BFDCE0",
+    "text": "#183B42",
+    "muted": "#526F77",
+    "accent": "#007A8C"
+  },
+  "AquaticDark": {
+    "bg": "#101B20",
+    "surface": "#17262D",
+    "raised": "#20343D",
+    "line": "#35505B",
+    "text": "#E6F6F7",
+    "muted": "#A4C2C8",
+    "accent": "#62D7DC"
+  },
+  "DesertLight": {
+    "bg": "#FFFCF5",
+    "surface": "#FBF4E7",
+    "raised": "#F3E8D5",
+    "line": "#DECDB0",
+    "text": "#3C3022",
+    "muted": "#7B6C55",
+    "accent": "#98631D"
+  },
+  "DesertDark": {
+    "bg": "#211C16",
+    "surface": "#2C251C",
+    "raised": "#3A3023",
+    "line": "#544630",
+    "text": "#F7EDDB",
+    "muted": "#C8B799",
+    "accent": "#E6B96D"
+  },
+  "DuskLight": {
+    "bg": "#FAF8FE",
+    "surface": "#F1EDF9",
+    "raised": "#E7E0F3",
+    "line": "#D3C7E6",
+    "text": "#332841",
+    "muted": "#746583",
+    "accent": "#7052B5"
+  },
+  "DuskDark": {
+    "bg": "#1C1725",
+    "surface": "#272033",
+    "raised": "#342B43",
+    "line": "#4B3E5D",
+    "text": "#F2EAFB",
+    "muted": "#BEB0D0",
+    "accent": "#BBA0EB"
+  },
+  "NightSkyLight": {
+    "bg": "#F6F9FF",
+    "surface": "#EDF3FC",
+    "raised": "#DDE9F8",
+    "line": "#BED0E8",
+    "text": "#20314A",
+    "muted": "#5D6F87",
+    "accent": "#235FAD"
+  },
+  "NightSkyDark": {
+    "bg": "#101724",
+    "surface": "#172235",
+    "raised": "#203047",
+    "line": "#344965",
+    "text": "#E8F0FF",
+    "muted": "#A8BCD8",
+    "accent": "#79ADFF"
+  }
+}
