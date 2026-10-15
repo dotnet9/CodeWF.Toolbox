@@ -1,17 +1,15 @@
 ﻿name: release
 
-# Pushing a v* (or bare numeric) tag publishes: a NativeAOT self-contained
-# win-x64 build and a self-contained linux-x64 build, zipped with SHA-256
-# checksums, followed by a GitHub Release.
+# 推送 v* 标签发布 CodeWF.Toolbox 五平台 NativeAOT 安装包：
+# win-x64 用 Inno Setup 生成 setup.exe，Linux x64/arm64 生成 deb，macOS 生成 dmg。
 on:
   push:
     tags:
       - 'v*'
-      - '[0-9]*'
   workflow_dispatch:
     inputs:
       version:
-        description: 'Version without the v prefix, for example 12.0.6'
+        description: '版本号（不含 v），例如 12.0.10'
         required: true
         type: string
 
@@ -19,42 +17,62 @@ permissions:
   contents: write
 
 jobs:
+  test:
+    name: 测试
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: 安装 .NET SDK
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '10.0.x'
+
+      - name: 测试
+        run: dotnet test src/CodeWF.Toolbox.Tests/CodeWF.Toolbox.Tests.csproj -c Release --filter 'Category!=SystemIntegration'
+
+      - name: 验证真实工作区、主题和更新状态（Headless Skia）
+        run: dotnet run --project scripts/ui-verification/UiVerification.csproj -c Release -- "${{ runner.temp }}/toolbox-ui"
+
+      - name: 验证发布资产约束
+        shell: pwsh
+        env:
+          CODEWF_TEST_TMP: ${{ runner.temp }}
+        run: ./scripts/tests/release_installers_test.ps1
+
   publish:
-    name: Publish ${{ matrix.rid }}
+    name: 发布 ${{ matrix.rid }}
+    needs: test
     strategy:
       fail-fast: false
       matrix:
         include:
           - rid: win-x64
-            tfm: net10.0-windows
             os: windows-latest
           - rid: linux-x64
-            tfm: net10.0
             os: ubuntu-latest
           - rid: linux-arm64
-            tfm: net10.0
             os: ubuntu-24.04-arm
           - rid: osx-x64
-            tfm: net10.0
-            os: macos-14
+            os: macos-15-intel
           - rid: osx-arm64
-            tfm: net10.0
             os: macos-14
     runs-on: ${{ matrix.os }}
 
     steps:
       - uses: actions/checkout@v4
 
-      - name: Install NativeAOT prerequisites (Linux)
+      - name: 安装 NativeAOT 依赖 (Linux)
         if: runner.os == 'Linux'
         run: sudo apt-get update && sudo apt-get install -y clang zlib1g-dev
 
-      - name: Setup .NET SDK
+      - name: 安装 .NET SDK
         uses: actions/setup-dotnet@v4
         with:
           dotnet-version: '10.0.x'
 
-      - name: Compute version
+      - name: 计算版本号
+        id: version
         shell: pwsh
         run: |
           if ('${{ github.event_name }}' -eq 'workflow_dispatch') {
@@ -62,46 +80,84 @@ jobs:
           } else {
             $version = '${{ github.ref_name }}'.TrimStart('v', 'V')
           }
-          if ($version -notmatch '^\d+(\.\d+){1,3}$') {
-            throw "Tag must be a numeric version (for example v12.0.6 or 12.0.6): $version"
-          }
+          if ($version -notmatch '^\d+(\.\d+){1,3}$') { throw "Invalid numeric version: $version" }
           "APP_VERSION=$version" | Out-File -FilePath $env:GITHUB_ENV -Append -Encoding utf8
-          Write-Host "Version: $version"
+          "version=$version" | Out-File -FilePath $env:GITHUB_OUTPUT -Append -Encoding utf8
+          Write-Host "版本：$version"
 
-      # macOS 无 profile：显式 -o 输出到同一发布目录约定，并保留符号（ld_classic 不支持压缩调试段）
-      - name: Publish (NativeAOT with full reflection metadata)
+      # 与本地发布脚本一致，版本元数据来自标签。
+      - name: 发布
         shell: pwsh
-        env:
-          PUBLISH_RID: ${{ matrix.rid }}
-          IS_MACOS: ${{ matrix.os == 'macos-14' }}
         run: |
-          $profileArgs = @()
-          if ($env:IS_MACOS -ne 'true') {
-            $profileArgs += "-p:PublishProfile=FolderProfile_$env:PUBLISH_RID"
-          } else {
-            $profileArgs += "-o"
-            $profileArgs += "artifacts/publish/$env:PUBLISH_RID/CodeWF.Toolbox"
-            $profileArgs += "-p:StripSymbols=false"
-          }
-          dotnet publish src/CodeWF.Toolbox/CodeWF.Toolbox.csproj -c Release `
-            -f net10.0 -r $env:PUBLISH_RID @profileArgs `
-            -p:PublishAot=true -p:PublishTrimmed=true -p:PublishSingleFile=false `
-            -p:IlcGenerateCompleteTypeMetadata=true -p:IlcTrimMetadata=false -p:IlcSingleThreaded=true `
-            -p:Version=$env:APP_VERSION
-          if ($LASTEXITCODE -ne 0) { throw "publish failed for $env:PUBLISH_RID" }
+          # 保留 Prism、XAML 和模块导航元数据。
+          dotnet publish src/CodeWF.Toolbox/CodeWF.Toolbox.csproj `
+            -c Release `
+            -f net10.0 `
+            -r "${{ matrix.rid }}" `
+            --self-contained true `
+            -p:PublishAot=true `
+            -p:PublishTrimmed=true `
+            -p:PublishSingleFile=false `
+            -p:IlcGenerateCompleteTypeMetadata=true `
+            -p:IlcTrimMetadata=false `
+            -p:IlcSingleThreaded=true `
+            -p:CompressSymbols=false `
+            -p:DebugType=none `
+            -p:DebugSymbols=false `
+            -p:Version=$env:APP_VERSION `
+            -o "publish/${{ matrix.rid }}"
+          if ($LASTEXITCODE -ne 0) { throw "publish failed for ${{ matrix.rid }}" }
 
-      - name: Build Windows installer (Inno Setup)
-        if: runner.os == 'Windows' && matrix.rid == 'win-x64'
+      - name: 运行原生程序验证（无桌面窗口）
+        shell: pwsh
+        run: |
+          $executable = if ('${{ runner.os }}' -eq 'Windows') { 'CodeWF.Toolbox.exe' } else { 'CodeWF.Toolbox' }
+          $path = (Resolve-Path (Join-Path "publish/${{ matrix.rid }}" $executable)).Path
+          $processInfo = [Diagnostics.ProcessStartInfo]::new($path)
+          $processInfo.UseShellExecute = $false
+          $processInfo.CreateNoWindow = $true
+          $processInfo.ArgumentList.Add('--verify-runtime')
+          $processInfo.ArgumentList.Add((Join-Path $env:RUNNER_TEMP 'codewf.toolbox-native-verification'))
+          $process = [Diagnostics.Process]::Start($processInfo)
+          $process.WaitForExit()
+          if ($process.ExitCode -ne 0) { throw "native runtime verification failed: $($process.ExitCode)" }
+
+      - name: 清理 pdb/xml
+        shell: pwsh
+        run: |
+          Get-ChildItem "publish/${{ matrix.rid }}" -Recurse -File |
+            Where-Object { $_.Extension -in ".pdb", ".xml" } |
+            Remove-Item -Force
+
+      - name: 打包 Linux deb + sha256
+        if: matrix.rid == 'linux-x64'
+        shell: pwsh
+        run: pwsh scripts/package_linux_deb.ps1 -RuntimeIdentifier 'linux-x64' -Version $env:APP_VERSION -SourceDirectory 'publish/linux-x64' -Force
+
+      - name: 打包 Linux deb 安装包 (linux-arm64)
+        if: matrix.rid == 'linux-arm64'
+        shell: pwsh
+        run: pwsh scripts/package_linux_deb.ps1 -RuntimeIdentifier 'linux-arm64' -Version $env:APP_VERSION -SourceDirectory 'publish/linux-arm64' -Force
+
+      - name: 打包 macOS dmg
+        if: startsWith(matrix.rid, 'osx-')
+        shell: bash
+        run: |
+          chmod +x scripts/package_macos_dmg.sh
+          PUBLISH_DIR="$PWD/publish/${{ matrix.rid }}" OUTPUT_DIR="$PWD/artifacts/macos" ./scripts/package_macos_dmg.sh ${{ matrix.rid }} "$APP_VERSION"
+
+      - name: 构建 Windows 安装包
+        if: matrix.rid == 'win-x64'
         uses: Minionguyjpro/Inno-Setup-Action@v1.2.2
         with:
           path: scripts/CodeWF.Toolbox.iss
           options: >-
             /DAppVersion=${{ env.APP_VERSION }}
-            /DSourceDir=${{ github.workspace }}\publish\win-x64\CodeWF.Toolbox
+            /DSourceDir=${{ github.workspace }}\publish\win-x64
             /DOutputDir=${{ github.workspace }}\artifacts\release
 
-      - name: Compute installer SHA-256 (Windows)
-        if: runner.os == 'Windows' && matrix.rid == 'win-x64'
+      - name: 计算安装包 SHA-256
+        if: matrix.rid == 'win-x64'
         shell: pwsh
         run: |
           $installerName = "CodeWF.Toolbox-v$env:APP_VERSION-win-x64-setup.exe"
@@ -112,17 +168,19 @@ jobs:
           $sha = (Get-FileHash -LiteralPath $installerPath -Algorithm SHA256).Hash.ToLowerInvariant()
           "$sha  $installerName" | Set-Content -LiteralPath "$installerPath.sha256" -Encoding ASCII
 
-      - name: 打包 Linux deb 安装包
-        if: runner.os == 'Linux'
+      - name: 收集 macOS dmg 到发布目录
+        if: startsWith(matrix.rid, 'osx-')
         shell: pwsh
-        run: pwsh scripts/package_linux_deb.ps1 -RuntimeIdentifier '${{ matrix.rid }}' -Version $env:APP_VERSION -Force
+        run: |
+          New-Item -ItemType Directory -Path artifacts/release -Force | Out-Null
+          Copy-Item -Path "artifacts/macos/*.dmg" -Destination artifacts/release/ -Force
+          Get-ChildItem artifacts/release -Filter *.dmg | ForEach-Object {
+            $sha = (Get-FileHash -LiteralPath $_.FullName -Algorithm SHA256).Hash.ToLowerInvariant()
+            "$sha  $($_.Name)" | Set-Content -LiteralPath "$($_.FullName).sha256" -Encoding ASCII
+          }
+          Get-ChildItem artifacts/release | ForEach-Object { Write-Host $_.Name }
 
-      - name: 打包 macOS dmg 安装镜像
-        if: runner.os == 'macOS'
-        shell: bash
-        run: chmod +x scripts/package_macos_dmg.sh && ./scripts/package_macos_dmg.sh '${{ matrix.rid }}' "$APP_VERSION"
-
-      - name: Upload build artifacts
+      - name: 上传构建产物
         uses: actions/upload-artifact@v4
         with:
           name: CodeWF.Toolbox-${{ matrix.rid }}
@@ -130,20 +188,20 @@ jobs:
           if-no-files-found: error
 
   release:
-    name: Create GitHub Release
+    name: 创建 GitHub Release
     needs: publish
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
 
-      - name: Download build artifacts
+      - name: 下载构建产物
         uses: actions/download-artifact@v4
         with:
           pattern: CodeWF.Toolbox-*
           path: artifacts/release
           merge-multiple: true
 
-      - name: Compute version
+      - name: 计算版本号
         id: version
         shell: pwsh
         run: |
@@ -151,43 +209,42 @@ jobs:
             $version = '${{ inputs.version }}'.TrimStart('v', 'V')
             $tagName = "v$version"
           } else {
-            # Keep the pushed tag as-is (v12.0.6 or 12.0.6) instead of creating a new one.
+            # 沿用被推送的原始标签，避免额外创建新标签。
             $tagName = '${{ github.ref_name }}'
             $version = $tagName.TrimStart('v', 'V')
-          }
-          if ($version -notmatch '^\d+(\.\d+){1,3}$') {
-            throw "Tag must be a numeric version (for example v12.0.6 or 12.0.6): $version"
           }
           "version=$version" | Out-File -FilePath $env:GITHUB_OUTPUT -Append -Encoding utf8
           "tag_name=$tagName" | Out-File -FilePath $env:GITHUB_OUTPUT -Append -Encoding utf8
 
-      - name: Prepare release notes
+      - name: 准备发布说明
         shell: pwsh
         env:
           VERSION: ${{ steps.version.outputs.version }}
           TAG_NAME: ${{ steps.version.outputs.tag_name }}
         run: |
+          # 优先使用精选说明，其次使用附注标签；两者均缺少时终止发布。
           $curated = ".github/release-notes/v$env:VERSION.md"
           $bodyPath = "artifacts/release-body.md"
           New-Item -ItemType Directory -Path (Split-Path -Parent $bodyPath) -Force | Out-Null
           if (Test-Path -LiteralPath $curated -PathType Leaf) {
             Copy-Item -LiteralPath $curated -Destination $bodyPath -Force
-            Write-Host "Using curated release notes: $curated"
+            Write-Host "使用发布说明：$curated"
           }
-                    # 附注 tag 的说明就是发布说明（Release 页直接可读，不点开 tag 也能看到）
-                    git fetch --quiet --tags origin 2>$null
-                    $tagMessage = git tag -l "$env:TAG_NAME" --format='%(contents)'
-                    if (-not [string]::IsNullOrWhiteSpace($tagMessage)) {
-                      $tagMessage | Set-Content -LiteralPath $bodyPath -Encoding utf8
-                      Write-Host "使用附注 tag 说明作为发布说明。"
-                    }
-                    else {
-        
-            "CodeWF.Toolbox v$env:VERSION" | Set-Content -LiteralPath $bodyPath -Encoding utf8
-            Write-Host "No curated notes found; generated notes only."
+          else {
+            git fetch --quiet --tags origin 2>$null
+            $tagMessage = git tag -l "$env:TAG_NAME" --format='%(contents)'
+            if (-not [string]::IsNullOrWhiteSpace($tagMessage)) {
+              $tagMessage | Set-Content -LiteralPath $bodyPath -Encoding utf8
+              Write-Host "使用附注 tag 说明作为发布说明。"
+            }
+            else { throw "缺少发布说明：$curated 或附注标签 $env:TAG_NAME" }
           }
 
-      - name: Create GitHub Release
+      - name: 核验五平台安装包与 SHA-256
+        shell: pwsh
+        run: ./scripts/verify_release_installers.ps1 -Version '${{ steps.version.outputs.version }}'
+
+      - name: 创建 GitHub Release
         uses: softprops/action-gh-release@v2
         with:
           tag_name: ${{ steps.version.outputs.tag_name }}

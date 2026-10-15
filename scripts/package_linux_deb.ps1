@@ -18,7 +18,7 @@ $scriptRoot = (Resolve-Path -LiteralPath $PSScriptRoot).Path
 $repositoryRoot = (Resolve-Path -LiteralPath (Join-Path $scriptRoot "..")).Path
 
 if ([string]::IsNullOrWhiteSpace($SourceDirectory)) {
-    $SourceDirectory = Join-Path $repositoryRoot "publish/$RuntimeIdentifier/CodeWF.Toolbox"
+    $SourceDirectory = Join-Path $repositoryRoot "publish/$RuntimeIdentifier"
 }
 if ([string]::IsNullOrWhiteSpace($OutputDirectory)) {
     $OutputDirectory = Join-Path $repositoryRoot "artifacts/release"
@@ -46,6 +46,26 @@ New-Item -ItemType Directory -Path (Join-Path $staging "usr/local/share/CodeWF.T
 # 程序文件
 Copy-Item -Path (Join-Path $SourceDirectory "*") -Destination (Join-Path $staging "usr/local/share/CodeWF.Toolbox/") -Recurse -Force
 
+$appDirectory = Join-Path $staging 'usr/local/share/CodeWF.Toolbox'
+Get-ChildItem -LiteralPath $appDirectory -Recurse -File |
+    Where-Object { $_.Extension -in '.pdb', '.dbg', '.xml' } | Remove-Item -Force
+$applications = Join-Path $staging 'usr/share/applications'
+$icons = Join-Path $staging 'usr/share/icons/hicolor/256x256/apps'
+New-Item -ItemType Directory -Path $applications, $icons -Force | Out-Null
+Copy-Item -LiteralPath (Join-Path $repositoryRoot 'logo.png') -Destination (Join-Path $icons 'codewf-toolbox.png')
+$desktop = @'
+[Desktop Entry]
+Type=Application
+Name=CodeWF Toolbox
+Comment=Developer tools with independent documents
+Exec=/usr/local/share/CodeWF.Toolbox/CodeWF.Toolbox
+Icon=codewf-toolbox
+Terminal=false
+Categories=Development;Utility;
+StartupWMClass=CodeWF.Toolbox
+'@
+Set-Content -LiteralPath (Join-Path $applications 'codewf-toolbox.desktop') -Value $desktop -Encoding utf8
+
 # control（dpkg-deb 要求 DEBIAN/control 为 root 所属、644）
 $installedSizeKb = [Math]::Ceiling(
     ((Get-ChildItem -LiteralPath $SourceDirectory -Recurse -File | Measure-Object Length -Sum).Sum) / 1KB)
@@ -65,6 +85,9 @@ Set-Content -LiteralPath (Join-Path $staging "DEBIAN/control") -Value ($control 
 # dpkg-deb 需要 posix 权限语义；control 文件权限固定 644
 if ($IsLinux) {
     $null = chmod 644 (Join-Path $staging "DEBIAN/control")
+    $null = chmod 644 (Join-Path $applications 'codewf-toolbox.desktop')
+    $null = chmod +x (Join-Path $appDirectory 'CodeWF.Toolbox')
+    if ($LASTEXITCODE -ne 0) { throw 'Unable to mark Linux executable.' }
 }
 
 dpkg-deb --build --root-owner-group $staging $outputPath

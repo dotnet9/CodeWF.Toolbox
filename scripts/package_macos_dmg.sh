@@ -23,7 +23,7 @@ Usage:
 Environment:
   ICON_SOURCE         PNG used to build the .icns. Default: <repo>/logo.png
                       (if missing, the bundle is built without a Launchpad icon)
-  PUBLISH_DIR         Published output dir. Default: <repo>/artifacts/publish/$RID/CodeWF.Toolbox
+  PUBLISH_DIR         Published output dir. Default: <repo>/publish/$RID
   OUTPUT_DIR          Where the dmg lands. Default: <repo>/artifacts/release
   CODESIGN_IDENTITY   Developer ID identity. Empty means ad-hoc signing.
 USAGE
@@ -100,7 +100,7 @@ PLIST
 [[ $# -eq 2 ]] || { usage; exit 1; }
 RID="$1"
 VERSION="$2"
-[[ -n "$PUBLISH_DIR" ]] || PUBLISH_DIR="$ROOT_DIR/artifacts/publish/$RID/CodeWF.Toolbox"
+[[ -n "$PUBLISH_DIR" ]] || PUBLISH_DIR="$ROOT_DIR/publish/$RID"
 case "$RID" in
   osx-x64|osx-arm64) ;;
   *) die "Unknown RID: $RID (use osx-x64 or osx-arm64)" ;;
@@ -115,10 +115,13 @@ APP_DIR="$STAGE_ROOT/$APP_NAME.app"
 CONTENTS_DIR="$APP_DIR/Contents"
 mkdir -p "$CONTENTS_DIR/MacOS" "$CONTENTS_DIR/Resources"
 
-# 全部发布内容拷入 Contents/MacOS 并保持相对布局：
-# AOT 单目录发布按 AppContext.BaseDirectory 探测相邻文件，拆散会破坏启动。
+# 可执行文件与 dylib 留在 MacOS，数据资源从 Contents/Resources 加载。
 cp -R "$PUBLISH_DIR/." "$CONTENTS_DIR/MacOS/"
+find "$CONTENTS_DIR/MacOS" -type f \( -name '*.pdb' -o -name '*.dbg' -o -name '*.xml' \) -delete
+find "$CONTENTS_DIR/MacOS" -type d -name '*.dSYM' -prune -exec rm -rf {} +
+find "$CONTENTS_DIR/MacOS" -mindepth 1 -maxdepth 1 ! -name "$EXECUTABLE_NAME" ! -name '*.dylib' -exec mv {} "$CONTENTS_DIR/Resources/" \;
 chmod +x "$CONTENTS_DIR/MacOS/$EXECUTABLE_NAME"
+"$CONTENTS_DIR/MacOS/$EXECUTABLE_NAME" --verify-runtime "${RUNNER_TEMP:-$STAGE_ROOT}/toolbox-bundle-runtime-$RID"
 
 if [[ -f "$ICON_SOURCE" ]]; then
   create_icon "$CONTENTS_DIR/Resources"
@@ -130,9 +133,7 @@ write_info_plist "$CONTENTS_DIR/Info.plist" "$MACOS_VERSION"
 # 老式 bundle 标识，缺了部分系统工具识别不了这是应用包。
 printf 'APPL????' >"$CONTENTS_DIR/PkgInfo"
 
-# ad-hoc 签名让系统认它是个完整应用包；但 Contents/MacOS 下若存在非 Mach-O
-# 资源（I18n、示例目录等），整体 --deep 签名会报 bundle format unrecognized——
-# 数据文件必须留在 MacOS 旁（应用按相对路径探测），因此此时降级为只签主可执行文件。
+# 签名或校验失败直接终止，禁止将失败降级成成功发布。
 sign_bundle() {
   local app_dir="$1"
   local exec_name="$2"
@@ -140,12 +141,8 @@ sign_bundle() {
   if [[ -n "$CODESIGN_IDENTITY" ]]; then
     sign_args=(--force --deep --options runtime --timestamp --sign "$CODESIGN_IDENTITY")
   fi
-  if codesign "${sign_args[@]}" "$app_dir" 2>/dev/null; then
-    return 0
-  fi
-  echo "WARN: deep signing failed (non-Mach-O files under MacOS?); signing the main executable only." >&2
-  codesign --force --sign - "$app_dir/Contents/MacOS/$exec_name" 2>/dev/null ||
-    echo "WARN: signing failed entirely; shipping an unsigned bundle." >&2
+  codesign "${sign_args[@]}" "$app_dir"
+  codesign --verify --deep --strict "$app_dir"
 }
 
 sign_bundle "$APP_DIR" "$EXECUTABLE_NAME"
@@ -156,8 +153,10 @@ cp -R "$APP_DIR" "$DMG_STAGE/$APP_NAME.app"
 ln -s /Applications "$DMG_STAGE/Applications"
 
 mkdir -p "$OUTPUT_DIR"
-DMG_PATH="$OUTPUT_DIR/$APP_NAME-$VERSION-$RID.dmg"
+DMG_PATH="$OUTPUT_DIR/$APP_NAME-v$VERSION-$RID.dmg"
 rm -f "$DMG_PATH"
 hdiutil create -volname "$APP_NAME" -srcfolder "$DMG_STAGE" -ov -format UDZO "$DMG_PATH" >/dev/null
+hdiutil verify "$DMG_PATH" >/dev/null
+shasum -a 256 "$DMG_PATH" | sed "s|$OUTPUT_DIR/||" >"$DMG_PATH.sha256"
 
 echo "Created: $DMG_PATH"

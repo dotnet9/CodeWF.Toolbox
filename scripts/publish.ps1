@@ -1,31 +1,23 @@
-﻿# 统一发布入口：scripts/publish.ps1
-# 用法：pwsh scripts/publish.ps1 [-RuntimeIdentifier win-x64] [-Version 0.0.0]
-# 输出：artifacts/publish/<rid>/<AppName>/
+# 与 CI 一致的五平台 NativeAOT 发布入口；只构建，不运行安装器。
 [CmdletBinding()]
 param(
-    [string] $RuntimeIdentifier = "win-x64",
-    [string] $Version = ""
+    [ValidateSet('win-x64','linux-x64','linux-arm64','osx-x64','osx-arm64')]
+    [string] $RuntimeIdentifier = 'win-x64',
+    [string] $Version = '',
+    [string] $OutputDirectory = ''
 )
-
-$ErrorActionPreference = "Stop"
-$repositoryRoot = (Resolve-Path -LiteralPath (Join-Path $PSScriptRoot "..")).Path
-
-if ([string]::IsNullOrWhiteSpace($Version)) {
-    $props = Join-Path $repositoryRoot "Directory.Build.props"
-    if (Test-Path -LiteralPath $props) {
-        $match = Select-String -LiteralPath $props -Pattern '<Version>([^<]+)</Version>' |
-            Select-Object -First 1
-        if ($match) { $Version = $match.Matches[0].Groups[1].Value }
-    }
+$ErrorActionPreference = 'Stop'
+$repositoryRoot = (Resolve-Path -LiteralPath (Join-Path $PSScriptRoot '..')).Path
+if (-not $Version) {
+    [xml]$props = Get-Content -LiteralPath (Join-Path $repositoryRoot 'Directory.Build.props')
+    $Version = $props.Project.PropertyGroup.Version
 }
-Write-Host "发布 $RuntimeIdentifier (Version=$Version)"
-
-$project = Join-Path $repositoryRoot "src/CodeWF.Toolbox/CodeWF.Toolbox.csproj"
-$pubxml = Join-Path $repositoryRoot "src/CodeWF.Toolbox/Properties/PublishProfiles/FolderProfile_$RuntimeIdentifier.pubxml"
-$tfmNode = Select-String -LiteralPath $pubxml -Pattern '<TargetFramework>([^<]+)</TargetFramework>' | Select-Object -First 1
-$tfm = if ($tfmNode) { $tfmNode.Matches[0].Groups[1].Value } else { "net10.0-windows" }
-# 全平台 NativeAOT：完整反射元数据保全（Prism/DryIoc），单线程 ILC 更稳
-$ilcArgs = @("-p:PublishAot=true", "-p:PublishTrimmed=true", "-p:PublishSingleFile=false",
-    "-p:IlcGenerateCompleteTypeMetadata=true", "-p:IlcTrimMetadata=false", "-p:IlcSingleThreaded=true")
-dotnet publish $project -c Release -f $tfm -r $RuntimeIdentifier @ilcArgs -p:PublishProfile=FolderProfile_$RuntimeIdentifier -p:Version=$Version
-if ($LASTEXITCODE -ne 0) { throw "publish failed for $RuntimeIdentifier" }
+if (-not $OutputDirectory) { $OutputDirectory = Join-Path $repositoryRoot "publish/$RuntimeIdentifier" }
+$project = Join-Path $repositoryRoot 'src/CodeWF.Toolbox/CodeWF.Toolbox.csproj'
+dotnet publish $project -c Release -f net10.0 -r $RuntimeIdentifier --self-contained true `
+    -p:PublishAot=true -p:PublishTrimmed=true -p:PublishSingleFile=false `
+    -p:IlcGenerateCompleteTypeMetadata=true -p:IlcTrimMetadata=false -p:IlcSingleThreaded=true `
+    -p:CompressSymbols=false -p:DebugType=none -p:DebugSymbols=false `
+    -p:Version=$Version -o $OutputDirectory
+if ($LASTEXITCODE -ne 0) { throw "NativeAOT publish failed for $RuntimeIdentifier" }
+Write-Host "Published $Version ${RuntimeIdentifier}: $OutputDirectory"

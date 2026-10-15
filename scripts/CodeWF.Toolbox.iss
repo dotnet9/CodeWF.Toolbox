@@ -6,7 +6,7 @@
 #endif
 
 #ifndef SourceDir
-#define SourceDir "..\artifacts\publish\win-x64\CodeWF.Toolbox"
+#define SourceDir "..\publish\win-x64"
 #endif
 
 #ifndef OutputDir
