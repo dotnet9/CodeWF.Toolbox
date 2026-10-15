@@ -22,7 +22,8 @@ public static class ConfigHelper
             )";
 
             using var command = new SqliteCommand(sql, connection);
-            return command.ExecuteNonQuery() > 0;
+            command.ExecuteNonQuery();
+            return true;
         }
         catch
         {

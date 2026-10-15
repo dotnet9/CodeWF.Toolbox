@@ -3,6 +3,9 @@ using CodeWF.Modules.ToolFramework.Models;
 using CodeWF.Toolkit.Lang;
 using CodeWF.Toolkit.Lang.Json;
 using CodeWF.Toolbox.Services;
+using CodeWF.Core.ConfigDB;
+using CodeWF.Modules.Development.Entities;
+using CodeWF.Modules.Development.Helpers;
 using System;
 using System.Globalization;
 using System.IO;
@@ -30,8 +33,39 @@ internal static class RuntimeVerification
         tool.RunAsync!(new ToolRunContext(tool.Fields.ToDictionary(field => field.Id), tool.Outputs.ToDictionary(result => result.Id)), default).GetAwaiter().GetResult();
         if (tool.Outputs.Single(result => result.Id == "result").Text != Convert.ToBase64String(Encoding.UTF8.GetBytes(text)))
             throw new InvalidOperationException("Native Base64 result mismatch.");
-        var message = $"NativeAOT runtime verification passed; version={typeof(Program).Assembly.GetName().Version}; I18n + Unicode Base64";
+        VerifyJsonConfiguration(output);
+        var message = $"NativeAOT runtime verification passed; version={typeof(Program).Assembly.GetName().Version}; I18n + Unicode Base64 + isolated SQLite configuration read/write";
         File.WriteAllText(Path.Combine(output, "runtime-verification.txt"), message);
         Console.WriteLine(message);
+    }
+
+    private static void VerifyJsonConfiguration(string output)
+    {
+        var originalDirectory = Environment.CurrentDirectory;
+        var originalData = Environment.GetEnvironmentVariable("TOOLBOX_DATA_DIRECTORY");
+        var root = Path.Combine(output, "sqlite-" + Guid.NewGuid().ToString("N"));
+        var working = Path.Combine(root, "working");
+        Directory.CreateDirectory(working);
+        try
+        {
+            Environment.CurrentDirectory = working;
+            Environment.SetEnvironmentVariable("TOOLBOX_DATA_DIRECTORY", Path.Combine(root, "data;isolated", "nested"));
+            if (ToolboxDataPaths.Root != ToolboxStoragePaths.Root || !Path.IsPathFullyQualified(ToolboxStoragePaths.DatabasePath))
+                throw new InvalidOperationException("Application and database data roots differ.");
+            if (!ConfigHelper.EnsureTableIsCreated() ||
+                !ConfigHelper.UpdateJsonPrettifyConfig(new JsonPrettifyEntity { IsSortKey = true, IndentSize = 4 }))
+                throw new InvalidOperationException("Native SQLite configuration write failed.");
+            var config = ConfigHelper.GetJsonPrettifyConfig();
+            if (!config.IsSortKey || config.IndentSize != 4 || !File.Exists(ToolboxStoragePaths.DatabasePath) ||
+                File.Exists(Path.Combine(working, "CodeWF.Toolbox.db")))
+                throw new InvalidOperationException("Native SQLite configuration roundtrip or path isolation failed.");
+            File.WriteAllText(Path.Combine(output, "database-verification.txt"),
+                $"SQLite configuration read/write passed; database={ToolboxStoragePaths.DatabasePath}; workingDirectoryDatabase=False");
+        }
+        finally
+        {
+            Environment.CurrentDirectory = originalDirectory;
+            Environment.SetEnvironmentVariable("TOOLBOX_DATA_DIRECTORY", originalData);
+        }
     }
 }

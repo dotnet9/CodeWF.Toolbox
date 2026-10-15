@@ -13,7 +13,5 @@ public static class ToolboxDataPaths
         return Path.GetFullPath(Path.Combine(AppContext.BaseDirectory, "..", "Resources", name));
     }
 
-    public static string Root => Environment.GetEnvironmentVariable("TOOLBOX_DATA_DIRECTORY") is { Length: > 0 } isolated
-        ? Path.GetFullPath(isolated)
-        : Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "CodeWF.Toolbox");
+    public static string Root => CodeWF.Core.ConfigDB.ToolboxStoragePaths.Root;
 }

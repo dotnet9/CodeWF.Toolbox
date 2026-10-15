@@ -1,6 +1,13 @@
 ﻿namespace CodeWF.Core.ConfigDB;
 
-public class DBConst
+public static class DBConst
 {
-    public const string DBConnectionString = "Data Source=CodeWF.Toolbox.db";
+    public static string DBConnectionString
+    {
+        get
+        {
+            Directory.CreateDirectory(ToolboxStoragePaths.Root);
+            return new Microsoft.Data.Sqlite.SqliteConnectionStringBuilder { DataSource = ToolboxStoragePaths.DatabasePath }.ToString();
+        }
+    }
 }
