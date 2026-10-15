@@ -29,7 +29,7 @@
             </ItemsControl.ItemTemplate>
           </ItemsControl>
         </ScrollViewer>
-        <Border Grid.Column="1" BorderBrush="{DynamicResource StudioBorder}" BorderThickness="1,0,0,0" Padding="12" Width="180">
+        <Border Grid.Column="1" BorderBrush="{DynamicResource StudioBorder}" BorderThickness="1,0,0,0" Padding="12" MinWidth="180">
           <StackPanel Spacing="7">
             <Button Content="{c:I18n {x:Static l:Workspace.SplitDocument}}" Click="SplitDocument" />
             <Button Content="{c:I18n {x:Static l:Workspace.CloseAll}}" Click="CloseAllDocuments" />
