@@ -14,11 +14,11 @@
     <PackageVersion Include="AvaloniaEdit.TextMate" Version="12.0.0" />
     <PackageVersion Include="BCrypt.Net-Next" Version="4.2.1" />
     <PackageVersion Include="BouncyCastle.Cryptography" Version="2.7.0-beta.98" />
-    <PackageVersion Include="CodeWF.Avalonia.Controls" Version="12.1.4.20" />
-    <PackageVersion Include="CodeWF.Avalonia.DataGrid" Version="12.1.4.20" />
-    <PackageVersion Include="CodeWF.Avalonia.Dock" Version="12.1.4.20" />
-    <PackageVersion Include="CodeWF.Avalonia.Lang" Version="12.1.4.20" />
-    <PackageVersion Include="CodeWF.Avalonia.Markdown.Lite" Version="12.1.4.20" />
+    <PackageVersion Include="CodeWF.Avalonia.Controls" Version="12.1.4.21" />
+    <PackageVersion Include="CodeWF.Avalonia.DataGrid" Version="12.1.4.21" />
+    <PackageVersion Include="CodeWF.Avalonia.Dock" Version="12.1.4.21" />
+    <PackageVersion Include="CodeWF.Avalonia.Lang" Version="12.1.4.21" />
+    <PackageVersion Include="CodeWF.Avalonia.Markdown.Lite" Version="12.1.4.21" />
     <PackageVersion Include="Dock.Model.Mvvm" Version="12.1.0.6" />
     <PackageVersion Include="Avalonia.Headless" Version="$(AvaloniaVersion)" />
     <PackageVersion Include="CodeWF.Toolkit.Core" Version="1.0.0.19" />

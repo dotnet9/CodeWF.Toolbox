@@ -11,6 +11,9 @@ const assert = (value, message) => { if (!value) throw new Error(message); conso
   const browser = await chromium.launch({ headless: true });
   try {
     const page = await browser.newPage({ viewport: { width: 1280, height: 840 }, deviceScaleFactor: 1 });
+    const selectPalette=async value=>page.locator('[data-title-palette="'+value+'"]').click();
+    const selectMode=async value=>{for(let i=0;i<3&&await page.locator('#title-mode').getAttribute('data-mode')!==value;i++)await page.locator('#title-mode').click();};
+    const selectLanguage=async value=>{await page.locator('#title-language summary').click();await page.locator('[data-title-language="'+value+'"]').click();};
     const errors = [], external = [];
     page.on('pageerror', error => errors.push(error.message));
     page.on('request', request => { if (/^https?:/.test(request.url())) external.push(request.url()); });
@@ -18,6 +21,7 @@ const assert = (value, message) => { if (!value) throw new Error(message); conso
     await page.waitForSelector('.pane');
     assert(await page.locator('.desktop-titlebar [data-window]').count()===3,'three desktop caption buttons');
     assert(await page.locator('.desktop-window').evaluate(el=>parseFloat(getComputedStyle(el).borderTopWidth)>=1),'visible outer desktop border');
+    assert(await page.locator('#title-palettes button').count()===8,'eight flat title palette buttons');
     assert((await page.locator('#groups button').count()) === 13, 'all 13 categories are available offline');
     for (const button of await page.locator('#groups button').all()) {
       await button.click(); assert((await page.locator('#commands button').count()) > 0, 'category has tools: ' + await button.textContent());
@@ -32,12 +36,19 @@ const assert = (value, message) => { if (!value) throw new Error(message); conso
     assert(await page.locator('[data-field="text"]').inputValue() === 'Document one', 'switching tools preserves document state');
     await page.locator('#split').click(); assert(await page.locator('.pane').count() === 2, 'two documents can be displayed side by side');
     await page.locator('#split').click();
-    await page.locator('#language').selectOption('en-US');
+    assert(await page.locator('[data-title-language]').count()===4,'language icon contains all four production languages');
+    for(const language of ['zh-CN','zh-Hant','en-US','ja-JP']) {
+      await selectLanguage(language); await page.locator('#about').click();
+      assert(await page.locator('#about-title').textContent()===await page.evaluate(()=>DATA.dictionaries[lang]['Localization.AboutView.Title']),'About uses actual resources: '+language);
+      assert(await page.locator('#about-version').textContent()===await page.evaluate(()=>DATA.metadata.version),'About version comes from production metadata');
+      await page.screenshot({path:path.join(output,'about-'+language+'.png')});await page.locator('#close-about').click();
+    }
+    await selectLanguage('en-US');
     assert(await page.locator('[data-field="text"]').inputValue() === 'Document one', 'language switching preserves draft');
     for (const palette of ['DotNet','Aurora','Ember','Default','Aquatic','Desert','Dusk','NightSky']) {
-      await page.locator('#palette').selectOption(palette);
+      await selectPalette(palette);
       for (const mode of ['Light','Dark']) {
-        await page.locator('#mode').selectOption(mode);
+        await selectMode(mode);
         await page.screenshot({ path: path.join(output, palette + '-' + mode + '.png') });
       }
     }
@@ -56,7 +67,7 @@ const assert = (value, message) => { if (!value) throw new Error(message); conso
     await page.locator('#scenario').selectOption('available'); await page.locator('#update').click(); await page.locator('#cancel-update').click();
     assert(await page.evaluate(() => updateState) === 'canceled', 'update cancellation restores controls');
     await page.locator('#close-about').click();
-    await page.locator('#palette').selectOption('DotNet'); await page.locator('#mode').selectOption('Light'); await page.locator('#language').selectOption('zh-CN');
+    await selectPalette('DotNet'); await selectMode('Light'); await selectLanguage('zh-CN');
     await page.screenshot({ path: path.join(output, 'workspace-zh-CN.png') });
     await page.evaluate(async () => {
       lang = 'zh-CN'; mode = 'System'; palette = 'DotNet'; group = 'Converter'; split = false; docs = [];
@@ -64,9 +75,12 @@ const assert = (value, message) => { if (!value) throw new Error(message); conso
       open('case-converter'); open('base64-string-converter'); await run('base64-string-converter'); render();
     });
     for (const language of ['zh-CN', 'en-US']) {
-      await page.locator('#language').selectOption(language);
+      await selectLanguage(language);
       await page.screenshot({ path: path.join(output, 'comparison-' + language + '.png') });
     }
+    await page.setViewportSize({width:980,height:840});
+    assert(await page.locator('.desktop-titlebar').evaluate(el=>{const search=el.querySelector('#search').getBoundingClientRect(),controls=el.querySelector('.studio-title-controls').getBoundingClientRect(),caption=el.querySelector('.window-controls').getBoundingClientRect();return search.right<=controls.left&&controls.right<=caption.left&&caption.right<=el.getBoundingClientRect().right;}),'980px title controls do not overlap');
+    await page.screenshot({path:path.join(output,'desktop-980.png')});
     assert(errors.length === 0, 'zero JavaScript errors: ' + errors.join('; '));
     assert(external.length === 0, 'zero external requests');
     fs.writeFileSync(path.join(output, 'verification.json'), JSON.stringify({ standalone:true, categories:13, paletteSnapshots:16, errors, external }, null, 2));

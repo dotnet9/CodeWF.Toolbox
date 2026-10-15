@@ -3,9 +3,12 @@
                      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
                      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
                      xmlns:codewf="https://codewf.com"
+                     xmlns:u="https://irihi.tech/ursa"
                      x:Class="CodeWF.Toolbox.Views.MainWindow"
                      xmlns:views="clr-namespace:CodeWF.Toolbox.Views"
                      xmlns:vm="clr-namespace:CodeWF.Toolbox.ViewModels"
+                     xmlns:models="clr-namespace:CodeWF.Toolbox.Models"
+                     xmlns:lang="clr-namespace:CodeWF.Toolkit.Lang;assembly=CodeWF.Toolkit.Lang"
                      xmlns:i18n="https://codewf.com"
                      xmlns:language="clr-namespace:Localization"
                      x:DataType="vm:TitleBarSettingsViewModel"
@@ -93,25 +96,22 @@
                 SelectionChanged="Search_OnSelectionChanged"
                 Text="{Binding SearchText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
 
-            <ComboBox
-                Width="110"
-                Classes="AppSelect"
-                DisplayMemberBinding="{i18n:I18n {Binding Name}}"
-                HorizontalContentAlignment="Left"
-                ItemsSource="{Binding Themes}"
-                PlaceholderText="{i18n:I18n {x:Static language:CommonSettingView.ThemePlaceholderText}}"
-                SelectedItem="{Binding SelectedTheme, Mode=TwoWay}"
-                ToolTip.Tip="{i18n:I18n {x:Static language:CommonSettingView.Theme}}" />
-
-            <ComboBox
-                Width="105"
-                Classes="AppSelect"
-                DisplayMemberBinding="{Binding Description}"
-                HorizontalContentAlignment="Left"
-                ItemsSource="{Binding Languages}"
-                PlaceholderText="{i18n:I18n {x:Static language:CommonSettingView.LanguagePlaceholderText}}"
-                SelectedItem="{Binding SelectedLanguage, Mode=TwoWay}"
-                ToolTip.Tip="{i18n:I18n {x:Static language:CommonSettingView.LanguageKey}}" />
+            <ThemeVariantScope x:Name="TitleBarThemeScope" RequestedThemeVariant="{Binding ThemeMode, Mode=TwoWay, Converter={x:Static codewf:StudioThemeModeConverter.Instance}}">
+                <ThemeVariantScope.Resources>
+                    <TextBlock x:Key="STRING_THEME_TOGGLE_SYSTEM" Text="{i18n:I18n {x:Static language:Workspace.System}}" />
+                    <TextBlock x:Key="STRING_THEME_TOGGLE_LIGHT" Text="{i18n:I18n {x:Static language:Workspace.Light}}" />
+                    <TextBlock x:Key="STRING_THEME_TOGGLE_DARK" Text="{i18n:I18n {x:Static language:Workspace.Dark}}" />
+                </ThemeVariantScope.Resources>
+                <u:ThemeToggleButton x:Name="TitleBarThemeToggle" Width="30" Height="30" IsThreeState="True" TargetScope="{Binding #TitleBarThemeScope}" ToolTip.Tip="{i18n:I18n {x:Static language:CommonSettingView.Theme}}" />
+            </ThemeVariantScope>
+            <ListBox x:Name="TitleBarPalettes" Classes="studio-palettes" ItemsSource="{Binding Themes}" SelectedItem="{Binding SelectedTheme, Mode=TwoWay}">
+                <ListBox.ItemsPanel><ItemsPanelTemplate><StackPanel Orientation="Horizontal" /></ItemsPanelTemplate></ListBox.ItemsPanel>
+                <ListBox.ItemTemplate><DataTemplate x:DataType="models:ThemeItem"><Ellipse Width="13" Height="13" Fill="{Binding Swatch}" ToolTip.Tip="{i18n:I18n {Binding Name}}" /></DataTemplate></ListBox.ItemTemplate>
+            </ListBox>
+            <ComboBox x:Name="TitleBarLanguageSelector" Width="50" MinHeight="0" Height="30" Padding="6,0" ItemsSource="{Binding Languages}" SelectedItem="{Binding SelectedLanguage, Mode=TwoWay}" HorizontalContentAlignment="Left" ToolTip.Tip="{i18n:I18n {x:Static language:CommonSettingView.LanguageKey}}">
+                <ComboBox.SelectionBoxItemTemplate><DataTemplate><PathIcon Width="16" Height="16" Data="{DynamicResource SemiIconLanguage}" /></DataTemplate></ComboBox.SelectionBoxItemTemplate>
+                <ComboBox.ItemTemplate><DataTemplate x:DataType="lang:LocalizationLanguage"><TextBlock MinWidth="120" Text="{Binding Description}" /></DataTemplate></ComboBox.ItemTemplate>
+            </ComboBox>
 
             <Button
                 Classes="TitleIconButton"
@@ -124,9 +124,6 @@
                     Foreground="{DynamicResource StudioAccent}" />
             </Button>
 
-            <ComboBox Width="105" Classes="AppSelect" ItemsSource="{Binding ThemeModes}" SelectedItem="{Binding SelectedMode}">
-                <ComboBox.ItemTemplate><DataTemplate><TextBlock Text="{i18n:I18n {Binding Name}}" /></DataTemplate></ComboBox.ItemTemplate>
-            </ComboBox>
             <Button Classes="TitleIconButton" Click="OpenAboutButton_OnClick" Content="ⓘ" ToolTip.Tip="{i18n:I18n {x:Static language:AboutView.Title}}" />
 
             <Border Classes="UserChip" ToolTip.Tip="{Binding CurrentUsername}">

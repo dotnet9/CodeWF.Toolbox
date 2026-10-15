@@ -1,13 +1,15 @@
-﻿using CodeWF.Toolkit.EventBus;
+using CodeWF.Toolkit.EventBus;
 using CodeWF.Core.IServices;
 using CodeWF.Toolbox.Models;
 using CodeWF.Toolbox.Commands;
 using CodeWF.Toolbox.Services;
 using CodeWF.Toolkit.Lang;
 using ReactiveUI;
+using System;
 using System.Collections.ObjectModel;
 using System.Linq;
 using Avalonia.Styling;
+using CodeWF.Avalonia.Controls.Themes;
 
 namespace CodeWF.Toolbox.ViewModels;
 
@@ -44,9 +46,17 @@ public class TitleBarSettingsViewModel : ViewModelBase
         get => _selectedMode;
         set
         {
+            if (ReferenceEquals(_selectedMode, value)) return;
             this.RaiseAndSetIfChanged(ref _selectedMode, value);
+            this.RaisePropertyChanged(nameof(ThemeMode));
             if (value is not null) ((ApplicationService)_applicationService).SetMode(value.Key);
         }
+    }
+
+    public StudioThemeMode ThemeMode
+    {
+        get => Enum.TryParse<StudioThemeMode>(SelectedMode?.Key, out var value) ? value : StudioThemeMode.System;
+        set => SelectedMode = ThemeModes.Single(item => item.Key == value.ToString());
     }
 
     private ThemeItem? _selectedTheme;

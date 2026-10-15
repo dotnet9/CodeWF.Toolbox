@@ -5,7 +5,8 @@ const read = p => fs.readFileSync(path.join(root, p), 'utf8').replace(/^\uFEFF+/
 const catalog = read('src/CodeWF.Modules.ToolFramework/Services/ToolCatalog.cs');
 const matches = [...catalog.matchAll(/Spec\("([^"]+)",\s*"([^"]+)",\s*"([^"]+)",\s*"([^"]+)"/g)];
 const dictionaries = {};
-for (const language of ['zh-CN', 'en-US']) {
+const languages = ['zh-CN', 'zh-Hant', 'en-US', 'ja-JP'];
+for (const language of languages) {
   dictionaries[language] = {};
   for (const project of fs.readdirSync(path.join(root, 'src'))) {
     const file = path.join(root, 'src', project, 'I18n', language + '.json');
@@ -39,7 +40,10 @@ const manifest = path.join(root, 'design/tool-manifest.json');
 if (fs.existsSync(manifest)) tools = JSON.parse(fs.readFileSync(manifest, 'utf8').replace(/^\uFEFF+/, ''));
 const palettes = JSON.parse(read('design/palettes.json'));
 const logo = fs.readFileSync(path.join(root, 'logo.png')).toString('base64');
-const data = JSON.stringify({tools,dictionaries,palettes,logo}).replace(/</g, '\\u003c');
+const props = read('Directory.Build.props');
+const metadata = {version: props.match(/<Version>([^<]+)<\/Version>/)[1], build: '2026-10-15 00:00:00'};
+const languageOptions = languages.map(cultureName => { const resource=JSON.parse(read('src/CodeWF.Toolbox/I18n/'+cultureName+'.json'));return {cultureName,description:resource.description}; });
+const data = JSON.stringify({tools,dictionaries,palettes,logo,metadata,languages:languageOptions}).replace(/</g, '\\u003c');
 const html = read('design/prototype.template.html').replace(/\r\n?/g, '\n').replace('/*__PROTOTYPE_DATA__*/', 'const DATA = ' + data + ';');
 const target = path.join(root, 'design/index.html');
 if (process.argv.includes('--check')) {
