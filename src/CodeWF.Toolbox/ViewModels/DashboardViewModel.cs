@@ -9,6 +9,7 @@ using System.Collections.ObjectModel;
 using System.Globalization;
 using System.Linq;
 using System.Reactive;
+using System.Runtime.InteropServices;
 
 namespace CodeWF.Toolbox.ViewModels;
 
@@ -165,17 +166,10 @@ public class DashboardViewModel : ViewModelBase
 
     private static string GetPlatformName()
     {
-#if PLATFORM_LINUX_X64
-        return "Linux x64";
-#elif PLATFORM_LINUX_ARM64
-        return "Linux ARM64";
-#elif PLATFORM_WIN_X64
-        return "Windows x64";
-#elif PLATFORM_WIN_X86
-        return "Windows x86";
-#else
-        return "Unknown";
-#endif
+        var name = System.OperatingSystem.IsWindows() ? "Windows" :
+            System.OperatingSystem.IsMacOS() ? "macOS" :
+            System.OperatingSystem.IsLinux() ? "Linux" : "Unknown";
+        return $"{name} {RuntimeInformation.ProcessArchitecture.ToString().ToLowerInvariant()}";
     }
 }
 

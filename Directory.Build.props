@@ -7,7 +7,6 @@
     <Authors>沙漠尽头的狼</Authors>
     <Product>CodeWF.Toolbox</Product>
     <Copyright>Copyright © 2026 dotnet9.com. All rights reserved.</Copyright>
-    <DefineConstants>$(DefineConstants);PLATFORM_WIN_X64</DefineConstants>
   </PropertyGroup>
   <ItemGroup>
     <AssemblyMetadata Include="Author" Value="$(Authors)" />
