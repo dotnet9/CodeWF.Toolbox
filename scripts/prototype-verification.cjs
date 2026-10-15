@@ -38,7 +38,15 @@ const assert = (value, message) => { if (!value) throw new Error(message); conso
     await page.locator('#split').click();
     assert(await page.locator('[data-title-language]').count()===4,'language icon contains all four production languages');
     for(const language of ['zh-CN','zh-Hant','en-US','ja-JP']) {
-      await selectLanguage(language); await page.locator('#about').click();
+      await selectLanguage(language);
+      const languageLabel=await page.evaluate(()=>DATA.dictionaries[lang]['Localization.CommonSettingView.LanguageKey']);
+      assert(await page.locator('#title-language summary').getAttribute('title')===languageLabel&&await page.locator('#title-language summary').getAttribute('aria-label')===languageLabel,'localized language tooltip and accessible name: '+language);
+      assert(!await page.locator('#title-language').evaluate(el=>el.open)&&await page.locator('[data-title-language="'+language+'"]').getAttribute('aria-checked')==='true','language selection closes menu and updates checked state');
+      assert(JSON.stringify(await page.locator('[data-title-language]').allTextContents())===await page.evaluate(()=>JSON.stringify(DATA.languages.map(item=>item.description))),'language menu uses production descriptions');
+      assert(await page.locator('[data-window=close]').getAttribute('aria-label')===({'zh-CN':'关闭','zh-Hant':'關閉','en-US':'Close','ja-JP':'閉じる'})[language],'localized caption names: '+language);
+      await page.locator('#title-language summary').click();await page.locator('#title-language summary').press('Escape');
+      assert(!await page.locator('#title-language').evaluate(el=>el.open),'Escape closes language menu');
+      await page.locator('#about').click();
       assert(await page.locator('#about-title').textContent()===await page.evaluate(()=>DATA.dictionaries[lang]['Localization.AboutView.Title']),'About uses actual resources: '+language);
       assert(await page.locator('#about-version').textContent()===await page.evaluate(()=>DATA.metadata.version),'About version comes from production metadata');
       await page.screenshot({path:path.join(output,'about-'+language+'.png')});await page.locator('#close-about').click();
