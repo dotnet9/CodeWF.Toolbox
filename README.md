@@ -2,7 +2,9 @@
 
 码匠工具箱是一个基于 Avalonia + Prism 的模块化桌面工具箱，面向开发者日常效率场景。项目将主程序、公共服务与功能模块解耦，方便后续继续扩展新的工具页，而不会把应用演化成一个难维护的大窗体工程。
 
-![应用截图](screen.png)
+![12.0.17.0 原生主窗口](screen.png)
+
+当前正式 Windows NativeAOT 的真实 Ribbon 与工具文档离屏截图，使用受控 Base64 样例。截图来源和 SHA-256 见[媒体复核记录](docs/recheck24-native-media.md)。
 
 ## 下载安装
 
