@@ -19,3 +19,7 @@ NativeAOT 发布验证器时使用与正式应用相同的完整反射元数据�
 文件/网络工具的外部副作用和各操作系统安装器交互不由此验证；发布流水线分别在五个原生 runner 构建、运行自检并验证安装包 SHA-256。
 
 真实宿主窗口增加动态 CanMinimize / CanMaximize 能力、按钮禁用、程序化点击守卫与原状态恢复断言；Toolbox 关于是设置页，能力检查在真实主窗口执行。
+
+2026-10-15 最终验证使用 CodeWF.Avalonia 12.1.4.22、CodeWF.Toolkit 1.0.0.19：托管与 NativeAOT UI 验证均通过 279 项断言；正式产品 12.0.12.0 的 `--verify-runtime` 实际运行通过，验证发布 I18n 与 Unicode Base64 往返。
+
+同一正式产品目录通过 Inno Setup 编译生成 `CodeWF.Toolbox-v12.0.12-win-x64-setup.exe`，60,587,248 字节，SHA256 为 `363936df146d99e0aa858a1c6a6b1ad13f0bec41a04d1a903179a38da195d32e`。仅编译并检查安装器，未执行安装；其他系统发布结果以对应 CI 为准。
