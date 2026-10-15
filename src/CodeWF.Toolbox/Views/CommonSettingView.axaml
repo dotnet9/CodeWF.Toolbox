@@ -16,7 +16,7 @@
 
     <Border Padding="6">
         <StackPanel MaxWidth="660" HorizontalAlignment="Left" Spacing="12">
-            <Border Background="{DynamicResource AppPanelAltBrush}" BorderBrush="{DynamicResource AppLineBrush}" BorderThickness="1" CornerRadius="8" Padding="16 14">
+            <Border Background="{DynamicResource StudioRaised}" BorderBrush="{DynamicResource StudioBorder}" BorderThickness="1" CornerRadius="8" Padding="16 14">
                 <Grid ColumnDefinitions="*, Auto" ColumnSpacing="24">
                     <TextBlock
                         VerticalAlignment="Center"
@@ -32,7 +32,7 @@
                 </Grid>
             </Border>
 
-            <Border Background="{DynamicResource AppPanelAltBrush}" BorderBrush="{DynamicResource AppLineBrush}" BorderThickness="1" CornerRadius="8" Padding="16 14">
+            <Border Background="{DynamicResource StudioRaised}" BorderBrush="{DynamicResource StudioBorder}" BorderThickness="1" CornerRadius="8" Padding="16 14">
                 <Grid ColumnDefinitions="*, Auto" ColumnSpacing="24">
                     <TextBlock
                         VerticalAlignment="Center"
@@ -48,7 +48,7 @@
                 </Grid>
             </Border>
 
-            <Border Background="{DynamicResource AppPanelAltBrush}" BorderBrush="{DynamicResource AppLineBrush}" BorderThickness="1" CornerRadius="8" Padding="16 14">
+            <Border Background="{DynamicResource StudioRaised}" BorderBrush="{DynamicResource StudioBorder}" BorderThickness="1" CornerRadius="8" Padding="16 14">
                 <Grid ColumnDefinitions="*, Auto" ColumnSpacing="24">
                     <TextBlock
                         VerticalAlignment="Center"

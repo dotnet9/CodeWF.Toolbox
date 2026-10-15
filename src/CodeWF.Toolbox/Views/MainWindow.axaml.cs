@@ -1,4 +1,4 @@
-using global::Avalonia.Controls;
+﻿using global::Avalonia.Controls;
 using global::Avalonia.Input;
 using global::Avalonia.Markup.Xaml;
 using global::Avalonia.Media;
@@ -11,7 +11,7 @@ using CodeWF.Toolkit.EventBus;
 using CodeWF.Toolbox.Commands;
 using CodeWF.Toolbox.Diagnostics;
 using CodeWF.Toolbox.ViewModels;
-using CodeWF.Avalonia.Lang;
+using CodeWF.Toolkit.Lang;
 using Prism.Ioc;
 using System;
 using System.Linq;
@@ -74,6 +74,20 @@ public partial class MainWindow : CodeWFWindow
     {
         var settingView = ContainerLocator.Container.Resolve<SettingView>();
         await settingView.ShowDialog(this);
+    }
+
+    private async void OpenAboutButton_OnClick(object? sender, global::Avalonia.Interactivity.RoutedEventArgs e)
+    {
+        var view = ContainerLocator.Container.Resolve<AboutView>();
+        var window = new CodeWFWindow
+        {
+            Width = 760, Height = 680, MinWidth = 640, MinHeight = 540,
+            Title = I18nManager.Instance.GetResource(Localization.AboutView.Title),
+            Content = view,
+            WindowStartupLocation = WindowStartupLocation.CenterOwner
+        };
+        window.Closed += (_, _) => (view.DataContext as IDisposable)?.Dispose();
+        await window.ShowDialog(this);
     }
 
     private void Search_OnKeyDown(object? sender, KeyEventArgs e)
@@ -176,9 +190,9 @@ public partial class MainWindow : CodeWFWindow
             return;
         }
 
-        const double preferredWidth = 1180;
-        const double preferredHeight = 760;
-        const double minimumWidth = 1024;
+        const double preferredWidth = 1440;
+        const double preferredHeight = 860;
+        const double minimumWidth = 1120;
         const double minimumHeight = 640;
         const double screenMargin = 80;
 

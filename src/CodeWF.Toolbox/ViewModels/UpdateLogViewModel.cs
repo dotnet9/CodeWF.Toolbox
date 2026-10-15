@@ -10,7 +10,7 @@ public class UpdateLogViewModel : ViewModelBase, ITabItemBase
     public UpdateLogViewModel()
     {
         // 发布后工作目录不一定是程序目录，读取随应用打包的更新日志要以 BaseDirectory 为准。
-        var path = Path.Combine(AppContext.BaseDirectory, "UpdateLog.md");
+        var path = CodeWF.Toolbox.Services.ToolboxDataPaths.Resource("UpdateLog.md");
         if (File.Exists(path))
         {
             UpdateLogMarkdownContent = File.ReadAllText(path);

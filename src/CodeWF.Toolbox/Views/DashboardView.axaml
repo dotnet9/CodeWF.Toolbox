@@ -16,65 +16,65 @@
         <Style Selector="Border.HeroPanel">
             <Setter Property="Padding" Value="24" />
             <Setter Property="CornerRadius" Value="8" />
-            <Setter Property="Background" Value="{DynamicResource AppPanelBrush}" />
-            <Setter Property="BorderBrush" Value="{DynamicResource AppLineBrush}" />
+            <Setter Property="Background" Value="{DynamicResource StudioSurface}" />
+            <Setter Property="BorderBrush" Value="{DynamicResource StudioBorder}" />
             <Setter Property="BorderThickness" Value="1" />
             <Setter Property="BoxShadow" Value="0 14 34 0 #120B1430" />
         </Style>
         <Style Selector="Border.MetricItem">
             <Setter Property="Padding" Value="18 14" />
             <Setter Property="CornerRadius" Value="8" />
-            <Setter Property="Background" Value="{DynamicResource AppPanelBrush}" />
-            <Setter Property="BorderBrush" Value="{DynamicResource AppLineBrush}" />
+            <Setter Property="Background" Value="{DynamicResource StudioSurface}" />
+            <Setter Property="BorderBrush" Value="{DynamicResource StudioBorder}" />
             <Setter Property="BorderThickness" Value="1" />
             <Setter Property="BoxShadow" Value="0 10 24 0 #0E0B1430" />
         </Style>
         <Style Selector="Border.MetricItem.Blue">
-            <Setter Property="Background" Value="{DynamicResource AppAccentSoftBrush}" />
+            <Setter Property="Background" Value="{DynamicResource StudioRaised}" />
         </Style>
         <Style Selector="Border.MetricItem.Mint">
-            <Setter Property="Background" Value="{DynamicResource AppMintSoftBrush}" />
+            <Setter Property="Background" Value="{DynamicResource SemiGreen1}" />
         </Style>
         <Style Selector="Border.MetricItem.Amber">
-            <Setter Property="Background" Value="{DynamicResource AppAmberSoftBrush}" />
+            <Setter Property="Background" Value="{DynamicResource SemiOrange1}" />
         </Style>
         <Style Selector="TextBlock.MetricValue">
             <Setter Property="FontSize" Value="26" />
             <Setter Property="FontWeight" Value="SemiBold" />
         </Style>
         <Style Selector="TextBlock.MetricValue.Blue">
-            <Setter Property="Foreground" Value="{DynamicResource AppAccentBrush}" />
+            <Setter Property="Foreground" Value="{DynamicResource StudioAccent}" />
         </Style>
         <Style Selector="TextBlock.MetricValue.Mint">
-            <Setter Property="Foreground" Value="{DynamicResource AppMintBrush}" />
+            <Setter Property="Foreground" Value="{DynamicResource SemiGreen5}" />
         </Style>
         <Style Selector="TextBlock.MetricValue.Amber">
-            <Setter Property="Foreground" Value="{DynamicResource AppAmberBrush}" />
+            <Setter Property="Foreground" Value="{DynamicResource SemiOrange5}" />
         </Style>
         <Style Selector="TextBlock.MetricLabel">
-            <Setter Property="Foreground" Value="{DynamicResource AppMutedTextBrush}" />
+            <Setter Property="Foreground" Value="{DynamicResource StudioMuted}" />
             <Setter Property="Margin" Value="0 6 0 0" />
         </Style>
         <Style Selector="Border.LinkPanel">
             <Setter Property="Padding" Value="18 14" />
             <Setter Property="CornerRadius" Value="8" />
-            <Setter Property="Background" Value="{DynamicResource AppPanelBrush}" />
-            <Setter Property="BorderBrush" Value="{DynamicResource AppLineBrush}" />
+            <Setter Property="Background" Value="{DynamicResource StudioSurface}" />
+            <Setter Property="BorderBrush" Value="{DynamicResource StudioBorder}" />
             <Setter Property="BorderThickness" Value="1" />
         </Style>
         <Style Selector="Border.CommunityPanel">
             <Setter Property="Padding" Value="22" />
             <Setter Property="CornerRadius" Value="8" />
-            <Setter Property="Background" Value="{DynamicResource AppPanelBrush}" />
-            <Setter Property="BorderBrush" Value="{DynamicResource AppLineBrush}" />
+            <Setter Property="Background" Value="{DynamicResource StudioSurface}" />
+            <Setter Property="BorderBrush" Value="{DynamicResource StudioBorder}" />
             <Setter Property="BorderThickness" Value="1" />
             <Setter Property="BoxShadow" Value="0 12 28 0 #100B1430" />
         </Style>
         <Style Selector="Border.CommunityItem">
             <Setter Property="Padding" Value="12" />
             <Setter Property="CornerRadius" Value="8" />
-            <Setter Property="Background" Value="{DynamicResource AppPanelAltBrush}" />
-            <Setter Property="BorderBrush" Value="{DynamicResource AppLineBrush}" />
+            <Setter Property="Background" Value="{DynamicResource StudioRaised}" />
+            <Setter Property="BorderBrush" Value="{DynamicResource StudioBorder}" />
             <Setter Property="BorderThickness" Value="1" />
         </Style>
         <Style Selector="Image.CommunityQrCode">
@@ -85,23 +85,23 @@
         <Style Selector="Border.FrequentPanel">
             <Setter Property="Padding" Value="18" />
             <Setter Property="CornerRadius" Value="8" />
-            <Setter Property="Background" Value="{DynamicResource AppPanelBrush}" />
-            <Setter Property="BorderBrush" Value="{DynamicResource AppLineBrush}" />
+            <Setter Property="Background" Value="{DynamicResource StudioSurface}" />
+            <Setter Property="BorderBrush" Value="{DynamicResource StudioBorder}" />
             <Setter Property="BorderThickness" Value="1" />
         </Style>
         <Style Selector="Button.FrequentTool">
             <Setter Property="Height" Value="68" />
             <Setter Property="Padding" Value="10" />
             <Setter Property="CornerRadius" Value="8" />
-            <Setter Property="Background" Value="{DynamicResource AppPanelAltBrush}" />
-            <Setter Property="BorderBrush" Value="{DynamicResource AppLineBrush}" />
+            <Setter Property="Background" Value="{DynamicResource StudioRaised}" />
+            <Setter Property="BorderBrush" Value="{DynamicResource StudioBorder}" />
             <Setter Property="BorderThickness" Value="1" />
             <Setter Property="HorizontalContentAlignment" Value="Stretch" />
             <Setter Property="VerticalContentAlignment" Value="Stretch" />
         </Style>
         <Style Selector="Button.FrequentTool:pointerover">
-            <Setter Property="Background" Value="{DynamicResource AppAccentSoftBrush}" />
-            <Setter Property="BorderBrush" Value="{DynamicResource AppAccentBrush}" />
+            <Setter Property="Background" Value="{DynamicResource StudioRaised}" />
+            <Setter Property="BorderBrush" Value="{DynamicResource StudioAccent}" />
         </Style>
     </UserControl.Styles>
 
@@ -136,8 +136,8 @@
                         Grid.Column="1"
                         Width="96"
                         Height="96"
-                        Background="{DynamicResource AppAccentSoftBrush}"
-                        BorderBrush="{DynamicResource AppLineBrush}"
+                        Background="{DynamicResource StudioRaised}"
+                        BorderBrush="{DynamicResource StudioBorder}"
                         BorderThickness="1"
                         CornerRadius="8"
                         VerticalAlignment="Center">
@@ -216,7 +216,7 @@
                                         Width="20"
                                         VerticalAlignment="Center"
                                         FontWeight="SemiBold"
-                                        Foreground="{DynamicResource AppAccentBrush}"
+                                        Foreground="{DynamicResource StudioAccent}"
                                         Text="{Binding Badge}" />
                                     <StackPanel Grid.Column="1" Spacing="3" VerticalAlignment="Center">
                                         <TextBlock

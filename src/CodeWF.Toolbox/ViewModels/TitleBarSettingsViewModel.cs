@@ -1,12 +1,13 @@
-using CodeWF.Toolkit.EventBus;
+﻿using CodeWF.Toolkit.EventBus;
 using CodeWF.Core.IServices;
 using CodeWF.Toolbox.Models;
 using CodeWF.Toolbox.Commands;
 using CodeWF.Toolbox.Services;
-using CodeWF.Avalonia.Lang;
+using CodeWF.Toolkit.Lang;
 using ReactiveUI;
 using System.Collections.ObjectModel;
 using System.Linq;
+using Avalonia.Styling;
 
 namespace CodeWF.Toolbox.ViewModels;
 
@@ -27,12 +28,26 @@ public class TitleBarSettingsViewModel : ViewModelBase
         _loginService.LoginStateChanged += (_, _) => RefreshUser();
         _userProfileService.ProfileChanged += (_, _) => RefreshSearchHistory();
         InitTheme();
+        var service = (ApplicationService)_applicationService;
+        _selectedMode = ThemeModes.FirstOrDefault(item => item.Key == service.GetMode()) ?? ThemeModes[0];
         InitLanguage();
         RefreshUser();
         RefreshSearchHistory();
     }
 
     public ObservableCollection<ThemeItem> Themes { get; private set; } = [];
+    public ObservableCollection<ThemeItem> ThemeModes { get; } =
+    [new(Localization.Workspace.System, "System", ThemeVariant.Default), new(Localization.Workspace.Light, "Light", ThemeVariant.Light), new(Localization.Workspace.Dark, "Dark", ThemeVariant.Dark)];
+    private ThemeItem? _selectedMode;
+    public ThemeItem? SelectedMode
+    {
+        get => _selectedMode;
+        set
+        {
+            this.RaiseAndSetIfChanged(ref _selectedMode, value);
+            if (value is not null) ((ApplicationService)_applicationService).SetMode(value.Key);
+        }
+    }
 
     private ThemeItem? _selectedTheme;
 

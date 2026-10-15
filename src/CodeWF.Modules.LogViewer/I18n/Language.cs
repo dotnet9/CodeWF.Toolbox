@@ -5,13 +5,13 @@
 //     the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
+
 namespace Localization
 {
     public static class LogViewerModule
     {
         public static readonly string Title = "Localization.LogViewerModule.Title";
     }
-
 
     public static class LogViewerView
     {
@@ -35,6 +35,5 @@ namespace Localization
         public static readonly string TailPreviewStatus = "Localization.LogViewerView.TailPreviewStatus";
         public static readonly string OpenHint = "Localization.LogViewerView.OpenHint";
     }
-
 
 }

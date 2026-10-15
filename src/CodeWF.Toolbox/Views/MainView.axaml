@@ -16,10 +16,10 @@
          to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
         <vm:MainViewModel />
     </Design.DataContext>
-    <Grid Background="{DynamicResource AppSurfaceBrush}">
-        <Grid ColumnDefinitions="280, *">
-            <views:MainMenuView Grid.Column="0" />
-            <views:MainContentView Grid.Row="0" Grid.Column="1" />
+    <Grid Background="{DynamicResource StudioBackground}">
+        <Grid RowDefinitions="Auto,*">
+            <views:MainMenuView Grid.Row="0" />
+            <views:MainContentView Grid.Row="1" />
         </Grid>
         <u:OverlayDialogHost HostId="{x:Static core:HostIds.Main}" />
     </Grid>

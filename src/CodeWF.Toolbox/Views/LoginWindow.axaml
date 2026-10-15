@@ -15,11 +15,11 @@
               Width="460"
               Height="456"
               Icon="/Assets/logo.ico"
-              Background="{DynamicResource AppSurfaceBrush}"
+              Background="{DynamicResource StudioBackground}"
               TitleBarHeight="48"
-              TitleBarBackground="{DynamicResource AppChromeBrush}"
-              TitleBarBorderBrush="{DynamicResource AppLineBrush}"
-              TitleBarForeground="{DynamicResource AppTextBrush}"
+              TitleBarBackground="{DynamicResource StudioBackground}"
+              TitleBarBorderBrush="{DynamicResource StudioBorder}"
+              TitleBarForeground="{DynamicResource StudioText}"
               WindowCornerRadius="8"
               IsMinimizeButtonVisible="False"
               IsRestoreButtonVisible="False"
@@ -39,7 +39,7 @@
             <Setter Property="MinHeight" Value="24" />
             <Setter Property="FontSize" Value="12" />
             <Setter Property="FontWeight" Value="SemiBold" />
-            <Setter Property="Foreground" Value="{DynamicResource AppMutedTextBrush}" />
+            <Setter Property="Foreground" Value="{DynamicResource StudioMuted}" />
             <Setter Property="HorizontalAlignment" Value="Center" />
             <Setter Property="VerticalAlignment" Value="Center" />
             <Setter Property="TextWrapping" Value="Wrap" />
@@ -50,8 +50,8 @@
             <Border
                 Width="30"
                 Height="30"
-                Background="{DynamicResource AppAccentSoftBrush}"
-                BorderBrush="{DynamicResource AppLineBrush}"
+                Background="{DynamicResource StudioRaised}"
+                BorderBrush="{DynamicResource StudioBorder}"
                 BorderThickness="1"
                 CornerRadius="8">
                 <Image Width="20" Height="20" Source="/Assets/logo.ico" />
@@ -79,8 +79,8 @@
                 <Border
                     Width="58"
                     Height="58"
-                    Background="{DynamicResource AppRoseSoftBrush}"
-                    BorderBrush="{DynamicResource AppLineBrush}"
+                    Background="{DynamicResource SemiRed1}"
+                    BorderBrush="{DynamicResource StudioBorder}"
                     BorderThickness="1"
                     CornerRadius="8">
                     <Image Width="38" Height="38" Source="/Assets/logo.ico" />

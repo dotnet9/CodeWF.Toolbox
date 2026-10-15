@@ -1,156 +1,41 @@
-<UserControl xmlns="https://github.com/avaloniaui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:prism="http://prismlibrary.com/"
-             xmlns:u="https://irihi.tech/ursa"
-             xmlns:views="clr-namespace:CodeWF.Toolbox.Views"
-             xmlns:vm="clr-namespace:CodeWF.Toolbox.ViewModels"
-             xmlns:core="clr-namespace:CodeWF.Core.Models;assembly=CodeWF.Core"
-             xmlns:converters="clr-namespace:CodeWF.Toolbox.Converters"
-             xmlns:i18n="https://codewf.com"
-             xmlns:language="clr-namespace:Localization"
-             prism:ViewModelLocator.AutoWireViewModel="True"
-             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-             x:Name="Root"
-             x:Class="CodeWF.Toolbox.Views.MainMenuView"
-             x:DataType="vm:MainMenuViewModel">
-    <UserControl.Resources>
-        <ResourceDictionary>
-            <converters:IconConverter x:Key="IconConverter" />
-            <StreamGeometry x:Key="SettingIconGlyph">M19.43 12.98c.04-.32.07-.65.07-.98s-.02-.66-.07-.98l2.11-1.65c.19-.15.24-.42.12-.64l-2-3.46c-.12-.22-.37-.31-.6-.22l-2.49 1c-.52-.4-1.08-.73-1.69-.98L14.5 2.42C14.47 2.18 14.25 2 14 2h-4c-.25 0-.46.18-.5.42L9.12 5.07c-.61.25-1.18.59-1.69.98l-2.49-1c-.23-.08-.48 0-.6.22l-2 3.46c-.13.22-.07.49.12.64l2.11 1.65c-.04.32-.08.65-.08.98s.03.66.08.98l-2.11 1.65c-.19.15-.24.42-.12.64l2 3.46c.12.22.37.31.6.22l2.49-1c.52.4 1.08.73 1.69.98l.38 2.65c.04.24.25.42.5.42h4c.25 0 .47-.18.5-.42l.38-2.65c.61-.25 1.18-.59 1.69-.98l2.49 1c.23.08.48 0 .6-.22l2-3.46c.12-.22.07-.49-.12-.64l-2.11-1.65zM12 15.5A3.5 3.5 0 1 1 12 8a3.5 3.5 0 0 1 0 7.5z</StreamGeometry>
-        </ResourceDictionary>
-    </UserControl.Resources>
-    <UserControl.Styles>
-        <Style Selector="ListBox.IconRail">
-            <Setter Property="Background" Value="Transparent" />
-            <Setter Property="BorderThickness" Value="0" />
-        </Style>
-        <Style Selector="ListBox.IconRail ListBoxItem">
-            <Setter Property="MinHeight" Value="46" />
-            <Setter Property="Margin" Value="8 4" />
-            <Setter Property="Padding" Value="0" />
-            <Setter Property="Background" Value="Transparent" />
-            <Setter Property="Foreground" Value="{DynamicResource AppMutedTextBrush}" />
-            <Setter Property="HorizontalContentAlignment" Value="Center" />
-            <Setter Property="VerticalContentAlignment" Value="Center" />
-            <Setter Property="CornerRadius" Value="8" />
-        </Style>
-        <Style Selector="ListBox.IconRail ListBoxItem:pointerover">
-            <Setter Property="Background" Value="{DynamicResource AppAccentSoftBrush}" />
-            <Setter Property="Foreground" Value="{DynamicResource AppAccentBrush}" />
-        </Style>
-        <Style Selector="ListBox.IconRail ListBoxItem:selected">
-            <Setter Property="Background" Value="{DynamicResource AppAccentBrush}" />
-            <Setter Property="Foreground" Value="White" />
-        </Style>
-        <Style Selector="Button.RailButton">
-            <Setter Property="Width" Value="44" />
-            <Setter Property="Height" Value="44" />
-            <Setter Property="MinHeight" Value="44" />
-            <Setter Property="Margin" Value="10 8 10 12" />
-            <Setter Property="Padding" Value="0" />
-            <Setter Property="Background" Value="{DynamicResource AppPanelBrush}" />
-            <Setter Property="BorderBrush" Value="{DynamicResource AppLineBrush}" />
-            <Setter Property="BorderThickness" Value="1" />
-            <Setter Property="CornerRadius" Value="8" />
-            <Setter Property="Foreground" Value="{DynamicResource AppAccentBrush}" />
-            <Setter Property="HorizontalContentAlignment" Value="Center" />
-            <Setter Property="VerticalContentAlignment" Value="Center" />
-        </Style>
-        <Style Selector="Button.RailButton:pointerover">
-            <Setter Property="Background" Value="{DynamicResource AppAccentSoftBrush}" />
-            <Setter Property="BorderBrush" Value="{DynamicResource AppAccentBrush}" />
-        </Style>
-        <Style Selector="Button.RailButton:pressed">
-            <Setter Property="Background" Value="{DynamicResource AppAccentBrush}" />
-            <Setter Property="BorderBrush" Value="{DynamicResource AppAccentBrush}" />
-            <Setter Property="Foreground" Value="White" />
-        </Style>
-    </UserControl.Styles>
-    <Border Padding="0" Background="{DynamicResource AppChromeBrush}" BorderBrush="{DynamicResource AppLineBrush}" BorderThickness="0 0 1 0">
-        <Grid ColumnDefinitions="60,*">
-            <Border Grid.Column="0"
-                    Background="{DynamicResource AppPanelBrush}"
-                    BorderBrush="{DynamicResource AppLineBrush}"
-                    BorderThickness="0 0 1 0">
-                <Grid RowDefinitions="*,Auto">
-                    <ListBox
-                        Classes="IconRail"
-                        ItemsSource="{Binding GroupItems}"
-                        SelectedItem="{Binding SelectedGroupItem, Mode=TwoWay}">
-                        <ListBox.ItemTemplate>
-                            <DataTemplate x:DataType="core:ToolMenuItem">
-                                <Grid Width="42" Height="42" ToolTip.Tip="{i18n:I18n {Binding Name}}">
-                                    <PathIcon
-                                        Width="19"
-                                        Height="19"
-                                        HorizontalAlignment="Center"
-                                        VerticalAlignment="Center"
-                                        Data="{Binding Icon, Converter={StaticResource IconConverter}}" />
-                                </Grid>
-                            </DataTemplate>
-                        </ListBox.ItemTemplate>
-                    </ListBox>
-                    <Button
-                        Grid.Row="1"
-                        Classes="RailButton"
-                        Click="OpenSettingButton_OnClick"
-                        ToolTip.Tip="{i18n:I18n {x:Static language:SettingView.Title}}">
-                        <PathIcon
-                            Width="18"
-                            Height="18"
-                            Data="{StaticResource SettingIconGlyph}"
-                            Foreground="{DynamicResource AppAccentBrush}" />
-                    </Button>
-                </Grid>
-            </Border>
-
-            <Grid Grid.Column="1" RowDefinitions="Auto,*">
-                <Border
-                    Padding="14 12"
-                    Background="{DynamicResource AppChromeBrush}"
-                    BorderBrush="{DynamicResource AppLineBrush}"
-                    BorderThickness="0 0 0 1">
-                    <TextBlock
-                        FontSize="12"
-                        FontWeight="SemiBold"
-                        Foreground="{DynamicResource AppMutedTextBrush}"
-                        Text="{i18n:I18n {Binding SelectedGroupItem.Name}}"
-                        TextWrapping="NoWrap" />
-                </Border>
-
-                <u:NavMenu
-                    Grid.Row="1"
-                    Background="{DynamicResource AppChromeBrush}"
-                    Foreground="{DynamicResource AppTextBrush}"
-                    ExpandWidth="220"
-                    HeaderBinding="{i18n:I18n {Binding Name}}"
-                    IconBinding="{Binding Icon}"
-                    ItemsSource="{Binding ActiveMenuItems}"
-                    SelectedItem="{Binding SelectedMenuItem}"
-                    SubMenuBinding="{Binding Children}"
-                    HorizontalAlignment="Stretch">
-                    <u:NavMenu.Styles>
-                        <Style x:DataType="core:ToolMenuItem" Selector="u|NavMenuItem">
-                            <Setter Property="IsSeparator" Value="{Binding IsSeparator}" />
-                        </Style>
-                    </u:NavMenu.Styles>
-                    <u:NavMenu.IconTemplate>
-                        <DataTemplate DataType="{x:Type x:String}">
-                            <u:TwoTonePathIcon
-                                Width="16"
-                                Height="16"
-                                ActiveForeground="{DynamicResource AppAccentBrush}"
-                                ActiveStrokeBrush="{DynamicResource AppAccentBrush}"
-                                Data="{Binding Converter={StaticResource IconConverter}}"
-                                Foreground="{DynamicResource AppMutedTextBrush}"
-                                IsActive="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=u:NavMenuItem}, Path=IsHighlighted, Mode=TwoWay}"
-                                StrokeBrush="{DynamicResource AppMutedTextBrush}" />
-                        </DataTemplate>
-                    </u:NavMenu.IconTemplate>
-                </u:NavMenu>
-            </Grid>
-        </Grid>
-    </Border>
+<UserControl xmlns="https://github.com/avaloniaui" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:prism="http://prismlibrary.com/" xmlns:c="https://codewf.com"
+             xmlns:vm="clr-namespace:CodeWF.Toolbox.ViewModels" xmlns:models="clr-namespace:CodeWF.Core.Models;assembly=CodeWF.Core"
+             xmlns:cv="clr-namespace:CodeWF.Toolbox.Converters" xmlns:l="clr-namespace:Localization"
+             x:Class="CodeWF.Toolbox.Views.MainMenuView" x:Name="Root" x:DataType="vm:MainMenuViewModel"
+             prism:ViewModelLocator.AutoWireViewModel="True">
+  <UserControl.Resources><cv:IconConverter x:Key="IconConverter" /></UserControl.Resources>
+  <Border Background="{DynamicResource StudioSurface}" BorderBrush="{DynamicResource StudioBorder}" BorderThickness="0,0,0,1">
+    <Grid RowDefinitions="38,106">
+      <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled">
+        <TabStrip ItemsSource="{Binding GroupItems}" SelectedItem="{Binding SelectedGroupItem}" Margin="12,0">
+          <TabStrip.ItemTemplate><DataTemplate x:DataType="models:ToolMenuItem"><TextBlock Text="{c:I18n {Binding Name}}" /></DataTemplate></TabStrip.ItemTemplate>
+        </TabStrip>
+      </ScrollViewer>
+      <Grid Grid.Row="1" ColumnDefinitions="*,Auto">
+        <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled" Margin="12,4,8,6">
+          <ItemsControl ItemsSource="{Binding ActiveMenuItems}">
+            <ItemsControl.ItemsPanel><ItemsPanelTemplate><WrapPanel Height="92" Orientation="Vertical" /></ItemsPanelTemplate></ItemsControl.ItemsPanel>
+            <ItemsControl.ItemTemplate>
+              <DataTemplate x:DataType="models:ToolMenuItem">
+                <Button Classes="RibbonCommand" Height="38" Margin="0,2,5,2" Padding="10,5"
+                        Command="{Binding #Root.DataContext.OpenToolCommand}" CommandParameter="{Binding}" ToolTip.Tip="{c:I18n {Binding Description}}">
+                  <StackPanel Orientation="Horizontal" Spacing="8">
+                    <PathIcon Width="17" Height="17" Data="{Binding Icon, Converter={StaticResource IconConverter}}" Foreground="{DynamicResource StudioAccent}" />
+                    <TextBlock Text="{c:I18n {Binding Name}}" VerticalAlignment="Center" FontSize="12" />
+                  </StackPanel>
+                </Button>
+              </DataTemplate>
+            </ItemsControl.ItemTemplate>
+          </ItemsControl>
+        </ScrollViewer>
+        <Border Grid.Column="1" BorderBrush="{DynamicResource StudioBorder}" BorderThickness="1,0,0,0" Padding="12" Width="180">
+          <StackPanel Spacing="7">
+            <Button Content="{c:I18n {x:Static l:Workspace.SplitDocument}}" Click="SplitDocument" />
+            <Button Content="{c:I18n {x:Static l:Workspace.CloseAll}}" Click="CloseAllDocuments" />
+          </StackPanel>
+        </Border>
+      </Grid>
+    </Grid>
+  </Border>
 </UserControl>

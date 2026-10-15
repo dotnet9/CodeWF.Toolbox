@@ -6,7 +6,7 @@ using ReactiveUI;
 using System.Collections.ObjectModel;
 using System.Xml;
 using System.Xml.Linq;
-using CodeWF.Avalonia.Lang;
+using CodeWF.Toolkit.Lang;
 
 namespace CodeWF.Modules.XmlTranslatorManager.ViewModels;
 

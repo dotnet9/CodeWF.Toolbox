@@ -1,5 +1,10 @@
 <linker>
   <assembly fullname="CodeWF.Toolbox" preserve="all" />
+  <assembly fullname="CodeWF.Avalonia.Dock" preserve="all" />
+  <assembly fullname="Dock.Avalonia" preserve="all" />
+  <assembly fullname="Dock.Model" preserve="all" />
+  <assembly fullname="Dock.Model.Mvvm" preserve="all" />
+  <assembly fullname="Dock.Controls.Recycling" preserve="all" />
 	<assembly fullname="CodeWF.Controls" preserve="All" />
 	<assembly fullname="CodeWF.Core" preserve="All" />
 	<assembly fullname="CodeWF.Avalonia.Controls" preserve="All" />

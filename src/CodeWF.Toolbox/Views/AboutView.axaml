@@ -11,20 +11,19 @@
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="CodeWF.Toolbox.Views.AboutView"
              x:DataType="vm:AboutViewModel">
-    <Design.DataContext>
-        <vm:AboutViewModel />
-    </Design.DataContext>
 
+
+    <ScrollViewer>
     <Border Classes="SurfacePanel" MaxWidth="720" Margin="28" Padding="24" HorizontalAlignment="Stretch">
         <Grid
-            RowDefinitions="Auto, Auto, Auto, Auto"
+            RowDefinitions="Auto, Auto, Auto, Auto, Auto"
             RowSpacing="18">
             <Grid ColumnDefinitions="Auto,*" ColumnSpacing="16">
                 <Border
                     Width="58"
                     Height="58"
-                    Background="{DynamicResource AppAccentSoftBrush}"
-                    BorderBrush="{DynamicResource AppLineBrush}"
+                    Background="{DynamicResource StudioRaised}"
+                    BorderBrush="{DynamicResource StudioBorder}"
                     BorderThickness="1"
                     CornerRadius="8">
                     <Image Width="38" Height="38" Source="/Assets/logo.ico" />
@@ -45,7 +44,7 @@
         <Grid
             Grid.Row="1"
             ColumnDefinitions="120, *"
-            RowDefinitions="Auto, Auto, Auto, Auto"
+            RowDefinitions="Auto, Auto, Auto, Auto, Auto"
             RowSpacing="12">
             <TextBlock Classes="Tertiary" Text="{i18n:I18n {x:Static language:AboutView.VersionLabel}}" />
             <SelectableTextBlock Grid.Column="1" Text="{Binding Version}" />
@@ -58,11 +57,13 @@
 
             <TextBlock Grid.Row="3" Classes="Tertiary" Text="{i18n:I18n {x:Static language:AboutView.CopyrightLabel}}" />
             <SelectableTextBlock Grid.Row="3" Grid.Column="1" Text="{Binding Copyright}" TextWrapping="Wrap" />
+            <TextBlock Grid.Row="4" Classes="Tertiary" Text="{i18n:I18n {x:Static language:AboutView.AuthorLabel}}" />
+            <SelectableTextBlock Grid.Row="4" Grid.Column="1" Text="{Binding Author}" />
         </Grid>
 
         <Border
             Grid.Row="2"
-            BorderBrush="{DynamicResource AppLineBrush}"
+            BorderBrush="{DynamicResource StudioBorder}"
             BorderThickness="0 1 0 0" />
 
         <StackPanel Grid.Row="3" Orientation="Horizontal" Spacing="18">
@@ -72,8 +73,8 @@
                 Padding="0"
                 Background="Transparent"
                 BorderThickness="0"
-                Command="{Binding CheckUpdateCommand}"
-                Content="{i18n:I18n {x:Static language:AboutView.CheckUpdate}}" />
+                Command="{Binding Update.UpdateCommand}"
+                Content="{Binding Update.ActionText}" />
             <HyperlinkButton
                 Classes="WithIcon Underline"
                 Height="24"
@@ -90,6 +91,13 @@
                 NavigateUri="{x:Static models:AppLinks.OnlineToolUrl}"
                 Content="{i18n:I18n {x:Static language:DashboardView.AccessToolbox}}" />
         </StackPanel>
+        <StackPanel Grid.Row="4" Spacing="10">
+          <TextBlock Text="{Binding Update.StatusText}" TextWrapping="Wrap" />
+          <ProgressBar IsVisible="{Binding Update.IsDownloading}" IsIndeterminate="{Binding Update.IsIndeterminate}" Value="{Binding Update.Progress}" Maximum="100" />
+          <Button IsVisible="{Binding Update.IsBusy}" Command="{Binding Update.CancelCommand}" Content="{i18n:I18n {x:Static language:UpdateFlow.AboutCancel}}" HorizontalAlignment="Left" />
+          <ScrollViewer MaxHeight="130"><TextBlock Text="{Binding Update.ReleaseNotes}" TextWrapping="Wrap" /></ScrollViewer>
+        </StackPanel>
         </Grid>
     </Border>
+    </ScrollViewer>
 </UserControl>

@@ -9,6 +9,7 @@ public static class ToolLocalization
     public static class Common
     {
         public const string Run = $"{Root}.Common.Run";
+        public const string Properties = $"{Root}.Common.Properties";
         public const string Browse = $"{Root}.Common.Browse";
         public const string Copy = $"{Root}.Common.Copy";
         public const string OpenFile = $"{Root}.Common.OpenFile";

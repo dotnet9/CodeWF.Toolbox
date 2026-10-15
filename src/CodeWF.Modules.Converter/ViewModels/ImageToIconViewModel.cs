@@ -1,10 +1,10 @@
-using global::Avalonia.Input;
+﻿using global::Avalonia.Input;
 using global::Avalonia.Platform.Storage;
 using CodeWF.Core.IServices;
 using CodeWF.Modules.Converter.Models;
 using CodeWF.Toolkit.Image;
 using CodeWF.Toolkit.Core.FileExtensions;
-using CodeWF.Avalonia.Lang;
+using CodeWF.Toolkit.Lang;
 using ReactiveUI;
 using System.Collections.ObjectModel;
 using Ursa.Controls;

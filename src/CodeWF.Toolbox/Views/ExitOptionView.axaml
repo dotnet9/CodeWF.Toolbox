@@ -12,7 +12,7 @@
         <Style Selector="RadioButton.ExitChoice">
             <Setter Property="MinHeight" Value="28" />
             <Setter Property="Padding" Value="0" />
-            <Setter Property="Foreground" Value="{DynamicResource AppTextBrush}" />
+            <Setter Property="Foreground" Value="{DynamicResource StudioText}" />
             <Setter Property="VerticalContentAlignment" Value="Center" />
             <Setter Property="Template">
                 <ControlTemplate>
@@ -26,7 +26,7 @@
                             Height="16"
                             VerticalAlignment="Center"
                             Background="Transparent"
-                            BorderBrush="{DynamicResource AppLineBrush}"
+                            BorderBrush="{DynamicResource StudioBorder}"
                             BorderThickness="1"
                             CornerRadius="8">
                             <Border
@@ -34,7 +34,7 @@
                                 Height="8"
                                 HorizontalAlignment="Center"
                                 VerticalAlignment="Center"
-                                Background="{DynamicResource AppAccentBrush}"
+                                Background="{DynamicResource StudioAccent}"
                                 CornerRadius="4"
                                 IsVisible="{TemplateBinding IsChecked}" />
                         </Border>
@@ -49,10 +49,10 @@
             </Setter>
         </Style>
         <Style Selector="RadioButton.ExitChoice:checked /template/ Border#ChoiceBullet">
-            <Setter Property="BorderBrush" Value="{DynamicResource AppAccentBrush}" />
+            <Setter Property="BorderBrush" Value="{DynamicResource StudioAccent}" />
         </Style>
         <Style Selector="RadioButton.ExitChoice:pointerover /template/ Border#ChoiceBullet">
-            <Setter Property="BorderBrush" Value="{DynamicResource AppAccentBrush}" />
+            <Setter Property="BorderBrush" Value="{DynamicResource StudioAccent}" />
         </Style>
     </UserControl.Styles>
 

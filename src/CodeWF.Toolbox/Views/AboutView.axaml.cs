@@ -7,5 +7,6 @@ public partial class AboutView : UserControl
     public AboutView()
     {
         InitializeComponent();
+        DetachedFromVisualTree += (_, _) => (DataContext as CodeWF.Toolbox.ViewModels.AboutViewModel)?.Update.Cancel();
     }
 }

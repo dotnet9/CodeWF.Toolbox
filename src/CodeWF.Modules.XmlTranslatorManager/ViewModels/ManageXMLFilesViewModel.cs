@@ -1,4 +1,4 @@
-using global::Avalonia.Controls;
+﻿using global::Avalonia.Controls;
 using global::Avalonia.Controls.Templates;
 using global::Avalonia.Platform.Storage;
 using CodeWF.Avalonia.Controls.Extensions;
@@ -6,7 +6,7 @@ using CodeWF.Core.IServices;
 using CodeWF.Modules.XmlTranslatorManager.Models;
 using CodeWF.Toolkit.Files.Exports;
 using CodeWF.Toolkit.Core.FileExtensions;
-using CodeWF.Avalonia.Lang;
+using CodeWF.Toolkit.Lang;
 using ReactiveUI;
 using System.Data;
 using System.Text;

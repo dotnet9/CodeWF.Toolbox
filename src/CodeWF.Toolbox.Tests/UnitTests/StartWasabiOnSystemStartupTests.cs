@@ -6,6 +6,7 @@ namespace CodeWF.Toolbox.Tests.UnitTests;
 public class StartWasabiOnSystemStartupTests
 {
     [Fact]
+    [Trait("Category", "SystemIntegration")]
     public async Task ModifyStartupOnDifferentSystemsTestAsync()
     {
         if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))

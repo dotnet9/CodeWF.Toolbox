@@ -5,7 +5,7 @@ using CodeWF.Core.Helpers;
 using CodeWF.Core.IServices;
 using CodeWF.Modules.ToolFramework.Models;
 using CodeWF.Modules.ToolFramework.Services;
-using CodeWF.Avalonia.Lang;
+using CodeWF.Toolkit.Lang;
 using Prism.Regions;
 using ReactiveUI;
 using System.Globalization;
@@ -42,12 +42,15 @@ public sealed class ToolViewModel : ReactiveObject, INavigationAware, IDisposabl
     public Control? ClipboardOwner { get; set; }
 
     public ObservableCollection<ToolField> Fields { get; } = [];
+    public ObservableCollection<ToolField> ContentFields { get; } = [];
+    public ObservableCollection<ToolField> ParameterFields { get; } = [];
 
     public ObservableCollection<ToolOutput> Outputs { get; } = [];
 
     public ObservableCollection<ToolActionItem> Actions { get; } = [];
 
     public string BrowseLabel => ToolLocalization.Common.Browse;
+    public string PropertiesLabel => ToolLocalization.Common.Properties;
 
     public string CopyLabel => ToolLocalization.Common.Copy;
 
@@ -62,6 +65,8 @@ public sealed class ToolViewModel : ReactiveObject, INavigationAware, IDisposabl
     }
 
     public bool HasError => !string.IsNullOrWhiteSpace(ErrorMessage);
+    public string TitleKey => _currentTool?.Name ?? string.Empty;
+    public string DescriptionKey => _currentTool?.Description ?? string.Empty;
 
     public ReactiveCommand<Unit, Unit> RunCommand { get; }
 
@@ -96,7 +101,11 @@ public sealed class ToolViewModel : ReactiveObject, INavigationAware, IDisposabl
         _subscriptions.Clear();
         _runCts?.Cancel();
         _currentTool = _registry.Create(id);
+        this.RaisePropertyChanged(nameof(TitleKey));
+        this.RaisePropertyChanged(nameof(DescriptionKey));
         Fields.Clear();
+        ContentFields.Clear();
+        ParameterFields.Clear();
         Outputs.Clear();
         Actions.Clear();
         ErrorMessage = string.Empty;
@@ -114,6 +123,7 @@ public sealed class ToolViewModel : ReactiveObject, INavigationAware, IDisposabl
         {
             RestoreFieldValue(field, savedFieldValues);
             Fields.Add(field);
+            (field.IsMultiLine ? ContentFields : ParameterFields).Add(field);
 
             AddFieldCacheSubscriptions(field);
 

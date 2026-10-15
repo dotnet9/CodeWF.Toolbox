@@ -1,4 +1,4 @@
-using Avalonia;
+﻿using Avalonia;
 using global::Avalonia.Controls;
 using global::Avalonia.Controls.ApplicationLifetimes;
 using global::Avalonia.Markup.Xaml;
@@ -12,8 +12,8 @@ using CodeWF.Toolbox.Services;
 using CodeWF.Toolbox.ViewModels;
 using CodeWF.Toolbox.Views;
 using DryIoc;
-using CodeWF.Avalonia.Lang;
-using CodeWF.Avalonia.Lang.Json;
+using CodeWF.Toolkit.Lang;
+using CodeWF.Toolkit.Lang.Json;
 using Prism.DryIoc;
 using Prism.Ioc;
 using Prism.Modularity;
@@ -54,9 +54,13 @@ public partial class App : PrismApplication
         {
             StartupDiagnostics.Log("App.Initialize: loading application XAML.");
             AvaloniaXamlLoader.Load(this);
+            // Dock 的缓存复用整个内容宿主，分屏/浮动不会创建两个持有同一视图的控件。
+            var documentContent = new global::Avalonia.Controls.Recycling.ControlRecyclingDataTemplate();
+            DataTemplates.Add(new global::Avalonia.Controls.Templates.FuncDataTemplate<Dock.Model.Mvvm.Controls.Document>(
+                (document, _) => documentContent.Build(document?.Context), supportsRecycling: true));
             var langPlugin = new JsonLangPlugin
             {
-                ResourceFolder = Path.Combine(AppContext.BaseDirectory, "I18n")
+                ResourceFolder = ToolboxDataPaths.Resource("I18n")
             };
             I18nManager.Instance.Register(langPlugin, new CultureInfo("zh-CN"), out _);
             StartupDiagnostics.Log("App.Initialize: calling Prism base initialization.");
@@ -148,9 +152,26 @@ public partial class App : PrismApplication
         containerRegistry.RegisterSingleton<IFileChooserService, FileChooserService>();
         containerRegistry.RegisterSingleton<INotificationService, NotificationService>();
         containerRegistry.RegisterInstance<IUpdateChecker>(new UpdateChecker("dotnet9", "CodeWF.Toolbox"));
+        containerRegistry.RegisterInstance<CodeWF.Toolkit.Core.UpdateChecking.IUpdateService>(
+            new CodeWF.Toolkit.Core.UpdateChecking.UpdateService(new() { Repository = "CodeWF.Toolbox", ProductName = "CodeWF.Toolbox" }));
         containerRegistry.RegisterSingleton<IUserProfileService, UserProfileService>();
         containerRegistry.RegisterSingleton<ILoginService, LoginService>();
         containerRegistry.RegisterSingleton<TitleBarSettingsViewModel>();
+        containerRegistry.RegisterSingleton<ToolWorkspace>();
+        containerRegistry.RegisterForNavigation<DashboardView>();
+        containerRegistry.RegisterForNavigation<CodeWF.Modules.ToolFramework.Views.ToolView>();
+        containerRegistry.RegisterForNavigation<CodeWF.Modules.Converter.Views.DateTimeConverterView>();
+        containerRegistry.RegisterForNavigation<CodeWF.Modules.Converter.Views.Base64CodecView>();
+        containerRegistry.RegisterForNavigation<CodeWF.Modules.Converter.Views.GuidGeneratorView>();
+        containerRegistry.RegisterForNavigation<CodeWF.Modules.Converter.Views.YamlToJsonView>();
+        containerRegistry.RegisterForNavigation<CodeWF.Modules.Converter.Views.JsonToYamlView>();
+        containerRegistry.RegisterForNavigation<CodeWF.Modules.Converter.ImageToIconView>();
+        containerRegistry.RegisterForNavigation<CodeWF.Modules.Converter.Views.NuoCheView>();
+        containerRegistry.RegisterForNavigation<CodeWF.Modules.Development.Views.YamlPrettifyView>();
+        containerRegistry.RegisterForNavigation<CodeWF.Modules.Development.Views.JsonPrettifyView>();
+        containerRegistry.RegisterForNavigation<CodeWF.Modules.LogViewer.Views.LogViewerView>();
+        containerRegistry.RegisterForNavigation<CodeWF.Modules.XmlTranslatorManager.Views.MergeXmlFilesView>();
+        containerRegistry.RegisterForNavigation<CodeWF.Modules.XmlTranslatorManager.Views.ManageXmlFilesView>();
 
         containerRegistry.RegisterSingleton<LoginViewModel>();
         containerRegistry.Register<MainWindow>();

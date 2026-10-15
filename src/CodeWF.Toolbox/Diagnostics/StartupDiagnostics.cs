@@ -59,6 +59,8 @@ public static class StartupDiagnostics
 
     private static string[] GetCandidateLogPaths()
     {
+        if (Environment.GetEnvironmentVariable("TOOLBOX_DATA_DIRECTORY") is { Length: > 0 } isolated)
+            return [Path.Combine(Path.GetFullPath(isolated), LogFileName)];
         var localAppData = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
         return
         [

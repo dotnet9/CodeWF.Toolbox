@@ -1,0 +1,19 @@
+<UserControl xmlns="https://github.com/avaloniaui" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:l="clr-namespace:Localization" xmlns:c="https://codewf.com"
+             x:Class="CodeWF.Toolbox.Views.ToolDocumentView" x:CompileBindings="False">
+  <Grid x:Name="DocumentGrid" ColumnDefinitions="*,5,250" Background="{DynamicResource StudioBackground}">
+    <ContentControl x:Name="ToolHost" Margin="12" />
+    <GridSplitter x:Name="PropertySplitter" Grid.Column="1" ResizeDirection="Columns" Background="{DynamicResource StudioBorder}" />
+    <Border x:Name="PropertyPanel" Grid.Column="2" Padding="18" Background="{DynamicResource StudioSurface}">
+      <ScrollViewer>
+        <StackPanel Spacing="16">
+          <TextBlock FontWeight="SemiBold" Text="{c:I18n {x:Static l:Workspace.Properties}}" />
+          <TextBlock x:Name="ToolName" FontSize="17" FontWeight="SemiBold" TextWrapping="Wrap" />
+          <TextBlock x:Name="ToolDescription" TextWrapping="Wrap" Foreground="{DynamicResource StudioMuted}" />
+          <Separator />
+          <TextBlock Text="{c:I18n {x:Static l:Workspace.DocumentHint}}" TextWrapping="Wrap" Foreground="{DynamicResource StudioMuted}" />
+        </StackPanel>
+      </ScrollViewer>
+    </Border>
+  </Grid>
+</UserControl>

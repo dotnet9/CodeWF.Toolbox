@@ -21,6 +21,7 @@
 
 	<ItemGroup>
 		<AvaloniaResource Include="Assets\**" />
+    <TrimmerRootDescriptor Include="Properties\Trimming\TrimmerRoots.xml" />
     <AvaloniaResource Include="..\..\logo.ico" Link="Assets\logo.ico" />
     <AvaloniaResource Include="..\..\logo.png" Link="Assets\logo.png" />
     <AvaloniaResource Include="..\..\logo.svg" Link="Assets\logo.svg" />
@@ -38,6 +39,8 @@
 		<PackageReference Include="Avalonia" />
 		<PackageReference Include="Avalonia.Desktop" />
 		<PackageReference Include="CodeWF.Avalonia.DataGrid" />
+		<PackageReference Include="CodeWF.Avalonia.Dock" />
+		<PackageReference Include="Dock.Model.Mvvm" />
 		<PackageReference Include="Semi.Avalonia" />
 		<PackageReference Include="Irihi.Ursa.PrismExtension" />
 		<PackageReference Include="Irihi.Ursa.Themes.Semi" />

@@ -12,20 +12,25 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Threading;
-using CodeWF.Avalonia.Lang;
+using CodeWF.Toolkit.Lang;
 using Ursa.Controls;
+using CodeWF.Avalonia.Controls.Themes;
 
 namespace CodeWF.Toolbox.Services;
 
 internal class ApplicationService : IApplicationService
 {
     private const string ThemeKey = "Theme";
+    private const string PaletteKey = "StudioPalette";
+    private const string ModeKey = "StudioMode";
+    private StudioThemeController? _themeController;
+    public StudioThemeController ThemeController => _themeController ??= new StudioThemeController(App.Instance);
     private const string LanguageKey = "Language";
     private const string AutoOpenToolboxAtStartupKey = "AutoOpenToolboxAtStartup";
     private const string HideTrayIconOnCloseKey = "HideTrayIconOnClose";
     private const string NeedExitDialogOnCloseKey = "NeedExitDialogOnClose";
 
-    private const string DefaultTheme = "Light";
+    private const string DefaultTheme = "DotNet";
     private const string DefaultLanguage = "zh-CN";
 
     public bool AutoOpenToolboxAtStartup
@@ -70,13 +75,14 @@ internal class ApplicationService : IApplicationService
 
     public List<ThemeItem> Themes { get; } = new()
     {
-        new ThemeItem(Localization.CommonSettingView.Default, nameof(ThemeVariant.Default), ThemeVariant.Default),
-        new ThemeItem(Localization.CommonSettingView.Light, nameof(ThemeVariant.Light), ThemeVariant.Light),
-        new ThemeItem(Localization.CommonSettingView.Dark, nameof(ThemeVariant.Dark), ThemeVariant.Dark),
-        new ThemeItem(Localization.CommonSettingView.Aquatic, nameof(SemiTheme.Aquatic), SemiTheme.Aquatic),
-        new ThemeItem(Localization.CommonSettingView.Desert, nameof(SemiTheme.Desert), SemiTheme.Desert),
-        new ThemeItem(Localization.CommonSettingView.Dusk, nameof(SemiTheme.Dusk), SemiTheme.Dusk),
-        new ThemeItem(Localization.CommonSettingView.NightSky, nameof(SemiTheme.NightSky), SemiTheme.NightSky),
+        new(Localization.Workspace.DotNet, "DotNet", ThemeVariant.Light),
+        new(Localization.Workspace.Aurora, "Aurora", ThemeVariant.Light),
+        new(Localization.Workspace.Ember, "Ember", ThemeVariant.Light),
+        new(Localization.Workspace.Default, "Default", ThemeVariant.Light),
+        new(Localization.Workspace.Aquatic, "Aquatic", ThemeVariant.Light),
+        new(Localization.Workspace.Desert, "Desert", ThemeVariant.Light),
+        new(Localization.Workspace.Dusk, "Dusk", ThemeVariant.Light),
+        new(Localization.Workspace.NightSky, "NightSky", ThemeVariant.Light),
     };
 
     public void Load()
@@ -85,6 +91,7 @@ internal class ApplicationService : IApplicationService
         {
             var theme = GetTheme();
             ChangeTheme(theme);
+            ThemeController.Mode = Enum.TryParse<StudioThemeMode>(GetMode(), out var mode) ? mode : StudioThemeMode.System;
             var culture = GetCulture();
             ChangeCulture(culture);
         }
@@ -98,10 +105,12 @@ internal class ApplicationService : IApplicationService
     {
         try
         {
-            if (AppConfigHelper.TryGet<string>(ThemeKey, out var theme) && !string.IsNullOrWhiteSpace(theme))
+            if (AppConfigHelper.TryGet<string>(PaletteKey, out var theme) && Enum.TryParse<StudioPalette>(theme, out _))
             {
                 return theme;
             }
+
+            if (AppConfigHelper.TryGet<string>(ThemeKey, out var legacy) && legacy is "Aquatic" or "Desert" or "Dusk" or "NightSky") return legacy;
 
             return DefaultTheme;
         }
@@ -116,7 +125,7 @@ internal class ApplicationService : IApplicationService
     {
         try
         {
-            AppConfigHelper.Set(ThemeKey, theme);
+            AppConfigHelper.Set(PaletteKey, theme);
             ChangeTheme(theme);
             EventBus.Default.Publish(new ThemeChangedCommand());
         }
@@ -166,9 +175,21 @@ internal class ApplicationService : IApplicationService
 
     private void ChangeTheme(string theme)
     {
-        var themeObj = Themes.FirstOrDefault(item =>
-            string.Equals(theme, item.Key, StringComparison.InvariantCultureIgnoreCase));
-        App.Instance.RequestedThemeVariant = themeObj?.Theme;
+        ThemeController.Palette = Enum.TryParse<StudioPalette>(theme, out var palette) ? palette : StudioPalette.DotNet;
+    }
+
+    public string GetMode()
+    {
+        if (AppConfigHelper.TryGet<string>(ModeKey, out var mode) && Enum.TryParse<StudioThemeMode>(mode, out _)) return mode;
+        return AppConfigHelper.TryGet<string>(ThemeKey, out var legacy) && legacy is "Light" or "Dark" ? legacy : "System";
+    }
+
+    public void SetMode(string mode)
+    {
+        if (!Enum.TryParse<StudioThemeMode>(mode, out var value)) return;
+        ThemeController.Mode = value;
+        AppConfigHelper.Set(ModeKey, mode);
+        EventBus.Default.Publish(new ThemeChangedCommand());
     }
 
     private readonly Dictionary<string, ResourceDictionary> _semiCultures = new()

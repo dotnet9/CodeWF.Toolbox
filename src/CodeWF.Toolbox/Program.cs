@@ -11,6 +11,11 @@ internal sealed class Program
     [STAThread]
     public static void Main(string[] args)
     {
+        if (args is ["--verify-runtime", var directory])
+        {
+            RuntimeVerification.Run(directory);
+            return;
+        }
         StartupDiagnostics.LogStartupEnvironment();
         AppDomain.CurrentDomain.UnhandledException += (_, e) =>
         {

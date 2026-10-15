@@ -1,11 +1,11 @@
-using global::Avalonia.Input;
+﻿using global::Avalonia.Input;
 using global::Avalonia.Media.Imaging;
 using global::Avalonia.Platform.Storage;
 using CodeWF.Core.IServices;
 using CodeWF.Toolkit.Logging;
 using CodeWF.Toolkit.Image;
 using HashidsNet;
-using CodeWF.Avalonia.Lang;
+using CodeWF.Toolkit.Lang;
 using ReactiveUI;
 
 namespace CodeWF.Modules.Converter.ViewModels;

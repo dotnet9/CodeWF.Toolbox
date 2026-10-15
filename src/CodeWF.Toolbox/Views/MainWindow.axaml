@@ -10,15 +10,15 @@
                      xmlns:language="clr-namespace:Localization"
                      x:DataType="vm:TitleBarSettingsViewModel"
                      mc:Ignorable="d" WindowStartupLocation="CenterScreen"
-                     Width="1180" Height="760"
-                     MinWidth="1024" MinHeight="640"
+                     Width="1440" Height="860"
+                     MinWidth="1120" MinHeight="640"
                      d:DesignWidth="1180" d:DesignHeight="760"
                      Icon="/Assets/logo.ico"
-                     Background="{DynamicResource AppSurfaceBrush}"
+                     Background="{DynamicResource StudioBackground}"
                      TitleBarHeight="50"
-                     TitleBarBackground="{DynamicResource AppChromeBrush}"
-                     TitleBarBorderBrush="{DynamicResource AppLineBrush}"
-                     TitleBarForeground="{DynamicResource AppTextBrush}"
+                     TitleBarBackground="{DynamicResource StudioBackground}"
+                     TitleBarBorderBrush="{DynamicResource StudioBorder}"
+                     TitleBarForeground="{DynamicResource StudioText}"
                      WindowCornerRadius="8"
                      Title="{i18n:I18n {x:Static language:MainModule.Title}}">
     <codewf:CodeWFWindow.Resources>
@@ -33,29 +33,29 @@
             <Setter Property="MinHeight" Value="36" />
             <Setter Property="Padding" Value="0" />
             <Setter Property="CornerRadius" Value="8" />
-            <Setter Property="Background" Value="{DynamicResource AppPanelBrush}" />
-            <Setter Property="BorderBrush" Value="{DynamicResource AppLineBrush}" />
+            <Setter Property="Background" Value="{DynamicResource StudioSurface}" />
+            <Setter Property="BorderBrush" Value="{DynamicResource StudioBorder}" />
             <Setter Property="BorderThickness" Value="1" />
-            <Setter Property="Foreground" Value="{DynamicResource AppAccentBrush}" />
+            <Setter Property="Foreground" Value="{DynamicResource StudioAccent}" />
             <Setter Property="HorizontalContentAlignment" Value="Center" />
             <Setter Property="VerticalContentAlignment" Value="Center" />
         </Style>
         <Style Selector="Button.TitleIconButton:pointerover">
-            <Setter Property="Background" Value="{DynamicResource AppAccentSoftBrush}" />
-            <Setter Property="BorderBrush" Value="{DynamicResource AppAccentBrush}" />
+            <Setter Property="Background" Value="{DynamicResource StudioRaised}" />
+            <Setter Property="BorderBrush" Value="{DynamicResource StudioAccent}" />
         </Style>
         <Style Selector="Border.UserChip">
             <Setter Property="Height" Value="36" />
             <Setter Property="Padding" Value="8 0 12 0" />
-            <Setter Property="Background" Value="{DynamicResource AppPanelBrush}" />
-            <Setter Property="BorderBrush" Value="{DynamicResource AppLineBrush}" />
+            <Setter Property="Background" Value="{DynamicResource StudioSurface}" />
+            <Setter Property="BorderBrush" Value="{DynamicResource StudioBorder}" />
             <Setter Property="BorderThickness" Value="1" />
             <Setter Property="CornerRadius" Value="8" />
         </Style>
         <Style Selector="Border.UserAvatar">
             <Setter Property="Width" Value="22" />
             <Setter Property="Height" Value="22" />
-            <Setter Property="Background" Value="{DynamicResource AppAccentSoftBrush}" />
+            <Setter Property="Background" Value="{DynamicResource StudioRaised}" />
             <Setter Property="CornerRadius" Value="11" />
         </Style>
     </codewf:CodeWFWindow.Styles>
@@ -64,8 +64,8 @@
             <Border
                 Width="32"
                 Height="32"
-                Background="{DynamicResource AppAccentSoftBrush}"
-                BorderBrush="{DynamicResource AppLineBrush}"
+                Background="{DynamicResource StudioRaised}"
+                BorderBrush="{DynamicResource StudioBorder}"
                 BorderThickness="1"
                 CornerRadius="8">
                 <Image Width="22" Height="22" Source="/Assets/logo.ico" />
@@ -82,7 +82,7 @@
         <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="0 0 12 0" Spacing="8">
             <ComboBox
                 x:Name="Search"
-                Width="280"
+                Width="200"
                 Classes="AppSelect"
                 HorizontalContentAlignment="Left"
                 IsEditable="True"
@@ -94,7 +94,7 @@
                 Text="{Binding SearchText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
 
             <ComboBox
-                Width="124"
+                Width="110"
                 Classes="AppSelect"
                 DisplayMemberBinding="{i18n:I18n {Binding Name}}"
                 HorizontalContentAlignment="Left"
@@ -104,7 +104,7 @@
                 ToolTip.Tip="{i18n:I18n {x:Static language:CommonSettingView.Theme}}" />
 
             <ComboBox
-                Width="138"
+                Width="105"
                 Classes="AppSelect"
                 DisplayMemberBinding="{Binding Description}"
                 HorizontalContentAlignment="Left"
@@ -121,8 +121,13 @@
                     Width="16"
                     Height="16"
                     Data="{StaticResource TitleSettingsIconGlyph}"
-                    Foreground="{DynamicResource AppAccentBrush}" />
+                    Foreground="{DynamicResource StudioAccent}" />
             </Button>
+
+            <ComboBox Width="105" Classes="AppSelect" ItemsSource="{Binding ThemeModes}" SelectedItem="{Binding SelectedMode}">
+                <ComboBox.ItemTemplate><DataTemplate><TextBlock Text="{i18n:I18n {Binding Name}}" /></DataTemplate></ComboBox.ItemTemplate>
+            </ComboBox>
+            <Button Classes="TitleIconButton" Click="OpenAboutButton_OnClick" Content="ⓘ" ToolTip.Tip="{i18n:I18n {x:Static language:AboutView.Title}}" />
 
             <Border Classes="UserChip" ToolTip.Tip="{Binding CurrentUsername}">
                 <Grid ColumnDefinitions="Auto,Auto" ColumnSpacing="8" VerticalAlignment="Center">
@@ -132,7 +137,7 @@
                             VerticalAlignment="Center"
                             FontSize="11"
                             FontWeight="Bold"
-                            Foreground="{DynamicResource AppAccentBrush}"
+                            Foreground="{DynamicResource StudioAccent}"
                             Text="{Binding UserInitial}" />
                     </Border>
                     <TextBlock
@@ -140,7 +145,7 @@
                         MaxWidth="92"
                         VerticalAlignment="Center"
                         FontWeight="SemiBold"
-                        Foreground="{DynamicResource AppTextBrush}"
+                        Foreground="{DynamicResource StudioText}"
                         Text="{Binding CurrentUsername}"
                         TextTrimming="CharacterEllipsis" />
                 </Grid>

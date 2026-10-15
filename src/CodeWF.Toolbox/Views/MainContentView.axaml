@@ -1,60 +1,8 @@
-<UserControl xmlns="https://github.com/avaloniaui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:prism="http://prismlibrary.com/"
-             prism:ViewModelLocator.AutoWireViewModel="True"
-             xmlns:core="clr-namespace:CodeWF.Core;assembly=CodeWF.Core"
-             xmlns:u="https://irihi.tech/ursa"
+<UserControl xmlns="https://github.com/avaloniaui" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:prism="http://prismlibrary.com/" xmlns:dock="using:Dock.Avalonia.Controls"
+             xmlns:recycling="using:Avalonia.Controls.Recycling"
              xmlns:vm="clr-namespace:CodeWF.Toolbox.ViewModels"
-             xmlns:converters="clr-namespace:CodeWF.Toolbox.Converters"
-             xmlns:markup="https://codewf.com"
-             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-             x:Class="CodeWF.Toolbox.Views.MainContentView"
-             x:DataType="vm:MainContentViewModel">
-    <UserControl.Resources>
-        <converters:IconConverter x:Key="IconConverter" />
-    </UserControl.Resources>
-    <Border Padding="18 16" Background="{DynamicResource AppSurfaceBrush}">
-        <Grid RowDefinitions="Auto, *">
-            <Border
-                Classes="SurfacePanel"
-                Padding="16 14">
-                <Grid ColumnDefinitions="Auto,*" ColumnSpacing="14">
-                    <Border
-                        Width="48"
-                        Height="48"
-                        VerticalAlignment="Top"
-                        Background="{DynamicResource AppAccentSoftBrush}"
-                        BorderBrush="{DynamicResource AppLineBrush}"
-                        BorderThickness="1"
-                        CornerRadius="8">
-                        <PathIcon
-                            Width="28"
-                            Height="28"
-                            HorizontalAlignment="Center"
-                            VerticalAlignment="Center"
-                            Data="{Binding SelectedMenuItem.Icon, Converter={StaticResource IconConverter}}"
-                            Foreground="{DynamicResource AppAccentBrush}" />
-                    </Border>
-                    <StackPanel Grid.Column="1" Spacing="5" VerticalAlignment="Center">
-                        <TextBlock
-                            Classes="H5"
-                            FontWeight="SemiBold"
-                            Text="{markup:I18n {Binding SelectedMenuItem.Name}}"
-                            TextWrapping="Wrap" />
-                        <TextBlock
-                            Classes="Tertiary"
-                            FontSize="12"
-                            Text="{markup:I18n {Binding SelectedMenuItem.Description}}"
-                            TextWrapping="Wrap" />
-                    </StackPanel>
-                </Grid>
-            </Border>
-            <ContentControl
-                Grid.Row="1"
-                Margin="0 14 0 0"
-                prism:RegionManager.RegionName="{x:Static core:RegionNames.ContentRegion}" />
-        </Grid>
-    </Border>
+             x:Class="CodeWF.Toolbox.Views.MainContentView" x:DataType="vm:MainContentViewModel"
+             prism:ViewModelLocator.AutoWireViewModel="True">
+  <dock:DockControl Layout="{Binding Workspace.Layout}" Margin="8" recycling:ControlRecyclingDataTemplate.ControlRecycling="{StaticResource ToolDocumentRecycling}" />
 </UserControl>

@@ -11,7 +11,7 @@
     xmlns:vm="clr-namespace:CodeWF.Toolbox.ViewModels"
     Width="364"
     Height="240"
-    BorderBrush="{DynamicResource AppLineBrush}"
+    BorderBrush="{DynamicResource StudioBorder}"
     BorderThickness="1"
     CanResize="False"
     IsFullScreenButtonVisible="False"
@@ -19,12 +19,12 @@
     IsRestoreButtonVisible="False"
     ShowInTaskbar="False"
     WindowStartupLocation="CenterOwner"
-    Background="{DynamicResource AppPanelBrush}"
+    Background="{DynamicResource StudioSurface}"
     Icon="/Assets/logo.ico"
     TitleBarHeight="34"
-    TitleBarBackground="{DynamicResource AppPanelBrush}"
-    TitleBarBorderBrush="{DynamicResource AppLineBrush}"
-    TitleBarForeground="{DynamicResource AppTextBrush}"
+    TitleBarBackground="{DynamicResource StudioSurface}"
+    TitleBarBorderBrush="{DynamicResource StudioBorder}"
+    TitleBarForeground="{DynamicResource StudioText}"
     TitleBarMargin="1 1 1 0"
     WindowCornerRadius="8"
     d:DesignHeight="240"
@@ -51,28 +51,28 @@
             <Setter Property="VerticalContentAlignment" Value="Center" />
         </Style>
         <Style Selector="Button.ExitCancel">
-            <Setter Property="Background" Value="{DynamicResource AppPanelBrush}" />
-            <Setter Property="BorderBrush" Value="{DynamicResource AppLineBrush}" />
-            <Setter Property="Foreground" Value="{DynamicResource AppTextBrush}" />
+            <Setter Property="Background" Value="{DynamicResource StudioSurface}" />
+            <Setter Property="BorderBrush" Value="{DynamicResource StudioBorder}" />
+            <Setter Property="Foreground" Value="{DynamicResource StudioText}" />
         </Style>
         <Style Selector="Button.ExitCancel:pointerover">
-            <Setter Property="Background" Value="{DynamicResource AppPanelAltBrush}" />
-            <Setter Property="BorderBrush" Value="{DynamicResource AppLineBrush}" />
+            <Setter Property="Background" Value="{DynamicResource StudioRaised}" />
+            <Setter Property="BorderBrush" Value="{DynamicResource StudioBorder}" />
         </Style>
         <Style Selector="Button.ExitConfirm">
-            <Setter Property="Background" Value="{DynamicResource AppAccentBrush}" />
-            <Setter Property="BorderBrush" Value="{DynamicResource AppAccentBrush}" />
+            <Setter Property="Background" Value="{DynamicResource StudioAccent}" />
+            <Setter Property="BorderBrush" Value="{DynamicResource StudioAccent}" />
             <Setter Property="Foreground" Value="White" />
         </Style>
         <Style Selector="Button.ExitConfirm:pointerover">
-            <Setter Property="Background" Value="{DynamicResource AppAccentHoverBrush}" />
-            <Setter Property="BorderBrush" Value="{DynamicResource AppAccentHoverBrush}" />
+            <Setter Property="Background" Value="{DynamicResource StudioSecondary}" />
+            <Setter Property="BorderBrush" Value="{DynamicResource StudioSecondary}" />
         </Style>
         <Style Selector="CheckBox.ExitRemember">
             <Setter Property="MinHeight" Value="28" />
             <Setter Property="Padding" Value="0" />
             <Setter Property="VerticalAlignment" Value="Center" />
-            <Setter Property="Foreground" Value="{DynamicResource AppTextBrush}" />
+            <Setter Property="Foreground" Value="{DynamicResource StudioText}" />
             <Setter Property="Template">
                 <ControlTemplate>
                     <Grid
@@ -85,7 +85,7 @@
                             Height="15"
                             VerticalAlignment="Center"
                             Background="Transparent"
-                            BorderBrush="{DynamicResource AppLineBrush}"
+                            BorderBrush="{DynamicResource StudioBorder}"
                             BorderThickness="1"
                             CornerRadius="2">
                             <PathIcon
@@ -94,7 +94,7 @@
                                 HorizontalAlignment="Center"
                                 VerticalAlignment="Center"
                                 Data="M9,16.2 L4.8,12 L3.4,13.4 L9,19 L21,7 L19.6,5.6 Z"
-                                Foreground="{DynamicResource AppAccentBrush}"
+                                Foreground="{DynamicResource StudioAccent}"
                                 IsVisible="{TemplateBinding IsChecked}" />
                         </Border>
                         <ContentPresenter
@@ -108,10 +108,10 @@
             </Setter>
         </Style>
         <Style Selector="CheckBox.ExitRemember:checked /template/ Border#RememberBox">
-            <Setter Property="BorderBrush" Value="{DynamicResource AppAccentBrush}" />
+            <Setter Property="BorderBrush" Value="{DynamicResource StudioAccent}" />
         </Style>
         <Style Selector="CheckBox.ExitRemember:pointerover /template/ Border#RememberBox">
-            <Setter Property="BorderBrush" Value="{DynamicResource AppAccentBrush}" />
+            <Setter Property="BorderBrush" Value="{DynamicResource StudioAccent}" />
         </Style>
     </codewf:CodeWFWindow.Styles>
 
@@ -121,7 +121,7 @@
                 Width="28"
                 Height="28"
                 VerticalAlignment="Top"
-                Background="{DynamicResource AppAccentBrush}"
+                Background="{DynamicResource StudioAccent}"
                 CornerRadius="14">
                 <TextBlock
                     HorizontalAlignment="Center"
@@ -136,7 +136,7 @@
                 <TextBlock
                     Margin="0 4 0 0"
                     FontWeight="SemiBold"
-                    Foreground="{DynamicResource AppTextBrush}"
+                    Foreground="{DynamicResource StudioText}"
                     Text="{i18n:I18n {x:Static language:ExitOptionView.Message}}"
                     TextWrapping="Wrap" />
                 <views:ExitOptionView HorizontalAlignment="Stretch" />

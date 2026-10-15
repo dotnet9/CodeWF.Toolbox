@@ -3,6 +3,7 @@ using CodeWF.Core.Models;
 using CodeWF.Toolkit.EventBus;
 using CodeWF.Toolbox.Commands;
 using ReactiveUI;
+using CodeWF.Toolbox.Services;
 
 namespace CodeWF.Toolbox.ViewModels;
 
@@ -32,8 +33,11 @@ internal class MainContentViewModel : ViewModelBase
         set => this.RaiseAndSetIfChanged(ref _selectedMenuItem, value);
     }
 
-    public MainContentViewModel()
+    public ToolWorkspace Workspace { get; }
+
+    public MainContentViewModel(ToolWorkspace workspace)
     {
+        Workspace = workspace;
         EventBus.Default.Subscribe(this);
     }
 

@@ -69,7 +69,8 @@
             "CheckUpdate": "Check for updates",
             "UpdateAvailable": "New version found: ",
             "UpToDate": "You are already on the latest version",
-            "UpdateCheckFailed": "Update check failed: "
+            "UpdateCheckFailed": "Update check failed: ",
+            "AuthorLabel": "Author"
         },
         "ExitOptionView": {
             "Message": "Choose a close action:",
@@ -102,6 +103,42 @@
             "AccountAlreadyRunning": "This account is already running in another instance",
             "LoginSuccess": "Login successful",
             "LoginFailed": "Invalid username or password"
+        },
+        "Workspace": {
+            "Properties": "Properties",
+            "DocumentHint": "Each tool keeps its own input and results. Drag document tabs to split, dock or float; drag the divider to resize properties.",
+            "SplitDocument": "Split document",
+            "CloseAll": "Close all documents",
+            "System": "System",
+            "Light": "Light",
+            "Dark": "Dark",
+            "DotNet": "DotNet",
+            "Aurora": "Aurora",
+            "Ember": "Ember",
+            "Default": "Default",
+            "Aquatic": "Aquatic",
+            "Desert": "Desert",
+            "Dusk": "Dusk",
+            "NightSky": "NightSky"
+        },
+        "UpdateFlow": {
+            "AboutAvailable": "Version {0} is available.",
+            "AboutCanceled": "Canceled. You can check again.",
+            "AboutChecking": "Checking…",
+            "AboutCurrent": "You are up to date.",
+            "AboutDownloadProgress": "Downloading and verifying {0}",
+            "AboutDownloaded": "The package was downloaded and verified. It is ready to install.",
+            "AboutDownloading": "Downloading and verifying…",
+            "AboutFailed": "Update failed: {0}. Please retry.",
+            "AboutInstalled": "The package is open. Follow the system instructions to finish.",
+            "AboutInstalling": "Starting installation…",
+            "AboutOpenFolder": "Open download folder",
+            "AboutRetry": "Retry",
+            "UpdateCheck": "Check for updates",
+            "UpdateDownload": "Download update",
+            "UpdateInstall": "Install update",
+            "UpdateReleasePage": "Open release page",
+            "AboutCancel": "Cancel"
         }
     }
 }

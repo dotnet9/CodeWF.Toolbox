@@ -58,8 +58,8 @@
 
         <Grid Grid.Row="2" ColumnDefinitions="*, Auto">
             <Border
-                Background="{DynamicResource AppPanelBrush}"
-                BorderBrush="{DynamicResource AppLineBrush}"
+                Background="{DynamicResource StudioSurface}"
+                BorderBrush="{DynamicResource StudioBorder}"
                 BorderThickness="1"
                 CornerRadius="8">
                 <Grid>
@@ -73,7 +73,7 @@
                         TextWrapping="Wrap" />
                     <avaloniaEdit:TextEditor
                         x:Name="LogEditor"
-                        Background="{DynamicResource AppPanelBrush}"
+                        Background="{DynamicResource StudioSurface}"
                         BorderThickness="0"
                         FontFamily="{StaticResource CodeEditorThemeFontFamily}"
                         FontSize="12"

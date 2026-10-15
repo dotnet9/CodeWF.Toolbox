@@ -11,7 +11,8 @@
         "OpenFile": "打开文件",
         "SaveFile": "保存文件",
         "MissingToolId": "缺少工具 ID。",
-        "ToolNotRegistered": "工具“{0}”未注册。"
+        "ToolNotRegistered": "工具“{0}”未注册。",
+        "Properties": "属性"
       },
       "Groups": {
         "Security": "安全",

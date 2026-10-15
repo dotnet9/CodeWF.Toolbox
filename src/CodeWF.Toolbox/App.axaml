@@ -6,12 +6,15 @@
     xmlns:language="clr-namespace:Localization"
     xmlns:prism="http://prismlibrary.com/"
     xmlns:semi="https://irihi.tech/semi"
-    xmlns:codewf="https://codewf.com">
+    xmlns:codewf="https://codewf.com" xmlns:dm="using:Dock.Model.Mvvm.Controls" xmlns:recycling="using:Avalonia.Controls.Recycling">
+    <Application.Resources><recycling:ControlRecycling x:Key="ToolDocumentRecycling" /></Application.Resources>
     <prism:PrismApplication.Styles>
 		<semi:SemiTheme Locale="zh-CN" />
 		<codewf:DataGridSemiTheme />
         <semi:UrsaSemiTheme Locale="zh-CN"/>
 		<codewf:ACSemiTheme />
+        <codewf:DockSemiTheme />
+        <codewf:StudioTheme />
         <StyleInclude Source="../Styles/Index.axaml" />
         <codewf:MarkdownThemes TypographyTheme="Simple"
                                TypographySize="Small" />

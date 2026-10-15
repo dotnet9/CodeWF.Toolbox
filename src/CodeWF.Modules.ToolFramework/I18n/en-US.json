@@ -11,7 +11,8 @@
         "OpenFile": "Open file",
         "SaveFile": "Save file",
         "MissingToolId": "Missing tool id.",
-        "ToolNotRegistered": "Tool '{0}' is not registered."
+        "ToolNotRegistered": "Tool '{0}' is not registered.",
+        "Properties": "Properties"
       },
       "Groups": {
         "Security": "Security",

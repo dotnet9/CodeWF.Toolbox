@@ -69,7 +69,8 @@
             "CheckUpdate": "检查更新",
             "UpdateAvailable": "发现新版本：",
             "UpToDate": "当前已是最新版本",
-            "UpdateCheckFailed": "检查更新失败："
+            "UpdateCheckFailed": "检查更新失败：",
+            "AuthorLabel": "作者"
         },
         "ExitOptionView": {
             "Message": "请选择关闭窗体操作:",
@@ -102,6 +103,42 @@
             "AccountAlreadyRunning": "该账号已在另一个实例中运行",
             "LoginSuccess": "登录成功",
             "LoginFailed": "用户名或密码错误"
+        },
+        "Workspace": {
+            "Properties": "属性",
+            "DocumentHint": "每个工具保留独立输入和结果。拖动文档标签可拆分、停靠或浮动；拖动分隔条调整属性面板。",
+            "SplitDocument": "并排文档",
+            "CloseAll": "关闭所有文档",
+            "System": "跟随系统",
+            "Light": "浅色",
+            "Dark": "深色",
+            "DotNet": ".NET 紫",
+            "Aurora": "极光",
+            "Ember": "余烬",
+            "Default": "默认",
+            "Aquatic": "水生",
+            "Desert": "沙漠",
+            "Dusk": "黄昏",
+            "NightSky": "夜空"
+        },
+        "UpdateFlow": {
+            "AboutAvailable": "发现新版本 {0}。",
+            "AboutCanceled": "已取消，可重新检查更新。",
+            "AboutChecking": "正在检查…",
+            "AboutCurrent": "当前已是最新版本。",
+            "AboutDownloadProgress": "正在下载并校验 {0}",
+            "AboutDownloaded": "安装包已下载并通过校验，可以安装。",
+            "AboutDownloading": "正在下载并校验…",
+            "AboutFailed": "更新失败：{0}，请重试。",
+            "AboutInstalled": "已打开安装包，请按系统提示完成安装。",
+            "AboutInstalling": "正在启动安装…",
+            "AboutOpenFolder": "打开下载目录",
+            "AboutRetry": "重试",
+            "UpdateCheck": "检查更新",
+            "UpdateDownload": "下载更新",
+            "UpdateInstall": "安装更新",
+            "UpdateReleasePage": "打开发布页",
+            "AboutCancel": "取消"
         }
     }
 }

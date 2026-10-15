@@ -17,14 +17,14 @@
     </UserControl.DataContext>
     <StackPanel Spacing="12" MaxWidth="860">
         <Border
-            Background="{DynamicResource AppPanelAltBrush}"
-            BorderBrush="{DynamicResource AppLineBrush}"
+            Background="{DynamicResource StudioRaised}"
+            BorderBrush="{DynamicResource StudioBorder}"
             BorderThickness="1"
             CornerRadius="8"
             Padding="14 12">
         <StackPanel Orientation="Horizontal" Spacing="10">
             <TextBlock Text="{i18n:I18n {x:Static language:DateTimeConverterView.CurrentTimestampLabel}}" VerticalAlignment="Center" />
-            <SelectableTextBlock Text="{Binding CurrentTimestamp}" Foreground="{DynamicResource AppRoseBrush}" VerticalAlignment="Center" />
+            <SelectableTextBlock Text="{Binding CurrentTimestamp}" Foreground="{DynamicResource SemiRed5}" VerticalAlignment="Center" />
             <Button Classes="AppPrimary" Content="{i18n:I18n {x:Static language:DateTimeConverterView.StartButtonContent}}" Command="{Binding StartRefreshingAsync}" />
             <Button Classes="AppGhost" Content="{i18n:I18n {x:Static language:DateTimeConverterView.StopButtonContent}}" Command="{Binding StopRefreshingAsync}" />
             <Button Classes="AppGhost" Content="{i18n:I18n {x:Static language:DateTimeConverterView.RefreshButtonContent}}" Command="{Binding RefreshTimestampAsync}" />
@@ -32,8 +32,8 @@
         </Border>
 
         <Border
-            Background="{DynamicResource AppPanelBrush}"
-            BorderBrush="{DynamicResource AppLineBrush}"
+            Background="{DynamicResource StudioSurface}"
+            BorderBrush="{DynamicResource StudioBorder}"
             BorderThickness="1"
             CornerRadius="8"
             Padding="14 12">
@@ -50,8 +50,8 @@
         </Border>
 
         <Border
-            Background="{DynamicResource AppPanelBrush}"
-            BorderBrush="{DynamicResource AppLineBrush}"
+            Background="{DynamicResource StudioSurface}"
+            BorderBrush="{DynamicResource StudioBorder}"
             BorderThickness="1"
             CornerRadius="8"
             Padding="14 12">

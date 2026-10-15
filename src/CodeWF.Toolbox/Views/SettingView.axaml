@@ -13,11 +13,11 @@
     Width="720" WindowStartupLocation="CenterOwner"
     Height="560"
     Icon="/Assets/logo.ico"
-    Background="{DynamicResource AppSurfaceBrush}"
+    Background="{DynamicResource StudioBackground}"
     TitleBarHeight="48"
-    TitleBarBackground="{DynamicResource AppChromeBrush}"
-    TitleBarBorderBrush="{DynamicResource AppLineBrush}"
-    TitleBarForeground="{DynamicResource AppTextBrush}"
+    TitleBarBackground="{DynamicResource StudioBackground}"
+    TitleBarBorderBrush="{DynamicResource StudioBorder}"
+    TitleBarForeground="{DynamicResource StudioText}"
     WindowCornerRadius="8"
     d:DesignHeight="600"
     d:DesignWidth="500"
@@ -31,8 +31,8 @@
         <Border
             Width="30"
             Height="30"
-            Background="{DynamicResource AppAccentSoftBrush}"
-            BorderBrush="{DynamicResource AppLineBrush}"
+            Background="{DynamicResource StudioRaised}"
+            BorderBrush="{DynamicResource StudioBorder}"
             BorderThickness="1"
             CornerRadius="8"
             IsHitTestVisible="False">
@@ -68,19 +68,19 @@
                         <Setter Property="Background" Value="Transparent" />
                         <Setter Property="BorderBrush" Value="Transparent" />
                         <Setter Property="BorderThickness" Value="1" />
-                        <Setter Property="Foreground" Value="{DynamicResource AppMutedTextBrush}" />
+                        <Setter Property="Foreground" Value="{DynamicResource StudioMuted}" />
                         <Setter Property="FontWeight" Value="SemiBold" />
                         <Setter Property="HorizontalContentAlignment" Value="Center" />
                         <Setter Property="VerticalContentAlignment" Value="Center" />
                     </Style>
                     <Style Selector="TabItem:pointerover">
-                        <Setter Property="Background" Value="{DynamicResource AppAccentSoftBrush}" />
-                        <Setter Property="Foreground" Value="{DynamicResource AppAccentBrush}" />
+                        <Setter Property="Background" Value="{DynamicResource StudioRaised}" />
+                        <Setter Property="Foreground" Value="{DynamicResource StudioAccent}" />
                     </Style>
                     <Style Selector="TabItem:selected">
-                        <Setter Property="Background" Value="{DynamicResource AppAccentSoftBrush}" />
-                        <Setter Property="BorderBrush" Value="{DynamicResource AppAccentBrush}" />
-                        <Setter Property="Foreground" Value="{DynamicResource AppAccentBrush}" />
+                        <Setter Property="Background" Value="{DynamicResource StudioRaised}" />
+                        <Setter Property="BorderBrush" Value="{DynamicResource StudioAccent}" />
+                        <Setter Property="Foreground" Value="{DynamicResource StudioAccent}" />
                     </Style>
                 </TabControl.Styles>
             </TabControl>

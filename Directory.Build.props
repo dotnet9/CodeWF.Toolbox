@@ -1,11 +1,15 @@
 <Project>
   <PropertyGroup>
-    <Version>12.0.9.0</Version>
+    <Version>12.0.10.0</Version>
     <Title>码坊工具箱客户端</Title>
     <Description>使用 .NET 10、Avalonia UI 和 Prism 开发的工具客户端，支持 AOT 发布。</Description>
     <Company>dotnet9.com</Company>
+    <Authors>沙漠尽头的狼</Authors>
     <Product>CodeWF.Toolbox</Product>
     <Copyright>Copyright © 2026 dotnet9.com. All rights reserved.</Copyright>
     <DefineConstants>$(DefineConstants);PLATFORM_WIN_X64</DefineConstants>
   </PropertyGroup>
+  <ItemGroup>
+    <AssemblyMetadata Include="Author" Value="$(Authors)" />
+  </ItemGroup>
 </Project>

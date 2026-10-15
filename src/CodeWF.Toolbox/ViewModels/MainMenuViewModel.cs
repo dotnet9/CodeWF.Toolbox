@@ -6,7 +6,7 @@ using CodeWF.Core.Models;
 using CodeWF.Toolkit.EventBus;
 using CodeWF.Toolbox.Commands;
 using CodeWF.Toolbox.Views;
-using CodeWF.Avalonia.Lang;
+using CodeWF.Toolkit.Lang;
 using Prism.Ioc;
 using Prism.Regions;
 using ReactiveUI;
@@ -15,6 +15,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Reactive;
 using System.Threading.Tasks;
+using CodeWF.Toolbox.Services;
 
 namespace CodeWF.Toolbox.ViewModels;
 
@@ -23,7 +24,8 @@ internal class MainMenuViewModel : ViewModelBase
     private readonly IRegionManager _regionManager;
     private readonly IToolMenuService _toolMenuService;
     private readonly IUserProfileService _userProfileService;
-    private bool _isSyncingGroupSelection;
+    private readonly ToolWorkspace _workspace;
+    public ReactiveCommand<ToolMenuItem, Unit> OpenToolCommand { get; }
     private string _searchKeyword = string.Empty;
 
     public ObservableCollection<ToolMenuItem> MenuItems { get; } = [];
@@ -70,10 +72,6 @@ internal class MainMenuViewModel : ViewModelBase
             this.RaiseAndSetIfChanged(ref _selectedGroupItem, value);
             RefreshActiveMenuItems();
 
-            if (!_isSyncingGroupSelection)
-            {
-                SelectFirstToolInGroup(value);
-            }
         }
     }
 
@@ -88,11 +86,14 @@ internal class MainMenuViewModel : ViewModelBase
     internal MainMenuViewModel(
         IRegionManager regionManager,
         IToolMenuService toolMenuService,
-        IUserProfileService userProfileService)
+        IUserProfileService userProfileService,
+        ToolWorkspace workspace)
     {
         _regionManager = regionManager;
         _toolMenuService = toolMenuService;
         _userProfileService = userProfileService;
+        _workspace = workspace;
+        OpenToolCommand = ReactiveCommand.Create<ToolMenuItem>(item => { SelectedMenuItem = item; });
 
         _toolMenuService.ToolMenuChanged += MenuChangedHandler;
         EventBus.Default.Subscribe(this);
@@ -343,15 +344,7 @@ internal class MainMenuViewModel : ViewModelBase
     private void SetSelectedGroupFromMenu(ToolMenuItem? item)
     {
         var group = FindOwningTopLevel(MenuItems, item) ?? GroupItems.FirstOrDefault();
-        _isSyncingGroupSelection = true;
-        try
-        {
-            SelectedGroupItem = group;
-        }
-        finally
-        {
-            _isSyncingGroupSelection = false;
-        }
+        SelectedGroupItem = group;
     }
 
     private static ToolMenuItem? FindOwningTopLevel(ObservableCollection<ToolMenuItem> groups, ToolMenuItem? item)
@@ -396,7 +389,7 @@ internal class MainMenuViewModel : ViewModelBase
 
         // 只有真正的工具菜单项才触发区域导航，分组与分隔符只承担结构展示职责。
         SetSelectedGroupFromMenu(_selectedMenuItem);
-        _regionManager.RequestNavigate(RegionNames.ContentRegion, _selectedMenuItem.ViewName);
+        _workspace.Open(_selectedMenuItem);
         _userProfileService.RecordToolUsage(_selectedMenuItem);
         SelectedMenuStatus = _selectedMenuItem.Status switch
         {
