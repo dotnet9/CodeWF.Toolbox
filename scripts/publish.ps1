@@ -4,7 +4,9 @@ param(
     [ValidateSet('win-x64','linux-x64','linux-arm64','osx-x64','osx-arm64')]
     [string] $RuntimeIdentifier = 'win-x64',
     [string] $Version = '',
-    [string] $OutputDirectory = ''
+    [string] $OutputDirectory = '',
+    [string] $ArtifactsPath = '',
+    [string] $NuGetConfig = ''
 )
 $ErrorActionPreference = 'Stop'
 $repositoryRoot = (Resolve-Path -LiteralPath (Join-Path $PSScriptRoot '..')).Path
@@ -14,10 +16,12 @@ if (-not $Version) {
 }
 if (-not $OutputDirectory) { $OutputDirectory = Join-Path $repositoryRoot "publish/$RuntimeIdentifier" }
 $project = Join-Path $repositoryRoot 'src/CodeWF.Toolbox/CodeWF.Toolbox.csproj'
-dotnet publish $project -c Release -f net10.0 -r $RuntimeIdentifier --self-contained true `
-    -p:PublishAot=true -p:PublishTrimmed=true -p:PublishSingleFile=false `
-    -p:IlcGenerateCompleteTypeMetadata=true -p:IlcTrimMetadata=false -p:IlcSingleThreaded=true `
-    -p:CompressSymbols=false -p:DebugType=none -p:DebugSymbols=false `
-    -p:Version=$Version -o $OutputDirectory
+$publishArgs = @('publish', $project, '-c', 'Release', '-f', 'net10.0', '-r', $RuntimeIdentifier, '--self-contained', 'true',
+    '-p:PublishAot=true', '-p:PublishTrimmed=true', '-p:PublishSingleFile=false',
+    '-p:IlcGenerateCompleteTypeMetadata=true', '-p:IlcTrimMetadata=false', '-p:IlcSingleThreaded=true',
+    '-p:CompressSymbols=false', '-p:DebugType=none', '-p:DebugSymbols=false', "-p:Version=$Version", '-o', $OutputDirectory)
+if ($ArtifactsPath) { $publishArgs += @('--artifacts-path', $ArtifactsPath) }
+if ($NuGetConfig) { $publishArgs += @('--configfile', $NuGetConfig) }
+& dotnet @publishArgs
 if ($LASTEXITCODE -ne 0) { throw "NativeAOT publish failed for $RuntimeIdentifier" }
 Write-Host "Published $Version ${RuntimeIdentifier}: $OutputDirectory"

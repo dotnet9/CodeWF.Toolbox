@@ -14,4 +14,6 @@ dotnet test src/CodeWF.Toolbox.Tests/CodeWF.Toolbox.Tests.csproj -c Release --fi
 
 NativeAOT 发布验证器时使用与正式应用相同的完整反射元数据和 TrimmerRoots.xml；运行发布后的 UiVerification.exe，检查输出 NativeAOT=True。正式应用另有 --verify-runtime <temporary-output>，仅验证 AOT、发布资源与 Unicode 算法，执行后退出，不创建窗口。
 
+发布脚本支持 `-OutputDirectory`、`-ArtifactsPath`、`-NuGetConfig`，可将正式产品构建、发布资源和安装器输入全部保存在仓库外，仍保留相同的 NativeAOT 参数与默认包源。
+
 文件/网络工具的外部副作用和各操作系统安装器交互不由此验证；发布流水线分别在五个原生 runner 构建、运行自检并验证安装包 SHA-256。
