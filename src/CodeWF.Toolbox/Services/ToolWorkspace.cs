@@ -38,6 +38,11 @@ public sealed class ToolWorkspace
             Id = "Workspace", IsCollapsable = false,
             VisibleDockables = Factory.CreateList<IDockable>(Documents), ActiveDockable = Documents
         };
+        // 浮动文档需要实际宿主窗口，内容与用户调整的属性面板共同迁移。
+        Factory.HostWindowLocator = new Dictionary<string, Func<IHostWindow?>>
+        {
+            [nameof(IDockWindow)] = () => new global::Dock.Avalonia.Controls.HostWindow()
+        };
         Factory.InitLayout(Layout);
         Factory.DockableClosed += (_, args) =>
         {
@@ -89,7 +94,7 @@ public sealed class ToolWorkspace
     public void SplitActive()
     {
         if (ActiveDocument is { Owner: IDock owner } active && owner.VisibleDockables?.Count > 1)
-            Factory.SplitToDock(owner, active, DockOperation.Right);
+            new global::Dock.Model.DockService().SplitDockable(active, owner, owner, DockOperation.Right, bExecute: true);
     }
 
     public static string Translate(string? key) => string.IsNullOrWhiteSpace(key) ? string.Empty : I18nManager.Instance.GetResource(key);

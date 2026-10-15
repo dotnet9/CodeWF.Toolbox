@@ -100,11 +100,32 @@ Check(I18nManager.Instance.Culture.Name == "en-US" && firstDocument.Title == "Ba
 Check(settings.SelectedLanguage?.CultureName == "en-US", "Visible language selection follows the requested culture");
 Check(firstDocument.Title == I18nManager.Instance.GetResource(base64.Name!), "Open document titles follow singleton language changes");
 CheckLocalized(window); Capture(window, "workspace-en-US.png");
+// 工具导航位于 Dock 外；检查用户已拖动的文档属性宽度，而非重置默认值。
+var adjustedPropertyWidth = grid.ColumnDefinitions[2].Width;
+var adjustedPropertyPixels = grid.ColumnDefinitions[2].ActualWidth;
+var ribbon = window.GetVisualDescendants().OfType<MainMenuView>().Single();
+var ribbonBounds = ribbon.Bounds;
 workspace.SplitActive(); Pump();
 Check(firstDocument.Owner != secondDocument.Owner, "Real Dock splits tools into independent panes");
+Check(!((Dock.Model.Core.IDock)secondDocument.Owner!).VisibleDockables!.Contains(firstDocument),
+    "Splitting removes the original tab instead of duplicating the document");
+VerifyDocumentTransfer("split");
 Capture(window, "workspace-split.png");
+workspace.Factory.FloatDockable(firstDocument);
+WaitForDock(() => TopLevel.GetTopLevel(firstView) is Window floating && !ReferenceEquals(floating, window),
+    "Real Dock floats the same document into a headless host window");
+VerifyDocumentTransfer("float");
+Capture((Window)TopLevel.GetTopLevel(firstView)!, "workspace-floating.png");
+workspace.Factory.MoveDockable((Dock.Model.Core.IDock)firstDocument.Owner!,
+    (Dock.Model.Core.IDock)secondDocument.Owner!, firstDocument, null);
+WaitForDock(() => ReferenceEquals(TopLevel.GetTopLevel(firstView), window),
+    "Real Dock re-docks the same document into the application shell");
+VerifyDocumentTransfer("re-dock");
+Check(((Dock.Model.Core.IDock)firstDocument.Owner!).VisibleDockables!.Count(document => ReferenceEquals(document, firstDocument)) == 1 &&
+      workspace.OpenDocuments.Count == 2, "Re-docking retains exactly one tab and workspace entry for each tool");
+Capture(window, "workspace-redocked.png");
 workspace.Open(base64); workspace.CloseActive(); Pump();
-Check(workspace.OpenDocuments.Count == 1 && !workspace.OpenDocuments.Contains(firstDocument), "Close active works after moving a document to a split pane");
+Check(workspace.OpenDocuments.Count == 1 && !workspace.OpenDocuments.Contains(firstDocument), "Close active works after splitting, floating and re-docking a document");
 Check(!recycling.TryGetValue(firstDocument, out _), "Closed document is removed from the shared recycling cache");
 workspace.Open(base64); Pump();
 var reopened = workspace.OpenDocuments.Single(document => document.Id == base64.ViewName);
@@ -240,6 +261,24 @@ void VerifyCaptionCapabilities(Window target)
     Check(target.WindowState == WindowState.Normal, "Disabled caption guards programmatic maximization");
     target.CanMinimize = canMinimize; target.CanMaximize = canMaximize; target.WindowState = originalState; Pump();
     Check(minimize.IsEnabled == canMinimize && maximize.IsEnabled == (target.CanResize && canMaximize), "Caption capabilities restore without recreating the host window");
+}
+void VerifyDocumentTransfer(string stage)
+{
+    Pump();
+    Check(ReferenceEquals(firstDocument.Context, firstView) && ReferenceEquals(firstView.ToolModel, first) &&
+          first.Fields.Single(field => field.Id == "text").Text == "Independent 中文 😀" &&
+          first.Outputs[0].Text == Convert.ToBase64String(Encoding.UTF8.GetBytes("Independent 中文 😀")),
+        "Document " + stage + " preserves the actual view, model, Unicode input and result");
+    Check(grid.ColumnDefinitions[2].Width == adjustedPropertyWidth &&
+          Math.Abs(grid.ColumnDefinitions[2].ActualWidth - adjustedPropertyPixels) <= 2,
+        "Document " + stage + " preserves the user-adjusted property width");
+    Check(ribbon.Bounds == ribbonBounds, "Document " + stage + " preserves the external tool ribbon geometry");
+}
+void WaitForDock(Func<bool> condition, string message)
+{
+    var timer = Stopwatch.StartNew();
+    while (!condition() && timer.ElapsedMilliseconds < 4000) Pump();
+    Check(condition(), message);
 }
 void Pump()
 {
