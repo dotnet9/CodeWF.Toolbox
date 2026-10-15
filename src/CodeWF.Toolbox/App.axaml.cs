@@ -63,6 +63,8 @@ public partial class App : PrismApplication
                 ResourceFolder = ToolboxDataPaths.Resource("I18n")
             };
             I18nManager.Instance.Register(langPlugin, new CultureInfo("zh-CN"), out _);
+            I18nManager.Instance.CultureChanged += OnCultureChanged;
+            ApplyControlCulture();
             StartupDiagnostics.Log("App.Initialize: calling Prism base initialization.");
             base.Initialize(); // <-- Required
             StartupDiagnostics.Log("App.Initialize: completed.");
@@ -72,6 +74,27 @@ public partial class App : PrismApplication
             StartupDiagnostics.LogException("App.Initialize", exception);
             throw;
         }
+    }
+
+    private static void OnCultureChanged(object? sender, EventArgs args)
+    {
+        if (global::Avalonia.Threading.Dispatcher.UIThread.CheckAccess()) ApplyControlCulture();
+        else global::Avalonia.Threading.Dispatcher.UIThread.Post(ApplyControlCulture);
+    }
+
+    private static void ApplyControlCulture()
+    {
+        if (Current is not { } application || I18nManager.Instance.Culture is not { } culture) return;
+        var semiCulture = culture.Name == "zh-Hant" ? CultureInfo.GetCultureInfo("zh-TW") : culture;
+        // 当前 Ursa 2.2.0 未提供繁体和日语资源，明确回退到简体和英语。
+        var ursaCulture = culture.Name switch
+        {
+            "zh-Hant" => CultureInfo.GetCultureInfo("zh-CN"),
+            "ja-JP" => CultureInfo.GetCultureInfo("en-US"),
+            _ => culture
+        };
+        foreach (var theme in application.Styles.OfType<Semi.Avalonia.SemiTheme>()) theme.Locale = semiCulture;
+        foreach (var theme in application.Styles.OfType<Ursa.Themes.Semi.UrsaSemiTheme>()) theme.Locale = ursaCulture;
     }
 
     protected override void ConfigureModuleCatalog(IModuleCatalog moduleCatalog)

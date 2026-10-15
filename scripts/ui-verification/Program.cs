@@ -47,6 +47,8 @@ window.Width = 1280; window.Height = 840; window.Show(); Pump();
 var settings = (TitleBarSettingsViewModel)window.DataContext!;
 Check(settings.Themes.Count == 8 && settings.ThemeModes.Count == 3, "Eight shared palettes and three independent modes");
 VerifyTitleBar();
+VerifyControlCulture(window, ["zh-CN", "zh-Hant", "en-US", "ja-JP"], culture =>
+    window.FindControl<ComboBox>("TitleBarLanguageSelector")!.SelectedItem = settings.Languages.Single(item => item.CultureName == culture));
 // About is a settings page; verify caption capabilities on its real application shell.
 VerifyCaptionCapabilities(window);
 var tools = Flatten(menu.MenuItems).Where(item => !string.IsNullOrWhiteSpace(item.ViewName)).ToArray();
@@ -100,6 +102,15 @@ Check(I18nManager.Instance.Culture.Name == "en-US" && firstDocument.Title == "Ba
 Check(settings.SelectedLanguage?.CultureName == "en-US", "Visible language selection follows the requested culture");
 Check(firstDocument.Title == I18nManager.Instance.GetResource(base64.Name!), "Open document titles follow singleton language changes");
 CheckLocalized(window); Capture(window, "workspace-en-US.png");
+foreach (var (culture, expected) in new[] { ("zh-CN", "属性"), ("zh-Hant", "屬性"), ("en-US", "Properties"), ("ja-JP", "プロパティ") })
+{
+    settings.SelectedLanguage = settings.Languages.Single(language => language.CultureName == culture); Pump();
+    Check(firstView.GetVisualDescendants().OfType<TextBlock>().Any(text => text.Text == expected),
+        "Real document properties heading follows the selected language: " + culture);
+}
+Check(I18nManager.Instance.GetResource("Localization.NuoCheView.InputTitle") == "車移動の案内文（短めに）",
+    "Japanese parking QR input label resolves from the real converter resource");
+settings.SelectedLanguage = settings.Languages.Single(language => language.CultureName == "en-US"); Pump();
 // 工具导航位于 Dock 外；检查用户已拖动的文档属性宽度，而非重置默认值。
 var adjustedPropertyWidth = grid.ColumnDefinitions[2].Width;
 var adjustedPropertyPixels = grid.ColumnDefinitions[2].ActualWidth;
@@ -279,6 +290,57 @@ void WaitForDock(Func<bool> condition, string message)
     var timer = Stopwatch.StartNew();
     while (!condition() && timer.ElapsedMilliseconds < 4000) Pump();
     Check(condition(), message);
+}
+void VerifyControlCulture(Window owner, string[] cultures, Action<string> selectTitleBar)
+{
+    var originalCulture = I18nManager.Instance.Culture;
+    var editor = new TextBox { Text = "Locale 中文 😀" };
+    var host = new Window { Content = editor, Width = 340, Height = 110 };
+    host.Show(owner); Pump();
+    var menu = editor.ContextFlyout as MenuFlyout ?? throw new InvalidOperationException("Semi editor menu is missing.");
+    var semiTheme = Application.Current!.Styles.OfType<Semi.Avalonia.SemiTheme>().Single();
+    var ursaTheme = Application.Current.Styles.OfType<Ursa.Themes.Semi.UrsaSemiTheme>().Single();
+    foreach (var direct in new[] { false, true })
+    foreach (var culture in cultures)
+    {
+        if (direct) I18nManager.Instance.Culture = System.Globalization.CultureInfo.GetCultureInfo(culture);
+        else selectTitleBar(culture);
+        Pump();
+        ResourceDictionary semiText = culture switch
+        {
+            "en-US" => new Semi.Avalonia.Locale.en_us(),
+            "zh-Hant" => new Semi.Avalonia.Locale.zh_tw(),
+            "ja-JP" => new Semi.Avalonia.Locale.ja_jp(),
+            _ => new Semi.Avalonia.Locale.zh_cn()
+        };
+        ResourceDictionary ursaText = culture switch
+        {
+            "en-US" => new Ursa.Themes.Semi.Locale.en_us(),
+            "ja-JP" => new Ursa.Themes.Semi.Locale.en_us(),
+            _ => new Ursa.Themes.Semi.Locale.zh_cn()
+        };
+        menu.ShowAt(editor); Pump();
+        Check(((MenuItem)menu.Items[1]!).Header?.ToString() == semiText["STRING_MENU_COPY"]?.ToString() &&
+              ((MenuItem)menu.Items[2]!).Header?.ToString() == semiText["STRING_MENU_PASTE"]?.ToString() &&
+              editor.Text == "Locale 中文 😀" && semiTheme.Locale?.Name == (culture == "zh-Hant" ? "zh-TW" : culture),
+            "Existing Semi editor copy/paste follows " + (direct ? "direct manager" : "title selector") + ": " + culture);
+        menu.Hide();
+        Check(ursaTheme.Resources["STRING_MENU_DIALOG_CANCEL"]?.ToString() == ursaText["STRING_MENU_DIALOG_CANCEL"]?.ToString() &&
+              ursaTheme.Locale?.Name == (culture == "zh-Hant" ? "zh-CN" : culture == "ja-JP" ? "en-US" : culture),
+            "Actual Ursa locale follows " + (direct ? "direct manager" : "title selector") + ": " + culture);
+    }
+    Application.Current.Resources["STRING_MENU_COPY"] = "宿主复制";
+    Application.Current.Resources["STRING_MENU_DIALOG_CANCEL"] = "宿主取消";
+    I18nManager.Instance.Culture = System.Globalization.CultureInfo.GetCultureInfo("zh-CN"); Pump();
+    menu.ShowAt(editor); Pump();
+    Check(((MenuItem)menu.Items[1]!).Header?.ToString() == "宿主复制" &&
+          Application.Current.Resources["STRING_MENU_DIALOG_CANCEL"]?.ToString() == "宿主取消",
+        "Third-party locale changes preserve host resource overrides");
+    menu.Hide();
+    Application.Current.Resources.Remove("STRING_MENU_COPY");
+    Application.Current.Resources.Remove("STRING_MENU_DIALOG_CANCEL");
+    I18nManager.Instance.Culture = originalCulture; Pump();
+    host.Close();
 }
 void Pump()
 {

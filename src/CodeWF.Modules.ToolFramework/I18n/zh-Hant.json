@@ -11,7 +11,8 @@
         "OpenFile": "開啟檔案",
         "SaveFile": "儲存檔案",
         "MissingToolId": "缺少工具 ID。",
-        "ToolNotRegistered": "工具「{0}」未註冊。"
+        "ToolNotRegistered": "工具「{0}」未註冊。",
+        "Properties": "屬性"
       },
       "Groups": {
         "Security": "安全",

@@ -4,20 +4,25 @@ $temporaryRoot = [IO.Path]::GetFullPath($temporaryRoot)
 $fixture = Join-Path $temporaryRoot ('codewf-installers-test-' + [guid]::NewGuid().ToString('N'))
 New-Item -ItemType Directory -Path $fixture -Force | Out-Null
 $verify = Join-Path $PSScriptRoot '../verify_release_installers.ps1'
+function New-FixtureSet([string] $Product, [string] $ArtifactVersion) {
+    foreach ($old in Get-ChildItem -LiteralPath $fixture -File) { Remove-Item -LiteralPath $old.FullName -Force }
+    foreach ($rid in @('win-x64', 'linux-x64', 'linux-arm64', 'osx-x64', 'osx-arm64')) {
+        $suffix = if ($rid.StartsWith('win')) { '-setup.exe' } elseif ($rid.StartsWith('linux')) { '.deb' } else { '.dmg' }
+        $file = Join-Path $fixture ("$Product-v$ArtifactVersion-" + $rid + $suffix)
+        Set-Content -LiteralPath $file -Value ('Controlled packaging fixture ' + $rid) -Encoding utf8
+        $hash = (Get-FileHash -LiteralPath $file -Algorithm SHA256).Hash.ToLowerInvariant()
+        "$hash  $([IO.Path]::GetFileName($file))" | Set-Content -LiteralPath ($file + '.sha256') -Encoding ascii
+    }
+}
 function Assert-Rejected([scriptblock] $Action) {
     $rejected = $false
     try { & $Action } catch { $rejected = $true }
     if (-not $rejected) { throw '错误的发布产物未被拒绝。' }
 }
 try {
-    foreach ($rid in @('win-x64', 'linux-x64', 'linux-arm64', 'osx-x64', 'osx-arm64')) {
-        $extension = if ($rid.StartsWith('win')) { '.exe' } elseif ($rid.StartsWith('linux')) { '.deb' } else { '.dmg' }
-        $file = Join-Path $fixture ('Example-v1.2.3-' + $rid + $extension)
-        Set-Content -LiteralPath $file -Value ('Controlled packaging fixture ' + $rid) -Encoding utf8
-        $hash = (Get-FileHash -LiteralPath $file -Algorithm SHA256).Hash.ToLowerInvariant()
-        "$hash  $([IO.Path]::GetFileName($file))" | Set-Content -LiteralPath ($file + '.sha256') -Encoding ascii
-    }
+    New-FixtureSet 'CodeWF.Toolbox' '1.2.3'
     & $verify -Version '1.2.3' -PackageDirectory $fixture
+    & $verify -Version 'v1.2.3' -PackageDirectory $fixture
     $extra = Join-Path $fixture 'Example-portable.zip'
     Set-Content -LiteralPath $extra -Value 'Forbidden portable distribution'
     Assert-Rejected { & $verify -Version '1.2.3' -PackageDirectory $fixture }
@@ -27,7 +32,12 @@ try {
     Assert-Rejected { & $verify -Version '1.2.3' -PackageDirectory $fixture }
     Remove-Item -LiteralPath $checksum.FullName -Force
     Assert-Rejected { & $verify -Version '1.2.3' -PackageDirectory $fixture }
-    Write-Host 'PASS: 五平台完整产物通过，便携压缩包、篡改校验和缺失文件均被拒绝。'
+    New-FixtureSet 'CodeWF.Toolbox' '1.2.3.4'
+    Assert-Rejected { & $verify -Version '1.2.3' -PackageDirectory $fixture }
+    & $verify -Version '1.2.3.4' -PackageDirectory $fixture
+    New-FixtureSet 'Example' '1.2.3'
+    Assert-Rejected { & $verify -Version '1.2.3' -PackageDirectory $fixture }
+    Write-Host 'PASS: 精确产品与版本的五平台产物通过，错版本、错产品、便携包、篡改校验和缺失文件均被拒绝。'
 }
 finally {
     $resolved = [IO.Path]::GetFullPath($fixture)

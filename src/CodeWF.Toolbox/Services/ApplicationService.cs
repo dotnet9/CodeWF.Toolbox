@@ -192,49 +192,8 @@ internal class ApplicationService : IApplicationService
         EventBus.Default.Publish(new ThemeChangedCommand());
     }
 
-    private readonly Dictionary<string, ResourceDictionary> _semiCultures = new()
-    {
-        { "en-US", new Semi.Avalonia.Locale.en_us() },
-        { "ja-JP", new Semi.Avalonia.Locale.ja_jp() },
-        { "ru-RU", new Semi.Avalonia.Locale.ru_ru() },
-        { "uk-UA", new Semi.Avalonia.Locale.uk_ua() },
-        { "zh-CN", new Semi.Avalonia.Locale.zh_cn() }
-    };
-
-    private readonly Dictionary<string, ResourceDictionary> _ursaCultures = new()
-    {
-        { "en-US", new Ursa.Themes.Semi.Locale.en_us() }, { "zh-CN", new Ursa.Themes.Semi.Locale.zh_cn() }
-    };
-
     private void ChangeCulture(string language)
     {
-        void ChangeThirdCulture(ResourceDictionary res)
-        {
-            foreach (var kv in res)
-            {
-                if (App.Instance.Resources.ContainsKey(kv.Key))
-                {
-                    App.Instance.Resources.Remove(kv.Key);
-                }
-
-                App.Instance.Resources.Add(kv);
-            }
-        }
-
-        // 切换业务资源语言。
-        var culture = new CultureInfo(language);
-        I18nManager.Instance.Culture = culture;
-
-        // 同步切换 Semi.Avalonia 内置控件语言。
-        if (_semiCultures.ContainsKey(language))
-        {
-            ChangeThirdCulture(_semiCultures[language]);
-        }
-
-        // 同步切换 Ursa 控件语言。
-        if (_ursaCultures.ContainsKey(language))
-        {
-            ChangeThirdCulture(_ursaCultures[language]);
-        }
+        I18nManager.Instance.Culture = new CultureInfo(language);
     }
 }

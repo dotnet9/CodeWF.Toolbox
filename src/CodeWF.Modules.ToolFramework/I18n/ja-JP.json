@@ -11,7 +11,8 @@
         "OpenFile": "ファイルを開く",
         "SaveFile": "ファイルを保存",
         "MissingToolId": "ツール ID がありません。",
-        "ToolNotRegistered": "ツール '{0}' は登録されていません。"
+        "ToolNotRegistered": "ツール '{0}' は登録されていません。",
+        "Properties": "プロパティ"
       },
       "Groups": {
         "Security": "セキュリティ",

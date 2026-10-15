@@ -73,6 +73,7 @@
       "Title": "車移動用QRコード生成ツール",
       "Description": "車の移動用QRコードを生成するために使用します",
       "InputPhoneNumber": "車移動通知用電話番号",
+      "InputTitle": "車移動の案内文（短めに）",
       "EnableSubTitle": "小見出しを追加する",
       "Show": "表示",
       "DefaultInputTitle": "コードをスキャンし車移動",
