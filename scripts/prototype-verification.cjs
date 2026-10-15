@@ -22,6 +22,12 @@ const assert = (value, message) => { if (!value) throw new Error(message); conso
     assert(await page.locator('.desktop-titlebar [data-window]').count()===3,'three desktop caption buttons');
     assert(await page.locator('.desktop-window').evaluate(el=>parseFloat(getComputedStyle(el).borderTopWidth)>=1),'visible outer desktop border');
     assert(await page.locator('#title-palettes button').count()===8,'eight flat title palette buttons');
+    const swatches=()=>page.locator('[data-title-palette]').evaluateAll(items=>items.map(button=>({key:button.dataset.titlePalette,color:getComputedStyle(button.querySelector('i')).backgroundColor,image:getComputedStyle(button.querySelector('i')).backgroundImage})));
+    const fixedSwatches=await swatches(),expectedColors=['rgb(81, 43, 212)',null,'rgb(189, 103, 77)','rgb(0, 100, 250)','rgb(0, 141, 158)','rgb(181, 117, 50)','rgb(122, 92, 196)','rgb(43, 108, 176)'];
+    assert(JSON.stringify(fixedSwatches.map(item=>item.key))===JSON.stringify(['DotNet','Aurora','Ember','Default','Aquatic','Desert','Dusk','NightSky'])&&!fixedSwatches.some((item,index)=>index===1?!item.image.includes('rgb(137, 104, 255), rgb(38, 212, 204)'):item.color!==expectedColors[index]),'StudioSwatch .21 fixed color values, gradient and order');
+    const normalWidth=await page.locator('.desktop-window').evaluate(el=>el.getBoundingClientRect().width);
+    await page.locator('[data-window=maximize]').click();assert(await page.locator('.desktop-window').evaluate(el=>el.getBoundingClientRect().width)>normalWidth,'maximize changes window geometry');await page.locator('[data-window=maximize]').click();assert(await page.locator('.desktop-window').evaluate(el=>el.getBoundingClientRect().width)===normalWidth,'restore recovers geometry');
+    for(const action of ['minimize','close']){await page.locator('[data-window='+action+']').click();assert(!await page.locator('.desktop-window').isVisible()&&await page.locator('#restore-window').isVisible(),'window actually hides: '+action);await page.locator('#restore-window').click();assert(await page.locator('.desktop-window').isVisible(),'restore/reopen is clickable: '+action);}
     assert((await page.locator('#groups button').count()) === 13, 'all 13 categories are available offline');
     for (const button of await page.locator('#groups button').all()) {
       await button.click(); assert((await page.locator('#commands button').count()) > 0, 'category has tools: ' + await button.textContent());
@@ -57,6 +63,7 @@ const assert = (value, message) => { if (!value) throw new Error(message); conso
       await selectPalette(palette);
       for (const mode of ['Light','Dark']) {
         await selectMode(mode);
+        assert(JSON.stringify(await swatches())===JSON.stringify(fixedSwatches),'palette dots remain fixed: '+palette+' '+mode);
         await page.screenshot({ path: path.join(output, palette + '-' + mode + '.png') });
       }
     }
