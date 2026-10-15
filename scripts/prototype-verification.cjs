@@ -16,6 +16,8 @@ const assert = (value, message) => { if (!value) throw new Error(message); conso
     page.on('request', request => { if (/^https?:/.test(request.url())) external.push(request.url()); });
     await page.goto(pathToFileURL(path.join(standalone, 'index.html')).href);
     await page.waitForSelector('.pane');
+    assert(await page.locator('.desktop-titlebar [data-window]').count()===3,'three desktop caption buttons');
+    assert(await page.locator('.desktop-window').evaluate(el=>parseFloat(getComputedStyle(el).borderTopWidth)>=1),'visible outer desktop border');
     assert((await page.locator('#groups button').count()) === 13, 'all 13 categories are available offline');
     for (const button of await page.locator('#groups button').all()) {
       await button.click(); assert((await page.locator('#commands button').count()) > 0, 'category has tools: ' + await button.textContent());
@@ -41,7 +43,12 @@ const assert = (value, message) => { if (!value) throw new Error(message); conso
     }
     await page.reload();
     assert(await page.locator('#palette').inputValue() === 'NightSky' && await page.locator('#mode').inputValue() === 'Dark', 'appearance preferences survive reload');
-    await page.locator('#about').click(); await page.locator('#scenario').selectOption('download-failed');
+    await page.locator('#about').click();
+    assert(await page.locator('#about-dialog .dialog-caption button').count()===3,'About has three window buttons');
+    assert(await page.locator('#about-build').textContent()==='2026-10-15 00:00:00','fixed prototype build timestamp');
+    assert(await page.locator('#about-dialog .dialog-top').evaluate(el=>el.getBoundingClientRect().height)===40,'desktop About titlebar');
+    await page.screenshot({path:path.join(output,'about-desktop-en-US.png')});
+    await page.locator('#scenario').selectOption('download-failed');
     await page.locator('#update').click(); await page.waitForFunction(() => updateState === 'available');
     await page.locator('#update').click(); await page.waitForFunction(() => updateState === 'failed');
     await page.locator('#update').click(); await page.waitForFunction(() => updateState === 'downloaded');
