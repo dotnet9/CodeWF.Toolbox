@@ -7,6 +7,7 @@
 
 - 版本号唯一来源：根目录 `Directory.Build.props` 的 `<Version>`（个别仓库在主 csproj，如 IEditor/QuickApp）。
 - 发布 tag 必须与该版本一致：`<Version>1.2.3</Version>` ↔ tag `v1.2.3`。
+- Toolbox 的四段程序集版本保留末尾零；发布 tag 省略该零，例如 `12.0.12.0` 对应 `v12.0.12`。
 - README 的「当前版本」行（如有）同步更新。
 - 更新日志：有 `UpdateLog.md` 的仓库，发布前新增对应版本条目（`## 版本 (YYYY-MM-DD)`）。
 
@@ -45,17 +46,17 @@ git tag -a vX.Y.Z -m "应用名 X.Y.Z
 
 | 平台 | 产物 | 说明 |
 | --- | --- | --- |
-| win-x64 | 安装器或 zip（各仓既有形态） | NativeAOT |
-| win-x86 | 同上 | NativeAOT 不支持 x86 的仓库保持自包含单文件 |
-| linux-x64 / linux-arm64 | `.deb`（amd64/arm64） | NativeAOT；arm64 在 arm runner 上原生编译 |
-| osx-x64 / osx-arm64 | `.dmg` | NativeAOT；保留符号（Apple ld_classic 不支持压缩调试段） |
+| win-x64 | `CodeWF.Toolbox-v版本-win-x64-setup.exe` + `.sha256` | NativeAOT |
+| linux-x64 / linux-arm64 | `.deb`（amd64/arm64）+ `.sha256` | NativeAOT；arm64 在 arm runner 上原生编译 |
+| osx-x64 / osx-arm64 | `.dmg` + `.sha256` | NativeAOT |
 
 - 统一配方：`-p:PublishAot=true -p:PublishTrimmed=true -p:PublishSingleFile=false
   -p:IlcGenerateCompleteTypeMetadata=true -p:IlcTrimMetadata=false -p:IlcSingleThreaded=true`。
 - Linux runner 需 `clang zlib1g-dev`；不要在 x64 runner 上交叉编译其他架构的 AOT。
+- Release 只包含五个平台的安装器与 SHA-256，共 10 项，不发布便携压缩包。
 - 平台相关功能未适配时，应用内以「当前平台功能正在开发中」友好提示，不阻塞发布与启动。
 
 ## 5. 发布后检查
 
 - Release 页：说明可读、资产齐全（对照矩阵）、带 `.sha256` 的照旧。
-- 安装包抽查：至少在 Windows 本机跑一次发布产物。
+- 在 Windows 本机运行正式发布程序的 `--verify-runtime <独立临时目录>`；锁屏期间不启动普通桌面或安装器。自检不能替代安装器交互、IME 和多 DPI 验收。
