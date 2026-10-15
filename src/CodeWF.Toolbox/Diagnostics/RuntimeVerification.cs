@@ -1,12 +1,12 @@
-using CodeWF.Modules.ToolFramework.Models;
 using CodeWF.Modules.ToolFramework.Services;
+using CodeWF.Modules.ToolFramework.Models;
 using CodeWF.Toolkit.Lang;
 using CodeWF.Toolkit.Lang.Json;
 using CodeWF.Toolbox.Services;
 using System;
-using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
+using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 
@@ -25,15 +25,11 @@ internal static class RuntimeVerification
         if (I18nManager.Instance.GetResource(Localization.AboutView.Title) != "About")
             throw new InvalidOperationException("Published I18n resources are unavailable.");
         var text = "NativeAOT 中文 😀";
-        var fields = new Dictionary<string, ToolField>
-        {
-            ["text"] = new() { Id = "text", Label = "Text", Kind = ToolFieldKind.MultiLine, Text = text },
-            ["urlSafe"] = new() { Id = "urlSafe", Label = "URL safe", Kind = ToolFieldKind.Boolean },
-            ["mode"] = new() { Id = "mode", Label = "Mode", Kind = ToolFieldKind.Select, SelectedOption = new("Encode", "encode") }
-        };
-        var result = new ToolOutput { Id = "result", Label = "Result" };
-        ToolAlgorithms.Base64StringAsync(new ToolRunContext(fields, new Dictionary<string, ToolOutput> { ["result"] = result }), default).GetAwaiter().GetResult();
-        if (result.Text != Convert.ToBase64String(Encoding.UTF8.GetBytes(text))) throw new InvalidOperationException("Native Base64 result mismatch.");
+        var tool = new ToolRegistry().Create("base64-string-converter") ?? throw new InvalidOperationException("Base64 tool is unavailable.");
+        tool.Fields.Single(field => field.Id == "text").Text = text;
+        tool.RunAsync!(new ToolRunContext(tool.Fields.ToDictionary(field => field.Id), tool.Outputs.ToDictionary(result => result.Id)), default).GetAwaiter().GetResult();
+        if (tool.Outputs.Single(result => result.Id == "result").Text != Convert.ToBase64String(Encoding.UTF8.GetBytes(text)))
+            throw new InvalidOperationException("Native Base64 result mismatch.");
         var message = $"NativeAOT runtime verification passed; version={typeof(Program).Assembly.GetName().Version}; I18n + Unicode Base64";
         File.WriteAllText(Path.Combine(output, "runtime-verification.txt"), message);
         Console.WriteLine(message);
