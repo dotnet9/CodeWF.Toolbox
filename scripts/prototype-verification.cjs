@@ -14,7 +14,7 @@ const assert = (value, message) => { if (!value) throw new Error(message); conso
     const selectPalette=async value=>page.locator('[data-title-palette="'+value+'"]').click();
     const selectMode=async value=>{for(let i=0;i<3&&await page.locator('#title-mode').getAttribute('data-mode')!==value;i++)await page.locator('#title-mode').click();};
     const selectLanguage=async value=>{await page.locator('#title-language summary').click();await page.locator('[data-title-language="'+value+'"]').click();};
-    const errors = [], external = [];
+    const errors = [], external = [], primaryStates = [];
     page.on('pageerror', error => errors.push(error.message));
     page.on('request', request => { if (/^https?:/.test(request.url())) external.push(request.url()); });
     await page.goto(pathToFileURL(path.join(standalone, 'index.html')).href);
@@ -64,6 +64,28 @@ const assert = (value, message) => { if (!value) throw new Error(message); conso
       for (const mode of ['Light','Dark']) {
         await selectMode(mode);
         assert(JSON.stringify(await swatches())===JSON.stringify(fixedSwatches),'palette dots remain fixed: '+palette+' '+mode);
+        const primary = page.locator('[data-run]').first();
+        const measurePrimary = async (state, token) => {
+          const value = await primary.evaluate((button, token) => {
+            const style = getComputedStyle(button);
+            const channels = color => color.match(/[\d.]+/g).slice(0, 3).map(Number);
+            const luminance = color => channels(color).map(value => { const normalized = value / 255; return normalized <= .04045 ? normalized / 12.92 : Math.pow((normalized + .055) / 1.055, 2.4); }).reduce((sum, value, index) => sum + value * [.2126, .7152, .0722][index], 0);
+            const first = luminance(style.color), second = luminance(style.backgroundColor);
+            const expected = getComputedStyle(document.documentElement).getPropertyValue('--' + token).trim();
+            const rgb = /^#[\da-f]{6}$/i.test(expected) ? 'rgb(' + [1, 3, 5].map(index => parseInt(expected.slice(index, index + 2), 16)).join(', ') + ')' : expected;
+            return { foreground: style.color, background: style.backgroundColor, expected: rgb, ratio: (Math.max(first, second) + .05) / (Math.min(first, second) + .05), disabled: button.disabled };
+          }, token);
+          primaryStates.push({ palette, mode, state, ...value });
+          assert(state === 'disabled' ? value.disabled : value.background === value.expected && value.ratio >= 4.5,
+            'actual primary ' + state + ': ' + palette + '/' + mode + ' contrast=' + value.ratio.toFixed(4));
+        };
+        await page.mouse.move(0, 0); await measurePrimary('normal', 'primary');
+        await primary.focus(); await measurePrimary('focus', 'primary');
+        await primary.hover(); await measurePrimary('hover', 'primary-hover');
+        await page.mouse.down(); await measurePrimary('pressed', 'primary-pressed');
+        await page.mouse.move(0, 0); await page.mouse.up();
+        await primary.evaluate(button => button.disabled = true); await measurePrimary('disabled', 'raised');
+        await primary.evaluate(button => button.disabled = false);
         await page.screenshot({ path: path.join(output, palette + '-' + mode + '.png') });
       }
     }
@@ -98,6 +120,6 @@ const assert = (value, message) => { if (!value) throw new Error(message); conso
     await page.screenshot({path:path.join(output,'desktop-980.png')});
     assert(errors.length === 0, 'zero JavaScript errors: ' + errors.join('; '));
     assert(external.length === 0, 'zero external requests');
-    fs.writeFileSync(path.join(output, 'verification.json'), JSON.stringify({ standalone:true, categories:13, paletteSnapshots:16, errors, external }, null, 2));
+    fs.writeFileSync(path.join(output, 'verification.json'), JSON.stringify({ standalone:true, categories:13, paletteSnapshots:16, primaryStates, errors, external }, null, 2));
   } finally { await browser.close(); }
 })().catch(error => { console.error(error); process.exitCode = 1; });

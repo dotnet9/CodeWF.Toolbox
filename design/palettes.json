@@ -6,7 +6,11 @@
     "line": "#DDD8EC",
     "text": "#242036",
     "muted": "#6E6684",
-    "accent": "#512BD4"
+    "accent": "#512BD4",
+    "primary": "#512BD4",
+    "primary-hover": "#4927BF",
+    "primary-pressed": "#4122AA",
+    "on-primary": "#FFFFFF"
   },
   "DotNetDark": {
     "bg": "#12111C",
@@ -15,7 +19,11 @@
     "line": "#343044",
     "text": "#F3F0FC",
     "muted": "#AAA5C0",
-    "accent": "#A78BFA"
+    "accent": "#A78BFA",
+    "primary": "#512BD4",
+    "primary-hover": "#4927BF",
+    "primary-pressed": "#4122AA",
+    "on-primary": "#FFFFFF"
   },
   "AuroraLight": {
     "bg": "#FFFFFF",
@@ -24,7 +32,11 @@
     "line": "#DDD8EC",
     "text": "#242036",
     "muted": "#6E6684",
-    "accent": "#6745D6"
+    "accent": "#6745D6",
+    "primary": "#512BD4",
+    "primary-hover": "#4927BF",
+    "primary-pressed": "#4122AA",
+    "on-primary": "#FFFFFF"
   },
   "AuroraDark": {
     "bg": "#101820",
@@ -33,7 +45,11 @@
     "line": "#2C3B48",
     "text": "#F3F0FC",
     "muted": "#AAA5C0",
-    "accent": "#AE96FF"
+    "accent": "#AE96FF",
+    "primary": "#512BD4",
+    "primary-hover": "#4927BF",
+    "primary-pressed": "#4122AA",
+    "on-primary": "#FFFFFF"
   },
   "EmberLight": {
     "bg": "#FFFFFF",
@@ -42,7 +58,11 @@
     "line": "#DDCABC",
     "text": "#242036",
     "muted": "#6E6684",
-    "accent": "#A94F36"
+    "accent": "#A94F36",
+    "primary": "#A94F36",
+    "primary-hover": "#984731",
+    "primary-pressed": "#873F2B",
+    "on-primary": "#FFFFFF"
   },
   "EmberDark": {
     "bg": "#1B1616",
@@ -51,7 +71,11 @@
     "line": "#443631",
     "text": "#F3F0FC",
     "muted": "#AAA5C0",
-    "accent": "#E6A58F"
+    "accent": "#E6A58F",
+    "primary": "#A94F36",
+    "primary-hover": "#984731",
+    "primary-pressed": "#873F2B",
+    "on-primary": "#FFFFFF"
   },
   "DefaultLight": {
     "bg": "#FFFFFF",
@@ -59,8 +83,12 @@
     "raised": "#EEF1F6",
     "line": "#DDE2EB",
     "text": "#202736",
-    "muted": "#68758B",
-    "accent": "#0064FA"
+    "muted": "#606D82",
+    "accent": "#005DE8",
+    "primary": "#0064FA",
+    "primary-hover": "#005AE1",
+    "primary-pressed": "#0050C8",
+    "on-primary": "#FFFFFF"
   },
   "DefaultDark": {
     "bg": "#13161C",
@@ -69,7 +97,11 @@
     "line": "#354051",
     "text": "#EDF1F8",
     "muted": "#A6B2C6",
-    "accent": "#6AA8FF"
+    "accent": "#6AA8FF",
+    "primary": "#0064FA",
+    "primary-hover": "#005AE1",
+    "primary-pressed": "#0050C8",
+    "on-primary": "#FFFFFF"
   },
   "AquaticLight": {
     "bg": "#F4FCFC",
@@ -78,7 +110,11 @@
     "line": "#BFDCE0",
     "text": "#183B42",
     "muted": "#526F77",
-    "accent": "#007A8C"
+    "accent": "#007184",
+    "primary": "#007D8F",
+    "primary-hover": "#007081",
+    "primary-pressed": "#006472",
+    "on-primary": "#FFFFFF"
   },
   "AquaticDark": {
     "bg": "#101B20",
@@ -87,7 +123,11 @@
     "line": "#35505B",
     "text": "#E6F6F7",
     "muted": "#A4C2C8",
-    "accent": "#62D7DC"
+    "accent": "#62D7DC",
+    "primary": "#007D8F",
+    "primary-hover": "#007081",
+    "primary-pressed": "#006472",
+    "on-primary": "#FFFFFF"
   },
   "DesertLight": {
     "bg": "#FFFCF5",
@@ -95,8 +135,12 @@
     "raised": "#F3E8D5",
     "line": "#DECDB0",
     "text": "#3C3022",
-    "muted": "#7B6C55",
-    "accent": "#98631D"
+    "muted": "#73644F",
+    "accent": "#8A591A",
+    "primary": "#9B651E",
+    "primary-hover": "#8C5B1B",
+    "primary-pressed": "#7C5118",
+    "on-primary": "#FFFFFF"
   },
   "DesertDark": {
     "bg": "#211C16",
@@ -105,7 +149,11 @@
     "line": "#544630",
     "text": "#F7EDDB",
     "muted": "#C8B799",
-    "accent": "#E6B96D"
+    "accent": "#E6B96D",
+    "primary": "#9B651E",
+    "primary-hover": "#8C5B1B",
+    "primary-pressed": "#7C5118",
+    "on-primary": "#FFFFFF"
   },
   "DuskLight": {
     "bg": "#FAF8FE",
@@ -113,8 +161,12 @@
     "raised": "#E7E0F3",
     "line": "#D3C7E6",
     "text": "#332841",
-    "muted": "#746583",
-    "accent": "#7052B5"
+    "muted": "#6D5E7C",
+    "accent": "#7052B5",
+    "primary": "#7052B5",
+    "primary-hover": "#654AA3",
+    "primary-pressed": "#5A4291",
+    "on-primary": "#FFFFFF"
   },
   "DuskDark": {
     "bg": "#1C1725",
@@ -123,7 +175,11 @@
     "line": "#4B3E5D",
     "text": "#F2EAFB",
     "muted": "#BEB0D0",
-    "accent": "#BBA0EB"
+    "accent": "#BBA0EB",
+    "primary": "#7052B5",
+    "primary-hover": "#654AA3",
+    "primary-pressed": "#5A4291",
+    "on-primary": "#FFFFFF"
   },
   "NightSkyLight": {
     "bg": "#F6F9FF",
@@ -131,8 +187,12 @@
     "raised": "#DDE9F8",
     "line": "#BED0E8",
     "text": "#20314A",
-    "muted": "#5D6F87",
-    "accent": "#235FAD"
+    "muted": "#566780",
+    "accent": "#235FAD",
+    "primary": "#235FAD",
+    "primary-hover": "#20569C",
+    "primary-pressed": "#1C4C8A",
+    "on-primary": "#FFFFFF"
   },
   "NightSkyDark": {
     "bg": "#101724",
@@ -141,6 +201,10 @@
     "line": "#344965",
     "text": "#E8F0FF",
     "muted": "#A8BCD8",
-    "accent": "#79ADFF"
+    "accent": "#79ADFF",
+    "primary": "#235FAD",
+    "primary-hover": "#20569C",
+    "primary-pressed": "#1C4C8A",
+    "on-primary": "#FFFFFF"
   }
 }

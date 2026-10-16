@@ -2,9 +2,9 @@
 
 码匠工具箱是一个基于 Avalonia + Prism 的模块化桌面工具箱，面向开发者日常效率场景。项目将主程序、公共服务与功能模块解耦，方便后续继续扩展新的工具页，而不会把应用演化成一个难维护的大窗体工程。
 
-![12.0.17.0 原生主窗口](screen.png)
+![12.0.18.0 原生主窗口](screen.png)
 
-当前正式 Windows NativeAOT 的真实 Ribbon 与工具文档离屏截图，使用受控 Base64 样例。截图来源和 SHA-256 见[媒体复核记录](docs/recheck24-native-media.md)。
+当前正式 Windows NativeAOT 的真实 Ribbon 与工具文档离屏截图，使用受控 Base64 样例。截图来源和 SHA-256 见[媒体复核记录](docs/recheck25-native-media.md)。
 
 ## 下载安装
 
@@ -17,7 +17,7 @@
 
 ## 仓库规范
 
-- 当前版本：`12.0.17.0`，版本号统一维护在根目录 `Directory.Build.props` 的 `<Version>` 节点。
+- 当前版本：`12.0.18.0`，版本号统一维护在根目录 `Directory.Build.props` 的 `<Version>` 节点。
 - 项目统一使用 `net10.0`（桌面 App 另加 `net10.0-windows`）。
 - 根目录 `logo.svg`、`logo.png`、`logo.ico` 是唯一图标源，子工程只通过 MSBuild `Link` 引用，不维护图标副本。
 - 运行时帮助、Markdown 示例、内置备忘录、设计说明等业务文档按功能保留；仓库级入口文档使用根目录 `README.md` 和 `UpdateLog.md`。
