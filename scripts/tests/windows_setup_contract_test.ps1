@@ -34,9 +34,29 @@ foreach ($name in @('CodeWF.Setup.iss', 'CodeWF.Setup.Messages.iss', 'CodeWF.Set
     if (-not (Test-Path -LiteralPath $path -PathType Leaf) -or (Get-Item -LiteralPath $path).Length -eq 0) { throw "视觉引擎资源缺失或为空：$name" }
 }
 $manifest = Get-Content -LiteralPath (Join-Path $installerPath 'source-sha256.json') -Raw -Encoding UTF8 | ConvertFrom-Json
-if ($manifest.schema -ne 1 -or $manifest.files.Count -lt 11) { throw '共享快照源清单格式或文件数不正确。' }
+# 固定生产快照的完整集合，防止删项、重复项或改变哈希模式后绕过来源校验。
+$expectedFiles = [ordered]@{
+    '.gitattributes' = 'normalized-lf'
+    'README.md' = 'normalized-lf'
+    'generate_assets.py' = 'normalized-lf'
+    'CodeWF.Setup.iss' = 'normalized-lf'
+    'CodeWF.Setup.Messages.iss' = 'normalized-lf'
+    'CodeWF.Setup.Progress.iss' = 'normalized-lf'
+    'CodeWF.Setup.Maintenance.iss' = 'normalized-lf'
+    'CodeWF.Setup.Uninstall.iss' = 'normalized-lf'
+    'frame-dark.bmp' = 'binary'
+    'frame-light.bmp' = 'binary'
+    'reactor-dark.bmp' = 'binary'
+    'reactor-light.bmp' = 'binary'
+    'core-dark.bmp' = 'binary'
+    'core-light.bmp' = 'binary'
+}
+if ($manifest.schema -ne 1 -or @($manifest.files).Count -ne $expectedFiles.Count) { throw '共享快照源清单必须完整列出 14 个生产文件。' }
+$seenPaths = [Collections.Generic.HashSet[string]]::new([StringComparer]::Ordinal)
 foreach ($entry in $manifest.files) {
-    if ($entry.path -notmatch '^(?:tests/)?[A-Za-z0-9_.-]+$' -or $entry.path -in @('.', '..', 'source-sha256.json')) { throw '共享快照清单仅允许根目录或 tests 目录的明确文件名。' }
+    if ($entry.path -isnot [string] -or $expectedFiles.Keys -cnotcontains $entry.path) { throw "共享快照清单包含非生产文件：$($entry.path)" }
+    if (-not $seenPaths.Add($entry.path)) { throw "共享快照清单路径重复：$($entry.path)" }
+    if ($entry.mode -cne $expectedFiles[$entry.path]) { throw "共享快照清单哈希模式不正确：$($entry.path)" }
     $path = Join-Path $installerPath $entry.path
     if (-not (Test-Path -LiteralPath $path -PathType Leaf)) { throw "共享快照清单文件缺失：$($entry.path)" }
     if ($entry.mode -eq 'normalized-lf') {

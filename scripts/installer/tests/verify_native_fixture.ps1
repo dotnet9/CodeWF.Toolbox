@@ -200,6 +200,12 @@ try {
     [void] [CodeWFSetupFixtureDesktop]::GetWindowThreadProcessId($window, [ref] $wizardProcessId)
     Assert-Fixture ($ownedHandles.ContainsKey($wizardProcessId)) '向导属于本次启动的夹具进程树'
     Assert-Fixture ([CodeWFSetupFixtureDesktop]::HasShapedRegion($window)) '真实向导具有切角区域，中心可见且左上角透明'
+    $brand = Get-FixtureButton '^CodeWF$'
+    Assert-Fixture ($null -ne $brand) 'CodeWF 品牌使用可聚焦的原生按钮'
+    Click-Fixture $brand
+    $fixtureLog = Get-Content -LiteralPath (Join-Path $Output 'setup.log') -Raw
+    Assert-Fixture ($fixtureLog.Contains('CodeWF brand link: https://codewf.com')) '品牌按钮指向官网，夹具只记录链接且不启动浏览器'
+    Assert-Fixture ([CodeWFSetupFixtureDesktop]::Send($brand, 20) -eq 1) '品牌动画不执行背景擦除'
     $motion = @(Get-FixtureControls | Where-Object { [CodeWFSetupFixtureDesktop]::Class($_) -eq 'TNewCheckBox' -and [CodeWFSetupFixtureDesktop]::Text($_) -match 'Reduce motion|减少动态效果' }) | Select-Object -First 1
     Assert-Fixture ($null -ne $motion) '减少动态效果复选框使用当前语言'
     if ([CodeWFSetupFixtureDesktop]::Send($motion, 240) -ne 1) { Click-Fixture $motion }
@@ -214,6 +220,13 @@ try {
     Start-Sleep -Milliseconds 220
     $animationEnd = Capture-Fixture '02-motion-enabled-b'
     Assert-Fixture ([CodeWFSetupFixtureDesktop]::CropHash($animationStart, .035, .15, .19, .26) -ne [CodeWFSetupFixtureDesktop]::CropHash($animationEnd, .035, .15, .19, .26)) '关闭减少动态效果后核心动画恢复'
+    $brandTextHashes = [Collections.Generic.HashSet[string]]::new()
+    for ($frameIndex = 0; $frameIndex -lt 12; $frameIndex++) {
+        $framePath = Capture-Fixture ('02-brand-frame-' + $frameIndex)
+        [void] $brandTextHashes.Add([CodeWFSetupFixtureDesktop]::CropHash($framePath, .094, .258, .078, .045))
+        Start-Sleep -Milliseconds 45
+    }
+    Assert-Fixture ($brandTextHashes.Count -eq 1) '连续动画十二帧内 CodeWF 字标保持稳定，轨道更新不擦除文字'
     Click-Fixture $motion
     $theme = Get-FixtureButton '^◐$'
     Click-Fixture $theme

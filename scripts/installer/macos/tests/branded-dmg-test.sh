@@ -47,10 +47,15 @@ STUB
 chmod +x "$fixture/bin/"*
 export PATH="$fixture/bin:$PATH" TMPDIR="$fixture/tmp" TEST_TRACE="$fixture/trace" TEST_MOUNT="$fixture/mounted" TEST_DETACH_COUNT="$fixture/detach-count"
 for language in bilingual en zh; do
+  grep -Fq '>CodeWF</text>' "$asset_root/background-$language.svg"
+  grep -Fq 'NATIVE APPLICATION · CodeWF' "$asset_root/background-$language.svg"
+  grep -Fq '>codewf.com</text>' "$asset_root/background-$language.svg"
+  ! grep -Fq '.NET' "$asset_root/background-$language.svg"
   : >"$TEST_TRACE"
   CODEWF_DMG_LANGUAGE="$language" bash "$asset_root/create-branded-dmg.sh" "$fixture/stage" 'Test App' "$fixture/$language.dmg" 'Test volume' >"$fixture/$language.log" 2>&1
   [[ -s "$fixture/$language.dmg" && ! -e "$TEST_MOUNT" ]]
   cmp "$asset_root/background-$language.png" "$fixture/stage/.background/codewf.png"
+  [[ "$(find "$fixture/stage" -mindepth 1 -maxdepth 1 | wc -l | tr -d '[:space:]')" == 3 ]]
   [[ "$(paste -sd, "$TEST_TRACE")" == 'create,attach,layout,detach,convert,verify' ]]
 done
 for phase in create attach layout missing-layout convert verify; do
@@ -88,4 +93,4 @@ if bash "$asset_root/create-branded-dmg.sh" "$fixture/stage" 'Test App' "$fixtur
 rm -f "$TEST_MOUNT"
 unset FAIL_PHASE
 if CODEWF_DMG_LANGUAGE=invalid bash "$asset_root/create-branded-dmg.sh" "$fixture/stage" 'Test App' "$fixture/invalid.dmg" >"$fixture/invalid.log" 2>&1; then exit 1; fi
-echo 'PASS: three languages, bounded detach backoff/recovery, EXIT cleanup, permanent mount retention/no conversion and create/attach/layout/metadata/convert/verify failure propagation.'
+echo 'PASS: three CodeWF languages and static website, original two-icon staging, bounded detach backoff/recovery, EXIT cleanup, permanent mount retention/no conversion and create/attach/layout/metadata/convert/verify failure propagation.'

@@ -94,6 +94,10 @@ function CWDrawFocusRect(DC: LongWord; var Bounds: TCWRect): Boolean;
   external 'DrawFocusRect@user32.dll stdcall';
 function CWStretchBlt(Target: LongWord; X, Y, Width, Height: Integer; Source: LongWord; SourceX, SourceY, SourceWidth, SourceHeight: Integer; Mode: LongWord): Boolean;
   external 'StretchBlt@gdi32.dll stdcall';
+function CWBitBlt(Target: LongWord; X, Y, Width, Height: Integer; Source: LongWord; SourceX, SourceY: Integer; Mode: LongWord): Boolean;
+  external 'BitBlt@gdi32.dll stdcall';
+function CWGetFocus: LongWord;
+  external 'GetFocus@user32.dll stdcall';
 function CWSetStretchBltMode(DC: LongWord; Mode: Integer): Integer;
   external 'SetStretchBltMode@gdi32.dll stdcall';
 function CWShowWindow(Window: LongWord; Command: Integer): Boolean;
@@ -108,16 +112,16 @@ function CWCos(Value: Double): Double;
   external 'cos@msvcrt.dll cdecl';
 
 var
-  CWBackground, CWReactor: TBitmapImage;
-  CWReactorBase, CWCore: TBitmap;
+  CWBackground: TBitmapImage;
+  CWReactorBase, CWCore, CWReactorFrame: TBitmap;
   CWTitle, CWHeading, CWDescription, CWProduct, CWVersionLabel, CWFooter, CWEngineLabel, CWPercentLabel: TLabel;
   CWStepLabels: array[0..5] of TLabel;
   CWWelcomeLines: array[0..1] of TPanel;
-  CWThemeButton, CWMinimizeButton, CWCloseButton: TNewButton;
+  CWThemeButton, CWMinimizeButton, CWCloseButton, CWBrandButton: TNewButton;
   CWReduceMotion: TNewCheckBox;
   CWTimer, CWPreviousProc, CWBackgroundBrush: LongWord;
   CWPageHandles, CWPageProcs: array[0..63] of LongWord;
-  CWButtonHandles, CWButtonProcs: array[0..5] of LongWord;
+  CWButtonHandles, CWButtonProcs: array[0..6] of LongWord;
   CWButtonCount: Integer;
   CWPageHookCount: Integer;
   CWFrame, CWProgress, CWStep, CWScalePercent, CWCompletedAt, CWThemeMode, CWThemeTicks: Integer;
@@ -175,9 +179,10 @@ var I, X, Y, Radius, CenterX, CenterY, OrbitIndex, CoreSize: Integer; Angle, Pha
     Canvas: TCanvas; LabelText: String;
 begin
   if not CWInitialized then exit;
-  CWReactor.Bitmap.Width := CWSize(220);
-  CWReactor.Bitmap.Height := CWSize(180);
-  Canvas := CWReactor.Bitmap.Canvas;
+  { 在离屏位图完成整帧，按钮只提交最终图像，避免逐笔更新可见位图导致擦除闪烁。 }
+  if CWReactorFrame.Width <> CWSize(220) then CWReactorFrame.Width := CWSize(220);
+  if CWReactorFrame.Height <> CWSize(180) then CWReactorFrame.Height := CWSize(180);
+  Canvas := CWReactorFrame.Canvas;
   CWSetStretchBltMode(Canvas.Handle,4);
   CWStretchBlt(Canvas.Handle, 0, 0, CWSize(220), CWSize(180), CWReactorBase.Canvas.Handle, 0, 0, CWReactorBase.Width, CWReactorBase.Height, $00CC0020);
   CenterX := CWSize(110); CenterY := CWSize(90);
@@ -215,14 +220,26 @@ begin
     Canvas.Pen.Color := $FADDE9; Canvas.Brush.Style := bsClear;
     Canvas.Ellipse(CenterX-Radius,CenterY-Radius,CenterX+Radius,CenterY+Radius);
   end;
-  Canvas.Font.Name := 'Segoe UI'; Canvas.Font.Size := 25;
+  Canvas.Font.Name := 'Segoe UI'; Canvas.Font.Size := (18 * CWScalePercent) div 100;
+  Canvas.Font.Style := [fsBold];
   Canvas.Font.Color := clWhite;
-  if WizardForm.CurPageID = wpInstalling then LabelText := IntToStr(CWProgress) + '%'
-  else if CWInstalled then LabelText := '✓' else LabelText := '.NET';
+  LabelText := 'CodeWF';
   Canvas.Brush.Style := bsClear;
-  Canvas.TextOut((CWReactor.Width-Canvas.TextWidth(LabelText)) div 2,
-    (CWReactor.Height-Canvas.TextHeight(LabelText)) div 2, LabelText);
-  CWReactor.Invalidate;
+  Canvas.TextOut((CWReactorFrame.Width-Canvas.TextWidth(LabelText)) div 2,
+    (CWReactorFrame.Height-Canvas.TextHeight(LabelText)) div 2, LabelText);
+  CWInvalidateRect(CWBrandButton.Handle,0,False);
+end;
+
+procedure CWBrandClick(Sender: TObject);
+var ErrorCode: Integer;
+begin
+#ifdef CodeWFSetupFixture
+  { 专用夹具只记录目标，不打开浏览器。 }
+  Log('CodeWF brand link: https://codewf.com');
+#else
+  if not ShellExec('open','https://codewf.com','','',SW_SHOWNORMAL,ewNoWait,ErrorCode) then
+    Log('CodeWF website could not be opened: ' + IntToStr(ErrorCode));
+#endif
 end;
 
 procedure CWStyleChildren(Parent: TWinControl);
@@ -245,9 +262,25 @@ begin
 end;
 
 function CWButtonWindowProc(Window, Message, WParam, LParam: LongWord): Longint;
-var I: Integer;
+var I: Integer; Bounds: TCWRect; Paint: TCWPaint; FrameDC: LongWord;
 begin
   { 对话框焦点管理会重设默认按钮样式；保留自绘低位，同时继续转发原生键盘和点击消息。 }
+  if (CWBrandButton <> nil) and (Window = CWBrandButton.Handle) and (Message = $0014) then begin Result := 1; exit; end;
+  { 原生离屏捕获也需要完整帧，避免按钮默认打印过程偶尔只输出父背景。 }
+  if (CWBrandButton <> nil) and (Window = CWBrandButton.Handle) and
+     ((Message = $000F) or (Message = $0317) or (Message = $0318)) then begin
+    { 首帧尚未生成时补齐内容；正常重绘复用离屏帧，不递归触发重绘。 }
+    if (CWReactorFrame.Width = 0) or (CWReactorFrame.Height = 0) then CWDrawCore;
+    if Message = $000F then FrameDC := CWBeginPaint(Window,Paint) else FrameDC := WParam;
+    CWBitBlt(FrameDC,0,0,CWReactorFrame.Width,CWReactorFrame.Height,CWReactorFrame.Canvas.Handle,0,0,$00CC0020);
+    if CWGetFocus = Window then begin
+      Bounds.Left := CWSize(48); Bounds.Right := CWSize(172);
+      Bounds.Top := CWSize(28); Bounds.Bottom := CWSize(152);
+      CWDrawFocusRect(FrameDC,Bounds);
+    end;
+    if Message = $000F then CWEndPaint(Window,Paint);
+    Result := 0; exit;
+  end;
   if Message = $00F4 then WParam := (WParam and not $F) or $B;
   if Message = $000F then
     CWSetWindowLong(Window, -16, (CWGetWindowLong(Window, -16) and not $F) or $B);
@@ -263,7 +296,7 @@ var I: Integer;
 begin
   CWSetWindowLong(Button.Handle, -16, (CWGetWindowLong(Button.Handle, -16) and not $F) or $B);
   for I := 0 to CWButtonCount-1 do if CWButtonHandles[I] = Button.Handle then exit;
-  if CWButtonCount > 5 then exit;
+  if CWButtonCount > 6 then exit;
   CWButtonHandles[CWButtonCount] := Button.Handle;
   CWButtonProcs[CWButtonCount] := CWSetWindowLong(Button.Handle, -4, CreateCallback(@CWButtonWindowProc));
   CWButtonCount := CWButtonCount+1;
@@ -279,7 +312,6 @@ begin
   end;
   CWBackground.Bitmap.LoadFromFile(ExpandConstant('{tmp}\frame-' + Theme + '.bmp'));
   CWReactorBase.LoadFromFile(ExpandConstant('{tmp}\reactor-' + Theme + '.bmp'));
-  CWReactor.Bitmap := CWReactorBase;
   CWCore.LoadFromFile(ExpandConstant('{tmp}\core-' + Theme + '.bmp'));
   WizardForm.Color := CWSurface;
   if CWBackgroundBrush <> 0 then CWDeleteObject(CWBackgroundBrush);
@@ -298,6 +330,7 @@ begin
   end;
   CWOwnerDraw(WizardForm.NextButton); CWOwnerDraw(WizardForm.BackButton); CWOwnerDraw(WizardForm.CancelButton);
   CWOwnerDraw(CWThemeButton); CWOwnerDraw(CWMinimizeButton); CWOwnerDraw(CWCloseButton);
+  CWOwnerDraw(CWBrandButton);
   CWDrawCore;
   CWInvalidateRect(WizardForm.Handle, 0, True);
 end;
@@ -401,6 +434,15 @@ begin
   if Message = $002B then begin
     CWCopyMemory(Item, LParam, 48);
     if Item.CtlType = 4 then begin
+      if Item.ItemWindow = CWBrandButton.Handle then begin
+        CWBitBlt(Item.DC,0,0,CWReactorFrame.Width,CWReactorFrame.Height,CWReactorFrame.Canvas.Handle,0,0,$00CC0020);
+        if (Item.ItemState and $10) <> 0 then begin
+          Bounds := Item.Bounds; Bounds.Left := Bounds.Left+CWSize(48); Bounds.Right := Bounds.Right-CWSize(48);
+          Bounds.Top := Bounds.Top+CWSize(28); Bounds.Bottom := Bounds.Bottom-CWSize(28);
+          CWDrawFocusRect(Item.DC,Bounds);
+        end;
+        Result := 1; exit;
+      end;
       Caption := ''; Color := CWSurface; Foreground := CWText;
       if Item.ItemWindow = WizardForm.NextButton.Handle then begin
         Caption := WizardForm.NextButton.Caption; Color := $D42B51; Foreground := clWhite;
@@ -477,9 +519,16 @@ end;
 
 <event('CurInstallProgressChanged')>
 procedure CWInstallProgressChanged(Current, Maximum: Integer);
+var Progress: Integer; Caption: String;
 begin
-  if Maximum > 0 then CWProgress := Round(Current * 100.0 / Maximum);
-  if CWPercentLabel <> nil then CWPercentLabel.Caption := IntToStr(CWProgress) + '%';
+  if Maximum <= 0 then exit;
+  Progress := Round(Current * 100.0 / Maximum);
+  if Progress < 0 then Progress := 0;
+  if Progress > 100 then Progress := 100;
+  if Progress = CWProgress then exit;
+  CWProgress := Progress;
+  Caption := IntToStr(CWProgress) + '%';
+  if (CWPercentLabel <> nil) and (CWPercentLabel.Caption <> Caption) then CWPercentLabel.Caption := Caption;
   if (WizardForm <> nil) and CWInitialized then CWInvalidateRect(WizardForm.ProgressGauge.Handle,0,False);
   CWDrawCore;
 end;
@@ -507,8 +556,11 @@ begin
   CWBounds(CWBackground,0,0,1136,688); CWBackground.Stretch := True; CWBackground.SendToBack;
   CWReactorBase := TBitmap.Create;
   CWCore := TBitmap.Create;
-  CWReactor := TBitmapImage.Create(WizardForm); CWReactor.Parent := WizardForm;
-  CWBounds(CWReactor,40,104,220,180);
+  CWReactorFrame := TBitmap.Create;
+  CWBrandButton := TNewButton.Create(WizardForm); CWBrandButton.Parent := WizardForm;
+  CWBrandButton.Caption := 'CodeWF'; CWBrandButton.Hint := CustomMessage('CWBrandWebsite');
+  CWBrandButton.ShowHint := True; CWBrandButton.Cursor := crHand; CWBrandButton.OnClick := @CWBrandClick;
+  CWBounds(CWBrandButton,40,104,220,180);
   CWTitle := CWLabel(WizardForm,338,24,600,24,9,'{#CodeWFSetupProductName} ' + CustomMessage('CWInstall'));
   CWProduct := CWLabel(WizardForm,28,294,250,48,12,'{#CodeWFSetupProductName}'); CWProduct.Font.Style := [fsBold];
   CWVersionLabel := CWLabel(WizardForm,28,342,245,22,8,'{#CodeWFSetupVersion}   ·   WINDOWS X64');
@@ -559,6 +611,7 @@ begin
   Enabled := 1; if CWSystemParametersInfo($1042,0,Enabled,0) then CWReduceMotion.Checked := Enabled = 0;
   CWOwnerDraw(WizardForm.NextButton); CWOwnerDraw(WizardForm.BackButton); CWOwnerDraw(WizardForm.CancelButton);
   CWOwnerDraw(CWThemeButton); CWOwnerDraw(CWMinimizeButton); CWOwnerDraw(CWCloseButton);
+  CWOwnerDraw(CWBrandButton);
   CWPreviousProc := CWSetWindowLong(WizardForm.Handle,-4,CreateCallback(@CWWindowProc));
   CWThemeMode := 0; CWDark := True; CWInitialized := True; CWRefreshAppearance;
   CWTimer := CWSetTimer(0,0,50,CreateCallback(@CWTimerProc));
@@ -578,6 +631,7 @@ begin
     if CWIsWindow(CWButtonHandles[I]) then CWSetWindowLong(CWButtonHandles[I],-4,CWButtonProcs[I]);
   if CWReactorBase <> nil then CWReactorBase.Free;
   if CWCore <> nil then CWCore.Free;
+  if CWReactorFrame <> nil then CWReactorFrame.Free;
   if CWBackgroundBrush <> 0 then CWDeleteObject(CWBackgroundBrush);
 end;
 

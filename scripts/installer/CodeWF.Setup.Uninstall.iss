@@ -29,6 +29,8 @@ english.CWUMinimize=Minimize
 chinesesimplified.CWUMinimize=最小化
 english.CWUClose=Close
 chinesesimplified.CWUClose=关闭
+english.CWUBrandWebsite=Visit CodeWF: https://codewf.com
+chinesesimplified.CWUBrandWebsite=访问码坊 CodeWF：https://codewf.com
 
 [Files]
 ; 独立卸载器不能解包安装包的 dontcopy 资源；精确登记这些自有资源并由原生日志清理。
@@ -67,6 +69,8 @@ function CWUDeleteObject(Handle: LongWord): Boolean;
   external 'DeleteObject@gdi32.dll stdcall';
 function CWUGetSystemMetrics(Index: Integer): Integer;
   external 'GetSystemMetrics@user32.dll stdcall';
+function CWUSetWindowTheme(Window: LongWord; Application, IDs: String): Integer;
+  external 'SetWindowTheme@uxtheme.dll stdcall';
 function CWUSetWindowLong(Window: LongWord; Index: Integer; Value: Longint): Longint;
   external 'SetWindowLongW@user32.dll stdcall';
 function CWUGetWindowLong(Window: LongWord; Index: Integer): Longint;
@@ -95,6 +99,10 @@ procedure CWUCopyMemory(var Target: TCWUDrawItem; Source, Size: LongWord);
   external 'RtlMoveMemory@kernel32.dll stdcall';
 function CWUStretchBlt(Target: LongWord; X, Y, Width, Height: Integer; Source: LongWord; SourceX, SourceY, SourceWidth, SourceHeight: Integer; Mode: LongWord): Boolean;
   external 'StretchBlt@gdi32.dll stdcall';
+function CWUBitBlt(Target: LongWord; X, Y, Width, Height: Integer; Source: LongWord; SourceX, SourceY: Integer; Mode: LongWord): Boolean;
+  external 'BitBlt@gdi32.dll stdcall';
+function CWUGetFocus: LongWord;
+  external 'GetFocus@user32.dll stdcall';
 function CWUSetStretchBltMode(DC: LongWord; Mode: Integer): Integer;
   external 'SetStretchBltMode@gdi32.dll stdcall';
 function CWUGetClientRect(Window: LongWord; var Bounds: TCWURect): Boolean;
@@ -116,11 +124,12 @@ function CWUSendMessage(Window, Message, WParam, LParam: LongWord): Longint;
 
 var
   CWUFrames, CWUReactors, CWUCores: array[0..1] of TBitmap;
-  CWUBackground, CWUReactor: TBitmapImage;
+  CWUBackground: TBitmapImage;
+  CWUReactorFrame, CWUProgressFrame: TBitmap;
   CWUTitle, CWUHeading, CWUDescription, CWUProduct, CWUFooter, CWUPercent: TLabel;
-  CWUThemeButton, CWUMinimizeButton, CWUCloseButton: TNewButton;
-  CWUFormHandle, CWUGaugeHandle, CWUPageHandle: LongWord;
-  CWUFormProc, CWUGaugeProc, CWUPageProc, CWUBackgroundBrush: LongWord;
+  CWUThemeButton, CWUMinimizeButton, CWUCloseButton, CWUBrandButton: TNewButton;
+  CWUFormHandle, CWUGaugeHandle, CWUPageHandle, CWUBrandHandle: LongWord;
+  CWUFormProc, CWUGaugeProc, CWUPageProc, CWUBackgroundBrush, CWUBrandProc: LongWord;
   CWUScalePercent, CWUProgress, CWUThemeMode: Integer;
   CWUInitialized, CWUDark: Boolean;
   CWUSurface, CWUText, CWUMuted, CWUField: TColor;
@@ -191,18 +200,31 @@ var Theme: Integer; Canvas: TCanvas; Text: String;
 begin
   if not CWUInitialized then exit;
   if CWUDark then Theme := 0 else Theme := 1;
-  CWUReactor.Bitmap.Width := CWUSize(220); CWUReactor.Bitmap.Height := CWUSize(180);
-  Canvas := CWUReactor.Bitmap.Canvas; CWUSetStretchBltMode(Canvas.Handle, 4);
+  if CWUReactorFrame.Width <> CWUSize(220) then CWUReactorFrame.Width := CWUSize(220);
+  if CWUReactorFrame.Height <> CWUSize(180) then CWUReactorFrame.Height := CWUSize(180);
+  Canvas := CWUReactorFrame.Canvas; CWUSetStretchBltMode(Canvas.Handle, 4);
   CWUStretchBlt(Canvas.Handle, 0, 0, CWUSize(220), CWUSize(180), CWUReactors[Theme].Canvas.Handle,
     0, 0, CWUReactors[Theme].Width, CWUReactors[Theme].Height, $00CC0020);
   CWUStretchBlt(Canvas.Handle, CWUSize(48), CWUSize(28), CWUSize(124), CWUSize(124), CWUCores[Theme].Canvas.Handle,
     0, 0, CWUCores[Theme].Width, CWUCores[Theme].Height, $00CC0020);
-  Canvas.Font.Name := 'Segoe UI'; Canvas.Font.Size := (25 * CWUScalePercent) div 100;
+  Canvas.Font.Name := 'Segoe UI'; Canvas.Font.Size := (18 * CWUScalePercent) div 100;
+  Canvas.Font.Style := [fsBold];
   Canvas.Font.Color := clWhite; Canvas.Brush.Style := bsClear;
-  Text := IntToStr(CWUProgress) + '%';
-  Canvas.TextOut((CWUReactor.Width - Canvas.TextWidth(Text)) div 2,
-    (CWUReactor.Height - Canvas.TextHeight(Text)) div 2, Text);
-  CWUReactor.Invalidate;
+  Text := 'CodeWF';
+  Canvas.TextOut((CWUReactorFrame.Width - Canvas.TextWidth(Text)) div 2,
+    (CWUReactorFrame.Height - Canvas.TextHeight(Text)) div 2, Text);
+  CWUInvalidateRect(CWUBrandButton.Handle, 0, False);
+end;
+
+procedure CWUBrandClick(Sender: TObject);
+var ErrorCode: Integer;
+begin
+#ifdef CodeWFSetupUninstallFixture
+  Log('CodeWF brand link: https://codewf.com');
+#else
+  if not ShellExec('open','https://codewf.com','','',SW_SHOWNORMAL,ewNoWait,ErrorCode) then
+    Log('CodeWF website could not be opened: ' + IntToStr(ErrorCode));
+#endif
 end;
 
 procedure CWUApplyTheme;
@@ -259,46 +281,74 @@ procedure CWUOwnerDraw(Button: TNewButton);
 begin CWUSetWindowLong(Button.Handle, -16, (CWUGetWindowLong(Button.Handle, -16) and not $F) or $B); end;
 
 procedure CWUPaintProgress(DC, Window: LongWord);
-var Bounds, Segment: TCWURect; Brush, Color: LongWord; I, Width, Fill: Integer;
+var Bounds, Segment: TCWURect; Brush, Color, FrameDC: LongWord; I, Width, Height, Fill: Integer;
 begin
   CWUGetClientRect(Window, Bounds); Width := Bounds.Right - Bounds.Left;
-  Brush := CWUCreateSolidBrush(CWUSurface); CWUFillRect(DC, Bounds, Brush); CWUDeleteObject(Brush);
+  Height := Bounds.Bottom-Bounds.Top;
+  if (Width <= 0) or (Height <= 0) then exit;
+  if CWUProgressFrame.Width <> Width then CWUProgressFrame.Width := Width;
+  if CWUProgressFrame.Height <> Height then CWUProgressFrame.Height := Height;
+  FrameDC := CWUProgressFrame.Canvas.Handle;
+  Brush := CWUCreateSolidBrush(CWUSurface); CWUFillRect(FrameDC, Bounds, Brush); CWUDeleteObject(Brush);
   Fill := (Width * CWUProgress) div 100;
   for I := 0 to 22 do begin
     Segment.Left := (I * Width) div 23; Segment.Right := ((I + 1) * Width) div 23 - CWUSize(3);
     Segment.Top := 0; Segment.Bottom := Bounds.Bottom;
     if CWUDark then Color := $442B38 else Color := $EDE2E8;
-    Brush := CWUCreateSolidBrush(Color); CWUFillRect(DC, Segment, Brush); CWUDeleteObject(Brush);
+    Brush := CWUCreateSolidBrush(Color); CWUFillRect(FrameDC, Segment, Brush); CWUDeleteObject(Brush);
     if Segment.Left < Fill then begin
       if Segment.Right > Fill then Segment.Right := Fill;
       Color := (81 + (76 * I) div 22) or ((43 + (70 * I) div 22) shl 8) or ((212 + (43 * I) div 22) shl 16);
-      Brush := CWUCreateSolidBrush(Color); CWUFillRect(DC, Segment, Brush); CWUDeleteObject(Brush);
+      Brush := CWUCreateSolidBrush(Color); CWUFillRect(FrameDC, Segment, Brush); CWUDeleteObject(Brush);
     end;
   end;
+  CWUBitBlt(DC,0,0,Width,Height,FrameDC,0,0,$00CC0020);
 end;
 
 procedure CWUReadProgress;
-var Current, Minimum, Maximum: Integer;
+var Current, Minimum, Maximum, Progress: Integer; Caption: String; CloseChanged: Boolean;
 begin
   if not CWUInitialized or not CWUIsWindow(CWUGaugeHandle) then exit;
   // 仅查询原生进度条；不模拟时间进度，不改 Position/Min/Max 或取消处理。
   Minimum := CWUSendMessage(CWUGaugeHandle, $0407, 1, 0);
   Maximum := CWUSendMessage(CWUGaugeHandle, $0407, 0, 0);
   Current := CWUSendMessage(CWUGaugeHandle, $0408, 0, 0);
-  if Maximum > Minimum then CWUProgress := Round((Current - Minimum) * 100.0 / (Maximum - Minimum))
-  else CWUProgress := 0;
-  if CWUProgress < 0 then CWUProgress := 0;
-  if CWUProgress > 100 then CWUProgress := 100;
-  CWUPercent.Caption := CustomMessage('CWUProgress') + '  ' + IntToStr(CWUProgress) + '%';
+  if Maximum > Minimum then Progress := Round((Current - Minimum) * 100.0 / (Maximum - Minimum))
+  else Progress := 0;
+  if Progress < 0 then Progress := 0;
+  if Progress > 100 then Progress := 100;
+  CloseChanged := CWUCloseButton.Enabled <> UninstallProgressForm.CancelButton.Enabled;
   CWUCloseButton.Enabled := UninstallProgressForm.CancelButton.Enabled;
   // Inno 显示进度窗时可能更新按钮样式，真实进度消息后恢复其原生 owner-draw 外观。
   CWUOwnerDraw(UninstallProgressForm.CancelButton); CWUOwnerDraw(CWUThemeButton);
   CWUOwnerDraw(CWUMinimizeButton); CWUOwnerDraw(CWUCloseButton);
-  CWUInvalidateRect(UninstallProgressForm.CancelButton.Handle, 0, True);
-  CWUInvalidateRect(CWUThemeButton.Handle, 0, True);
-  CWUInvalidateRect(CWUMinimizeButton.Handle, 0, True);
-  CWUInvalidateRect(CWUCloseButton.Handle, 0, True);
-  CWUDrawCore; CWUInvalidateRect(CWUGaugeHandle, 0, True);
+  if CloseChanged then CWUInvalidateRect(CWUCloseButton.Handle, 0, False);
+  if Progress = CWUProgress then exit;
+  CWUProgress := Progress;
+  Caption := CustomMessage('CWUProgress') + '  ' + IntToStr(CWUProgress) + '%';
+  if CWUPercent.Caption <> Caption then CWUPercent.Caption := Caption;
+  CWUInvalidateRect(CWUGaugeHandle, 0, False);
+end;
+
+function CWUBrandWindowProc(Window, Message, WParam, LParam: LongWord): Longint;
+var Bounds: TCWURect; Paint: TCWUPaint; FrameDC: LongWord;
+begin
+  { 捕获、打印和正常重绘使用相同的离屏完整帧。 }
+  if (Message = $000F) or (Message = $0317) or (Message = $0318) then begin
+    if (CWUReactorFrame.Width = 0) or (CWUReactorFrame.Height = 0) then CWUDrawCore;
+    if Message = $000F then FrameDC := CWUBeginPaint(Window,Paint) else FrameDC := WParam;
+    CWUBitBlt(FrameDC,0,0,CWUReactorFrame.Width,CWUReactorFrame.Height,CWUReactorFrame.Canvas.Handle,0,0,$00CC0020);
+    if CWUGetFocus = Window then begin
+      Bounds.Left := CWUSize(48); Bounds.Right := CWUSize(172);
+      Bounds.Top := CWUSize(28); Bounds.Bottom := CWUSize(152);
+      CWUDrawFocusRect(FrameDC,Bounds);
+    end;
+    if Message = $000F then CWUEndPaint(Window,Paint);
+    Result := 0; exit;
+  end;
+  if Message = $0014 then begin Result := 1; exit; end;
+  if Message = $00F4 then WParam := (WParam and not $F) or $B;
+  Result := CWUCallWindowProc(CWUBrandProc,Window,Message,WParam,LParam);
 end;
 
 function CWUGaugeWindowProc(Window, Message, WParam, LParam: LongWord): Longint;
@@ -354,6 +404,15 @@ begin
     if Message = $002B then begin
       CWUCopyMemory(Item, LParam, 48);
       if Item.CtlType = 4 then begin
+        if Item.ItemWindow = CWUBrandButton.Handle then begin
+          CWUBitBlt(Item.DC,0,0,CWUReactorFrame.Width,CWUReactorFrame.Height,CWUReactorFrame.Canvas.Handle,0,0,$00CC0020);
+          if (Item.ItemState and $10) <> 0 then begin
+            Bounds := Item.Bounds; Bounds.Left := Bounds.Left+CWUSize(48); Bounds.Right := Bounds.Right-CWUSize(48);
+            Bounds.Top := Bounds.Top+CWUSize(28); Bounds.Bottom := Bounds.Bottom-CWUSize(28);
+            CWUDrawFocusRect(Item.DC,Bounds);
+          end;
+          Result := 1; exit;
+        end;
         Caption := ''; Color := CWUSurface; Foreground := CWUText;
         if Item.ItemWindow = UninstallProgressForm.CancelButton.Handle then begin
           Caption := UninstallProgressForm.CancelButton.Caption; Color := $D42B51; Foreground := clWhite;
@@ -398,8 +457,11 @@ begin
   UninstallProgressForm.Bevel1.Visible := False; UninstallProgressForm.BeveledLabel.Visible := False;
   CWUBackground := TBitmapImage.Create(UninstallProgressForm); CWUBackground.Parent := UninstallProgressForm;
   CWUBackground.Stretch := True; CWUBounds(CWUBackground, 0, 0, 1136, 688); CWUBackground.SendToBack;
-  CWUReactor := TBitmapImage.Create(UninstallProgressForm); CWUReactor.Parent := UninstallProgressForm;
-  CWUBounds(CWUReactor, 40, 104, 220, 180);
+  CWUReactorFrame := TBitmap.Create; CWUProgressFrame := TBitmap.Create;
+  CWUBrandButton := TNewButton.Create(UninstallProgressForm); CWUBrandButton.Parent := UninstallProgressForm;
+  CWUBrandButton.Caption := 'CodeWF'; CWUBrandButton.Hint := CustomMessage('CWUBrandWebsite');
+  CWUBrandButton.ShowHint := True; CWUBrandButton.Cursor := crHand; CWUBrandButton.OnClick := @CWUBrandClick;
+  CWUBounds(CWUBrandButton, 40, 104, 220, 180);
   CWUProduct := CWULabel(UninstallProgressForm, 28, 294, 250, 72, 12, '{#CodeWFSetupProductName}');
   CWUProduct.Font.Style := [fsBold];
   CWUHeading := CWULabel(UninstallProgressForm, 337, 96, 760, 46, 23, CustomMessage('CWUUninstalling'));
@@ -407,7 +469,7 @@ begin
   CWUDescription := CWULabel(UninstallProgressForm, 337, 147, 760, 48, 10, CustomMessage('CWUDescription'));
   CWUFooter := CWULabel(UninstallProgressForm, 337, 635, 500, 20, 8, CustomMessage('CWUNative'));
   CWUTitle := CWULabel(UninstallProgressForm, 338, 24, 600, 24, 9, CustomMessage('CWUUninstalling'));
-  CWUPercent := CWULabel(UninstallProgressForm, 337, 376, 760, 40, 16, '0%');
+  CWUPercent := CWULabel(UninstallProgressForm, 337, 376, 760, 40, 16, CustomMessage('CWUProgress') + '  0%');
   UninstallProgressForm.OuterNotebook.Anchors := [akLeft, akTop];
   UninstallProgressForm.InnerNotebook.Anchors := [akLeft, akTop];
   CWUBounds(UninstallProgressForm.OuterNotebook, 337, 208, 761, 150);
@@ -430,10 +492,14 @@ begin
   // BorderStyle/字体可能重建 HWND，完成布局后再保存并挂钩最终句柄。
   CWUFormHandle := UninstallProgressForm.Handle;
   CWUGaugeHandle := UninstallProgressForm.ProgressBar.Handle;
+  CWUSetWindowTheme(CWUGaugeHandle,' ',' ');
   CWUPageHandle := UninstallProgressForm.InstallingPage.Handle;
   CWUApplyRegion;
   CWUOwnerDraw(UninstallProgressForm.CancelButton); CWUOwnerDraw(CWUThemeButton);
   CWUOwnerDraw(CWUMinimizeButton); CWUOwnerDraw(CWUCloseButton);
+  CWUOwnerDraw(CWUBrandButton);
+  CWUBrandHandle := CWUBrandButton.Handle;
+  CWUBrandProc := CWUSetWindowLong(CWUBrandButton.Handle,-4,CreateCallback(@CWUBrandWindowProc));
   CWUFormProc := CWUSetWindowLong(CWUFormHandle, -4, CreateCallback(@CWUFormWindowProc));
   CWUPageProc := CWUSetWindowLong(CWUPageHandle, -4, CreateCallback(@CWUPageWindowProc));
   CWUGaugeProc := CWUSetWindowLong(CWUGaugeHandle, -4, CreateCallback(@CWUGaugeWindowProc));
@@ -448,9 +514,12 @@ begin
   if (CWUGaugeProc <> 0) and CWUIsWindow(CWUGaugeHandle) then CWUSetWindowLong(CWUGaugeHandle, -4, CWUGaugeProc);
   if (CWUPageProc <> 0) and CWUIsWindow(CWUPageHandle) then CWUSetWindowLong(CWUPageHandle, -4, CWUPageProc);
   if (CWUFormProc <> 0) and CWUIsWindow(CWUFormHandle) then CWUSetWindowLong(CWUFormHandle, -4, CWUFormProc);
-  CWUGaugeProc := 0; CWUPageProc := 0; CWUFormProc := 0;
-  CWUGaugeHandle := 0; CWUPageHandle := 0; CWUFormHandle := 0;
+  if (CWUBrandProc <> 0) and CWUIsWindow(CWUBrandHandle) then CWUSetWindowLong(CWUBrandHandle,-4,CWUBrandProc);
+  CWUGaugeProc := 0; CWUPageProc := 0; CWUFormProc := 0; CWUBrandProc := 0;
+  CWUGaugeHandle := 0; CWUPageHandle := 0; CWUFormHandle := 0; CWUBrandHandle := 0;
   if CWUBackgroundBrush <> 0 then begin CWUDeleteObject(CWUBackgroundBrush); CWUBackgroundBrush := 0; end;
+  if CWUReactorFrame <> nil then begin CWUReactorFrame.Free; CWUReactorFrame := nil; end;
+  if CWUProgressFrame <> nil then begin CWUProgressFrame.Free; CWUProgressFrame := nil; end;
   CWUFreeBitmaps;
 end;
 #endif

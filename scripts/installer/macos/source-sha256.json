@@ -18,7 +18,11 @@
         540,
         235
       ]
-    }
+    },
+    "core_label": "CodeWF",
+    "subtitle": "NATIVE APPLICATION · CodeWF",
+    "website": "codewf.com",
+    "website_interaction": "static background text only"
   },
   "files": [
     {
@@ -27,27 +31,27 @@
     },
     {
       "path": "background-bilingual.png",
-      "sha256": "d52e08668b186cd1d4ed7fdcc9afd78bd5a99b519eab1307d35862104029fb07"
+      "sha256": "11924de92e6cfcddd168b1ba582f0e7c8555f38663dbf5678e78d2bbcf59f681"
     },
     {
       "path": "background-bilingual.svg",
-      "sha256": "8cbece6b147c03d46f46bd005715f91a77d26bb5a9db1ca9bcd8ab82bfe0af02"
+      "sha256": "3dfa8f251fe97ddf83280571d941039db3e891cba216e896853496f36efa4e96"
     },
     {
       "path": "background-en.png",
-      "sha256": "e7b9960ba170f16c723d0f24b7b7f9a66b3b98c2cb7f626176cacdc9a4074062"
+      "sha256": "c8aa9c961f80386b1899b08d408870adfa39270086934fb1f281c5f00b3ecd92"
     },
     {
       "path": "background-en.svg",
-      "sha256": "38aa416ee0d0753eecd3391df565b295588d88dddac040516e5d560b630d8de4"
+      "sha256": "33a121765a6597ad0b39fb12d3dff43c1ceb629552164ea8d9f652bd6dbff08d"
     },
     {
       "path": "background-zh.png",
-      "sha256": "5cfabd7ae7b66447e67ebb8d64e88a1fa90f77e4ca7064901fd3dbe8d094f728"
+      "sha256": "5c5b2d35c2bf68d59a2f19527c7a9ce554f61d478eb9949e1ffff8bd3a9444e8"
     },
     {
       "path": "background-zh.svg",
-      "sha256": "78aa1921798f2d1cece3aa55f2fb7eb8cd653ed71935e6fb937a77623af1a112"
+      "sha256": "9ac12f6d4fe42f75cf5af8305b344fbe32d9116b967bfa97cd847b4e3f38170c"
     },
     {
       "path": "configure-finder.applescript",
@@ -59,15 +63,15 @@
     },
     {
       "path": "README.md",
-      "sha256": "be8a4ec458293b71fddee45240f8f5132a4da43875f48fd14b27251444209263"
+      "sha256": "2bce368d35e03533caaad75a7fe9ceb3f3b31aa049ed6640d37c8d9e778524fa"
     },
     {
       "path": "render-backgrounds.cjs",
-      "sha256": "26cef902f39483e1901456baab8a414046525e92bfc3b35bd75d89c057c2a743"
+      "sha256": "afa3b4dbe2bab484952064b1a5c23eb565f35277188464c86b2af34c0e8cdedd"
     },
     {
       "path": "tests/branded-dmg-test.sh",
-      "sha256": "1240e0260688dcf5e67bc4051b4ab4651e1230b03b02074ae86fc810cdf69069"
+      "sha256": "c343266e6b9990a58223b45f3c2a39a96a1dd57e4a3a001722c3dd0a27a7041c"
     }
   ]
 }

@@ -10,7 +10,7 @@
     {
       "path": "README.md",
       "mode": "normalized-lf",
-      "sha256": "0ba3cdef48d42bbf60f1f96859485cb7c0888995319f0c579bc4bf8018d8b501"
+      "sha256": "4beffa5299320d201309a0c3dbbe6ff7c71f2305f49a4e216829ca261cd0e4a9"
     },
     {
       "path": "generate_assets.py",
@@ -20,17 +20,17 @@
     {
       "path": "CodeWF.Setup.iss",
       "mode": "normalized-lf",
-      "sha256": "aa084ceaaef5c46e4d349cd4680dbc474010ca68109a46335ec70f1fa9a399b3"
+      "sha256": "d615e80ff54d673c550336bd4c8a79df790f27fab51759118280f5fefbf4b64e"
     },
     {
       "path": "CodeWF.Setup.Messages.iss",
       "mode": "normalized-lf",
-      "sha256": "3c03be95cd1f552d814496dcea6293ece5173cc9b2120cfd3cd6fdd3e79e1748"
+      "sha256": "f9101c616f84d207c767c5cbcec47f562aa20f37214e2fbbd22e118f78d21308"
     },
     {
       "path": "CodeWF.Setup.Progress.iss",
       "mode": "normalized-lf",
-      "sha256": "9fe3b0ad74bf026ad9f93c8c42b21a34303c570fb7d725874ee80d7cec59a25e"
+      "sha256": "5cfceadf2236fa9a38c719abadd426b8d3a0628cdc8284789b18955398859ba3"
     },
     {
       "path": "CodeWF.Setup.Maintenance.iss",
@@ -40,7 +40,7 @@
     {
       "path": "CodeWF.Setup.Uninstall.iss",
       "mode": "normalized-lf",
-      "sha256": "536fe18b13883d8dcd8febd898afca29e645b84065a0f45a2dfef35152d7f014"
+      "sha256": "72ef79d485e48ee75bdae8574e61f2b6c807e38b3471f29e4a3c3734f7810a1f"
     },
     {
       "path": "frame-dark.bmp",

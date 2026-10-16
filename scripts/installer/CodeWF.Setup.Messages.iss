@@ -54,3 +54,5 @@ english.CWFinished=Everything is ready.
 chinesesimplified.CWFinished=一切准备就绪。
 english.CWBrand=WINDOWS X64  /  .NET
 chinesesimplified.CWBrand=WINDOWS X64  /  .NET
+english.CWBrandWebsite=Visit CodeWF: https://codewf.com
+chinesesimplified.CWBrandWebsite=访问码坊 CodeWF：https://codewf.com
