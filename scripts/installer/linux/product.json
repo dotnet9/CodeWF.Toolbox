@@ -1,0 +1,16 @@
+{
+  "id": "com.codewf.codewf.toolbox",
+  "package": "codewf-toolbox",
+  "command": "codewf-toolbox",
+  "name": "CodeWF Toolbox",
+  "chineseName": "码匠工具箱",
+  "summary": "Use developer utilities in a ribbon workspace",
+  "chineseSummary": "通过 Ribbon 工作区使用开发工具",
+  "description": "A collection of developer tools with a searchable catalog and document workspaces.",
+  "chineseDescription": "提供可搜索的工具目录与文档工作区，集中演示开发者常用工具。",
+  "categories": [
+    "Development",
+    "Utility"
+  ],
+  "homepage": "https://github.com/dotnet9/CodeWF.Toolbox"
+}

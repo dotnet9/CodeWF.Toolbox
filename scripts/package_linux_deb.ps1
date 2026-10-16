@@ -36,21 +36,31 @@ if ((Test-Path -LiteralPath $outputPath) -and -not $Force) {
     throw "Output already exists (use -Force to overwrite): $outputPath"
 }
 
-$staging = Join-Path $repositoryRoot "artifacts/deb/$RuntimeIdentifier/codewf-toolbox"
-if (Test-Path -LiteralPath $staging) {
-    Remove-Item -LiteralPath $staging -Recurse -Force
-}
+# 每次打包使用唯一临时目录，只清理当前任务创建的暂存文件。
+$staging = Join-Path ([IO.Path]::GetTempPath()) ('CodeWF.Toolbox-deb-' + [Guid]::NewGuid().ToString('N'))
+try {
 New-Item -ItemType Directory -Path (Join-Path $staging "DEBIAN") -Force | Out-Null
 New-Item -ItemType Directory -Path (Join-Path $staging "usr/local/share/CodeWF.Toolbox") -Force | Out-Null
 
-# 程序文件
-Copy-Item -Path (Join-Path $SourceDirectory "*") -Destination (Join-Path $staging "usr/local/share/CodeWF.Toolbox/") -Recurse -Force
+# 调试符号保留在构建产物，安装包保留运行文件和宿主语言资源。
+$sourcePath = (Resolve-Path -LiteralPath $SourceDirectory).Path
+$appPath = Join-Path $staging 'usr/local/share/CodeWF.Toolbox'
+if (-not (Test-Path -LiteralPath (Join-Path $sourcePath 'CodeWF.Toolbox') -PathType Leaf)) { throw '发布目录缺少主程序。' }
+Get-ChildItem -LiteralPath $sourcePath -Recurse -File -Force | ForEach-Object {
+        $relative = [IO.Path]::GetRelativePath($sourcePath, $_.FullName)
+        if ($_.Extension -in '.pdb', '.dbg' -or $relative -match '(^|[\\/])[^\\/]+\.dSYM([\\/]|$)') { return }
+        $destination = Join-Path $appPath $relative
+        New-Item -ItemType Directory -Path (Split-Path -Parent $destination) -Force | Out-Null
+        Copy-Item -LiteralPath $_.FullName -Destination $destination -Force
+    }
 
-$appDirectory = Join-Path $staging 'usr/local/share/CodeWF.Toolbox'
-Get-ChildItem -LiteralPath $appDirectory -Recurse -File |
-    Where-Object { $_.Extension -in '.pdb', '.dbg', '.xml' } | Remove-Item -Force
+$appDirectory = $appPath
+$launcherDirectory = Join-Path $staging 'usr/local/bin'
+New-Item -ItemType Directory -Path $launcherDirectory -Force | Out-Null
+$launcherPath = Join-Path $launcherDirectory 'codewf-toolbox'
+[IO.File]::WriteAllText($launcherPath, "#!/bin/sh`n" + 'exec /usr/local/share/CodeWF.Toolbox/CodeWF.Toolbox "$@"' + "`n")
 $applications = Join-Path $staging 'usr/share/applications'
-$icons = Join-Path $staging 'usr/share/icons/hicolor/256x256/apps'
+$icons = Join-Path $staging 'usr/share/icons/hicolor/512x512/apps'
 New-Item -ItemType Directory -Path $applications, $icons -Force | Out-Null
 Copy-Item -LiteralPath (Join-Path $repositoryRoot 'logo.png') -Destination (Join-Path $icons 'codewf-toolbox.png')
 $desktop = @'
@@ -58,7 +68,7 @@ $desktop = @'
 Type=Application
 Name=CodeWF Toolbox
 Comment=Developer tools with independent documents
-Exec=/usr/local/share/CodeWF.Toolbox/CodeWF.Toolbox
+Exec=codewf-toolbox
 Icon=codewf-toolbox
 Terminal=false
 Categories=Development;Utility;
@@ -86,9 +96,13 @@ Set-Content -LiteralPath (Join-Path $staging "DEBIAN/control") -Value ($control 
 if ($IsLinux) {
     $null = chmod 644 (Join-Path $staging "DEBIAN/control")
     $null = chmod 644 (Join-Path $applications 'codewf-toolbox.desktop')
-    $null = chmod +x (Join-Path $appDirectory 'CodeWF.Toolbox')
+    $null = chmod 755 $launcherPath (Join-Path $appDirectory 'CodeWF.Toolbox')
     if ($LASTEXITCODE -ne 0) { throw 'Unable to mark Linux executable.' }
 }
+
+# 补齐独立安装包的图标、品牌和软件管理器元数据。
+
+& (Join-Path $scriptRoot 'installer/linux/Write-LinuxPackageMetadata.ps1') -StagingDirectory $staging -RepositoryRoot $repositoryRoot -Version $Version
 
 dpkg-deb --build --root-owner-group $staging $outputPath
 if ($LASTEXITCODE -ne 0) {
@@ -101,5 +115,12 @@ if (-not (Test-Path -LiteralPath $outputPath -PathType Leaf)) {
 $sha = (Get-FileHash -LiteralPath $outputPath -Algorithm SHA256).Hash.ToLowerInvariant()
 "$sha  $packageName" | Set-Content -LiteralPath "$outputPath.sha256" -Encoding ASCII
 
-Remove-Item -LiteralPath $staging -Recurse -Force -ErrorAction SilentlyContinue
+
 Write-Host "Deb 打包完成：$outputPath"
+
+} finally {
+    $resolved = [IO.Path]::GetFullPath($staging)
+    $temporary = [IO.Path]::GetFullPath([IO.Path]::GetTempPath()).TrimEnd([IO.Path]::DirectorySeparatorChar) + [IO.Path]::DirectorySeparatorChar
+    if (-not $resolved.StartsWith($temporary, [StringComparison]::OrdinalIgnoreCase)) { throw '拒绝清理临时目录之外的路径。' }
+    if (Test-Path -LiteralPath $resolved) { Remove-Item -LiteralPath $resolved -Recurse -Force }
+}
