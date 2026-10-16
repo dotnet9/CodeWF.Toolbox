@@ -1,0 +1,73 @@
+{
+  "source_repository": "https://github.com/dotnet9/CodeWF.Avalonia",
+  "source_directory": "scripts/installer/macos",
+  "visual_reference": "design/CodeWF.安装器原型.html — sculpted-net-theme/asymmetric-silhouette",
+  "style": {
+    "brand": "#512BD4",
+    "finder_window": [
+      720,
+      480
+    ],
+    "icon_size": 100,
+    "positions": {
+      "app": [
+        180,
+        235
+      ],
+      "Applications": [
+        540,
+        235
+      ]
+    }
+  },
+  "files": [
+    {
+      "path": ".gitattributes",
+      "sha256": "c089985639038cc07dc37c07a8d0d543df7ddf9b1873a948000494a6e230530d"
+    },
+    {
+      "path": "background-bilingual.png",
+      "sha256": "d52e08668b186cd1d4ed7fdcc9afd78bd5a99b519eab1307d35862104029fb07"
+    },
+    {
+      "path": "background-bilingual.svg",
+      "sha256": "8cbece6b147c03d46f46bd005715f91a77d26bb5a9db1ca9bcd8ab82bfe0af02"
+    },
+    {
+      "path": "background-en.png",
+      "sha256": "e7b9960ba170f16c723d0f24b7b7f9a66b3b98c2cb7f626176cacdc9a4074062"
+    },
+    {
+      "path": "background-en.svg",
+      "sha256": "38aa416ee0d0753eecd3391df565b295588d88dddac040516e5d560b630d8de4"
+    },
+    {
+      "path": "background-zh.png",
+      "sha256": "5cfabd7ae7b66447e67ebb8d64e88a1fa90f77e4ca7064901fd3dbe8d094f728"
+    },
+    {
+      "path": "background-zh.svg",
+      "sha256": "78aa1921798f2d1cece3aa55f2fb7eb8cd653ed71935e6fb937a77623af1a112"
+    },
+    {
+      "path": "configure-finder.applescript",
+      "sha256": "502d3a80d3d342b49ac38a7d727bf1c325af888b69bb6ccb64b07759de5f7c6e"
+    },
+    {
+      "path": "create-branded-dmg.sh",
+      "sha256": "048d04cf8f494497ff51878ab675fff81f5d089c8bc015aadf424403cd3085f2"
+    },
+    {
+      "path": "README.md",
+      "sha256": "e9c918e76ae9c4851134321e6e6e4acb5db35cfb8abe3a0b6e82a9375d0c7959"
+    },
+    {
+      "path": "render-backgrounds.cjs",
+      "sha256": "26cef902f39483e1901456baab8a414046525e92bfc3b35bd75d89c057c2a743"
+    },
+    {
+      "path": "tests/branded-dmg-test.sh",
+      "sha256": "647df7defbd1a5cf54465fdd1ae6e1fe0529b1453c7a7c40d72bfd7a6bbce9ba"
+    }
+  ]
+}

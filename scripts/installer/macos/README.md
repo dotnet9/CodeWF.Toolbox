@@ -1,0 +1,11 @@
+# macOS 磁盘镜像品牌层
+
+主源：CodeWF.Avalonia 的 `scripts/installer/macos`。各产品仓内保存自包含副本，`source-sha256.json` 记录源文件哈希。目录内文本固定 LF、PNG 标记为二进制，避免跨平台检出改变源哈希。打包时不访问其他仓库或下载依赖。
+
+现有打包脚本继续负责 `.app`、产品图标、资源、签名和校验文件。本层使用系统 `hdiutil` 创建可写 HFS+ 临时镜像，用 `osascript` 配置该镜像 Finder 窗口为 720×480、100 点图标、固定应用与 Applications 位置，再转换为 UDZO 并校验。任何布局、挂载、压缩或校验失败都会终止打包；不会静默发布没有品牌层的镜像。需要可用的 macOS Finder 会话及相应自动化权限。
+
+背景沿用已验收原型的 `#512BD4`、八角 .NET 核心、椭圆轨道和粒子。箭头指向系统 Applications 目标，复制、覆盖和系统权限对话框仍由 Finder 处理，不模拟复制进度或接管权限。
+
+默认背景为简洁中英双语。可在打包时设 `CODEWF_DMG_LANGUAGE=en` 或 `zh` 选择单语言背景；合法值为 `bilingual`、`en`、`zh`。DMG 背景是静态资源，无法在用户挂载时随系统语言切换；Finder 自己的菜单、文件名显示和权限交互遵循系统语言。
+
+`tests/branded-dmg-test.sh` 用受控工具检查成功流程、参数、语言资源及挂载/布局/卸载/转换/验证失败传播。它不调用本机 macOS 工具、不挂载镜像、不操作桌面。Windows 的这些测试与语法检查不证明真实 Finder 布局、Retina、多显示器、Gatekeeper、公证或用户安装已验收；正式发布还需在 macOS 交互会话生成并挂载检查。
