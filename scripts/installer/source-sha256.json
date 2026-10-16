@@ -1,0 +1,76 @@
+{
+  "schema": 1,
+  "source": "CodeWF.Avalonia/scripts/installer",
+  "files": [
+    {
+      "path": ".gitattributes",
+      "mode": "normalized-lf",
+      "sha256": "8deeb026f7c4f5711d81ca98a65b6f712c80f8d2efa01523fda6761c83fe4f17"
+    },
+    {
+      "path": "README.md",
+      "mode": "normalized-lf",
+      "sha256": "0ba3cdef48d42bbf60f1f96859485cb7c0888995319f0c579bc4bf8018d8b501"
+    },
+    {
+      "path": "generate_assets.py",
+      "mode": "normalized-lf",
+      "sha256": "43164de9041a60d2b1db572aa9124735e4c4ac9bd8673c4fd75d7764eebd2d11"
+    },
+    {
+      "path": "CodeWF.Setup.iss",
+      "mode": "normalized-lf",
+      "sha256": "aa084ceaaef5c46e4d349cd4680dbc474010ca68109a46335ec70f1fa9a399b3"
+    },
+    {
+      "path": "CodeWF.Setup.Messages.iss",
+      "mode": "normalized-lf",
+      "sha256": "3c03be95cd1f552d814496dcea6293ece5173cc9b2120cfd3cd6fdd3e79e1748"
+    },
+    {
+      "path": "CodeWF.Setup.Progress.iss",
+      "mode": "normalized-lf",
+      "sha256": "9fe3b0ad74bf026ad9f93c8c42b21a34303c570fb7d725874ee80d7cec59a25e"
+    },
+    {
+      "path": "CodeWF.Setup.Maintenance.iss",
+      "mode": "normalized-lf",
+      "sha256": "bc135efe48d3f6218bd0c2a940cde437ff6c00f758237b46bc982ebfcb12759b"
+    },
+    {
+      "path": "CodeWF.Setup.Uninstall.iss",
+      "mode": "normalized-lf",
+      "sha256": "536fe18b13883d8dcd8febd898afca29e645b84065a0f45a2dfef35152d7f014"
+    },
+    {
+      "path": "frame-dark.bmp",
+      "mode": "binary",
+      "sha256": "7f179ac023a7df21c9b4dedcdc980f0b3e07da6669693d52b7ab0ea9f5faf250"
+    },
+    {
+      "path": "frame-light.bmp",
+      "mode": "binary",
+      "sha256": "d77fe02192f4edd1e8a7ba6872584e20c0266ae90c66792b39f6d6a091e7f6cd"
+    },
+    {
+      "path": "reactor-dark.bmp",
+      "mode": "binary",
+      "sha256": "ca1a79090dd1a2a1f2a7b7fd9ec5f493ee20b441009595ffcee7f74b3dae2eb4"
+    },
+    {
+      "path": "reactor-light.bmp",
+      "mode": "binary",
+      "sha256": "ca1a79090dd1a2a1f2a7b7fd9ec5f493ee20b441009595ffcee7f74b3dae2eb4"
+    },
+    {
+      "path": "core-dark.bmp",
+      "mode": "binary",
+      "sha256": "18144b31461ecb6efe184eae734491ee36bbef92b1195a79847118d53150322e"
+    },
+    {
+      "path": "core-light.bmp",
+      "mode": "binary",
+      "sha256": "18144b31461ecb6efe184eae734491ee36bbef92b1195a79847118d53150322e"
+    }
+  ]
+}

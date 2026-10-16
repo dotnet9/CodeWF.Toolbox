@@ -1,0 +1,6 @@
+*.iss text eol=lf
+*.ps1 text eol=lf
+*.py text eol=lf
+*.md text eol=lf
+*.json text eol=lf
+*.bmp binary
