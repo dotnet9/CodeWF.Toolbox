@@ -5,3 +5,5 @@
 维护 `scripts/installer/linux/product.json` 更新本仓库描述。公共生成脚本来源及 SHA256 记录在同目录 `source.json`，副本已包含在仓库中，打包不依赖其他仓库。
 
 运行 `pwsh scripts/tests/linux_metadata_test.ps1` 检查元数据、图标、许可、桌面入口和体积。Windows 可验证暂存文件；真实 DEB 构建与软件管理器显示需在 Linux 使用 `dpkg-deb`、`appstreamcli validate` 和桌面环境验证。
+
+运行 `pwsh scripts/tests/linux_packaging_test.ps1` 覆盖 x64/arm64 两种架构的暂存结构、语言资源、符号剔除、启动参数、校验和与失败传播，同时执行元数据检查。Windows 使用受控打包边界夹具，Linux 有 `dpkg-deb` 时调用真实打包工具；该测试不安装或启动产品。

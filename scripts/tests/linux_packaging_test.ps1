@@ -1,6 +1,7 @@
 ﻿# 在打包边界检查暂存结构；Linux 同时调用真实 dpkg-deb，Windows 仅验证受控边界。
 $ErrorActionPreference = 'Stop'
 $repositoryRoot = Split-Path -Parent (Split-Path -Parent $PSScriptRoot)
+& (Join-Path $PSScriptRoot 'linux_metadata_test.ps1')
 $fixtureRoot = Join-Path ([IO.Path]::GetTempPath()) ('CodeWF.Toolbox-deb-test-' + [Guid]::NewGuid().ToString('N'))
 $source = Join-Path $fixtureRoot 'source with spaces'
 $output = Join-Path $fixtureRoot 'output'

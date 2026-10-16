@@ -3,7 +3,10 @@ $repositoryRoot = Split-Path -Parent (Split-Path -Parent $PSScriptRoot)
 $directory = Join-Path $repositoryRoot 'scripts/installer/linux'
 $metadata = Get-Content -LiteralPath (Join-Path $directory 'product.json') -Raw | ConvertFrom-Json
 $source = Get-Content -LiteralPath (Join-Path $directory 'source.json') -Raw | ConvertFrom-Json
-if ((Get-FileHash -LiteralPath (Join-Path $directory 'Write-LinuxPackageMetadata.ps1') -Algorithm SHA256).Hash -ne $source.sha256) { throw 'Linux 元数据脚本与主源校验值不同。' }
+# Git 在不同系统检出时可转换换行；来源校验统一为无 BOM 的 UTF-8 和 LF。
+$helper = [IO.File]::ReadAllText((Join-Path $directory 'Write-LinuxPackageMetadata.ps1')).ReplaceLineEndings("`n")
+$helperHash = [Convert]::ToHexString([Security.Cryptography.SHA256]::HashData([Text.Encoding]::UTF8.GetBytes($helper)))
+if ($helperHash -ne $source.sha256) { throw 'Linux 元数据脚本与主源校验值不同。' }
 $fixture = Join-Path ([IO.Path]::GetTempPath()) ('codewf-linux-metadata-' + [Guid]::NewGuid().ToString('N'))
 $encoding = [Text.UTF8Encoding]::new($false)
 try {
