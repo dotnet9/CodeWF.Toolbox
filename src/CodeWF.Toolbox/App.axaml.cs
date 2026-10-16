@@ -174,7 +174,6 @@ public partial class App : PrismApplication
         containerRegistry.RegisterSingleton<IToolMenuService, ToolMenuService>();
         containerRegistry.RegisterSingleton<IFileChooserService, FileChooserService>();
         containerRegistry.RegisterSingleton<INotificationService, NotificationService>();
-        containerRegistry.RegisterInstance<IUpdateChecker>(new UpdateChecker("dotnet9", "CodeWF.Toolbox"));
         containerRegistry.RegisterInstance<CodeWF.Toolkit.Core.UpdateChecking.IUpdateService>(
             new CodeWF.Toolkit.Core.UpdateChecking.UpdateService(new() { Repository = "CodeWF.Toolbox", ProductName = "CodeWF.Toolbox" }));
         containerRegistry.RegisterSingleton<IUserProfileService, UserProfileService>();
