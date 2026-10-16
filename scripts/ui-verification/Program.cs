@@ -1,6 +1,7 @@
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Controls.Primitives;
+using Avalonia.Media;
 using Avalonia.Headless;
 using Avalonia.Input;
 using Avalonia.Threading;
@@ -168,6 +169,7 @@ foreach (var mode in settings.ThemeModes.Where(item => item.Key != "System"))
     Check(App.Instance.RequestedThemeVariant == StudioTheme.GetVariant(Enum.Parse<StudioPalette>(palette.Key), mode.Key == "Dark"), palette.Key + " applies " + mode.Key);
     CheckLocalized(window); Capture(window, palette.Key + "-" + mode.Key + ".png");
 }
+VerifyPrimaryButtonStates();
 settings.SelectedMode = settings.ThemeModes.Single(item => item.Key == "System");
 Check(App.Instance.RequestedThemeVariant == StudioTheme.GetVariant(Enum.Parse<StudioPalette>(settings.SelectedTheme!.Key), App.Instance.PlatformSettings?.GetColorValues().ThemeVariant == Avalonia.Platform.PlatformThemeVariant.Dark), "System mode follows operating system");
 var reloaded = new TitleBarSettingsViewModel(container.Resolve<IApplicationService>(), container.Resolve<ILoginService>(), container.Resolve<IUserProfileService>());
@@ -215,6 +217,98 @@ void Check(bool condition, string description)
 {
     if (!condition) throw new InvalidOperationException(description);
     assertions.Add(description); Console.WriteLine("PASS " + description);
+}
+void VerifyPrimaryButtonStates()
+{
+    // 读取真实模板和文字的最终颜色，不能只验证 Button 自身的属性值。
+    var login = new LoginWindow(container.Resolve<IApplicationService>(), container.Resolve<ILoginService>());
+    var exit = new ExitOptionWindow { DataContext = new ExitOptionViewModel() };
+    login.Show(); exit.Show(); Pump();
+    var currentToolView = (ToolDocumentView)workspace.OpenDocuments.Single().Context!;
+    var candidates = new[]
+    {
+        (Host: (Window)window, Button: currentToolView.GetVisualDescendants().OfType<Button>().First(button => button.Classes.Contains("AppPrimary")), Name: "tool"),
+        (Host: (Window)login, Button: login.GetVisualDescendants().OfType<Button>().Single(button => button.Classes.Contains("AppPrimary")), Name: "login"),
+        (Host: (Window)exit, Button: exit.GetVisualDescendants().OfType<Button>().Single(button => button.Classes.Contains("ExitConfirm")), Name: "exit")
+    };
+    var originalCulture = I18nManager.Instance.Culture.Name;
+    foreach (var culture in new[] { "zh-CN", "zh-Hant", "en-US", "ja-JP" })
+    {
+        SetBackgroundCulture(culture);
+        exit.UpdateLayout(); Pump();
+        var remember = exit.GetVisualDescendants().OfType<CheckBox>().Single(control => control.Classes.Contains("ExitRemember"));
+        var text = remember.GetVisualDescendants().OfType<TextBlock>().Single(control => control.IsEffectivelyVisible);
+        var confirm = candidates.Single(candidate => candidate.Name == "exit").Button;
+        var rememberBottom = remember.TranslatePoint(new Point(0, remember.Bounds.Height), exit)!.Value.Y;
+        var confirmTop = confirm.TranslatePoint(default, exit)!.Value.Y;
+        Check(text.Text == I18nManager.Instance.GetResource(Localization.ExitOptionView.RememberMyChoice) && text.Bounds.Width + 1 >= text.DesiredSize.Width,
+            "Exit remember label remains complete: " + culture);
+        Check(rememberBottom + 4 <= confirmTop, "Exit actions keep a separate row below the remember choice: " + culture);
+    }
+    SetBackgroundCulture(originalCulture);
+    var lines = new List<string> { "palette\tmode\tcontrol\tstate\tforeground\tbackground\tcontrast" };
+    try
+    {
+        foreach (var palette in settings.Themes)
+        foreach (var mode in settings.ThemeModes.Where(item => item.Key != "System"))
+        {
+            settings.SelectedTheme = palette; settings.SelectedMode = mode; Pump();
+            foreach (var (host, button, name) in candidates)
+            {
+                button.IsEnabled = true;
+                var outside = new Point(-100, -100);
+                var point = button.TranslatePoint(new Point(button.Bounds.Width / 2, button.Bounds.Height / 2), host)!.Value;
+                host.MouseMove(outside); Pump(); Measure("normal", "StudioPrimary");
+                button.Focus(NavigationMethod.Tab); Pump(); Measure("focus", "StudioPrimary");
+                host.MouseMove(point); Pump();
+                Check(button.IsPointerOver, name + " receives real pointer hover: " + palette.Key + "/" + mode.Key);
+                Measure("hover", "StudioPrimaryHover");
+                host.MouseDown(point, MouseButton.Left); Pump();
+                Check(button.IsPressed, name + " receives real pointer press: " + palette.Key + "/" + mode.Key);
+                Measure("pressed", "StudioPrimaryPressed");
+                host.MouseMove(outside); host.MouseUp(outside, MouseButton.Left); Pump();
+                button.IsEnabled = false; Pump(); Measure("disabled", null);
+                button.IsEnabled = true; Pump();
+
+                void Measure(string state, string? expectedBackground)
+                {
+                    var presenter = button.GetVisualDescendants().OfType<Avalonia.Controls.Presenters.ContentPresenter>()
+                        .Single(control => control.Name == "PART_ContentPresenter");
+                    var text = presenter.GetVisualDescendants().OfType<TextBlock>().First(control => control.IsEffectivelyVisible);
+                    var background = ((ISolidColorBrush)presenter.Background!).Color;
+                    var foreground = ((ISolidColorBrush)text.Foreground!).Color;
+                    var ratio = Contrast(foreground, background);
+                    lines.Add($"{palette.Key}\t{mode.Key}\t{name}\t{state}\t{foreground}\t{background}\t{ratio.ToString("F4", CultureInfo.InvariantCulture)}");
+                    if (expectedBackground is not null)
+                    {
+                        Check(host.TryFindResource(expectedBackground, host.ActualThemeVariant, out var expected) && expected is ISolidColorBrush brush && brush.Color == background,
+                            name + " template follows " + expectedBackground + ": " + palette.Key + "/" + mode.Key + "/" + state + ", actual=" + background + ", expected=" + expected);
+                        Check(ratio >= 4.5, name + " actual text contrast >= 4.5: " + palette.Key + "/" + mode.Key + "/" + state + " = " + ratio.ToString("F4", CultureInfo.InvariantCulture));
+                    }
+                    else Check(!button.IsEnabled && !button.IsEffectivelyEnabled, name + " disabled state blocks interaction: " + palette.Key + "/" + mode.Key);
+                }
+            }
+            Capture(login, "login-" + palette.Key + "-" + mode.Key + ".png");
+            Capture(exit, "exit-" + palette.Key + "-" + mode.Key + ".png");
+        }
+    }
+    finally
+    {
+        // 登录窗口的关闭属于业务流程，验证只隐藏窗口，不执行退出或登录。
+        login.Hide(); exit.Close();
+        File.WriteAllLines(Path.Combine(output, "primary-button-contrast.tsv"), lines);
+    }
+
+    static double Contrast(Color foreground, Color background)
+    {
+        static double Luminance(Color color)
+        {
+            static double Channel(byte value) { var normalized = value / 255d; return normalized <= 0.04045 ? normalized / 12.92 : Math.Pow((normalized + 0.055) / 1.055, 2.4); }
+            return 0.2126 * Channel(color.R) + 0.7152 * Channel(color.G) + 0.0722 * Channel(color.B);
+        }
+        var first = Luminance(foreground); var second = Luminance(background);
+        return (Math.Max(first, second) + 0.05) / (Math.Min(first, second) + 0.05);
+    }
 }
 void VerifyTitleBar()
 {

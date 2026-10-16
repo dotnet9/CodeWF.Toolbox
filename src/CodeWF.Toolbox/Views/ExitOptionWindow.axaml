@@ -10,7 +10,7 @@
     xmlns:views="clr-namespace:CodeWF.Toolbox.Views"
     xmlns:vm="clr-namespace:CodeWF.Toolbox.ViewModels"
     Width="364"
-    Height="240"
+    Height="256"
     BorderBrush="{DynamicResource StudioBorder}"
     BorderThickness="1"
     CanResize="False"
@@ -27,7 +27,7 @@
     TitleBarForeground="{DynamicResource StudioText}"
     TitleBarMargin="1 1 1 0"
     WindowCornerRadius="8"
-    d:DesignHeight="240"
+    d:DesignHeight="256"
     d:DesignWidth="364"
     x:DataType="vm:ExitOptionViewModel"
     mc:Ignorable="d"
@@ -60,13 +60,7 @@
             <Setter Property="BorderBrush" Value="{DynamicResource StudioBorder}" />
         </Style>
         <Style Selector="Button.ExitConfirm">
-            <Setter Property="Background" Value="{DynamicResource StudioAccent}" />
-            <Setter Property="BorderBrush" Value="{DynamicResource StudioAccent}" />
-            <Setter Property="Foreground" Value="White" />
-        </Style>
-        <Style Selector="Button.ExitConfirm:pointerover">
-            <Setter Property="Background" Value="{DynamicResource StudioSecondary}" />
-            <Setter Property="BorderBrush" Value="{DynamicResource StudioSecondary}" />
+            <Setter Property="Theme" Value="{DynamicResource SolidButton}" />
         </Style>
         <Style Selector="CheckBox.ExitRemember">
             <Setter Property="MinHeight" Value="28" />
@@ -121,14 +115,14 @@
                 Width="28"
                 Height="28"
                 VerticalAlignment="Top"
-                Background="{DynamicResource StudioAccent}"
+                Background="{DynamicResource StudioPrimary}"
                 CornerRadius="14">
                 <TextBlock
                     HorizontalAlignment="Center"
                     VerticalAlignment="Center"
                     FontSize="16"
                     FontWeight="Bold"
-                    Foreground="White"
+                    Foreground="{DynamicResource StudioOnPrimary}"
                     Text="i" />
             </Border>
 
@@ -143,18 +137,21 @@
             </StackPanel>
         </Grid>
 
-        <Grid Grid.Row="1" ColumnDefinitions="*,Auto,Auto" ColumnSpacing="16" Margin="0 14 0 0">
+        <Grid Grid.Row="1" ColumnDefinitions="*,Auto,Auto" RowDefinitions="Auto,Auto" ColumnSpacing="16" RowSpacing="8" Margin="0 14 0 0">
             <CheckBox
                 Grid.Column="0"
+                Grid.ColumnSpan="3"
                 Classes="ExitRemember"
                 Content="{i18n:I18n {x:Static language:ExitOptionView.RememberMyChoice}}"
                 IsChecked="{Binding RememberMyChoice}" />
             <Button
+                Grid.Row="1"
                 Grid.Column="1"
                 Classes="ExitDialogButton ExitCancel"
                 Click="CancelButton_OnClick"
                 Content="{i18n:I18n {x:Static language:ExitOptionView.Cancel}}" />
             <Button
+                Grid.Row="1"
                 Grid.Column="2"
                 Classes="ExitDialogButton ExitConfirm"
                 Click="ConfirmButton_OnClick"

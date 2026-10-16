@@ -100,17 +100,10 @@
         <Setter Property="MinWidth" Value="104" />
         <Setter Property="Padding" Value="18 0" />
         <Setter Property="CornerRadius" Value="8" />
-        <Setter Property="Background" Value="{DynamicResource StudioAccent}" />
-        <Setter Property="BorderBrush" Value="{DynamicResource StudioAccent}" />
-        <Setter Property="Foreground" Value="White" />
+        <Setter Property="Theme" Value="{DynamicResource SolidButton}" />
         <Setter Property="FontWeight" Value="SemiBold" />
         <Setter Property="HorizontalContentAlignment" Value="Center" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
-    </Style>
-
-    <Style Selector="Button.AppPrimary:pointerover">
-        <Setter Property="Background" Value="{DynamicResource StudioSecondary}" />
-        <Setter Property="BorderBrush" Value="{DynamicResource StudioSecondary}" />
     </Style>
 
     <Style Selector="Button.AppGhost">
