@@ -1,0 +1,43 @@
+name: windows-installer-contract
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/windows-installer-contract.yml'
+      - 'scripts/*.iss'
+      - 'scripts/installer/**'
+      - 'scripts/Languages/**'
+      - 'scripts/tests/windows_setup_contract_test.ps1'
+      - 'LICENSE'
+  pull_request:
+    paths:
+      - '.github/workflows/windows-installer-contract.yml'
+      - 'scripts/*.iss'
+      - 'scripts/installer/**'
+      - 'scripts/Languages/**'
+      - 'scripts/tests/windows_setup_contract_test.ps1'
+      - 'LICENSE'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  isolated-compile:
+    name: 独立安装器契约真编译
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: 校验快照并独立编译受控载荷
+        shell: pwsh
+        env:
+          CODEWF_TEST_TMP: ${{ runner.temp }}/codewf-installer-contract
+        run: ./scripts/tests/windows_setup_contract_test.ps1 -Compile
+      - name: 上传编译证据
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: windows-installer-contract
+          path: ${{ runner.temp }}/codewf-installer-contract/**/verification.json
+          if-no-files-found: ignore

@@ -1,4 +1,4 @@
-# 码匠工具箱
+﻿# 码匠工具箱
 
 码匠工具箱是一个基于 Avalonia + Prism 的模块化桌面工具箱，面向开发者日常效率场景。项目将主程序、公共服务与功能模块解耦，方便后续继续扩展新的工具页，而不会把应用演化成一个难维护的大窗体工程。
 
@@ -146,3 +146,7 @@ XML 文件统一使用两个空格缩进。`Directory.Packages.props` 统一承�
 ## 发布
 
 标准发布流程与发布说明规范见 [docs/RELEASE.md](docs/RELEASE.md)。
+
+## 统一安装体验
+
+安装包采用统一 .NET 品牌紫设计：Windows 使用异形原生向导、真实进度核心和双语许可；macOS 使用品牌 DMG 背景与 Finder 拖放布局；Linux 提供原生 DEB 及 AppStream 品牌信息。各仓库保存自包含安装器源码，交付 EXE / DEB / DMG 和 SHA-256，不以 ZIP 代替安装包。实现、维护流程与平台验收边界见 [安装器说明](scripts/installer/README.md)。
