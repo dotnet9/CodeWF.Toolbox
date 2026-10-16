@@ -14,18 +14,34 @@ codewf_create_branded_dmg() (
   case "$local_language" in en|zh|bilingual) ;; *) echo 'CODEWF_DMG_LANGUAGE must be en, zh or bilingual.' >&2; exit 2 ;; esac
   [[ -d "$local_stage/$local_app.app" && -e "$local_stage/Applications" ]] || { echo 'DMG stage must contain the app bundle and Applications shortcut.' >&2; exit 2; }
   [[ -s "$CODEWF_DMG_ASSET_ROOT/background-$local_language.png" ]] || { echo 'DMG brand background is missing.' >&2; exit 2; }
-  for local_command in hdiutil osascript sync; do
+  for local_command in hdiutil osascript sync sleep; do
     command -v "$local_command" >/dev/null || { echo "Required macOS tool missing: $local_command" >&2; exit 2; }
   done
   local_work="$(mktemp -d "${TMPDIR:-/tmp}/codewf-branded-dmg-XXXXXX")" || exit 1
   local_mount="$local_work/mount"
   local_rw="$local_work/writable.dmg"
   local_mounted=0
+  detach_brand_dmg() {
+    local attempt=1 delay=1
+    # Finder/Spotlight 可能短暂持有镜像；仅正常卸载，最多五次，退避共十五秒。
+    while [[ "$attempt" -le 5 ]]; do
+      if hdiutil detach "$local_mount" >/dev/null; then
+        local_mounted=0
+        return 0
+      fi
+      [[ "$attempt" -lt 5 ]] || break
+      echo "Temporary DMG busy; detach retry $((attempt + 1))/5 in ${delay}s: $local_mount" >&2
+      sleep "$delay" || return 1
+      attempt=$((attempt + 1))
+      delay=$((delay * 2))
+    done
+    return 1
+  }
   cleanup_brand_dmg() {
     # 仅回收本次 mktemp 路径；布局失败也要先卸载，避免删除挂载中的内容。
     if [[ "$local_mounted" == 1 ]]; then
-      if ! hdiutil detach "$local_mount" >/dev/null 2>&1; then
-        echo "Could not detach temporary DMG; retained at $local_work" >&2
+      if ! detach_brand_dmg; then
+        echo "Could not detach temporary DMG; retained at $local_work (mount: $local_mount)" >&2
         return 1
       fi
     fi
@@ -41,8 +57,7 @@ codewf_create_branded_dmg() (
   osascript "$CODEWF_DMG_ASSET_ROOT/configure-finder.applescript" "$local_mount" "$local_app.app" >/dev/null || exit 1
   [[ -s "$local_mount/.DS_Store" ]] || { echo 'Finder did not persist the DMG layout (.DS_Store missing).' >&2; exit 1; }
   sync || exit 1
-  hdiutil detach "$local_mount" >/dev/null || exit 1
-  local_mounted=0
+  detach_brand_dmg || exit 1
   hdiutil convert "$local_rw" -format UDZO -imagekey zlib-level=9 -ov -o "$local_output" >/dev/null || exit 1
   hdiutil verify "$local_output" >/dev/null || exit 1
   [[ -s "$local_output" ]] || { echo 'Branded DMG output is missing or empty.' >&2; exit 1; }
