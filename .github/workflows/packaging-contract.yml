@@ -1,0 +1,25 @@
+name: 安装包结构验证
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  contract:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: 验证 Linux 安装入口、品牌元数据及失败传播
+        shell: pwsh
+        run: ./scripts/tests/linux_packaging_test.ps1
+      - name: 验证五平台资产名称与哈希门禁
+        shell: pwsh
+        run: ./scripts/tests/release_installers_test.ps1
+      - name: 验证 macOS 品牌镜像助手的受控契约
+        shell: bash
+        run: bash scripts/installer/macos/tests/branded-dmg-test.sh
