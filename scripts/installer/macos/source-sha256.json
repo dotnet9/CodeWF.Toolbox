@@ -59,11 +59,11 @@
     },
     {
       "path": "create-branded-dmg.sh",
-      "sha256": "a0cf76e88f91048bd14493ddd9cf98feb9196d6e0e88273d00e4fdef8ac507a2"
+      "sha256": "82705ff1d56058fb830b14aa8b80591b205adf2c3c297c48631076c306b26e64"
     },
     {
       "path": "README.md",
-      "sha256": "2bce368d35e03533caaad75a7fe9ceb3f3b31aa049ed6640d37c8d9e778524fa"
+      "sha256": "0844d6e4fad2426a14fd9f3ce3c81e81aeae6e6c8c01ce6cf3300f4e3423e85b"
     },
     {
       "path": "render-backgrounds.cjs",
@@ -71,7 +71,7 @@
     },
     {
       "path": "tests/branded-dmg-test.sh",
-      "sha256": "c343266e6b9990a58223b45f3c2a39a96a1dd57e4a3a001722c3dd0a27a7041c"
+      "sha256": "b125206dc8c479c60d1f3569de71c29779f60aa63674981bd10d6b975a1768e1"
     }
   ]
 }
