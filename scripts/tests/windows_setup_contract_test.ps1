@@ -56,7 +56,7 @@ foreach ($source in @(Get-ChildItem -LiteralPath $installerPath -File -Filter '*
 Write-Host 'PASS: 本仓安装器、许可与两语资源完整。'
 if (-not $Compile) { return }
 if (-not $InnoSetupCompiler) {
-    $command = Get-Command ISCC.exe -ErrorAction SilentlyContinue
+    $command = Get-Command ISCC.exe -CommandType Application -ErrorAction SilentlyContinue | Select-Object -First 1
     if ($command) { $InnoSetupCompiler = $command.Source }
     elseif (${env:ProgramFiles(x86)}) { $InnoSetupCompiler = Join-Path ${env:ProgramFiles(x86)} 'Inno Setup 6\ISCC.exe' }
 }

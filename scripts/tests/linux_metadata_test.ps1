@@ -44,7 +44,7 @@ try {
     $controlText = [IO.File]::ReadAllText($control)
     $size = [Math]::Ceiling(((Get-ChildItem -LiteralPath (Join-Path $fixture 'usr') -Recurse -File | Measure-Object Length -Sum).Sum) / 1KB)
     if (-not $controlText.Contains("Homepage: $($metadata.homepage)") -or -not $controlText.Contains("Installed-Size: $size")) { throw 'Homepage 或实际安装体积错误。' }
-    $validation = Get-Command appstreamcli -CommandType Application -ErrorAction SilentlyContinue
+    $validation = Get-Command appstreamcli -CommandType Application -ErrorAction SilentlyContinue | Select-Object -First 1
     if ($validation) {
         & $validation.Source validate --no-net $file
         if ($LASTEXITCODE -ne 0) { throw 'AppStream 原生校验失败。' }
